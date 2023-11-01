@@ -10,4 +10,6 @@ class datamasterruangan extends CI_Controller
         $this->load->model('m_model');
         $this->load->helper( 'my_helper' );
         }
-    }
+
+
+}
