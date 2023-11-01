@@ -226,7 +226,7 @@
     <div class="LoginPageContainer">
         <div class="LoginPageInnerContainer">
             <div class="ImageContianer">
-                <img src="https://o.remove.bg/downloads/61fde5d8-b491-4cc4-91ca-a68e08382cb1/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security_566886-2817-removebg-preview.png"
+                <img src="https://o.remove.bg/downloads/bb2eb157-5fcb-49ca-9911-3d3ab1e6660a/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security_566886-2817-removebg-preview.png"
                     class="GroupImage">
             </div>
             <div class="LoginFormContainer">
