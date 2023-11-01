@@ -6,15 +6,16 @@ class Auth extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('form_validation');
         $this->load->model('m_model');
 		$this->load->helper('my_helper');
     }
 
-    public function index()
+    //function tampilan login
+	public function index()
 	{
 		$this->load->view('auth/login');
 	}
+     //function aksi login
     public function aksi_login()
     {
         $email = $this->input->post('email', true);
@@ -33,18 +34,19 @@ class Auth extends CI_Controller {
             ];
             $this->session->set_userdata($data);
             if ($result['role'] == 'supervisor') {
-                redirect(base_url() . "");
+                redirect(base_url() . "supervisor");
             } elseif ($result['role'] == 'operator') {
-                redirect(base_url(). '');
+                redirect(base_url(). 'operator');
             }
         } else {
             $this->session->set_flashdata('error' , 'error ');
             redirect(base_url());
         }
     }
-    public function logout()
+     //function aksi logout
+	public function logout()
     {
         $this->session->sess_destroy();
         redirect(base_url());
-    }    
+    }
 }
