@@ -54,7 +54,7 @@
         }
 
         .LoginPageInnerContainer .ImageContianer .GroupImage {
-            width: 100%;
+            width: 80%;
             display: block;
         }
 
@@ -171,7 +171,7 @@
         }
 
         .LoginFormContainer .LoginFormInnerContainer .LoginButton:active {
-            background-color: #4520ff;
+            background-color: #4F709C;
         }
 
 
@@ -226,7 +226,7 @@
     <div class="LoginPageContainer">
         <div class="LoginPageInnerContainer">
             <div class="ImageContianer">
-                <img src="https://o.remove.bg/downloads/bb2eb157-5fcb-49ca-9911-3d3ab1e6660a/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security_566886-2817-removebg-preview.png"
+                <img src="https://o.remove.bg/downloads/3d885d05-1788-4c18-a11c-5080e89884cb/istockphoto-1281150061-612x612-removebg-preview.png"
                     class="GroupImage">
             </div>
             <div class="LoginFormContainer">
@@ -236,7 +236,7 @@
                     <header class="subHeader">Selamat Datang di <b>Website Sewa Ruang</b> Silahkan lengkapi data anda
                     </header>
 
-                    <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
+                    <form action="" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
                                     class="labelIcon"><span>Email*
