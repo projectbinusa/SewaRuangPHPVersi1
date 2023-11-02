@@ -236,7 +236,7 @@
                     <header class="subHeader">Selamat Datang di <b>Website Sewa Ruang</b> Silahkan lengkapi data anda
                     </header>
 
-                    <form action="" method="post">
+                    <form action="<?php echo base_url('auth/aksi_login')?>" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
                                     class="labelIcon"><span>Email*
