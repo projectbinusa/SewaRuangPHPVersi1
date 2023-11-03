@@ -56,8 +56,50 @@
         <?php $no = 1;
           foreach ($pelanggan as $waifu) { ?>
             <td class="text-center"><b><?php echo $no++ ?></b></td>
-                        <td class="text-center"><b><?php echo $waifu->nama ?></b></td>
-                        
+                        <td class="text-center"><b><?php echo $waifu->nama ?></b></td> 
+                            <center><thead>
+                                <tr>
+                                <th scope="col">No </th>                               
+                                <th scope="col"> Nama </th>
+                                <th scope="col"> Phone </th>
+                                <th scope="col"> Payment Method </th>
+                                <th scope="col">Aksi</th>
+
+                                    
+                                </tr>
+                            </thead></center>
+                            <tbody>
+                              
+                            <?php
+                 $no= 0;foreach ($pelanggan as $row  ) :$no++                          
+                    ?>
+                                   <tr>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo$no ?></td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama ?></td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->phone ?></td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->payment_method ?>
+                                 </td>
+                           
+                                  
+                                 </td>
+                              </tr><?php endforeach ?>
+                                
+                                </table>
+                                
+                                
+                                
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                                    <!-- Tambah -->
+                                    <a href="<?php echo base_url('pelanggan/tambah_Pelanggan') ?>" class="btn btn-primary">Tambah</a> 
+                            </form>
+                   
+                   
+
+                </div>
+            </div><
+
+
+           
                         <td class="text-center"><b><?php echo $waifu->phone ?></b></td>
                         <td class="text-center"><b><?php echo $waifu->peyment_method ?></b></td>
                        
