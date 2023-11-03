@@ -168,7 +168,7 @@
                 <h1 id="title" class="main-heading">Form tambah operator</h1>
             </header>
 
-            <form action="#" method="post" id="survey-form" class="survey-form">
+            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator')?>" method="post" id="survey-form" class="survey-form">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
                 <input type="text" name="username" id="username" class="username" placeholder="Ketik nama anda"
                     required>
