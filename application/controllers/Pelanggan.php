@@ -7,8 +7,7 @@ class Pelanggan extends CI_Controller {
 
 		parent::__construct();
 		$this->load->model('m_model');
-		$this->load->helper('my_helper');;
-
+		$this->load->helper('my_helper');
 }
 
 public function pelanggan()
