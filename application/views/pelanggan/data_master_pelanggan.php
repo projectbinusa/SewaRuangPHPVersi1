@@ -4,146 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <style>
-    body {
-        display: flex;
-
-        margin: 0;
-        min-height: 100vh;
-        background-color: #61677A;
-
-    }
-
-    #sidebar {
-        background-color: #272829;
-
-        color: #ffffff;
-        height: 100%;
-        width: 250px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        transition: 0.3s;
-        padding-top: 20px;
-    }
-
-    #sidebar a {
-        padding: 10px 15px;
-        text-decoration: none;
-        color: #ffffff;
-        display: block;
-    }
-
-    #sidebar a:hover {
-        background-color: black;
-
-    }
-
-    #content {
-        flex: 1;
-        margin-left: 250px;
-        transition: 0.3s;
-        padding: 20px;
-    }
-
-    @media screen and (max-width: 788px) {
-        #sidebar {
-            width: 100%;
-            position: static;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        #content {
-            margin-left: 0;
-        }
-    }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="flex h-screen bg-gray">
-    <!-- Sidebar -->
-    <div id="sidebar" class="col-md-3 col-lg-2 d-md-block">
-      <span class="ml-3">案内板 SISTEM INFORMASI</span>
-      
-        <a href="<?php echo base_url('admin/dasboard') ?>">
-            <i class=" mr-2"></i> <li>案 Dasboard</li>
-        </a>
-        <a href="<?php echo base_url('admin/akun') ?>">
-            <i class="fas mr-2"></i> <li>案 Akun</li>
-        </a>
-        <a href="<?php echo base_url('admin') ?>">
-            <i class="fas mr-2"></i> <li>案 Lobi</li>
-        </a>
-        <aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-      <ul class="space-y-2 font-medium">
-         
+<body>
 
-          
-               </svg>
-               
-            
-        
-         
-         <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> 
-        
-            </a>
-            <hr>
-         
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            
-               <hr>
-            </a>
-            <hr>
-         
-        
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-           
-               <hr>
-            </a>
-            <hr>
-        
-        
-       
-      </div>
-</aside>
-      </div>
+
+            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+
+<section class="py-1 bg-blueGray-50">
+<div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+      <div class="flex flex-wrap items-center">
+        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+          <h3 class="font-semibold text-base text-blueGray-700">DATA MASTER PELANGGAN</h3>
         </div>
-
-
-
-
-
-        
+        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+          <button class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"><a href="<?php echo base_url('pelanggan/tambah_pelanggan') ?>">TAMBAH</a></button>
+        </div>
+      </div>
     </div>
-    <div id="content" role="main">
-        <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
-            <h1 class="text-4xl">Data Master Pelanggan</h1>
-            <div class="flex items-center space-x-2">
 
-            </div>
-        </header>
-        <br>
-        <div class="row ">
-            <div class="col-12 card p-7">
-                <div class="card-body min-vh-200  align-items-center">
-                    <div class="card w-40 m-auto p-3">
-                        <table class="table  table-striped"> 
-                            <center><h1><b>Data Master Pelanggan</b></h1></center>
-                            <hr>
-                   
-                        
-                        
+    <div class="block w-full overflow-x-auto">
+      <table class="items-center bg-transparent w-full border-collapse ">
+        <thead>
+          <tr>
+            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          NO
+                        </th>
+          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          NAMA
+                        </th>
+           <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          PHONE
+                        </th>
+          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          PAYMENT METHOD
+                        </th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <?php $no = 1;
+          foreach ($pelanggan as $waifu) { ?>
+            <td class="text-center"><b><?php echo $no++ ?></b></td>
+                        <td class="text-center"><b><?php echo $waifu->nama ?></b></td> 
                             <center><thead>
-
-
-
-
-
                                 <tr>
                                 <th scope="col">No </th>                               
                                 <th scope="col"> Nama </th>
@@ -176,7 +90,7 @@
                                 
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                                     <!-- Tambah -->
-                                    <a href="<?php echo base_url('tampilan/tambah_Pelanggan') ?>" class="btn btn-primary">Tambah</a> 
+                                    <a href="<?php echo base_url('pelanggan/tambah_Pelanggan') ?>" class="btn btn-primary">Tambah</a> 
                             </form>
                    
                    
@@ -186,6 +100,34 @@
 
 
            
+                        <td class="text-center"><b><?php echo $waifu->phone ?></b></td>
+                        <td class="text-center"><b><?php echo $waifu->peyment_method ?></b></td>
+                       
+                      
+                      
+            </tr>
+                                           
+                                      
+
+          <?php } ?>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+<footer class="relative pt-8 pb-6 mt-16">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+        <!-- <div class="text-sm text-blueGray-500 font-semibold py-1">
+          Made with <a href="https://www.creative-tim.com/product/notus-js" class="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" class="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
+        </div> -->
+      </div>
+    </div>
+  </div>
+</footer>
+</section>
 
 
    
