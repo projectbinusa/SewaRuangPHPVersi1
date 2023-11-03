@@ -10,7 +10,7 @@ class Pelanggan extends CI_Controller {
 		$this->load->helper('my_helper');
 }
 
-public function pelanggan()
+public function data_master_pelanggan()
 {
     $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
     $this->load->view('pelanggan/data_master_pelanggan', $data);
