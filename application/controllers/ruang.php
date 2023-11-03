@@ -20,10 +20,10 @@ class Ruang extends CI_Controller
     }
 
     public function tambah_ruangan()
-{
-    // Lakukan operasi yang sesuai, seperti memuat halaman "tambah ruang"
-    $this->load->view('ruang/tambah_ruang');
-}
+    {
+        // Lakukan operasi yang sesuai, seperti memuat halaman "tambah ruang"
+        $this->load->view('ruang/tambah_ruang');
+    }
 
 
     public function akis_tambah_ruangan()
