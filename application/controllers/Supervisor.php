@@ -16,6 +16,10 @@ class Supervisor extends CI_Controller {
 	{
 		$this->load->view('supervisor/dashboard');
 	}
+	public function coba()
+	{
+		$this->load->view('supervisor/test');
+	}
 	public function tambah_user_operator()
 	{
 		$this->load->view('supervisor/tambah_user_operator');
@@ -43,6 +47,16 @@ class Supervisor extends CI_Controller {
             redirect(base_url().'supervisor');
 
         }
+	}
+
+    public function approve()
+	{
+		$this->load->view('supervisor/approve');
+	}
+   
+    public function navbar()
+	{
+		$this->load->view('supervisor/navbar');
 	}
    
 }
