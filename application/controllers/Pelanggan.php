@@ -7,8 +7,7 @@ class Pelanggan extends CI_Controller {
 
 		parent::__construct();
 		$this->load->model('m_model');
-		$this->load->helper('my_helper');;
-
+		$this->load->helper('my_helper');
 }
 
 public function pelanggan()
@@ -23,8 +22,32 @@ public function tambah_pelanggan()
 }
 public function aksi_tambah_pelanggan()
 {
-    $this->m_model->tambah_data('pelanggan', $data);
-    redirect(base_url('pelanggan/pelanggan'));
+     $nama = $this->input->post('nama');
+     $phone = $this->input->post('phone');
+     $payment_method = $this->input->post('payment_method');
+
+     $data =  array(
+        'nama' => $nama,
+        'phone' => $phone
+     );
+
+     $inserted = $this->m_model->tambah_data('pelanggan', $data);
+     
+     if ($inserted) {
+        echo '<script type="text/javascript">
+        Swal.fire("Sukses!", "Data Berhasil Di Tambah.", "success").then(function()  {
+            window.location = "' . base_url('data_master_pelanggan') . '";
+        });
+        </script>';
+     } else {
+        echo '<script type="text/javascript">
+        Swal.fire("Gagal!", "Gagal Menambah Data.", "error").then(function() {
+            window.location = "' . base_url('tambah_pelanggan') . '";
+        });
+    </script>';
+     }
+    // $this->m_model->tambah_data('pelanggan', $data);
+    // redirect(base_url('pelanggan/pelanggan'));
 }
 
 }
