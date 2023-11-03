@@ -176,7 +176,7 @@
                                 
                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
                                     <!-- Tambah -->
-                                    <a href="<?php echo base_url('tampilan/tambah_Pelanggan') ?>" class="btn btn-primary">Tambah</a> 
+                                    <a href="<?php echo base_url('pelanggan/tambah_Pelanggan') ?>" class="btn btn-primary">Tambah</a> 
                             </form>
                    
                    

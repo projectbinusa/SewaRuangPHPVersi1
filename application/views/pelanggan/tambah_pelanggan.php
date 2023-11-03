@@ -75,7 +75,7 @@
                     
                 </div>
                 <div class="card-body text-center">
-                                <form action="<?php echo base_url('tampilan/aksi_tambah_pembayaran') ?>" method="post" class="row">
+                                <form action="" method="post" class="row">
                                 <div class="text-right mb-3 col-6">
                  <label for="nama" class="form-label"><b>NAMA</b></label>
                 
@@ -97,7 +97,7 @@
                                 <br>
                                 <button type="submit" class="btn btn-sm btn-primary">Confirmasi</button> 
                                 
-                                <a href="<?php echo base_url('tampilan/data_master_pelanggan') ?>" class="btn btn-sm btn-danger">Kembali</a> 
+                                <a href="<?php echo base_url('pelanggan/data_master_pelanggan') ?>" class="btn btn-sm btn-danger">Kembali</a> 
                                 <div class="flex justify-content-between"></div>
       
                             </form>
