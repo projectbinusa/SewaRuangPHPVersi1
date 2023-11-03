@@ -44,5 +44,15 @@ class Supervisor extends CI_Controller {
 
         }
 	}
+
+    public function approve()
+	{
+		$this->load->view('supervisor/approve');
+	}
+   
+    public function navbar()
+	{
+		$this->load->view('supervisor/navbar');
+	}
    
 }
