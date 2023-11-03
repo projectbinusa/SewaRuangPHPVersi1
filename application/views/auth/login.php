@@ -226,7 +226,7 @@
     <div class="LoginPageContainer">
         <div class="LoginPageInnerContainer">
             <div class="ImageContianer">
-            <img src="<?php echo base_url() ?>asset/images/login.png">
+                <img src="<?php echo base_url() ?>image/login.png" class="GroupImage">
             </div>
             <div class="LoginFormContainer">
                 <div class="LoginFormInnerContainer">
@@ -235,7 +235,7 @@
                     <header class="subHeader">Selamat Datang di <b>Website Sewa Ruang</b> Silahkan lengkapi data anda
                     </header>
 
-                    <form action="<?php echo base_url('auth/aksi_login')?>" method="post">
+                    <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
                                     class="labelIcon"><span>Email*
