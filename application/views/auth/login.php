@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
     <style>
         * {
@@ -23,9 +23,9 @@
 
         .password-toggle {
             position: absolute;
-            top: 62%;
+            top: 60%;
             transform: translateY(-50%);
-            right: 17rem;
+            right: 7rem;
             cursor: pointer;
         }
 
@@ -192,9 +192,9 @@
 
             .password-toggle {
                 position: absolute;
-                top: 63%;
+                top: 61%;
                 transform: translateY(-50%);
-                right: 3.5rem;
+                right: 2.1rem;
                 cursor: pointer;
             }
 
@@ -226,8 +226,7 @@
     <div class="LoginPageContainer">
         <div class="LoginPageInnerContainer">
             <div class="ImageContianer">
-                <img src="https://o.remove.bg/downloads/3d885d05-1788-4c18-a11c-5080e89884cb/istockphoto-1281150061-612x612-removebg-preview.png"
-                    class="GroupImage">
+                <img src="https://o.remove.bg/downloads/7a3608c7-b681-4beb-bf6b-acd24e7e8b77/istockphoto-1281150061-612x612-removebg-preview.png" class="GroupImage">
             </div>
             <div class="LoginFormContainer">
                 <div class="LoginFormInnerContainer">
@@ -236,7 +235,7 @@
                     <header class="subHeader">Selamat Datang di <b>Website Sewa Ruang</b> Silahkan lengkapi data anda
                     </header>
 
-                    <form action="" method="post">
+                    <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
                                     class="labelIcon"><span>Email*
