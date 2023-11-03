@@ -13,14 +13,18 @@ class Ruang extends CI_Controller
 
     public function index()
     {
-        $this->load->view('ruang/index');
+        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
+        $id = 1; // Ganti dengan ID yang sesuai
+        $data['ruang'] = $this->m_model->get_gambar_ruangan($id);
+        $this->load->view('ruang/Data_Ruangan', $data);
     }
 
     public function tambah_ruangan()
-    {
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $this->load->view('ruang/tambah_ruang', $data);
-    }
+{
+    // Lakukan operasi yang sesuai, seperti memuat halaman "tambah ruang"
+    $this->load->view('ruang/tambah_ruang');
+}
+
 
     public function akis_tambah_ruangan()
     {
@@ -48,7 +52,7 @@ class Ruang extends CI_Controller
             // Penyisipan gagal, tampilkan SweetAlert2 pesan error dan redirect
             echo '<script type="text/javascript">
                 Swal.fire("Gagal!", "Gagal memasukkan data. Silakan coba lagi.", "error").then(function() {
-                    window.location = "' . site_url('ruang') . '";
+                    window.location = "' . site_url('Data_Ruangan') . '";
                 });
             </script>';
         }
