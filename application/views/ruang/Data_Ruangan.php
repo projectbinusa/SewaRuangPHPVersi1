@@ -30,8 +30,8 @@
 
       <!-- Ícono de Notificación y Perfil -->
       <div class="space-x-5">
-        <a href="ruang/tambah_ruangan">
-          <i class="fas fa-plus-square text-white text-3xl"></i>
+        <a href="ruang/tambah_ruang">
+          <i class="fas fa-plus-square text-white-500 text-3xl"></i>
         </a>
       </div>
     </div>
@@ -68,6 +68,7 @@
           <i class="fas fa-sign-out-alt mr-2"></i>Keluar
         </a>
 
+        <!-- Hak cipta di bagian bawah navigasi lateral -->
       </div>
       <!-- Área de contenido principal -->
       <div class="flex-1 p-4 w-full md:w-1/2">
@@ -81,6 +82,13 @@
 
 
 <!-- Konten halaman Anda di sini -->
+          <div class="absolute top-1 left-2 inline-flex items-center p-2">
+            <i class="fas fa-search text-gray-400"></i>
+          </div>
+
+        </div>
+
+        <!-- Konten halaman Anda di sini -->
         <div class="flex flex-wrap justify-center">
           <!-- Card 1 -->
           <div class="max-w-xs m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
@@ -89,6 +97,7 @@
                 Ruang 1
               </h1>
               <p class="ml-4 mt-1 mb-2 text-gray-700 hover:cursor-pointer">
+              <p class="ml-4 mt-1 mb-2 text-gray-700 hover:underline cursor-pointer">
                 Lantai 01
               </p>
             </div>
@@ -99,7 +108,7 @@
                 <h2 class="text-gray-800 font-bold cursor-pointer">Nama</h2>
               </div>
               <div class="flex space-x-2">
-                <a href="#" class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</a>
+                <span class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</span>
               </div>
             </div>
           </div>
@@ -110,7 +119,7 @@
               <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
                 Ruang 2
               </h1>
-              <p class="ml-4 mt-1 mb-2 text-gray-700 hover:cursor-pointer">
+              <p class="ml-4 mt-1 mb-2 text-gray-700 hover:underline cursor-pointer">
                 Lantai 02
               </p>
             </div>
@@ -121,7 +130,7 @@
                 <h2 class="text-gray-800 font-bold cursor-pointer">Nama</h2>
               </div>
               <div class="flex space-x-2">
-                <a href="#" class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</a>
+                <span class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</span>
               </div>
             </div>
           </div>
@@ -132,7 +141,7 @@
               <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
                 Ruang 1
               </h1>
-              <p class="ml-4 mt-1 mb-2 text-gray-700 hover:cursor-pointer">
+              <p class="ml-4 mt-1 mb-2 text-gray-700 hover:underline cursor-pointer">
                 Lantai 01
               </p>
             </div>
@@ -143,12 +152,11 @@
                 <h2 class="text-gray-800 font-bold cursor-pointer">Nama</h2>
               </div>
               <div class="flex space-x-2">
-                <a href="#" class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</a>
+                <span class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</span>
               </div>
             </div>
           </div>
         </div>
-
 
 </div>
     </div>
