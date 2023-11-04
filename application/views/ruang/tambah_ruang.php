@@ -5,239 +5,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
-    <!-- cdn fontawesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 62.5%;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.6rem;
-            background-color: #E4F1FF;
-            color: #222;
-            padding: 0 5px;
-        }
-
-        .container {
-            min-width: 20rem;
-            max-width: 65rem;
-            margin: 10rem auto;
-        }
-
-        .heading,
-        .survey-form {
-            background-color: #fff;
-            padding: 1.3em 3rem 1.8rem 3rem;
-            border-radius: 1rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
-        }
-
-        .heading {
-            position: relative;
-        }
-
-        .survey-form {
-            font-size: 1.8rem;
-        }
-
-        .green-bar {
-            background-color: #4F709C;
-            height: 1rem;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-
-        .main-heading {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .main-description {
-            margin-bottom: 2rem;
-        }
-
-        .instructions {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .required {
-            font-size: 1.6rem;
-            color: #d61212;
-        }
-
-        label {
-            display: block;
-            font-size: 1.8rem;
-            margin: 2rem 0;
-        }
-
-        input {
-            display: block;
-            width: 100%;
-            margin: 2rem 0;
-            font-size: 1.6rem;
-        }
-
-        .no_lantai,
-        .no_ruang {
-            min-height: 2rem;
-            padding: 1rem 0;
-            border: none;
-            border-bottom: 1px solid #bcb9b9;
-        }
-
-        /* 
-        input::placeholder {
-            padding: 5rem;
-        } */
-
-        .submit {
-            font-size: 1.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 15rem;
-            padding: 1rem 2rem;
-            margin: 4rem auto 2rem auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
-
-        a:link,
-        a:visited {
-            color: #008080;
-        }
-
-        .form-group {
-            position: relative;
-        }
     </style>
 </head>
 
-<body>
-    <main>
-        <div class="container">
-            <header class="heading">
-                <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Tambah Data Master</h1>
-            </header>
+<body class="bg-blue-100 font-lato text-gray-700">
+    <div class="flex flex-col h-screen">
 
-            <form action="<?php echo base_url('ruang/akis_tambah_ruangan')?>" method="post" id="survey-form" class="survey-form">
-                <label for="no_lantai">Nomor Lantai</label>
-                <input type="number" name="no_lantai" id="no_lantai" class="no_lantai" >
-
-                <label for="no_ruang">Nomor Ruangan</label>
-                <input type="number" name="no_ruang" id="no_ruang" class="no_ruang" >
-
-                <input type="submit" id="submit" class="submit" value="Tambah">
-            </form>
-
-
-        </div>
-    </main>
-</body>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-</head>
-<body> 
-<div style="margin-left: 40%; margin-top: 10%" class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-<form class="space-y-6" action="<?php echo base_url('ruang/akis_tambah_ruangan') ?>" method="post">
-<h5 class="text-xl font-medium text-gray-900 dark:text-white"><b>Tambah Data Ruang</b></h5>
-      <div>
-        <label for="no_ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih no Ruang</label>
-        <input type="text" name="no_ruang" id="no_ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-      </div>
-      <div>
-        <label for="no_lantai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plih no lantai anda</label>
-        <input type="text" name="no_lantai" id="no_lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-      </div>
-      <div class="flex items-start">
-            <div class="flex items-start">
-                <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required>
+        <!-- Barra de navegación superior -->
+        <div style="background-color: #0C356A;" class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="flex items-center">
+                    <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
+                    <h2 class="font-bold text-xl"></h2>
                 </div>
-                <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+                <div class="md:hidden flex items-center">
+                    <button id="menuBtn">
+                        <i class="fas fa-bars text-gray-500 text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ícono de Notificación y Perfil -->
+            <div class="space-x-5">
+                <a href="ruang/tambah_ruang">
+                    <i class="fas fa-plus-square text-white-500 text-3xl"></i>
+                </a>
             </div>
         </div>
-      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tambah</button>
-    </form>
-</div>
 
-<script>
-    $(document).ready(function() {
-      // Fungsi untuk mengirim form secara asinkron
-      $("#myForm").submit(function(event) {
-        event.preventDefault(); // Mencegah form dari pengiriman standar
+        <!-- Contenido principal -->
+        <div class="flex-1 flex flex-wrap">
+            <!-- Barra lateral de navegación (oculta en dispositivos pequeños) -->
+            <div style="background-color: #0C356A;" class="p-2 w-full md:w-60 flex flex-col md:flex hidden" id="sideNav">
+                <nav>
+                    <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                        <i class="fas fa-home mr-2"></i>Beranda
+                    </a>
+                    <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                        <i class="fa-solid fa-restroom"></i> Data Master Ruangan
+                    </a>
+                    <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                        <i class="fas fa-users"></i> Data Master Pelanggan
+                    </a>
+                    <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                        <i class="fa-solid fa-map-location-dot"></i> Peminjaman Tempat
+                    </a>
+                    <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+                        <i class="fa-regular fa-folder-open"></i> Report Sewa
+                    </a>
+                </nav>
 
-        var form = $(this);
-        var url = form.attr("action") || window.location.href;
-        var method = form.attr("method");
-        var formData = form.serialize();
+                <!-- Item untuk menutup sidebar -->
+                <a class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" id="closeBtn">
+                    <i class="fas fa-times mr-2"></i>Tutup
+                </a>
 
-        // Kirim request AJAX
-        $.ajax({
-          url: url,
-          type: method,
-          data: formData,
-          dataType: "json", // Menentukan tipe data respons JSON
-          success: function(response) {
-            if (response.status === "success") {
-              Swal.fire({
-                title: "Sukses!",
-                text: response.message,
-                icon: "success",
-              }).then(function() {
-                // Arahkan ke halaman "ruang" jika berhasil
-                window.location.href = "<?php echo base_url('ruang/Data_ruangan'); ?>";
-              });
-            } else if (response.status === "error") {
-              Swal.fire({
-                title: "Gagal!",
-                text: response.message,
-                icon: "error",
-              }).then(function() {
-                // Arahkan kembali ke "ruangan/tambah_ruangan" jika gagal
-                window.location.href = "<?php echo base_url('ruangan/tambah_ruangan'); ?>";
-              });
-            }
-          },
-        });
-      });
-    });
-  </script>
+                <!-- Penanda lokasi -->
+                <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mt-2"></div>
+
+                <!-- logout -->
+                <a class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white mt-auto" href="#">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Keluar
+                </a>
+            </div>
+            <!-- Área de contenido principal -->
+            <div class="flex-1 p-4 w-full md:w-1/2">
+                <div class="relative max-w-md w-full">
+                </div>
+
+                <!-- Konten halaman Anda di sini -->
+                <main>
+                    <div class="container">
+                        <header style="width: 60%; margin-left: 20%; margin-top: 5%" class="bg-white p-4 rounded-lg shadow-md">
+                            <div class="bg-blue-500 h-4 rounded-t-lg"></div>
+                            <h1 class="text-3xl mt-2 font-bold">Tambah Data Master</h1>
+                        </header>
+
+                        <form style="width: 60%; margin-left: 20%;"  action="<?php echo base_url('ruang/akis_tambah_ruangan') ?>" method="post" class="mt-4 p-4 bg-white rounded-lg shadow-md">
+                            <div class="mb-4">
+                                <label style="padding-top: 5%; font-size: 15px" for="no_lantai" class="block text-xl">Nomor Lantai</label>
+                                <input type="number" name="no_lantai" id="no_lantai" class="w-full py-2 px-3 border-b-2 border-blue-500 text-xl focus:outline-none focus:border-blue-700">
+                            </div>
+
+                            <div class="mb-4">
+                                <label style="padding-top: 5%; font-size: 15px" for="no_ruang" class="block text-xl">Nomor Ruangan</label>
+                                <input type="number" name="no_ruang" id="no_ruang" class="w-full py-2 px-3 border-b-2 border-blue-500 text-xl focus:outline-none focus:border-blue-700">
+                            </div>
+
+                            <input type="submit" id="submit" class="block w-64 mx-auto py-2 px-4 text-2xl font-semibold text-white bg-blue-500 border-2 border-blue-500 rounded-full hover:bg-transparent hover:text-blue-500 hover:border-blue-500 transition duration-300 cursor-pointer mt-8" value="Tambah">
+                        </form>
+                    </div>
+                </main>
+                <!-- Script para las gráficas -->
+                <script>
+                    // Gráfica de Usuarios
+                    var usersChart = new Chart(document.getElementById('usersChart'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Nuevos', 'Registrados'],
+                            datasets: [{
+                                data: [30, 65],
+                                backgroundColor: ['#00F0FF', '#8B8B8D'],
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            legend: {
+                                position: 'bottom' // Ubicar la leyenda debajo del círculo
+                            }
+                        }
+                    });
+
+                    // Gráfica de Comercios
+                    var commercesChart = new Chart(document.getElementById('commercesChart'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Nuevos', 'Registrados'],
+                            datasets: [{
+                                data: [60, 40],
+                                backgroundColor: ['#FEC500', '#8B8B8D'],
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            legend: {
+                                position: 'bottom' // Ubicar la leyenda debajo del círculo
+                            }
+                        }
+                    });
+                </script>
+
+                <script>
+                    const menuBtn = document.getElementById('menuBtn');
+                    const closeBtn = document.getElementById('closeBtn');
+                    const sideNav = document.getElementById('sideNav');
+
+                    menuBtn.addEventListener('click', () => {
+                        sideNav.classList.remove('hidden');
+                    });
+
+                    closeBtn.addEventListener('click', () => {
+                        sideNav.classList.add('hidden');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -25,23 +25,23 @@ class Ruang extends CI_Controller
 
 
 	public function akis_tambah_ruangan()
-{
-    $no_lantai = $this->input->post('no_lantai');
-    $no_ruang = $this->input->post('no_ruang');
+	{
+		$no_lantai = $this->input->post('no_lantai');
+		$no_ruang = $this->input->post('no_ruang');
 
-    $data = [
-        'no_lantai' => $no_lantai,
-        'no_ruang' => $no_ruang,
-    ];
+		$data = [
+			'no_lantai' => $no_lantai,
+			'no_ruang' => $no_ruang,
+		];
 
-    $inserted = $this->m_model->tambah_data('ruangan', $data);
+		$inserted = $this->m_model->tambah_data('ruangan', $data);
 
-    if ($inserted) {
-        // Jika data berhasil dimasukkan, arahkan ke data_master_pelanggan
-        redirect('pelanggan/data_master_pelanggan');
-    } else {
-        // Jika gagal, arahkan kembali ke halaman tambah ruangan (ruang)
-        redirect('ruang/tambah_ruang');
-    }
-}
+		if ($inserted) {
+			// Jika data berhasil dimasukkan, arahkan ke data_master_pelanggan
+			redirect('pelanggan/data_master_pelanggan');
+		} else {
+			// Jika gagal, arahkan kembali ke halaman tambah ruangan (ruang)
+			redirect('ruang/tambah_ruang');
+		}
+	}
 }

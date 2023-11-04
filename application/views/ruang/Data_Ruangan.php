@@ -45,13 +45,16 @@
             <i class="fas fa-home mr-2"></i>Beranda
           </a>
           <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fas fa-file-alt mr-2"></i>Autorisasi
+          <i class="fa-solid fa-restroom"></i> Data Master Ruangan
           </a>
           <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fas fa-users mr-2"></i>Pengguna
+          <i class="fas fa-users"></i> Data Master Pelanggan
           </a>
           <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fas fa-store mr-2"></i>Perusahaan
+          <i class="fa-solid fa-map-location-dot"></i> Peminjaman Tempat
+          </a>
+          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
+          <i class="fa-regular fa-folder-open"></i> Report Sewa
           </a>
         </nav>
 
@@ -73,7 +76,7 @@
       <!-- Área de contenido principal -->
       <div class="flex-1 p-4 w-full md:w-1/2">
         <!-- Campo de búsqueda -->
-        <div class="relative max-w-md w-full">
+        <div class="relative max-w-md w-full">  
           <!-- <div class="absolute top-1 left-2 inline-flex items-center p-2">
             <i class="fas fa-search text-gray-400"></i>
           </div> -->
@@ -81,17 +84,12 @@
         </div>
 
 
-<!-- Konten halaman Anda di sini -->
-          <div class="absolute top-1 left-2 inline-flex items-center p-2">
-            <i class="fas fa-search text-gray-400"></i>
-          </div>
-
-        </div>
-
         <!-- Konten halaman Anda di sini -->
+        <div class="absolute top-1 left-2 inline-flex items-center p-2">
+        </div>
         <div class="flex flex-wrap justify-center">
           <!-- Card 1 -->
-          <div class="max-w-xs m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+          <div style="width: 340px;" class=" m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
             <div>
               <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
                 Ruang 1
@@ -108,13 +106,13 @@
                 <h2 class="text-gray-800 font-bold cursor-pointer">Nama</h2>
               </div>
               <div class="flex space-x-2">
-                <span class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</span>
+                <a href="#" class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</a>
               </div>
             </div>
           </div>
 
           <!-- Card 2 -->
-          <div class="max-w-xs m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+          <div style="width: 340px;" class=" m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
             <div>
               <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
                 Ruang 2
@@ -130,12 +128,12 @@
                 <h2 class="text-gray-800 font-bold cursor-pointer">Nama</h2>
               </div>
               <div class="flex space-x-2">
-                <span class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</span>
+                <a href="#" class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</a>
               </div>
             </div>
           </div>
           <!-- Card 3 -->
-          <div class="max-w-xs m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+          <div style="width: 340px;" class=" m-4 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
 
             <div>
               <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
@@ -152,13 +150,13 @@
                 <h2 class="text-gray-800 font-bold cursor-pointer">Nama</h2>
               </div>
               <div class="flex space-x-2">
-                <span class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</span>
+                <a href="#" class="text-white text-xs font-bold rounded-lg bg-blue-500 inline-block mt-4 ml-4 py-1.5 px-4 cursor-pointer">Detail</a>
               </div>
             </div>
           </div>
         </div>
 
-</div>
+      </div>
     </div>
   </div>
 
