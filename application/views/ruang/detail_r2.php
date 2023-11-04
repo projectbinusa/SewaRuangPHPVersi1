@@ -197,6 +197,3 @@ background: linear-gradient(to right, #434343, #000000);
 
 </body>
 </html>
-
-</body>
-</html>
