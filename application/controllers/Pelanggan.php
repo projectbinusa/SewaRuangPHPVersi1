@@ -51,12 +51,17 @@ public function aksi_tambah_pelanggan()
     // redirect(base_url('pelanggan/pelanggan'));
 }
 
-public function data_master_pelanggan()
-{
-    $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
-    $this->load->view('pelanggan/data_master_pelanggan');
-}
+// public function data_master_pelanggan()
+// {
+//     $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+//     $this->load->view('pelanggan/data_master_pelanggan');
+// }
 
+
+public function report_sewa()
+{
+    $this->load->view('pelanggan/report_sewa');
+}
 }
 
 ?>
