@@ -30,6 +30,10 @@
             font-size: 17px;
             background-color: #f1f1f1;
         }
+        .content-text {
+            font-family:"DM Sans", sans-serif ;
+            font-size: 17px;
+        }
 
         @media (min-width: 1200px) {
 
@@ -5739,58 +5743,7 @@
             border-radius: 7px;
         }
 
-        /* code responsive table */
-        @media (max-width: 600px) {
-            .btn-edit {
-                margin-left: 5rem;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-
-            .header-data-karyawan {
-                gap: 8rem;
-            }
-
-            .btn-export {
-                height: 2rem;
-            }
-        }
+     
     </style>
 
 </head>
@@ -5847,6 +5800,74 @@
         </div>
     </section>
     <!-- Banner Area End -->
+
+      <!-- about area start -->
+      <section  id="about" class="inner-section pd-top-60">
+    <div class="about-area pd-top-70" style="background-image: url('">
+        <div class="container">
+            <div class="about-area-inner">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-12 align-self-center">
+                        <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
+                    </div>
+                    <div class="col-lg-6 order-lg-1 align-self-center mt-4 mt-lg-0">
+                        <div class="about-inner-wrap">  
+                            <div class="section-title mb-0">
+                                <!-- <h6 class="sub-title style-btn">Sewa Ruang</h6> -->
+                                <h2 class="title">Mengenal ruang yang kami sewakan</h2>
+                                <br>
+                                
+                            </div>
+                            <p class="content-text">Ruangan yang nyaman serta memiliki fasilitas yang lengkap merupakan salah satu kunci kesuksesan acara anda. di Sewa Ruang ini terdapat berbagai ruangan. Seperti ruang meeting untuk meeting bisnis anda , ada ruang acara yang tersedia berbagai fasilitas di dalamnya.</p>
+
+                            <p class="content-text">Banyak ruang yang dapat anda pilih berdasarkan corak interior, lokasi yang strategis,harga sesuai budget ataupun disesuaikan dengan kebutuhan klien.</p>
+
+                            <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat klien puas dengan meet yang anda buat.</p>
+
+                            <!-- <ul class="single-progress-inner mt-4 pt-2">
+                                <li class="progress-item" id="progress-running-1">
+                                    <h6>Nullam est</h6>
+                                    <div class="progress-bg">
+                                        <div id="progress-1" class="progress-rate" data-value="78">
+                                            <div class="progress-count-wrap">
+                                                <span class="progress-count counting" data-count="78">0</span>
+                                                <span class="counting-icons">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="progress-item" id="progress-running-2">
+                                    <h6>Mattis dictum nunc</h6>
+                                    <div class="progress-bg">
+                                        <div id="progress-2" class="progress-rate" data-value="60">
+                                            <div class="progress-count-wrap">
+                                                <span class="progress-count counting" data-count="60">0</span>
+                                                <span class="counting-icons">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="progress-item" id="progress-running-3">
+                                    <h6>Malesuada dictum</h6>
+                                    <div class="progress-bg">
+                                        <div id="progress-3" class="progress-rate" data-value="86">
+                                            <div class="progress-count-wrap">
+                                                <span class="progress-count counting" data-count="86">0</span>
+                                                <span class="counting-icons">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
+    <!-- about area end -->
 
     <!-- demo Section -->
     <section id="demo" class="demo-section pd-top-140">
@@ -5908,161 +5929,9 @@
         </div>
     </section>
 
-    <!-- demo Section -->
-    <section id="widget" class="widget-section pd-top-87">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Laporan Penyewa</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">
-                                            Nama Penyewa
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            No Ruang
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Jam Penggunaan
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Exstra Waktu
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Ahmad Sony
-                                        </td>
-                                        <td data-cell="No Ruang " class="px-6 py-4">
-                                            R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="px-6 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                            -
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Mutiara Tsani
-                                        </td>
-                                        <td data-cell="No Ruang " class="px-6 py-4">
-                                            R.103
-                                        </td>
-
-                                        <td data-cell="Kapasitas " class="px-6 py-4">
-                                            AC 2 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                            07.30 - 10.00
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                            -
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Natalie
-                                        </td>
-                                        <td data-cell="No Ruang " class="px-6 py-4">
-                                            R.150
-                                        </td>
-                                        <td data-cell="Kapasitas " class="px-6 py-4">
-                                            AC 1,5 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                            07.00 - 10.00
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                            -
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  <div class="row justify-content-center">
-                <div class="col-lg-12 mt-5">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/h2.png" alt="img"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12 mt-5">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/h3.png" alt="img"></span>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <div class="row justify-content-center">
-                <div class="col-lg-8 text-center pd-top-130">
-                    <div class="section-title">
-                        <h2 class="title">Footer Style</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/f1.png" alt="img"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12 mt-5">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/f2.png" alt="img"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center pd-top-130">
-                    <div class="section-title">
-                        <h2 class="title">Breadcrumb Style</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/bc.png" alt="img"></span>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </section>
-    <section id="forget" class="widget-section pd-top-87">
+    <?php include ('laporan_penyewa.php')?>
+   
+    <section id="forget" class="widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6215,6 +6084,8 @@
             </div> -->
         </div>
     </section>
+
+     
 
     <!-- inner Section -->
     <section id="inner" class="inner-section pd-top-130">

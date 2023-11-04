@@ -212,7 +212,7 @@
             background: #f1f1f1;
         }
 
-        ImageContianer .LoginPageContainer::-webkit-scrollbar-thumb {
+        .ImageContianer .LoginPageContainer::-webkit-scrollbar-thumb {
             background: #2e1f7a;
         }
 
