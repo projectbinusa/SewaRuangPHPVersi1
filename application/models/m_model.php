@@ -34,4 +34,8 @@ class M_model extends CI_Model
         $query = $this->db->where('id', $id)->get('ruangan');
         return $query->row(); // Menggunakan row() untuk mengambil satu data
     }
+
+
+
+
 }
