@@ -28,7 +28,8 @@ public function aksi_tambah_pelanggan()
 
      $data =  array(
         'nama' => $nama,
-        'phone' => $phone
+        'phone' => $phone,
+        'payment_method' => $payment_method
      );
 
      $inserted = $this->m_model->tambah_data('pelanggan', $data);
@@ -36,7 +37,7 @@ public function aksi_tambah_pelanggan()
      if ($inserted) {
         echo '<script type="text/javascript">
         Swal.fire("Sukses!", "Data Berhasil Di Tambah.", "success").then(function()  {
-            window.location = "' . base_url('data_master_pelanggan') . '";
+            window.location = "' . base_url('Data_Ruangan') . '";
         });
         </script>';
      } else {
@@ -48,6 +49,12 @@ public function aksi_tambah_pelanggan()
      }
     // $this->m_model->tambah_data('pelanggan', $data);
     // redirect(base_url('pelanggan/pelanggan'));
+}
+
+public function data_master_pelanggan()
+{
+    $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+    $this->load->view('pelanggan/data_master_pelanggan');
 }
 
 }

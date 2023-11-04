@@ -13,6 +13,48 @@
 
 </head>
 <body>
+     
+  <div  id="content" role="main" class="text-right">
+    <br>
+    <br>
+    <br>
+    <br>
+                <div class="card mb-6 shadow">
+                    <div class="card-body d-flex text-white justify-center-between text-center"
+                    style="background-color:#4F709C">
+                    <h1 class="tambah_pelanggan">TAMBAH PELANGGAN</h1>
+                </div>    
+                <div class="center">
+                    <br>
+                    <br>
+                    <!-- <hr style="900" width="1200"> -->
+                    
+                </div>
+                <div class="card-body text-center">
+                                <form action="" method="post" class="row">
+                                <div class="text-right mb-3 col-6">
+                 <label for="nama" class="form-label"><b>NAMA</b></label>
+                
+                <input type="text" class="form-control" id="nama" name="nama"
+                placeholder="Masukan nama anda">
+                
+            </div>
+            <div class="mb-4 col-6">
+                <label for="phone" class="form-label"><b>PHONE</b></label>
+                
+                <input type="text" class="form-control" id="phone" name="phone"
+                placeholder="Phone">
+               
+            </div>          
+                            <div class="mb-4 col-12 text-center">
+                                <label for="payment_method" class="form-label"><b>PAYMENT METHOD</b></label>
+                                <input type="text" class="form-control" id="payment_method" name="payment_method"
+                                placeholder="Peyment Method">
+                                <br>
+                                <button type="submit" class="btn btn-sm btn-primary">Confirmasi</button> 
+                                
+                                <a href="<?php echo base_url('pelanggan/data_master_pelanggan') ?>" class="btn btn-sm btn-danger">Kembali</a> 
+                                <div class="flex justify-content-between"></div>
      <!-- component -->
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
