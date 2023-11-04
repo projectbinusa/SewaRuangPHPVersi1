@@ -53,9 +53,6 @@
           <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
             <i class="fas fa-store mr-2"></i>Perusahaan
           </a>
-          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fas fa-exchange-alt mr-2"></i>Transaksi
-          </a>
         </nav>
 
         <!-- Item untuk menutup sidebar -->
@@ -77,6 +74,14 @@
       <div class="flex-1 p-4 w-full md:w-1/2">
         <!-- Campo de búsqueda -->
         <div class="relative max-w-md w-full">
+          <!-- <div class="absolute top-1 left-2 inline-flex items-center p-2">
+            <i class="fas fa-search text-gray-400"></i>
+          </div> -->
+
+        </div>
+
+
+<!-- Konten halaman Anda di sini -->
           <div class="absolute top-1 left-2 inline-flex items-center p-2">
             <i class="fas fa-search text-gray-400"></i>
           </div>
@@ -91,6 +96,7 @@
               <h1 class="text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100">
                 Ruang 1
               </h1>
+              <p class="ml-4 mt-1 mb-2 text-gray-700 hover:cursor-pointer">
               <p class="ml-4 mt-1 mb-2 text-gray-700 hover:underline cursor-pointer">
                 Lantai 01
               </p>
@@ -152,8 +158,7 @@
           </div>
         </div>
 
-
-      </div>
+</div>
     </div>
   </div>
 
