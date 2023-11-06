@@ -21,92 +21,92 @@
     <style>
 		/*Overrides for Tailwind CSS */
 
-		/*Form fields*/
+		/Form fields/
 		.dataTables_wrapper select,
 		.dataTables_wrapper .dataTables_filter input {
 			color: #4F709C;
-			/*text-gray-700*/
+			/text-gray-700/
 			padding-left: 1rem;
-			/*pl-4*/
+			/pl-4/
 			padding-right: 1rem;
-			/*pl-4*/
+			/pl-4/
 			padding-top: .5rem;
-			/*pl-2*/
+			/pl-2/
 			padding-bottom: .5rem;
-			/*pl-2*/
+			/pl-2/
 			line-height: 1.25;
-			/*leading-tight*/
+			/leading-tight/
 			border-width: 2px;
-			/*border-2*/
+			/border-2/
 			border-radius: .25rem;
 			border-color: #edf2f7;
-			/*border-gray-200*/
+			/border-gray-200/
 			background-color: #edf2f7;
-			/*bg-gray-200*/
+			/bg-gray-200/
 		}
 
-		/*Row Hover*/
+		/Row Hover/
 		table.dataTable.hover tbody tr:hover,
 		table.dataTable.display tbody tr:hover {
 			background-color: #ebf4ff;
-			/*bg-indigo-100*/
+			/bg-indigo-100/
 		}
 
-		/*Pagination Buttons*/
+		/Pagination Buttons/
 		.dataTables_wrapper .dataTables_paginate .paginate_button {
 			font-weight: 700;
-			/*font-bold*/
+			/font-bold/
 			border-radius: .25rem;
-			/*rounded*/
+			/rounded/
 			border: 1px solid transparent;
-			/*border border-transparent*/
+			/border border-transparent/
 		}
 
 		/*Pagination Buttons - Current selected */
 		.dataTables_wrapper .dataTables_paginate .paginate_button.current {
 			color: white !important;
-			/*text-white*/
+			/text-white/
 			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-			/*shadow*/
+			/shadow/
 			font-weight: 700;
-			/*font-bold*/
+			/font-bold/
 			border-radius: .25rem;
-			/*rounded*/
+			/rounded/
 			background: #4F709C !important;
-			/*bg-indigo-500*/
+			/bg-indigo-500/
 			border: 1px solid transparent;
-			/*border border-transparent*/
+			/border border-transparent/
 		}
 
 		/*Pagination Buttons - Hover */
 		.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
 			color: white !important;
-			/*text-white*/
+			/text-white/
 			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-			/*shadow*/
+			/shadow/
 			font-weight: 700;
-			/*font-bold*/
+			/font-bold/
 			border-radius: .25rem;
-			/*rounded*/
+			/rounded/
 			background: #4F709C !important;
-			/*bg-indigo-500*/
+			/bg-indigo-500/
 			border: 1px solid transparent;
-			/*border border-transparent*/
+			/border border-transparent/
 		}
 
 		/*Add padding to bottom border */
 		table.dataTable.no-footer {
 			border-bottom: 1px solid #e2e8f0;
-			/*border-b-1 border-gray-300*/
+			/border-b-1 border-gray-300/
 			margin-top: 0.75em;
 			margin-bottom: 0.75em;
 		}
 
-		/*Change colour of responsive icon*/
+		/Change colour of responsive icon/
 		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
 		table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
 			background-color: #4F709C !important;
-			/*bg-indigo-500*/
+			/bg-indigo-500/
 		}
 	</style>
 </head>
@@ -129,8 +129,8 @@
 
         <!-- Ícono de Notificación y Perfil -->
         <div class="space-x-5">
-            <a href="ruang/tambah_ruang">
-            <i class="fas fa-plus-square text-white-500 text-3xl"></i>
+            <a href="tambah_pelanggan">
+            <i class="fas fa-plus-square text-gray-500 text-3xl"></i>
         </a>
         </div>
     </div>
@@ -193,98 +193,43 @@
 						<th data-priority="1">Name</th>
 						<th data-priority="2">Phone</th>
 						<th data-priority="3">Payment Method</th>
+						<th data-priority="3">Action</th>
 					</tr>
 				</thead>
                             <tbody>
-                              
-                            <?php
-          <!-- Konten halaman Anda di sini -->
-          <section class="py-1 bg-blueGray-50">
-<div class="w-full xl:w-8/15 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
-    <div class="rounded-t mb-0 px-4 py-3 border-0">
-      <div class="flex flex-wrap items-center">
-        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-base text-blueGray-700">DATA MASTER PELANGGAN</h3>
-        </div>
-
-        <!-- <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-          <button class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"><a href="<?php echo base_url('pelanggan/tambah_pelanggan') ?>">TAMBAH</a></button>
-        </div> -->
-      </div>
-    </div>
-
-  
-
-    
-    <div class="block w-full overflow-x-auto">
-      <table class="items-center bg-transparent w-full border-collapse ">
-        <thead>
-          <tr>
-            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-              NO
-                        </th>
-                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                          NAMA
-                        </th>
-                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                          PHONE
-                        </th>
-                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                          PAYMENT METHOD
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      
                       <?php
                  $no= 0;foreach ($pelanggan as $row  ) :$no++                          
                  ?>
                                    <tr>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama ?></td>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->phone ?></td>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->payment_method ?>
-                                 </td>
-                           
-                                  
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->payment_method ?>                                 </td>
+                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                                      <!-- Update Data -->
+                                      <a  class="btn btn-primary" href="update_data"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                      </svg></a>
+                                      
+                                      <!-- Hapus Data -->
+                                     <button onclick="hapus(<?php echo $row->id ?>)" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"   class="bi bi-trash" viewBox="0 0 16 16">
+                                   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                       <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                          </svg></button>
+                                        
+
+                                    </td>
+
                                  </td>
                               </tr><?php endforeach ?>
                                 
                                 </table>
                             </form>
-                           
-
-                                
                               </tbody>
-                                                          </table>
-                                                    
-
-                            
-                            
-                            
-                          </form>
-                          
-                   
-
+                              </table>
                 </div>
-            </div>
-
-
-           
-                       
-                      
-                      
+            </div>           
             </tr>
-                                           
-                                      
-
-        
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
 <!-- jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -342,6 +287,8 @@
         }
     });
 
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
     const menuBtn = document.getElementById('menuBtn');
@@ -364,8 +311,8 @@
     var usersChart = new Chart(document.getElementById('usersChart'), {
         type: 'doughnut',
         data: {
-            labels: ['Nuevos', 'Registrados'],
-            datasets: [{
+          labels: ['Nuevos', 'Registrados'],
+          datasets: [{
                 data: [30, 65],
                 backgroundColor: ['#00F0FF', '#8B8B8D'],
             }]
@@ -412,5 +359,35 @@
         sideNav.classList.add('hidden');
     });
 </script>
+
+<!-- SweetAlert -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script>
+        function hapus(id) {
+    swal.fire({
+        title: ' Yakin Ingin Menghapus Data',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Hapus Data'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Hapus',
+                showConfirmButton: false,
+                timer: 1500,
+
+            }).then(function() {
+                window.location.href = "<?php echo base_url('pelanggan/hapus_data_pelanggan/')?>" + id;
+            });
+        }
+    });
+}
+    </script> 
 </body>
 </html>
