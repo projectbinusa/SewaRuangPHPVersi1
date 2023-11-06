@@ -110,10 +110,6 @@
             border-bottom: 1px solid #bcb9b9;
         }
 
-        /* 
-        input::placeholder {
-            padding: 5rem;
-        } */
 
         .submit {
             font-size: 1.7rem;

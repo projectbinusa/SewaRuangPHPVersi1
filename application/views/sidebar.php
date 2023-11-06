@@ -10,16 +10,17 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
-
-<body>
+  
 <body style="background: #F5F7F8; height:hover" class="">
   <div class="flex flex-col h-screen">
-
     <!-- Barra de navegación superior -->
     <div style="background-color: #0C356A;" class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
       <div class="flex items-center">
         <div class="flex items-center"> <!-- Mostrado en todos los dispositivos -->
+
           <img src="https://amka.co.id/wp-content/uploads/2022/08/LOGO-AMKA-TERKINI.png" alt="Logo" class="w-28 h-18 mr-2">
+
+         
           <h2 class="font-bold text-xl"></h2>
         </div>
         <div class="md:hidden flex items-center"> <!-- Se muestra solo en dispositivos pequeños -->
