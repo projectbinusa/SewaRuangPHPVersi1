@@ -1,14 +1,54 @@
+
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ruang extends CI_Controller
 {
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->model('m_model');
+    $this->load->helper('my_helper');
+    $this->load->library('form_validation');
+  }
 
-    function __construct()
-    {
-        parent::__construct();
-        $this->load->model('m_model');
-        $this->load->helper('my_helper');
+  public function index()
+  {
+    $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+
+    // Limit the number of cards to 50
+    $data['ruangan'] = array_slice($data['ruangan'], 0, 50);
+
+    $this->load->view('ruang/Data_Ruangan', $data);
+  }
+
+  public function tambah_ruang()
+  {
+    $this->load->view('ruang/tambah_ruang');
+  }
+
+  public function detail($id)
+  {
+    // Assuming you have a model method to fetch room details
+    $data['ruang'] = $this->m_model->get_data_by_id('ruangan', $id)->result();
+
+    // Load the detail view and pass the data
+    $this->load->view('ruang/detail', $data);
+  }
+
+
+  public function akis_tambah_ruangan()
+  {
+    $no_lantai = $this->input->post('no_lantai');
+    $no_ruang = $this->input->post('no_ruang');
+    $deskripsi = $this->input->post('deskripsi');
+    $image = $_FILES['foto']['name'];
+
+    $errors = []; // Membuat array untuk menyimpan pesan kesalahan
+
+    // Validasi agar tidak ada data yang kosong
+    if (empty($no_lantai) || !is_numeric($no_lantai)) {
+      $errors[] = 'Nomor Lantai tidak valid. Harap periksa data yang Anda masukkan.';
     }
 
     public function index()
@@ -24,8 +64,6 @@ class Ruang extends CI_Controller
         // Lakukan operasi yang sesuai, seperti memuat halaman "tambah ruang"
         $this->load->view('ruang/tambah_ruang');
     }
-
-
     public function akis_tambah_ruangan()
     {
         $no_lantai = $this->input->post('no_lantai');

@@ -10,7 +10,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
-
 <body>
 <?php $this->load->view('sidebar'); ?>
       <!-- Área de contenido principal -->
@@ -44,6 +43,66 @@
   </div>
 </div>
 
+  <script>
+    function performSearch() {
+      const searchInput = document.getElementById('searchInput');
+      const roomList = document.getElementById('roomList');
+      const searchTerm = searchInput.value.toLowerCase();
+
+      // Mengambil semua elemen card ruangan
+      const roomCards = roomList.querySelectorAll('.col-lg-4');
+
+      roomCards.forEach(card => {
+        const roomNumber = card.querySelector('h2').textContent.toLowerCase();
+
+        if (roomNumber.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+  <!-- Script para las gráficas -->
+  <script>
+    // Gráfica de Usuarios
+    var usersChart = new Chart(document.getElementById('usersChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Nuevos', 'Registrados'],
+        datasets: [{
+          data: [30, 65],
+          backgroundColor: ['#00F0FF', '#8B8B8D'],
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          position: 'bottom' // Ubicar la leyenda debajo del círculo
+        }
+      }
+    });
+
+    // Gráfica de Comercios
+    var commercesChart = new Chart(document.getElementById('commercesChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Nuevos', 'Registrados'],
+        datasets: [{
+          data: [60, 40],
+          backgroundColor: ['#FEC500', '#8B8B8D'],
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          position: 'bottom' // Ubicar la leyenda debajo del círculo
+        }
+      }
+    });
+  </script>
 <script>
   function performSearch() {
     var searchInput = document.getElementById("searchInput").value.toLowerCase();

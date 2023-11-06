@@ -212,7 +212,7 @@
             background: #f1f1f1;
         }
 
-        ImageContianer .LoginPageContainer::-webkit-scrollbar-thumb {
+        .ImageContianer .LoginPageContainer::-webkit-scrollbar-thumb {
             background: #2e1f7a;
         }
 
@@ -238,7 +238,7 @@
                     <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
-                                    class="labelIcon"><span>Email*
+                                      class="labelIcon"><span>Email*
                                 </span></label>
                             <input type="email" name="email" class="input" id="emailAddress"
                                 placeholder="Enter your Email Address">

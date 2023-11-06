@@ -64,6 +64,11 @@ class M_model extends CI_Model
             return false;
         }
     }
+    public function get_data_operator()
+    {
+    return $this->db->where('role', 'operator')
+                    ->get('user');
+    }
 
     public function hapus_image($file_path)
     {

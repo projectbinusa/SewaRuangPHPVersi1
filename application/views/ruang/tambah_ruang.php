@@ -22,7 +22,6 @@
                                 <div class="bg-blue-600 h-3 w-full absolute top-0 left-0 rounded-t-lg"></div>
                                 <h1 id="title" class="text-4xl font-bold text-black-900">Tambah Data Ruangan</h1>
                             </header>
-
                             <form action="<?php echo base_url('ruang/akis_tambah_ruang') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                                 <div class="flex flex-wrap">
                                     <div class="w-full md:w-1/2 px-3">
