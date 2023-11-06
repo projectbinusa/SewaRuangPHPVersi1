@@ -62,7 +62,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-       $(document).ready(function() {
+   $(document).ready(function() {
     const form = document.getElementById("survey-form");
 
     form.addEventListener("submit", function(e) {
@@ -75,7 +75,7 @@
             // Kirim formulir untuk penambahan data
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url('ruang/akis_tambah_ruang') ?>",
+                url: "<?php echo base_url('ruang/akis_tambah_ruangan') ?>",
                 data: new FormData(this),
                 contentType: false,
                 processData: false,
@@ -112,9 +112,7 @@
         }
     });
 });
-
-
-    </script>
+</script>
 
     <script>
         // Gráfica de Usuarios

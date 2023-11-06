@@ -29,9 +29,49 @@ class M_model extends CI_Model
         return $data;
     }
 
-    public function get_gambar_ruangan($id) {
+    public function get_data_by_id($table, $id)
+    {
+        // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
+        $this->db->where('id', $id);
+        return $this->db->get($table);
+    }
+
+    public function hapus_data($table, $id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->delete($table);
+    }
+
+
+    public function get_gambar_ruangan($id)
+    {
         // Gantilah 'ruangan' dengan nama tabel yang sesuai di database Anda
         $query = $this->db->where('id', $id)->get('ruangan');
         return $query->row(); // Menggunakan row() untuk mengambil satu data
+    }
+
+    public function get_foto_by_id($id)
+    {
+        $this->db->select('image');
+        $this->db->from('ruangan');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $result = $query->row();
+            return $result->image;
+        } else {
+            return false;
+        }
+    }
+
+    public function hapus_image($file_path)
+    {
+        if (file_exists($file_path)) {
+            unlink($file_path);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

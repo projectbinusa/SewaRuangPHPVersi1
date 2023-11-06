@@ -18,7 +18,7 @@
     <div style="background-color: #0C356A;" class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
       <div class="flex items-center">
         <div class="flex items-center"> <!-- Mostrado en todos los dispositivos -->
-          <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
+          <img src="https://virtualofficemurah.com/wp-content/uploads/2023/04/xLogo-Graha-Office_HAKI.png.pagespeed.ic.YD802k5Ofk.png" alt="Logo" class="w-28 h-18 mr-2">
           <h2 class="font-bold text-xl"></h2>
         </div>
         <div class="md:hidden flex items-center"> <!-- Se muestra solo en dispositivos pequeños -->
