@@ -53,6 +53,22 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/dashboard');
     }
    
+     $data =  array(
+        'nama' => $nama,
+        'phone' => $phone,
+        'payment_method' => $payment_method
+     );
+
+    $this->m_model->tambah_data('pelanggan', $data);
+    redirect(base_url('pelanggan/data_master_pelanggan'));
+}
+
+public function update_data()
+
+{
+    $this->load->view('pelanggan/update_data');
+}
+
 }
 
 

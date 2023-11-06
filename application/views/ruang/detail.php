@@ -12,6 +12,7 @@
 </head>
 
 <body class="h-screen overflow-hidden flex flex-col bg-gray-100">
+
 <?php $this->load->view('sidebar'); ?>
       <!-- Área de contenido principal -->
       <div class="p-8 w-full md:w-5/6 lg:w-3/4 xl:w-1/2 flex justify-center items-center">
@@ -30,7 +31,7 @@
                 </div>
               <?php endforeach; ?>
             </div>
-          </div> -->
+
           <?php foreach ($ruang as $row) : ?>
             <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
               <img class="object-cover w-full h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="">
@@ -44,6 +45,7 @@
               
         </div>
       </div>
+
     </div>
   </div>
   <script>
