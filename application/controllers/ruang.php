@@ -19,14 +19,14 @@ class Ruang extends CI_Controller
         $this->load->view('ruang/Data_Ruangan', $data);
     }
 
-    public function tambah_ruangan()
+    public function tambah_ruang()
     {
         // Lakukan operasi yang sesuai, seperti memuat halaman "tambah ruang"
         $this->load->view('ruang/tambah_ruang');
     }
 
 
-    public function akis_tambah_ruangan()
+    public function akis_tambah_ruang()
     {
         // Mengambil data dari POST request
         $no_lantai = $this->input->post('no_lantai');

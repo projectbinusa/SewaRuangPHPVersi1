@@ -4,164 +4,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewa Ruang</title>
-
-    <!-- cdn fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 62.5%;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.6rem;
-            background-color: #E4F1FF;
-            color: #222;
-            padding: 0 5px;
-        }
-
-        .container {
-            min-width: 20rem;
-            max-width: 65rem;
-            margin: 10rem auto;
-        }
-
-        .heading,
-        .survey-form {
-            background-color: #fff;
-            padding: 1.3em 3rem 1.8rem 3rem;
-            border-radius: 1rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
-        }
-
-        .heading {
-            position: relative;
-        }
-
-        .survey-form {
-            font-size: 1.8rem;
-        }
-
-        .green-bar {
-            background-color: #4F709C;
-            height: 1rem;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
-
-        .main-heading {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .main-description {
-            margin-bottom: 2rem;
-        }
-
-        .instructions {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .required {
-            font-size: 1.6rem;
-            color: #d61212;
-        }
-
-        label {
-            display: block;
-            font-size: 1.8rem;
-            margin: 2rem 0;
-        }
-
-        input {
-            display: block;
-            width: 100%;
-            margin: 2rem 0;
-            font-size: 1.6rem;
-        }
-
-        .no_lantai,
-        .no_ruang {
-            min-height: 2rem;
-            padding: 1rem 0;
-            border: none;
-            border-bottom: 1px solid #bcb9b9;
-        }
-
-        /* 
-        input::placeholder {
-            padding: 5rem;
-        } */
-
-        .submit {
-            font-size: 1.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 15rem;
-            padding: 1rem 2rem;
-            margin: 4rem auto 2rem auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
-
-        a:link,
-        a:visited {
-            color: #008080;
-        }
-
-        .form-group {
-            position: relative;
-        }
-    </style>
+    <title>Tambah Data Ruangan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <main>
-        <div class="container">
-            <header class="heading">
-                <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Tambah Data Master</h1>
-            </header>
+<body class="h-screen overflow-hidden flex flex-col bg-gray-100">
+<?php $this->load->view('sidebar'); ?>
+            <div class="p-8 w-full md:w-2/3 flex justify-center items-center">
+                <div class="max-w-screen-xl w-full mx-auto"> <!-- Menggunakan max-w-screen-xl -->
+                    <!-- Konten halaman Anda di sini -->
+                    <main>
+                        <div class="container mx-auto p-auto">
+                            <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
+                                <div class="bg-blue-600 h-3 w-full absolute top-0 left-0 rounded-t-lg"></div>
+                                <h1 id="title" class="text-4xl font-bold text-black-900">Tambah Data Ruangan</h1>
+                            </header>
 
-            <form action="<?php echo base_url('ruang/akis_tambah_ruangan')?>" method="post" id="survey-form" class="survey-form">
-                <label for="no_lantai">Nomor Lantai</label>
-                <input type="number" name="no_lantai" id="no_lantai" class="no_lantai" >
+                            <form action="<?php echo base_url('ruang/akis_tambah_ruang') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                                <div class="flex flex-wrap">
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <label for="no_lantai" class="block">Nomor Lantai</label>
+                                        <input type="number" name="no_lantai" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                    </div>
 
-                <label for="no_ruang">Nomor Ruangan</label>
-                <input type="number" name="no_ruang" id="no_ruang" class="no_ruang" >
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <label for="no_ruang" class="block">Nomor Ruangan</label>
+                                        <input type="number" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                    </div>
 
-                <input type="submit" id="submit" class="submit" value="Tambah">
-            </form>
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <label for="foto" class="block">Foto Ruangan</label>
+                                        <input type="file" name="foto" id="foto" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                    </div>
 
+                                    <div class="w-full md:w-1/2 px-3">
+                                        <label for="deskripsi" class="block">Keterangan</label>
+                                        <input type="text" name="deskripsi" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                    </div>
+                                </div>
 
+                                <div class="text-center mt-10">
+                                    <input type="submit" id="submit" class="bg-transparent border border-blue-900 text-blue-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent hover-bg-blue-600 hover-text-blue-100 transition duration-300" value="Tambah">
+                                </div>
+                            </form>
+                        </div>
+                    </main>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Pastikan Anda telah memasukkan jQuery sebelumnya -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+       $(document).ready(function() {
+    const form = document.getElementById("survey-form");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // Cegah formulir untuk langsung mengirimkan data
+
+        if (e.submitter.id === "submit") {
+            // Matikan tombol submit sementara
+            document.getElementById("submit").disabled = true;
+
+            // Kirim formulir untuk penambahan data
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('ruang/akis_tambah_ruang') ?>",
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(response) {
+                    if (response.status === 'success') {
+                        Swal.fire({
+                            title: 'Sukses',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(function() {
+                            // Beri tahu pengguna tentang pengalihan
+                            Swal.fire({
+                                title: 'Mengalihkan...',
+                                timer: 1500, // Waktu tunggu sebelum pengalihan
+                                icon: 'success',
+                                showConfirmButton: false
+                            }).then(function() {
+                                window.location.href = response.redirect;
+                            });
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: response.message,
+                            icon: 'error'
+                        });
+
+                        // Aktifkan kembali tombol submit setelah gagal
+                        document.getElementById("submit").disabled = false;
+                    }
+                }
+            });
+        }
+    });
+});
+
+
+    </script>
+
+    <script>
+        // Gráfica de Usuarios
+        var usersChart = new Chart(document.getElementById('usersChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Nuevos', 'Registrados'],
+                datasets: [{
+                    data: [30, 65],
+                    backgroundColor: ['#00F0FF', '#8B8B8D'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom' // Ubicar la leyenda debajo del círculo
+                }
+            }
+        });
+
+        // Gráfica de Comercios
+        var commercesChart = new Chart(document.getElementById('commercesChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Nuevos', 'Registrados'],
+                datasets: [{
+                    data: [60, 40],
+                    backgroundColor: ['#FEC500', '#8B8B8D'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom' // Ubicar la leyenda debajo del círculo
+                }
+            }
+        });
+    </script>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const sideNav = document.getElementById('sideNav');
+
+        menuBtn.addEventListener('click', () => {
+            sideNav.classList.remove('hidden');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sideNav.classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>
