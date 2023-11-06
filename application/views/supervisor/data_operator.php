@@ -1721,13 +1721,13 @@
             </div>
 
             <div class="row justify-content-center">
-                <!-- <a href="supervisor/tambah_user_operator"
-                        class="bg-green-500 hover:bg-green-700 ml-auto w-36 text-white font-bold py-2 px-4 rounded">
+                <a href="supervisor/tambah_user_operator"
+                        class="bg-green-500 hover:bg-green-700 ml-auto w-32 text-white font-bold py-2 px-2 rounded">
                         <span class="pe-2">
                             <i class="fas fa-plus"></i>
                         </span>
                         Tambah
-                    </a> -->
+                    </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
