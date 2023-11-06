@@ -3549,14 +3549,18 @@
                         <li>
                             <a class="page-scroll" href="#about">About</a>
                         </li>
+                      
                         <li>
-                            <a style="color: white;" class="page-scroll" href="#widget">Operator</a>
+                            <a class="page-scroll" href="#inner">Inners Page</a>
                         </li>
                         <li>
-                            <a style="color: white;" class="page-scroll" href="#forget">Forget</a>
+                            <a class="page-scroll" href="#cara_pesan">Cara Pesan</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#inner">Inners</a>
+                            <a class="page-scroll" href="#ruang">Ruang</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#testimoni">Testimoni</a>
                         </li>
                         <li>
                             <a class="cart" href="log-in.html">
@@ -3573,17 +3577,18 @@
                         <li>
                             <a style="color: white;" class="page-scroll" href="#about">About</a>
                         </li>
-                        <li>
-                            <a style="color: white;" class="page-scroll" href="#widget">Operator</a>
-                        </li>
-                        <li>
-                            <a style="color: white;" class="page-scroll" href="#forget">Forget</a>
-                        </li>
+                      
                         <li>
                             <a style="color: white;" class="page-scroll" href="#inner">Inner Pages</a>
                         </li>
                         <li>
-                            <a style="color: white;" class="page-scroll" href="#featured">Features</a>
+                            <a style="color: white;" class="page-scroll" href="#cara_pesan">Cara Pesan</a>
+                        </li>
+                        <li>
+                            <a style="color: white;" class="page-scroll" href="#ruang">Ruang</a>
+                        </li>
+                        <li>
+                            <a style="color: white;" class="page-scroll" href="#testimoni">Testimoni</a>
                         </li>
                     </ul>
                 </div>

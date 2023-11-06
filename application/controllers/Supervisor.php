@@ -53,10 +53,18 @@ class Supervisor extends CI_Controller {
 	{
 		$this->load->view('supervisor/approve');
 	}
-   
-    public function navbar()
+    public function data_operator()
 	{
-		$this->load->view('supervisor/navbar');
+		$this->load->view('supervisor/data_operator');
+	}
+   
+    public function edit_user_operator()
+	{
+		$this->load->view('supervisor/edit_user_operator');
+	}
+    public function laporan_penyewa()
+	{
+		$this->load->view('supervisor/laporan_penyewa');
 	}
    
 }

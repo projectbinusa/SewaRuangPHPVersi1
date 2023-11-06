@@ -1714,14 +1714,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Laporan Penyewa</h2>
+                        <h2 class="title">Data Operator</h2>
 
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center">
-                <!-- <a href="tambah_user_operator"
+                <!-- <a href="supervisor/tambah_user_operator"
                         class="bg-green-500 hover:bg-green-700 ml-auto w-36 text-white font-bold py-2 px-4 rounded">
                         <span class="pe-2">
                             <i class="fas fa-plus"></i>
@@ -1732,7 +1732,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example"
+                            <table style="min-width: 22rem;" id="examples"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -1741,16 +1741,7 @@
                                             Nama Penyewa
                                         </th>
                                         <th data-priority="2" scope="col" class="px-3 py-3">
-                                            No Ruang
-                                        </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Jam Penggunaan
-                                        </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
-                                            Extra Waktu
+                                            Email
                                         </th>
                                         <th data-priority="5" scope="col" class="px-3 py-3">
                                             Aksi
@@ -1758,23 +1749,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Ahmad Sony
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Hanafi
                                         </td>
-                                        <td data-cell="No Ruang " class="px-3 py-4">
-                                            R.303
+                                        <td data-cell="Email " class="px-6 py-4">
+                                            Hanafi@gmail.com
                                         </td>
-                                        <td data-cell="Kapasitas " class="px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
-                                            -
-                                        </td>
+
+
                                         <td data-cell="Aksi" class="px-3 py-4 flex">
 
                                             <a href="edit_user_operator"
@@ -1791,197 +1776,122 @@
                                                 </span>
                                                 Hapus
                                             </button>
+
+
                                         </td>
+
                                     </tr>
                                     <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Hanafi
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Sintia Rahmawati
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Sintia@gmai.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Sintia@gmai.com
+    </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Sintia Rahmawati
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Mutiara Tsani
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
+</tr>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Ajeng Novianti
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Ajeng Novianti
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Novi@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Novi@gmail.com
+    </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Carrisa Putri
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Saskia Rahma
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
+</tr>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Carrisa Putri
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Saput@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Saput@gmail.com
+    </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Qisandra Elysha
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Klisentia Rosawa
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
+</tr>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Saskia Rahma
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Saski@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Saski@gmail.com
+    </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 3, PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                30 menit
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Mutiara Tsani
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.103
-                                            </td>
 
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 2 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.30 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr>
-                                        <tr class="bg-white dark:bg-gray-800">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Natalie
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-6 py-4">
-                                                R.150
-                                            </td>
-                                            <td data-cell="Kapasitas " class="px-6 py-4">
-                                                AC 1,5 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-6 py-4">
-                                                07.00 - 10.00
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-6 py-4">
-                                                -
-                                            </td>
-                                        </tr> -->
+</tr>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Qisandra Elysha
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Qsandra@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Qsandra@gmail.com
+    </td>
+
+
+</tr>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Klisentia Rosawa
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Klisen@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Klisen@gmail.com
+    </td>
+
+</tr>
+<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Mutiara Tsani
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Tsanii@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Tsanii@gmail.com
+    </td>
+
+
+</tr>
+<tr class="bg-white dark:bg-gray-800">
+    <td data-cell="Nama Penyewa " scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        Natalie
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Nata@gmail.com
+    </td>
+    <td data-cell="Email " class="px-6 py-4">
+        Nata@gmail.com
+    </td>
+
+</tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -2003,7 +1913,7 @@
     <script>
         $(document).ready(function () {
 
-            var table = $('#example').DataTable({
+            var table = $('#examples').DataTable({
                 responsive: true
             })
                 .columns.adjust()

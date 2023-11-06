@@ -215,24 +215,6 @@
             visibility: visible;
         }
 
-        /* .back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 44px;
-  height: 44px;
-  color: #fff;
-  background-color: var(--main-color);
-  text-align: center;
-  line-height: 44px;
-  z-index: 99;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  display: none;
-  animation: backto-top-bounce 4s infinite ease-in-out;
-  border-radius: 4px;
-} */
         @keyframes backto-top-bounce {
             0% {
                 transform: translateY(-5px);
@@ -903,6 +885,7 @@
             margin: 0 auto 20px;
             box-shadow: 0 0 40px rgb(82 85 90 / 20%);
             border-radius: 5px;
+            height: 15rem;
         }
 
         /* .footer-bottom {
@@ -3667,10 +3650,10 @@
             padding: 0;
             text-align: center;
             cursor: pointer;
-            /* background: var(--main-color); */
+            background: var(--main-color);
         }
 
-        /* .td-search-popup .search-form .submit-btn:hover, */
+        .td-search-popup .search-form .submit-btn:hover,
         .td-search-popup .search-form .submit-btn:focus,
         .td-search-popup .search-form .submit-btn:active {
             outline: 0;
@@ -5743,17 +5726,50 @@
             border-radius: 7px;
         }
 
+
+
+        /******* cara pesan *******/
+        .cara-memesan-landing-page {
+            max-width: 1120px;
+            padding: 0px 15px;
+            margin: 60px auto 35px;
+        }
+
+        .cara-memesan-landing-page h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .cara-memesan-landing-page .step-by-step {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step {
+            width: 300px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step img {
+            height: 90px;
+            margin-bottom: 35px;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step p {
+            font-size: 16px;
+        }
      
     </style>
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    
 
     <!-- Navigation -->
     <?php include('navbar.php'); ?>
-    
 
     <!-- Banner Area Start-->
     <section id="banner" class="banner-area"
@@ -5766,11 +5782,11 @@
                         <p class="me-5">Di Website <span>Sewa Ruang</span></p>
                     </div>
                     <div class="counter-area-inner">
-                      
+                       
                     </div>
                     <div class="btn-area">
                         <a class="btn btn-border-white page-scroll" href="#demo">Login</a>
-                        <a class="btn btn-white me-0" href="#">Download Now</a>
+                        <a class="btn btn-white me-0" href="#">Look at Room</a>
                     </div>
                 </div>
             </div>
@@ -5801,41 +5817,7 @@
 
                             <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat klien puas dengan meet yang anda buat.</p>
 
-                            <!-- <ul class="single-progress-inner mt-4 pt-2">
-                                <li class="progress-item" id="progress-running-1">
-                                    <h6>Nullam est</h6>
-                                    <div class="progress-bg">
-                                        <div id="progress-1" class="progress-rate" data-value="78">
-                                            <div class="progress-count-wrap">
-                                                <span class="progress-count counting" data-count="78">0</span>
-                                                <span class="counting-icons">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="progress-item" id="progress-running-2">
-                                    <h6>Mattis dictum nunc</h6>
-                                    <div class="progress-bg">
-                                        <div id="progress-2" class="progress-rate" data-value="60">
-                                            <div class="progress-count-wrap">
-                                                <span class="progress-count counting" data-count="60">0</span>
-                                                <span class="counting-icons">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="progress-item" id="progress-running-3">
-                                    <h6>Malesuada dictum</h6>
-                                    <div class="progress-bg">
-                                        <div id="progress-3" class="progress-rate" data-value="86">
-                                            <div class="progress-count-wrap">
-                                                <span class="progress-count counting" data-count="86">0</span>
-                                                <span class="counting-icons">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul> -->
+                        
                         </div>
                     </div>
                 </div>
@@ -5844,14 +5826,27 @@
     </div>
    
 </section>
-    
+    <!-- about area end -->
 
-    <?php include('data_operator.php') ?>
+    <!-- demo Section -->
+    <!-- <section id="demo" class="demo-section pd-top-140">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h5 class="subtitle">AWESOME DEMOS</h5>
+                        <h2 class="title">Data Akun Operator</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  -->
 
-    <?php include('laporan_penyewa.php') ?>
-    <?php include('approve.php') ?>
+    <!-- <?php include('data_operator.php') ?>
+
+    <?php include('laporan_penyewa.php') ?> -->
    
-    <section id="forget" class="widget-section pd-top-120">
+    <!-- <section id="forget" class="widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6003,12 +5998,12 @@
                 </div>
             </div> -->
         </div>
-    </section>
+    </section> -->
 
      
 
     <!-- inner Section -->
-    <section id="inner" class="inner-section pd-top-130">
+    <!-- <section id="inner" class="inner-section pd-top-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6020,10 +6015,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
-                        <a href="course.html"><span class="thumb"><img
-                                    src="https://solverwp.com/demo/html/edumint/demo-landing/img/course.png"
+                        <a href="#"><span class="thumb"><img
+                                    src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg"
                                     alt="img"></span>Course</a>
-                        <a class="btn btn-base" href="course.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="#" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -6031,84 +6026,84 @@
                         <a href="blog.html"><span class="thumb"><img
                                     src="https://solverwp.com/demo/html/edumint/demo-landing/img/blog.jpg"
                                     alt="img"></span>Blog</a>
-                        <a class="btn btn-base" href="blog.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="blog.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="event.html"><span class="thumb"><img src="demo-landing/img/event.png"
                                     alt="img"></span>Event</a>
-                        <a class="btn btn-base" href="event.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="event.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="pricing.html"><span class="thumb"><img src="demo-landing/img/pricing.png"
                                     alt="img"></span>Pricing</a>
-                        <a class="btn btn-base" href="pricing.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="pricing.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="team.html"><span class="thumb"><img src="demo-landing/img/team.png"
                                     alt="img"></span>Team</a>
-                        <a class="btn btn-base" href="team.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="team.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="gallery.html"><span class="thumb"><img src="demo-landing/img/gallery.png"
                                     alt="img"></span>Gallery</a>
-                        <a class="btn btn-base" href="gallery.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="gallery.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="contact.html"><span class="thumb"><img src="demo-landing/img/contact.png"
                                     alt="img"></span>Contact</a>
-                        <a class="btn btn-base" href="contact.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="contact.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item style-none">
                         <a href="signin.html"><span class="thumb"><img src="demo-landing/img/signin.png"
                                     alt="img"></span>Signin</a>
-                        <a class="btn btn-base" href="signin.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="signin.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item style-none">
                         <a href="signup.html"><span class="thumb"><img src="demo-landing/img/signup.png"
                                     alt="img"></span>Signup</a>
-                        <a class="btn btn-base" href="signup.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="signup.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="blog-details.html"><span class="thumb"><img src="demo-landing/img/blog-details.jpg"
                                     alt="img"></span>blog details</a>
-                        <a class="btn btn-base" href="blog-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="blog-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="course-details.html"><span class="thumb"><img src="demo-landing/img/course-details.png"
                                     alt="img"></span>Course Details</a>
-                        <a class="btn btn-base" href="course-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="course-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="event-details.html"><span class="thumb"><img src="demo-landing/img/event-details.png"
                                     alt="img"></span>event Details</a>
-                        <a class="btn btn-base" href="event-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="event-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item style-none">
                         <a href="team-details.html"><span class="thumb"><img src="demo-landing/img/team-details.png"
                                     alt="img"></span>Team Details</a>
-                        <a class="btn btn-base" href="team-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="team-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -6119,15 +6114,45 @@
                 </div>
             </div>
         </div>
+    </section> -->
+
+     <!-- cara pesan Section -->
+    <section id="cara_pesan" class="inner-section pd-top-90">
+        <div style="background:#f4f5f7; padding:1px;">
+        <div class="cara-memesan-landing-page">
+            <h2>Cara mudah memesan ruangan</h2>
+            <div class="step-by-step">
+
+                <div class="step">
+                    <img style="margin-left: 5rem;" src="https://xwork.co/img/icon/lp-memesan-1-0.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>1. Temukan ruangan sesuai kebutuhan</p>
+                    <p>Temukan ruangan yang anda butuhkan, dari ribuan yang tersedia di Sewa Ruang</p>
+                </div>
+
+                <div class="step">
+                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-1.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>2. Pesan dan lakukan kunjungan survey</p>
+                    <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
+                </div>
+
+                <div class="step">
+                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>3. Deal dan pembayaran</p>
+                    <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
     </section>
 
-    <!-- inner Section -->
-    <section id="featured" class="featured-section pd-top-87 pd-bottom-110">
+    <!-- ruang Section -->
+    <section id="ruang" class="featured-section pd-top-130 pd-bottom-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Core Features</h2>
+                        <h2 class="title">Ruang</h2>
                         <!-- <p>We have created a new product that will help designers, developers and com-panies create websites for their startups quickly and easily.</p> -->
                     </div>
                 </div>
@@ -6135,59 +6160,60 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/3.png" alt="img">
-                        Bootstrap 4+
+                        <img src="https://s3-ap-southeast-1.amazonaws.com/xwork-gallery/rooms/images/795/1524110425.04/795_1524110425.04.lg.JPEG" alt="img">
+                        Ruang Meeting
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/1.png" alt="img">
-                        Sass
+                        <img src="https://i0.wp.com/insight.mbiz.co.id/wp-content/uploads/2018/12/Ruang-meeting-amphitheater-ala-Google.png?resize=750%2C500&ssl=1" alt="img">
+                        Ruang Meeting
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/4.png" alt="img">
-                        Font-Awesome
+                        <img src="https://tikus.net/wp-content/uploads/2022/12/Mengenal-Jenis-jenis-Ruangan-Meeting-yang-Cocok-untuk-Anda.png" alt="img">
+                        Ruang Meeting
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/2.png" alt="img">
-                        Owl-Carousel
+                        <img src="https://dbijapkm3o6fj.cloudfront.net/resources/5134,1004,1,6,4,0,600,450/-4601-/20190326223719/pertemuan-dan-acara.jpeg" alt="img">
+                       Ruang Acara
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/5.png" alt="img">
-                        HTML5
+                        <img src="https://dbijapkm3o6fj.cloudfront.net/resources/32058,1004,1,6,4,0,600,450/-4601-/20220617223606/paket-meeting.jpeg" alt="img">
+                        Ruang Acara
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" style="height: ">
+                    <div class="featured-item">
+                        <img src="https://www.tourismvaganza.com/wp-content/uploads/2021/04/Image_Harmony-Ballroom-at-Holiday-Inn-Suites-Jakarta-Gajah-Mada-2.jpg" alt="img">
+                       Ruang Acara
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/6.png" alt="img">
-                        CSS3
+                        <img src="https://image.archify.com/blog/l/ume93vjz.jpg" alt="img">
+                        Co Working Space
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/7.png" alt="img">
-                        Jquery Tilt
+                        <img src="https://blog.flyspaces.com/hubfs/WeWork%20Menara%20Astra.jpg" alt="img">
+                       Co Working Space
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/8.png" alt="img">
-                        W3C Validation
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHTwqQRtPUrOpE3rDu61w1b71GrI9hiBSUWA&usqp=CAU" alt="img">
+                       Co Working Space
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/9.png" alt="img">
-                        Clean Code
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
+
+                <!-- <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
                         <img src="demo-landing/img/featured/10.png" alt="img">
                         Magnific Popup
@@ -6222,14 +6248,14 @@
                         <img src="demo-landing/img/featured/13.png" alt="img">
                         Wow Js
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
 
 
     <!-- testimonial area start -->
-    <div class="testimonial-area pd-top-110 pd-bottom-120"
+    <!-- <div id="testimoni" class="testimonial-area pd-top-130 pd-bottom-130"
         style="background-image: url(assets/img/testimonial/bg.png); background-size: cover; background-position: center; justify-content:center; display:flex;">
         <div class="container">
             <div class="row justify-content-center">
@@ -6294,7 +6320,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- testimonial area end -->
 
     <!-- footer area start -->
@@ -6390,13 +6416,6 @@
     <a id="back-to-top"></a>
 
 
-
-    <!-- <script src="demo-landing/js/jquery.min.js" type="text/javascript"></script>
-    <script src="demo-landing/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="demo-landing/js/counter.js" type="text/javascript"></script>
-    <script src="demo-landing/js/waypoints.js" type="text/javascript"></script>
-    <script src="demo-landing/js/demos.js" type="text/javascript"></script>
-    <script src="demo-landing/js/main.js" type="text/javascript"></script> -->
 </body>
 
 </html>
