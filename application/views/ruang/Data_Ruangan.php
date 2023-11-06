@@ -10,111 +10,38 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
-
-<body class="h-hover bg-gray-100">
-  <div class="flex flex-col h-screen">
-
-    <!-- Barra de navegación superior -->
-    <div style="background-color: #0C356A;" class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
-      <div class="flex items-center">
-        <div class="flex items-center"> <!-- Mostrado en todos los dispositivos -->
-          <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
-          <h2 class="font-bold text-xl"></h2>
-        </div>
-        <div class="md:hidden flex items-center"> <!-- Se muestra solo en dispositivos pequeños -->
-          <button id="menuBtn">
-            <i class="fas fa-bars text-gray-500 text-lg"></i> <!-- Ícono de menú -->
-          </button>
-        </div>
-      </div>
-
-      <!-- Ícono de Notificación y Perfil -->
-      <div class="space-x-5">
-        <a href="ruang/tambah_ruang">
-          <i class="fas fa-plus-square text-white-500 text-3xl"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Contenido principal -->
-    <div class="flex-1 flex flex-wrap">
-      <!-- Barra lateral de navegación (oculta en dispositivos pequeños) -->
-      <div style="background-color: #0C356A;" class="p-2 w-full md:w-60 flex flex-col md:flex hidden" id="sideNav">
-        <nav>
-          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fas fa-home mr-2"></i>Beranda
-          </a>
-          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fa-solid fa-restroom"></i> Data Master Ruangan
-          </a>
-          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fas fa-users"></i> Data Master Pelanggan
-          </a>
-          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fa-solid fa-map-location-dot"></i> Peminjaman Tempat
-          </a>
-          <a class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" href="#">
-            <i class="fa-regular fa-folder-open"></i> Report Sewa
-          </a>
-        </nav>
-
-        <!-- Item untuk menutup sidebar -->
-        <a class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white" id="closeBtn">
-          <i class="fas fa-times mr-2"></i>Tutup
-        </a>
-
-        <!-- Penanda lokasi -->
-        <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mt-2"></div>
-
-        <!-- logout -->
-        <a class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500 hover:text-white mt-auto" href="#">
-          <i class="fas fa-sign-out-alt mr-2"></i>Keluar
-        </a>
-
-        <!-- Hak cipta di bagian bawah navigasi lateral -->
-      </div>
+<body>
+<?php $this->load->view('sidebar'); ?>
       <!-- Área de contenido principal -->
       <div class="flex-1 p-4 w-full md:w-1/2">
-        <!-- Campo de búsqueda -->
-        <div class="relative max-w-md w-full">
-          <div class="flex items-center justify-between w-full mb-4">
-            <input type="text" id="searchInput" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Search..." onkeyup="performSearch()" />
-          </div>
-        </div>
-
-
-        <!-- Konten halaman Anda di sini -->
-        <div class="absolute top-1 left-2 inline-flex items-center p-2">
-        </div>
-        <div class="flex flex-wrap justify-center">
-          <!-- Card 1 -->
-          <div class="container">
-            <div class="row justify-content-center">
-              <?php if ($ruangan) : ?>
-                <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-7 pl-10 pr-10 pt-5" id="roomList">
-                  <!-- Room cards will be displayed here -->
-                  <?php foreach ($ruangan as $row) : ?>
-                    <div class="col-lg-4 col-md-6">
-                      <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                        <img src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="Room Image" class="block mx-auto mb-5 w-76 h-64 shadow-md rounded">
-                        <h2 class="text-2xl text-gray-800 font-semibold">R <?php echo $row->no_ruang; ?></h2>
-                        <a href="<?php echo base_url('ruang/detail/' . $row->id); ?>" class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-200">Detail</a>
-                      </div>
-                    </div>
-                  <?php endforeach; ?>
-                </div>
-              <?php else : ?>
-                <div class="col-lg-4 col-md-6">
-                  <p class="text-center text-gray-600">No data available.</p>
-                </div>
-              <?php endif; ?>
+  <!-- Campo de búsqueda -->
+  <div class="relative max-w-screen w-full">
+    <!-- Search input field -->
+    <div class="flex items-center justify-between w-full mb-4">
+      <input type="text" id="searchInput" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300" placeholder="Search..." onkeyup="performSearch()" />
+    </div>
+    <?php if ($ruangan) : ?>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pl-10 pr-10 pb-10 pt-5" id="roomList">
+        <!-- Room cards will be displayed here -->
+        <?php foreach ($ruangan as $row) : ?>
+          <div class="bg-white rounded-lg shadow-md max-w-3xl">
+            <img src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="Ruangan <?php echo $row->no_ruang; ?>" class="w-full h-48 object-cover rounded-t-lg">
+            <div class="p-4">
+              <h1 class="text-xl font-semibold text-gray-800 cursor-pointer hover:text-blue-500 transition duration-100 text-center">
+                Ruang <?php echo $row->no_ruang; ?>
+              </h1>
+            </div>
+            <div class="p-4 bg-gray-100 rounded-b-lg">
+              <a href="<?php echo base_url('ruang/detail/' . $row->id); ?>" class="text-sm font-semibold text-blue-500 hover:underline cursor-pointer">Detail</a>
             </div>
           </div>
-        </div>
-
+        <?php endforeach; ?>
       </div>
-    </div>
+    <?php else : ?>
+      <p class="text-center text-gray-600">No data available.</p>
+    <?php endif; ?>
   </div>
+</div>
 
   <script>
     function performSearch() {
@@ -176,20 +103,24 @@
       }
     });
   </script>
+<script>
+  function performSearch() {
+    var searchInput = document.getElementById("searchInput").value.toLowerCase();
+    var roomList = document.getElementById("roomList");
+    var roomCards = roomList.getElementsByClassName("bg-white");
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const sideNav = document.getElementById('sideNav');
+    for (var i = 0; i < roomCards.length; i++) {
+      var roomTitle = roomCards[i].querySelector("h1").textContent.toLowerCase();
 
-    menuBtn.addEventListener('click', () => {
-      sideNav.classList.remove('hidden');
-    });
+      if (roomTitle.includes(searchInput)) {
+        roomCards[i].style.display = "block";
+      } else {
+        roomCards[i].style.display = "none";
+      }
+    }
+  }
+</script>
 
-    closeBtn.addEventListener('click', () => {
-      sideNav.classList.add('hidden');
-    });
-  </script>
 </body>
 
 </html>

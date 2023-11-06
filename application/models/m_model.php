@@ -69,5 +69,14 @@ class M_model extends CI_Model
     return $this->db->where('role', 'operator')
                     ->get('user');
     }
-}
 
+    public function hapus_image($file_path)
+    {
+        if (file_exists($file_path)) {
+            unlink($file_path);
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
