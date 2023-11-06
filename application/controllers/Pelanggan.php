@@ -36,6 +36,11 @@ public function aksi_tambah_pelanggan()
     redirect(base_url('pelanggan/data_master_pelanggan'));
 }
 
+public function update_data()
+
+{
+    $this->load->view('pelanggan/update_data');
+}
 
 }
 
