@@ -31,4 +31,6 @@ class M_model extends CI_Model
         // Gantilah 'ruangan' dengan nama tabel yang sesuai di database Anda
         $query = $this->db->where('id', $id)->get('ruangan');
         return $query->row(); // Menggunakan row() untuk mengambil satu data
+    }
+
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 
     <style>
 		/*Overrides for Tailwind CSS */
@@ -112,9 +110,7 @@
 		}
 	</style>
 </head>
-
 <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
-
 <div class="flex flex-col h-screen bg-gray-100">
 
     <!-- Barra de navegación superior -->
@@ -202,8 +198,48 @@
                             <tbody>
                               
                             <?php
+          <!-- Konten halaman Anda di sini -->
+          <section class="py-1 bg-blueGray-50">
+<div class="w-full xl:w-8/15 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+    <div class="rounded-t mb-0 px-4 py-3 border-0">
+      <div class="flex flex-wrap items-center">
+        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+          <h3 class="font-semibold text-base text-blueGray-700">DATA MASTER PELANGGAN</h3>
+        </div>
+
+        <!-- <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+          <button class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"><a href="<?php echo base_url('pelanggan/tambah_pelanggan') ?>">TAMBAH</a></button>
+        </div> -->
+      </div>
+    </div>
+
+  
+
+    
+    <div class="block w-full overflow-x-auto">
+      <table class="items-center bg-transparent w-full border-collapse ">
+        <thead>
+          <tr>
+            <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+              NO
+                        </th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          NAMA
+                        </th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          PHONE
+                        </th>
+                        <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                          PAYMENT METHOD
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <?php
                  $no= 0;foreach ($pelanggan as $row  ) :$no++                          
-                    ?>
+                 ?>
                                    <tr>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama ?></td>
                                     <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->phone ?></td>
@@ -216,9 +252,33 @@
                                 
                                 </table>
                             </form>
+                           
+
+                                
+                              </tbody>
+                                                          </table>
+                                                    
+
+                            
+                            
+                            
+                          </form>
+                          
+                   
+
                 </div>
-            </div>      
+            </div>
+
+
+           
+                       
+                      
+                      
             </tr>
+                                           
+                                      
+
+        
         </tbody>
       </table>
     </div>
@@ -297,8 +357,60 @@
     });
 </script>
 
-   
-   
-</body>
 
+<!-- Script para las gráficas -->
+<script>
+    // Gráfica de Usuarios
+    var usersChart = new Chart(document.getElementById('usersChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Nuevos', 'Registrados'],
+            datasets: [{
+                data: [30, 65],
+                backgroundColor: ['#00F0FF', '#8B8B8D'],
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: 'bottom' // Ubicar la leyenda debajo del círculo
+            }
+        }
+    });
+
+    // Gráfica de Comercios
+    var commercesChart = new Chart(document.getElementById('commercesChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Nuevos', 'Registrados'],
+            datasets: [{
+                data: [60, 40],
+                backgroundColor: ['#FEC500', '#8B8B8D'],
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: 'bottom' // Ubicar la leyenda debajo del círculo
+            }
+        }
+    });
+</script>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sideNav = document.getElementById('sideNav');
+
+    menuBtn.addEventListener('click', () => {
+        sideNav.classList.remove('hidden');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sideNav.classList.add('hidden');
+    });
+</script>
+</body>
 </html>

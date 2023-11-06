@@ -35,15 +35,11 @@ public function aksi_tambah_pelanggan()
     $this->m_model->tambah_data('pelanggan', $data);
     redirect(base_url('pelanggan/data_master_pelanggan'));
 }
-
-<<<<<<< HEAD
-=======
 // public function data_master_pelanggan()
 // {
 //     $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
 //     $this->load->view('pelanggan/data_master_pelanggan');
 // }
->>>>>>> dd20b3116fdfc813ee648b281137f858e0ea5313
 
 
 public function report_sewa()
