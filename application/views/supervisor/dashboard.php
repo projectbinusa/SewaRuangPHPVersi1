@@ -5846,7 +5846,89 @@
 </section>
     
 
-    <?php include('data_operator.php') ?>
+<section id="widget" class=" widget-section pd-top-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Data Operator</h2>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- <a href="supervisor/tambah_user_operator"
+                        class="bg-green-500 hover:bg-green-700 ml-auto w-36 text-white font-bold py-2 px-4 rounded">
+                        <span class="pe-2">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        Tambah
+                    </a> -->
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+
+                            <table style="min-width: 22rem;" id="examples"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                            Nama Penyewa
+                                        </th>
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                            Email
+                                        </th>
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                            Aksi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Hanafi
+                                        </td>
+                                        <td data-cell="Email " class="px-6 py-4">
+                                            Hanafi@gmail.com
+                                        </td>
+
+
+                                        <td data-cell="Aksi" class="px-3 py-4 flex">
+
+                                            <a href="edit_user_operator"
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                <span class="pe-2">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                Edit
+                                            </a>
+                                            <button onclick=""
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <span class="pe-2">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </span>
+                                                Hapus
+                                            </button>
+
+
+                                        </td>
+
+                                    </tr>
+                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
 
     <?php include('laporan_penyewa.php') ?>
     <?php include('approve.php') ?>
