@@ -127,8 +127,8 @@
 				<thead>
 					<tr>
 						<th data-priority="1">Name</th>
-						<th data-priority="2">Position</th>
-						<th data-priority="3">Office</th>
+						<th data-priority="2">Phone</th>
+						<th data-priority="3">Payment Method</th>
 						<th data-priority="4">Age</th>
 						<th data-priority="5">Start date</th>
 						<th data-priority="6">Salary</th>
