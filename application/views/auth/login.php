@@ -25,7 +25,7 @@
             position: absolute;
             top: 60%;
             transform: translateY(-50%);
-            right: 7rem;
+            right: 11.3rem;
             cursor: pointer;
         }
 
@@ -44,7 +44,7 @@
         }
 
         .LoginPageInnerContainer .ImageContianer {
-            width: 45%;
+            width: 40%;
             background-color: #4F709C;
             min-height: 100%;
             padding: 5%;
@@ -54,7 +54,7 @@
         }
 
         .LoginPageInnerContainer .ImageContianer .GroupImage {
-            width: 80%;
+            width: 70%;
             display: block;
         }
 
@@ -226,7 +226,7 @@
     <div class="LoginPageContainer">
         <div class="LoginPageInnerContainer">
             <div class="ImageContianer">
-                <img src="https://o.remove.bg/downloads/7a3608c7-b681-4beb-bf6b-acd24e7e8b77/istockphoto-1281150061-612x612-removebg-preview.png" class="GroupImage">
+                <img src="<?php echo base_url() ?>image/login.png" class="GroupImage">
             </div>
             <div class="LoginFormContainer">
                 <div class="LoginFormInnerContainer">
