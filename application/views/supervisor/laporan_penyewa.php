@@ -1749,10 +1749,10 @@
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Jam Penggunaan
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
                                             Extra Waktu
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3 text-center">
                                             Aksi
                                         </th>
                                     </tr>
@@ -1775,7 +1775,7 @@
                                         <td data-cell="Exstra Waktu " class="px-3 py-4">
                                             -
                                         </td>
-                                        <td data-cell="Aksi" class="px-3 py-4 flex">
+                                        <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
 
                                             <a href="edit_user_operator"
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">

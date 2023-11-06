@@ -32,4 +32,9 @@ class M_model extends CI_Model
         $query = $this->db->where('id', $id)->get('ruangan');
         return $query->row();
     }
+    public function get_data_operator()
+    {
+    return $this->db->where('role', 'operator')
+                    ->get('user');
+    }
 }

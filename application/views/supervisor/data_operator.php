@@ -1737,30 +1737,37 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Nama Penyewa
+                                        <th data-priority="1" scope="col" class="px-3 py-3 text-center">
+                                            No
                                         </th>
                                         <th data-priority="2" scope="col" class="px-3 py-3">
+                                            Nama Penyewa
+                                        </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3 text-center">
                                             Email
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="px-3 py-3 text-center">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                <?php $no = 0;foreach ($operator as $row): $no++?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="No " scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center dark:text-white">
+                                            <?php echo $no?>
+                                        </td>
                                         <td data-cell="Nama Penyewa " scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Hanafi
+                                            <?php echo $row->username?>
                                         </td>
-                                        <td data-cell="Email " class="px-6 py-4">
-                                            Hanafi@gmail.com
+                                        <td data-cell="Email " class="px-6 py-4 text-center">
+                                        <?php echo $row->email?>
                                         </td>
 
 
-                                        <td data-cell="Aksi" class="px-3 py-4 flex">
+                                        <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
 
                                             <a href="edit_user_operator"
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
@@ -1769,129 +1776,16 @@
                                                 </span>
                                                 Edit
                                             </a>
-                                            <button onclick=""
+                                            <button onclick="hapus(<?php echo $row->id ?>)"
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="pe-2">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
                                                 Hapus
                                             </button>
-
-
                                         </td>
-
                                     </tr>
-                                    <!-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Sintia Rahmawati
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Sintia@gmai.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Sintia@gmai.com
-    </td>
-
-
-</tr>
-
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Ajeng Novianti
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Novi@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Novi@gmail.com
-    </td>
-
-
-</tr>
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Carrisa Putri
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Saput@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Saput@gmail.com
-    </td>
-
-
-</tr>
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Saskia Rahma
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Saski@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Saski@gmail.com
-    </td>
-
-
-</tr>
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Qisandra Elysha
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Qsandra@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Qsandra@gmail.com
-    </td>
-
-
-</tr>
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Klisentia Rosawa
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Klisen@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Klisen@gmail.com
-    </td>
-
-</tr>
-<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Mutiara Tsani
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Tsanii@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Tsanii@gmail.com
-    </td>
-
-
-</tr>
-<tr class="bg-white dark:bg-gray-800">
-    <td data-cell="Nama Penyewa " scope="row"
-        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-        Natalie
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Nata@gmail.com
-    </td>
-    <td data-cell="Email " class="px-6 py-4">
-        Nata@gmail.com
-    </td>
-
-</tr> -->
+                                    <?php endforeach?>
                                 </tbody>
                             </table>
                         </div>
@@ -1906,6 +1800,7 @@
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -1914,11 +1809,33 @@
         $(document).ready(function () {
 
             var table = $('#examples').DataTable({
-                responsive: true
             })
-                .columns.adjust()
-                .responsive.recalc();
         });
+        function hapus(id) {
+        Swal.fire({
+     title: 'Apakah Mau Dihapus?',
+     text: "data ini tidak bisa dikembalikan lagi!",
+     icon: 'warning',
+     showCancelButton: true,
+     confirmButtonColor: '#3085d6',
+     cancelButtonColor: '#d33',
+     cancelButtonText: 'Batal',
+     confirmButtonText: 'Ya, hapus!'
+      }).then((result) => {
+    if (result.isConfirmed) {
+    Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Data Terhapus!!',
+    showConfirmButton: false,
+    timer: 1500
+                })
+      setTimeout(() => {
+        window.location.href= "<?php echo base_url('supervisor/hapus_data_operator/') ?>" + id;
+      }, 1800);
+    }
+    })
+  }
     </script>
 
 </body>
