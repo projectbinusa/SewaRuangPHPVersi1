@@ -226,7 +226,7 @@
     <div class="LoginPageContainer">
         <div class="LoginPageInnerContainer">
             <div class="ImageContianer">
-                <img src="<?php echo base_url() ?>image/login.png" class="GroupImage">
+                <img src="<?php echo base_url()?>image/login.png" class="GroupImage">
             </div>
             <div class="LoginFormContainer">
                 <div class="LoginFormInnerContainer">
