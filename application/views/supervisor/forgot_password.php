@@ -23,7 +23,7 @@
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: "DM Sans", sans-serif;
             font-size: 1.6rem;
             background-color: #E4F1FF;
             color: #222;
@@ -105,10 +105,6 @@
             border-bottom: 1px solid #bcb9b9;
         }
 
-        /* 
-        input::placeholder {
-            padding: 5rem;
-        } */
 
         .submit {
             font-size: 1.7rem;
@@ -142,7 +138,7 @@
 
         .password-toggle {
             position: absolute;
-            top: 72%;
+            top: 40%;
             transform: translateY(-50%);
             right: 40rem;
             cursor: pointer;
@@ -150,7 +146,7 @@
 
         .password-toggle_baru {
             position: absolute;
-            top: 87%;
+            top: 56%;
             transform: translateY(-50%);
             right: 40rem;
             cursor: pointer;
@@ -158,7 +154,7 @@
 
         .password-toggle_konfirmasi {
             position: absolute;
-            top: 102%;
+            top: 71%;
             transform: translateY(-50%);
             right: 40rem;
             cursor: pointer;
@@ -166,115 +162,112 @@
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
-                position: absolute;
-                top: 70%;
-                transform: translateY(-50%);
+                top: 45%;
                 right: 4.9rem;
                 cursor: pointer;
             }
+
             .password-toggle_baru {
-                /* position: absolute; */
-                top: 76%;
-                /* transform: translateY(-50%); */
+                top: 60%;
                 right: 4.9rem;
-                /* cursor: pointer; */
+                cursor: pointer;
             }
+
             .password-toggle_konfirmasi {
-                /* position: absolute; */
-                top: 76%;
-                /* transform: translateY(-50%); */
+                top: 75%;
                 right: 4.9rem;
-                /* cursor: pointer; */
+                cursor: pointer;
             }
         }
     </style>
 </head>
 
 <body>
+    <?php echo include("sidebar.php")?>
     <main>
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Operator</h1>
+                <h1 id="title" class="main-heading">Forgot Password</h1>
             </header>
-            <?php foreach ($operator as $row): ?>
-            <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <input type="hidden" id="id" name="id" value="<?php echo $row->id ?>">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" value="<?php echo $row->username?>" placeholder="Ketik nama anda"
-                    required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input type="email" name="email" id="email" class="email"  value="<?php echo $row->email?>" placeholder="Ketik email anda" required>
+            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
+                class="survey-form">
+                <label for="password" id="password-label">Password Lama<span class="required">*</span></label>
+                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
+                <input type="password" name="password" id="password" class="password" placeholder="Ketik password anda"
+                    required>
 
 
                 <label for="password" id="password-label">Password Baru<span class="required">*</span></label>
                 <i class="password-toggle_baru  fa fa-eye-slash" onclick="togglePassword_baru()"></i>
-                <input type="password" name="password_baru" id="password_baru" class="password" placeholder="Ketik password anda"
-                    >
+                <input type="password" name="password_baru" id="password_baru" class="password"
+                    placeholder="Ketik password anda" required>
 
-               
+                <label for="password" id="password-label">Konfirmasi Password<span class="required">*</span></label>
+                <i class="password-toggle_konfirmasi  fa fa-eye-slash" onclick="togglePassword_konfirmasi()"></i>
+                <input type="password" name="password_konfirmasi" id="password_konfirmasi" class="password"
+                    placeholder="Ketik password anda" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-            <?php endforeach?>
+
 
         </div>
     </main>
 </body>
 <script type="text/javascript">
-        function togglePassword() {
-            var passwordField = document.getElementById('password');
-            var passwordToggle = document.querySelector('.password-toggle');
+    function togglePassword() {
+        var passwordField = document.getElementById('password');
+        var passwordToggle = document.querySelector('.password-toggle');
 
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                passwordToggle.classList.remove('fa-eye-slash');
-                passwordToggle.classList.add('fa-eye');
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
 
 
-            } else {
-                passwordField.type = "password";
-                passwordToggle.classList.add('fa-eye-slash');
-                passwordToggle.classList.remove('fa-eye');
+        } else {
+            passwordField.type = "password";
+            passwordToggle.classList.add('fa-eye-slash');
+            passwordToggle.classList.remove('fa-eye');
 
-            }
         }
-        function togglePassword_baru() {
-            var passwordField = document.getElementById('password_baru');
-            var passwordToggle = document.querySelector('.password-toggle_baru');
+    }
+    function togglePassword_baru() {
+        var passwordField = document.getElementById('password_baru');
+        var passwordToggle = document.querySelector('.password-toggle_baru');
 
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                passwordToggle.classList.remove('fa-eye-slash');
-                passwordToggle.classList.add('fa-eye');
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
 
 
-            } else {
-                passwordField.type = "password";
-                passwordToggle.classList.add('fa-eye-slash');
-                passwordToggle.classList.remove('fa-eye');
+        } else {
+            passwordField.type = "password";
+            passwordToggle.classList.add('fa-eye-slash');
+            passwordToggle.classList.remove('fa-eye');
 
-            }
         }
-        function togglePassword_konfirmasi() {
-            var passwordField = document.getElementById('password_konfirmasi');
-            var passwordToggle = document.querySelector('.password-toggle_konfirmasi');
+    }
+    function togglePassword_konfirmasi() {
+        var passwordField = document.getElementById('password_konfirmasi');
+        var passwordToggle = document.querySelector('.password-toggle_konfirmasi');
 
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                passwordToggle.classList.remove('fa-eye-slash');
-                passwordToggle.classList.add('fa-eye');
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
 
 
-            } else {
-                passwordField.type = "password";
-                passwordToggle.classList.add('fa-eye-slash');
-                passwordToggle.classList.remove('fa-eye');
+        } else {
+            passwordField.type = "password";
+            passwordToggle.classList.add('fa-eye-slash');
+            passwordToggle.classList.remove('fa-eye');
 
-            }
         }
-    </script>
+    }
+</script>
 
 </html>

@@ -46,12 +46,14 @@ class Pelanggan extends CI_Controller
 
     public function report_sewa()
     {
-        $this->load->view('pelanggan/report_sewa');
+        $this->load->view('pelanggan/edit_peminjaman');
     }
     public function dashboard()
     {
         $this->load->view('pelanggan/dashboard');
     }
+
+  public funtion update_data_pelanggan
      $data =  array(
         'nama' => $nama,
         'phone' => $phone,
@@ -66,4 +68,19 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/update_data');
     }
 }
+
+
+public function update_data()
+
+{
+    $this->load->view('pelanggan/update_data');
+}
+public function table_peminjaman_tempat()
+
+{
+    $this->load->view('pelanggan/table_peminjaman_tempat');
+}
+
+}
+
 ?>
