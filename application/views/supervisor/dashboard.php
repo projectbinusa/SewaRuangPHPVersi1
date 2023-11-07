@@ -13,8 +13,14 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+         <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -5746,6 +5752,121 @@
      
     </style>
 
+    <!-- style table -->
+    <style>
+        
+        /*Form fields*/
+        .dataTables_wrapper select,
+        .dataTables_wrapper .dataTables_filter input {
+            color: #4F709C;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            line-height: 1.25;
+            border-width: 2px;
+            border-radius: .25rem;
+            border-color: #edf2f7;
+            background-color: #edf2f7;
+        }
+
+        /*Row Hover*/
+        table.dataTable.hover tbody tr:hover,
+        table.dataTable.display tbody tr:hover {
+            background-color: #ebf4ff;
+        }
+
+        /*Pagination Buttons*/
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-weight: 700;
+            border-radius: .25rem;
+            border: 1px solid transparent;
+        }
+
+        /*Pagination Buttons - Current selected */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            color: white !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+            font-weight: 700;
+            border-radius: .25rem;
+            background: #4F709C !important;
+            border: 1px solid transparent;
+        }
+
+        /*Pagination Buttons - Hover */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            color: white !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+            font-weight: 700;
+            border-radius: .25rem;
+            background: #4F709C !important;
+            border: 1px solid transparent;
+        }
+
+        /*Add padding to bottom border */
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
+            margin-bottom: 0.75em;
+        }
+
+        /*Change colour of responsive icon*/
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+            background-color: #4F709C !important;
+            
+        }
+
+
+
+        /* code responsive table */
+        @media (max-width: 600px) {
+
+
+            table {
+                width: 100%;
+            }
+
+            tbody {
+                text-align: left;
+            }
+
+            .option-select {
+                font-size: 12px;
+            }
+
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
+
+            .responsive-3 {
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
+        }
+    </style>
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -5768,10 +5889,7 @@
                     <div class="counter-area-inner">
                       
                     </div>
-                    <div class="btn-area">
-                        <a class="btn btn-border-white page-scroll" href="#demo">Login</a>
-                        <a class="btn btn-white me-0" href="#">Download Now</a>
-                    </div>
+                 
                 </div>
             </div>
         </div>
@@ -5845,8 +5963,8 @@
    
 </section>
     
-
-<section id="widget" class=" widget-section pd-top-130">
+    <!-- Data Operator -->
+    <section id="widget" class=" widget-section pd-top-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5858,18 +5976,12 @@
             </div>
 
             <div class="row justify-content-center">
-                <!-- <a href="supervisor/tambah_user_operator"
-                        class="bg-green-500 hover:bg-green-700 ml-auto w-36 text-white font-bold py-2 px-4 rounded">
-                        <span class="pe-2">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        Tambah
-                    </a> -->
+              
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="examples"
+                            <table style="min-width: 22rem;" id="example_data_operator"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -5880,9 +5992,7 @@
                                         <th data-priority="2" scope="col" class="px-3 py-3">
                                             Email
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
-                                            Aksi
-                                        </th>
+                                      
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -5890,14 +6000,83 @@
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="Nama Penyewa " scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Hanafi
+                                           Muh Hatta Hanafi 
                                         </td>
                                         <td data-cell="Email " class="px-6 py-4">
                                             Hanafi@gmail.com
                                         </td>
+                                    </tr>
+                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-                                        <td data-cell="Aksi" class="px-3 py-4 flex">
+        </div>
+    </section>
+
+    <!-- Laporan Penyewa -->
+    <section id="widget" class=" widget-section pd-top-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Laporan Penyewa</h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+                            <table style="min-width: 22rem;" id="example_laporan_penyewa"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                            Nama Penyewa
+                                        </th>
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                            No Ruang
+                                        </th>
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Kapasitas
+                                        </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Jam Penggunaan
+                                        </th>
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Extra Waktu
+                                        </th>
+                                        <!-- <th data-priority="5" scope="col" class="px-3 py-3 text-center">
+                                            Aksi
+                                        </th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Ahmad Sony
+                                        </td>
+                                        <td data-cell="No Ruang " class="px-3 py-4">
+                                            R.303
+                                        </td>
+                                        <td data-cell="Kapasitas " class="px-3 py-4">
+                                            AC 3 PK
+                                        </td>
+                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
+                                            12.00 - 13.30
+                                        </td>
+                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
+                                            -
+                                        </td>
+                                        <!-- <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
 
                                             <a href="edit_user_operator"
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
@@ -5913,12 +6092,9 @@
                                                 </span>
                                                 Hapus
                                             </button>
-
-
-                                        </td>
-
+                                        </td> -->
                                     </tr>
-                
+                                  
                                 </tbody>
                             </table>
                         </div>
@@ -5929,9 +6105,79 @@
 
         </div>
     </section>
+  
+    <!-- Approve -->
+    <section id="widget" class=" widget-section pd-top-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Approve</h2>
 
-    <?php include('laporan_penyewa.php') ?>
-    <?php include('approve.php') ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+              
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+
+                            <table style="min-width: 22rem;" id="example_approve"
+                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                            Nama Penyewa
+                                        </th>
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                            No Ruang
+                                        </th>
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Kapasitas
+                                        </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Jam Penggunaan
+                                        </th>
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                            Extra Waktu
+                                        </th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Ahmad Sony
+                                        </td>
+                                        <td data-cell="No Ruang " class="px-3 py-4">
+                                            R.303
+                                        </td>
+                                        <td data-cell="Kapasitas " class="px-3 py-4">
+                                            AC 3 PK
+                                        </td>
+                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
+                                            12.00 - 13.30
+                                        </td>
+                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
+                                            -
+                                        </td>
+                                       
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
    
     <section id="forget" class="widget-section pd-top-120">
         <div class="container">
@@ -6029,61 +6275,7 @@
                     </div>
                 </div>
             </div>
-            <!--  <div class="row justify-content-center">
-                <div class="col-lg-12 mt-5">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/h2.png" alt="img"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12 mt-5">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/h3.png" alt="img"></span>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <div class="row justify-content-center">
-                <div class="col-lg-8 text-center pd-top-130">
-                    <div class="section-title">
-                        <h2 class="title">Footer Style</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/f1.png" alt="img"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12 mt-5">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/f2.png" alt="img"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center pd-top-130">
-                    <div class="section-title">
-                        <h2 class="title">Breadcrumb Style</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <span class="thumb"><img class="w-100"
-                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/bc.png" alt="img"></span>
-                    </div>
-                </div>
-            </div> -->
+  
         </div>
     </section>
 
@@ -6472,13 +6664,46 @@
     <a id="back-to-top"></a>
 
 
+    
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <!-- <script src="demo-landing/js/jquery.min.js" type="text/javascript"></script>
-    <script src="demo-landing/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="demo-landing/js/counter.js" type="text/javascript"></script>
-    <script src="demo-landing/js/waypoints.js" type="text/javascript"></script>
-    <script src="demo-landing/js/demos.js" type="text/javascript"></script>
-    <script src="demo-landing/js/main.js" type="text/javascript"></script> -->
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var table = $('#example_data_operator').DataTable({
+                // responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+
+        $(document).ready(function () {
+
+            var table = $('#example_laporan_penyewa').DataTable({
+                responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+
+        $(document).ready(function () {
+
+            var table = $('#example_approve').DataTable({
+                responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
+
+  
+
+
 </body>
 
 </html>

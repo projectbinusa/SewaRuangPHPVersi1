@@ -871,14 +871,6 @@
                 padding: 0 21px;
             }
 
-            /* .footer-widget.pd-bottom-100 {
-                padding-bottom: 70px;
-            }
-
-            .footer-widget h5 {
-                font-size: 16px;
-            } */
-
             .main-logo img {
                 width: 160px;
             }
@@ -916,21 +908,7 @@
             border-radius: 5px;
         }
 
-        /* .footer-bottom {
-            border-top: 1px solid rgba(0, 33, 71, 0.15);
-            padding: 25px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-bottom p {
-            margin-bottom: 0;
-            color: #fff;
-        } */
-
-        /*--------------------------------------------------
-    ##Footer
----------------------------------------------------*/
+     
 
 
         h1 {
@@ -1208,80 +1186,6 @@
             }
         }
 
-        /*-----------------------------------------
-    ## Preloader Css
--------------------------------------------*/
-        .pre-wrap {
-            position: fixed;
-            content: "";
-            transform: translate(-100%, -240%);
-            font-size: 62px;
-        }
-
-        .preloader-inner {
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 999999999999;
-            background-color: #030724;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .preloader-inner .cancel-preloader {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-        }
-
-        .preloader-inner .cancel-preloader a {
-            background-color: #fff;
-            font-weight: 600;
-            text-transform: capitalize;
-            color: var(--main-color);
-            width: 200px;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            border-radius: 30px;
-            display: block;
-            transition: all 0.4s ease;
-        }
-
-        .preloader-inner .cancel-preloader a:hover {
-            background-color: var(--heading-color);
-            color: #fff;
-        }
-
-        .spinner {
-            margin: 120px auto;
-            width: 60px;
-            height: 60px;
-            position: relative;
-            text-align: center;
-            animation: sk-rotate 2s infinite linear;
-        }
-
-        .dot1,
-        .dot2 {
-            width: 60%;
-            height: 60%;
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            background-color: var(--main-color);
-            border-radius: 100%;
-            animation: sk-bounce 2s infinite ease-in-out;
-        }
-
-        .dot2 {
-            top: auto;
-            bottom: 0;
-            animation-delay: -1s;
-        }
 
         @keyframes sk-rotate {
             100% {
@@ -1317,37 +1221,6 @@
 
             100% {
                 transform: translateY(-8px);
-            }
-        }
-
-        @keyframes left-image-bounce {
-            0% {
-                transform: translateX(-5px);
-            }
-
-            50% {
-                transform: translateX(10px);
-            }
-
-            100% {
-                transform: translateX(-5px);
-            }
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-                transform-origin: 50%;
-            }
-        }
-
-        @keyframes ripple-white3 {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1);
-            }
-
-            100% {
-                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 100px rgba(255, 255, 255, 0);
             }
         }
 
@@ -1536,33 +1409,7 @@
             }
         }
 
-        @media only screen and (max-width: 375px) {
-
-            .btn-custom-default,
-            .btn-custom-white {
-                padding: 5px 18px;
-            }
-
-            .search-popup .search-form .form-group .form-control,
-            .search-popup .search-form .submit-btn {
-                height: 45px;
-            }
-
-            .search-popup .search-form {
-                min-width: 300px;
-            }
-        }
-
-        @media only screen and (max-width: 320px) {
-            .search-popup .search-form {
-                min-width: 265px;
-            }
-
-            .responsive-mobile-menu .navbar-toggler {
-                left: calc(100% - 95px);
-            }
-        }
-
+     
 
 
         /*Form fields*/
@@ -1732,70 +1579,70 @@
                     <div class="header-item">
                         <div class="relative">
 
-                        <table style="min-width: 22rem;" id="example_data"
-                                    class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="px-3 py-3">
-                                                Nama Penyewa
-                                            </th>
-                                            <th data-priority="2" scope="col" class="px-3 py-3">
-                                                No Ruang
-                                            </th>
-                                            <th data-priority="3" scope="col" class="px-3 py-3">
-                                                Kapasitas
-                                            </th>
-                                            <th data-priority="4" scope="col" class="px-3 py-3">
-                                                Jam Penggunaan
-                                            </th>
-                                            <th data-priority="5" scope="col" class="px-3 py-3">
-                                                Extra Waktu
-                                            </th>
-                                            <th data-priority="5" scope="col" class="px-3 py-3">
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                Ahmad Sony
-                                            </td>
-                                            <td data-cell="No Ruang " class="px-3 py-4">
-                                                R.303
-                                            </td>
-                                            <td data-cell="Kapasitas " class="px-3 py-4">
-                                                AC 3 PK
-                                            </td>
-                                            <td data-cell="Jam Penggunaan " class="px-3 py-4">
-                                                12.00 - 13.30
-                                            </td>
-                                            <td data-cell="Exstra Waktu " class="px-3 py-4">
-                                                -
-                                            </td>
-                                            <td data-cell="Aksi" class="px-3 py-4 flex">
+                            <table style="min-width: 22rem;" id="example_data"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                            Nama Penyewa
+                                        </th>
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                            No Ruang
+                                        </th>
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Kapasitas
+                                        </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Jam Penggunaan
+                                        </th>
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                            Extra Waktu
+                                        </th>
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                            Aksi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Ahmad Sony
+                                        </td>
+                                        <td data-cell="No Ruang " class="px-3 py-4">
+                                            R.303
+                                        </td>
+                                        <td data-cell="Kapasitas " class="px-3 py-4">
+                                            AC 3 PK
+                                        </td>
+                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
+                                            12.00 - 13.30
+                                        </td>
+                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
+                                            -
+                                        </td>
+                                        <td data-cell="Aksi" class="px-3 py-4 flex">
 
-                                                <a href="supervisor/edit_user_operator"
-                                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                    <span class="pe-2">
+                                            <a href="supervisor/edit_user_operator"
+                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                <span class="pe-2">
                                                     <i class="fas fa-check"></i>
-                                                    </span>
-                                                    Setuju
-                                                </a>
-                                                <button onclick=""
-                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                    <span class="pe-2">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </span>
-                                                    Hapus
-                                                </button>
-                                            </td>
-                                        </tr>
-                                  
-                                    </tbody>
-                                </table>
+                                                </span>
+                                                Setuju
+                                            </a>
+                                            <button onclick=""
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <span class="pe-2">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </span>
+                                                Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
