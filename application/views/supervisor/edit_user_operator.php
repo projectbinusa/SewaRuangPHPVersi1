@@ -197,35 +197,28 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Operator</h1>
             </header>
-
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
+            <?php foreach ($operator as $row): ?>
+            <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
                 class="survey-form">
+                <input type="hidden" id="id" name="id" value="<?php echo $row->id ?>">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Ketik nama anda"
+                <input type="text" name="username" id="username" class="username" value="<?php echo $row->username?>" placeholder="Ketik nama anda"
                     required>
 
                 <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input type="email" name="email" id="email" class="email" placeholder="Ketik email anda" required>
-
-                <!-- <label for="password" id="password-label">Password Lama<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Ketik password anda"
-                    required>
+                <input type="email" name="email" id="email" class="email"  value="<?php echo $row->email?>" placeholder="Ketik email anda" required>
 
 
                 <label for="password" id="password-label">Password Baru<span class="required">*</span></label>
                 <i class="password-toggle_baru  fa fa-eye-slash" onclick="togglePassword_baru()"></i>
                 <input type="password" name="password_baru" id="password_baru" class="password" placeholder="Ketik password anda"
-                    required>
+                    >
 
-                <label for="password" id="password-label">Konfirmasi Password<span class="required">*</span></label>
-                <i class="password-toggle_konfirmasi  fa fa-eye-slash" onclick="togglePassword_konfirmasi()"></i>
-                <input type="password" name="password_konfirmasi" id="password_konfirmasi" class="password" placeholder="Ketik password anda"
-                    required> -->
+               
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
+            <?php endforeach?>
 
         </div>
     </main>

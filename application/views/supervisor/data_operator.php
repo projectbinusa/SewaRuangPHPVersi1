@@ -1721,7 +1721,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <a href="supervisor/tambah_user_operator"
+                <a href="tambah_user_operator"
                         class="bg-green-500 hover:bg-green-700 ml-auto w-32 text-white font-bold py-2 px-2 rounded">
                         <span class="pe-2">
                             <i class="fas fa-plus"></i>
@@ -1769,7 +1769,7 @@
 
                                         <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
 
-                                            <a href="edit_user_operator"
+                                            <a href="<?php echo base_url('supervisor/edit_user_operator/'). $row->id?>"
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="pe-2">
                                                     <i class="fas fa-edit"></i>
