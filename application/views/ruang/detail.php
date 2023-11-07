@@ -19,30 +19,20 @@
         <div class="w-full mx-auto">
 
           <!-- Konten halaman Anda di sini -->
-          <!-- <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <?php foreach ($ruang as $row) : ?>
-                <div class="bg-gray-200 p-8">
-                  <img src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="">
-                  <div class="p-4">
-                    <h2 class="text-3xl font-bold">R. <?php echo $row->no_ruang; ?></h2>
-                    <p class="text-gray-700 text-lg">Lantai <?php echo $row->no_lantai; ?></p>
-                  </div>
-                </div>
-              <?php endforeach; ?>
-            </div>
-
           <?php foreach ($ruang as $row) : ?>
-            <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-              <img class="object-cover w-full h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="">
-              <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">R. <?php echo $row->no_ruang; ?></h5>
-                <p class="mb-3 font-normal text-3x1 dark:text-gray-700">Lantai <?php echo $row->no_lantai; ?></p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
-              </div>
-            </div>
-          <?php endforeach; ?>
-              
+  <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700" style="max-width: 400px; margin: 0 auto;">
+    <img class="object-cover w-full h-96 md:h-62 md:w-62 md:rounded-none md:rounded-l-lg" src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="">
+    <div class="flex flex-col justify-between p-10 leading-normal">
+      <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">R. <?php echo $row->no_ruang; ?></h5>
+      <p class="mb-3 font-normal text-xl dark:text-gray-700">Lantai <?php echo $row->no_lantai; ?></p>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
+      <hr class="my-3 border-t border-gray-300 dark:border-gray-700">
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">*Kunjungi situs kami <a href="https://github.com/BinusaProject/ExcSewaRuang">sewaruang@gmail.com</a></p>
+    </div>
+  </div>
+<?php endforeach; ?>
+
+
         </div>
       </div>
 
@@ -103,4 +93,4 @@
   </script>
 </body>
 
-</html>
+</html> 

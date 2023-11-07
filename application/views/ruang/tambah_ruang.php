@@ -13,11 +13,11 @@
 
 <body class="h-screen overflow-hidden flex flex-col bg-gray-100">
 <?php $this->load->view('sidebar'); ?>
-            <div class="p-8 w-full md:w-2/3 flex justify-center items-center">
+            <div class="p-8 w-full md:w-2/3 flex justify-center items-center m-auto ">
                 <div class="max-w-screen-xl w-full mx-auto"> <!-- Menggunakan max-w-screen-xl -->
                     <!-- Konten halaman Anda di sini -->
                     <main>
-                        <div class="container mx-auto p-auto">
+                        <div class="container mx-auto p-auto ml-auto">
                             <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
                                 <div class="bg-blue-600 h-3 w-full absolute top-0 left-0 rounded-t-lg"></div>
                                 <h1 id="title" class="text-4xl font-bold text-black-900">Tambah Data Ruangan</h1>
