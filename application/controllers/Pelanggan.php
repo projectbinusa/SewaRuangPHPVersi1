@@ -36,11 +36,36 @@ public function aksi_tambah_pelanggan()
     redirect(base_url('pelanggan/data_master_pelanggan'));
 }
 
+// update data pelanggan
 public function update_data()
+	{
+	$data['pelanggan']=$this->m_model->get_data('pelanggan')->result();
+	$this->load->view('pelanggan/update_data', $data);
+	}
 
-{
-    $this->load->view('pelanggan/update_data');
-}
+	
+
+// aksi update data pelanggan
+	public function aksi_update_data()
+  {
+    $data = array (
+      'nama' => $this->input->post('nama'),
+      'phone' => $this->input->post('phone'),
+      'payment_method' => $this->input->post('payment_method'),
+    );
+    $eksekusi=$this->m_model->ubah_data
+    ('pelanggan', $data, array('id'=>$this->input->post('id')));
+    if($eksekusi)
+    {
+      $this->session->set_flashdata('sukses', 'berhasil');
+      redirect(base_url('pelanggan/data_master_pelanggan'));
+    } 
+    else
+    {
+      $this->session->set_flashdata('error', 'gagal..');
+      redirect(base_url('pelanggan/update_data/'.$this->input->post('id')));
+    }
+  }
 
 }
 

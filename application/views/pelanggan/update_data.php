@@ -157,25 +157,25 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">UPDATE DATA</h1>
             </header>
-            
+            <?php foreach ($pelanggan as $row ) : ?>
             <form action="<?php echo base_url('pelanggan/aksi_update_data')?>" method="post" id="survey-form" class="survey-form">
-            <input name="id" type="hidden" >
+            <input name="id" type="hidden" value="<?php echo $row->id?>">
                 <label for="nama">Nama</label>
                 <input type="text" name="nama" id="no_lantai" class="no_lantai" 
-                >
+                value="<?php echo $row->nama ?>">
 
                 <label for="phone">Phone</label>
                 <input type="text" name="phone" id="no_ruang" class="no_ruang" 
-                >
+                value="<?php echo $row->phone ?>">
 
                 <label for="payment_method">Payment Method</label>
                 <input type="text" name="payment_method" id="no_ruang" class="no_ruang" 
-                >
+                value="<?php echo $row->payment_method ?>">
 
                 <input type="submit" id="submit" class="submit" value="update">
             </form>
         
-            
+            <?php endforeach ?>
           
         </div>
         

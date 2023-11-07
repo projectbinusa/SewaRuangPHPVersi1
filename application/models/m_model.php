@@ -22,7 +22,13 @@ class M_model extends CI_Model
         return $this->db->insert_id($table);
     }
 
-   
+
+    // m model update data pelanggan
+    public function ubah_data($tabel, $data, $where)
+    {
+        $data=$this->db->update($tabel, $data, $where);
+        return $this->db->affected_rows();
+    }
 
 
 }
