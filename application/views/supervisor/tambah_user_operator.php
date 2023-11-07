@@ -23,7 +23,7 @@
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: "DM Sans", sans-serif;
             font-size: 1.6rem;
             background-color: #E4F1FF;
             color: #222;
@@ -168,7 +168,8 @@
                 <h1 id="title" class="main-heading">Form Tambah Operator</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator')?>" method="post" id="survey-form" class="survey-form">
+            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
+                class="survey-form">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
                 <input type="text" name="username" id="username" class="username" placeholder="Ketik nama anda"
                     required>

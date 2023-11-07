@@ -19,11 +19,11 @@
             position: relative;
         }
 
-        .password-toggle-login {
+        .password-toggle-register {
             position: absolute;
             top: 62%;
             transform: translateY(-50%);
-            right: 8.3rem;
+            right: 7.9rem;
             cursor: pointer;
         }
 
@@ -188,19 +188,19 @@
                 position: relative;
             }
 
-            .password-toggle-login {
+            .password-toggle-register {
                 position: absolute;
-                top: 61%;
+                top: 64%;
                 transform: translateY(-50%);
                 right: 2.1rem;
                 cursor: pointer;
             }
 
-
             .LoginFormContainer {
                 justify-content: center;
             }
         }
+
 
         .LoginPageContainer::-webkit-scrollbar {
             width: 5px;
@@ -229,14 +229,21 @@
             <div class="LoginFormContainer">
                 <div class="LoginFormInnerContainer">
 
-                    <header class="header">Login</header>
+                    <header class="header">Register</header>
                     <header class="subHeader">Selamat Datang di <b>Website Sewa Ruang</b> Silahkan lengkapi data anda
                     </header>
 
-                    <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
+                    <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
-                                      class="labelIcon"><span>Email*
+                                    class="labelIcon"><span>Username*
+                                </span></label>
+                            <input type="text" name="username" class="input" id="username"
+                                placeholder="Enter your Username">
+                        </div>
+                        <div class="inputContainer">
+                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
+                                    class="labelIcon"><span>Email*
                                 </span></label>
                             <input type="email" name="email" class="input" id="emailAddress"
                                 placeholder="Enter your Email Address">
@@ -244,12 +251,11 @@
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png"
                                     class="labelIcon"><span>Password*</span></label>
-                            <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
+                            <i class="password-toggle-register fa fa-eye-slash" onclick="togglePassword()"></i>
                             <input type="password" name="password" class="input" id="password"
                                 placeholder="Enter your Password">
                             <br>
-                            <!-- <label class="showPassword" for="showPasswordCheckbox">show password <input type="checkbox"
-                                    id="showPasswordCheckbox"></label> -->
+
                         </div>
 
                         <button name="submit" type="submit" class="LoginButton">Login</button>
