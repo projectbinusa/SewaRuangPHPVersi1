@@ -66,6 +66,10 @@ class Supervisor extends CI_Controller {
 	{
 		$this->load->view('supervisor/edit_user_operator');
 	}
+    public function edit_laporan_penyewa()
+	{
+		$this->load->view('supervisor/edit_laporan_penyewa');
+	}
     public function laporan_penyewa()
 	{
 		$this->load->view('supervisor/laporan_penyewa');
