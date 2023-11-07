@@ -6282,7 +6282,7 @@
      
 
     <!-- inner Section -->
-    <section id="inner" class="inner-section pd-top-130">
+    <!-- <section id="inner" class="inner-section pd-top-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6393,10 +6393,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- inner Section -->
-    <section id="featured" class="featured-section pd-top-87 pd-bottom-110">
+    <!-- <section id="featured" class="featured-section pd-top-87 pd-bottom-110">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6499,7 +6499,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <!-- testimonial area start -->
