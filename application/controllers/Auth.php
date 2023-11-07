@@ -15,6 +15,10 @@ class Auth extends CI_Controller {
 	{
 		$this->load->view('auth/login');
 	}
+	public function register()
+	{
+		$this->load->view('auth/register');
+	}
      //function aksi login
     public function aksi_login()
     {
