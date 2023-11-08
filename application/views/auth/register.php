@@ -21,9 +21,9 @@
 
         .password-toggle-register {
             position: absolute;
-            top: 62%;
+            top: 69%;
             transform: translateY(-50%);
-            right: 7.9rem;
+            right: 8rem;
             cursor: pointer;
         }
 
@@ -235,7 +235,7 @@
 
                     <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
+                            <label class="label" for="emailAddress"><img src="https://o.remove.bg/downloads/b8d34e69-6003-46eb-8d9f-23b06a7ff07d/png-transparent-computer-icons-user-username-avatar-person-skill-thumbnail-removebg-preview.png"
                                     class="labelIcon"><span>Username*
                                 </span></label>
                             <input type="text" name="username" class="input" id="username"

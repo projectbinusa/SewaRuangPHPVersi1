@@ -41,11 +41,6 @@
             background-color: #f1f1f1;
         }
 
-        .content-text {
-            font-family: "DM Sans", sans-serif;
-            font-size: 17px;
-        }
-
         @media (min-width: 1200px) {
 
             .container,
@@ -166,7 +161,7 @@
             margin-right: 7px;
         }
 
-    
+
 
         .header-item {
             display: block;
@@ -206,7 +201,6 @@
             transform: scale(1.05);
         }
 
-
         .cm-soon-title {
             position: absolute;
             left: 50%;
@@ -237,7 +231,6 @@
             opacity: 1;
         }
 
-    
         /***section-title***/
         .section-title {
             margin-bottom: 60px;
@@ -261,9 +254,6 @@
             color: rgba(0, 0, 0, 0.4);
         }
 
-   
-
-       
         @media all and (max-width: 767px) {
             .nav-right-part ul li .btn {
                 display: none;
@@ -345,9 +335,6 @@
             box-shadow: 0 0 40px rgb(82 85 90 / 20%);
             border-radius: 5px;
         }
-
-     
-
 
         h1 {
             font-size: 62px;
@@ -802,8 +789,13 @@
             line-height: 1.25;
             border-width: 2px;
             border-radius: .25rem;
-            border-color: #edf2f7;
-            background-color: #edf2f7;
+            border-color: #F5F7F8;
+            background-color: #F5F7F8;
+            margin: 10px 0;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 9px;
         }
 
         /*Row Hover*/
@@ -814,16 +806,18 @@
 
         /*Pagination Buttons*/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 700;
+            font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
+            height: 37px;
+            padding-top: 5px;
         }
 
         /*Pagination Buttons - Current selected */
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 700;
+            font-weight: 400;
             border-radius: .25rem;
             background: #4F709C !important;
             border: 1px solid transparent;
@@ -833,28 +827,25 @@
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 700;
+            font-weight: 400;
             border-radius: .25rem;
             background: #4F709C !important;
             border: 1px solid transparent;
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/
-            margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
         table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
         table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
             background-color: #4F709C !important;
-          
+
         }
 
         /* code responsive table */
         @media (max-width: 600px) {
-
-
             table {
                 width: 100%;
             }
@@ -897,15 +888,20 @@
                 font-weight: bold;
             }
         }
+
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px ;
+        }
     </style>
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <?php include("navbar.php") ?>
+<?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class=" widget-section pd-top-130">
+    <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -916,14 +912,14 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
-                <a href="tambah_user_operator"
-                        class="bg-green-500 hover:bg-green-700 ml-auto w-32 text-white font-bold py-2 px-2 rounded">
-                        <span class="pe-2">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        Tambah
-                    </a>
+            <div class="container-table row justify-content-center">
+                <a href="tambah_peminjaman_tempat"
+                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -934,7 +930,10 @@
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Hari / Tanggal 
+                                            No
+                                        </th>
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                            Hari / Tanggal
                                         </th>
                                         <th data-priority="2" scope="col" class="px-3 py-3">
                                             No Ruang
@@ -951,7 +950,7 @@
                                         <th data-priority="7" scope="col" class="px-3 py-3">
                                             Extra Waktu
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -960,38 +959,41 @@
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="Nama Penyewa " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
+                                        </td>
+                                        <td data-cell="No Ruang " class="w-32 px-3 py-4">
                                             Senin 07-11-23
                                         </td>
-                                        <td data-cell="No Ruang " class="px-3 py-4">
+                                        <td data-cell="No Ruang " class="w-32 px-3 py-4">
                                             R.303
                                         </td>
-                                        <td data-cell="Kapasitas " class="px-3 py-4">
-                                            AC 3 PK
+                                        <td data-cell="Kapasitas " class="w-36 px-3 py-4">
+                                            AC 3 PK 
                                         </td>
-                                        <td data-cell="Kapasitas " class="px-3 py-4">
+                                        <td data-cell="Kapasitas " class="w-32 px-3 py-4">
                                             Tidak ada
                                         </td>
-                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
+                                        <td data-cell="Jam Penggunaan " class="justify-content-center px-3 py-4">
                                             12.00 - 13.30
                                         </td>
                                         <td data-cell="Exstra Waktu " class="px-3 py-4">
                                             -
                                         </td>
-                                        <td data-cell="Aksi" class="px-3 py-4 flex">
+                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
                                             <a href="pelanggan/edit_peminjaman"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="pe-2">
-                                                <i class="fas fa-edit"></i>
+                                                <span class="">
+                                                    <i class="fas fa-edit"></i>
                                                 </span>
-                                                Edit
+                                                
                                             </a>
                                             <button onclick=""
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="pe-2">
+                                                <span class="">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
-                                                Hapus
+                                                
                                             </button>
                                         </td>
                                     </tr>
@@ -1018,7 +1020,7 @@
         $(document).ready(function () {
 
             var table = $('#example_data').DataTable({
-                responsive: true
+                // responsive: true
             })
                 .columns.adjust()
                 .responsive.recalc();
