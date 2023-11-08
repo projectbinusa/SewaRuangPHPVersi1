@@ -53,7 +53,7 @@ class Pelanggan extends CI_Controller
         $this->load->view('pelanggan/dashboard');
     }
 
-  public funtion update_data_pelanggan
+  public function update_data_pelanggan(){
      $data =  array(
         'nama' => $nama,
         'phone' => $phone,
@@ -62,25 +62,17 @@ class Pelanggan extends CI_Controller
 
     $this->m_model->tambah_data('pelanggan', $data);
     redirect(base_url('pelanggan/data_master_pelanggan'));
+  }
     public function update_data()
     
     {
         $this->load->view('pelanggan/update_data');
     }
-}
-
-
-public function update_data()
-
-{
-    $this->load->view('pelanggan/update_data');
-}
-public function table_peminjaman_tempat()
-
-{
-    $this->load->view('pelanggan/table_peminjaman_tempat');
-}
-
+    public function table_peminjaman_tempat()
+    
+    {
+        $this->load->view('pelanggan/table_peminjaman_tempat');
+    }
 }
 
 ?>
