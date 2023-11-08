@@ -21,9 +21,9 @@
 
         .password-toggle-register {
             position: absolute;
-            top: 69%;
+            top: 70%;
             transform: translateY(-50%);
-            right: 8rem;
+            right: 7.9rem;
             cursor: pointer;
         }
 
@@ -190,7 +190,7 @@
 
             .password-toggle-register {
                 position: absolute;
-                top: 64%;
+                top: 73%;
                 transform: translateY(-50%);
                 right: 2.1rem;
                 cursor: pointer;
@@ -251,14 +251,14 @@
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png"
                                     class="labelIcon"><span>Password*</span></label>
-                            <i class="password-toggle-register fa fa-eye-slash" onclick="togglePassword()"></i>
-                            <input type="password" name="password" class="input" id="password"
-                                placeholder="Enter your Password">
-                            <br>
-
+                            <div class="password-input-container">
+                                <input type="password" name="password" class="input" id="password"
+                                    placeholder="Enter your Password">
+                                <i class="password-toggle-register fa fa-eye-slash" onclick="togglePassword()"></i>
+                            </div>
                         </div>
 
-                        <button name="submit" type="submit" class="LoginButton">Login</button>
+                        <button name="submit" type="submit" class="LoginButton">Register</button>
 
                     </form>
                 </div>
@@ -269,19 +269,16 @@
 <script type="text/javascript">
     function togglePassword() {
         var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
+        var passwordToggle = document.querySelector('.password-toggle-login');
 
         if (passwordField.type === "password") {
             passwordField.type = "text";
             passwordToggle.classList.remove('fa-eye-slash');
             passwordToggle.classList.add('fa-eye');
-
-
         } else {
             passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
             passwordToggle.classList.remove('fa-eye');
-
+            passwordToggle.classList.add('fa-eye-slash');
         }
     }
 </script>
