@@ -61,21 +61,19 @@ class M_model extends CI_Model
         $this->db->from('ruangan');
         $this->db->where('id', $id);
         $query = $this->db->get();
-}
-
-    // m model update data pelanggan
-    public function ubah_data($tabel, $data, $where)
-    {
-        $data=$this->db->update($tabel, $data, $where);
-        return $this->db->affected_rows();
-    }
-
         if ($query->num_rows() > 0) {
             $result = $query->row();
             return $result->image;
         } else {
             return false;
         }
+    }
+
+    // m model update data pelanggan
+    public function ubah_data($tabel, $data, $where)
+    {
+        $data=$this->db->update($tabel, $data, $where);
+        return $this->db->affected_rows();
     }
     public function get_data_operator()
     {
