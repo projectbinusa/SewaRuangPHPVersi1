@@ -96,9 +96,7 @@
             font-size: 1.6rem;
         }
 
-        .username,
-        .email,
-        .password {
+        .email {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
@@ -131,59 +129,10 @@
         a:visited {
             color: #008080;
         }
-
-        .form-group {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 40%;
-            transform: translateY(-50%);
-            right: 40rem;
-            cursor: pointer;
-        }
-
-        .password-toggle_baru {
-            position: absolute;
-            top: 56%;
-            transform: translateY(-50%);
-            right: 40rem;
-            cursor: pointer;
-        }
-
-        .password-toggle_konfirmasi {
-            position: absolute;
-            top: 71%;
-            transform: translateY(-50%);
-            right: 40rem;
-            cursor: pointer;
-        }
-
-        @media only screen and (max-width: 800px) {
-            .password-toggle {
-                top: 45%;
-                right: 4.9rem;
-                cursor: pointer;
-            }
-
-            .password-toggle_baru {
-                top: 60%;
-                right: 4.9rem;
-                cursor: pointer;
-            }
-
-            .password-toggle_konfirmasi {
-                top: 75%;
-                right: 4.9rem;
-                cursor: pointer;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <?php echo include("sidebar.php")?>
     <main>
         <div class="container">
             <header class="heading">
@@ -193,21 +142,11 @@
 
             <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
                 class="survey-form">
-                <label for="password" id="password-label">Password Lama<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Ketik password anda"
+                <p>Silahkan masukkan email kamu untuk verifikasi code</p>
+                <label for="email" id="email-label">Email<span class="required">*</span></label>
+                <input type="email" name="email" id="email" class="email" placeholder="Ketik email anda"
                     required>
 
-
-                <label for="password" id="password-label">Password Baru<span class="required">*</span></label>
-                <i class="password-toggle_baru  fa fa-eye-slash" onclick="togglePassword_baru()"></i>
-                <input type="password" name="password_baru" id="password_baru" class="password"
-                    placeholder="Ketik password anda" required>
-
-                <label for="password" id="password-label">Konfirmasi Password<span class="required">*</span></label>
-                <i class="password-toggle_konfirmasi  fa fa-eye-slash" onclick="togglePassword_konfirmasi()"></i>
-                <input type="password" name="password_konfirmasi" id="password_konfirmasi" class="password"
-                    placeholder="Ketik password anda" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -216,58 +155,6 @@
         </div>
     </main>
 </body>
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-    function togglePassword_baru() {
-        var passwordField = document.getElementById('password_baru');
-        var passwordToggle = document.querySelector('.password-toggle_baru');
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-    function togglePassword_konfirmasi() {
-        var passwordField = document.getElementById('password_konfirmasi');
-        var passwordToggle = document.querySelector('.password-toggle_konfirmasi');
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-</script>
 
 </html>

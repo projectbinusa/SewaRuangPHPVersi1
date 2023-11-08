@@ -21,7 +21,7 @@
 
         .password-toggle-login {
             position: absolute;
-            top: 62%;
+            top: 63%;
             transform: translateY(-50%);
             right: 8.3rem;
             cursor: pointer;
@@ -190,7 +190,7 @@
 
             .password-toggle-login {
                 position: absolute;
-                top: 61%;
+                top: 65%;
                 transform: translateY(-50%);
                 right: 2.1rem;
                 cursor: pointer;
@@ -236,7 +236,7 @@
                     <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
-                                      class="labelIcon"><span>Email*
+                                    class="labelIcon"><span>Email*
                                 </span></label>
                             <input type="email" name="email" class="input" id="emailAddress"
                                 placeholder="Enter your Email Address">
@@ -244,12 +244,11 @@
                         <div class="inputContainer">
                             <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png"
                                     class="labelIcon"><span>Password*</span></label>
-                            <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
-                            <input type="password" name="password" class="input" id="password"
-                                placeholder="Enter your Password">
-                            <br>
-                            <!-- <label class="showPassword" for="showPasswordCheckbox">show password <input type="checkbox"
-                                    id="showPasswordCheckbox"></label> -->
+                            <div class="password-input-container">
+                                <input type="password" name="password" class="input" id="password"
+                                    placeholder="Enter your Password">
+                                <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
+                            </div>
                         </div>
 
                         <button name="submit" type="submit" class="LoginButton">Login</button>
@@ -263,19 +262,16 @@
 <script type="text/javascript">
     function togglePassword() {
         var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
+        var passwordToggle = document.querySelector('.password-toggle-login');
 
         if (passwordField.type === "password") {
             passwordField.type = "text";
             passwordToggle.classList.remove('fa-eye-slash');
             passwordToggle.classList.add('fa-eye');
-
-
         } else {
             passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
             passwordToggle.classList.remove('fa-eye');
-
+            passwordToggle.classList.add('fa-eye-slash');
         }
     }
 </script>
