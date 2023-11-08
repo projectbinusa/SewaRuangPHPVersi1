@@ -13,14 +13,8 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-         <!--Regular Datatables CSS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -221,24 +215,6 @@
             visibility: visible;
         }
 
-        /* .back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 44px;
-  height: 44px;
-  color: #fff;
-  background-color: var(--main-color);
-  text-align: center;
-  line-height: 44px;
-  z-index: 99;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  display: none;
-  animation: backto-top-bounce 4s infinite ease-in-out;
-  border-radius: 4px;
-} */
         @keyframes backto-top-bounce {
             0% {
                 transform: translateY(-5px);
@@ -909,6 +885,7 @@
             margin: 0 auto 20px;
             box-shadow: 0 0 40px rgb(82 85 90 / 20%);
             border-radius: 5px;
+            height: 15rem;
         }
 
         /* .footer-bottom {
@@ -3673,10 +3650,10 @@
             padding: 0;
             text-align: center;
             cursor: pointer;
-            /* background: var(--main-color); */
+            background: var(--main-color);
         }
 
-        /* .td-search-popup .search-form .submit-btn:hover, */
+        .td-search-popup .search-form .submit-btn:hover,
         .td-search-popup .search-form .submit-btn:focus,
         .td-search-popup .search-form .submit-btn:active {
             outline: 0;
@@ -5749,132 +5726,50 @@
             border-radius: 7px;
         }
 
+
+
+        /******* cara pesan *******/
+        .cara-memesan-landing-page {
+            max-width: 1120px;
+            padding: 0px 15px;
+            margin: 60px auto 35px;
+        }
+
+        .cara-memesan-landing-page h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .cara-memesan-landing-page .step-by-step {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step {
+            width: 300px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step img {
+            height: 90px;
+            margin-bottom: 35px;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step p {
+            font-size: 16px;
+        }
      
-    </style>
-
-    <!-- style table -->
-    <style>
-        
-        /*Form fields*/
-        .dataTables_wrapper select,
-        .dataTables_wrapper .dataTables_filter input {
-            color: #4F709C;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            padding-top: .5rem;
-            padding-bottom: .5rem;
-            line-height: 1.25;
-            border-width: 2px;
-            border-radius: .25rem;
-            border-color: #edf2f7;
-            background-color: #edf2f7;
-        }
-
-        /*Row Hover*/
-        table.dataTable.hover tbody tr:hover,
-        table.dataTable.display tbody tr:hover {
-            background-color: #ebf4ff;
-        }
-
-        /*Pagination Buttons*/
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 700;
-            border-radius: .25rem;
-            border: 1px solid transparent;
-        }
-
-        /*Pagination Buttons - Current selected */
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            color: white !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 700;
-            border-radius: .25rem;
-            background: #4F709C !important;
-            border: 1px solid transparent;
-        }
-
-        /*Pagination Buttons - Hover */
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            color: white !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 700;
-            border-radius: .25rem;
-            background: #4F709C !important;
-            border: 1px solid transparent;
-        }
-
-        /*Add padding to bottom border */
-        table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            margin-top: 0.75em;
-            margin-bottom: 0.75em;
-        }
-
-        /*Change colour of responsive icon*/
-        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-            background-color: #4F709C !important;
-            
-        }
-
-
-
-        /* code responsive table */
-        @media (max-width: 600px) {
-
-
-            table {
-                width: 100%;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-        }
     </style>
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    
 
     <!-- Navigation -->
     <?php include('navbar.php'); ?>
-    
 
     <!-- Banner Area Start-->
     <section id="banner" class="banner-area"
@@ -5887,9 +5782,12 @@
                         <p class="me-5">Di Website <span>Sewa Ruang</span></p>
                     </div>
                     <div class="counter-area-inner">
-                      
+                       
                     </div>
-                 
+                    <div class="btn-area">
+                        <a class="btn btn-border-white page-scroll" href="#demo">Login</a>
+                        <a class="btn btn-white me-0" href="#">Look at Room</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -5919,41 +5817,7 @@
 
                             <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat klien puas dengan meet yang anda buat.</p>
 
-                            <!-- <ul class="single-progress-inner mt-4 pt-2">
-                                <li class="progress-item" id="progress-running-1">
-                                    <h6>Nullam est</h6>
-                                    <div class="progress-bg">
-                                        <div id="progress-1" class="progress-rate" data-value="78">
-                                            <div class="progress-count-wrap">
-                                                <span class="progress-count counting" data-count="78">0</span>
-                                                <span class="counting-icons">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="progress-item" id="progress-running-2">
-                                    <h6>Mattis dictum nunc</h6>
-                                    <div class="progress-bg">
-                                        <div id="progress-2" class="progress-rate" data-value="60">
-                                            <div class="progress-count-wrap">
-                                                <span class="progress-count counting" data-count="60">0</span>
-                                                <span class="counting-icons">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="progress-item" id="progress-running-3">
-                                    <h6>Malesuada dictum</h6>
-                                    <div class="progress-bg">
-                                        <div id="progress-3" class="progress-rate" data-value="86">
-                                            <div class="progress-count-wrap">
-                                                <span class="progress-count counting" data-count="86">0</span>
-                                                <span class="counting-icons">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul> -->
+                        
                         </div>
                     </div>
                 </div>
@@ -5962,224 +5826,27 @@
     </div>
    
 </section>
-    
-    <!-- Data Operator -->
-    <section id="widget" class=" widget-section pd-top-130">
+    <!-- about area end -->
+
+    <!-- demo Section -->
+    <!-- <section id="demo" class="demo-section pd-top-140">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Data Operator</h2>
-
+                        <h5 class="subtitle">AWESOME DEMOS</h5>
+                        <h2 class="title">Data Akun Operator</h2>
                     </div>
                 </div>
             </div>
-
-            <div class="row justify-content-center">
-              
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-
-                            <table style="min-width: 22rem;" id="example_data_operator"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Nama Penyewa
-                                        </th>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
-                                            Email
-                                        </th>
-                                      
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                           Muh Hatta Hanafi 
-                                        </td>
-                                        <td data-cell="Email " class="px-6 py-4">
-                                            Hanafi@gmail.com
-                                        </td>
-                                    </tr>
-                
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-    </section>
+    </section>  -->
 
-    <!-- Laporan Penyewa -->
-    <section id="widget" class=" widget-section pd-top-130">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Laporan Penyewa</h2>
+    <!-- <?php include('data_operator.php') ?>
 
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-                            <table style="min-width: 22rem;" id="example_laporan_penyewa"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Nama Penyewa
-                                        </th>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
-                                            No Ruang
-                                        </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Jam Penggunaan
-                                        </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
-                                            Extra Waktu
-                                        </th>
-                                        <!-- <th data-priority="5" scope="col" class="px-3 py-3 text-center">
-                                            Aksi
-                                        </th> -->
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Ahmad Sony
-                                        </td>
-                                        <td data-cell="No Ruang " class="px-3 py-4">
-                                            R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
-                                            -
-                                        </td>
-                                        <!-- <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
-
-                                            <a href="edit_user_operator"
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="pe-2">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                Edit
-                                            </a>
-                                            <button onclick=""
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="pe-2">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
-                                                Hapus
-                                            </button>
-                                        </td> -->
-                                    </tr>
-                                  
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-  
-    <!-- Approve -->
-    <section id="widget" class=" widget-section pd-top-130">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Approve</h2>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-              
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-
-                            <table style="min-width: 22rem;" id="example_approve"
-                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Nama Penyewa
-                                        </th>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
-                                            No Ruang
-                                        </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Jam Penggunaan
-                                        </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
-                                            Extra Waktu
-                                        </th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Ahmad Sony
-                                        </td>
-                                        <td data-cell="No Ruang " class="px-3 py-4">
-                                            R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="px-3 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
-                                            -
-                                        </td>
-                                       
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
+    <?php include('laporan_penyewa.php') ?> -->
    
-    <section id="forget" class="widget-section pd-top-120">
+    <!-- <section id="forget" class="widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6275,9 +5942,63 @@
                     </div>
                 </div>
             </div>
-  
+            <!--  <div class="row justify-content-center">
+                <div class="col-lg-12 mt-5">
+                    <div class="header-item">
+                        <span class="thumb"><img class="w-100"
+                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/h2.png" alt="img"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12 mt-5">
+                    <div class="header-item">
+                        <span class="thumb"><img class="w-100"
+                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/h3.png" alt="img"></span>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row justify-content-center">
+                <div class="col-lg-8 text-center pd-top-130">
+                    <div class="section-title">
+                        <h2 class="title">Footer Style</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <span class="thumb"><img class="w-100"
+                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/f1.png" alt="img"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12 mt-5">
+                    <div class="header-item">
+                        <span class="thumb"><img class="w-100"
+                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/f2.png" alt="img"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center pd-top-130">
+                    <div class="section-title">
+                        <h2 class="title">Breadcrumb Style</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <span class="thumb"><img class="w-100"
+                                src="https://solverwp.com/demo/html/edumint/demo-landing/img/bc.png" alt="img"></span>
+                    </div>
+                </div>
+            </div> -->
         </div>
-    </section>
+    </section> -->
 
      
 
@@ -6294,10 +6015,10 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
-                        <a href="course.html"><span class="thumb"><img
-                                    src="https://solverwp.com/demo/html/edumint/demo-landing/img/course.png"
+                        <a href="#"><span class="thumb"><img
+                                    src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg"
                                     alt="img"></span>Course</a>
-                        <a class="btn btn-base" href="course.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="#" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -6305,84 +6026,84 @@
                         <a href="blog.html"><span class="thumb"><img
                                     src="https://solverwp.com/demo/html/edumint/demo-landing/img/blog.jpg"
                                     alt="img"></span>Blog</a>
-                        <a class="btn btn-base" href="blog.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="blog.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="event.html"><span class="thumb"><img src="demo-landing/img/event.png"
                                     alt="img"></span>Event</a>
-                        <a class="btn btn-base" href="event.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="event.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="pricing.html"><span class="thumb"><img src="demo-landing/img/pricing.png"
                                     alt="img"></span>Pricing</a>
-                        <a class="btn btn-base" href="pricing.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="pricing.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="team.html"><span class="thumb"><img src="demo-landing/img/team.png"
                                     alt="img"></span>Team</a>
-                        <a class="btn btn-base" href="team.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="team.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="gallery.html"><span class="thumb"><img src="demo-landing/img/gallery.png"
                                     alt="img"></span>Gallery</a>
-                        <a class="btn btn-base" href="gallery.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="gallery.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="contact.html"><span class="thumb"><img src="demo-landing/img/contact.png"
                                     alt="img"></span>Contact</a>
-                        <a class="btn btn-base" href="contact.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="contact.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item style-none">
                         <a href="signin.html"><span class="thumb"><img src="demo-landing/img/signin.png"
                                     alt="img"></span>Signin</a>
-                        <a class="btn btn-base" href="signin.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="signin.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item style-none">
                         <a href="signup.html"><span class="thumb"><img src="demo-landing/img/signup.png"
                                     alt="img"></span>Signup</a>
-                        <a class="btn btn-base" href="signup.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="signup.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="blog-details.html"><span class="thumb"><img src="demo-landing/img/blog-details.jpg"
                                     alt="img"></span>blog details</a>
-                        <a class="btn btn-base" href="blog-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="blog-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="course-details.html"><span class="thumb"><img src="demo-landing/img/course-details.png"
                                     alt="img"></span>Course Details</a>
-                        <a class="btn btn-base" href="course-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="course-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item">
                         <a href="event-details.html"><span class="thumb"><img src="demo-landing/img/event-details.png"
                                     alt="img"></span>event Details</a>
-                        <a class="btn btn-base" href="event-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="event-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="inner-item inner-page-item style-none">
                         <a href="team-details.html"><span class="thumb"><img src="demo-landing/img/team-details.png"
                                     alt="img"></span>Team Details</a>
-                        <a class="btn btn-base" href="team-details.html" target="_blank">Live Demo</a>
+                        <a class="btn btn-base" href="team-details.html" >Live Demo</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -6395,13 +6116,43 @@
         </div>
     </section> -->
 
-    <!-- inner Section -->
-    <!-- <section id="featured" class="featured-section pd-top-87 pd-bottom-110">
+     <!-- cara pesan Section -->
+    <section id="cara_pesan" class="inner-section pd-top-90">
+        <div style="background:#f4f5f7; padding:1px;">
+        <div class="cara-memesan-landing-page">
+            <h2>Cara mudah memesan ruangan</h2>
+            <div class="step-by-step">
+
+                <div class="step">
+                    <img style="margin-left: 5rem;" src="https://xwork.co/img/icon/lp-memesan-1-0.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>1. Temukan ruangan sesuai kebutuhan</p>
+                    <p>Temukan ruangan yang anda butuhkan, dari ribuan yang tersedia di Sewa Ruang</p>
+                </div>
+
+                <div class="step">
+                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-1.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>2. Pesan dan lakukan kunjungan survey</p>
+                    <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
+                </div>
+
+                <div class="step">
+                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>3. Deal dan pembayaran</p>
+                    <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ruang Section -->
+    <section id="ruang" class="featured-section pd-top-130 pd-bottom-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Core Features</h2>
+                        <h2 class="title">Ruang</h2>
                         <!-- <p>We have created a new product that will help designers, developers and com-panies create websites for their startups quickly and easily.</p> -->
                     </div>
                 </div>
@@ -6409,59 +6160,60 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/3.png" alt="img">
-                        Bootstrap 4+
+                        <img src="https://s3-ap-southeast-1.amazonaws.com/xwork-gallery/rooms/images/795/1524110425.04/795_1524110425.04.lg.JPEG" alt="img">
+                        Ruang Meeting
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/1.png" alt="img">
-                        Sass
+                        <img src="https://i0.wp.com/insight.mbiz.co.id/wp-content/uploads/2018/12/Ruang-meeting-amphitheater-ala-Google.png?resize=750%2C500&ssl=1" alt="img">
+                        Ruang Meeting
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/4.png" alt="img">
-                        Font-Awesome
+                        <img src="https://tikus.net/wp-content/uploads/2022/12/Mengenal-Jenis-jenis-Ruangan-Meeting-yang-Cocok-untuk-Anda.png" alt="img">
+                        Ruang Meeting
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/2.png" alt="img">
-                        Owl-Carousel
+                        <img src="https://dbijapkm3o6fj.cloudfront.net/resources/5134,1004,1,6,4,0,600,450/-4601-/20190326223719/pertemuan-dan-acara.jpeg" alt="img">
+                       Ruang Acara
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/5.png" alt="img">
-                        HTML5
+                        <img src="https://dbijapkm3o6fj.cloudfront.net/resources/32058,1004,1,6,4,0,600,450/-4601-/20220617223606/paket-meeting.jpeg" alt="img">
+                        Ruang Acara
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" style="height: ">
+                    <div class="featured-item">
+                        <img src="https://www.tourismvaganza.com/wp-content/uploads/2021/04/Image_Harmony-Ballroom-at-Holiday-Inn-Suites-Jakarta-Gajah-Mada-2.jpg" alt="img">
+                       Ruang Acara
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/6.png" alt="img">
-                        CSS3
+                        <img src="https://image.archify.com/blog/l/ume93vjz.jpg" alt="img">
+                        Co Working Space
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/7.png" alt="img">
-                        Jquery Tilt
+                        <img src="https://blog.flyspaces.com/hubfs/WeWork%20Menara%20Astra.jpg" alt="img">
+                       Co Working Space
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
-                        <img src="demo-landing/img/featured/8.png" alt="img">
-                        W3C Validation
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHTwqQRtPUrOpE3rDu61w1b71GrI9hiBSUWA&usqp=CAU" alt="img">
+                       Co Working Space
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/9.png" alt="img">
-                        Clean Code
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
+
+                <!-- <div class="col-lg-4 col-md-6">
                     <div class="featured-item">
                         <img src="demo-landing/img/featured/10.png" alt="img">
                         Magnific Popup
@@ -6496,14 +6248,14 @@
                         <img src="demo-landing/img/featured/13.png" alt="img">
                         Wow Js
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
-    </section> -->
+    </section>
 
 
     <!-- testimonial area start -->
-    <div class="testimonial-area pd-top-110 pd-bottom-120"
+    <!-- <div id="testimoni" class="testimonial-area pd-top-130 pd-bottom-130"
         style="background-image: url(assets/img/testimonial/bg.png); background-size: cover; background-position: center; justify-content:center; display:flex;">
         <div class="container">
             <div class="row justify-content-center">
@@ -6568,7 +6320,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- testimonial area end -->
 
     <!-- footer area start -->
@@ -6662,46 +6414,6 @@
 
     <!-- back-to-top end -->
     <a id="back-to-top"></a>
-
-
-    
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-
-            var table = $('#example_data_operator').DataTable({
-                // responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        $(document).ready(function () {
-
-            var table = $('#example_laporan_penyewa').DataTable({
-                responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        $(document).ready(function () {
-
-            var table = $('#example_approve').DataTable({
-                responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-    </script>
-
-  
 
 
 </body>

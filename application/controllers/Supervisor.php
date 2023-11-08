@@ -9,6 +9,9 @@ class Supervisor extends CI_Controller {
         $this->load->model('m_model');
 		$this->load->helper('my_helper');
 		$this->load->library('form_validation');
+		// if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'supervisor') {
+        //     redirect(base_url());
+        // }
     }
 
     //function tampilan login
@@ -44,7 +47,7 @@ class Supervisor extends CI_Controller {
                 'password' => md5($this->input->post('password')),
             ];
             $this->m_model->tambah_data('user', $data);
-            redirect(base_url().'supervisor');
+            redirect(base_url().'supervisor/data_operator');
 
         }
 	}
@@ -53,10 +56,44 @@ class Supervisor extends CI_Controller {
 	{
 		$this->load->view('supervisor/approve');
 	}
-   
-    public function navbar()
+    public function data_operator()
 	{
-		$this->load->view('supervisor/navbar');
+		$data['operator'] = $this->m_model->get_data_operator()->result(); 
+		$this->load->view('supervisor/data_operator',$data);
 	}
+    public function edit_user_operator($id)
+    {
+        $data['operator'] = $this-> m_model->get_by_id('user' , 'id', $id)->result();
+        $this->load->view('supervisor/edit_user_operator', $data);
+    }
+    public function aksi_update_user_operator()
+    {
+        $password_baru = $this->input->post('password_baru');
+        $email = $this->input->post('email');
+        $username = $this->input->post('username');
+        $data = [
+            'email' => $email,
+           'username' => $username,
+       ];
+       $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+       $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
+       if (!empty($password_baru) && $this->form_validation->run() === TRUE) {
+        $data['password'] = md5($password_baru);
+       }
+        $this->m_model->update('user', $data, array('id'=>$this->input->post('id')));
+            redirect(base_url('supervisor/data_operator'));
+    }
+    public function edit_laporan_penyewa()
+	{
+		$this->load->view('supervisor/edit_laporan_penyewa');
+	}
+    public function laporan_penyewa()
+	{
+		$this->load->view('supervisor/laporan_penyewa');
+	}
+	public function  hapus_data_operator($id) {
+        $this -> m_model->delete('user' , 'id' , $id);
+        redirect(base_url('supervisor/data_operator'));
+    }
    
 }

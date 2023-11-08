@@ -23,7 +23,7 @@
         }
 
         body {
-            font-family: "DM Sans", sans-serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1.6rem;
             background-color: #E4F1FF;
             color: #222;
@@ -96,19 +96,15 @@
             font-size: 1.6rem;
         }
 
-        .username,
-        .email,
-        .password {
+        .nama,
+        .ruang,
+        .jam_penggunaan,
+        .kapasitas {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
-
-        /* 
-        input::placeholder {
-            padding: 5rem;
-        } */
 
         .submit {
             font-size: 1.7rem;
@@ -148,8 +144,38 @@
             cursor: pointer;
         }
 
+        .password-toggle_baru {
+            position: absolute;
+            top: 87%;
+            transform: translateY(-50%);
+            right: 40rem;
+            cursor: pointer;
+        }
+
+        .password-toggle_konfirmasi {
+            position: absolute;
+            top: 102%;
+            transform: translateY(-50%);
+            right: 40rem;
+            cursor: pointer;
+        }
+
         @media only screen and (max-width: 800px) {
             .password-toggle {
+                position: absolute;
+                top: 70%;
+                transform: translateY(-50%);
+                right: 4.9rem;
+                cursor: pointer;
+            }
+            .password-toggle_baru {
+                /* position: absolute; */
+                top: 76%;
+                /* transform: translateY(-50%); */
+                right: 4.9rem;
+                /* cursor: pointer; */
+            }
+            .password-toggle_konfirmasi {
                 /* position: absolute; */
                 top: 76%;
                 /* transform: translateY(-50%); */
@@ -165,22 +191,28 @@
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Operator</h1>
+                <h1 id="title" class="main-heading">Form Edit Laporan Penyewa</h1>
             </header>
 
             <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
                 class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Ketik nama anda"
+                <label for="nama" id="name-label">Nama Penyewa<span class="required">*</span></label>
+                <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama anda"
                     required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input type="email" name="email" id="email" class="email" placeholder="Ketik email anda" required>
+                <label for="ruang" id="ruang-label">No Ruang<span class="required">*</span></label>
+                <input type="ruang" name="ruang" id="ruang" class="ruang" placeholder="Ketik no ruang" required>
 
-                <label for="password" id="password-label">Password<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Ketik password anda"
+                <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
+                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas" placeholder="Ketik kapasitas ruangan"
                     required>
+
+
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan" placeholder="Ketik jam penggunaan"
+                    required>
+
+            
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -189,24 +221,4 @@
         </div>
     </main>
 </body>
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-</script>
-
 </html>
