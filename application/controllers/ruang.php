@@ -18,7 +18,6 @@ class Ruang extends CI_Controller
   {
     // Assuming you have a model method to fetch room details
     $data['ruang'] = $this->m_model->get_data_by_id('ruangan', $id)->result();
-
     // Load the detail view and pass the data
     $this->load->view('ruang/detail', $data);
   }
