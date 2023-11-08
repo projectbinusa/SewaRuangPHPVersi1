@@ -12,8 +12,6 @@ class Ruang extends CI_Controller
     $this->load->library('form_validation');
   }
 
-// bary
-
   public function detail($id)
   {
     // Assuming you have a model method to fetch room details
