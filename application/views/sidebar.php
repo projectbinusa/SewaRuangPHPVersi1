@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
 </head>
-<body class="bg-gray-200 min-h-screen font-base">
+<body class="bg-white min-h-screen font-base">
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }">
     <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">

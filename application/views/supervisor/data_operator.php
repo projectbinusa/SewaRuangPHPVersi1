@@ -1563,96 +1563,71 @@
             }
         }
 
-
-
         /*Form fields*/
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
-            /*text-gray-700*/
             padding-left: 1rem;
-            /*pl-4*/
             padding-right: 1rem;
-            /*pl-4*/
             padding-top: .5rem;
-            /*pl-2*/
             padding-bottom: .5rem;
-            /*pl-2*/
             line-height: 1.25;
-            /*leading-tight*/
             border-width: 2px;
-            /*border-2*/
             border-radius: .25rem;
-            border-color: #edf2f7;
-            /*border-gray-200*/
-            background-color: #edf2f7;
-            /*bg-gray-200*/
+            border-color: #F5F7F8;
+            background-color: #F5F7F8;
+            margin: 10px 0;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 9px;
         }
 
         /*Row Hover*/
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
-            /*bg-indigo-100*/
         }
 
         /*Pagination Buttons*/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 700;
-            /*font-bold*/
+            font-weight: 400;
             border-radius: .25rem;
-            /*rounded*/
             border: 1px solid transparent;
-            /*border border-transparent*/
+            height: 37px;
+            padding-top: 5px;
         }
 
         /*Pagination Buttons - Current selected */
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
-            /*text-white*/
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            /*shadow*/
-            font-weight: 700;
-            /*font-bold*/
+            font-weight: 400;
             border-radius: .25rem;
-            /*rounded*/
             background: #4F709C !important;
-            /*bg-indigo-500*/
             border: 1px solid transparent;
-            /*border border-transparent*/
         }
 
         /*Pagination Buttons - Hover */
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
             color: white !important;
-            /*text-white*/
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            /*shadow*/
-            font-weight: 700;
-            /*font-bold*/
+            font-weight: 400;
             border-radius: .25rem;
-            /*rounded*/
             background: #4F709C !important;
-            /*bg-indigo-500*/
             border: 1px solid transparent;
-            /*border border-transparent*/
         }
 
-        /*Add padding to bottom border */
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            /*border-b-1 border-gray-300*/
-            margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
-        /*Change colour of responsive icon*/
         table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
         table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
             background-color: #4F709C !important;
-            /*bg-indigo-500*/
-        }
 
+        }
 
 
         /* code responsive table */
@@ -1701,15 +1676,20 @@
                 font-weight: bold;
             }
         }
+
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
+        }
     </style>
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <?php include("navbar.php") ?>
+<?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class=" widget-section pd-top-130">
+    <section id="widget" class="p-10 widget-section pd-top-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -1720,14 +1700,14 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="container-table row justify-content-center">
                 <a href="tambah_user_operator"
-                        class="bg-green-500 hover:bg-green-700 ml-auto w-32 text-white font-bold py-2 px-2 rounded">
-                        <span class="pe-2">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        Tambah
-                    </a>
+                    class="bg-green-500 hover:bg-green-700 ml-auto w-32 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -1737,55 +1717,57 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3 text-center">
+                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                             No
                                         </th>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Nama Penyewa
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3 text-center">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Email
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3 text-center">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php $no = 0;foreach ($operator as $row): $no++?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center dark:text-white">
-                                            <?php echo $no?>
-                                        </td>
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $row->username?>
-                                        </td>
-                                        <td data-cell="Email " class="px-6 py-4 text-center">
-                                        <?php echo $row->email?>
-                                        </td>
+                                    <?php $no = 0;
+                                    foreach ($operator as $row):
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row"
+                                                class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama Penyewa " scope="row"
+                                                class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $row->username ?>
+                                            </td>
+                                            <td data-cell="Email " class="text-center px-6 py-4">
+                                                <?php echo $row->email ?>
+                                            </td>
 
 
-                                        <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
+                                            <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
 
-                                            <a href="<?php echo base_url('supervisor/edit_user_operator/'). $row->id?>"
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="pe-2">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                Edit
-                                            </a>
-                                            <button onclick="hapus(<?php echo $row->id ?>)"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="pe-2">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
-                                                Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach?>
+                                                <a href="<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>"
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="pe-2">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    Edit
+                                                </a>
+                                                <button onclick="hapus(<?php echo $row->id ?>)"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="pe-2">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+                                                    Hapus
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -1812,30 +1794,30 @@
             })
         });
         function hapus(id) {
-        Swal.fire({
-     title: 'Apakah Mau Dihapus?',
-     text: "data ini tidak bisa dikembalikan lagi!",
-     icon: 'warning',
-     showCancelButton: true,
-     confirmButtonColor: '#3085d6',
-     cancelButtonColor: '#d33',
-     cancelButtonText: 'Batal',
-     confirmButtonText: 'Ya, hapus!'
-      }).then((result) => {
-    if (result.isConfirmed) {
-    Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Data Terhapus!!',
-    showConfirmButton: false,
-    timer: 1500
-                })
-      setTimeout(() => {
-        window.location.href= "<?php echo base_url('supervisor/hapus_data_operator/') ?>" + id;
-      }, 1800);
-    }
-    })
-  }
+            Swal.fire({
+                title: 'Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Data Terhapus!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('supervisor/hapus_data_operator/') ?>" + id;
+                    }, 1800);
+                }
+            })
+        }
     </script>
 
 </body>

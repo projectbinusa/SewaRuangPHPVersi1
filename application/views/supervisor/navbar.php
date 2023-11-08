@@ -26,7 +26,7 @@
         }
 
         body {
-            font-family: "DM Sans", sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 17px;
             background-color: #f1f1f1;
         }
@@ -3375,11 +3375,11 @@
             <div class="container nav-container">
 
                 <!-- Logo -->
-                <div class="logo">
+                <!-- <div class="logo">
                     <a class="main-logo" href="index.html"><img
                             src="https://solverwp.com/demo/html/edumint/demo-landing/img/logo-1.png" alt="img"></a>
-                </div>
-                <div class="nav-right-part nav-right-part-mobile ms-auto">
+                </div> -->
+                <!-- <div class="nav-right-part nav-right-part-mobile ms-auto">
                     <ul class="text-end">
                         <li>
                             <a class="page-scroll" href="#about">About</a>
@@ -3399,8 +3399,8 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-                <div  class="collapse navbar-collapse" id="alamgir_main_menu">
+                </div> -->
+                <!-- <div  class="collapse navbar-collapse" id="alamgir_main_menu">
                     <ul  class="navbar-nav menu-open text-center m-auto">
                         <li>
                             <a style="color: white;" class="page-scroll" href="index-1.html">Home</a>
@@ -3421,14 +3421,10 @@
                             <a style="color: white;" class="page-scroll" href="#featured">Features</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="nav-right-part nav-right-part-desktop">
                     <ul>
-                        <!-- <li>
-                            <a target="_blank" href="https://1.envato.market/DVbQmd" class="btn btn-white">
-                                $9 Purchase Now
-                            </a>
-                        </li> -->
+                      
                     </ul>
                 </div>
             </div>
