@@ -913,7 +913,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat"
+                <a href="tambah_report_sewa"
                     class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
@@ -971,7 +971,7 @@
                                             Ruang Ke 4
                                         </td>
                                         <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            AC 3 PK 
+                                           Meja dan Tempat duduk 
                                         </td>
                                         <td data-cell="Kapasitas " class="w-32 px-3 py-4">
                                             Tidak ada
