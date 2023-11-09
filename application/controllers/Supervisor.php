@@ -96,9 +96,6 @@ class Supervisor extends CI_Controller {
         redirect(base_url('supervisor/data_operator'));
     }
 
-    public function forgot_password()
-	{
-		$this->load->view('supervisor/forgot_password');
-	}
+   
    
 }
