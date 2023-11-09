@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="h-screen overflow-hidden flex flex-col bg-gray-100">
+<body>
     <?php $this->load->view('sidebar'); ?>
     <div class="p-8 w-full md:w-cover flex justify-center items-center m-auto ">
         <div class="max-w-screen-xl w-full mx-auto"> <!-- Menggunakan max-w-screen-xl -->
@@ -31,8 +31,13 @@
                             </div>
 
                             <div class="w-full px-7">
-                                <label for="no_ruang" class="block">Nomor Ruangan</label>
-                                <input type="number" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                <label for="no_ruang" class="block">Ruang</label>
+                                <input type="text" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                            </div>
+
+                            <div class="w-full px-7">
+                                <label for="harga" class="block">Harga</label>
+                                <input type="number" name="harga" id="harga" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                             </div>
 
                             <div class="w-full px-7">
@@ -78,7 +83,7 @@
                         success: function(response) {
                             if (response.status === 'success') {
                                 Swal.fire({
-                                    title: 'Sukses',
+                                    title: 'Berhasil',
                                     text: response.message,
                                     icon: 'success'
                                 }).then(function() {

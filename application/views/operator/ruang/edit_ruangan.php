@@ -18,17 +18,16 @@
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="p-8 w-full md:w-full flex justify-center items-center m-auto">
-        <div class="max-w-screen-xl w-full mx-auto">
+    <div class="p-8 w-full md:w-cover flex justify-center items-center m-auto">
+    <div class="max-w-screen-xl w-full mx-auto">
+        <!-- Konten halaman Anda di sini -->
         <main>
-        <div class="max-w-screen-xl w-full mx-auto">
-            <main>
             <div class="container mx-auto p-auto ml-auto w-10/12">
-                    <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
-                        <div class="bg-blue-600 h-3 w-full absolute top-0 left-0 rounded-t-lg"></div>
-                        <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
-                    </header>
-                    
+                <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
+                    <div class="h-3 w-full absolute top-0 left-0 rounded-t-lg" style="background: #0C356A;"></div>
+                    <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
+                </header>
+
                     <form action="<?php echo base_url('operator/aksi_edit_ruangan/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                         <div class="flex flex-wrap">
                             <div class="w-full px-7">
@@ -37,8 +36,13 @@
                             </div>
 
                             <div class="w-full px-7">
-                                <label for="no_ruang" class="block">Nomor Ruangan</label>
-                                <input type="number" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->no_ruang; ?>">
+                                <label for="no_ruang" class="block">Ruang</label>
+                                <input type="text" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->no_ruang; ?>">
+                            </div>
+
+                            <div class="w-full px-7">
+                                <label for="harga" class="block">Harga</label>
+                                <input type="text" name="harga" id="harga" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->harga; ?>">
                             </div>
 
                             <div class="w-full px-7">
@@ -56,9 +60,9 @@
                         <input type="hidden" name="id" id="room_id" value="<?php echo $ruangan->id; ?>">
 
                         <div class="text-center mt-10">
-                            <input type="submit" id="submit" class="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent transition duration-300" value="Ubah">
+                            <input type="submit" id="submit" style="border-radius: 10px;" class="inline-block font-semibold text-white text-lg py-2 px-8 bg-blue-500 hover:bg-blue-600" value="Ubah">
                             <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
-                                <input type="button" id="submitt" class="bg-transparent border border-red-600 text-red-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover:border-transparent hover:bg-red-600 hover:text-red-100 transition duration-300" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
+                                <input type="button" id="submitt" style="border-radius: 10px;" class="inline-block font-semibold text-white text-lg py-2 px-8 bg-black hover:bg-black" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
                             </form>
                         </div>
                     </form>
@@ -66,7 +70,6 @@
             </main>
         </div>
     </div>
-
 
     <script>
         function deleteImage(imageId) {

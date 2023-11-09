@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -35,10 +35,10 @@
             <?php foreach ($ruangan as $row) : ?>
               <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
                 <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                  <img src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="Room Image" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                  <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Room Image" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                   <h2 class="text-2xl text-gray-800 font-semibold mb-3">Ruangan <?php echo $row->no_ruang; ?></h2>
-                  <a href="<?php echo base_url('operator/detail/' . $row->id); ?>" class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600">Detail</a>
-                  <a href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>" class="inline-block px-3 py-1 font-semibold text-white bg-green-500 rounded hover:bg-green-600 ml-3">Edit</a>
+                  <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600" onclick="showDetailConfirmation(event, '<?php echo base_url('operator/detail/' . $row->id); ?>')">Detail</a>
+                  <a class="inline-block px-3 py-1 font-semibold text-white bg-black rounded hover-bg-black ml-3" onclick="showDetailConfirmation(event, '<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>')">Edit</a>
                 </div>
               </div>
             <?php endforeach; ?>
@@ -52,6 +52,7 @@
       </div>
     </div>
   </div>
+
   <script>
     function performSearch() {
       var searchInput = document.getElementById("searchInput").value.toLowerCase();
@@ -69,7 +70,45 @@
       }
     }
   </script>
+  
+  <script>
+    function showDetailConfirmation(event, href) {
+      event.preventDefault();
 
+      Swal.fire({
+        title: 'Konfirmasi',
+        text: 'Anda yakin ingin melihat detail?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Arahkan ke URL yang sesuai dengan href
+          window.location = href;
+        }
+      });
+
+      function showEditConfirmation(event, href) {
+        event.preventDefault();
+
+        Swal.fire({
+          title: 'Konfirmasi',
+          text: 'Anda yakin ingin mengedit?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Ya',
+          cancelButtonText: 'Tidak'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Arahkan ke URL yang sesuai dengan href
+            window.location = href;
+          }
+        });
+      }
+    }
+  </script>
+  
 </body>
 
 </html>

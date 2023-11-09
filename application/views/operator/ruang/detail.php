@@ -10,28 +10,34 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="h-screen overflow-hidden flex flex-col bg-gray-100">
-<?php $this->load->view('sidebar'); ?>
-      <!-- Área de contenido principal -->
-      <div class="min-h-screen overflow-hidden flex items-center justify-center">
-  <div class="w-full sm:w-full md:w-full lg:w-2/3 xl:w-1/2">
-    <!-- Konten halaman Anda di sini -->
-    <?php foreach ($ruang as $row) : ?>
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700">
-        <div class="w-72 h-72 md:w-72 md:h-72 md:rounded-none md:rounded-l-lg lg:w-92 lg:h-72">
-          <img class="object-cover w-full h-full lg:max-w-full" src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="">
+  <?php $this->load->view('sidebar'); ?>
+  <!-- Área de contenido principal -->
+  <div class="min-h-screen overflow-hidden flex items-center justify-center">
+    <div class="w-full sm:w-full md:w-full lg:w-2/3 xl:w-1/2">
+      <?php foreach ($ruang as $row) : ?>
+        <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700">
+          <div class="w-full md:w-full lg:w-full md:rounded-l-lg">
+            <?php if (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) : ?>
+              <img class="object-cover w-full h-72 lg:h-72" src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="Room Image">
+            <?php else : ?>
+              <img class="object-cover w-full h-72 lg:h-72" src="<?php echo base_url('./image/foto.png'); ?>" alt="User Image">
+            <?php endif; ?>
+          </div>
+          <div class="flex flex-col justify-between p-4 lg:p-6">
+            <h5 class="mb-2 text-2xl lg:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">R. <?php echo $row->no_ruang; ?></h5>
+            <p class="mb-3 font-normal text-lg text-center dark:text-gray-700">Rp. <?php echo $row->harga; ?></p>
+            <p class="mb-3 font-normal text-lg text-center dark:text-gray-700">Lantai <?php echo $row->no_lantai; ?></p>
+            <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
+            <hr class="my-2 border-t border-gray-300 text-center dark:border-gray-700">
+            <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400">*Kunjungi situs kami <a href="https://github.com/BinusaProject/ExcSewaRuang">sewaruang@gmail.com</a></p>
+          </div>
         </div>
-        <div class="flex flex-col justify-between p-10 leading-normal">
-          <h5 class="mb-2 text-3xl text-center font-bold tracking-tight text-gray-900 dark:text-white">R. <?php echo $row->no_ruang; ?></h5>
-          <p class="mb-3 font-normal text-xl text-center dark:text-gray-700">Lantai <?php echo $row->no_lantai; ?></p>
-          <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
-          <hr class="my-3 border-t border-gray-300 text-center dark:border-gray-700">
-          <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400">*Kunjungi situs kami <a href="https://github.com/BinusaProject/ExcSewaRuang">sewaruang@gmail.com</a></p>
-        </div>
-      </div>
-    <?php endforeach; ?>
+      <?php endforeach; ?>
+    </div>
   </div>
-</div>
+
 
   <script>
     // Gráfica de Usuarios
@@ -88,4 +94,4 @@
   </script>
 </body>
 
-</html> 
+</html>
