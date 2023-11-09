@@ -97,6 +97,20 @@ public function aksi_update_data()
     {
         $this->load->view('pelanggan/edit_peminjaman_tempat');
     }
+    public function tabel_report_sewa()
+    {
+        $this->load->view('pelanggan/tabel_report_sewa');
+    }
+
+    public function update_report_sewa()
+    {
+        $this->load->view('pelanggan/update_report_sewa');
+    }
+
+    public function tambah_report_sewa()
+    {
+        $this->load->view('pelanggan/tambah_report_pelanggan');
+    }
 }
 
 ?>
