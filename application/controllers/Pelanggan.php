@@ -37,62 +37,54 @@ class Pelanggan extends CI_Controller
         $this->m_model->tambah_data('pelanggan', $data);
         redirect(base_url('pelanggan/data_master_pelanggan'));
     }
-    // public function data_master_pelanggan()
-// {
-//     $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
-//     $this->load->view('pelanggan/data_master_pelanggan');
-// }
 
+     
+   // update data pelanggan
+public function update_data($id)
+{
+$data['pelanggan']=$this->m_model->get_by_id('pelanggan','id', $id)->result();
+$this->load->view('pelanggan/update_data', $data);
+}
 
-    public function edit_peminjaman()
+// aksi update data pelanggan
+public function aksi_update_data()
+{
+  $data = array (
+    'nama' => $this->input->post('nama'),
+    'phone' => $this->input->post('phone'),
+    'payment_method' => $this->input->post('payment_method'),
+  );
+  $eksekusi=$this->m_model->ubah_data
+  ('pelanggan', $data, array('id'=>$this->input->post('id')));
+  if($eksekusi)
+  {
+    $this->session->set_flashdata('sukses', 'berhasil');
+    redirect(base_url('pelanggan/data_master_pelanggan'));
+  } 
+  else
+  {
+    $this->session->set_flashdata('error', 'gagal..');
+    redirect(base_url('pelanggan/update_data/'.$this->input->post('id')));
+  }
+}
+
+    // Hapus Pelanggan
+    public function hapus_data_pelanggan($id)
     {
-        $this->load->view('pelanggan/edit_peminjaman');
+        $this->m_model->delete('pelanggan', 'id', $id);
+        redirect(base_url('pelanggan/data_master_pelanggan'));
+    }
+
+    public function report_sewa()
+    {
+        $this->load->view('pelanggan/report_sewa');
     }
     public function dashboard()
     {
         $this->load->view('pelanggan/dashboard');
     }
 
-  // public function update_data_pelanggan(){
-  //    $data =  array(
-  //       'nama' => $nama,
-  //       'phone' => $phone,
-  //       'payment_method' => $payment_method
-  //    );
-
-  //   $this->m_model->tambah_data('pelanggan', $data);
-  //   redirect(base_url('pelanggan/data_master_pelanggan'));
-  // }
-// update data pelanggan
-public function update_data()
-	{
-	$data['pelanggan']=$this->m_model->get_data('pelanggan')->result();
-	$this->load->view('pelanggan/update_data', $data);
-	}
-
-// aksi update data pelanggan
-	public function aksi_update_data()
-  {
-    $data = array (
-      'nama' => $this->input->post('nama'),
-      'phone' => $this->input->post('phone'),
-      'payment_method' => $this->input->post('payment_method'),
-    );
-    $eksekusi=$this->m_model->ubah_data
-    ('pelanggan', $data, array('id'=>$this->input->post('id')));
-    if($eksekusi)
-    {
-      $this->session->set_flashdata('sukses', 'berhasil');
-      redirect(base_url('pelanggan/data_master_pelanggan'));
-    } 
-    else
-    {
-      $this->session->set_flashdata('error', 'gagal..');
-      redirect(base_url('pelanggan/update_data/'.$this->input->post('id')));
-    }
-  }
-
-  public function table_peminjaman_tempat()
+    public function table_peminjaman_tempat()
   {
       $this->load->view('pelanggan/table_peminjaman_tempat');
   }
@@ -104,6 +96,10 @@ public function update_data()
   public function edit_peminjaman_tempat()
     {
         $this->load->view('pelanggan/edit_peminjaman_tempat');
+    }
+    public function tabel_report_sewa()
+    {
+        $this->load->view('pelanggan/tabel_report_sewa');
     }
 
 
@@ -122,7 +118,6 @@ public function update_report_sewa()
 {
   $this->load->view('pelanggan/update_report_sewa');
 }
-
 
 }
 
