@@ -45,13 +45,13 @@ nav ul:hover i {
     <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }">
     <ul>
   <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 hover:text-black">
-    <a href="#" class="flex items-center">
+    <a href="<?php echo base_url('pelanggan/dashboard') ?>" class="flex items-center">
       <i class="fas fa-home mr-2 text-white "></i>
       <span class="mx-2 text-white font-semibold">Dashboard</span>
     </a>
   </li>
   <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-    <a href="<?php echo base_url('ruang') ?>" class="flex items-center">
+    <a href="<?php echo base_url('operator') ?>" class="flex items-center">
       <i class="fa-solid fa-restroom text-white"></i>
       <span class="mx-2 text-white font-semibold">data master ruang</span>
     </a>

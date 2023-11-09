@@ -30,11 +30,13 @@
             padding: 0 0px;
         }
 
-        /* .container {
-            min-width: 20rem;
+        .container-tambah-user {
+            /* px-36 pt-10  */
+            padding: 40px 7.5rem 20px 7.5rem;
+            /* min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto;
-        } */
+            margin: 4rem auto; */
+        }
 
         .heading,
         .survey-form {
@@ -147,9 +149,21 @@
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
-                top: 76%;
+                top: 59rem;
                 right: 4.9rem;
             }
+
+            .container-tambah-user {
+            /* px-36 pt-10  */
+            padding: 40px 15px 20px 15px;
+        }
+
+        .main-heading {
+            font-size: 20px;
+            margin-bottom: 1rem;
+            height: 1.5rem;
+            width: 10rem;
+        }
         }
     </style>
 </head>
@@ -158,7 +172,7 @@
 <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="px-36 pt-10 container">
+        <div class="container-tambah-user">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Tambah Operator</h1>

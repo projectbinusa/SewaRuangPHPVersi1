@@ -137,6 +137,8 @@
             color: #222;
         }
 
+
+
         .form-group {
             position: relative;
         }
@@ -165,16 +167,30 @@
         <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Tambah Report Sewa</h1>
             </header>
 
             <form action="" method="post" id="survey-form" class="survey-form">
                 <label for="hari" id="name-label">Hari<span class="required">*</span></label>
                 <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
+
                 <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
                 <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
-                <label for="no_ruang" id="name-label">No Ruang<span class="required">*</span></label>
-                <input type="text" name="no_ruang" id="no_ruang" class="no_ruang" placeholder="Ketik no ruang" required>
+
+                <div class="mb-3 col-6">
+                <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
+                <select name="no_ruang" class="form-select">
+                    <option selected>Pilih Ruang</option>
+            
+            </option>
+                    <option value="Ruang ke 1.">Ruang ke 1.</option>
+                    <option value="Ruang ke 2.">Ruang ke 2.</option>
+                    <option value="Ruang ke 3.">Ruang ke 3.</option>
+                    <option value="Ruang ke 4.">Ruang ke 4.</option>
+                    <option value="Ruang ke 5.">Ruang ke 5.</option>
+                </select>
+    </div>
+                <b><hr></b>
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
                 <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
@@ -183,14 +199,14 @@
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
                 <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
 
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
+                placeholder="Ketik jam penggunaan" required>
+
                 <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
                     placeholder="Ketik extra time jika ada" required>
-
-                <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required> -->
 
                 <label for="total_booking" id="total_booking-label">Total Hari Booking<span
                         class="required">*</span></label>
@@ -202,5 +218,24 @@
         </div>
     </main>
 </body>
+<script type="text/javascript">
+    function togglePassword() {
+        var passwordField = document.getElementById('password');
+        var passwordToggle = document.querySelector('.password-toggle');
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
+
+
+        } else {
+            passwordField.type = "password";
+            passwordToggle.classList.add('fa-eye-slash');
+            passwordToggle.classList.remove('fa-eye');
+
+        }
+    }
+</script>
 
 </html>
