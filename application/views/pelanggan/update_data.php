@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -16,6 +8,19 @@
 
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="path-to-sweetalert2.css">
+    <!-- Replace 'path-to-sweetalert2.css' with the actual path to your SweetAlert CSS file -->
+    <script src="path-to-sweetalert2.js"></script>
+    <!-- Replace 'path-to-sweetalert2.js' with the actual path to your SweetAlert JavaScript file -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
@@ -104,10 +109,10 @@
             font-size: 1.6rem;
         }
 
-        .no_lantai,
-        .no_ruang {
+        .nama,
+        .phone {
             min-height: 2rem;
-            padding: 1rem 0;
+            padding: 1em 0em;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
@@ -151,7 +156,7 @@
 
 <body>
     <main>
-        <div class="container">
+        <?php $this->load->view('sidebar'); ?>
            
             <header class="heading">
                 <div class="green-bar"></div>
@@ -161,15 +166,15 @@
             <form action="<?php echo base_url('pelanggan/aksi_update_data')?>" method="post" id="survey-form" class="survey-form">
             <input name="id" type="hidden" value="<?php echo $row->id?>">
                 <label for="nama">Nama</label>
-                <input type="text" name="nama" id="no_lantai" class="no_lantai" 
+                <input type="text" name="nama" id="nama" class="nama" 
                 value="<?php echo $row->nama ?>">
 
                 <label for="phone">Phone</label>
-                <input type="text" name="phone" id="no_ruang" class="no_ruang" 
+                <input type="text" name="phone" id="phone" class="phone" 
                 value="<?php echo $row->phone ?>">
 
                 <label for="payment_method">Payment Method</label>
-                <input type="text" name="payment_method" id="no_ruang" class="no_ruang" 
+                <input type="text" name="payment_method" id="payment_method" class="payment_method" 
                 value="<?php echo $row->payment_method ?>">
 
                 <input type="submit" id="submit" class="submit" value="update">
@@ -177,9 +182,32 @@
         
             <?php endforeach ?>
           
-        </div>
         
     </main>
 
 </body>
+<script>
+    function displaySweetAlert() {
+    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+    const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+    if (message) {
+        Swal.fire({
+            title: 'Success!',
+            text: message,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    } else if (error) {
+        Swal.fire({
+            title: 'Error!',
+            text: error,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+}
+
+
+</script>
 </html>
