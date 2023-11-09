@@ -6228,17 +6228,17 @@
     <!-- testimonial area end -->
 
     <!-- footer area start -->
-    <footer class="footer-area footer-area-2 bg-gray">
+    <footer class="footer-area footer-area-2 bg-#A0E9FF">
         <div class="footer-top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="widget widget_about text-center">
-                            <a href="index.html"><img src="https://solverwp.com/demo/html/edumint/assets/img/logo-2.png"
-                                    alt="img"></a>
+                            <a>Sewa Ruang</a>
+                            <!-- <a href="index.html"><img src="https://solverwp.com/demo/html/edumint/assets/img/logo-2.png"
+                                    alt="img"></a> -->
                             <div class="details">
-                                <p>Edumint tetur sadipscing elitr tempor invidunt ut labore et dolore magna aliquyam
-                                    erat, sed diam voluptua.</p>
+                                     Memudahkan anda ketika anda ingin mencari ruangan untuk acara apapun</p>
                                 <ul class="social-media">
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
