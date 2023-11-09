@@ -9,7 +9,6 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
   
-  
 	<!--Replace with your tailwind.css once created-->
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 <!--Regular Datatables CSS-->
@@ -68,9 +67,6 @@
       <i class="fa-regular fa-folder-open text-white"></i>
       <span class="mx-2 text-white font-semibold">Report Sewa</span>
     </a>
-  </li>
-  <li class="px-2 py-3 rounded mt-2 baru">
-
   </li>
 </ul>
 
@@ -277,7 +273,6 @@ closeBtn.addEventListener('click', () => {
             }
         });
     </script>
-
 </script>
 
 
