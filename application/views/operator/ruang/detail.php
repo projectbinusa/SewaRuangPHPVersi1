@@ -27,14 +27,14 @@
           </div>
           <div class="flex flex-col justify-between p-4 lg:p-6">
             <h5 class="mb-2 text-2xl lg:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">R. <?php echo $row->no_ruang; ?></h5>
-            <p class="mb-3 font-normal text-lg text-center dark:text-gray-700">Rp. <?php echo $row->harga; ?></p>
+            <p class="mb-3 font-normal text-lg text-center dark:text-gray-700"><?php echo convRupiah($row->harga); ?></p>
             <p class="mb-3 font-normal text-lg text-center dark:text-gray-700">Lantai <?php echo $row->no_lantai; ?></p>
             <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
             <hr class="my-2 border-t border-gray-300 text-center dark:border-gray-700">
             <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400">*Kunjungi situs kami <a href="https://github.com/BinusaProject/ExcSewaRuang">sewaruang@gmail.com</a></p>
           </div>
         </div>
-      <?php endforeach; ?>
+      <?php endforeach;?>
     </div>
   </div>
 
