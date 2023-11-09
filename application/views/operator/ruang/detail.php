@@ -19,7 +19,7 @@
     <?php foreach ($ruang as $row) : ?>
       <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700">
         <div class="w-72 h-72 md:w-72 md:h-72 md:rounded-none md:rounded-l-lg lg:w-92 lg:h-72">
-          <img class="object-cover w-full h-full lg:max-w-full" src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="">
+          <img class="object-cover w-full h-full lg:max-w-full" src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="">
         </div>
         <div class="flex flex-col justify-between p-10 leading-normal">
           <h5 class="mb-2 text-3xl text-center font-bold tracking-tight text-gray-900 dark:text-white">R. <?php echo $row->no_ruang; ?></h5>

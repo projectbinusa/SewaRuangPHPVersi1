@@ -18,7 +18,7 @@
 
 <body>
     <?php $this->load->view('sidebar'); ?>
-    <div class="p-8 w-full md:w-2/3 flex justify-center items-center m-auto">
+    <div class="p-8 w-full md:w-full flex justify-center items-center m-auto">
         <div class="max-w-screen-xl w-full mx-auto">
         <main>
         <div class="max-w-screen-xl w-full mx-auto">
@@ -29,7 +29,7 @@
                         <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
                     </header>
                     
-                    <form action="<?php echo base_url('ruang/aksi_edit_ruangan/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                    <form action="<?php echo base_url('operator/aksi_edit_ruangan/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                         <div class="flex flex-wrap">
                             <div class="w-full px-7">
                                 <label for="no_lantai" class="block">Nomor Lantai</label>
@@ -57,7 +57,7 @@
 
                         <div class="text-center mt-10">
                             <input type="submit" id="submit" class="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent transition duration-300" value="Ubah">
-                            <form action="<?php echo base_url('ruang/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                            <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                                 <input type="button" id="submitt" class="bg-transparent border border-red-600 text-red-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover:border-transparent hover:bg-red-600 hover:text-red-100 transition duration-300" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
                             </form>
                         </div>
@@ -84,7 +84,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url('ruang/hapus_image/') ?>" + imageId,
+                        url: "<?php echo base_url('operator/hapus_image/') ?>" + imageId,
                         contentType: false,
                         processData: false,
                         dataType: "json",
@@ -119,7 +119,6 @@
         }
     </script>
 
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
@@ -136,7 +135,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "<?php echo base_url('ruang/aksi_edit_ruangan/' . $ruangan->id) ?>",
+                        url: "<?php echo base_url('operator/aksi_edit_ruangan/' . $ruangan->id) ?>",
                         data: formData,
                         contentType: false,
                         processData: false,
