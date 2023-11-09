@@ -75,7 +75,7 @@
             // Kirim formulir untuk penambahan data
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url('ruang/akis_tambah_ruangan') ?>",
+                url: "<?php echo base_url('ruang/aksi_tambah_ruangan') ?>",
                 data: new FormData(this),
                 contentType: false,
                 processData: false,

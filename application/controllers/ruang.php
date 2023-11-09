@@ -34,7 +34,7 @@ class Ruang extends CI_Controller
         // Lakukan operasi yang sesuai, seperti memuat halaman "tambah ruang"
         $this->load->view('ruang/tambah_ruang');
     }
-    public function akis_tambah_ruangan()
+    public function aksi_tambah_ruangan()
     {
         $no_lantai = $this->input->post('no_lantai');
         $no_ruang = $this->input->post('no_ruang');
