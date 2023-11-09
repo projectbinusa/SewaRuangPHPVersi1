@@ -75,6 +75,7 @@ class M_model extends CI_Model
         $data=$this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
+    
     public function get_data_operator()
     {
     return $this->db->where('role', 'operator')
@@ -89,5 +90,30 @@ class M_model extends CI_Model
         } else {
             return false;
         }
+    }
+
+    public function edit_ruangan($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('ruangan', $data);
+    }
+
+    public function get_image_by_id($table, $id)
+    {
+        // Gantilah 'nama_tabel' dengan nama tabel yang sesuai dalam database Anda
+        $query = $this->db->get_where($table, array('id' => $id));
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row->image; // Asumsikan bahwa nama kolom gambar adalah 'image'
+        }
+
+        return null;
+    }
+
+    public function get_ruangan_by_id($id)
+    {
+        $query = $this->db->get_where('ruangan', array('id' => $id));
+        return $query->row(); // Mengembalikan satu baris data sebagai objek
     }
 }

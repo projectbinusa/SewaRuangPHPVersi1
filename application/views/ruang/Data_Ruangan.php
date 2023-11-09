@@ -37,7 +37,7 @@
           <img src="<?php echo base_url('./image/ruangan/tambah_ruangan/' . $row->image); ?>" alt="Room Image" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
           <h2 class="text-2xl text-gray-800 font-semibold mb-3">Ruangan <?php echo $row->no_ruang; ?></h2>
           <a href="<?php echo base_url('ruang/detail/' . $row->id); ?>" class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600">Detail</a>
-          <a href="<?php echo base_url('ruang/edit/' . $row->id); ?>" class="inline-block px-3 py-1 font-semibold text-white bg-green-500 rounded hover:bg-green-600 ml-3">Edit</a>
+          <a href="<?php echo base_url('ruang/edit_ruangan/' . $row->id); ?>" class="inline-block px-3 py-1 font-semibold text-white bg-green-500 rounded hover:bg-green-600 ml-3">Edit</a>
         </div>
       </div>
     <?php endforeach; ?>

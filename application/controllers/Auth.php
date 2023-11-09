@@ -8,6 +8,8 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->model('m_model');
 		$this->load->helper('my_helper');
+		$this->load->helper('form');
+        $this->load->library('session');
     }
 
     //function tampilan login
@@ -84,4 +86,38 @@ class Auth extends CI_Controller {
         $this->session->sess_destroy();
         redirect(base_url());
     }
+    public function forgot_password()
+	{
+		$this->load->view('auth/forgot_password');
+	}
+    public function sendMail()
+{
+    $config = Array(
+  'protocol' => 'smtp',
+  'smtp_host' => 'ssl://smtp.googlemail.com',
+  'smtp_port' => 465,
+  'smtp_user' => 'nizarrestuaji18@gmail.com', // change it to yours
+  'smtp_pass' => 'nizar040419', // change it to yours
+  'mailtype' => 'html',
+  'charset' => 'iso-8859-1',
+  'wordwrap' => TRUE
+);
+
+        $message = 'Anjay Berhasil';
+        $this->load->library('email', $config);
+      $this->email->set_newline("\r\n");
+      $this->email->from('nizarrestuaji18@gmail.com'); // change it to yours
+      $this->email->to('nizarrestuaji18@gmail.com');// change it to yours
+      $this->email->subject('Percobaan');
+      $this->email->message($message);
+      if($this->email->send())
+     {
+      echo 'Email sent.';
+     }
+     else
+    {
+     show_error($this->email->print_debugger());
+    }
+
+}
 }
