@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 
@@ -913,13 +913,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_report_sewa"
-                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Tambah
-                </a>
+                
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -959,53 +953,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
-                                        </td>
-                                        <td data-cell="No Ruang " class="w-32 px-3 py-4">
-                                            Kamis 07-11-23
-                                        </td>
-                                        <td data-cell="No Ruang " class="w-32 px-3 py-4">
-                                            Ruang Ke 4
-                                        </td>
-                                        <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                           Meja dan Tempat duduk 
-                                        </td>
-                                        <td data-cell="Kapasitas " class="w-32 px-3 py-4">
-                                            Tidak ada
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="justify-content-center px-3 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Time " class="px-3 py-4">
-                                            -
-                                        </td>
-                                        <td data-cell="Exstra Time " class="px-3 py-4">
-                                            1 hari
-                                        </td>
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-
-                                            <a href="pelanggan/edit_peminjaman"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
+                  <!-- <?php
+             $no= 0;foreach ($pelanggan as $row  ) :$no++                          
+             ?>
+                               <tr>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $no ?></td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->hari ?></td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->tanggal ?></td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->no_ruang ?></td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->kapasitas ?></td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->snack ?>                                 </td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->jam_penggunaan ?>                                 </td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->extra_time ?>                                 </td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->total_booking ?>                                 </td>
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                               
+                                  <button  class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded" onclick="update(<?php echo $row->id ?>)"><span class="pe-2">
+                                  <i class="fa-solid fa-pen-to-square"></i>
                                                 </span>
-                                                
-                                            </a>
-                                            <button onclick=""
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
+                                                Ubah</button>
+                                  
+                                 <button onclick="hapus(<?php echo $row->id ?>)"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <span class="pe-2">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
-                                                
-                                            </button>
-                                        </td>
-                                    </tr>
+                                                Hapus</button>
+                                    
 
-                                </tbody>
+                                </td>
+
+                             </td>
+                          </tr><?php endforeach ?> -->
+                            
                             </table>
+                        </form>
+                          </tbody>
+                          </table>
                         </div>
                     </div>
                 </div>

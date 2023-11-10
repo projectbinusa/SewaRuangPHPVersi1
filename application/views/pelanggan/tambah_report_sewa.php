@@ -170,12 +170,12 @@
                 <h1 id="title" class="main-heading">Form Tambah Report Sewa</h1>
             </header>
 
-            <form action="" method="post" id="survey-form" class="survey-form">
+            <form action="<?php echo base_url('pelanggan/aksi_tambah_report_sewa') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                 <label for="hari" id="name-label">Hari<span class="required">*</span></label>
-                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" >
 
                 <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
-                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
+                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" >
 
                 <div class="mb-3 col-6">
                 <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
@@ -197,21 +197,21 @@
                     placeholder="Ketik kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
+                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" >
 
                 <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
                 class="required">*</span></label>
                 <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                placeholder="Ketik jam penggunaan" required>
+                placeholder="Ketik jam penggunaan" >
 
                 <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Ketik extra time jika ada" required>
+                    placeholder="Ketik extra time jika ada" >
 
                 <label for="total_booking" id="total_booking-label">Total Hari Booking<span
                         class="required">*</span></label>
                 <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                    placeholder="Ketik total hari booking" >
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
