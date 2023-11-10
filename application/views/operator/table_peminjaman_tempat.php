@@ -891,7 +891,7 @@
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            padding: 20px 10px 10px 10px ;
+            padding: 20px 10px 10px 10px;
         }
     </style>
 
@@ -899,7 +899,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-<?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebar'); ?>
 
     <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
@@ -933,23 +933,31 @@
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Hari / Tanggal
+                                            Nama
                                         </th>
+
                                         <th data-priority="2" scope="col" class="px-3 py-3">
-                                            No Ruang
+                                            Ruangan
                                         </th>
                                         <th data-priority="3" scope="col" class="px-3 py-3">
                                             Kapasitas
                                         </th>
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Kode
+                                        </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Snack
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
-                                            Jam Penggunaan
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Total Booking
                                         </th>
-                                        <th data-priority="7" scope="col" class="px-3 py-3">
-                                            Extra Waktu
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Total
                                         </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Status
+                                        </th>
+                                       
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
@@ -957,43 +965,51 @@
                                 </thead>
                                 <tbody>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
+                                        <td data-cell="No " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             1
                                         </td>
-                                        <td data-cell="No Ruang " class="w-32 px-3 py-4">
-                                            Senin 07-11-23
+                                        <td data-cell="Nama " class="w-32 px-3 py-4">
+                                            Muhammad Khadavi
                                         </td>
-                                        <td data-cell="No Ruang " class="w-32 px-3 py-4">
-                                            R.303
+                                        <td data-cell="Ruangan " class="w-32 px-3 py-4">
+                                            L.004 R.303
                                         </td>
                                         <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            AC 3 PK 
+                                            AC 3 PK
                                         </td>
-                                        <td data-cell="Kapasitas " class="w-32 px-3 py-4">
-                                            Tidak ada
+                                        <td data-cell="Kode " class="w-36 px-3 py-4">
+                                            283729
                                         </td>
-                                        <td data-cell="Jam Penggunaan " class="justify-content-center px-3 py-4">
-                                            12.00 - 13.30
+
+                                        <td data-cell="Snack " class="w-32 px-3 py-4">
+                                            Paket 1
                                         </td>
-                                        <td data-cell="Exstra Waktu " class="px-3 py-4">
-                                            -
+                                        <td data-cell="Total Booking " class="w-32 px-3 py-4">
+                                            09/11/23 - 10/11/23
                                         </td>
+                                        <td data-cell="Total " class="w-32 px-3 py-4">
+                                            1.500.00
+                                        </td>
+                                        <td data-cell="Status " class="w-32 px-3 py-4">
+                                            Pending
+                                        </td>
+                                     
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a href="pelanggan/edit_peminjaman"
+                                            <a href="edit_peminjaman_tempat"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-                                                
+
                                             </a>
                                             <button onclick=""
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
-                                                
+
                                             </button>
                                         </td>
                                     </tr>
@@ -1020,7 +1036,7 @@
         $(document).ready(function () {
 
             var table = $('#example_data').DataTable({
-                // responsive: true
+                responsive: true
             })
                 .columns.adjust()
                 .responsive.recalc();

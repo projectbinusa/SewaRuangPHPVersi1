@@ -2,171 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Ruangan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Pastikan jQuery dimuat sebelum kode JavaScript Anda -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
 </head>
 
-<body>
-    <?php $this->load->view('sidebar'); ?>
-    <div class="p-8 w-full md:w-full flex justify-center items-center m-auto">
-        <div class="max-w-screen-xl w-full mx-auto">
-        <main>
-        <div class="max-w-screen-xl w-full mx-auto">
-            <main>
-            <div class="container mx-auto p-auto ml-auto w-10/12">
-                    <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
-                        <div class="bg-blue-600 h-3 w-full absolute top-0 left-0 rounded-t-lg"></div>
-                        <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
-                    </header>
-                    
-                    <form action="<?php echo base_url('ruang/aksi_edit_ruangan/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
-                        <div class="flex flex-wrap">
-                            <div class="w-full px-7">
-                                <label for="no_lantai" class="block">Nomor Lantai</label>
-                                <input type="number" name="no_lantai" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->no_lantai; ?>">
-                            </div>
+<style>
+  li:hover span {
+    color: black;
+  }
 
-                            <div class="w-full px-7">
-                                <label for="no_ruang" class="block">Nomor Ruangan</label>
-                                <input type="number" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->no_ruang; ?>">
-                            </div>
+  li:hover i {
+    color: black;
+  }
 
-                            <div class="w-full px-7">
-                                <label for="foto" class="block">Foto Ruangan</label>
-                                <input type="file" name="foto" id="foto" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
-                            </div>
+  nav ul:hover span {
+    color: black;
+  }
 
-                            <div class="w-full px-7">
-                                <label for="deskripsi" class="block">Keterangan</label>
-                                <input type="text" name="deskripsi" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->deskripsi; ?>">
-                            </div>
-                        </div>
+  nav ul:hover i {
+    color: black;
+  }
+</style>
 
-                        <!-- Tambahkan input hidden untuk ID ruangan dan berikan nilai id="room_id" -->
-                        <input type="hidden" name="id" id="room_id" value="<?php echo $ruangan->id; ?>">
+<body class="bg-white min-h-screen font-base">
 
-                        <div class="text-center mt-10">
-                            <input type="submit" id="submit" class="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent transition duration-300" value="Ubah">
-                            <form action="<?php echo base_url('ruang/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
-                                <input type="button" id="submitt" class="bg-transparent border border-red-600 text-red-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover:border-transparent hover:bg-red-600 hover:text-red-100 transition duration-300" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
-                            </form>
-                        </div>
-                    </form>
-                </div>
-            </main>
+  <div id="app" class="flex flex-col md:flex-row w-full">
+    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }">
+      <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
+        <div class="flex items-center">
+          <img src="<?php echo base_url('image/logo.png') ?>" class="w-28">
+          <!-- <span class="text-gray-300 text-xl font-medium mx-2"></span> -->
         </div>
-    </div>
+        <div class="flex md:hidden">
+          <button type="button" @click="isOpen = !isOpen" class="text-gray-300 hover:text-gray-500 focus:outline-none focus:text-gray-500">
+            <svg class="fill-current w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }">
+        <ul>
+          <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 hover:text-black">
+            <a href="<?php echo base_url('operator/dashboard') ?>" class="flex items-center">
+              <i class="fas fa-home mr-2 text-white "></i>
+              <span class="mx-2 text-white font-semibold">Dashboard</span>
+            </a>
+          </li>
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+            <a href="<?php echo base_url('operator') ?>" class="flex items-center">
+              <i class="fa-solid fa-restroom text-white"></i>
+              <span class="mx-2 text-white font-semibold">data master ruang</span>
+            </a>
+          </li>
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+            <a href="<?php echo base_url('operator/data_master_pelanggan') ?>" class="flex items-center">
+              <i class="fas fa-users text-white"></i>
+              <span class="mx-2 text-white font-semibold">data master pelanggan</span>
+            </a>
+          </li>
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+            <a href="<?php echo base_url('operator/table_peminjaman_tempat') ?>" class="flex items-center">
+              <i class="fa-solid fa-map-location-dot text-white"></i>
+              <span class="mx-2 text-white font-semibold">Peminjaman Tempat</span>
+            </a>
+          </li>
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+            <a href="<?php echo base_url('operator/tabel_report_sewa') ?>" class="flex items-center">
+              <i class="fa-regular fa-folder-open text-white"></i>
+              <span class="mx-2 text-white font-semibold">Report Sewa</span>
+            </a>
+          </li>
+          <li class="px-2 py-3 rounded mt-2 baru">
+          </li>
+        </ul>
 
+      </div>
+    </aside>
 
-    <script>
-        function deleteImage(imageId) {
-            // Konfirmasi terlebih dahulu menggunakan SweetAlert2
-            Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin menghapus gambar ini?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ya, Hapus',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo base_url('ruang/hapus_image/') ?>" + imageId,
-                        contentType: false,
-                        processData: false,
-                        dataType: "json",
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                Swal.fire({
-                                    title: 'Sukses',
-                                    text: response.message,
-                                    icon: 'success',
-                                }).then(function() {
-                                    // Redirect ke URL tujuan setelah berhasil
-                                    window.location.href = response.redirect;
-                                });
-                            } else if (response.status === 'error') {
-                                Swal.fire({
-                                    title: 'Gagal',
-                                    text: response.message,
-                                    icon: 'error',
-                                });
-                            }
-                        },
-                        error: function() {
-                            Swal.fire({
-                                title: 'Error',
-                                text: 'Terjadi kesalahan saat melakukan permintaan.',
-                                icon: 'error',
-                            });
-                        }
-                    });
-                }
-            });
-        }
-    </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $(document).ready(function() {
-            const form = document.getElementById("edit-form");
-
-            form.addEventListener("submit", function(e) {
-                e.preventDefault();
-
-                if (e.submitter.id === "submit") {
-                    document.getElementById("submit").disabled = true;
-
-                    const id = $("#room_id").val();
-                    const formData = new FormData(this);
-
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo base_url('ruang/aksi_edit_ruangan/' . $ruangan->id) ?>",
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        dataType: "json",
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                Swal.fire({
-                                    title: 'Sukses',
-                                    text: response.message,
-                                    icon: 'success',
-                                }).then(function() {
-                                    // Redirect ke URL tujuan setelah berhasil
-                                    window.location.href = response.redirect;
-                                });
-                            } else if (response.status === 'error') {
-                                Swal.fire({
-                                    title: 'Gagal',
-                                    text: response.message,
-                                    icon: 'error',
-                                });
-                            }
-
-                            document.getElementById("submit").disabled = false;
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-
+    <!-- Main Content -->
+    <div class="w-full md:flex-1">
+      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center bg-white p-4 shadow-md h-16">
+        <ul class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
+          <ul>
+            <a href="http://localhost/exc_sewa_ruang/" class="flex items-center ml-auto ">
+              <i class="fa-solid fa-right-from-bracket text-white hover:"></i>
+              <span class="mx-2 text-white font-semibold">Keluar</span>
+            </a>
+          </ul>
+        </ul>
+      </nav>
 </body>
 
 </html>
