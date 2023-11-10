@@ -52,7 +52,7 @@
             }
         }
 
-       
+        /***default-btn-area***/
         .btn {
             height: 50px;
             line-height: 50px;
@@ -230,7 +230,7 @@
             opacity: 1;
         }
 
-        
+        /***section-title***/
         .section-title {
             margin-bottom: 60px;
         }
@@ -402,6 +402,9 @@
         }
 
 
+        /*---------------------------------------
+    ## Button
+---------------------------------------*/
         .btn {
             height: 55px;
             line-height: 55px;
@@ -509,7 +512,9 @@
             margin-left: 12px;
         }
 
-        
+        /*------------------------------------------------
+    ## Section title
+------------------------------------------------*/
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -714,7 +719,7 @@
             cursor: pointer;
         }
 
-        
+        /* Tablet Layout wide: 767px. */
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -749,7 +754,7 @@
             }
         }
 
-       
+        /* medium tablet layout 599px */
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -772,7 +777,7 @@
             }
         }
 
-       
+        /*Form fields*/
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -807,7 +812,7 @@
             padding-top: 5px;
         }
 
-       
+        /*Pagination Buttons - Current selected */
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);

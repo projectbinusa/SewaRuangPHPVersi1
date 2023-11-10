@@ -53,7 +53,6 @@
             }
         }
 
-        /***default-btn-area***/
         .btn {
             height: 50px;
             line-height: 50px;
@@ -108,7 +107,6 @@
         }
 
         .btn-base:hover::after {
-            /* background: var(--main-color); */
         }
 
         .btn-border {
@@ -224,7 +222,6 @@
             opacity: 1;
         }
 
-        /***section-title***/
         .section-title {
             margin-bottom: 60px;
         }
@@ -311,7 +308,6 @@
             }
         }
 
-    
 
         h1 {
             font-size: 62px;
@@ -830,37 +826,6 @@
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px ;
         }
-
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            
-
-            th {
-                /* display: none; */
-                width: 20%;
-            }
-
-            td {
-                /* display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem; */
-            }
-
-           
     </style>
 
 </head>

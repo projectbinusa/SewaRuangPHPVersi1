@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -39,31 +38,34 @@ class operator extends CI_Controller
         $no_ruang = $this->input->post('no_ruang');
         $deskripsi = $this->input->post('deskripsi');
         $image = $_FILES['foto']['name'];
-        $harga = $this->input->post('harga'); // Ambil nilai harga dari formulir
+        $harga = $this->input->post('harga');
 
         $errors = [];
 
+        // Validasi no_lantai
         if (empty($no_lantai) || !is_numeric($no_lantai)) {
-            $errors[] = 'Nomor Lantai tidak boleh kosong.';
+            $errors[] = 'Nomor Lantai harus diisi dengan angka dan tidak boleh kosong.';
         }
 
-        if (empty($no_ruang) || !is_numeric($no_ruang)) {
-            $errors[] = 'Ruang tidak boleh kosong.';
-        }
-
-        if (empty($deskripsi)) {
-            $errors[] = 'Deskripsi tidak boleh kosong.';
+        // Validasi no_ruang
+        if (empty($no_ruang)) {
+            $errors[] = 'Nomor Ruang tidak boleh kosong.';
         }
 
         // Validasi harga
         if (empty($harga) || !is_numeric($harga)) {
-            $errors[] = 'Harga harus diisi tidak boleh kosong.';
+            $errors[] = 'Harga harus diisi dengan angka dan tidak boleh kosong.';
         } elseif ($harga < 0) {
             $errors[] = 'Harga tidak boleh negatif.';
         }
 
-        if (empty($image)) {
-            $errors[] = 'Harap unggah gambar terlebih dahulu.';
+        // Validasi foto
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $file_info = pathinfo($image);
+        $extension = strtolower($file_info['extension']);
+
+        if (empty($image) || !in_array($extension, $allowed_extensions)) {
+            $errors[] = 'Foto harus diunggah dengan format JPG, JPEG, PNG, atau GIF.';
         }
 
         if (count($errors) > 0) {
@@ -83,7 +85,7 @@ class operator extends CI_Controller
                     'no_lantai' => $no_lantai,
                     'no_ruang' => $no_ruang,
                     'deskripsi' => $deskripsi,
-                    'harga' => $harga, // Simpan harga ke dalam array data
+                    'harga' => $harga,
                 ];
 
                 $inserted = $this->m_model->tambah_data('ruangan', $data);
@@ -109,7 +111,32 @@ class operator extends CI_Controller
             }
         }
 
+        // Menggunakan echo json_encode untuk response AJAX
         echo json_encode($response);
+    }
+
+    public function pdf()
+    {
+        $data['bukti_booking'] = $this->m_model->get_data('ruangan')->result();
+        $this->load->view('operator/pdf', $data);
+    }
+    public function export_pdf()
+    {
+        $data['bukti'] = $this->m_model->get_data('ruangan')->result();
+        $data['no_lantai'] = 'ruangan';
+        $data['no_ruang'] = 'ruangan';
+        $data['harga'] = 'ruangan';
+
+        if ($this->uri->segment(3) == "pdf") {
+            $this->load->library('pdf');
+            $this->pdf->load_view('operator/export_pdf', $data);
+            $this->pdf->render();
+
+
+            $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
+        } else {
+            $this->load->view('operator/download_pdf', $data);
+        }
     }
 
     public function edit_ruangan($id)
@@ -262,6 +289,7 @@ class operator extends CI_Controller
         $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $this->load->view('operator/pelanggan/data_master_pelanggan', $data);
     }
+
     public function tambah_pelanggan()
     {
         $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
