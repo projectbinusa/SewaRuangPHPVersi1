@@ -18,31 +18,30 @@
             box-sizing: border-box;
         }
 
-        /* 
         html {
             font-size: 62.5%;
-        } */
-
-        body {
-            font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
-            background-color: #E4F1FF;
-            color: #222;
-            padding: 0 0px;
         }
 
-        /* .container {
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.6rem;
+            background-color: #E4F1FF;
+            color: #222;
+            padding: 0 5px;
+        }
+
+        .container {
             min-width: 20rem;
             max-width: 65rem;
             margin: 4rem auto;
-        } */
+        }
 
         .heading,
         .survey-form {
             background-color: #fff;
             padding: 1.3em 3rem 1.8rem 3rem;
             border-radius: 1rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
         }
 
@@ -51,7 +50,7 @@
         }
 
         .survey-form {
-            font-size: 15px;
+            font-size: 1.8rem;
         }
 
         .green-bar {
@@ -66,9 +65,8 @@
         }
 
         .main-heading {
-            font-size: 2rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            height: 1.5rem;
         }
 
         .main-description {
@@ -87,36 +85,34 @@
 
         label {
             display: block;
-            font-size: 1.1rem;
-            margin: 30px 0;
-            line-height: 1px;
+            font-size: 1.8rem;
+            margin: 2rem 0;
         }
 
         input {
             display: block;
             width: 100%;
-            height: 29px;
-            margin: 5px 0;
+            margin: 2rem 0;
             font-size: 1.6rem;
-            line-height: 1px;
         }
 
-        .tanggal,
         .hari,
-        .extra_time,
-        .snack,
-        .jam_penggunaan,
+        .tanggal,
         .no_ruang,
-        .total_booking,
-        .kapasitas {
+        .kapasitas,
+        .snack,
+        .extra_time,
+        .jam_penggunaan,
+        .total_booking {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
 
+
         .submit {
-            font-size: 14px;
+            font-size: 1.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -124,10 +120,9 @@
             background-color: #4F709C;
             border: 3px solid #4F709C;
             border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            width: 15rem;
+            padding: 1rem 2rem;
+            margin: 4rem auto 2rem auto;
             cursor: pointer;
             transition: all .3s;
         }
@@ -137,35 +132,41 @@
             color: #222;
         }
 
+        a:link,
+        a:visited {
+            color: #008080;
+        }
+
         .form-group {
             position: relative;
         }
 
         .password-toggle {
             position: absolute;
-            top: 80%;
+            top: 72%;
             transform: translateY(-50%);
-            right: 12.9rem;
+            right: 40rem;
             cursor: pointer;
         }
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
+                /* position: absolute; */
                 top: 76%;
+                /* transform: translateY(-50%); */
                 right: 4.9rem;
+                /* cursor: pointer; */
             }
         }
     </style>
 </head>
 
 <body>
-    <?php $this->load->view('sidebar'); ?>
-
     <main>
-        <div class="px-36 pt-10 container">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form report sewa</h1>
             </header>
 
             <form action="" method="post" id="survey-form" class="survey-form">
@@ -187,10 +188,10 @@
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
                     placeholder="Ketik extra time jika ada" required>
 
-                <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
                         class="required">*</span></label>
                 <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required> -->
+                    placeholder="Ketik jam penggunaan" required>
 
                 <label for="total_booking" id="total_booking-label">Total Hari Booking<span
                         class="required">*</span></label>
@@ -199,6 +200,8 @@
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
+
+
         </div>
     </main>
 </body>

@@ -75,11 +75,10 @@ class M_model extends CI_Model
         $data=$this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
-    
     public function get_data_operator()
     {
-    return $this->db->where('role', 'operator')
-                    ->get('user');
+        return $this->db->where('role', 'operator')
+            ->get('user');
     }
 
     public function hapus_image($file_path)
