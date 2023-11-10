@@ -255,4 +255,19 @@ class operator extends CI_Controller
         header('Content-Type: application/json');
         echo json_encode($response);
     }
+
+
+    public function table_peminjaman_tempat()
+    {
+        $this->load->view('operator/table_peminjaman_tempat');
+    }
+    public function tambah_peminjaman_tempat()
+    {
+        $this->load->view('operator/tambah_peminjaman_tempat');
+    }
+  
+    public function edit_peminjaman_tempat()
+      {
+          $this->load->view('operator/edit_peminjaman_tempat');
+      }
 }
