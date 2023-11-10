@@ -8,8 +8,9 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->model('m_model');
 		$this->load->helper('my_helper');
-		$this->load->helper('form');
+        $this->load->library('email');
         $this->load->library('session');
+		$this->load->library('form_validation');
     }
 
     //function tampilan login
@@ -70,7 +71,7 @@ class Auth extends CI_Controller {
                     'password' => md5($this->input->post('password')),
                 ];
                 $this->session->set_flashdata('succsess' , 'berhasil...');
-                $this->m_model->add('user', $data);
+                $this->m_model->tambah_data('user', $data);
                 redirect(base_url());
             }
         } else {
@@ -90,34 +91,41 @@ class Auth extends CI_Controller {
 	{
 		$this->load->view('auth/forgot_password');
 	}
-    public function sendMail()
+    public function generate_code($length = 6)
 {
-    $config = Array(
-  'protocol' => 'smtp',
-  'smtp_host' => 'ssl://smtp.googlemail.com',
-  'smtp_port' => 465,
-  'smtp_user' => 'nizarrestuaji18@gmail.com', // change it to yours
-  'smtp_pass' => 'nizar040419', // change it to yours
-  'mailtype' => 'html',
-  'charset' => 'iso-8859-1',
-  'wordwrap' => TRUE
-);
+    $characters = '1234567890';
+    $code = '';
 
-        $message = 'Anjay Berhasil';
-        $this->load->library('email', $config);
-      $this->email->set_newline("\r\n");
-      $this->email->from('nizarrestuaji18@gmail.com'); // change it to yours
-      $this->email->to('nizarrestuaji18@gmail.com');// change it to yours
-      $this->email->subject('Percobaan');
-      $this->email->message($message);
-      if($this->email->send())
-     {
-      echo 'Email sent.';
-     }
-     else
-    {
-     show_error($this->email->print_debugger());
+    for ($i = 0; $i < $length; $i++) {
+        $code .= $characters[rand(0, strlen($characters) - 1)];
     }
 
+    return $code;
 }
+    public function aksi_forgot_pass()
+    {
+        $email = $this->input->post('email', true);
+        $data = ['email' => $email];
+        $query = $this->m_model->getwhere('user', $data);
+        $result = $query->row_array();
+        if (!empty($result)) {
+            $generate = $this->generate_code();
+            $code = $generate;
+            echo "<script>alert('Ini code verifikasi anda $code');
+            window.location.href = '" . base_url('auth/forgot_password') . "';
+            </script>";
+            $data = [
+                'code' => $code,
+            ];
+            $this->session->set_userdata($data);
+            
+
+        } else {
+            echo "<script>
+            alert('Email tidak ditemukan');
+            window.location.href = '" . base_url('auth/forgot_password') . "';
+          </script>";
+        }
+    }
+   
 }

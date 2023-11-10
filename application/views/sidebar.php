@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <?php $this->load->view('sidebar'); ?>
+  
     <div class="p-8 w-full md:w-full flex justify-center items-center m-auto">
         <div class="max-w-screen-xl w-full mx-auto">
         <main>

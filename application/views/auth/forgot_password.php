@@ -140,7 +140,7 @@
                 <h1 id="title" class="main-heading">Forgot Password</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
+            <form action="<?php echo base_url('auth/aksi_forgot_pass') ?>" method="post" id="survey-form"
                 class="survey-form">
                 <p>Silahkan masukkan email kamu untuk verifikasi code</p>
                 <label for="email" id="email-label">Email<span class="required">*</span></label>
