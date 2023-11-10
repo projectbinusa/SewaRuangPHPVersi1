@@ -24,7 +24,7 @@
                             </header>
                             <form action="<?php echo base_url('pelanggan/aksi_tambah_pelanggan') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                                 <div class="flex flex-wrap">
-                                    <div class="w-full md:w-1/2 px-3">
+                                    <div class="w-full">
                                         <label for="nama" class="block">Nama</label>
                                         <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                                     </div>
@@ -32,16 +32,17 @@
                                     <div class="w-full md:w-1/2 px-3">
                                         <label for="phone" class="block">Phone</label>
                                         <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
-                                    </div>
-                                        
-                                    <div class="w-full md:w-2/2 px-3">
+                                    </div>                                       
+                                    <div class="w-full md:w-1/2 px-3">
                                         <label for="payment_method" class="block">Payment Method</label>
                                         <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                                     </div>
                                 </div>
 
                                 <div class="text-center mt-10">
-                                    <input type="submit" id="submit" class="bg-transparent border border-blue-900 text-blue-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent hover-bg-blue-600 hover-text-blue-100 transition duration-300" value="Tambah">
+                                    <input type="submit" id="submit" 
+                                    class="bg-transparent border border-blue-900 text-blue-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent hover-bg-blue-600 hover-text-blue-100 transition duration-300" 
+                                    value="Tambah">
                                 </div>
                             </form>
                         </div>
@@ -54,60 +55,6 @@
     <!-- Pastikan Anda telah memasukkan jQuery sebelumnya -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-   $(document).ready(function() {
-    const form = document.getElementById("survey-form");
-
-    form.addEventListener("submit", function(e) {
-        e.preventDefault(); // Cegah formulir untuk langsung mengirimkan data
-
-        if (e.submitter.id === "submit") {
-            // Matikan tombol submit sementara
-            document.getElementById("submit").disabled = true;
-
-            // Kirim formulir untuk penambahan data
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('ruang/akis_tambah_ruangan') ?>",
-                data: new FormData(this),
-                contentType: false,
-                processData: false,
-                dataType: "json",
-                success: function(response) {
-                    if (response.status === 'success') {
-                        Swal.fire({
-                            title: 'Sukses',
-                            text: response.message,
-                            icon: 'success'
-                        }).then(function() {
-                            // Beri tahu pengguna tentang pengalihan
-                            Swal.fire({
-                                title: 'Mengalihkan...',
-                                timer: 1500, // Waktu tunggu sebelum pengalihan
-                                icon: 'success',
-                                showConfirmButton: false
-                            }).then(function() {
-                                window.location.href = response.redirect;
-                            });
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Gagal',
-                            text: response.message,
-                            icon: 'error'
-                        });
-
-                        // Aktifkan kembali tombol submit setelah gagal
-                        document.getElementById("submit").disabled = false;
-                    }
-                }
-            });
-        } 
-    });
-});
-</script>
-
     <script>
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
@@ -162,5 +109,4 @@
         });
     </script>
 </body>
-
 </html>

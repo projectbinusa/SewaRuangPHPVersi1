@@ -68,12 +68,6 @@
       <span class="mx-2 text-white font-semibold">Report Sewa</span>
     </a>
   </li>
-  <li class="px-2 py-3 rounded mt-2 baru">
-    <!-- <a href="#" class="flex items-center">
-    <i class="fa-solid fa-right-from-bracket text-white transition duration-200 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-cyan-500"></i>
-      <span class="mx-2 text-gray-300">Keluar</span>
-    </a> -->
-  </li>
 </ul>
 
     </div>
@@ -103,7 +97,7 @@
    <div class="flex-2 p-3 w-full">
         <!-- Tambah Pelanggan Button -->
         <a href="tambah_pelanggan" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 px-full w-48 ml-auto mb-4 flex items-center justify-center">
-            <i class="fas fa-plus-square text-xl mr-3"></i> Tambah 
+            <i class="fas fa-plus-square text-xl mr-3"></i> Tambah Pelanggan
         </a>
        
        
@@ -240,45 +234,45 @@ closeBtn.addEventListener('click', () => {
 </script>
 
 
-<!-- Script para las gráficas -->
 <script>
-// Gráfica de Usuarios
-var usersChart = new Chart(document.getElementById('usersChart'), {
-    type: 'doughnut',
-    data: {
-      labels: ['Nuevos', 'Registrados'],
-      datasets: [{
-            data: [30, 65],
-            backgroundColor: ['#00F0FF', '#8B8B8D'],
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-            position: 'bottom' // Ubicar la leyenda debajo del círculo
-        }
-    }
-});
+        // Gráfica de Usuarios
+        var usersChart = new Chart(document.getElementById('usersChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Nuevos', 'Registrados'],
+                datasets: [{
+                    data: [30, 65],
+                    backgroundColor: ['#00F0FF', '#8B8B8D'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom' // Ubicar la leyenda debajo del círculo
+                }
+            }
+        });
 
-// Gráfica de Comercios
-var commercesChart = new Chart(document.getElementById('commercesChart'), {
-    type: 'doughnut',
-    data: {
-        labels: ['Nuevos', 'Registrados'],
-        datasets: [{
-            data: [60, 40],
-            backgroundColor: ['#FEC500', '#8B8B8D'],
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-            position: 'bottom' // Ubicar la leyenda debajo del círculo
-        }
-    }
-});
+        // Gráfica de Comercios
+        var commercesChart = new Chart(document.getElementById('commercesChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Nuevos', 'Registrados'],
+                datasets: [{
+                    data: [60, 40],
+                    backgroundColor: ['#FEC500', '#8B8B8D'],
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'bottom' // Ubicar la leyenda debajo del círculo
+                }
+            }
+        });
+    </script>
 </script>
 
 

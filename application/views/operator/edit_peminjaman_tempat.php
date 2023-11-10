@@ -217,15 +217,12 @@
         <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
             </header>
 
             <form action="" method="post" id="survey-form" class="survey-form">
-                <label for="nama" id="name-label">Nama Penyewa<span class="required">*</span></label>
+                <label for="nama" id="name-label">Nama<span class="required">*</span></label>
                 <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama penyewa" required>
-
-                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
-                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
 
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
                 <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
@@ -357,24 +354,5 @@
     </script>
 
 </body>
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-</script>
 
 </html>
