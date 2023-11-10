@@ -64,53 +64,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-<<<<<<< HEAD:application/views/ruang/tambah_ruang.php
-   $(document).ready(function() {
-    const form = document.getElementById("survey-form");
-
-    form.addEventListener("submit", function(e) {
-        e.preventDefault(); // Cegah formulir untuk langsung mengirimkan data
-
-        if (e.submitter.id === "submit") {
-            // Matikan tombol submit sementara
-            document.getElementById("submit").disabled = true;
-
-            // Kirim formulir untuk penambahan data
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('ruang/aksi_tambah_ruang') ?>",
-                data: new FormData(this),
-                contentType: false,
-                processData: false,
-                dataType: "json",
-                success: function(response) {
-                    if (response.status === 'success') {
-                        Swal.fire({
-                            title: 'Sukses',
-                            text: response.message,
-                            icon: 'success'
-                        }).then(function() {
-                            // Beri tahu pengguna tentang pengalihan
-                            Swal.fire({
-                                title: 'Mengalihkan...',
-                                timer: 1500, // Waktu tunggu sebelum pengalihan
-                                icon: 'success',
-                                showConfirmButton: false
-                            }).then(function() {
-                                window.location.href = response.redirect;
-                            });
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Gagal',
-                            text: response.message,
-                            icon: 'error'
-                        });
-
-                        // Aktifkan kembali tombol submit setelah gagal
-                        document.getElementById("submit").disabled = false;
-                    }
-=======
         $(document).ready(function() {
             const form = document.getElementById("survey-form");
 
@@ -154,7 +107,6 @@
                             }
                         }
                     });
->>>>>>> f1faf05d9ac6e72382de2cf4dd56aa86cafa3ebc:application/views/operator/ruang/tambah_ruang.php
                 }
             });
         });
