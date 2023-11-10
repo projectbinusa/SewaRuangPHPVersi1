@@ -116,4 +116,37 @@ class M_model extends CI_Model
         $query = $this->db->get_where('ruangan', array('id' => $id));
         return $query->row(); // Mengembalikan satu baris data sebagai objek
     }
+    public function is_time_conflict($room_id, $start_time, $end_time) {
+        $this->db->where('id_ruangan', $room_id);
+        $this->db->where('status', 'booking');
+        $this->db->where("(tanggal_booking < '$end_time' AND tanggal_berakhir > '$start_time')", NULL, FALSE);
+        $query = $this->db->get('peminjaman');
+    
+        return $query->num_rows() > 0;
+    }
+
+    public function get_status_proses()
+    {
+    return $this->db->where('status', 'proses')
+                    ->get('peminjaman');
+    }
+    public function get_status_di_tolak()
+    {
+    return $this->db->where('status', 'di tolak')
+                    ->get('peminjaman');
+    }
+    public function get_status_booking()
+    {
+    return $this->db->where('status', 'booking')
+                    ->get('peminjaman');
+    }
+    public function get_status_selesai()
+    {
+    return $this->db->where('status', 'selesai')
+                    ->get('peminjaman');
+    }
+    public function update_status($id, $status) {
+        $this->db->where('id', $id);
+        $this->db->update('peminjaman', array('status' => $status));
+    }
 }
