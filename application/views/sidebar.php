@@ -18,14 +18,6 @@
   li:hover i {
     color: black;
   }
-
-  nav ul:hover span {
-    color: black;
-  }
-
-  nav ul:hover i {
-    color: black;
-  }
 </style>
 
 <body class="bg-white min-h-screen font-base">
