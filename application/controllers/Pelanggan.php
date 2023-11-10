@@ -103,12 +103,6 @@ public function aksi_update_data()
     }
 
 
-
-public function tabel_report_sewa()
-{
-  $this->load->view('pelanggan/tabel_report_sewa');
-}
-
 public function tambah_report_sewa()
 {
   $this->load->view('pelanggan/tambah_report_sewa');
