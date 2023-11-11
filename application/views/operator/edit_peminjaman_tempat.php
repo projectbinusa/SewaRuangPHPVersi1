@@ -264,10 +264,6 @@
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
                     placeholder="Ketik extra time jika ada" required>
 
-                <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required> -->
 
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>

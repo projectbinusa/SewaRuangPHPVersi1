@@ -17,25 +17,12 @@
             padding: 0;
             box-sizing: border-box;
         }
-/* 
-        html {
-            font-size: 62.5%;
-        } */
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
-        }
-
-        .container-tambah-user {
-            /* px-36 pt-10  */
-            padding: 40px 7.5rem 20px 7.5rem;
-            /* min-width: 20rem;
-            max-width: 65rem;
-            margin: 4rem auto; */
         }
 
         .heading,
@@ -102,9 +89,14 @@
             line-height: 1px;
         }
 
-        .username,
-        .email,
-        .password {
+        .tanggal,
+        .hari,
+        .extra_time,
+        .snack,
+        .jam_penggunaan,
+        .no_ruang,
+        .total_booking,
+        .kapasitas {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
@@ -133,8 +125,6 @@
             color: #222;
         }
 
-     
-
         .form-group {
             position: relative;
         }
@@ -149,74 +139,52 @@
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
-                top: 59rem;
+                top: 76%;
                 right: 4.9rem;
             }
-
-            .container-tambah-user {
-            /* px-36 pt-10  */
-            padding: 40px 15px 20px 15px;
-        }
-
-        .main-heading {
-            font-size: 20px;
-            margin-bottom: 1rem;
-            height: 1.5rem;
-            width: 10rem;
-        }
         }
     </style>
 </head>
 
 <body>
-<?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="container-tambah-user">
+        <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Operator</h1>
+                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
-                    required>
+            <form action="" method="post" id="survey-form" class="survey-form">
+                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
+                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
+                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
+                <label for="no_ruang" id="name-label">No Ruang<span class="required">*</span></label>
+                <input type="text" name="no_ruang" id="no_ruang" class="no_ruang" placeholder="Ketik no ruang" required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
+                <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
+                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
+                    placeholder="Ketik kapasitas ruangan" required>
 
-                <label for="password" id="password-label">Password<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
-                    required>
+                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
+                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
+
+                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
+                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
+                    placeholder="Ketik extra time jika ada" required>
+
+
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
+                        class="required">*</span></label>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
+                    placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
         </div>
     </main>
 </body>
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-</script>
 
 </html>

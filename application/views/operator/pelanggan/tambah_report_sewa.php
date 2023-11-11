@@ -17,7 +17,8 @@
             padding: 0;
             box-sizing: border-box;
         }
-/* 
+
+        /* 
         html {
             font-size: 62.5%;
         } */
@@ -30,13 +31,11 @@
             padding: 0 0px;
         }
 
-        .container-tambah-user {
-            /* px-36 pt-10  */
-            padding: 40px 7.5rem 20px 7.5rem;
-            /* min-width: 20rem;
+        /* .container {
+            min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto; */
-        }
+            margin: 4rem auto;
+        } */
 
         .heading,
         .survey-form {
@@ -49,6 +48,10 @@
 
         .heading {
             position: relative;
+        }
+
+        .responsive-3{
+            width: 100%;
         }
 
         .survey-form {
@@ -102,9 +105,14 @@
             line-height: 1px;
         }
 
-        .username,
-        .email,
-        .password {
+        .tanggal,
+        .hari,
+        .extra_time,
+        .snack,
+        .jam_penggunaan,
+        .no_ruang,
+        .total_booking,
+        .kapasitas {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
@@ -133,7 +141,7 @@
             color: #222;
         }
 
-     
+
 
         .form-group {
             position: relative;
@@ -149,53 +157,68 @@
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
-                top: 59rem;
+                top: 76%;
                 right: 4.9rem;
             }
-
-            .container-tambah-user {
-            /* px-36 pt-10  */
-            padding: 40px 15px 20px 15px;
-        }
-
-        .main-heading {
-            font-size: 20px;
-            margin-bottom: 1rem;
-            height: 1.5rem;
-            width: 10rem;
-        }
         }
     </style>
 </head>
 
 <body>
-<?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="container-tambah-user">
+        <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Operator</h1>
+                <h1 id="title" class="main-heading">Form Tambah Report Sewa</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
-                    required>
+            <form action="" method="post" id="survey-form" class="survey-form">
+                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
+                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
+                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
 
-                <label for="password" id="password-label">Password<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
-                    required>
+                <div class="mb-3 col-6">
+                <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
+                <select name="no_ruang" class="form-select">
+                    <option selected>Pilih Ruang</option>
+            
+            </option>
+                    <option value="Ruang ke 1.">Ruang ke 1.</option>
+                    <option value="Ruang ke 2.">Ruang ke 2.</option>
+                    <option value="Ruang ke 3.">Ruang ke 3.</option>
+                    <option value="Ruang ke 4.">Ruang ke 4.</option>
+                    <option value="Ruang ke 5.">Ruang ke 5.</option>
+                </select>
+    </div>
+                <b><hr></b>
+
+                <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
+                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
+                    placeholder="Ketik kapasitas ruangan" required>
+
+                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
+                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
+
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
+                placeholder="Ketik jam penggunaan" required>
+
+                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
+                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
+                    placeholder="Ketik extra time jika ada" required>
+
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
+                        class="required">*</span></label>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
+                    placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
         </div>
     </main>
 </body>
