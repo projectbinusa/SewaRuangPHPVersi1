@@ -9,8 +9,6 @@
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -103,9 +101,7 @@
             line-height: 1px;
         }
 
-        .nama,
         .hari,
-        .no_lantai,
         .extra_time,
         .snack,
         .jam_penggunaan,
@@ -217,12 +213,15 @@
         <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>
             </header>
 
             <form action="" method="post" id="survey-form" class="survey-form">
-                <label for="nama" id="name-label">Nama<span class="required">*</span></label>
+                <label for="nama" id="name-label">Nama Penyewa<span class="required">*</span></label>
                 <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama penyewa" required>
+
+                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
 
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
                 <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
@@ -264,6 +263,10 @@
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
                     placeholder="Ketik extra time jika ada" required>
 
+                <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                        class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
+                    placeholder="Ketik jam penggunaan" required> -->
 
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
@@ -337,7 +340,6 @@
         }
     </script>
 
-    <!-- script disable -->
 
     <script>
         $(document).ready(function () {
@@ -348,7 +350,25 @@
             });
         });
     </script>
-
 </body>
+<script type="text/javascript">
+    function togglePassword() {
+        var passwordField = document.getElementById('password');
+        var passwordToggle = document.querySelector('.password-toggle');
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
+
+
+        } else {
+            passwordField.type = "password";
+            passwordToggle.classList.add('fa-eye-slash');
+            passwordToggle.classList.remove('fa-eye');
+
+        }
+    }
+</script>
 
 </html>
