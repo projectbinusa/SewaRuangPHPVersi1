@@ -23,7 +23,9 @@
                                 <h1 id="title" class="text-4xl font-bold text-black-900">Update Data Pelanggan</h1>
                             </header>
                             <?php foreach ($pelanggan as $row): ?>
-                            <form action="<?php echo base_url('operator/aksi_update_data') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                            <form action="<?php echo base_url('operator/aksi_update_data') ?>" method="post" id="survey-form" 
+                            class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                            <input name="id" type="hidden" value="<?php echo $row->id?>">
                                 <div class="flex flex-wrap">
                                     <div class="w-full">
                                         <label for="nama" class="block">Nama</label>
@@ -32,13 +34,13 @@
                                         value="<?php echo $row->nama ?>">
                                     </div>
 
-                                    <div class="w-full md:w-1/2 px-3">
+                                    <div class="w-full ">
                                         <label for="phone" class="block">Phone</label>
                                         <input type="text" name="phone" id="no_ruang" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300"
                                         value="<?php echo $row->phone?>">
                                     </div>                                       
-                                    <div class="w-full md:w-1/2 px-3">
+                                    <div class="w-full ">
                                         <label for="payment_method" class="block">Payment Method</label>
                                         <input type="text" name="payment_method" id="deskripsi" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300"
