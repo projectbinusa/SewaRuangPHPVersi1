@@ -1689,7 +1689,7 @@
 
 <?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class="p-10 widget-section pd-top-130">
+    <section id="widget" class="p-10 widget-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">

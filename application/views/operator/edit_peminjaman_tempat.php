@@ -20,24 +20,20 @@
             box-sizing: border-box;
         }
 
-        /* 
-        html {
-            font-size: 62.5%;
-        } */
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
         }
 
-        /* .container {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto;
-        } */
+            margin: 1rem auto;
+            padding: 30px 7.5rem 5px 7.5rem;
+        }
 
         .heading,
         .survey-form {
