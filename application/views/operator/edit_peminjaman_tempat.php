@@ -20,24 +20,20 @@
             box-sizing: border-box;
         }
 
-        /* 
-        html {
-            font-size: 62.5%;
-        } */
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
         }
 
-        /* .container {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto;
-        } */
+            margin: 1rem auto;
+            padding: 30px 7.5rem 5px 7.5rem;
+        }
 
         .heading,
         .survey-form {
@@ -140,54 +136,18 @@
             color: #222;
         }
 
-
-
-        .form-group {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 80%;
-            transform: translateY(-50%);
-            right: 12.9rem;
-            cursor: pointer;
-        }
-
-        @media only screen and (max-width: 800px) {
-            .password-toggle {
-                top: 76%;
-                right: 4.9rem;
-            }
-        }
-
         /* style comboboxs */
-        legend,
-        label {
-            /* color: blue; 
-            font-size: 24px;
-            font-family: sans-serif; */
-        }
-
         input {
-            /* font-size: 18px; */
             padding: 5px;
             height: 35px;
-            /* width: 350px; */
             border-bottom: 1px solid;
             outline: none;
-            /* border-radius: 5px; */
-            /* color: blue; */
-            /*   border-bottom: none; */
         }
 
         datalist {
             position: absolute;
             background-color: white;
-            /* border: 1px solid blue; */
-            /* border-radius: 0 0 5px 5px; */
             border-top: none;
-            /* font-family: sans-serif; */
             width: 350px;
             padding: 5px;
             max-height: 10rem;
@@ -197,15 +157,41 @@
         option {
             background-color: white;
             padding: 4px;
-            /* color: blue; */
             margin-bottom: 1px;
             font-size: 14px;
             cursor: pointer;
         }
 
-        option:hover,
-        .active {
-            /* background-color: lightblue; */
+
+        @media only screen and (max-width: 800px) {
+            .password-toggle {
+                top: 56.5rem;
+                right: 3rem;
+            }
+
+            .container {
+                padding: 1rem 1rem 0px 1rem;
+            }
+
+
+            .heading {
+                padding: 1.3em 9px 1.8rem 9px;
+            }
+
+            .survey-form {
+                padding: 1.3em 15px 1.8rem 15px;
+
+            }
+
+            .main-heading {
+                font-size: 22px;
+                margin-bottom: 0;
+                text-align: center;
+            }
+
+            label {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -214,7 +200,7 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="px-36 pt-10 container">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
@@ -264,10 +250,6 @@
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
                     placeholder="Ketik extra time jika ada" required>
 
-                <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required> -->
 
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>

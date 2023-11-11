@@ -20,6 +20,7 @@
             box-sizing: border-box;
         }
 
+
         body {
             font-family: "DM Sans", sans-serif;
             background-color: #E4F1FF;
@@ -135,9 +136,7 @@
             color: #222;
         }
 
-     
         /* style comboboxs */
-
         input {
             padding: 5px;
             height: 35px;
@@ -163,10 +162,14 @@
             cursor: pointer;
         }
 
-         
+
         @media only screen and (max-width: 800px) {
-    
-            .container{
+            .password-toggle {
+                top: 56.5rem;
+                right: 3rem;
+            }
+
+            .container {
                 padding: 1rem 1rem 0px 1rem;
             }
 
@@ -174,6 +177,7 @@
             .heading {
                 padding: 1.3em 9px 1.8rem 9px;
             }
+
             .survey-form {
                 padding: 1.3em 15px 1.8rem 15px;
 
@@ -196,16 +200,18 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class=" container">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Edit Report Sewa</h1>
             </header>
 
             <form action="" method="post" id="survey-form" class="survey-form">
-                <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama penyewa" required>
+                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
 
+                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
+                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
                 <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
                     placeholder="Pilih no lantai">
@@ -215,22 +221,11 @@
                     <option value="002">002</option>
                     <option value="003">003</option>
                     <option value="004">004</option>
-                    <option value="005">005</option>
-                </datalist>
-
-                <label for="no_ruang" id="name-label">No Ruang<span class="required">*</span></label>
-                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="no_ruang"
-                    placeholder="Pilih no lantai">
-                <datalist id="browsers1" role="listbox">
-                    <option value="001">001</option>
-                    <option value="002">002</option>
-                    <option value="003">003</option>
-                    <option value="004">004</option>
                 </datalist>
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
                 <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Masukkan kapasitas ruangan" required>
+                    placeholder="Ketik kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
                 <select id="underline_select"
@@ -241,31 +236,26 @@
                     <option value="FR">Paket 3</option>
                 </select>
 
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                        class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
+                    placeholder="Ketik jam penggunaan" required>
 
                 <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Masukkan extra time jika ada" required>
+                    placeholder="Ketik extra time jika ada" required>
 
-                <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
                         class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Masukkan jam penggunaan" required> -->
-
-                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Masukkan total hari booking" required>
-                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Masukkan total hari booking" required>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
+                    placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
 
-    <!-- script comboboxs no lantai -->
+    <!-- script comboboxs -->
     <script>
         input.onfocus = function () {
             browsers.style.display = 'block';
@@ -305,64 +295,6 @@
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
                     if (browsers.options) browsers.options[currentFocus].click();
-                }
-            }
-        }
-
-        function addActive(x) {
-            if (!x) return false;
-            removeActive(x);
-            if (currentFocus >= x.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = (x.length - 1);
-            x[currentFocus].classList.add("active");
-        }
-        function removeActive(x) {
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("active");
-            }
-        }
-    </script>
-
-    <!-- script comboboxs no ruang -->
-    <script>
-        input1.onfocus = function () {
-            browsers1.style.display = 'block';
-            input1.style.borderRadius = "5px 5px 0 0";
-        };
-        for (let option of browsers1.options) {
-            option.onclick = function () {
-                input1.value = option.value;
-                browsers1.style.display = 'none';
-                input1.style.borderRadius = "5px";
-            }
-        };
-
-        input1.oninput = function () {
-            currentFocus = -1;
-            var text = input1.value.toUpperCase();
-            for (let option of browsers1.options) {
-                if (option.value.toUpperCase().indexOf(text) > -1) {
-                    option.style.display = "block";
-                } else {
-                    option.style.display = "none";
-                }
-            };
-        }
-        var currentFocus = -1;
-        input1.onkeydown = function (e) {
-            if (e.keyCode == 40) {
-                currentFocus++
-                addActive(browsers1.options);
-            }
-            else if (e.keyCode == 38) {
-                currentFocus--
-                addActive(browsers1.options);
-            }
-            else if (e.keyCode == 13) {
-                e.preventDefault();
-                if (currentFocus > -1) {
-                    /*and simulate a click on the "active" item:*/
-                    if (browsers1.options) browsers1.options[currentFocus].click();
                 }
             }
         }

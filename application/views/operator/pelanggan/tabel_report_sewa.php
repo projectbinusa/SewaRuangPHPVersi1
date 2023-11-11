@@ -52,7 +52,7 @@
             }
         }
 
-        /***default-btn-area***/
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -230,7 +230,7 @@
             opacity: 1;
         }
 
-        /***section-title***/
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -402,7 +402,6 @@
         }
 
 
-     
         .btn {
             height: 55px;
             line-height: 55px;
@@ -509,7 +508,8 @@
             color: var(--heading-color);
             margin-left: 12px;
         }
-     
+
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -714,7 +714,7 @@
             cursor: pointer;
         }
 
-        /* Tablet Layout wide: 767px. */
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -749,7 +749,7 @@
             }
         }
 
-        /* medium tablet layout 599px */
+       
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -772,7 +772,7 @@
             }
         }
 
-        /*Form fields*/
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -807,7 +807,7 @@
             padding-top: 5px;
         }
 
-        /*Pagination Buttons - Current selected */
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -900,14 +900,20 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Peminjaman Tempat</h2>
+                        <h2 class="title">Report Sewa</h2>
 
                     </div>
                 </div>
             </div>
 
             <div class="container-table row justify-content-center">
-
+                <a href="tambah_report_sewa"
+                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -952,14 +958,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             1
                                         </td>
                                         <td data-cell="Nama " class="w-32 px-3 py-4">
-                                            Muhammad Khadavi
+                                           Wahyu
                                         </td>
                                         <td data-cell="Ruangan " class="w-32 px-3 py-4">
                                             L.004 R.303
@@ -986,7 +991,7 @@
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a href="edit_peminjaman_tempat"
+                                            <a href="update_report_sewa"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
@@ -1011,16 +1016,8 @@
                                         </td>
                                     </tr>
 
-
-                                </td>
-
-                             </td>
-                     
-                            
+                                </tbody>
                             </table>
-                        </form>
-                          </tbody>
-                          </table>
                         </div>
                     </div>
                 </div>
