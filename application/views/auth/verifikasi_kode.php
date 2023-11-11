@@ -18,27 +18,30 @@
             box-sizing: border-box;
         }
 
+        html {
+            font-size: 62.5%;
+        }
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
+            font-size: 1.6rem;
             background-color: #E4F1FF;
             color: #222;
-            padding: 0 0px;
+            padding: 0 5px;
         }
 
-        /* .container {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
             margin: 4rem auto;
-        } */
+        }
 
         .heading,
         .survey-form {
             background-color: #fff;
             padding: 1.3em 3rem 1.8rem 3rem;
             border-radius: 1rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
         }
 
@@ -47,7 +50,7 @@
         }
 
         .survey-form {
-            font-size: 15px;
+            font-size: 1.8rem;
         }
 
         .green-bar {
@@ -62,9 +65,8 @@
         }
 
         .main-heading {
-            font-size: 2rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            height: 1.5rem;
         }
 
         .main-description {
@@ -83,31 +85,27 @@
 
         label {
             display: block;
-            font-size: 1.1rem;
-            margin: 30px 0;
-            line-height: 1px;
+            font-size: 1.8rem;
+            margin: 2rem 0;
         }
 
         input {
             display: block;
             width: 100%;
-            height: 29px;
-            margin: 5px 0;
+            margin: 2rem 0;
             font-size: 1.6rem;
-            line-height: 1px;
         }
 
-        .username,
-        .email,
-        .password {
+        .email {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
 
+
         .submit {
-            font-size: 14px;
+            font-size: 1.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -115,10 +113,9 @@
             background-color: #4F709C;
             border: 3px solid #4F709C;
             border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            width: 15rem;
+            padding: 1rem 2rem;
+            margin: 4rem auto 2rem auto;
             cursor: pointer;
             transition: all .3s;
         }
@@ -128,52 +125,27 @@
             color: #222;
         }
 
-     
-
-        .form-group {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 80%;
-            transform: translateY(-50%);
-            right: 12.9rem;
-            cursor: pointer;
-        }
-
-        @media only screen and (max-width: 800px) {
-            .password-toggle {
-                top: 76%;
-                right: 4.9rem;
-            }
+        a:link,
+        a:visited {
+            color: #008080;
         }
     </style>
 </head>
 
 <body>
-<?php $this->load->view('sidebar'); ?>
-
     <main>
-        <div class="px-36 pt-10 container">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Operator</h1>
+                <h1 id="title" class="main-heading">Verifikasi Kode</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
+            <form action="" method="post" id="survey-form"
                 class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input value="<?php echo $row->username?>" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
+                <p>Silahkan masukkan code verifikasi anda untuk mengubah password </p>
+                <input type="email" name="email" id="email" class="email" placeholder="Masukkan code verifikasi anda"
                     required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input value="<?php echo $row->email?>" type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
-
-                <label for="password" id="password-label">Password<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
-                    required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -182,24 +154,6 @@
         </div>
     </main>
 </body>
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-</script>
 
 </html>

@@ -22,6 +22,15 @@ class Auth extends CI_Controller {
 	{
 		$this->load->view('auth/register');
 	}
+
+    public function verifikasi_kode()
+  {
+    $this->load->view('auth/verifikasi_kode');
+  }
+  public function ganti_password()
+  {
+    $this->load->view('auth/ganti_password');
+  }
      //function aksi login
     public function aksi_login()
     {

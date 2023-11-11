@@ -1721,7 +1721,7 @@
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama Penyewa
+                                            Username
                                         </th>
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Email
