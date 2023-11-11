@@ -31,12 +31,11 @@
             padding: 0 0px;
         }
 
-        .container {
+        /* .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 1rem auto;
-            padding: 30px 7.5rem 5px 7.5rem;
-        }
+            margin: 4rem auto;
+        } */
 
         .heading,
         .survey-form {
@@ -102,10 +101,13 @@
             line-height: 1px;
         }
 
-        .nama,
-        .ruang,
+        .tanggal,
+        .hari,
+        .extra_time,
+        .snack,
         .jam_penggunaan,
-        .ruang,
+        .no_ruang,
+        .total_booking,
         .kapasitas {
             min-height: 2rem;
             padding: 1rem 0;
@@ -154,29 +156,6 @@
                 top: 76%;
                 right: 4.9rem;
             }
-
-            .container {
-                padding: 1rem 1rem 0px 1rem;
-            }
-
-
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
-
-            }
-
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
-
-            label {
-                font-size: 16px;
-            }
         }
     </style>
 </head>
@@ -185,37 +164,54 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class=" container">
+        <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Laporan Penyewa</h1>
+                <h1 id="title" class="main-heading">Form Tambah Report Sewa</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="nama" id="name-label">Nama Penyewa<span class="required">*</span></label>
+            <form action="<?php echo base_url('pelanggan/aksi_tambah_report_sewa') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" >
 
-                <select id="countries"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Pilih Nama Penyewa</option>
-                    <option value="US">Ajeng Pratiwi</option>
+                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
+                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" >
+
+                <div class="mb-3 col-6">
+                <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
+                <select name="no_ruang" class="form-select">
+                    <option selected>Pilih Ruang</option>
+            
+            </option>
+                    <option value="Ruang ke 1.">Ruang ke 1.</option>
+                    <option value="Ruang ke 2.">Ruang ke 2.</option>
+                    <option value="Ruang ke 3.">Ruang ke 3.</option>
+                    <option value="Ruang ke 4.">Ruang ke 4.</option>
+                    <option value="Ruang ke 5.">Ruang ke 5.</option>
                 </select>
-
-
-                <label for="ruang" id="ruang-label">No Ruang<span class="required">*</span></label>
-                <input type="ruang" name="ruang" id="ruang" class="ruang" placeholder="Masukkan no ruang" required>
+    </div>
+                <b><hr></b>
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
                 <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Masukkan kapasitas ruangan" required>
+                    placeholder="Ketik kapasitas ruangan" required>
 
+                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
+                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" >
 
                 <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
+                class="required">*</span></label>
                 <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Masukkan jam penggunaan" required>
+                placeholder="Ketik jam penggunaan" >
 
+                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
+                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
+                    placeholder="Ketik extra time jika ada" >
 
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
+                        class="required">*</span></label>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
+                    placeholder="Ketik total hari booking" >
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>

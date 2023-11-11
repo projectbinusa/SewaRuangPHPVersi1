@@ -355,16 +355,16 @@ class operator extends CI_Controller
 
     public function table_peminjaman_tempat()
     {
-        $this->load->view('operator/pelanggan/table_peminjaman_tempat');
+        $this->load->view('operator/table_peminjaman_tempat');
     }
     public function tambah_peminjaman_tempat()
     {
-        $this->load->view('operator/pelanggan/tambah_peminjaman_tempat');
+        $this->load->view('operator/tambah_peminjaman_tempat');
     }
 
     public function edit_peminjaman_tempat()
     {
-        $this->load->view('operator/pelanggan/edit_peminjaman_tempat');
+        $this->load->view('operator/edit_peminjaman_tempat');
     }
     public function tabel_report_sewa()
     {

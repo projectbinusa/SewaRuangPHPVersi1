@@ -1689,7 +1689,7 @@
 
 <?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class="p-10 widget-section pd-top-130">
+    <section id="widget" class="p-10 widget-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -1721,7 +1721,7 @@
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama Penyewa
+                                            Username
                                         </th>
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Email
