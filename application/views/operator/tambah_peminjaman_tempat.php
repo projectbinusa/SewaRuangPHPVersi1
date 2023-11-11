@@ -222,7 +222,7 @@
 
             <form action="" method="post" id="survey-form" class="survey-form">
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama penyewa" required>
+                <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama penyewa" required>
 
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
                 <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
@@ -248,7 +248,7 @@
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
                 <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Ketik kapasitas ruangan" required>
+                    placeholder="Masukkan kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
                 <select id="underline_select"
@@ -262,21 +262,21 @@
 
                 <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
                 <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Ketik extra time jika ada" required>
+                    placeholder="Masukkan extra time jika ada" required>
 
                 <!-- <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
                         class="required">*</span></label>
                 <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required> -->
+                    placeholder="Masukkan jam penggunaan" required> -->
 
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
                 <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                    placeholder="Masukkan total hari booking" required>
                 <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
                         class="required">*</span></label>
                 <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                    placeholder="Masukkan total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>

@@ -181,15 +181,15 @@
             <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
                 class="survey-form">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Ketik nama anda"
+                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
                     required>
 
                 <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input type="email" name="email" id="email" class="email" placeholder="Ketik email anda" required>
+                <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
                 <label for="password" id="password-label">Password<span class="required">*</span></label>
                 <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Ketik password anda"
+                <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
                     required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
