@@ -17,10 +17,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-/* 
-        html {
-            font-size: 62.5%;
-        } */
+
 
         body {
             font-family: "DM Sans", sans-serif;
@@ -31,11 +28,10 @@
         }
 
         .container-tambah-user {
-            /* px-36 pt-10  */
-            padding: 40px 7.5rem 20px 7.5rem;
-            /* min-width: 20rem;
+            min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto; */
+            margin: 1rem auto;
+            padding: 30px 7.5rem 5px 7.5rem;
         }
 
         .heading,
@@ -141,29 +137,40 @@
 
         .password-toggle {
             position: absolute;
-            top: 80%;
+            top: 82%;
             transform: translateY(-50%);
             right: 12.9rem;
             cursor: pointer;
         }
 
-        @media only screen and (max-width: 800px) {
+          @media only screen and (max-width: 800px) {
             .password-toggle {
-                top: 59rem;
-                right: 4.9rem;
+                top: 57.7rem;
+                right: 3rem;
             }
 
             .container-tambah-user {
-            /* px-36 pt-10  */
-            padding: 40px 15px 20px 15px;
-        }
+                padding: 1rem 1rem 0px 1rem;
+            }
 
-        .main-heading {
-            font-size: 20px;
-            margin-bottom: 1rem;
-            height: 1.5rem;
-            width: 10rem;
-        }
+
+            .heading {
+                padding: 1.3em 9px 1.8rem 9px;
+            }
+            .survey-form {
+                padding: 1.3em 15px 1.8rem 15px;
+
+            }
+
+            .main-heading {
+                font-size: 22px;
+                margin-bottom: 0;
+                text-align: center;
+            }
+
+            label {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
