@@ -18,11 +18,6 @@
             box-sizing: border-box;
         }
 
-        /* 
-        html {
-            font-size: 62.5%;
-        } */
-
         body {
             font-family: "DM Sans", sans-serif;
             /* font-size: 1.6rem; */
@@ -31,11 +26,12 @@
             padding: 0 0px;
         }
 
-        /* .container {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto;
-        } */
+            margin: 1rem auto;
+            padding: 30px 7.5rem 5px 7.5rem;
+        }
 
         .heading,
         .survey-form {
@@ -141,24 +137,35 @@
             color: #222;
         }
 
-
-
-        .form-group {
-            position: relative;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 80%;
-            transform: translateY(-50%);
-            right: 12.9rem;
-            cursor: pointer;
-        }
-
+       
         @media only screen and (max-width: 800px) {
             .password-toggle {
-                top: 76%;
-                right: 4.9rem;
+                top: 56.5rem;
+                right: 3rem;
+            }
+
+            .container {
+                padding: 1rem 1rem 0px 1rem;
+            }
+
+
+            .heading {
+                padding: 1.3em 9px 1.8rem 9px;
+            }
+
+            .survey-form {
+                padding: 1.3em 15px 1.8rem 15px;
+
+            }
+
+            .main-heading {
+                font-size: 22px;
+                margin-bottom: 0;
+                text-align: center;
+            }
+
+            label {
+                font-size: 16px;
             }
         }
     </style>
@@ -168,7 +175,7 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="px-36 pt-10 container">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Tambah Report Sewa</h1>
