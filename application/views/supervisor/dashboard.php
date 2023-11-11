@@ -5874,6 +5874,13 @@
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
+
+
+        /* footer */
+
+       
+
+
     </style>
 
 </head>
@@ -6228,92 +6235,72 @@
     <!-- testimonial area end -->
 
     <!-- footer area start -->
-    <footer class="footer-area footer-area-2 bg-#A0E9FF">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_about text-center">
-                            <a>Sewa Ruang</a>
-                            <!-- <a href="index.html"><img src="https://solverwp.com/demo/html/edumint/assets/img/logo-2.png"
-                                    alt="img"></a> -->
-                            <div class="details">
-                                     Memudahkan anda ketika anda ingin mencari ruangan untuk acara apapun</p>
-                                <ul class="social-media">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_contact">
-                            <h4 class="widget-title">Contact Us</h4>
-                            <ul class="details">
-                                <li><i class="fa fa-map-marker"></i> 420 Love Sreet 133/2 Street NewYork</li>
-                                <li><i class="fa fa-envelope"></i> info.contact@gmail.com</li>
-                                <li><i class="fa fa-phone"></i> 012 345 678 9101</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_blog_list">
-                            <h4 class="widget-title">News & Blog</h4>
-                            <ul>
-                                <li>
-                                    <h6><a style="color: black; text-decoration: none;" href="blog-details.html">Big
-                                            Ideas Of Business Branding Info.</a></h6>
-                                    <span class="date"><i class="fa fa-calendar"></i>December 7, 2022</span>
-                                </li>
-                                <li>
-                                    <h6><a style="color: black; text-decoration: none;" href="blog-details.html">Ui/Ux
-                                            Ideas Of Business Branding Info.</a></h6>
-                                    <span class="date"><i class="fa fa-calendar"></i>December 7, 2022</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_nav_menu">
-                            <h4 class="widget-title">Course</h4>
-                            <ul>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Branding
-                                        design</a></li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Ui/Ux designing
-                                    </a></li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Make Elements</a>
-                                </li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Business</a></li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Graphics
-                                        design</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="footer-2 bg-gray-800 pt-6 md:pt-12">
+  <div class="container px-4 mx-auto">
+
+    <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+
+      <div class="footer-info lg:w-1/3 md:px-4">
+        <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
+        <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
+        <div class="mt-4">
+          <button class="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
+            <span class="fab fa-facebook-f mr-2"></span> Follow
+          </button>
+          <button class="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
+            <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
+          </button>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 align-self-center">
-                        <p>Copyright 2023 by sewaruang.com</p>
-                    </div>
-                    <div class="col-md-7 text-md-right align-self-center mt-md-0 mt-2">
-                        <div class="widget_nav_menu">
-                            <ul>
-                                <li><a style="text-decoration: none;" href="index.html">Home</a></li>
-                                <li><a style="text-decoration: none;" href="about.html">About Us</a></li>
-                                <li><a style="text-decoration: none;" href="pricing.html">Our Pricing</a></li>
-                                <li><a style="text-decoration: none;" href="blog.html">blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
+        <div class="sm:flex">
+          <div class="sm:flex-1">
+            <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
+            <div>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
             </div>
+          </div>
+          <div class="sm:flex-1 mt-4 sm:mt-0">
+            <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
+            <div>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+
+      <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
+        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
+        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="border-t border-solid border-gray-900 mt-4 py-4">
+    <div class="container px-4 mx-auto">
+
+      <div class="md:flex md:-mx-4 md:items-center">
+        <div class="md:flex-1 md:px-4 text-center md:text-left">
+          <p class="text-white">&copy; <strong>FWR</strong></p>
+        </div>
+        <div class="md:flex-1 md:px-4 text-center md:text-right">
+          <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
     <!-- footer area end -->
 
     <!-- back-to-top end -->
