@@ -18,12 +18,6 @@ li:hover span {
 li:hover i {
     color: black; /* Warna ikon ketika dihover */
 }
-nav ul:hover span {
-    color: black; /* Warna teks ketika dihover */
-}
-nav ul:hover i {
-    color: black; /* Warna ikon ketika dihover */
-}
 </style>
 
 <body class="bg-white min-h-screen font-base">
