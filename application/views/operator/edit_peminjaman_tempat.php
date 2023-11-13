@@ -211,8 +211,7 @@
                 <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama penyewa" required>
 
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
-                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
-                    placeholder="Pilih no lantai">
+                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai" placeholder="Pilih no lantai">
 
                 <datalist id="browsers" role="listbox">
                     <option value="001">001</option>
@@ -233,12 +232,10 @@
                 <input type="" name="no_ruang" id="no_ruang" class="no_ruang" placeholder="Ketik no ruang" required>
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
-                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Ketik kapasitas ruangan" required>
+                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas" placeholder="Ketik kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <select id="underline_select"
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <select id="underline_select" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Paket Snack</option>
                     <option value="US">Paket 1</option>
                     <option value="CA">Paket 2</option>
@@ -247,18 +244,13 @@
 
 
                 <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
-                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Ketik extra time jika ada" required>
+                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time" placeholder="Ketik extra time jika ada" required>
 
 
-                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
-                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span class="required">*</span></label>
+                <input type="date" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
+                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span class="required">*</span></label>
+                <input type="date" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -267,19 +259,19 @@
 
     <!-- script comboboxs -->
     <script>
-        input.onfocus = function () {
+        input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -291,16 +283,14 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -316,6 +306,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -326,9 +317,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });
