@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewa Ruang</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+
+
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+    <!--Replace with your tailwind.css once created-->
+
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+        :root {
+            --main-color: #4F709C;
+            --main-color-opacity: 126, 86, 255;
+            --main-gradient: linear-gradient(to right, #2878EB, #F129C9);
+            --heading-color: #002147;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            font-size: 17px;
+            background-color: #f1f1f1;
+        }
+
+        @media (min-width: 1200px) {
+
+            .container,
+            .container-lg,
+            .container-md,
+            .container-sm,
+            .container-xl,
+            .container-xxl {
+                max-width: 1170px;
+            }
+        }
+
+        .btn {
+            height: 50px;
+            line-height: 50px;
+            padding: 0 32px;
+            overflow: hidden;
+            position: relative;
+            border: 0;
+            transition: all 0.5s ease 0s;
+            font-weight: 700;
+            display: inline-block;
+            transform: perspective(1px) translateZ(0);
+            border-radius: 5px;
+        }
+
+        .btn:focus,
+        .btn:active {
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn:after {
+            content: "";
+            background: var(--main-color);
+            position: absolute;
+            transition: all 0.9s ease 0s;
+            z-index: -1;
+            height: 100%;
+            left: -35%;
+            top: 0;
+            transform: skew(30deg);
+            transform-origin: top left;
+            width: 0;
+        }
+
+        .btn:hover {
+            color: #fff;
+        }
+
+        .btn:hover:after {
+            height: 100%;
+            width: 135%;
+        }
+
+        .btn-base {
+            color: var(--heading-color);
+            border: 0;
+            background: var(--main-color);
+        }
+
+        .btn-base:after {
+            background: #fff;
+        }
+
+        .btn-border {
+            color: var(--main-color);
+            border: 1px solid var(--main-color);
+            background: transparent;
+        }
+
+        .btn-border:hover {
+            color: #fff;
+        }
+
+        .btn-border-white {
+            color: #fff;
+            border: 1px solid #fff;
+            background: transparent;
+        }
+
+        .btn-border-white:hover {
+            background: #fff;
+            opacity: 1;
+            color: var(--heading-color);
+        }
+
+        .btn-border-white:hover::after {
+            background: #fff;
+        }
+
+        .btn-white {
+            color: var(--heading-color);
+            border: 0;
+            background: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease 0s;
+        }
+
+        .btn-white:hover {
+            color: var(--heading-color);
+        }
+
+        .btn-white:hover:after {
+            background: #fff;
+        }
+
+        .btn-area {
+            margin-top: 25px;
+        }
+
+        .btn-area .btn {
+            margin-right: 7px;
+        }
+
+
+
+        .header-item {
+            display: block;
+        }
+
+        .header-item .thumb {
+            position: relative;
+            display: block;
+        }
+
+        .header-item .thumb:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.4s;
+            border-radius: 5px;
+        }
+
+        .header-item .thumb img {
+            transition: 0.4s;
+            border-radius: 5px;
+        }
+
+        .header-item:hover .thumb img {
+            transform: scale(1.05);
+        }
+
+        .header-item:hover .thumb:after {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .inner-item:hover .cm-soon-title {
+            color: #fff;
+        }
+
+        .inner-item .btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            color: #fff;
+            margin-top: -22px;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.4s;
+            color: var(--heading-color);
+        }
+
+        .inner-item:hover .btn {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+        }
+
+        .section-title h5 {
+            font-weight: 600;
+            color: var(--main-color);
+            margin-bottom: 6px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .section-title p {
+            font-size: 22px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        @media all and (max-width: 767px) {
+            .nav-right-part ul li .btn {
+                display: none;
+            }
+
+            .nav-right-part-mobile ul li .cart {
+                display: block;
+            }
+
+            .nav-right-part-desktop {
+                margin-left: 0px;
+            }
+
+            .banner-inner h1 {
+                line-height: 46px;
+                font-size: 33px;
+                margin-bottom: 15px;
+            }
+
+            .banner-inner p {
+                font-size: 18px;
+                line-height: inherit;
+                letter-spacing: 0;
+            }
+
+            .banner-inner p span {
+                font-size: 20px;
+            }
+
+            .banner-area {
+                padding: 180px 0px 100px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .btn-area {
+                margin-top: 45px;
+            }
+
+            .btn {
+                padding: 0 21px;
+            }
+
+            .main-logo img {
+                width: 160px;
+            }
+        }
+
+        @media all and (max-width: 320px) {
+            .main-logo img {
+                width: 110px;
+            }
+
+            .nav-right-part ul li {
+                font-size: 15px;
+            }
+
+            .nav-right-part ul li a {
+                padding: 0 7px;
+            }
+        }
+
+
+        h1 {
+            font-size: 62px;
+            line-height: 1.2333333333;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 1.3380952381;
+        }
+
+        h3 {
+            font-size: 30px;
+            line-height: 1.3833333333;
+        }
+
+        h4 {
+            font-size: 24px;
+            line-height: 1.3380952381;
+        }
+
+        h5 {
+            font-size: 20px;
+            line-height: 1.3380952381;
+        }
+
+        h6 {
+            font-size: 16px;
+            line-height: 1.3830952381;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--heading-color);
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--paragraph-color);
+            -webkit-hyphens: auto;
+            hyphens: auto;
+            margin-bottom: 10px;
+        }
+
+
+
+        /*---------------------------------------
+    ## Button
+---------------------------------------*/
+        .btn {
+            height: 55px;
+            line-height: 55px;
+            padding: 0 36px;
+            border-radius: 0;
+            overflow: hidden;
+            position: relative;
+            border: 0;
+            font-size: 15px;
+            transition: all 0.5s ease;
+            font-weight: 500;
+            border-radius: 4px;
+            z-index: 0;
+        }
+
+        .btn:focus,
+        .btn:active {
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn:after {
+            content: "";
+            background: #EEBD05;
+            position: absolute;
+            transition: all 0.3s ease-in;
+            z-index: -1;
+            height: 100%;
+            left: -35%;
+            top: 0;
+            transform: skew(30deg);
+            transition-duration: 0.6s;
+            transform-origin: top left;
+            width: 0;
+        }
+
+        .btn:hover:after {
+            height: 100%;
+            width: 135%;
+        }
+
+        .btn-radius {
+            border-radius: 30px;
+        }
+
+        .btn-base {
+            color: var(--heading-color);
+            background: var(--main-color);
+        }
+
+        .btn-base:hover {
+            color: var(--heading-color);
+        }
+
+        .btn-border-white {
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            line-height: 52px;
+        }
+
+        .btn-border-white:hover,
+        .btn-border-white:focus {
+            color: #fff;
+            background: var(--main-color);
+            border: 2px solid var(--main-color);
+        }
+
+        .btn-counter {
+            display: inline-flex;
+            padding: 15px 30px;
+            border-radius: 4px;
+        }
+
+        .btn-counter .left-val {
+            margin-bottom: 0;
+        }
+
+        .btn-counter .right-val {
+            line-height: 1.2;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--heading-color);
+            margin-left: 12px;
+        }
+
+        /*------------------------------------------------
+    ## Section title
+------------------------------------------------*/
+        .section-title {
+            margin-bottom: 45px;
+            position: relative;
+        }
+
+        .section-title .sub-title {
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0;
+        }
+
+        .section-title .sub-title.left-line:before {
+            content: "";
+            position: absolute;
+            left: -50px;
+            top: 9px;
+            height: 1px;
+            width: 40px;
+            background: var(--heading-color);
+        }
+
+        .section-title .sub-title.right-line:after {
+            content: "";
+            position: absolute;
+            right: -50px;
+            top: 9px;
+            height: 1px;
+            width: 40px;
+            background: var(--heading-color);
+        }
+
+        .section-title .sub-title.double-line:before {
+            content: "";
+            position: absolute;
+            left: -50px;
+            top: 10px;
+            height: 1px;
+            width: 40px;
+            background: var(--heading-color);
+        }
+
+        .section-title .sub-title.double-line:after {
+            content: "";
+            position: absolute;
+            right: -50px;
+            top: 10px;
+            height: 1px;
+            width: 40px;
+            background: var(--heading-color);
+        }
+
+        .section-title .sub-title.style-btn {
+            height: 36px;
+            line-height: 36px;
+            background: rgba(29, 194, 149, 0.1);
+            border-radius: 30px;
+            padding: 0 25px;
+            color: var(--main-color);
+            margin-bottom: 6px;
+        }
+
+        .section-title .title {
+            margin-bottom: 0;
+            margin-top: 3px;
+        }
+
+        .section-title .content {
+            margin-top: 17px;
+            margin-bottom: 0;
+        }
+
+        .section-title .single-list-wrap {
+            margin-top: 35px;
+        }
+
+        .section-title .btn {
+            margin-top: 40px;
+        }
+
+
+        .responsive-mobile-menu button:focus {
+            outline: none;
+            border: none;
+        }
+
+        .sopen {
+            display: block;
+        }
+
+        .toggle-btn {
+            left: auto;
+            right: -10px;
+            position: absolute;
+            top: 12px;
+            width: 40px;
+            height: 40px;
+            transition-duration: 0.5s;
+            border: 0;
+            background: transparent;
+        }
+
+        .toggle-btn .icon-left {
+            transition-duration: 0.5s;
+            position: absolute;
+            height: 2px;
+            width: 11px;
+            top: 18px;
+            background-color: #fff;
+            left: 7px;
+        }
+
+        .toggle-btn .icon-left:before {
+            transition-duration: 0.5s;
+            position: absolute;
+            width: 11px;
+            height: 2px;
+            background-color: #fff;
+            content: "";
+            top: -7px;
+            left: 0;
+        }
+
+        .toggle-btn .icon-left:after {
+            transition-duration: 0.5s;
+            position: absolute;
+            width: 11px;
+            height: 2px;
+            background-color: #fff;
+            content: "";
+            top: 7px;
+            left: 0;
+        }
+
+        .toggle-btn .icon-left:hover {
+            cursor: pointer;
+        }
+
+        .toggle-btn .icon-right {
+            transition-duration: 0.5s;
+            position: absolute;
+            height: 2px;
+            width: 11px;
+            top: 18px;
+            background-color: #fff;
+            left: 18px;
+        }
+
+        .toggle-btn .icon-right:before {
+            transition-duration: 0.5s;
+            position: absolute;
+            width: 11px;
+            height: 2px;
+            background-color: #fff;
+            content: "";
+            top: -7px;
+            left: 0;
+        }
+
+        .toggle-btn .icon-right:after {
+            transition-duration: 0.5s;
+            position: absolute;
+            width: 11px;
+            height: 2px;
+            background-color: #fff;
+            content: "";
+            top: 7px;
+            left: 0;
+        }
+
+        .toggle-btn .icon-right:hover {
+            cursor: pointer;
+        }
+
+        .toggle-btn.open .icon-left {
+            transition-duration: 0.5s;
+            background: transparent;
+        }
+
+        .toggle-btn.open .icon-left:before {
+            transform: rotateZ(45deg) scaleX(1.4) translate(2px, 1px);
+        }
+
+        .toggle-btn.open .icon-left:after {
+            transform: rotateZ(-45deg) scaleX(1.4) translate(2px, -1px);
+        }
+
+        .toggle-btn.open .icon-right {
+            transition-duration: 0.5s;
+            background: transparent;
+        }
+
+        .toggle-btn.open .icon-right:before {
+            transform: rotateZ(-45deg) scaleX(1.4) translate(-2px, 1px);
+        }
+
+        .toggle-btn.open .icon-right:after {
+            transform: rotateZ(45deg) scaleX(1.4) translate(-2px, -1px);
+        }
+
+        .toggle-btn:hover {
+            cursor: pointer;
+        }
+
+        /* Tablet Layout wide: 767px. */
+        @media only screen and (max-width: 767px) {
+            .logo-wrapper.mobile-logo {
+                display: block;
+                width: 100%;
+            }
+
+            .responsive-mobile-menu {
+                display: block;
+                width: 100%;
+                position: relative;
+            }
+
+            .responsive-mobile-menu .navbar-toggler {
+                position: absolute;
+                left: calc(100% - 130px);
+                top: 10px;
+            }
+
+            .table-responsive {
+                display: block !important;
+            }
+
+            .btn-custom-default,
+            .btn-custom-white {
+                font-size: 14PX;
+                line-height: 33px;
+                padding: 6px 20px;
+            }
+
+            .navbar-area .logo {
+                padding-top: 0px !important;
+            }
+        }
+
+        /* medium tablet layout 599px */
+        @media only screen and (max-width: 575px) {
+            .navbar-area .nav-container {
+                margin: 0px 0px;
+            }
+
+            .navbar-area .logo {
+                padding-top: 10px;
+            }
+
+            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
+                padding: 15px 20px;
+            }
+
+            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
+                padding: 15px 20px;
+            }
+
+            .search-popup .search-form {
+                min-width: 350px;
+            }
+        }
+
+        /*Form fields*/
+        .dataTables_wrapper select,
+        .dataTables_wrapper .dataTables_filter input {
+            color: #4F709C;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            line-height: 1.25;
+            border-width: 2px;
+            border-radius: .25rem;
+            border-color: #F5F7F8;
+            background-color: #F5F7F8;
+            margin: 10px 0;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 9px;
+        }
+
+        /*Row Hover*/
+        table.dataTable.hover tbody tr:hover,
+        table.dataTable.display tbody tr:hover {
+            background-color: #ebf4ff;
+        }
+
+        /*Pagination Buttons*/
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-weight: 400;
+            border-radius: .25rem;
+            border: 1px solid transparent;
+            height: 37px;
+            padding-top: 5px;
+        }
+
+        /*Pagination Buttons - Current selected */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            color: white !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+            font-weight: 400;
+            border-radius: .25rem;
+            background: #4F709C !important;
+            border: 1px solid transparent;
+        }
+
+        /*Pagination Buttons - Hover */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            color: white !important;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+            font-weight: 400;
+            border-radius: .25rem;
+            background: #4F709C !important;
+            border: 1px solid transparent;
+        }
+
+        table.dataTable.no-footer {
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
+            margin-bottom: 0.75em;
+        }
+
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+            background-color: #4F709C !important;
+
+        }
+
+        /* code responsive table */
+        @media (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+
+            tbody {
+                text-align: left;
+            }
+
+            .option-select {
+                font-size: 12px;
+            }
+
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
+
+            .responsive-3 {
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
+        }
+
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px ;
+        }
+    </style>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<?php $this->load->view('sidebar'); ?>
+
+    <section id="widget" class="p-10 widget-section pd-top-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Peminjaman Tempat</h2>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-table row justify-content-center">
+                <a href="tambah_peminjaman_tempat"
+                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+
+                            <table style="min-width: 22rem;" id="example_data"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="px-4 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="2" scope="col" class="px-4 py-3">
+                                            Nama
+                                        </th>
+                                        
+                                        <th data-priority="4" scope="col" class="px-4 py-3">
+                                            Ruangan
+                                        </th>
+                                      
+                                        <th data-priority="6" scope="col" class="px-4 py-3">
+                                            Kode 
+                                        </th>
+                                      
+                                      
+                                       
+                                        <th data-priority="10" scope="col" class="px-4 py-3">
+                                         Hari Booking
+                                        </th>
+                                        <th data-priority="10" scope="col" class="px-4 py-3">
+                                         Total 
+                                        </th>
+                                      
+                                      
+                                        <th data-priority="13" scope="col" class="px-4 py-3">
+                                            Status
+                                        </th>
+                                        <th data-priority="14" scope="col" class="text-center px-4 py-3">
+                                            Aksi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b text-center dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="px-3  py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
+                                        </td>
+                                        <td data-cell="Nama " class=" px-4 py-3">
+                                            Sani Dahye 
+                                        </td>
+                                     
+                                        <td data-cell="Ruangan " class=" px-4 py-3">
+                                            004 
+                                        </td>
+                                       
+                                        <td data-cell="Kode " class=" px-4 py-3">
+                                            65789 
+                                        </td>
+                                     
+                                   
+                                      
+                                        <td data-cell="Hari Booking " class="justify-content-center px-4 py-3">
+                                        09/11/2023 - 10/11/2023
+                                        </td>
+                                        <td data-cell="Total " class="justify-content-center px-4 py-3">
+                                        2.500.000
+                                        </td>
+                                       
+                                      
+                                        <td data-cell="Status " class="px-4 py-3">
+                                            Pending
+                                        </td>
+                                        <td data-cell="Aksi" class="justify-content-center px-4 py-3 flex">
+
+                                            <a href="pelanggan/edit_peminjaman"
+                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                <span class="">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                
+                                            </a>
+                                            
+                                            <a href="pelanggan/edit_peminjaman"
+                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3  ml-3 rounded">
+                                                <span class="">
+                                                <i class="fas fa-print"></i>
+                                                </span>
+                                                
+                                            </a>
+                                           
+                                            <button onclick=""
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <span class="">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </span>
+                                                
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var table = $('#example_data').DataTable({
+                responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -916,71 +916,83 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             Nama
                                         </th>
 
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Ruangan
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kapasitas
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
+                                            Jumlah Orang
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kode
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Kode Booking
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
                                             Snack
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
                                             Total
                                         </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
                                        
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+<<<<<<< HEAD
+                                    <?php $no=0; foreach($peminjaman as $row): $no++;?>
+=======
 
+>>>>>>> f527da58fe52b912c9abe3bc976dd941f92882fb
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
+                                            <?php echo $no?>
                                         </td>
                                         <td data-cell="Nama " class="w-32 px-3 py-4">
-                                            Muhammad Khadavi
+                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?>
                                         </td>
                                         <td data-cell="Ruangan " class="w-32 px-3 py-4">
-                                            L.004 R.303
+                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>
                                         </td>
                                         <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            AC 3 PK
+                                            <?php echo $row->jumlah_orang?>
                                         </td>
                                         <td data-cell="Kode " class="w-36 px-3 py-4">
-                                            283729
+                                          <?php echo $row->kode_booking?>
                                         </td>
 
                                         <td data-cell="Snack " class="w-32 px-3 py-4">
-                                            Paket 1
+                                            <?php echo tampil_nama_snack_byid($row->id_snack)?>
                                         </td>
-                                        <td data-cell="Total Booking " class="w-32 px-3 py-4">
-                                            09/11/23 - 10/11/23
+                                        <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
+                                        <?php
+                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                            $tanggalBooking = new DateTime($row->tanggal_booking);
+                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+
+                                            // Menampilkan durasi dalam format angka
+                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                        ?>
                                         </td>
                                         <td data-cell="Total " class="w-32 px-3 py-4">
-                                            1.500.00
+                                        <?php echo $row->total_harga?>
                                         </td>
-                                        <td data-cell="Status " class="w-32 px-3 py-4">
-                                            Pending
+                                        <td data-cell="Status " class="w-32 px-3 py-4 text-uppercase">
+                                        <?php echo $row->status?>
                                         </td>
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
@@ -990,8 +1002,8 @@
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-
                                             </a>
+                                            <?php if ($row->status === 'booking'): ?>
                                             <a href=""
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                 <span class="">
@@ -999,8 +1011,8 @@
                                                 </span>
 
                                             </a>
-                                            
-                                            <button onclick=""
+                                            <?php endif; ?>
+                                            <button onclick="hapus(<?php echo $row->id ?>)"
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
@@ -1009,13 +1021,8 @@
                                             </button>
                                         </td>
                                     </tr>
-
-
-                                </td>
-
-                             </td>
-                     
-                            
+                                    <?php endforeach?>
+                                </tbody>
                             </table>
                         </form>
                           </tbody>
@@ -1032,6 +1039,7 @@
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -1045,7 +1053,33 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
+        function hapus(id) {
+            Swal.fire({
+                title: 'Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Data Terhapus!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('operator/hapus_peminjaman/') ?>" + id;
+                    }, 1800);
+                }
+            })
+        }
     </script>
+    
 
 </body>
 

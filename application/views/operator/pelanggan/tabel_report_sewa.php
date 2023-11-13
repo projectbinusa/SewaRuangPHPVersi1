@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
@@ -15,9 +18,7 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -828,7 +829,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+             margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -893,7 +895,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <?php $this->load->view('sidebar'); ?>
+<?php $this->load->view('sidebar'); ?>
 
     <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
@@ -908,16 +910,9 @@
 
             <div class="container-table row justify-content-center">
 
-                <a href="tambah_peminjaman_tempat"
-=
-                <a href="tambah_report_sewa"
+                <a href="tambah_peminjaman_tempat">
 
-                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Tambah
-                </a>
+               
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -998,11 +993,7 @@
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-<<<<<<< HEAD
-                                            <a href="edit_peminjaman_tempat"
-=======
                                             <a href="update_report_sewa"
->>>>>>>
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>

@@ -152,7 +152,6 @@
             color: #222;
         }
 
-<<<<<<< HEAD
 
 
         .form-group {
@@ -171,37 +170,6 @@
             .password-toggle {
                 top: 76%;
                 right: 4.9rem;
-=======
-       
-        @media only screen and (max-width: 800px) {
-            .password-toggle {
-                top: 56.5rem;
-                right: 3rem;
-            }
-
-            .container {
-                padding: 1rem 1rem 0px 1rem;
-            }
-
-
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
-
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
-
-            }
-
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
-
-            label {
-                font-size: 16px;
->>>>>>> a89f519bad7d7704ebb5d6f00b210f7c13921ece
             }
         }
     </style>
@@ -211,11 +179,7 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-<<<<<<< HEAD
         <div class="px-36 pt-10 container">
-=======
-        <div class="container">
->>>>>>> a89f519bad7d7704ebb5d6f00b210f7c13921ece
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Tambah Report Sewa</h1>

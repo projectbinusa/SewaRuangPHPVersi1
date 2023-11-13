@@ -50,7 +50,7 @@
 
             margin: 4rem auto;
 
-           margin: 1rem auto;
+            margin: 1rem auto;
             padding: 30px 7.5rem 5px 7.5rem;
 
         }
@@ -75,7 +75,7 @@
         .survey-form {
 
             font-size: 1.8rem;
-    font-size: 15px;
+            font-size: 15px;
 
         }
 
@@ -170,13 +170,14 @@
 
         .submit {
             font-size: 1.7rem;
+        }
 
         .submit {
             font-size: 14px;
 
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 5px;
             color: #f4f4f4;
             background-color: #4F709C;
             border: 3px solid #4F709C;
@@ -185,8 +186,8 @@
             width: 15rem;
             padding: 1rem 2rem;
             margin: 4rem auto 2rem auto;
-          width: 8rem;
-            height: 2.5rem;
+            width: 8rem;
+            height: 3.5rem;
             padding: 8px 2rem;
             margin: 40px auto 10px auto;
 
@@ -225,62 +226,64 @@
                 right: 4.9rem;
                 /* cursor: pointer; */
 
-        /* style comboboxs */
-        input {
-            padding: 5px;
-            height: 35px;
-            border-bottom: 1px solid;
-            outline: none;
-        }
+                /* style comboboxs */
+                input {
+                    padding: 5px;
+                    height: 35px;
+                    border-bottom: 1px solid;
+                    outline: none;
+                }
 
-        datalist {
-            position: absolute;
-            background-color: white;
-            border-top: none;
-            width: 350px;
-            padding: 5px;
-            max-height: 10rem;
-            overflow-y: auto
-        }
+                datalist {
+                    position: absolute;
+                    background-color: white;
+                    border-top: none;
+                    width: 350px;
+                    padding: 5px;
+                    max-height: 10rem;
+                    overflow-y: auto
+                }
 
-        option {
-            background-color: white;
-            padding: 4px;
-            margin-bottom: 1px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-
-        @media only screen and (max-width: 800px) {
-            .password-toggle {
-                top: 56.5rem;
-                right: 3rem;
-            }
-
-            .container {
-                padding: 1rem 1rem 0px 1rem;
-            }
+                option {
+                    background-color: white;
+                    padding: 4px;
+                    margin-bottom: 1px;
+                    font-size: 14px;
+                    cursor: pointer;
+                }
 
 
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
+                @media only screen and (max-width: 800px) {
+                    .password-toggle {
+                        top: 56.5rem;
+                        right: 3rem;
+                    }
 
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
+                    .container {
+                        padding: 1rem 1rem 0px 1rem;
+                    }
 
-            }
 
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
+                    .heading {
+                        padding: 1.3em 9px 1.8rem 9px;
+                    }
 
-            label {
-                font-size: 16px;
+                    .survey-form {
+                        padding: 1.3em 15px 1.8rem 15px;
 
+                    }
+
+                    .main-heading {
+                        font-size: 22px;
+                        margin-bottom: 0;
+                        text-align: center;
+                    }
+
+                    label {
+                        font-size: 16px;
+
+                    }
+                }
             }
         }
     </style>
@@ -298,7 +301,6 @@
 
                 <h1 id="title" class="main-heading">Update report sewa</h1>
 
-                <h1 id="title" class="main-heading">Form Edit Report Sewa</h1>
 
             </header>
 
@@ -306,28 +308,30 @@
                 <label for="hari" id="name-label">Hari<span class="required">*</span></label>
                 <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
 
-                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
-                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
+                <label for="tanggal" id="name-label">Tanggal,<span class="required">*</span></label>
+                <input type="date" name="tanggal" id="tanggal" class="" placeholder="Ketik tangggal" required>
+                <hr>
 
 
                 <div class="mb-3 col-6">
-                <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
-                <select name="no_ruang" class="form-select">
-                    <option selected>Pilih Ruang</option>
-            
-            </option>
-                    <option value="Ruang ke 1.">Ruang ke 1.</option>
-                    <option value="Ruang ke 2.">Ruang ke 2.</option>
-                    <option value="Ruang ke 3.">Ruang ke 3.</option>
-                    <option value="Ruang ke 4.">Ruang ke 4.</option>
-                    <option value="Ruang ke 5.">Ruang ke 5.</option>
-                </select>
-    </div>
-            <b><hr></b>
+                    <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
+                    <select name="no_ruang" class="form-select">
+                        <option selected>Pilih Ruang</option>
+
+                        </option>
+                        <option value="Ruang ke 1.">Ruang ke 1.</option>
+                        <option value="Ruang ke 2.">Ruang ke 2.</option>
+                        <option value="Ruang ke 3.">Ruang ke 3.</option>
+                        <option value="Ruang ke 4.">Ruang ke 4.</option>
+                        <option value="Ruang ke 5.">Ruang ke 5.</option>
+                    </select>
+                </div>
+                <b>
+                    <hr>
+                </b>
 
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
-                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
-                    placeholder="Pilih no lantai">
+                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai" placeholder="Pilih no lantai">
 
                 <datalist id="browsers" role="listbox">
                     <option value="001">001</option>
@@ -338,67 +342,51 @@
 
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
-                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Ketik kapasitas ruangan" required>
+                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas" placeholder="Ketik kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-
-                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
-
-                
-                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                placeholder="Ketik jam penggunaan" required>
-                
-
-                <select id="underline_select"
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <select id="underline_select" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Paket Snack</option>
                     <option value="US">Paket 1</option>
                     <option value="CA">Paket 2</option>
                     <option value="FR">Paket 3</option>
                 </select>
 
-                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required>
 
-                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
-                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Ketik extra time jika ada" required>
 
-                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
-                        class="required">*</span></label>
-                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan" placeholder="Ketik jam penggunaan" required>
+
+
+
+                
+              
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span class="required">*</span></label>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
 
-
-
         </div>
     </main>
-      </div>
+    </div>
     </main>
 
     <!-- script comboboxs -->
     <script>
-        input.onfocus = function () {
+        input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -410,16 +398,14 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -435,6 +421,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -445,9 +432,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });
