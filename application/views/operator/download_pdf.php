@@ -1,172 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your PDF</title>
     <style>
-        .header h2{
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+        }
+
+        .header {
             text-align: center;
-            background: #f2f2f2;
+            background: #0C356A;
+            color: whitesmoke;
+            padding: 30px;
         }
 
         .invoice {
-            float: right;
+            margin-left: 70%;
             font-weight: bold;
-            color: #705D56; 
+            color: #1F4172;
+            margin-bottom: 0;
         }
 
         .invoice-container {
-            margin-top: 30px;
-            padding: 20px;
-            background: #FFFFFF;
-            border: 1px solid #D1CDC6;
-            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3%;
         }
 
-        .invoice h2 {
-            color: #705D56;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: left;
+        .invoice p {
+            text-align: center;
+            margin: 0px;
         }
 
-        .invoice-details {
-            margin-top: 20px;
-            font-size: 14px;
-            font-weight: bold;
+        .invoice-yu {
+            margin-left: 5%;
+            margin-top: 40px;
         }
 
         .invoice-details table {
+            /* width: 70%; */
+            margin-left: 5%;
+            font-size: 80%;
+        }
+
+        .invoice-details table th {
+            background: #f2f2f2;
+        }
+
+        .item-table {
+            padding-left: 50px;
+            padding-right: 50px;
             width: 100%;
+            border-collapse: collapse;
         }
 
-        .invoice-details table tr td {
-            padding: 8px;
-            border-left: px             
-        }
-
-        .item-table th,
         .item-table td {
             padding: 10px;
-            text-align: center;
-            border-right: 1px solid #D1CDC6; /* Menambah garis vertikal pada td */
-        }
-
-        .item-table td:last-child {
-            border-right: none; /* Menghapus garis vertikal pada td terakhir */
+            font-size: 80%;
         }
 
         .item-table th {
-            border-top: 2px solid #705D56;
-            border-bottom: 2px solid #705D56;
-            margin: 0;
-            padding: 10px;
-            color: #0C356A;
-            border-left: 0px ;              
-        }
-
-        .item-table td::before {
-            content: "";
-            display: block;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-
-        .item-table tbody tr:last-child td {
-            border-bottom: none;
+            background: #f2f2f2;
+            font-weight: bold;
         }
 
         .total {
             margin-top: 20px;
             text-align: right;
-            font-size: 18px;
+            font-size: medium;
             font-weight: bold;
-            color: #3876BF;
+            color: #1F4172;
+        }
+
+        .total #displayTotal::after {
+            content: 'RP';
+            display: inline-block;
+            border-bottom: 1px solid #1F4172;
+            padding-bottom: 4px;
+            margin-left: 5px;
+            margin-right: 20px;
         }
 
         .payment-info {
-            margin-top: 20px;
             font-size: 14px;
             font-weight: bold;
-            background: linear-gradient(to right, #f2f2f2, transparent);
-            padding: 20px;
-            color: ; /* Tambahkan warna yang diinginkan */
-            border-left: 20px solid #0C356A ; /* Lebar dan warna garis vertikal */
-            margin-left: 0; /* Hapus margin kiri */
+            color: #0C356A;
+            border-left: 18px solid #0C356A;
+            margin-right: 20%;
+            height: 20%;
+            margin-top: 10%;
         }
 
-        .payment-info h4 {
-            margin-bottom: 10px;
-        }
-
+        .payment-info h4,
         .payment-info p {
-            margin: 5px 0;
+            margin-left: 18px;
+        }
+
+        .container {
+            display: flex;
+            float: right;
+            color: #1F4172;
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        .name-customer {
+            color: #1F4172;
+            font-size: larger;
+        }
+
+        .merah {
+            text-align: center;
         }
     </style>
-
-    <title>Invoice</title>
 </head>
+
 <body>
 
     <div class="header">
+        <img src="" alt="">
         <h2>RuangSewa.com</h2>
     </div>
 
-        <div class="invoice-yu">
-            <h2>Bukti Pembayaran <span class="invoice">INVOICE</span></h2>
-        </div>
+    <div class="invoice-yu">
+        <h1 class="invoice">INVOICE</h1>
+        <p class="name-customer">Nama Customer Booking </p>
+    </div>
 
-        <div class="invoice-details">
-            <table>
-                <tr>
-                    <td>Email <span style="margin-left: 17px;">:</span></td>
-                    <td><?php echo $this->session->userdata('') ?></td>
-                </tr>
-                <tr>
-                    <td>Alamat <span style="margin-left: 8px;">:</span></td>
-                    <td><?php echo $this->session->userdata('') ?></td>
-                </tr>
-            </table>
-        </div>
-<br><br>
-        <table rules="cols" class="item-table hover:table-fixed" id="itemTable">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Ruangan/Lantai</th>
-                    <th>Kode Booking</th>
-                    <th>Status</th>
-                    <th>total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $no = 1; foreach ($bukti as $key): { ?>
-                    <tr>
-                        <td><?php echo $no++; ?></td>
-                        <td></td>
-                        <td><?php echo $key->no_lantai; ?></td>
-                        <td><?php echo $key->no_ruang; ?></td>
-                        <td>free</td>
-                        <td></td>
-                    </tr>
-                <?php } ?>
-                <?php endforeach; ?>
-            </tbody>
+    <div class="invoice-details">
+        <table>
+            <tr>
+                <td>Nama penyewa<span style="margin-left: 9px;">:</span></td>
+                <td class="biru"><?php echo $this->session->userdata('') ?>rara</td>
+            </tr>
+            <tr>
+                <td>No Telephone <span style="margin-left: 8px;">:</span></td>
+                <td class="biru"><?php echo $this->session->userdata('') ?>945737264763</td>
+            </tr>
+            <tr>
+                <td>Kode Booking <span style="margin-left: 8px;">:</span></td>
+                <td class="biru"><?php echo $this->session->userdata('') ?>rara#sewaa</td>
+            </tr>
         </table>
-<br>
+    </div>
+    <br><br>
+    <table rules="all" class="item-table hover:table-fixed" id="itemTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Ruangan/Lantai</th>
+                <th>Snack</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $no = 1;
+            foreach ($ruang as $key) : {
+            ?>
+                    <tr>
+                        <td class="merah"><?php echo $no . '.'; ?></td>
+                        <td>R 1/ L 3</td>
+                        <td>stik poteto and orenge jus</td>
+                        <td>1.655.00</td>
+                    </tr>
+                <?php
+                    $no++;
+                } ?>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
+    <br>
+    <div class="container">
+        <div class="sub">
+            Total Item
+            <span>: </span>
+        </div><br>
+        <div class="air">
+            Sale :
+            <span id="displayTotal">% </span>
+        </div>
         <div class="total">
-            Total: <span id="displayTotal">RP 1.000.000</span>
+            Total Harga:
+            <span id="displayTotal"></span>
         </div>
-<br><br>
-        <div class="payment-info">
-            <h4>PAYMENT INFO</h4>
-            <p>Bank         <span style="margin-left: 74px;">:</span></p>
-            <p>Account Name <span style="margin-left: 17px;">:</span></p>
-            <p>Account No   <span style="margin-left: 35px;">:</span></p>
-            <p>Payment by   <span style="margin-left: 35px;">:</span></p>
-        </div>
+    </div><br><br><br>
+    <div class="payment-info">
+        <h4>PAYMENT INFO</h4>
+        <p>Bank <span class="info">:</span></p>
+        <p>Account Name <span class="info">:</span></p>
+        <p>Account No <span class="info">:</span></p>
+        <p>Payment by <span class="info">:</span></p>
     </div>
 
 </body>
+
 </html>

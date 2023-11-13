@@ -13,9 +13,7 @@ class operator extends CI_Controller
 
     public function detail($id)
     {
-        // Assuming you have a model method to fetch room details
         $data['ruang'] = $this->m_model->get_data_by_id('ruangan', $id)->result();
-        // Load the detail view and pass the data
         $this->load->view('operator/ruang/detail', $data);
     }
 
@@ -32,10 +30,9 @@ class operator extends CI_Controller
 
     public function aksi_tambah_ruangan()
     {
-        $this->load->model('m_model'); // Memuat model jika belum dimuat
 
         $no_lantai = $this->input->post('no_lantai');
-        $no_ruang = $this->input->post('no_ruang');
+        $no_ruang = strtoupper($this->input->post('no_ruang'));
         $deskripsi = $this->input->post('deskripsi');
         $image = $_FILES['foto']['name'];
         $harga = $this->input->post('harga');
@@ -48,8 +45,8 @@ class operator extends CI_Controller
         }
 
         // Validasi no_ruang
-        if (empty($no_ruang)) {
-            $errors[] = 'Nomor Ruang tidak boleh kosong.';
+        if (empty($no_ruang) || !ctype_alnum($no_ruang)) {
+            $errors[] = 'Nomor Ruang hanya boleh berisi angka atau huruf.';
         }
 
         // Validasi harga
@@ -62,7 +59,7 @@ class operator extends CI_Controller
         // Validasi foto
         $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
         $file_info = pathinfo($image);
-        $extension = strtolower($file_info['extension']);
+        $extension = isset($file_info['extension']) ? strtolower($file_info['extension']) : null;
 
         if (empty($image) || !in_array($extension, $allowed_extensions)) {
             $errors[] = 'Foto harus diunggah dengan format JPG, JPEG, PNG, atau GIF.';
@@ -115,6 +112,7 @@ class operator extends CI_Controller
         echo json_encode($response);
     }
 
+
     public function pdf()
     {
         $data['bukti_booking'] = $this->m_model->get_data('ruangan')->result();
@@ -158,12 +156,42 @@ class operator extends CI_Controller
         $image = $_FILES['foto']['name'];
         $foto_temp = $_FILES['foto']['tmp_name'];
 
-        // Inisialisasi pesan respons
         $response = [
             'status' => 'error', // Default status error
             'message' => 'Terjadi kesalahan saat mengubah ruangan.', // Default pesan error
             'redirect' => '' // Redirect URL setelah berhasil atau gagal
         ];
+
+        // Load the form validation library
+        $this->load->library('form_validation');
+
+        // Set custom error messages for form validation
+        $this->form_validation->set_message('required', 'Kolom {field} wajib diisi.');
+        $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka.');
+        $this->form_validation->set_message('alpha_numeric', 'Kolom {field} hanya boleh berisi huruf dan angka.');
+        $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
+        $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka untuk harga.');
+
+        // Set validation rules
+        $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|numeric');
+        $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|alpha_numeric');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+
+        // Run validation
+        if ($this->form_validation->run() == false) {
+            // Validation failed
+            $response = [
+                'status' => 'error',
+                'message' => strip_tags(validation_errors()), // Strip HTML tags from error messages
+                'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect to the edit page
+            ];
+
+            // Send JSON response and exit
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            return;
+        }
 
         // Cek apakah ID ruangan valid (contoh: Anda dapat menambahkan pengecekan di sini)
         if ($id) {
@@ -184,6 +212,23 @@ class operator extends CI_Controller
                 if ($no_lantai !== $current_data->no_lantai || $no_ruang !== $current_data->no_ruang || $deskripsi !== $current_data->deskripsi || $harga !== $current_data->harga || !empty($image)) {
                     // Ada perubahan data, lanjutkan proses penyimpanan
                     if (!empty($image)) {
+                        // Validasi ekstensi file gambar
+                        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+                        $file_extension = pathinfo($image, PATHINFO_EXTENSION);
+
+                        if (!in_array(strtolower($file_extension), $allowed_extensions)) {
+                            // Ekstensi file tidak diizinkan
+                            $response = [
+                                'status' => 'error',
+                                'message' => 'Ekstensi file tidak diizinkan. Pilih file gambar dengan ekstensi: ' . implode(', ', $allowed_extensions),
+                                'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
+                            ];
+                            // Kirim respons JSON
+                            header('Content-Type: application/json');
+                            echo json_encode($response);
+                            return; // Stop execution
+                        }
+
                         // Lakukan pengelolaan gambar seperti yang telah dijelaskan dalam pertanyaan sebelumnya
                         $kode = round(microtime(true) * 100);
                         $file_name = $kode . '_' . $image;
@@ -232,6 +277,18 @@ class operator extends CI_Controller
         header('Content-Type: application/json');
         echo json_encode($response);
     }
+
+    // Callback function for checking deskripsi
+    public function check_deskripsi($str)
+    {
+        if (strpos($str, '-') !== false) {
+            $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     public function hapus_image($id)
     {
@@ -313,10 +370,10 @@ class operator extends CI_Controller
 
     // update data pelanggan
     public function update_data($id)
-{
-    $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
-    $this->load->view('operator/pelanggan/update_data', $data);
-}
+    {
+        $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
+        $this->load->view('operator/pelanggan/update_data', $data);
+    }
 
 
     // aksi update data pelanggan
@@ -355,17 +412,86 @@ class operator extends CI_Controller
 
     public function table_peminjaman_tempat()
     {
-        $this->load->view('operator/table_peminjaman_tempat');
+        $data['peminjaman'] = $this->m_model->get_data('peminjaman')->result();
+        $this->load->view('operator/table_peminjaman_tempat', $data);
     }
+
     public function tambah_peminjaman_tempat()
     {
-        $this->load->view('operator/tambah_peminjaman_tempat');
+        $data['snack'] = $this->m_model->get_data('snack')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $this->load->view('operator/tambah_peminjaman_tempat', $data);
+    }
+
+    public function check_expired_bookings()
+    {
+        // Implementasi logika untuk memeriksa pemesanan yang berakhir dan mengubah statusnya
+
+        $bookings = $this->m_model->get_expired_bookings();
+
+        foreach ($bookings as $booking) {
+            $this->m_model->update_status($booking->id, 'selesai');
+        }
+    }
+
+    function generate_booking_code($length = 8)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $code = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $code;
+    }
+
+    public function aksi_peminjaman()
+    {
+        $id_ruangan = $this->input->post('ruang');
+        $id_pelanggan = tampil_pelanggan_bynama($this->input->post('nama'));
+        $jumlah = $this->input->post('kapasitas');
+        $start_time = $this->input->post('booking');
+        $generate = $this->generate_booking_code();
+        $end_time = $this->input->post('akhir_booking');
+        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
+        if (!empty($this->input->post('snack'))) {
+            $id_snack = $this->input->post('snack');
+            $harga = tampil_harga_snack_byid($id_snack);
+        }
+        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
+            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            return;
+        }
+        $harga_snack = $harga * $jumlah;
+        $harga_keseluruhan = $harga_snack + $harga_ruangan;
+        $data = [
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'id_snack' => $id_snack,
+            'tanggal_booking' => $start_time,
+            'tanggal_berakhir' => $end_time,
+            'jumlah_orang' => $jumlah,
+            'kode_booking' => $generate,
+            'total_harga' => $harga_keseluruhan,
+            'status' => 'pending',
+        ];
+        $this->m_model->tambah_data('peminjaman', $data);
+        $this->check_expired_bookings();
+        redirect(base_url('operator/peminjaman_tempat'));
+    }
+
+    public function hapus_peminjaman($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+        redirect(base_url('operator/peminjaman_tempat'));
     }
 
     public function edit_peminjaman_tempat()
     {
         $this->load->view('operator/edit_peminjaman_tempat');
     }
+
     public function tabel_report_sewa()
     {
         $this->load->view('operator/pelanggan/tabel_report_sewa');
