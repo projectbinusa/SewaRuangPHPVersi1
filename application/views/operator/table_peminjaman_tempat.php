@@ -402,9 +402,7 @@
         }
 
 
-        /*---------------------------------------
-    ## Button
----------------------------------------*/
+     
         .btn {
             height: 55px;
             line-height: 55px;
@@ -511,10 +509,7 @@
             color: var(--heading-color);
             margin-left: 12px;
         }
-
-        /*------------------------------------------------
-    ## Section title
-------------------------------------------------*/
+     
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -912,13 +907,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat"
-                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Tambah
-                </a>
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -963,7 +952,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+<<<<<<< HEAD
                                     <?php $no=0; foreach($peminjaman as $row): $no++;?>
+=======
+
+>>>>>>> f527da58fe52b912c9abe3bc976dd941f92882fb
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -1032,6 +1025,9 @@
                                     <?php endforeach?>
                                 </tbody>
                             </table>
+                        </form>
+                          </tbody>
+                          </table>
                         </div>
                     </div>
                 </div>

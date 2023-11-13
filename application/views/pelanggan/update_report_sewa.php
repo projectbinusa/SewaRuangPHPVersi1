@@ -18,24 +18,22 @@
             box-sizing: border-box;
         }
 
-        /* 
         html {
             font-size: 62.5%;
-        } */
+        }
 
         body {
-            font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.6rem;
             background-color: #E4F1FF;
             color: #222;
-            padding: 0 0px;
+            padding: 0 5px;
         }
 
         .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 1rem auto;
-            padding: 30px 7.5rem 5px 7.5rem;
+            margin: 4rem auto;
         }
 
         .heading,
@@ -43,7 +41,7 @@
             background-color: #fff;
             padding: 1.3em 3rem 1.8rem 3rem;
             border-radius: 1rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
         }
 
@@ -52,7 +50,7 @@
         }
 
         .survey-form {
-            font-size: 15px;
+            font-size: 1.8rem;
         }
 
         .green-bar {
@@ -67,9 +65,8 @@
         }
 
         .main-heading {
-            font-size: 2rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            height: 1.5rem;
         }
 
         .main-description {
@@ -88,33 +85,34 @@
 
         label {
             display: block;
-            font-size: 1.1rem;
-            margin: 30px 0;
-            line-height: 1px;
+            font-size: 1.8rem;
+            margin: 2rem 0;
         }
 
         input {
             display: block;
             width: 100%;
-            height: 29px;
-            margin: 5px 0;
+            margin: 2rem 0;
             font-size: 1.6rem;
-            line-height: 1px;
         }
 
-        .nama,
-        .ruang,
+        .hari,
+        .tanggal,
+        .no_ruang,
+        .kapasitas,
+        .snack,
+        .extra_time,
         .jam_penggunaan,
-        .ruang,
-        .kapasitas {
+        .total_booking {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
 
+
         .submit {
-            font-size: 14px;
+            font-size: 1.7rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -122,10 +120,9 @@
             background-color: #4F709C;
             border: 3px solid #4F709C;
             border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            width: 15rem;
+            padding: 1rem 2rem;
+            margin: 4rem auto 2rem auto;
             cursor: pointer;
             transition: all .3s;
         }
@@ -135,7 +132,10 @@
             color: #222;
         }
 
-
+        a:link,
+        a:visited {
+            color: #008080;
+        }
 
         .form-group {
             position: relative;
@@ -143,103 +143,82 @@
 
         .password-toggle {
             position: absolute;
-            top: 80%;
+            top: 72%;
             transform: translateY(-50%);
-            right: 12.9rem;
+            right: 40rem;
             cursor: pointer;
         }
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
+                /* position: absolute; */
                 top: 76%;
+                /* transform: translateY(-50%); */
                 right: 4.9rem;
-            }
-
-            .container {
-                padding: 1rem 1rem 0px 1rem;
-            }
-
-
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
-
-            }
-
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
-
-            label {
-                font-size: 16px;
+                /* cursor: pointer; */
             }
         }
     </style>
 </head>
 
 <body>
-    <?php $this->load->view('sidebar'); ?>
-
     <main>
-        <div class=" container">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Laporan Penyewa</h1>
+                <h1 id="title" class="main-heading">Update report sewa</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="nama" id="name-label">Nama Penyewa<span class="required">*</span></label>
+            <form action="" method="post" id="survey-form" class="survey-form">
+                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
+                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
 
-                <select id="countries"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Pilih Nama Penyewa</option>
-                    <option value="US">Ajeng Pratiwi</option>
+                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
+                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
+
+                <div class="mb-3 col-6">
+                <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
+                <select name="no_ruang" class="form-select">
+                    <option selected>Pilih Ruang</option>
+            
+            </option>
+                    <option value="Ruang ke 1.">Ruang ke 1.</option>
+                    <option value="Ruang ke 2.">Ruang ke 2.</option>
+                    <option value="Ruang ke 3.">Ruang ke 3.</option>
+                    <option value="Ruang ke 4.">Ruang ke 4.</option>
+                    <option value="Ruang ke 5.">Ruang ke 5.</option>
                 </select>
-
-
-                <label for="ruang" id="ruang-label">No Ruang<span class="required">*</span></label>
-                <input type="ruang" name="ruang" id="ruang" class="ruang" placeholder="Masukkan no ruang" required>
+    </div>
+                <b><hr></b>
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
                 <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Masukkan kapasitas ruangan" required>
+                    placeholder="Ketik kapasitas ruangan" required>
 
+                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
+                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
 
+                
                 <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
+                class="required">*</span></label>
                 <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Masukkan jam penggunaan" required>
+                placeholder="Ketik jam penggunaan" required>
+                
+                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
+                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
+                    placeholder="Ketik extra time jika ada" required>
 
-
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
+                        class="required">*</span></label>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
+                    placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
+
+
         </div>
     </main>
 </body>
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
-
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
-        }
-    }
-</script>
 
 </html>

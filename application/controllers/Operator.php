@@ -313,10 +313,11 @@ class operator extends CI_Controller
 
     // update data pelanggan
     public function update_data($id)
-    {
-        $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
-        $this->load->view('operator/pelanggan/update_data', $data);
-    }
+{
+    $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
+    $this->load->view('operator/pelanggan/update_data', $data);
+}
+
 
     // aksi update data pelanggan
     public function aksi_update_data()
@@ -428,6 +429,7 @@ class operator extends CI_Controller
     }
     public function tabel_report_sewa()
     {
+        
         $this->load->view('operator/pelanggan/tabel_report_sewa');
     }
 
