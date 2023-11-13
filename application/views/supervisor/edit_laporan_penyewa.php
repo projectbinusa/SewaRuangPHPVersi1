@@ -31,11 +31,12 @@
             padding: 0 0px;
         }
 
-        /* .container {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 4rem auto;
-        } */
+            margin: 1rem auto;
+            padding: 30px 7.5rem 5px 7.5rem;
+        }
 
         .heading,
         .survey-form {
@@ -153,6 +154,29 @@
                 top: 76%;
                 right: 4.9rem;
             }
+
+            .container {
+                padding: 1rem 1rem 0px 1rem;
+            }
+
+
+            .heading {
+                padding: 1.3em 9px 1.8rem 9px;
+            }
+            .survey-form {
+                padding: 1.3em 15px 1.8rem 15px;
+
+            }
+
+            .main-heading {
+                font-size: 22px;
+                margin-bottom: 0;
+                text-align: center;
+            }
+
+            label {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -161,7 +185,7 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="px-36 pt-10 container">
+        <div class=" container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Laporan Penyewa</h1>
@@ -171,8 +195,6 @@
                 class="survey-form">
                 <label for="nama" id="name-label">Nama Penyewa<span class="required">*</span></label>
 
-                <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
-                    option</label> -->
                 <select id="countries"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Pilih Nama Penyewa</option>

@@ -503,6 +503,9 @@
             transition: transform 12s;
         }
 
+        .widget-section  {
+            padding: 0px 40px 15px 40px;
+        }
         .widget-section .inner-item {
             margin-bottom: 20px;
         }
@@ -1536,7 +1539,7 @@
 
     <?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class="p-10 widget-section pd-top-47">
+    <section id="widget" class="widget-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">

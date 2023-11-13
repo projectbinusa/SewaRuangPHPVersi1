@@ -23,6 +23,7 @@
                                 <h1 id="title" class="text-4xl font-bold text-black-900">Tambah Data Pelanggan</h1>
                             </header>
                             <form action="<?php echo base_url('operator/aksi_tambah_pelanggan') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+
                                
                                         <label for="nama" class="block">Nama</label>
                                         <input type="text" name="nama" id="no_lantai" 
@@ -39,6 +40,8 @@
                                         <input type="text" name="payment_method" id="deskripsi" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                                    
+
+                              
 
                                 <div class="text-center mt-10">
                                     <input type="submit" id="submit" 

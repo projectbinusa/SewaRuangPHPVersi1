@@ -5875,11 +5875,47 @@
             padding: 20px 10px 10px 10px;
         }
 
+        @media (max-width: 600px) {
 
-        /* footer */
 
-       
+            tbody {
+                text-align: left;
+            }
 
+            .option-select {
+                font-size: 12px;
+            }
+
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
+
+            .responsive-3 {
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
+        }
 
     </style>
 
@@ -5964,7 +6000,7 @@
                         <div class="relative">
 
                             <table style="min-width: 22rem;" id="example_data_operator"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -5972,7 +6008,7 @@
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama Penyewa
+                                            Username 
                                         </th>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Email
@@ -5983,7 +6019,7 @@
                                 <tbody>
 
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
+                                        <td data-cell="Username  " scope="row"
                                             class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                           1
                                         </td>

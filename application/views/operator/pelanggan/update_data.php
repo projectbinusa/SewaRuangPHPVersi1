@@ -47,10 +47,10 @@
 
                                 <div class="text-center mt-10">
                                     <input type="submit" id="submit" 
-                                    class="bg-white text-lg py-2 px-8 text-blue-500 border-2 border-blue-500 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white" value="TAMBAH">
+                                    class="bg-white text-lg py-2 px-8 text-blue-500 border-2 border-blue-500 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white" value="Update">
                                 </div>
                             </form>
-                            <?php endforeach ?>
+                       <?php endforeach ?>
                         </div>
                     </main>
                 </div>

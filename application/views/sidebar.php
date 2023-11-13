@@ -11,19 +11,13 @@
 </head>
 
 <style>
-  /* Default styles */
-li:hover span {
-    color: black; /* Warna teks ketika dihover */
-}
-li:hover i {
-    color: black; /* Warna ikon ketika dihover */
-}
-nav ul:hover span {
-    color: black; /* Warna teks ketika dihover */
-}
-nav ul:hover i {
-    color: black; /* Warna ikon ketika dihover */
-}
+  li:hover span {
+    color: black;
+  }
+
+  li:hover i {
+    color: black;
+  }
 </style>
 
 <body class="bg-white min-h-screen font-base">
