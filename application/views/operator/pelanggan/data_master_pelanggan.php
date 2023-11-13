@@ -32,7 +32,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            font-size: 16px;
             background-color: #f1f1f1;
         }
 
@@ -917,12 +917,12 @@
               <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
               <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
                 <!-- Update Data -->
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg" onclick="update(<?php echo $row->id ?>)">
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1.5 px-4 rounded-lg" onclick="update(<?php echo $row->id ?>)">
                   <i class="fas fa-edit"></i>
                 </button>
 
                 <!-- Hapus Data -->
-                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg ml-3">
+                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1.5 px-4 rounded-lg ml-3">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </td>
@@ -983,7 +983,7 @@
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Batal',
-        confirmButtonText: 'Hapus Data Pelanggan'
+        confirmButtonText: 'Hapus'
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({

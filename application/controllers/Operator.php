@@ -368,17 +368,17 @@ class operator extends CI_Controller
     }
     public function tabel_report_sewa()
     {
-        
         $this->load->view('operator/pelanggan/tabel_report_sewa');
-    }
-
-    public function tambah_report_sewa()
-    {
-        $this->load->view('operator/pelanggan/tambah_report_sewa');
     }
 
     public function update_report_sewa()
     {
         $this->load->view('operator/pelanggan/update_report_sewa');
+    }
+
+    public function hapus_report_sewa()
+    {
+        $this->m_model->delete('');
+        redirect(base_url('operator/table_report_sewa'));
     }
 }

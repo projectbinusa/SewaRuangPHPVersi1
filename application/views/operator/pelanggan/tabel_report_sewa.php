@@ -37,7 +37,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            font-size: 16px;
             background-color: #f1f1f1;
         }
 
@@ -889,7 +889,6 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -908,13 +907,6 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_report_sewa"
-                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Tambah
-                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -965,7 +957,7 @@
                                             1
                                         </td>
                                         <td data-cell="Nama " class="w-32 px-3 py-4">
-                                           Wahyu
+                                           Messi
                                         </td>
                                         <td data-cell="Ruangan " class="w-32 px-3 py-4">
                                             L.004 R.303
