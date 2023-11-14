@@ -14,7 +14,7 @@
 <body class="h-screen overflow-hidden flex flex-col bg-gray-100">
   <?php $this->load->view('sidebar'); ?>
   <!-- Área de contenido principal -->
-  <div class="min-h-screen overflow-hidden flex mt-32 justify-center items-start md:mx-96">
+  <div class="min-h-screen overflow-hidden flex mt-28 justify-center items-start md:mx-96">
     <div class="grid grid-cols-1 md:grid-cols-10 lg:grid-cols-3 gap-x-1">
       <?php foreach ($ruang as $row) : ?>
         <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700 w-full md:w-80 lg:w-96">
