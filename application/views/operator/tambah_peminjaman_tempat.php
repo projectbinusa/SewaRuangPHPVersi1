@@ -190,6 +190,23 @@
                 font-size: 16px;
             }
         }
+
+
+        #checkboxCombo {
+            position: relative;
+            display: inline-block;
+        }
+
+        #checkboxCombo select {
+            width: 200px;
+            padding: 5px;
+        }
+
+        #checkboxCombo input[type="checkbox"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     </style>
 </head>
 
@@ -224,10 +241,13 @@
                     placeholder="Ketik kapasitas ruangan" required>
                 <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
                 <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
-                    placeholder="Pilih Tambahan">
-                <datalist id="browsers" role="listbox">
-                    <option value="Paket 1">Paket 1</option>
-                    <option value="Paket 2">Paket 2</option>
+                    placeholder="Pilih Paket">
+             
+                <datalist id="browsers" id="checkbox" role="listbox">
+                    <div class="flex gap-3">
+                        <option style="" value="Paket 3">Paket 3</option>
+                        <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox">
+                    </div>
                 </datalist>
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
@@ -237,6 +257,8 @@
                         class="required">*</span></label>
                 <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                     placeholder="Ketik total hari booking" required>
+
+
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -303,6 +325,18 @@
 
     <!-- script comboboxs no ruang -->
     <script>
+        const checkbox = document.getElementById('checkbox');
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                // Checkbox is checked
+                console.log('Checkbox is checked. Selected value: ' + combo.value);
+            } else {
+                // Checkbox is unchecked
+                console.log('Checkbox is unchecked.');
+            }
+        });
+
         input1.onfocus = function () {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
