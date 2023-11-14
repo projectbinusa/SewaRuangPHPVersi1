@@ -999,11 +999,7 @@
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-<<<<<<< HEAD
                                             <a href="edit_peminjaman_tempat"
-=======
-                                            <a href="update_report_sewa"
->>>>>>>
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>

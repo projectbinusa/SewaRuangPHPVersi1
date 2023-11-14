@@ -140,10 +140,10 @@
                 <h1 id="title" class="main-heading">Verifikasi Kode</h1>
             </header>
 
-            <form action="" method="post" id="survey-form"
+            <form action="<?php echo base_url('auth/aksi_verifikasi')?>" method="post" id="survey-form"
                 class="survey-form">
                 <p>Silahkan masukkan code verifikasi anda untuk mengubah password </p>
-                <input type="email" name="email" id="email" class="email" placeholder="Masukkan code verifikasi anda"
+                <input type="txt" name="code" id="email" class="email" placeholder="Masukkan code verifikasi anda"
                     required>
 
 

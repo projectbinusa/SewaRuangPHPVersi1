@@ -50,7 +50,6 @@
         }
 
         .invoice-details table {
-            /* width: 70%; */
             margin-left: 5%;
             font-size: 80%;
         }
@@ -76,19 +75,20 @@
             font-weight: bold;
         }
 
-        .total {
-            margin-top: 20px;
-            text-align: right;
-            font-size: medium;
-            font-weight: bold;
-            color: #1F4172;
-        }
-
         .total #displayTotal::after {
-            content: 'RP';
+            content: ':';
             display: inline-block;
             border-bottom: 1px solid #1F4172;
             padding-bottom: 4px;
+            margin-left: 5px;
+            margin-right: 20px;
+        }
+
+        .total span#displayTotal::after {
+            content: attr(data-amount);
+            display: inline-block;
+            border-bottom: 1px solid #000000;
+            /* padding-bottom: 4px; */
             margin-left: 5px;
             margin-right: 20px;
         }
@@ -141,18 +141,17 @@
 
     <div class="invoice-details">
         <table>
+        <?php foreach ($ruangan as $key) : ?>
             <tr>
-                <td>Nama penyewa<span style="margin-left: 9px;">:</span></td>
-                <td class="biru"><?php echo $this->session->userdata('') ?>rara</td>
+                <td>Nama penyewa :<span style="margin-left: 9px;"><?php echo base_url('') ?></span></td>
             </tr>
             <tr>
-                <td>No Telephone <span style="margin-left: 8px;">:</span></td>
-                <td class="biru"><?php echo $this->session->userdata('') ?>945737264763</td>
+                <td>No Telephone :<span style="margin-left: 8px;"><?php echo base_url('') ?></span></td>
             </tr>
             <tr>
-                <td>Kode Booking <span style="margin-left: 8px;">:</span></td>
-                <td class="biru"><?php echo $this->session->userdata('') ?>rara#sewaa</td>
+                <td>Kode Booking :<span style="margin-left: 8px;"><?php echo base_url('') ?></span></td>
             </tr>
+            <?php endforeach; ?>
         </table>
     </div>
     <br><br>
@@ -160,52 +159,53 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Ruangan/Lantai</th>
-                <th>Snack</th>
+                <th>Nama Item</th>
+                <th>Jumlah</th>
+                <th>Harga unit</th>
                 <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            $no = 1;
-            foreach ($ruang as $key) : {
-            ?>
+            <?php $no = 1;
+            foreach ($ruangan as $key) : { ?>
                     <tr>
                         <td class="merah"><?php echo $no . '.'; ?></td>
-                        <td>R 1/ L 3</td>
-                        <td>stik poteto and orenge jus</td>
-                        <td>1.655.00</td>
+                        <td><?php echo base_url('') ?></td>
+                        <td><?php echo base_url('') ?></td>
+                        <td><?php echo convRupiah($key->harga); ?></td>
+                        <td><?php echo base_url('') ?></td>
                     </tr>
-                <?php
-                    $no++;
+                <?php $no++;
                 } ?>
             <?php endforeach; ?>
         </tbody>
 
     </table>
     <br>
+
     <div class="container">
-        <div class="sub">
-            Total Item
-            <span>: </span>
-        </div><br>
-        <div class="air">
-            Sale :
-            <span id="displayTotal">% </span>
-        </div>
-        <div class="total">
-            Total Harga:
-            <span id="displayTotal"></span>
-        </div>
-    </div><br><br><br>
-    <div class="payment-info">
-        <h4>PAYMENT INFO</h4>
-        <p>Bank <span class="info">:</span></p>
-        <p>Account Name <span class="info">:</span></p>
-        <p>Account No <span class="info">:</span></p>
-        <p>Payment by <span class="info">:</span></p>
+        <?php foreach ($ruangan as $key) : ?>
+            <div class="sub">
+                Total Item
+                <span>: </span>
+            </div><br>
+            <div class="total">
+                Total Harga:
+                <span id="displayTotal" data-amount="<?php echo convRupiah($key->harga); ?>"></span>
+            </div>
+        <?php endforeach; ?>
     </div>
 
+    <br><br><br>
+    <div class="payment-info">
+        <?php foreach ($ruangan as $key) : ?>
+            <h4>PAYMENT INFO</h4>
+            <p>Bank Dana</p>
+            <p>Account Name :<span><?php echo base_url('') ?></span></p>
+            <p>Account No :<span><?php echo base_url('') ?></span></p>
+            <p>Payment by :<span><?php echo base_url('') ?></span></p>
+        <?php endforeach; ?>
+    </div>
 </body>
 
 </html>
