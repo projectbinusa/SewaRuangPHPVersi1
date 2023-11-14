@@ -115,15 +115,24 @@ class M_model extends CI_Model
         $query = $this->db->get_where('ruangan', array('id' => $id));
         return $query->row(); // Mengembalikan satu baris data sebagai objek
     }
-    public function is_time_conflict($room_id, $start_time, $end_time) {
-        $this->db->where('id_ruangan', $room_id);
-        $this->db->where('status', 'booking');
-        $this->db->where("(tanggal_booking < '$end_time' AND tanggal_berakhir > '$start_time')", NULL, FALSE);
+    public function is_time_conflict($id_ruangan, $start_time, $end_time) {
+        // Query untuk memeriksa konflik waktu
+        $this->db->where('id_ruangan', $id_ruangan);
+        $this->db->where("('$start_time' BETWEEN tanggal_booking AND tanggal_berakhir OR '$end_time' BETWEEN tanggal_booking AND tanggal_berakhir)", NULL, FALSE);
         $query = $this->db->get('peminjaman');
-    
+
         return $query->num_rows() > 0;
     }
 
+    public function get_expired_bookings() {
+        // Ambil semua pemesanan yang masih dalam status "booking" dan telah berakhir
+        $current_time = date('Y-m-d H:i:s');
+        $this->db->where('status', 'booking');
+        $this->db->where('tanggal_berakhir <', $current_time);
+        $query = $this->db->get('peminjaman');
+
+        return $query->result();
+    }
     public function get_status_proses()
     {
     return $this->db->where('status', 'proses')

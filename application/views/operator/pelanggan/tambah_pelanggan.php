@@ -29,13 +29,10 @@
                                         <input type="text" name="nama" id="no_lantai" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                                    
-
-                                   
                                         <label for="phone" class="block">Phone</label>
                                         <input type="text" name="phone" id="no_ruang" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300">
-                                                                           
-                                    
+                                                                          
                                         <label for="payment_method" class="block">Payment Method</label>
                                         <input type="text" name="payment_method" id="deskripsi" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300">

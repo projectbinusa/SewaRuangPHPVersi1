@@ -26,19 +26,17 @@
                             <form action="<?php echo base_url('operator/aksi_update_data') ?>" method="post" id="survey-form" 
                             class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                             <input name="id" type="hidden" value="<?php echo $row->id?>">
-                                
+                              
                                         <label for="nama" class="block">Nama</label>
                                         <input type="text" name="nama" id="no_lantai" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300"
                                         value="<?php echo $row->nama ?>">
                                     
-
-                                    
                                         <label for="phone" class="block">Phone</label>
                                         <input type="text" name="phone" id="no_ruang" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300"
                                         value="<?php echo $row->phone?>">
-                                    
+
                                         <label for="payment_method" class="block">Payment Method</label>
                                         <input type="text" name="payment_method" id="deskripsi" 
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300"
