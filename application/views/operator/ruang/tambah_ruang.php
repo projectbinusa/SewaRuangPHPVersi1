@@ -27,7 +27,7 @@
                         <div class="flex flex-wrap">
                             <div class="w-full px-7">
                                 <label for="no_lantai" class="block">Nomor Lantai</label>
-                                <input type="number" name="no_lantai" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                <input type="text" name="no_lantai" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                             </div>
 
                             <div class="w-full px-7">
@@ -37,7 +37,7 @@
 
                             <div class="w-full px-7">
                                 <label for="harga" class="block">Harga</label>
-                                <input type="number" name="harga" id="harga" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                <input type="text" name="harga" id="harga" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                             </div>
 
                             <div class="w-full px-7">

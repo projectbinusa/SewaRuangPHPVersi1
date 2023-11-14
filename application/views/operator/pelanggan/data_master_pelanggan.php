@@ -824,7 +824,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+             margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 

@@ -5,24 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
 </head>
 
 <style>
-  li:hover span {
-    color: black;
-  }
-
-  li:hover i {
-    color: black;
-  }
+  /* Default styles */
+li:hover span {
+    color: black; /* Warna teks ketika dihover */
+}
+li:hover i {
+    color: black; /* Warna ikon ketika dihover */
+}
 </style>
 
-<body class="bg-white min-h-screen font-base">
+<body class="bg-gray-100 min-h-screen font-base">
 
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }">
@@ -90,5 +88,55 @@
           </ul>
         </ul>
       </nav>
+
+
+      <script>
+        // Gráfica de Usuarios
+        var usersChart = new Chart(document.getElementById('usersChart'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Nuevos', 'Registrados'],
+            datasets: [{
+              data: [30, 65],
+              backgroundColor: ['#00F0FF', '#8B8B8D'],
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              position: 'bottom' // Ubicar la leyenda debajo del círculo
+            }
+          }
+        });
+
+        // Gráfica de Comercios
+        var commercesChart = new Chart(document.getElementById('commercesChart'), {
+          type: 'doughnut',
+          data: {
+            labels: ['Nuevos', 'Registrados'],
+            datasets: [{
+              data: [60, 40],
+              backgroundColor: ['#FEC500', '#8B8B8D'],
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              position: 'bottom' // Ubicar la leyenda debajo del círculo
+            }
+          }
+        });
+
+        // Agregar lógica para mostrar/ocultar la navegación lateral al hacer clic en el ícono de menú
+        const menuBtn = document.getElementById('menuBtn');
+        const sideNav = document.getElementById('sideNav');
+
+        menuBtn.addEventListener('click', () => {
+          sideNav.classList.toggle('hidden'); // Agrega o quita la clase 'hidden' para mostrar u ocultar la navegación lateral
+        });
+      </script>
 </body>
+
 </html>
