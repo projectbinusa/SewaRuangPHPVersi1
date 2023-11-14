@@ -397,11 +397,11 @@
         }
 
         a:hover {
-            color: var(--main-color);
+            color: white;
         }
 
 
-     
+
         .btn {
             height: 55px;
             line-height: 55px;
@@ -422,6 +422,7 @@
             outline: 0;
             box-shadow: none;
         }
+        
 
         .btn:after {
             content: "";
@@ -508,7 +509,7 @@
             color: var(--heading-color);
             margin-left: 12px;
         }
-     
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -837,8 +838,12 @@
 
         }
 
-        /* code responsive table */
-        @media (max-width: 600px) {
+        .btn-tambah {
+            margin-left: 56rem;
+        }
+
+          /* code responsive table */
+          @media (max-width: 600px) {
             table {
                 width: 100%;
             }
@@ -906,12 +911,19 @@
             </div>
 
             <div class="container-table row justify-content-center">
+                <a href="tambah_peminjaman_tempat"
+                    class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded btn-tambah">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
 
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data"
+                            <table class="table table-striped" style="min-width: 22rem;" id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -944,31 +956,33 @@
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
-                                       
+
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no=0; foreach($peminjaman as $row): $no++;?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no?>
-                                        </td>
-                                        <td data-cell="Nama " class="w-32 px-3 py-4">
-                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?>
-                                        </td>
-                                        <td data-cell="Ruangan " class="w-32 px-3 py-4">
-                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>
-                                        </td>
-                                        <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            <?php echo $row->jumlah_orang?>
-                                        </td>
-                                        <td data-cell="Kode " class="w-36 px-3 py-4">
-                                          <?php echo $row->kode_booking?>
-                                        </td>
+                                    <?php $no = 0;
+                                    foreach ($peminjaman as $row):
+                                        $no++; ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row"
+                                                class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama " class=" px-3 py-4">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            </td>
+                                            <td data-cell="Ruangan " class=" px-3 py-4">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <td data-cell="Kapasitas " class="w-36 px-3 py-4">
+                                                <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <td data-cell="Kode " class=" px-3 py-4">
+                                                <?php echo $row->kode_booking ?>
+                                            </td>
 
                                         <td data-cell="Tambahan " class="w-32 px-3 py-4">
                                             <?php echo tampil_nama_tambahan_byid($row->id_tambahan)?>
@@ -980,49 +994,50 @@
                                             $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
                                             $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                            // Menampilkan durasi dalam format angka
-                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                        ?>
-                                        </td>
-                                        <td data-cell="Total " class="w-32 px-3 py-4">
-                                        <?php echo $row->total_harga?>
-                                        </td>
-                                        <td data-cell="Status " class="w-32 px-3 py-4 text-uppercase">
-                                        <?php echo $row->status?>
-                                        </td>
-                                     
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                // Menampilkan durasi dalam format angka
+                                                echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                ?>
+                                            </td>
+                                            <td data-cell="Total " class=" px-3 py-4">
+                                                <?php echo $row->total_harga ?>
+                                            </td>
+                                            <td data-cell="Status " class=" px-3 py-4 text-uppercase">
+                                                <?php echo $row->status ?>
+                                            </td>
 
-                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                            </a>
-                                            <?php if ($row->status === 'booking'): ?>
-                                            <a href=""
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                <span class="">
-                                                <i class="fas fa-print"></i>
-                                                </span>
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            </a>
-                                            <?php endif; ?>
-                                            <button onclick="hapus(<?php echo $row->id ?>)"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
+                                                <a
+                                                    href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
+                                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+                                                <?php if ($row->status === 'booking'): ?>
+                                                    <button href=""
+                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                        <span class="">
+                                                            <i class="fas fa-print"></i>
+                                                        </span>
 
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach?>
+                                                    </button>
+                                                <?php endif; ?>
+                                                <button onclick="hapus(<?php echo $row->id ?>)"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
-                        </form>
-                          </tbody>
-                          </table>
+                            </form>
+                            </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -1075,7 +1090,7 @@
             })
         }
     </script>
-    
+
 
 </body>
 

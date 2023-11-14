@@ -25,7 +25,7 @@
   }
 </style>
 
-<body class="bg-gray-100 min-h-screen font-base">
+<body class="bg-white min-h-screen font-base">
 
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }">
