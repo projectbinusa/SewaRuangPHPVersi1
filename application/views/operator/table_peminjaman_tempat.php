@@ -970,8 +970,8 @@
                                           <?php echo $row->kode_booking?>
                                         </td>
 
-                                        <td data-cell="Snack " class="w-32 px-3 py-4">
-                                            <?php echo tampil_nama_snack_byid($row->id_snack)?>
+                                        <td data-cell="Tambahan " class="w-32 px-3 py-4">
+                                            <?php echo tampil_nama_tambahan_byid($row->id_tambahan)?>
                                         </td>
                                         <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
                                         <?php
