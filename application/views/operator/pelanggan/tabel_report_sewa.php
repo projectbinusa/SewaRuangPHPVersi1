@@ -37,7 +37,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            font-size: 16px;
             background-color: #f1f1f1;
         }
 
@@ -889,7 +889,6 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -908,17 +907,6 @@
             </div>
 
             <div class="container-table row justify-content-center">
-
-                <a href="tambah_peminjaman_tempat"
-=
-                <a href="tambah_report_sewa"
-
-                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Tambah
-                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -963,50 +951,46 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                   
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             1
                                         </td>
                                         <td data-cell="Nama " class="w-32 px-3 py-4">
-                                            Muhammad Khadavi
-
-                                           Wahyu
-
+                                            Cristiano Ronaldo
                                         </td>
                                         <td data-cell="Ruangan " class="w-32 px-3 py-4">
-                                            L.004 R.303
+                                            1
                                         </td>
                                         <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            AC 3 PK
+                                            5
                                         </td>
                                         <td data-cell="Kode " class="w-36 px-3 py-4">
-                                            283729
+                                            Q34RETG
                                         </td>
 
                                         <td data-cell="Snack " class="w-32 px-3 py-4">
                                             Paket 1
                                         </td>
                                         <td data-cell="Total Booking " class="w-32 px-3 py-4">
-                                            09/11/23 - 10/11/23
+                                            1
                                         </td>
                                         <td data-cell="Total " class="w-32 px-3 py-4">
-                                            1.500.00
+                                            100000
                                         </td>
                                         <td data-cell="Status " class="w-32 px-3 py-4">
                                             Pending
                                         </td>
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-
-                                            <a href="edit_peminjaman_tempat"
+                                            <a href="update_report_sewa"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-
                                             </a>
-                                            <a href=""
+                                            <a href="export_pdf"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                 <span class="">
                                                 <i class="fas fa-print"></i>
@@ -1014,7 +998,7 @@
 
                                             </a>
                                             
-                                            <button onclick=""
+                                            <button onclick="hapus()"
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
@@ -1023,7 +1007,6 @@
                                             </button>
                                         </td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>
@@ -1051,6 +1034,30 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
+
+        function hapus(id) {
+            Swal.fire({
+                title: ' Apa Mau Menghapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menghapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
+                    });
+                }
+            });
+        }
     </script>
 
 </body>
