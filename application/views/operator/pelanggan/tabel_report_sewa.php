@@ -907,6 +907,13 @@
             </div>
 
             <div class="container-table row justify-content-center">
+                <a href="tambah_report_sewa"
+                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -957,7 +964,7 @@
                                             1
                                         </td>
                                         <td data-cell="Nama " class="w-32 px-3 py-4">
-                                           Messi
+                                           Wahyu
                                         </td>
                                         <td data-cell="Ruangan " class="w-32 px-3 py-4">
                                             L.004 R.303
@@ -989,7 +996,6 @@
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-
                                             </a>
                                             <a href=""
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
