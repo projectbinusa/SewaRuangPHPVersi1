@@ -83,7 +83,7 @@
 
     <!-- Main Content -->
     <div class="w-full md:flex-1">
-      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center bg-white p-4 shadow-md h-16">
+      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
         <ul class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
           <ul>
             <a href="http://localhost/exc_sewa_ruang/" class="flex items-center ml-auto ">

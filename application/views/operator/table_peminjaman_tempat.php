@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -837,11 +838,6 @@
             background-color: #4F709C !important;
 
         }
-
-        .btn-tambah {
-            margin-left: 56rem;
-        }
-
           /* code responsive table */
           @media (max-width: 600px) {
             table {
@@ -912,7 +908,7 @@
 
             <div class="container-table row justify-content-center">
                 <a href="tambah_peminjaman_tempat"
-                    class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded btn-tambah">
+                    class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -984,15 +980,15 @@
                                                 <?php echo $row->kode_booking ?>
                                             </td>
 
-                                            <td data-cell="Snack " class=" px-3 py-4">
-                                                <?php echo tampil_nama_snack_byid($row->id_snack) ?>
-                                            </td>
-                                            <td data-cell="Total Booking " class=" px-3 py-4 text-center">
-                                                <?php
-                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                        <td data-cell="Tambahan " class="w-32 px-3 py-4">
+                                            <?php echo tampil_nama_tambahan_byid($row->id_tambahan)?>
+                                        </td>
+                                        <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
+                                        <?php
+                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                            $tanggalBooking = new DateTime($row->tanggal_booking);
+                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
                                                 // Menampilkan durasi dalam format angka
                                                 echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
@@ -1001,7 +997,7 @@
                                             <td data-cell="Total " class=" px-3 py-4">
                                                 <?php echo $row->total_harga ?>
                                             </td>
-                                            <td data-cell="Status " class=" px-3 py-4 text-uppercase">
+                                            <td data-cell="Status " class=" px-3 py-4 uppercase">
                                                 <?php echo $row->status ?>
                                             </td>
 
