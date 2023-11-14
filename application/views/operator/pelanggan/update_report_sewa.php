@@ -9,7 +9,10 @@
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+
+
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
@@ -21,18 +24,35 @@
         }
 
 
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.6rem;
+            background-color: #E4F1FF;
+            color: #222;
+            padding: 0 5px;
+        }
+
         body {
             font-family: "DM Sans", sans-serif;
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
+
         }
 
         .container {
             min-width: 20rem;
             max-width: 65rem;
-            margin: 1rem auto;
+
+            margin: 4rem auto;
+
+           margin: 1rem auto;
             padding: 30px 7.5rem 5px 7.5rem;
+
         }
 
         .heading,
@@ -40,7 +60,11 @@
             background-color: #fff;
             padding: 1.3em 3rem 1.8rem 3rem;
             border-radius: 1rem;
+
+            margin-bottom: 3rem;
+
             margin-bottom: 2.5rem;
+
             box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
         }
 
@@ -49,7 +73,10 @@
         }
 
         .survey-form {
-            font-size: 15px;
+
+            font-size: 1.8rem;
+    font-size: 15px;
+
         }
 
         .green-bar {
@@ -64,9 +91,14 @@
         }
 
         .main-heading {
+
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+
             font-size: 2rem;
             margin-bottom: 1rem;
             height: 1.5rem;
+
         }
 
         .main-description {
@@ -85,14 +117,33 @@
 
         label {
             display: block;
+
+            font-size: 1.8rem;
+            margin: 2rem 0;
+
             font-size: 1.1rem;
             margin: 30px 0;
             line-height: 1px;
+
         }
 
         input {
             display: block;
             width: 100%;
+
+            margin: 2rem 0;
+            font-size: 1.6rem;
+        }
+
+        .hari,
+        .tanggal,
+        .no_ruang,
+        .kapasitas,
+        .snack,
+        .extra_time,
+        .jam_penggunaan,
+        .total_booking {
+
             height: 29px;
             margin: 5px 0;
             font-size: 1.6rem;
@@ -108,14 +159,21 @@
         .no_ruang,
         .total_booking,
         .kapasitas {
+
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
 
+
+
+        .submit {
+            font-size: 1.7rem;
+
         .submit {
             font-size: 14px;
+
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -123,10 +181,15 @@
             background-color: #4F709C;
             border: 3px solid #4F709C;
             border-radius: 1rem;
-            width: 8rem;
+
+            width: 15rem;
+            padding: 1rem 2rem;
+            margin: 4rem auto 2rem auto;
+          width: 8rem;
             height: 2.5rem;
             padding: 8px 2rem;
             margin: 40px auto 10px auto;
+
             cursor: pointer;
             transition: all .3s;
         }
@@ -135,6 +198,32 @@
             background-color: transparent;
             color: #222;
         }
+
+
+        a:link,
+        a:visited {
+            color: #008080;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 72%;
+            transform: translateY(-50%);
+            right: 40rem;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .password-toggle {
+                /* position: absolute; */
+                top: 76%;
+                /* transform: translateY(-50%); */
+                right: 4.9rem;
+                /* cursor: pointer; */
 
         /* style comboboxs */
         input {
@@ -191,19 +280,26 @@
 
             label {
                 font-size: 16px;
+
             }
         }
     </style>
 </head>
 
 <body>
+
     <?php $this->load->view('sidebar'); ?>
+
 
     <main>
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
+
+                <h1 id="title" class="main-heading">Update report sewa</h1>
+
                 <h1 id="title" class="main-heading">Form Edit Report Sewa</h1>
+
             </header>
 
             <form action="" method="post" id="survey-form" class="survey-form">
@@ -212,6 +308,23 @@
 
                 <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
                 <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
+
+
+                <div class="mb-3 col-6">
+                <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
+                <select name="no_ruang" class="form-select">
+                    <option selected>Pilih Ruang</option>
+            
+            </option>
+                    <option value="Ruang ke 1.">Ruang ke 1.</option>
+                    <option value="Ruang ke 2.">Ruang ke 2.</option>
+                    <option value="Ruang ke 3.">Ruang ke 3.</option>
+                    <option value="Ruang ke 4.">Ruang ke 4.</option>
+                    <option value="Ruang ke 5.">Ruang ke 5.</option>
+                </select>
+    </div>
+            <b><hr></b>
+
                 <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
                 <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
                     placeholder="Pilih no lantai">
@@ -223,11 +336,22 @@
                     <option value="004">004</option>
                 </datalist>
 
+
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
                 <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
                     placeholder="Ketik kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
+
+                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
+
+                
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
+                class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
+                placeholder="Ketik jam penggunaan" required>
+                
+
                 <select id="underline_select"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Paket Snack</option>
@@ -252,7 +376,12 @@
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
+
+
+
         </div>
+    </main>
+      </div>
     </main>
 
     <!-- script comboboxs -->
