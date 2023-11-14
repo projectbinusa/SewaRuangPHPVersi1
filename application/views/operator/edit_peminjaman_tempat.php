@@ -211,7 +211,6 @@
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
                 <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
-<<<<<<< HEAD
                 <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
                 <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
                     value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>">
@@ -239,53 +238,6 @@
                         class="required">*</span></label>
                 <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                 value="<?php echo $row->tanggal_berakhir?>" required>
-=======
-            <form action="" method="post" id="survey-form" class="survey-form">
-                <label for="nama" id="name-label">Nama<span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama penyewa" required>
-
-                <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
-                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai" placeholder="Pilih no lantai">
-
-                <datalist id="browsers" role="listbox">
-                    <option value="001">001</option>
-                    <option value="002">002</option>
-                    <option value="003">003</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                </datalist>
-
-                <label for="no_ruang" id="name-label">No Ruang<span class="required">*</span></label>
-                <input type="" name="no_ruang" id="no_ruang" class="no_ruang" placeholder="Ketik no ruang" required>
-
-                <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
-                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas" placeholder="Ketik kapasitas ruangan" required>
-
-                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <select id="underline_select" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected>Pilih Paket Snack</option>
-                    <option value="US">Paket 1</option>
-                    <option value="CA">Paket 2</option>
-                    <option value="FR">Paket 3</option>
-                </select>
-
-
-                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
-                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time" placeholder="Ketik extra time jika ada" required>
-
-
-                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
-                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
->>>>>>> 37a07e2e07a4d66d34040c35ebbefe06ec8d3975
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>

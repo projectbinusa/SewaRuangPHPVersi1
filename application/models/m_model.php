@@ -152,4 +152,10 @@ class M_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('peminjaman', array('status' => $status));
     }
+
+    public function get_by_update_report_sewa($tabel, $id_column, $id)
+    {
+        $data = $this->db->where($id_column, $id)->get($tabel);
+        return $data;
+    }
 }
