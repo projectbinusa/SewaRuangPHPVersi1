@@ -25,7 +25,7 @@
   }
 </style>
 
-<body class="bg-gray-100 min-h-screen font-base">
+<body class="bg-white min-h-screen font-base">
 
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }">
@@ -83,7 +83,7 @@
 
     <!-- Main Content -->
     <div class="w-full md:flex-1">
-      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center bg-white p-4 shadow-md h-16">
+      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
         <ul class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
           <ul>
             <a href="http://localhost/exc_sewa_ruang/" class="flex items-center ml-auto ">
