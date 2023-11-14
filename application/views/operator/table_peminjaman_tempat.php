@@ -954,7 +954,6 @@
                                 <tbody>
 
                                     <?php $no=0; foreach($peminjaman as $row): $no++;?>
-
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
                                             class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -996,7 +995,7 @@
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a href="edit_peminjaman_tempat"
+                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>

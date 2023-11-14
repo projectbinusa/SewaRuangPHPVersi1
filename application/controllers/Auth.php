@@ -121,10 +121,11 @@ class Auth extends CI_Controller {
             $generate = $this->generate_code();
             $code = $generate;
             echo "<script>alert('Ini code verifikasi anda $code');
-            window.location.href = '" . base_url('auth/forgot_password') . "';
+            window.location.href = '" . base_url('auth/verifikasi_kode') . "';
             </script>";
             $data = [
                 'code' => $code,
+                'email' => $email
             ];
             $this->session->set_userdata($data);
             
@@ -134,6 +135,43 @@ class Auth extends CI_Controller {
             alert('Email tidak ditemukan');
             window.location.href = '" . base_url('auth/forgot_password') . "';
           </script>";
+        }
+    }
+    public function aksi_verifikasi(){
+        $code = $this->input->post('code');
+        if ($code == $this->session->userdata('code')) {
+            echo "<script>alert('Berhasill!!!');
+            window.location.href = '" . base_url('auth/ganti_password') . "';
+            </script>";
+        } else {
+            echo "<script>
+            alert('Code verifikasi salah!!');
+            window.location.href = '" . base_url('auth/verifikasi_kode') . "';
+          </script>";
+        }
+    }
+    public function aksi_ganti_password(){
+        $pass = $this->input->post('password');
+        $con_pass = $this->input->post('con_password');
+        $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');    
+        if ($this->form_validation->run() === FALSE) {
+            echo "<script>alert('Password minimal 8 karakter dan combinasi angka dan huruf');
+            window.location.href = '" . base_url('auth/ganti_password') . "';
+            </script>";
+        } else {
+            if($pass == $con_pass){
+                $data = [
+                    'password' => md5($pass),
+                ];
+                $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
+                echo "<script>alert('Berhasill!!!');
+                window.location.href = '" . base_url() . "';
+                </script>";
+            } else {
+                echo "<script>alert('Password dengan konfirmasi password harus sama');
+            window.location.href = '" . base_url('auth/ganti_password') . "';
+            </script>";
+            }
         }
     }
    
