@@ -65,6 +65,7 @@ function tampil_nama_snack_byid($id)
     $ci = &get_instance();
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('snack');
+
     foreach ($result->result() as $c) {
         $stmt = $c->nama;
         return $stmt;
@@ -90,11 +91,12 @@ function tampil_harga_ruangan_byid($id)
         return $stmt;
     }
 }
-function tampil_harga_snack_byid($id)
+function tampil_harga_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('snack');
+
     foreach ($result->result() as $c) {
         $stmt = $c->harga;
         return $stmt;

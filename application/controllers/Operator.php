@@ -434,7 +434,7 @@ class operator extends CI_Controller
 
     public function tambah_peminjaman_tempat()
     {
-        $data['snack'] = $this->m_model->get_data('snack')->result();
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/tambah_peminjaman_tempat', $data);
     }
