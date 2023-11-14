@@ -135,7 +135,7 @@
             color: #222;
         }
 
-     
+
         /* style comboboxs */
 
         input {
@@ -163,10 +163,10 @@
             cursor: pointer;
         }
 
-         
+
         @media only screen and (max-width: 800px) {
-    
-            .container{
+
+            .container {
                 padding: 1rem 1rem 0px 1rem;
             }
 
@@ -174,6 +174,7 @@
             .heading {
                 padding: 1.3em 9px 1.8rem 9px;
             }
+
             .survey-form {
                 padding: 1.3em 15px 1.8rem 15px;
 
@@ -202,7 +203,8 @@
                 <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>
             </header>
 
-            <form action="<?php echo base_url('operator/aksi_peminjaman')?>" method="post" id="survey-form" class="survey-form">
+            <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form"
+                class="survey-form">
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
                 <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama penyewa" required>
 
@@ -210,21 +212,23 @@
                 <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
                     placeholder="Pilih Ruangan">
                 <datalist id="browsers1" role="listbox">
-                    <?php foreach($ruangan as $row):?>
-                    <option value="<?php echo $row->id?>">L.<?php echo $row->no_lantai?>  R.<?php echo $row->no_ruang?></option>
-                    <?php endforeach?>
+                    <?php foreach ($ruangan as $row): ?>
+                        <option value="<?php echo $row->id ?>">L.
+                            <?php echo $row->no_lantai ?> R.
+                            <?php echo $row->no_ruang ?>
+                        </option>
+                    <?php endforeach ?>
                 </datalist>
                 <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
                 <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
                     placeholder="Ketik kapasitas ruangan" required>
-                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <select id="underline_select" name="snack"
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected>Pilih Paket Snack</option>
-                    <?php foreach($snack as $row):?>
-                    <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
-                    <?php endforeach?>
-                </select>
+                <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
+                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
+                    placeholder="Pilih Tambahan">
+                <datalist id="browsers" role="listbox">
+                    <option value="Paket 1">Paket 1</option>
+                    <option value="Paket 2">Paket 2</option>
+                </datalist>
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
                 <input type="date" name="booking" id="total_booking" class="total_booking"
