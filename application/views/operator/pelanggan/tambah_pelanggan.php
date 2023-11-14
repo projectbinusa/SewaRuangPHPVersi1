@@ -1,16 +1,23 @@
    <!DOCTYPE html>
-<html lang="en">
+   <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Ruangan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-</head>
-
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Tambah Data Ruangan</title>
+       <script src="https://cdn.tailwindcss.com"></script>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+       <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+       <script src="https://cdn.tailwindcss.com"></script>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+   </head>
 <body class="bg-gray-100 min-h-screen font-base">
 <?php $this->load->view('sidebar'); ?>
             <div class="p-8 w-full md:w-2/3 flex justify-center items-center m-auto ">
@@ -38,19 +45,48 @@
                                         class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                                    
 
-                              
+                           <div class="text-center mt-10">
+                               <button onclick="tambah_data()" type="submit" id="submit" class="bg-white text-lg py-2 px-8 text-blue-500 border-2 border-blue-500 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white" value="TAMBAH">
+                                   TAMBAH
+                               </button>
+                           </div>
+                       </form>
+                   </div>
+               </main>
+           </div>
+       </div>
+       </div>
+       </div>
 
-                                <div class="text-center mt-10">
-                                    <input type="submit" id="submit" 
-                                    class="bg-white text-lg py-2 px-8 text-blue-500 border-2 border-blue-500 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white" value="TAMBAH">
-                                </div>
-                            </form>
-                        </div>
-                    </main>
-                </div>
-            </div>
-        </div>
-    </div>
+   </body>
+   <!-- SweetAlert -->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+   <script>
+       function tambah_data() {
+           Swal.fire({
+               title: 'Ingin Menambah Data ?',
+               text: "data akan bertambah",
+               icon: 'question',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               cancelButtonText: 'Batal',
+               confirmButtonText: 'Tambah'
+           })
+           .then((result) => {
+               if (result.isConfirmed) {
+                   Swal.fire({
+                       icon: 'success',
+                       title: 'Berhasil Ditambahkan',
+                       showConfirmButton: false,
+                       timer: 1500,
+                   }).then(function() {
+                       // Redirect ke URL setelah sukses
+                       window.location.href = "<?php echo base_url('operator/aksi_tambah_pelanggan/') ?>" ;
+                   });
+               }
+           });
+       }
+   </script>
 
-</body>
-</html>
+   </html>
