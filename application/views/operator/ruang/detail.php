@@ -14,19 +14,19 @@
 <body class="h-screen overflow-hidden flex flex-col bg-gray-100">
   <?php $this->load->view('sidebar'); ?>
   <!-- Área de contenido principal -->
-  <div class="min-h-screen overflow-hidden flex items-center justify-center">
-    <div class="w-full sm:w-full md:w-full lg:w-2/3 xl:w-1/2">
+  <div class="min-h-screen overflow-hidden flex mt-32 justify-center items-start md:mx-96">
+    <div class="grid grid-cols-1 md:grid-cols-10 lg:grid-cols-3 gap-x-1">
       <?php foreach ($ruang as $row) : ?>
-        <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg md:flex-row md:max-w-2xl dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700">
-          <div class="w-full md:w-full lg:w-full md:rounded-l-lg">
+        <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700 w-full md:w-80 lg:w-96">
+          <div class="w-full">
             <?php if (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) : ?>
-              <img class="object-cover w-full h-80 lg:h-80 " src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="Room Image">
+              <img class="object-cover w-full h-48 md:h-full lg:h-full" src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="Room Image">
             <?php else : ?>
-              <img class="object-cover w-full h-72 lg:h-72" src="<?php echo base_url('./image/foto.png'); ?>" alt="User Image">
+              <img class="object-cover w-full h-48 md:h-full lg:h-full" src="<?php echo base_url('./image/foto.png'); ?>" alt="User Image">
             <?php endif; ?>
-          </div>
-          <div class="flex flex-col justify-between p-4 lg:p-6">
-            <h5 class="mb-2 text-2xl lg:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
+          </div>  
+          <div class="flex flex-col justify-between p-4 lg:p-6 flex-grow">
+            <h5 class="mb-2 text-xl lg:text-2xl font-bold text-gray-900 text-center dark:text-white">
               <?php echo format_ruangan($row->no_ruang); ?>
             </h5>
             <p class="mb-3 font-normal text-lg text-center dark:text-gray-700"><?php echo convRupiah($row->harga); ?></p>
@@ -34,67 +34,11 @@
               <?php echo format_lantai($row->no_lantai); ?>
             </p>
             <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
-            <hr class="my-2 border-t border-gray-300 text-center dark:border-gray-700">
-            <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400">*Kunjungi situs kami <a href="https://github.com/BinusaProject/ExcSewaRuang">sewaruang@gmail.com</a></p>
           </div>
         </div>
       <?php endforeach; ?>
     </div>
   </div>
-
-  <script>
-    // Gráfica de Usuarios
-    var usersChart = new Chart(document.getElementById('usersChart'), {
-      type: 'doughnut',
-      data: {
-        labels: ['Nuevos', 'Registrados'],
-        datasets: [{
-          data: [30, 65],
-          backgroundColor: ['#00F0FF', '#8B8B8D'],
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          position: 'bottom' // Ubicar la leyenda debajo del círculo
-        }
-      }
-    });
-
-    // Gráfica de Comercios
-    var commercesChart = new Chart(document.getElementById('commercesChart'), {
-      type: 'doughnut',
-      data: {
-        labels: ['Nuevos', 'Registrados'],
-        datasets: [{
-          data: [60, 40],
-          backgroundColor: ['#FEC500', '#8B8B8D'],
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          position: 'bottom' // Ubicar la leyenda debajo del círculo
-        }
-      }
-    });
-  </script>
-
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const sideNav = document.getElementById('sideNav');
-
-    menuBtn.addEventListener('click', () => {
-      sideNav.classList.remove('hidden');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      sideNav.classList.add('hidden');
-    });
-  </script>
 </body>
 
 </html>
