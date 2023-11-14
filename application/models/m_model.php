@@ -33,6 +33,7 @@ class M_model extends CI_Model
         $data = $this->db->where($id_column, $id)->get($tabel);
         return $data;
     }
+   
 
     public function get_data_by_id($table, $id)
     {
@@ -133,19 +134,14 @@ class M_model extends CI_Model
 
         return $query->result();
     }
+    public function get_status_peminjaman()
+    {
+    return $this->db->where_in('status', ['proses', 'booking', 'di tolak'])
+                    ->get('peminjaman');
+    }
     public function get_status_proses()
     {
     return $this->db->where('status', 'proses')
-                    ->get('peminjaman');
-    }
-    public function get_status_di_tolak()
-    {
-    return $this->db->where('status', 'di tolak')
-                    ->get('peminjaman');
-    }
-    public function get_status_booking()
-    {
-    return $this->db->where('status', 'booking')
                     ->get('peminjaman');
     }
     public function get_status_selesai()
@@ -157,4 +153,5 @@ class M_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('peminjaman', array('status' => $status));
     }
+   
 }

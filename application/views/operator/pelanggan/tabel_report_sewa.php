@@ -895,7 +895,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-<?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebar'); ?>
 
     <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
@@ -910,9 +910,16 @@
 
             <div class="container-table row justify-content-center">
 
-                <a href="tambah_peminjaman_tempat">
+                <a href="tambah_peminjaman_tempat"
+=
+                <a href="tambah_report_sewa"
 
-               
+                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
