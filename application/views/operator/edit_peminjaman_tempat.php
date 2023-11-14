@@ -227,20 +227,20 @@
                     <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
                         value="<?php echo $row->jumlah_orang ?>" required>
-                    <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                  
-                    <input autocomplete="off" role="combobox" list="" id="input" name="browsers"
-                        placeholder="Pilih Tambahan">
-                    <!-- Its important that you keep list attribute empty to hide the default dropdown icon and the browser's default datalist -->
 
-                    <datalist id="browsers" role="listbox">
-                    <option value="Paket 1">Paket 1</option>
-                    <option value="Paket 2">Paket 2</option>
-                </datalist>
-                      
+                    <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
+                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
+                        placeholder="Pilih Paket">
+
+                    <datalist id="browsers" id="checkbox" role="listbox">
+                        <div class="flex gap-3">
+                            <option style="" value="Paket 3">Paket 3</option>
+                            <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox">
+                        </div>
+
                     </datalist>
 
-
+                    </datalist>
                     <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                             class="required">*</span></label>
                     <input type="date" name="booking" id="total_booking" class="total_booking"
@@ -249,7 +249,6 @@
                             class="required">*</span></label>
                     <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                         value="<?php echo $row->tanggal_berakhir ?>" required>
-
                     <input type="submit" id="submit" class="submit" value="Submit">
                 </form>
             <?php endforeach ?>
@@ -258,6 +257,8 @@
 
     <!-- script comboboxs -->
     <script>
+        const checkbox = document.getElementById('checkbox');
+
         input.onfocus = function () {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
@@ -312,63 +313,6 @@
             }
         }
     </script>
-<!-- script combobox snack -->
-<script>
-	input.onfocus = function () {
-  browsers.style.display = 'block';
-  input.style.borderRadius = "5px 5px 0 0";  
-};
-for (let option of browsers.options) {
-  option.onclick = function () {
-    input.value = option.value;
-    browsers.style.display = 'none';
-    input.style.borderRadius = "5px";
-  }
-};
-
-input.oninput = function() {
-  currentFocus = -1;
-  var text = input.value.toUpperCase();
-  for (let option of browsers.options) {
-    if(option.value.toUpperCase().indexOf(text) > -1){
-      option.style.display = "block";
-  }else{
-    option.style.display = "none";
-    }
-  };
-}
-var currentFocus = -1;
-input.onkeydown = function(e) {
-  if(e.keyCode == 40){
-    currentFocus++
-   addActive(browsers.options);
-  }
-  else if(e.keyCode == 38){
-    currentFocus--
-   addActive(browsers.options);
-  }
-  else if(e.keyCode == 13){
-    e.preventDefault();
-        if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
-          if (browsers.options) browsers.options[currentFocus].click();
-        }
-  }
-}
-
-function addActive(x) {
-    if (!x) return false;
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = (x.length - 1);
-    x[currentFocus].classList.add("active");
-  }
-  function removeActive(x) {
-    for (var i = 0; i < x.length; i++) {
-      x[i].classList.remove("active");
-    }
-  }
-  </script>
 
     <!-- script disable -->
 
