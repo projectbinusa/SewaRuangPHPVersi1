@@ -837,11 +837,6 @@
             background-color: #4F709C !important;
 
         }
-
-        .btn-tambah {
-            margin-left: 56rem;
-        }
-
           /* code responsive table */
           @media (max-width: 600px) {
             table {
@@ -912,7 +907,7 @@
 
             <div class="container-table row justify-content-center">
                 <a href="tambah_peminjaman_tempat"
-                    class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded btn-tambah">
+                    class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -1001,7 +996,7 @@
                                             <td data-cell="Total " class=" px-3 py-4">
                                                 <?php echo $row->total_harga ?>
                                             </td>
-                                            <td data-cell="Status " class=" px-3 py-4 text-uppercase">
+                                            <td data-cell="Status " class=" px-3 py-4 uppercase">
                                                 <?php echo $row->status ?>
                                             </td>
 

@@ -218,20 +218,13 @@
                 <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
                     placeholder="Ketik kapasitas ruangan" required>
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
-                    placeholder="Pilih Paket">
-                    <datalist id="browsers" role="listbox">
-                    <?php foreach($snack as $row):?>
-                        <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
-                    <?php endforeach?>
-                </datalist>
-                <!-- <select id="underline_select" name="snack"
+                <select id="underline_select" name="snack"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Paket Snack</option>
                     <?php foreach($snack as $row):?>
                     <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
                     <?php endforeach?>
-                </select> -->
+                </select>
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
                 <input type="date" name="booking" id="total_booking" class="total_booking"
@@ -304,7 +297,7 @@
         }
     </script>
 
-    <!-- script comboboxs snack -->
+    <!-- script comboboxs no ruang -->
     <script>
         input1.onfocus = function () {
             browsers1.style.display = 'block';
