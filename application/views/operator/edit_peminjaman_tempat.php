@@ -205,63 +205,43 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
             </header>
+            <?php foreach($peminjaman as $row):?>
+            <form action="<?php echo base_url('operator/aksi_edit_peminjaman')?>" method="post" id="survey-form" class="survey-form">
+            <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id?>">
+                <label for="nama" id="name-label">Nama <span class="required">*</span></label>
+                <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
-            <form action="" method="post" id="survey-form" class="survey-form">
-                <label for="nama" id="name-label">Nama<span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" placeholder="Ketik nama penyewa" required>
-
-                <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
-                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai"
-                    placeholder="Pilih no lantai">
-
-                <datalist id="browsers" role="listbox">
-                    <option value="001">001</option>
-                    <option value="002">002</option>
-                    <option value="003">003</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
-                    <option value="004">004</option>
+                <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
+                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
+                    value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>">
+                <datalist id="browsers1" role="listbox">
+                    <?php foreach($ruangan as $row):?>
+                    <option value="<?php echo $row->id?>">L.<?php echo $row->no_lantai?>  R.<?php echo $row->no_ruang?></option>
+                    <?php endforeach?>
                 </datalist>
-
-                <label for="no_ruang" id="name-label">No Ruang<span class="required">*</span></label>
-                <input type="" name="no_ruang" id="no_ruang" class="no_ruang" placeholder="Ketik no ruang" required>
-
-                <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
-                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Ketik kapasitas ruangan" required>
-
+                <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
+                <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
+                   value="<?php echo $row->jumlah_orang?>" required>
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <select id="underline_select"
+                <select id="underline_select" name="snack"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected>Pilih Paket Snack</option>
-                    <option value="US">Paket 1</option>
-                    <option value="CA">Paket 2</option>
-                    <option value="FR">Paket 3</option>
+                    <option selected><?php echo tampil_nama_snack_byid($row->id_snack)?></option>
+                    <?php foreach($snack as $row):?>
+                    <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
+                    <?php endforeach?>
                 </select>
-
-
-                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
-                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Ketik extra time jika ada" required>
-
-
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                <input type="date" name="booking" id="total_booking" class="total_booking"
+                    value="<?php echo $row->tanggal_booking?>" required>
                 <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
                         class="required">*</span></label>
-                <input type="date" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
+                value="<?php echo $row->tanggal_berakhir?>" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
+            <?php endforeach?>
         </div>
     </main>
 

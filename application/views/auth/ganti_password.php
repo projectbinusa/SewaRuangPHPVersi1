@@ -184,13 +184,13 @@
                 <h1 id="title" class="main-heading">Ubah Password</h1>
             </header>
 
-            <form action="" method="post" id="survey-form"
+            <form action="<?php echo base_url('auth/aksi_ganti_password')?>" method="post" id="survey-form"
                 class="survey-form">
                 <!-- <p>Silahkan masukkan password baru kamu untuk</p> -->
                 <div class="inputContainer">
                     <label class="label" for="emailAddress"><span>Password Baru*</span></label>
                     <div class="password-input-container">
-                        <input type="password" name="password_baru" class="password_baru" id="password_baru"
+                        <input type="password" name="password" class="password_baru" id="password_baru"
                             placeholder="Enter your Password">
                         <i class="password-toggle-baru fa fa-eye-slash" onclick="togglePassword_baru()"></i>
                     </div>
@@ -198,12 +198,11 @@
                 <div class="inputContainer">
                     <label class="label" for="emailAddress"><span>Konfirmasi Password*</span></label>
                     <div class="password-input-container">
-                        <input type="password" name="password_konfirmasi" class="password_konfirmasi" id="password_konfirmasi"
+                        <input type="password" name="con_password" class="password_konfirmasi" id="password_konfirmasi"
                             placeholder="Enter your Password">
                         <i class="password-toggle-konfirmasi fa fa-eye-slash" onclick="togglePassword_konfirmasi()"></i>
                     </div>
                 </div>
-
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>

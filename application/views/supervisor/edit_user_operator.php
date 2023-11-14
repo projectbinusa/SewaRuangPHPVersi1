@@ -184,7 +184,7 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Operator</h1>
             </header>
-
+            <?php foreach($operator as $row):?>
             <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
                 class="survey-form">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
@@ -201,11 +201,11 @@
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
+            <?php endforeach?>
         </div>
     </main>
 </body>
+
 <script type="text/javascript">
     function togglePassword() {
         var passwordField = document.getElementById('password');
