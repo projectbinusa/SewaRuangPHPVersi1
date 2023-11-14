@@ -19,7 +19,14 @@ class operator extends CI_Controller
 
     public function index()
     {
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
+        $this->load->view('operator/ruang/Data_Ruangan', $data);
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['ruang'] = $this->m_model->search($keyword);
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
 
@@ -32,7 +39,7 @@ class operator extends CI_Controller
     {
 
         $no_lantai = $this->input->post('no_lantai');
-        $no_ruang = strtoupper($this->input->post('no_ruang'));
+        $no_ruang = $this->input->post('no_ruang');
         $deskripsi = $this->input->post('deskripsi');
         $image = $_FILES['foto']['name'];
         $harga = $this->input->post('harga');
@@ -54,6 +61,11 @@ class operator extends CI_Controller
             $errors[] = 'Harga harus diisi dengan angka dan tidak boleh kosong.';
         } elseif ($harga < 0) {
             $errors[] = 'Harga tidak boleh negatif.';
+        }
+
+        // Validasi deskripsi
+        if (strpos($deskripsi, '-') !== false) {
+            $errors[] = 'Deskripsi tidak boleh mengandung tanda "-".';
         }
 
         // Validasi foto
@@ -120,10 +132,14 @@ class operator extends CI_Controller
     }
     public function export_pdf()
     {
-        $data['bukti'] = $this->m_model->get_data('ruangan')->result();
-        $data['no_lantai'] = 'ruangan';
-        $data['no_ruang'] = 'ruangan';
-        $data['harga'] = 'ruangan';
+        $ruangan = $this->m_model->get_ruang_by_id();
+        $harga_ruangan = $ruangan->harga;
+
+        $snack = $this->m_model->get_snack_by_id();
+        $harga_snack = $snack->harga;
+        $total_price = $harga_ruangan + $harga_snack;
+        
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -413,12 +429,12 @@ class operator extends CI_Controller
     public function table_peminjaman_tempat()
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
-        $this->load->view('operator/table_peminjaman_tempat',$data);
+        $this->load->view('operator/table_peminjaman_tempat', $data);
     }
 
     public function tambah_peminjaman_tempat()
     {
-        $data['snack'] = $this->m_model->get_data('snack')->result();
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/tambah_peminjaman_tempat', $data);
     }
@@ -488,7 +504,7 @@ class operator extends CI_Controller
     }
     public function edit_peminjaman_tempat($id)
     {
-        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman' , 'id' , $id)->result();
+        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
         $this->load->view('operator/edit_peminjaman_tempat', $data);
     }
     public function aksi_edit_peminjaman()
@@ -499,10 +515,10 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $generate = $this->generate_booking_code();
         $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan= tampil_harga_ruangan_byid($id_ruangan);
-        if(!empty($this->input->post('snack'))){
-        $id_snack = $this->input->post('snack');
-        $harga = tampil_harga_snack_byid($id_snack);
+        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
+        if (!empty($this->input->post('snack'))) {
+            $id_snack = $this->input->post('snack');
+            $harga = tampil_harga_snack_byid($id_snack);
         }
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
@@ -511,9 +527,9 @@ class operator extends CI_Controller
         $harga_snack = $harga * $jumlah;
         $harga_keseluruhan = $harga_snack + $harga_ruangan;
         $data = [
-            'id_pelanggan' =>$id_pelanggan,
-            'id_ruangan' =>$id_ruangan,
-            'id_snack' =>$id_snack,
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'id_snack' => $id_snack,
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -521,7 +537,7 @@ class operator extends CI_Controller
             'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
-        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
+        $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
         redirect(base_url('operator/peminjaman_tempat'));
     }

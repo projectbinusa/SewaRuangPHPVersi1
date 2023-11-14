@@ -6,6 +6,26 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
+    public function get_ruang_by_id()
+    {
+        return $this->db->get_where('ruangan', array())->row();
+    }
+
+    public function get_snack_by_id()
+    {
+        return $this->db->get_where('snack', array())->row();
+    }
+
+    public function search($keyword)
+    {
+        $this->db->like('no_ruang', $keyword);
+        $this->db->or_like('no_lantai', $keyword);
+        $this->db->or_like('harga', $keyword);
+        $this->db->or_like('deskripsi', $keyword);
+        $query = $this->db->get('ruangan');
+        return $query->result();
+    }
+
     function getwhere($table, $data)
     {
         return $this->db->get_where($table, $data);
@@ -72,7 +92,7 @@ class M_model extends CI_Model
     // m model update data pelanggan
     public function ubah_data($tabel, $data, $where)
     {
-        $data=$this->db->update($tabel, $data, $where);
+        $data = $this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
     public function get_data_operator()
@@ -115,7 +135,8 @@ class M_model extends CI_Model
         $query = $this->db->get_where('ruangan', array('id' => $id));
         return $query->row(); // Mengembalikan satu baris data sebagai objek
     }
-    public function is_time_conflict($id_ruangan, $start_time, $end_time) {
+    public function is_time_conflict($id_ruangan, $start_time, $end_time)
+    {
         // Query untuk memeriksa konflik waktu
         $this->db->where('id_ruangan', $id_ruangan);
         $this->db->where("('$start_time' BETWEEN tanggal_booking AND tanggal_berakhir OR '$end_time' BETWEEN tanggal_booking AND tanggal_berakhir)", NULL, FALSE);
@@ -124,7 +145,8 @@ class M_model extends CI_Model
         return $query->num_rows() > 0;
     }
 
-    public function get_expired_bookings() {
+    public function get_expired_bookings()
+    {
         // Ambil semua pemesanan yang masih dalam status "booking" dan telah berakhir
         $current_time = date('Y-m-d H:i:s');
         $this->db->where('status', 'booking');
@@ -135,20 +157,21 @@ class M_model extends CI_Model
     }
     public function get_status_peminjaman()
     {
-    return $this->db->where_in('status', ['proses', 'booking', 'di tolak'])
-                    ->get('peminjaman');
+        return $this->db->where_in('status', ['proses', 'booking', 'di tolak'])
+            ->get('peminjaman');
     }
     public function get_status_proses()
     {
-    return $this->db->where('status', 'proses')
-                    ->get('peminjaman');
+        return $this->db->where('status', 'proses')
+            ->get('peminjaman');
     }
     public function get_status_selesai()
     {
-    return $this->db->where('status', 'selesai')
-                    ->get('peminjaman');
+        return $this->db->where('status', 'selesai')
+            ->get('peminjaman');
     }
-    public function update_status($id, $status) {
+    public function update_status($id, $status)
+    {
         $this->db->where('id', $id);
         $this->db->update('peminjaman', array('status' => $status));
     }
