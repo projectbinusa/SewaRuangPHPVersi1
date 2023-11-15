@@ -233,9 +233,9 @@
                         placeholder="Pilih Paket">
 
                     <datalist id="browsers" id="checkbox" role="listbox">
-                        <div class="flex gap-3">
+                        <div class="">
                             <option style="" value="Paket 3">Paket 3</option>
-                            <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox">
+                            <input style="width: 15px; margin-left: 5rem; margin-top:-2rem;" type="checkbox" id="checkbox">
                         </div>
 
                     </datalist>
