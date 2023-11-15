@@ -6,14 +6,14 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
-    public function get_ruang_by_id()
+    public function get_peminjaman_by_id()
     {
-        return $this->db->get_where('ruangan', array())->row();
+        return $this->db->get_where('peminjaman', array())->row();
     }
 
-    public function get_snack_by_id()
+    public function get_tambahan_by_id()
     {
-        return $this->db->get_where('snack', array())->row();
+        return $this->db->get_where('tambahan', array())->row();
     }
 
     public function search($keyword)
@@ -139,6 +139,7 @@ class M_model extends CI_Model
     {
         // Query untuk memeriksa konflik waktu
         $this->db->where('id_ruangan', $id_ruangan);
+        $this->db->where('status', 'booking');
         $this->db->where("('$start_time' BETWEEN tanggal_booking AND tanggal_berakhir OR '$end_time' BETWEEN tanggal_booking AND tanggal_berakhir)", NULL, FALSE);
         $query = $this->db->get('peminjaman');
 
@@ -180,5 +181,25 @@ class M_model extends CI_Model
     {
         $data = $this->db->where($id_column, $id)->get($tabel);
         return $data;
+    }
+    public function get_peminjaman_by_status()
+    {
+        $this->db->select('p.*, GROUP_CONCAT(t.nama) as tambahan_nama', false);
+        $this->db->from('peminjaman p');
+        $this->db->join('peminjaman_tambahan pt', 'pt.id_peminjaman = p.id', 'left');
+        $this->db->join('tambahan t', 'pt.id_tambahan = t.id', 'left');
+        $this->db->where_in('p.status', ['proses', 'booking']);
+        $this->db->group_by('p.id');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function delete_peminjaman_tambahan($condition)
+    {
+        // Hapus data dari tabel peminjaman_tambahan berdasarkan kondisi
+        $this->db->delete('peminjaman_tambahan', $condition);
+
+        // Mengembalikan status berhasil atau tidaknya operasi penghapusan
+        return $this->db->affected_rows() > 0;
     }
 }
