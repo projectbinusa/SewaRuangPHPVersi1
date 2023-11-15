@@ -47,12 +47,19 @@ class M_model extends CI_Model
         $data = $this->db->update($table, $data, $where);
         return $this->db->affected_rows();
     }
+   
 
     public function get_by_id($tabel, $id_column, $id)
     {
         $data = $this->db->where($id_column, $id)->get($tabel);
         return $data;
     }
+    public function ubah_data_report_sewa($tabel, $data, $where)
+    {
+        $data=$this->db->update($tabel, $data, $where);
+        return $this->db->affected_rows();
+    }
+   
    
 
     public function get_data_by_id($table, $id)
@@ -96,6 +103,9 @@ class M_model extends CI_Model
         $data = $this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
+    
+    
+    
     public function get_data_operator()
     {
         return $this->db->where('role', 'operator')
@@ -176,5 +186,11 @@ class M_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('peminjaman', array('status' => $status));
     }
+    public function get_by_update_report_sewa($tabel, $id_column, $id)
+    {
+        $data = $this->db->where($id_column, $id)->get($tabel);
+        return $data;
+    }
+   
    
 }

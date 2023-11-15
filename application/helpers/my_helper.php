@@ -64,7 +64,7 @@ function tampil_nama_snack_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('snack');
+    $result = $ci->db->where('id', $id)->get('peminjaman');
 
     foreach ($result->result() as $c) {
         $stmt = $c->nama;

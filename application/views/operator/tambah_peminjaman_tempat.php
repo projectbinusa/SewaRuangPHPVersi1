@@ -245,8 +245,10 @@
              
                 <datalist id="browsers" id="checkbox" role="listbox">
                     <div class="flex gap-3">
-                        <option style="" value="Paket 3">Paket 3</option>
-                        <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox">
+                        <?php foreach($tambahan as $row):?>
+                        <option style=""><?php echo $row->nama?></option>
+                        <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
+                        <?php endforeach?>
                     </div>
                 </datalist>
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span

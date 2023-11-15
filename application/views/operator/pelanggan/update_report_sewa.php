@@ -131,10 +131,10 @@
             transition: all .3s;
         }
 
-        .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
+            .submit:hover {
+                background-color: transparent;
+                color: #222;
+            }
 
         /* style comboboxs */
         input {
@@ -169,25 +169,52 @@
                 right: 3rem;
             }
 
-            .container {
-                padding: 1rem 1rem 0px 1rem;
+            @media only screen and (max-width: 800px) {
+                .password-toggle {
+                    /* position: absolute; */
+                    top: 76%;
+                    /* transform: translateY(-50%); */
+                    right: 4.9rem;
+                    /* cursor: pointer; */
+
+                    /* style comboboxs */
+                    input {
+                        padding: 5px;
+                        height: 35px;
+                        border-bottom: 1px solid;
+                        outline: none;
+                    }
+                }
             }
 
+                    datalist {
+                        position: absolute;
+                        background-color: white;
+                        border-top: none;
+                        width: 350px;
+                        padding: 5px;
+                        max-height: 10rem;
+                        overflow-y: auto
+                    }
 
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
+                    option {
+                        background-color: white;
+                        padding: 4px;
+                        margin-bottom: 1px;
+                        font-size: 14px;
+                        cursor: pointer;
+                    }
 
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
 
-            }
+                    @media only screen and (max-width: 800px) {
+                        .password-toggle {
+                            top: 56.5rem;
+                            right: 3rem;
+                        }
 
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
+                        .container {
+                            padding: 1rem 1rem 0px 1rem;
+                        }
 
             label {
                 font-size: 16px;
@@ -225,7 +252,7 @@
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
                 <select id="underline_select" name="snack"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected><?php echo tampil_nama_snack_byid($row->id_snack)?></option>
+                    <option selected><?php echo tampil_nama_snack_byid($row->status)?></option>
                     <?php foreach($snack as $row):?>
                     <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
                     <?php endforeach?>

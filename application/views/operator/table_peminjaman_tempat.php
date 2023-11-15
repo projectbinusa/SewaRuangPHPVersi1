@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -51,7 +52,7 @@
             }
         }
 
-        /***default-btn-area***/
+        /**default-btn-area**/
         .btn {
             height: 50px;
             line-height: 50px;
@@ -229,7 +230,7 @@
             opacity: 1;
         }
 
-        /***section-title***/
+        /**section-title**/
         .section-title {
             margin-bottom: 60px;
         }
@@ -772,7 +773,7 @@
             }
         }
 
-        /*Form fields*/
+        /Form fields/
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -792,13 +793,13 @@
             margin-left: 9px;
         }
 
-        /*Row Hover*/
+        /Row Hover/
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /*Pagination Buttons*/
+        /Pagination Buttons/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -940,7 +941,7 @@
                                             Kode Booking
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Snack
+                                            Tambahan
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
@@ -958,29 +959,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-<<<<<<< HEAD
-                                    <?php $no=0; foreach($peminjaman as $row): $no++;?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no?>
-                                        </td>
-                                        <td data-cell="Nama " class="w-32 px-3 py-4">
-                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?>
-                                        </td>
-                                        <td data-cell="Ruangan " class="w-32 px-3 py-4">
-                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>
-                                        </td>
-                                        <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            <?php echo $row->jumlah_orang?>
-                                        </td>
-                                        <td data-cell="Kode " class="w-36 px-3 py-4">
-                                          <?php echo $row->kode_booking?>
-                                        </td>
-
-                                        <td data-cell="Snack " class="w-32 px-3 py-4">
-                                            <?php echo tampil_nama_snack_byid($row->id_snack)?>
-=======
                                     <?php $no = 0;
                                     foreach ($peminjaman as $row):
                                         $no++; ?>
@@ -1003,8 +981,15 @@
                                             </td>
 
                                         <td data-cell="Tambahan " class="w-32 px-3 py-4">
-                                            <?php echo tampil_nama_tambahan_byid($row->id_tambahan)?>
->>>>>>> f8d4a382a75ee60225458985742dc063e7756fe0
+                                        <?php
+                        // Memisahkan data tambahan menjadi array
+                        $tambahanArray = explode(',', $row->tambahan_nama);
+                        
+                        // Menampilkan setiap tambahan
+                        foreach ($tambahanArray as $tambahan) {
+                            echo $tambahan . '<br>';
+                        }
+                        ?>
                                         </td>
                                         <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
                                         <?php
@@ -1024,22 +1009,7 @@
                                                 <?php echo $row->status ?>
                                             </td>
 
-<<<<<<< HEAD
-                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                            </a>
-                                            <?php if ($row->status === 'booking'): ?>
-                                            <a href=""
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                <span class="">
-                                                <i class="fas fa-print"></i>
-                                                </span>
-=======
                                             <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
->>>>>>> f8d4a382a75ee60225458985742dc063e7756fe0
 
                                                 <a
                                                     href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
