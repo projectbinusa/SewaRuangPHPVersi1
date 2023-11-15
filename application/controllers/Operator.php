@@ -648,7 +648,7 @@ class operator extends CI_Controller
 
     public function update_report_sewa()
     {
-        $data['peminjaman'] = $this->m_model-get_data('peminjaman')->result();
+        $data['peminjaman'] = $this->m_model - get_data('peminjaman')->result();
         $this->load->view('operator/pelanggan/update_report_sewa', $data);
     }
 
@@ -660,10 +660,10 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $generate = $this->generate_booking_code();
         $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan= tampil_harga_ruangan_byid($id_ruangan);
-        if(!empty($this->input->post('snack'))){
-        $id_snack = $this->input->post('snack');
-        $harga = tampil_harga_snack_byid($id_snack);
+        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
+        if (!empty($this->input->post('snack'))) {
+            $id_snack = $this->input->post('snack');
+            $harga = tampil_harga_snack_byid($id_snack);
         }
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
@@ -672,9 +672,9 @@ class operator extends CI_Controller
         $harga_snack = $harga * $jumlah;
         $harga_keseluruhan = $harga_snack + $harga_ruangan;
         $data = [
-            'id_pelanggan' =>$id_pelanggan,
-            'id_ruangan' =>$id_ruangan,
-            'id_snack' =>$id_snack,
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'id_snack' => $id_snack,
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -682,7 +682,7 @@ class operator extends CI_Controller
             'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
-        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
+        $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
         redirect(base_url('operator/tabel_report_sewa'));
     }
