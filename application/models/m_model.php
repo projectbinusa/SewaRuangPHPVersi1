@@ -139,6 +139,7 @@ class M_model extends CI_Model
     {
         // Query untuk memeriksa konflik waktu
         $this->db->where('id_ruangan', $id_ruangan);
+        $this->db->where('status', 'booking');
         $this->db->where("('$start_time' BETWEEN tanggal_booking AND tanggal_berakhir OR '$end_time' BETWEEN tanggal_booking AND tanggal_berakhir)", NULL, FALSE);
         $query = $this->db->get('peminjaman');
 
@@ -187,10 +188,18 @@ class M_model extends CI_Model
         $this->db->from('peminjaman p');
         $this->db->join('peminjaman_tambahan pt', 'pt.id_peminjaman = p.id', 'left');
         $this->db->join('tambahan t', 'pt.id_tambahan = t.id', 'left');
-        $this->db->where_in('p.status', ['proses', 'booking', 'di tolak']);
+        $this->db->where_in('p.status', ['proses', 'booking']);
         $this->db->group_by('p.id');
 
         $query = $this->db->get();
         return $query->result();
+    }
+    public function delete_peminjaman_tambahan($condition)
+    {
+        // Hapus data dari tabel peminjaman_tambahan berdasarkan kondisi
+        $this->db->delete('peminjaman_tambahan', $condition);
+
+        // Mengembalikan status berhasil atau tidaknya operasi penghapusan
+        return $this->db->affected_rows() > 0;
     }
 }

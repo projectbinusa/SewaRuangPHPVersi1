@@ -106,9 +106,18 @@ function tampil_harga_tambahan_byid($id)
     $ci = &get_instance();
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('tambahan');
-
     foreach ($result->result() as $c) {
         $stmt = $c->harga;
+        return $stmt;
+    }
+}
+function tampil_info_tambahan_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('tambahan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->jenis;
         return $stmt;
     }
 }
