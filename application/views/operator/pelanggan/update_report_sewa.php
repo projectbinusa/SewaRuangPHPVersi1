@@ -9,10 +9,7 @@
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-
-
     <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
@@ -24,35 +21,18 @@
         }
 
 
-        html {
-            font-size: 62.5%;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.6rem;
-            background-color: #E4F1FF;
-            color: #222;
-            padding: 0 5px;
-        }
-
         body {
             font-family: "DM Sans", sans-serif;
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
-
         }
 
         .container {
             min-width: 20rem;
             max-width: 65rem;
-
-            margin: 4rem auto;
-
             margin: 1rem auto;
             padding: 30px 7.5rem 5px 7.5rem;
-
         }
 
         .heading,
@@ -60,11 +40,7 @@
             background-color: #fff;
             padding: 1.3em 3rem 1.8rem 3rem;
             border-radius: 1rem;
-
-            margin-bottom: 3rem;
-
             margin-bottom: 2.5rem;
-
             box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.15);
         }
 
@@ -73,10 +49,7 @@
         }
 
         .survey-form {
-
-            font-size: 1.8rem;
             font-size: 15px;
-
         }
 
         .green-bar {
@@ -91,14 +64,9 @@
         }
 
         .main-heading {
-
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-
             font-size: 2rem;
             margin-bottom: 1rem;
             height: 1.5rem;
-
         }
 
         .main-description {
@@ -117,33 +85,14 @@
 
         label {
             display: block;
-
-            font-size: 1.8rem;
-            margin: 2rem 0;
-
             font-size: 1.1rem;
             margin: 30px 0;
             line-height: 1px;
-
         }
 
         input {
             display: block;
             width: 100%;
-
-            margin: 2rem 0;
-            font-size: 1.6rem;
-        }
-
-        .hari,
-        .tanggal,
-        .no_ruang,
-        .kapasitas,
-        .snack,
-        .extra_time,
-        .jam_penggunaan,
-        .total_booking {
-
             height: 29px;
             margin: 5px 0;
             font-size: 1.6rem;
@@ -159,62 +108,65 @@
         .no_ruang,
         .total_booking,
         .kapasitas {
-
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
         }
 
-
-
         .submit {
-            font-size: 1.7rem;
-
-            .submit {
-                font-size: 14px;
-
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                color: #f4f4f4;
-                background-color: #4F709C;
-                border: 3px solid #4F709C;
-                border-radius: 1rem;
-
-                width: 15rem;
-                padding: 1rem 2rem;
-                margin: 4rem auto 2rem auto;
-                width: 8rem;
-                height: 2.5rem;
-                padding: 8px 2rem;
-                margin: 40px auto 10px auto;
-
-                cursor: pointer;
-                transition: all .3s;
-            }
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
 
             .submit:hover {
                 background-color: transparent;
                 color: #222;
             }
 
+        /* style comboboxs */
+        input {
+            padding: 5px;
+            height: 35px;
+            border-bottom: 1px solid;
+            outline: none;
+        }
 
-            a:link,
-            a:visited {
-                color: #008080;
-            }
+        datalist {
+            position: absolute;
+            background-color: white;
+            border-top: none;
+            width: 350px;
+            padding: 5px;
+            max-height: 10rem;
+            overflow-y: auto
+        }
 
-            .form-group {
-                position: relative;
-            }
+        option {
+            background-color: white;
+            padding: 4px;
+            margin-bottom: 1px;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
+
+        @media only screen and (max-width: 800px) {
             .password-toggle {
-                position: absolute;
-                top: 72%;
-                transform: translateY(-50%);
-                right: 40rem;
-                cursor: pointer;
+                top: 56.5rem;
+                right: 3rem;
             }
 
             @media only screen and (max-width: 800px) {
@@ -264,109 +216,60 @@
                             padding: 1rem 1rem 0px 1rem;
                         }
 
-
-                        .heading {
-                            padding: 1.3em 9px 1.8rem 9px;
-                        }
-
-                        .survey-form {
-                            padding: 1.3em 15px 1.8rem 15px;
-
-                        }
-
-                        .main-heading {
-                            font-size: 22px;
-                            margin-bottom: 0;
-                            text-align: center;
-                        }
-
-                        label {
-                            font-size: 16px;
-
-                        }
-                    }
+            label {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
 <body>
-
     <?php $this->load->view('sidebar'); ?>
-
 
     <main>
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-
-                <h1 id="title" class="main-heading">Form Edit Report Sewa</h1>
-
+                <h1 id="title" class="main-heading">Update Report Sewa</h1>
             </header>
-            <form action="" method="post" id="survey-form" class="survey-form">
-                <label for="hari" id="name-label">Hari<span class="required">*</span></label>
-                <input type="text" name="hari" id="hari" class="hari" placeholder="Ketik hari pemesanan" required>
+            <?php foreach($peminjaman as $row):?>
+            <form action="<?php echo base_url('operator/aksi_update_report_sewa/')?>" method="post" id="survey-form" class="survey-form">
+            <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id?>">
+                <label for="nama" id="name-label">Nama <span class="required">*</span></label>
+                <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
-                <label for="tanggal" id="name-label">Tanggal<span class="required">*</span></label>
-                <input type="date" name="tanggal" id="tanggal" class="tanggal" placeholder="Ketik tanggal" required>
-
-
-                <div class="mb-3 col-6">
-                    <label for="no_ruang" class="form-label">No Ruang<span class="required">*</span></label>
-                    <select name="no_ruang" class="form-select">
-                        <option selected>Pilih Ruang</option>
-
-                        </option>
-                        <option value="Ruang ke 1.">Ruang ke 1.</option>
-                        <option value="Ruang ke 2.">Ruang ke 2.</option>
-                        <option value="Ruang ke 3.">Ruang ke 3.</option>
-                        <option value="Ruang ke 4.">Ruang ke 4.</option>
-                        <option value="Ruang ke 5.">Ruang ke 5.</option>
-                    </select>
-                </div>
-                <b>
-                    <hr>
-                </b>
-
-                <label for="no_lantai" id="name-label">No Lantai<span class="required">*</span></label>
-                <input class="no_lantai" autocomplete="off" role="combobox" list="" id="input" name="no_lantai" placeholder="Pilih no lantai">
-
-                <datalist id="browsers" role="listbox">
-                    <option value="001">001</option>
-                    <option value="002">002</option>
-                    <option value="003">003</option>
-                    <option value="004">004</option>
+                <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
+                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
+                    value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>">
+                <datalist id="browsers1" role="listbox">
+                    <?php foreach($ruangan as $row):?>
+                    <option value="<?php echo $row->id?>">L.<?php echo $row->no_lantai?>  R.<?php echo $row->no_ruang?></option>
+                    <?php endforeach?>
                 </datalist>
-
-
-                <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
-                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas" placeholder="Ketik kapasitas ruangan" required>
-
+                <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
+                <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
+                   value="<?php echo $row->jumlah_orang?>" required>
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
-
-                <select id="underline_select" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected>Pilih Paket Snack</option>
-                    <option value="US">Paket 1</option>
-                    <option value="CA">Paket 2</option>
-                    <option value="FR">Paket 3</option>
+                <select id="underline_select" name="snack"
+                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected><?php echo tampil_nama_snack_byid($row->status)?></option>
+                    <?php foreach($snack as $row):?>
+                    <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
+                    <?php endforeach?>
                 </select>
-
-                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan" placeholder="Ketik jam penggunaan" required>
-
-                <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
-                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time" placeholder="Ketik extra time jika ada" required>
-
-                <label for="total_booking" id="total_booking-label">Total Hari Booking<span class="required">*</span></label>
-                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
+                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
+                        class="required">*</span></label>
+                <input type="date" name="booking" id="total_booking" class="total_booking"
+                    value="<?php echo $row->tanggal_booking?>" required>
+                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
+                        class="required">*</span></label>
+                <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
+                value="<?php echo $row->tanggal_berakhir?>" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
-
+            <?php endforeach?>
         </div>
-    </main>
-    </div>
     </main>
 
     <!-- script comboboxs -->

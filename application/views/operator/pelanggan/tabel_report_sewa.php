@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -53,7 +52,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -231,7 +230,7 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -510,7 +509,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -715,7 +714,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -750,7 +749,7 @@
             }
         }
 
-       
+
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -773,7 +772,7 @@
             }
         }
 
-       
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -808,7 +807,7 @@
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -911,10 +910,8 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
@@ -944,69 +941,71 @@
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
-                                       
+
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
-                                        </td>
-                                        <td data-cell="Nama " class="w-32 px-3 py-4">
-                                            Cristiano Ronaldo
-                                        </td>
-                                        <td data-cell="Ruangan " class="w-32 px-3 py-4">
-                                            1
-                                        </td>
-                                        <td data-cell="Kapasitas " class="w-36 px-3 py-4">
-                                            5
-                                        </td>
-                                        <td data-cell="Kode " class="w-36 px-3 py-4">
-                                            Q34RETG
-                                        </td>
-
-                                        <td data-cell="Snack " class="w-32 px-3 py-4">
-                                            Paket 1
-                                        </td>
-                                        <td data-cell="Total Booking " class="w-32 px-3 py-4">
-                                            1
-                                        </td>
-                                        <td data-cell="Total " class="w-32 px-3 py-4">
-                                            100000
-                                        </td>
-                                        <td data-cell="Status " class="w-32 px-3 py-4">
-                                            Pending
-                                        </td>
-                                     
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                            <a href="update_report_sewa"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                            </a>
-                                            <a href="export_pdf"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                <span class="">
-                                                <i class="fas fa-print"></i>
-                                                </span>
-
-                                            </a>
-                                            
-                                            <button onclick="hapus()"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
-
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <?php $no = 0;
+                                    foreach ($peminjaman as $row) : $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <!-- Penyewa -->
+                                            <td class="w-32 px-3 py-4">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            </td>
+                                            <!-- Ruangan -->
+                                            <td class="w-32 px-3 py-4">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <!-- Kapasitas -->
+                                            <td class="w-36 px-3 py-4">
+                                                <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <!-- Kode Booking -->
+                                            <td class="w-36 px-3 py-4">
+                                                <?php echo $row->kode_booking ?>
+                                            </td>
+                                            <!-- Snack -->
+                                            <td class="w-32 px-3 py-4">
+                                                <?php echo tampil_nama_snack_byid($row->status) ?>
+                                            </td>
+                                            <!-- Total Booking -->
+                                            <td class="w-32 px-3 py-4">
+                                                <?php
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                echo $durasi->days . ' Hari';
+                                                ?>
+                                            </td>
+                                            <!-- Total -->
+                                            <td class="w-32 px-3 py-4">
+                                                <?php echo $row->total_harga ?>
+                                            </td>
+                                            <!-- Status -->
+                                            <td class="w-32 px-3 py-4">
+                                                <?php echo $row->status ?>
+                                            </td>
+                                            <!-- Aksi -->
+                                            <td class="justify-content-center px-3 py-4 flex">
+                                                <a href="<?php echo base_url('operator/update_report_sewa') ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -1026,11 +1025,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_data').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });

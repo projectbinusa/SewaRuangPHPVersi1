@@ -138,7 +138,7 @@ class operator extends CI_Controller
         $snack = $this->m_model->get_snack_by_id();
         $harga_snack = $snack->harga;
         $total_price = $harga_ruangan + $harga_snack;
-        
+
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
 
         if ($this->uri->segment(3) == "pdf") {
@@ -544,14 +544,16 @@ class operator extends CI_Controller
 
     public function tabel_report_sewa()
     {
-        $this->load->view('operator/pelanggan/tabel_report_sewa');
+        $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
+        $this->load->view('operator/pelanggan/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
     }
 
-    public function update_report_sewa()
-    {
-        $data['peminjaman'] = $this->m_model-get_data('peminjaman')->result();
-        $this->load->view('operator/pelanggan/update_report_sewa', $data);
-    }
+
+    // Update fungsi update_report_sewa di kontroler
+public function update_report_sewa() {
+    $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
+    $this->load->view('operator/pelanggan/update_report_sewa', $data);
+}
 
     public function aksi_update_report_sewa($id)
     {
@@ -585,7 +587,7 @@ class operator extends CI_Controller
         ];
         $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
         $this->check_expired_bookings();
-        redirect(base_url('operator/tabel_report_sewa'));
+        redirect(base_url('operator/pelanggan/tabel_report_sewa'));
     }
 
     public function hapus_report_sewa()
