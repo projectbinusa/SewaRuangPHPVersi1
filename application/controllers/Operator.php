@@ -425,9 +425,9 @@ class operator extends CI_Controller
         $this->load->view('operator/pelanggan/dashboard');
     }
 
-    public function table_peminjaman_tempat()
+    public function peminjaman_tempat()
     {
-        $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
+        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
         $this->load->view('operator/table_peminjaman_tempat', $data);
     }
 
@@ -462,39 +462,92 @@ class operator extends CI_Controller
     }
 
     public function aksi_peminjaman()
-    {
-        $id_ruangan = $this->input->post('ruang');
-        $id_pelanggan = tampil_pelanggan_bynama($this->input->post('nama'));
-        $jumlah = $this->input->post('kapasitas');
-        $start_time = $this->input->post('booking');
-        $generate = $this->generate_booking_code();
-        $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
-        if (!empty($this->input->post('snack'))) {
-            $id_snack = $this->input->post('snack');
-            $harga = tampil_harga_snack_byid($id_snack);
-        }
-        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-            return;
-        }
-        $harga_snack = $harga * $jumlah;
-        $harga_keseluruhan = $harga_snack + $harga_ruangan;
-        $data = [
-            'id_pelanggan' => $id_pelanggan,
-            'id_ruangan' => $id_ruangan,
-            'id_snack' => $id_snack,
-            'tanggal_booking' => $start_time,
-            'tanggal_berakhir' => $end_time,
-            'jumlah_orang' => $jumlah,
-            'kode_booking' => $generate,
-            'total_harga' => $harga_keseluruhan,
-            'status' => 'proses',
-        ];
-        $this->m_model->tambah_data('peminjaman', $data);
-        $this->check_expired_bookings();
-        redirect(base_url('operator/peminjaman_tempat'));
+{
+    // Memperoleh data dari formulir
+    $nama = $this->input->post('nama');
+    $id_ruangan = $this->input->post('ruang');
+    $jumlah_orang = $this->input->post('kapasitas');
+    $start_time = $this->input->post('booking');
+    $end_time = $this->input->post('akhir_booking');
+    $id_snack = $this->input->post('snack');
+
+    // Mendapatkan ID pelanggan berdasarkan nama
+    $id_pelanggan = tampil_pelanggan_bynama($nama);
+
+    // Menghasilkan kode booking
+    $generate = $this->generate_booking_code();
+
+    // Memeriksa konflik waktu
+    if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
+        echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+        return;
     }
+
+    // Menghitung durasi dan harga ruangan
+    $tanggalBooking = new DateTime($start_time);
+    $tanggalBerakhir = new DateTime($end_time);
+    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+    $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+    $harga_ruangan = $harga_ruangan_default * $durasi->days;
+
+    // Menghitung harga snack
+    $harga = 0;
+    if (!empty($id_tambahan)) {
+        foreach ($id_tambahan as $id) {
+            $harga += tampil_harga_tambahan_byid    ($id);
+        }
+    }
+
+    // Menghitung total harga
+    $harga_keseluruhan = $harga_snack + $harga_ruangan;
+
+    // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+    $data_peminjaman = [
+        'id_pelanggan' => $id_pelanggan,
+        'id_ruangan' => $id_ruangan,
+        'tanggal_booking' => $start_time,
+        'tanggal_berakhir' => $end_time,
+        'jumlah_orang' => $jumlah_orang,
+        'kode_booking' => $generate,
+        'total_harga' => $harga_keseluruhan,
+        'status' => 'proses',
+    ];
+
+    // Memasukkan data ke tabel peminjaman
+    $id_peminjaman = $this->m_model->tambah_data('peminjaman', $data_peminjaman);
+
+    // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+    if (!empty($id_snack)) {
+        foreach ($id_snack as $id) {
+            $data_tambahan = [
+                'id_pelanggan' => $id_pelanggan,
+                'id_peminjaman' => $id_peminjaman,
+                'id_tambahan' => $id,
+                'status' => 'proses', // Status bisa disesuaikan
+            ];
+
+            // Memasukkan data ke tabel peminjaman_tambahan
+            $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+
+            if (!$tambahan_success) {
+                // Handle error jika tambahan tidak berhasil dimasukkan
+                // Misalnya: Tampilkan pesan error atau lakukan rollback
+                echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+                return;
+            }
+        }
+        $this->check_expired_bookings();
+        // Operasi berhasil
+        // Redirect atau tampilkan pesan sukses
+        redirect(base_url('operator/peminjaman_tempat'));
+    } else {
+        // Handle error jika peminjaman tidak berhasil dimasukkan
+        // Misalnya: Tampilkan pesan error atau lakukan rollback
+        echo "<script>alert('Gagal menambahkan data peminjaman.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+        return;
+    }
+}
+
 
     public function hapus_peminjaman($id)
     {

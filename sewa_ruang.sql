@@ -42,7 +42,7 @@ CREATE TABLE `peminjaman` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelanggan` int(11) DEFAULT NULL,
   `id_ruangan` int(11) DEFAULT NULL,
-  `id_snack` int(11) DEFAULT NULL,
+  `id_tambahan` int(11) DEFAULT NULL,
   `tanggal_booking` date DEFAULT NULL,
   `tanggal_berakhir` date DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
@@ -50,14 +50,28 @@ CREATE TABLE `peminjaman` (
   `kode_booking` varchar(255) DEFAULT NULL,
   `total_harga` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `peminjaman` */
 
-insert  into `peminjaman`(`id`,`id_pelanggan`,`id_ruangan`,`id_snack`,`tanggal_booking`,`tanggal_berakhir`,`status`,`jumlah_orang`,`kode_booking`,`total_harga`) values 
+insert  into `peminjaman`(`id`,`id_pelanggan`,`id_ruangan`,`id_tambahan`,`tanggal_booking`,`tanggal_berakhir`,`status`,`jumlah_orang`,`kode_booking`,`total_harga`) values 
 (1,1,1,1,'2023-11-11','2023-11-12','selesai',1,'GQRI1KMB',120000),
 (4,2,1,0,'2023-11-14','2023-11-16','booking',3,'0JWOLXAA',100000),
 (5,1,1,1,'2023-11-17','2023-11-18','di tolak',2,'YOLD5H0Q',140000);
+
+/*Table structure for table `peminjaman_tambahan` */
+
+DROP TABLE IF EXISTS `peminjaman_tambahan`;
+
+CREATE TABLE `peminjaman_tambahan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_peminjaman` int(11) DEFAULT NULL,
+  `id_pelanggan` int(11) DEFAULT NULL,
+  `id_tambahan` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `peminjaman_tambahan` */
 
 /*Table structure for table `ruangan` */
 
@@ -78,22 +92,24 @@ CREATE TABLE `ruangan` (
 insert  into `ruangan`(`id`,`no_lantai`,`no_ruang`,`image`,`deskripsi`,`harga`) values 
 (1,'01','01','169966542533_programmer.jpg','Cantik banget',100000);
 
-/*Table structure for table `snack` */
+/*Table structure for table `tambahan` */
 
-DROP TABLE IF EXISTS `snack`;
+DROP TABLE IF EXISTS `tambahan`;
 
-CREATE TABLE `snack` (
+CREATE TABLE `tambahan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) DEFAULT NULL,
   `deskripsi` varchar(255) DEFAULT NULL,
   `harga` int(11) DEFAULT NULL,
+  `jenis` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Data for the table `snack` */
+/*Data for the table `tambahan` */
 
-insert  into `snack`(`id`,`nama`,`deskripsi`,`harga`) values 
-(1,'Paket 1','Ayam dan Minuman',20000);
+insert  into `tambahan`(`id`,`nama`,`deskripsi`,`harga`,`jenis`) values 
+(1,'Modem','Moden 100 mbps',100000,'Alat'),
+(2,'Proyektor','Proyektor port HDMI',200000,'Alat');
 
 /*Table structure for table `user` */
 
