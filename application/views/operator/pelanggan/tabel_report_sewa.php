@@ -911,7 +911,7 @@
             <div class="container-table row justify-content-center">
 
                 <a href="tambah_peminjaman_tempat"
-=
+
                 <a href="tambah_report_sewa"
 
                     class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
@@ -1000,7 +1000,7 @@
                                      
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a href="update_report_sewa"
+                                            <a href="edit_peminjaman_tempat"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>

@@ -19,7 +19,14 @@ class operator extends CI_Controller
 
     public function index()
     {
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
+        $this->load->view('operator/ruang/Data_Ruangan', $data);
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['ruang'] = $this->m_model->search($keyword);
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
 
@@ -32,7 +39,7 @@ class operator extends CI_Controller
     {
 
         $no_lantai = $this->input->post('no_lantai');
-        $no_ruang = strtoupper($this->input->post('no_ruang'));
+        $no_ruang = $this->input->post('no_ruang');
         $deskripsi = $this->input->post('deskripsi');
         $image = $_FILES['foto']['name'];
         $harga = $this->input->post('harga');
@@ -54,6 +61,11 @@ class operator extends CI_Controller
             $errors[] = 'Harga harus diisi dengan angka dan tidak boleh kosong.';
         } elseif ($harga < 0) {
             $errors[] = 'Harga tidak boleh negatif.';
+        }
+
+        // Validasi deskripsi
+        if (strpos($deskripsi, '-') !== false) {
+            $errors[] = 'Deskripsi tidak boleh mengandung tanda "-".';
         }
 
         // Validasi foto
@@ -120,10 +132,14 @@ class operator extends CI_Controller
     }
     public function export_pdf()
     {
-        $data['bukti'] = $this->m_model->get_data('ruangan')->result();
-        $data['no_lantai'] = 'ruangan';
-        $data['no_ruang'] = 'ruangan';
-        $data['harga'] = 'ruangan';
+        $ruangan = $this->m_model->get_ruang_by_id();
+        $harga_ruangan = $ruangan->harga;
+
+        $snack = $this->m_model->get_snack_by_id();
+        $harga_snack = $snack->harga;
+        $total_price = $harga_ruangan + $harga_snack;
+        
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -416,7 +432,7 @@ class operator extends CI_Controller
 
     public function tambah_peminjaman_tempat()
     {
-        $data['snack'] = $this->m_model->get_data('snack')->result();
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/tambah_peminjaman_tempat', $data);
     }

@@ -23,18 +23,49 @@ if (!function_exists('format_lantai')) {
 function tampil_nama_penyewa_byid($id)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('id', $id)->get('pelanggan');
     foreach ($result->result() as $c) {
         $stmt = $c->nama;
         return $stmt;
     }
 }
+function tampil_nomer_penyewa_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('pelanggan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->phone;
+        return $stmt;
+    }
+}
+function tampil_pyment_penyewa_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('pelanggan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->payment_method;
+        return $stmt;
+    }
+}
+function tampil_code_penyewa_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('peminjaman');
+    foreach ($result->result() as $c) {
+        $stmt = $c->kode_booking;
+        return $stmt;
+    }
+}
 function tampil_nama_snack_byid($id)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('id', $id)->get('snack');
+
     foreach ($result->result() as $c) {
         $stmt = $c->nama;
         return $stmt;
@@ -43,28 +74,29 @@ function tampil_nama_snack_byid($id)
 function tampil_nama_ruangan_byid($id)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('id', $id)->get('ruangan');
     foreach ($result->result() as $c) {
-        $stmt = 'L.'.$c->no_lantai . ' '.'R.' . $c->no_ruang;
+        $stmt = 'L.' . $c->no_lantai . ' ' . 'R.' . $c->no_ruang;
         return $stmt;
     }
 }
 function tampil_harga_ruangan_byid($id)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('id', $id)->get('ruangan');
     foreach ($result->result() as $c) {
         $stmt = $c->harga;
         return $stmt;
     }
 }
-function tampil_harga_snack_byid($id)
+function tampil_harga_tambahan_byid($id)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('id', $id)->get('snack');
+
     foreach ($result->result() as $c) {
         $stmt = $c->harga;
         return $stmt;
@@ -73,7 +105,7 @@ function tampil_harga_snack_byid($id)
 function tampil_pelanggan_bynama($nama)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('nama', $nama)->get('pelanggan');
     foreach ($result->result() as $c) {
         $stmt = $c->id;
