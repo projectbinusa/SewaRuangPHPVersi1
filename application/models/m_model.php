@@ -6,14 +6,14 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
-    public function get_ruang_by_id()
+    public function get_peminjaman_by_id()
     {
-        return $this->db->get_where('ruangan', array())->row();
+        return $this->db->get_where('peminjaman', array())->row();
     }
 
-    public function get_snack_by_id()
+    public function get_tambahan_by_id()
     {
-        return $this->db->get_where('snack', array())->row();
+        return $this->db->get_where('tambahan', array())->row();
     }
 
     public function search($keyword)
