@@ -1,3 +1,12 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksport PDF</title>
     <style>
         body,
         html {
@@ -132,20 +141,23 @@
 </head>
 
 <body>
-
     <div class="header">
         <h2>RuangSewa.com</h2>
     </div>
 
+
     <div class="invoice-yu">
+
         <h1 class="invoice">
             CUSTOMER
             <span class="name-customer">INVOICE</span>
         </h1>
         <p style="margin-left: 75%;"><?php echo date('F, j-Y'); ?></p>
+
     </div>
 
     <div class="invoice-details">
+
         <table>
             <tr>
                 <td>Name Customer: <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($peminjaman->id_pelanggan) ?></span></td>
@@ -175,6 +187,7 @@
                 <td class="merah"><?php echo $no . '.'; ?></td>
                 <td class="merah"><?php echo format_ruangan(tampil_nama_ruangan_byid($peminjaman->id_ruangan)) . " - " . tampil_nama_tambahan_byid($peminjaman->id_tambahan) ?></td>
                 <td class="merah"><?php echo $peminjaman->jumlah_orang ?></td>
+                <td class="merah"><?php echo $no ?></td>
                 <td class="merah"><?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan)); ?></td>
                 <td class="merah"><?php echo convRupiah(intval(tampil_harga_ruangan_byid($peminjaman->id_ruangan)) + intval(tampil_harga_tambahan_byid($peminjaman->id_tambahan))); ?></td>
             </tr>
@@ -183,17 +196,20 @@
     </table>
     <br>
     <div class="container">
+
         <div class="total" style="margin-bottom: -50%;">
             <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan) + tampil_harga_tambahan_byid($peminjaman->id_tambahan)); ?>"></span>
-        </div>
+
     </div>
     <br><br><br>
     <div class="payment-info">
+
     <h4>PAYMENT INFO</h4>
         <?php date_default_timezone_set('Asia/Jakarta'); ?>
         <p class="baru">Tanggal :<span><?php echo date('F, j-Y'); ?></span></p>
         <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
         <p>Pembayaran melalui :<span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan) ?></span></p>
+
     </div>
 </body>
 

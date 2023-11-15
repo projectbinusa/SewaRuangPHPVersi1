@@ -80,6 +80,16 @@ function tampil_nama_ruangan_byid($id)
         return $stmt;
     }
 }
+function tampil_no_ruangan_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('ruangan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->no_ruang;
+        return $stmt;
+    }
+}
 function tampil_harga_ruangan_byid($id)
 {
     $ci = &get_instance();
@@ -97,6 +107,16 @@ function tampil_harga_tambahan_byid($id)
     $result = $ci->db->where('id', $id)->get('tambahan');
     foreach ($result->result() as $c) {
         $stmt = $c->harga;
+        return $stmt;
+    }
+}
+function tampil_info_tambahan_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('tambahan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->jenis;
         return $stmt;
     }
 }

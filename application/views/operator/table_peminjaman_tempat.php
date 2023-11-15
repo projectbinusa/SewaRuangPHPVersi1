@@ -936,7 +936,7 @@
                                             Kode Booking
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Snack
+                                            Tambahan
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
@@ -974,6 +974,7 @@
                                                 <?php echo $row->kode_booking ?>
                                             </td>
 
+
                                             <td data-cell="Tambahan " class="w-32 px-3 py-4">
                                                 <?php echo tampil_nama_tambahan_byid($row->id_tambahan) ?>
                                             </td>
@@ -983,6 +984,7 @@
                                                 $tanggalBooking = new DateTime($row->tanggal_booking);
                                                 $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
                                                 $durasi = $tanggalBooking->diff($tanggalBerakhir);
+
 
                                                 // Menampilkan durasi dalam format angka
                                                 echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
