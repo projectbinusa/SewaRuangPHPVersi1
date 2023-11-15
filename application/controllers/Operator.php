@@ -410,7 +410,7 @@ class operator extends CI_Controller
         $this->load->view('operator/pelanggan/dashboard');
     }
 
-    public function table_peminjaman_tempat()
+    public function peminjaman_tempat()
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
         $this->load->view('operator/table_peminjaman_tempat',$data);
@@ -454,21 +454,32 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $generate = $this->generate_booking_code();
         $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
-        if (!empty($this->input->post('snack'))) {
-            $id_snack = $this->input->post('snack');
-            $harga = tampil_harga_snack_byid($id_snack);
+        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+        $tambahan = $this->input->post('tambahan');
+        $harga_snack = 0;
+    
+        if (!empty($tambahan)) {
+            foreach ($tambahan as $id) {
+                $harga_snack += tampil_harga_tambahan_byid($id);
+            }
         }
+    
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
             return;
         }
-        $harga_snack = $harga * $jumlah;
+    
+        $tanggalBooking = new DateTime($start_time);
+        $tanggalBerakhir = new DateTime($end_time);
+        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+    
+        $harga_ruangan = $harga_ruangan_default * $durasi->days;
         $harga_keseluruhan = $harga_snack + $harga_ruangan;
+    
         $data = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
-            'id_snack' => $id_snack,
+            'id_tambahan' => implode(",", $tambahan),
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -476,10 +487,12 @@ class operator extends CI_Controller
             'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
+    
         $this->m_model->tambah_data('peminjaman', $data);
         $this->check_expired_bookings();
         redirect(base_url('operator/peminjaman_tempat'));
     }
+    
 
     public function hapus_peminjaman($id)
     {
