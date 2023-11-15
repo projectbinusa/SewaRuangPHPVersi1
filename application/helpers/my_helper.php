@@ -9,14 +9,14 @@ if (!function_exists('convRupiah')) {
 if (!function_exists('format_ruangan')) {
     function format_ruangan($nomor_ruangan)
     {
-        return 'Ruang ' . $nomor_ruangan;
+        return 'ruang ' . $nomor_ruangan;
     }
 }
 
 if (!function_exists('format_lantai')) {
     function format_lantai($nomor_lantai)
     {
-        return 'Lantai ' . $nomor_lantai;
+        return 'lantai ' . $nomor_lantai;
     }
 }
 
@@ -60,12 +60,11 @@ function tampil_code_penyewa_byid($id)
         return $stmt;
     }
 }
-function tampil_nama_snack_byid($id)
+function tampil_nama_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('snack');
-
+    $result = $ci->db->where('id', $id)->get('tambahan');
     foreach ($result->result() as $c) {
         $stmt = $c->nama;
         return $stmt;
@@ -95,8 +94,7 @@ function tampil_harga_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('snack');
-
+    $result = $ci->db->where('id', $id)->get('tambahan');
     foreach ($result->result() as $c) {
         $stmt = $c->harga;
         return $stmt;

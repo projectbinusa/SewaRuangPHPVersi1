@@ -27,7 +27,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            /* font-size: 17px; */
             background-color: #f1f1f1;
         }
 

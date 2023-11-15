@@ -132,20 +132,19 @@ class operator extends CI_Controller
     }
     public function export_pdf()
     {
-        $ruangan = $this->m_model->get_ruang_by_id();
-        $harga_ruangan = $ruangan->harga;
+        $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
+        $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
 
-        $snack = $this->m_model->get_snack_by_id();
-        $harga_snack = $snack->harga;
-        $total_price = $harga_ruangan + $harga_snack;
-        
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $peminjaman = $this->m_model->get_peminjaman_by_id($peminjaman_id);
+        $tambahan = $this->m_model->get_tambahan_by_id($tambahan_id);
+
+        $data['peminjaman'] = $peminjaman;
+        $data['tambahan'] = $tambahan;
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
             $this->pdf->load_view('operator/export_pdf', $data);
             $this->pdf->render();
-
 
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
@@ -549,7 +548,7 @@ class operator extends CI_Controller
 
     public function update_report_sewa()
     {
-        $data['peminjaman'] = $this->m_model-get_data('peminjaman')->result();
+        $data['peminjaman'] = $this->m_model - get_data('peminjaman')->result();
         $this->load->view('operator/pelanggan/update_report_sewa', $data);
     }
 
@@ -561,10 +560,10 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $generate = $this->generate_booking_code();
         $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan= tampil_harga_ruangan_byid($id_ruangan);
-        if(!empty($this->input->post('snack'))){
-        $id_snack = $this->input->post('snack');
-        $harga = tampil_harga_snack_byid($id_snack);
+        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
+        if (!empty($this->input->post('snack'))) {
+            $id_snack = $this->input->post('snack');
+            $harga = tampil_harga_snack_byid($id_snack);
         }
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
@@ -573,9 +572,9 @@ class operator extends CI_Controller
         $harga_snack = $harga * $jumlah;
         $harga_keseluruhan = $harga_snack + $harga_ruangan;
         $data = [
-            'id_pelanggan' =>$id_pelanggan,
-            'id_ruangan' =>$id_ruangan,
-            'id_snack' =>$id_snack,
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'id_snack' => $id_snack,
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -583,7 +582,7 @@ class operator extends CI_Controller
             'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
-        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
+        $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
         redirect(base_url('operator/tabel_report_sewa'));
     }

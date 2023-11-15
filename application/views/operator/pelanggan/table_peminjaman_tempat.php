@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewa Ruang</title>
+    <title>Peminjaman Tempat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -38,7 +38,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            /* font-size: 17px; */
             background-color: #f1f1f1;
         }
 

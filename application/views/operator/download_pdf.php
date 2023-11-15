@@ -5,206 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your PDF</title>
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-        }
+    <title>Eksport PDF</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.2;
-        }
-
-        .header {
-            text-align: center;
-            background: #0C356A;
-            color: whitesmoke;
-            padding: 30px;
-        }
-
-        .invoice {
-            margin-left: 70%;
-            font-weight: bold;
-            color: #1F4172;
-            margin-bottom: 0;
-        }
-
-        .invoice-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3%;
-        }
-
-        .invoice p {
-            text-align: center;
-            margin: 0px;
-        }
-
-        .invoice-yu {
-            margin-left: 5%;
-            margin-top: 40px;
-        }
-
-        .invoice-details table {
-            margin-left: 5%;
-            font-size: 80%;
-        }
-
-        .invoice-details table th {
-            background: #f2f2f2;
-        }
-
-        .item-table {
-            padding-left: 50px;
-            padding-right: 50px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .item-table td {
-            padding: 10px;
-            font-size: 80%;
-        }
-
-        .item-table th {
-            background: #f2f2f2;
-            font-weight: bold;
-        }
-
-        .total #displayTotal::after {
-            content: ':';
-            display: inline-block;
-            border-bottom: 1px solid #1F4172;
-            padding-bottom: 4px;
-            margin-left: 5px;
-            margin-right: 20px;
-        }
-
-        .total span#displayTotal::after {
-            content: attr(data-amount);
-            display: inline-block;
-            border-bottom: 1px solid #000000;
-            /* padding-bottom: 4px; */
-            margin-left: 5px;
-            margin-right: 20px;
-        }
-
-        .payment-info {
-            font-size: 14px;
-            font-weight: bold;
-            color: #0C356A;
-            border-left: 18px solid #0C356A;
-            margin-right: 20%;
-            height: 20%;
-            margin-top: 10%;
-        }
-
-        .payment-info h4,
-        .payment-info p {
-            margin-left: 18px;
-        }
-
-        .container {
-            display: flex;
-            float: right;
-            color: #1F4172;
-            font-weight: bold;
-            font-size: medium;
-        }
-
-        .name-customer {
-            color: #1F4172;
-            font-size: larger;
-        }
-
-        .merah {
-            text-align: center;
-        }
-    </style>
 </head>
 
-<body>
+<body style="text-align: center;">
 
     <div class="header">
         <img src="" alt="">
-        <h2>RuangSewa.com</h2>
+        <p style="font-size: 55px; font-weight: bold;"><span style="font-weight: italic;">Semarang</span></p>
+        <p style="color: #776B5D; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 50px; margin-top: 5%;">Semakin hebat!</p>
     </div>
 
     <div class="invoice-yu">
-        <h1 class="invoice">INVOICE</h1>
-        <p class="name-customer">Nama Customer Booking </p>
+        <p class="invoice" style="font-weight: bold;">Trans Semarang</p>
+        <p class="name-customer">Call Center 1-5000-94</p>
+        <p class="name-customer">BUS SG02 (BISG02)</p>
+        <p class="name-customer">NAME</p>
     </div>
 
-    <div class="invoice-details">
-        <table>
-        <?php foreach ($ruangan as $key) : ?>
-            <tr>
-                <td>Nama penyewa :<span style="margin-left: 9px;"><?php echo base_url('') ?></span></td>
-            </tr>
-            <tr>
-                <td>No Telephone :<span style="margin-left: 8px;"><?php echo base_url('') ?></span></td>
-            </tr>
-            <tr>
-                <td>Kode Booking :<span style="margin-left: 8px;"><?php echo base_url('') ?></span></td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
-    <br><br>
-    <table rules="all" class="item-table hover:table-fixed" id="itemTable">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Item</th>
-                <th>Jumlah</th>
-                <th>Harga unit</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1;
-            foreach ($ruangan as $key) : { ?>
-                    <tr>
-                        <td class="merah"><?php echo $no . '.'; ?></td>
-                        <td><?php echo base_url('') ?></td>
-                        <td><?php echo base_url('') ?></td>
-                        <td><?php echo convRupiah($key->harga); ?></td>
-                        <td><?php echo base_url('') ?></td>
-                    </tr>
-                <?php $no++;
-                } ?>
-            <?php endforeach; ?>
-        </tbody>
+    ------------------------------------------------------------------------------------
+    <h1>Regular Pelajar</h1>
+    ------------------------------------------------------------------------------------
 
-    </table>
-    <br>
-
-    <div class="container">
-        <?php foreach ($ruangan as $key) : ?>
-            <div class="sub">
-                Total Item
-                <span>: </span>
-            </div><br>
-            <div class="total">
-                Total Harga:
-                <span id="displayTotal" data-amount="<?php echo convRupiah($key->harga); ?>"></span>
-            </div>
-        <?php endforeach; ?>
+    <div class="baru">
+        <p>Transaksi  : 1.000</p>
+        <p>Tanggal    : 11/15/2023</p>
     </div>
 
-    <br><br><br>
-    <div class="payment-info">
-        <?php foreach ($ruangan as $key) : ?>
-            <h4>PAYMENT INFO</h4>
-            <p>Bank Dana</p>
-            <p>Account Name :<span><?php echo base_url('') ?></span></p>
-            <p>Account No :<span><?php echo base_url('') ?></span></p>
-            <p>Payment by :<span><?php echo base_url('') ?></span></p>
-        <?php endforeach; ?>
+    <div class="fer">
+        <img src="https://blog.aspose.com/id/barcode/php-barcode-generator-reader-and-scanner-api/images/generate-barcode.png" style="width:10%">
+    </div>
+
+    <div class="ort">
+        <p>Transaksi berlaku</p>
+        <p>Selama tidak meninggalkan</p>
+        <p>halte transit yang telah ditentukan</p>
     </div>
 </body>
 
