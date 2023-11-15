@@ -127,25 +127,24 @@ class operator extends CI_Controller
 
     public function pdf()
     {
-        $data['bukti_booking'] = $this->m_model->get_data('ruangan')->result();
+        $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
         $this->load->view('operator/pdf', $data);
     }
     public function export_pdf()
     {
-        $ruangan = $this->m_model->get_ruang_by_id();
-        $harga_ruangan = $ruangan->harga;
+        $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
+        $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
 
-        $snack = $this->m_model->get_snack_by_id();
-        $harga_snack = $snack->harga;
-        $total_price = $harga_ruangan + $harga_snack;
-        
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $peminjaman = $this->m_model->get_peminjaman_by_id($peminjaman_id);
+        $tambahan = $this->m_model->get_tambahan_by_id($tambahan_id);
+
+        $data['peminjaman'] = $peminjaman;
+        $data['tambahan'] = $tambahan;
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
             $this->pdf->load_view('operator/export_pdf', $data);
             $this->pdf->render();
-
 
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
