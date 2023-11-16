@@ -135,14 +135,11 @@ class operator extends CI_Controller
         $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
         $this->load->view('operator/pdf', $data);
     }
-    public function export_pdf()
+    public function export_pdf($id)
     {
+        $data['peminjaman'] = $this->m_model->get_data_by_id('peminjaman', $id)->result();
         $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
         $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
-
-        $snack = $this->m_model->get_tambahan_by_id();
-        $harga_snack = $snack->harga;
-        $total_price = $harga_ruangan + $harga_snack;
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
         $peminjaman = $this->m_model->get_peminjaman_by_id($peminjaman_id);
         $tambahan = $this->m_model->get_tambahan_by_id($tambahan_id);
