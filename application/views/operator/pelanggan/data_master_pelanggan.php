@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Data Master Pelanggan</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
@@ -32,7 +32,7 @@
 
     body {
         font-family: "DM Sans", sans-serif;
-        font-size: 16px;
+        /* font-size: 16px; */
         background-color: #f1f1f1;
     }
 
@@ -254,135 +254,7 @@
             display: none;
         }
 
-        body {
-            font-family: "DM Sans", sans-serif;
-            /* font-size: 17px; */
-            background-color: #f1f1f1;
-        }
-
-        @media (min-width: 1200px) {
-
-            .container,
-            .container-lg,
-            .container-md,
-            .container-sm,
-            .container-xl,
-            .container-xxl {
-                max-width: 1170px;
-            }
-        }
-
-       
-        .btn {
-            height: 50px;
-            line-height: 50px;
-            padding: 0 32px;
-            overflow: hidden;
-            position: relative;
-            border: 0;
-            transition: all 0.5s ease 0s;
-            font-weight: 700;
-            display: inline-block;
-            transform: perspective(1px) translateZ(0);
-            border-radius: 5px;
-        }
-
-        .btn:focus,
-        .btn:active {
-            outline: 0;
-            box-shadow: none;
-        }
-
-        .btn:after {
-            content: "";
-            background: var(--main-color);
-            position: absolute;
-            transition: all 0.9s ease 0s;
-            z-index: -1;
-            height: 100%;
-            left: -35%;
-            top: 0;
-            transform: skew(30deg);
-            transform-origin: top left;
-            width: 0;
-        }
-
-        .btn:hover {
-            color: #fff;
-        }
-
-        .btn:hover:after {
-            height: 100%;
-            width: 135%;
-        }
-
-        .btn-base {
-            color: var(--heading-color);
-            border: 0;
-            background: var(--main-color);
-        }
-
-        .btn-base:after {
-            background: #fff;
-        }
-
-        .btn-base:hover::after {
-            background: var(--main-color);
-        }
-
-        .btn-border {
-            color: var(--main-color);
-            border: 1px solid var(--main-color);
-            background: transparent;
-        }
-
-        .btn-border:hover {
-            color: #fff;
-        }
-
-        .btn-border-white {
-            color: #fff;
-            border: 1px solid #fff;
-            background: transparent;
-        }
-
-        .btn-border-white:hover {
-            background: #fff;
-            opacity: 1;
-            color: var(--heading-color);
-        }
-
-        .btn-border-white:hover::after {
-            background: #fff;
-        }
-
-        .btn-white {
-            color: var(--heading-color);
-            border: 0;
-            background: #fff;
-            font-size: 14px;
-            transition: all 0.3s ease 0s;
-        }
-
-        .btn-white:hover {
-            color: var(--heading-color);
-        }
-
-        .btn-white:hover:after {
-            background: #fff;
-        }
-
-        .btn-area {
-            margin-top: 25px;
-        }
-
-        .btn-area .btn {
-            margin-right: 7px;
-        }
-
-
-
-        .header-item {
+        .nav-right-part-mobile ul li .cart {
             display: block;
         }
 

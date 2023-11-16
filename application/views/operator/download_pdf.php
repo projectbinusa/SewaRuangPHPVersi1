@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your PDF</title>
+    <title>Eksport PDF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
         body,
         html {
@@ -22,26 +23,27 @@
             text-align: center;
             background: #0C356A;
             color: whitesmoke;
-            padding: 30px;
+            padding: 60px;
+            margin-top: 10px;
         }
 
         .invoice {
-            margin-left: 70%;
-            font-weight: bold;
-            color: #1F4172;
-            margin-bottom: 0;
-        }
-
-        .invoice-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 3%;
+            margin-bottom: 0;
+            font-weight: bold;
+            color: #1F4172;
         }
 
-        .invoice p {
-            text-align: center;
-            margin: 0px;
+        .invoice h1 {
+            margin: 0;
+        }
+
+        .name-customer {
+            color: #1F4172;
+            font-size: larger;
+            margin-left: 50%;
         }
 
         .invoice-yu {
@@ -51,7 +53,7 @@
 
         .invoice-details table {
             margin-left: 5%;
-            font-size: 80%;
+            font-size: 90%;
         }
 
         .invoice-details table th {
@@ -59,9 +61,8 @@
         }
 
         .item-table {
-            padding-left: 50px;
-            padding-right: 50px;
             width: 100%;
+            padding: 20px;
             border-collapse: collapse;
         }
 
@@ -78,30 +79,24 @@
 
         }
 
-        .total #displayTotal::after {
-            content: ':';
-            display: inline-block;
-            border-bottom: 1px solid #1F4172;
-            padding-bottom: 4px;
-            margin-left: 5px;
-            margin-right: 20px;
+        .total {
+            margin-bottom: 10%;
         }
 
-        .total span#displayTotal::after {
+        .total #displayTotal::after {
             content: attr(data-amount);
             display: inline-block;
             border-bottom: 1px solid #000000;
-            /* padding-bottom: 4px; */
             margin-left: 5px;
-            margin-right: 20px;
+            margin-right: 30px;
         }
 
         .payment-info {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             color: #0C356A;
-            border-left: 18px solid #0C356A;
-            margin-right: 20%;
+            border-left: 20px solid #0C356A;
+            margin-right: 50%;
             height: 20%;
             margin-top: 10%;
         }
@@ -111,17 +106,16 @@
             margin-left: 18px;
         }
 
+        .payment-info .baru {
+            margin-top: 50px;
+        }
+
         .container {
             display: flex;
             float: right;
             color: #1F4172;
             font-weight: bold;
             font-size: medium;
-        }
-
-        .name-customer {
-            color: #1F4172;
-            font-size: larger;
         }
 
         .merah {
@@ -183,6 +177,7 @@
             </tr>
             </table>
     </div>
+
     <br><br>
     <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
         <thead>
@@ -206,7 +201,24 @@
             <?php $no++; ?>
         </tbody>
 
+            $jumlah_orang = $peminjaman->jumlah_orang;
+            ?>
+            <tr>
+                <td class="merah"><?php echo format_ruangan($nama_ruangan) ?></td>
+                <td class="merah"><?php echo $jumlah_orang; ?></td>
+                <td class="merah"><?php echo convRupiah($harga_ruangan); ?></td>
+                <td class="merah"><?php echo convRupiah(intval($harga_ruangan)); ?></td>
+            </tr>
+
+            <tr>
+                <td class="merah"><?php echo $nama_tambahan . ' -'; ?></td>
+                <td class="merah"><?php echo $total_tamnbahan; ?></td>
+                <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
+                <td class="merah"><?php echo convRupiah(intval($harga_tambahan)); ?></td>
+            </tr>
+        </tbody>
     </table>
+
     <br>
     <div class="container">                
         <div class="total">
@@ -216,14 +228,13 @@
 
     </div><br><br><br>
     <div class="payment-info">
-        <?php foreach ($ruangan as $key) : ?>
-            <h4>PAYMENT INFO</h4>
-            <p>Bank Dana</p>
-            <p>Account Name :<span><?php echo base_url('') ?></span></p>
-            <p>Account No :<span><?php echo base_url('') ?></span></p>
-            <p>Payment by :<span><?php echo base_url('') ?></span></p>
-        <?php endforeach; ?>
+        <h4>PAYMENT INFO</h4>
+        <?php date_default_timezone_set('Asia/Jakarta'); ?>
+        <p class="baru">Tanggal :<span><?php echo date('F, j-Y'); ?></span></p>
+        <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
+        <p>Pembayaran melalui :<span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan) ?></span></p>
     </div>
+
 </body>
 
 </html>

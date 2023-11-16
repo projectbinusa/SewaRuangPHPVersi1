@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eksport PDF</title>
     <style>
+        @page {
+            size: A5;
+        }
+
         body,
         html {
             margin: 0;
@@ -16,6 +20,7 @@
 
         body {
             font-family: Arial, sans-serif;
+            font-size: 12px;
             line-height: 1.2;
         }
 
@@ -64,6 +69,7 @@
             padding-left: 30px;
             padding-right: 30px;
             width: 100%;
+            padding: 20px;
             border-collapse: collapse;
         }
 
@@ -156,6 +162,7 @@
             </tr>
         </table>
     </div>
+
     <br><br>
     <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
         <thead>
@@ -186,7 +193,16 @@
             <span id="displayTotal" data-amount="<?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan) + tampil_harga_tambahan_byid($peminjaman->id_tambahan)); ?>"></span>
         </div>
 
-    </div><br><br><br>
+    <br>
+
+    <div class="container">
+        <div class="total" style="margin-bottom: -50%;">
+            <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah(intval($harga_ruangan) + intval($harga_tambahan)); ?>"></span>
+        </div>
+    </div>
+
+    <br><br><br>
+
     <div class="payment-info">
         <h4>PAYMENT INFO</h4>
         <p>Akun :<span><?php echo base_url('') ?></span></p>

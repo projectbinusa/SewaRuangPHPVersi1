@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-
-
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -37,13 +37,8 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 17px; */
+            /* font-size: 16px; */
             background-color: #f1f1f1;
-        }
-
-        .content-text {
-            font-family: "DM Sans", sans-serif;
-            font-size: 17px;
         }
 
         @media (min-width: 1200px) {
@@ -58,7 +53,7 @@
             }
         }
 
-        /***default-btn-area***/
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -166,375 +161,7 @@
             margin-right: 7px;
         }
 
-        /*------------------------------------------------
-    ## Back Top
-------------------------------------------------*/
-        #back-to-top {
-            display: inline-block;
-            background-color: var(--main-color);
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            border-radius: 4px;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
-            opacity: 0;
-            animation: backto-top-bounce 4s infinite ease-in-out;
-            visibility: hidden;
-            z-index: 1000;
-        }
 
-        #back-to-top::after {
-            content: "";
-            position: absolute;
-            background: #fff;
-            top: 50%;
-            margin-top: -2.5px;
-            height: 3px;
-            width: 14px;
-            line-height: 50px;
-            transform: rotate(-43deg);
-            left: 8.5px;
-        }
-
-        #back-to-top::before {
-            content: "";
-            position: absolute;
-            background: #fff;
-            top: 50%;
-            margin-top: -2.5px;
-            height: 3px;
-            width: 14px;
-            line-height: 50px;
-            transform: rotate(43deg);
-            right: 8.5px;
-        }
-
-        #back-to-top:hover {
-            cursor: pointer;
-            background-color: #333;
-        }
-
-        #back-to-top:active {
-            background-color: #555;
-        }
-
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* .back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 44px;
-  height: 44px;
-  color: #fff;
-  background-color: var(--main-color);
-  text-align: center;
-  line-height: 44px;
-  z-index: 99;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  display: none;
-  animation: backto-top-bounce 4s infinite ease-in-out;
-  border-radius: 4px;
-} */
-        @keyframes backto-top-bounce {
-            0% {
-                transform: translateY(-5px);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
-
-            100% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /***navbar-area***/
-        .navbar-area {
-            background: transparent;
-            padding: 0;
-            top: 0;
-            position: fixed;
-            z-index: 98;
-            width: 100% !important;
-            transition: all 0.4s;
-            background: transparent;
-        }
-
-        .navbar {
-            background: #0C356A;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-            transition: all 0.3s linear;
-        }
-
-        .top-nav-collapse {
-            box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
-            top: 0;
-            padding: 0;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            background: rgba(0, 33, 71, 1);
-        }
-
-        .navbar-area .nav-container {
-            transition: all 0.4s;
-            padding: 16px 12px;
-        }
-
-        .top-nav-collapse .nav-container {
-            background-color: transparent;
-            padding: 16px 12px;
-            transition: all 0.4s;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li {
-            margin-top: 0;
-            display: inline-block;
-            font-weight: 400;
-            line-height: 50px;
-            text-transform: capitalize;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li a {
-            color: #fff;
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li+li {
-            margin-left: 20px;
-        }
-
-        .nav-right-part-desktop {
-            margin-left: 30px;
-        }
-
-        .nav-right-part ul {
-            padding: 0;
-            margin: 0;
-            display: inline-flex;
-        }
-
-        .nav-right-part ul li {
-            list-style: none;
-            align-self: center;
-        }
-
-        .nav-right-part-mobile {
-            display: none;
-        }
-
-        .nav-right-part-mobile ul li a {
-            text-decoration: none;
-            color: #fff;
-            padding: 0 10px;
-        }
-
-        .nav-right-part-mobile ul li .cart {
-            display: none;
-        }
-
-        .nav-right-part-mobile ul li .cart img {
-            height: 20px;
-            width: 20px;
-            filter: invert(1);
-        }
-
-        /***banner-area***/
-        .banner-area {
-            background: var(--main-gradient);
-            padding: 320px 0px 220px;
-            background-size: cover !important;
-            position: relative;
-            z-index: 1;
-            background-position: center !important;
-        }
-
-        .banner-area:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 33, 71, 0.9);
-        }
-
-        .banner-area .banner-inner {
-            z-index: 4;
-            position: relative;
-        }
-
-        .banner-inner h1 {
-            color: #fff;
-            line-height: 66px;
-            font-weight: 700;
-            font-size: 75px;
-            margin-bottom: 25px;
-        }
-
-        .banner-inner h1 span {
-            color: #ffd934;
-            display: block;
-        }
-
-        .banner-inner p {
-            color: #fff;
-            margin-bottom: 25px;
-            font-size: 40px;
-            line-height: 58px;
-            letter-spacing: -1px;
-        }
-
-        .banner-inner p span {
-            font-weight: 700;
-            font-size: 46px;
-        }
-
-        .banner-area .btn-area {
-            position: relative;
-            z-index: 4;
-        }
-
-
-
-        /********* single-counter-inner *********/
-        .counter-area-inner {
-            padding: 20px 0 0 0;
-            position: relative;
-            z-index: 4;
-        }
-
-        .single-counter-inner {
-            margin-bottom: 40px;
-        }
-
-        .single-counter-inner h2 {
-            font-size: 42px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .single-counter-inner p {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 0;
-            color: #fff;
-        }
-
-
-
-
-        /***inner-item***/
-        .inner-item {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .inner-item:hover img {
-            transform: translateY(-8px);
-        }
-
-        .inner-item a {
-            display: block;
-            font-size: 22px;
-            font-weight: 500;
-            color: #1d1d1d;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .inner-item a .thumb {
-            overflow: hidden;
-            display: block;
-            position: relative;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            box-shadow: 0px 5px 50px 0px rgb(0 0 0 / 20%);
-            min-height: 350px;
-        }
-
-        .inner-item a .thumb:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.4s;
-        }
-
-        .inner-item a img {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            transform: scale(1) translateY(1);
-            transition: transform 12s;
-            display: block;
-            width: 100%;
-            height: initial;
-        }
-
-        .inner-item:hover a .thumb:after {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .inner-item a:hover .thumb img {
-            transform: scale(1) translateY(-50px);
-            transition: transform 12s;
-        }
-
-        .widget-section  {
-            padding: 0px 40px 15px 40px;
-        }
-        .widget-section .inner-item {
-            margin-bottom: 20px;
-        }
-
-        .inner-item.style-large a .thumb {
-            min-height: 550px;
-        }
-
-        .inner-item.style-large a:hover .thumb img {
-            transform: scale(1) translateY(-1280px);
-        }
-
-        .inner-item.coming-soon a .thumb img {
-            filter: blur(12px);
-        }
-
-        .inner-item.inner-page-item a img {
-            transition: transform 2s;
-            transform: scale(1.02) translateY(1.02);
-        }
-
-        .inner-item.inner-page-item a:hover .thumb img {
-            transform: scale(1.02) translateY(-160px);
-            transition: transform 2s;
-        }
-
-        .inner-item.style-none a:hover .thumb img {
-            transform: scale(1) translateY(0);
-        }
 
         .header-item {
             display: block;
@@ -574,7 +201,6 @@
             transform: scale(1.05);
         }
 
-
         .cm-soon-title {
             position: absolute;
             left: 50%;
@@ -605,13 +231,7 @@
             opacity: 1;
         }
 
-        /* 
-        .footer-area {
-            background: rgba(0, 33, 71, 0.9);
-        } */
-
-
-        /***section-title***/
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -632,201 +252,6 @@
             font-size: 22px;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.4);
-        }
-
-        /***default-padding***/
-        .pd-top-100 {
-            padding-top: 100px;
-        }
-
-        .pd-top-47 {
-            padding-top: 47px;
-        }
-
-        .pd-top-70 {
-            padding-top: 70px;
-        }
-
-        .pd-top-87 {
-            padding-top: 87px;
-        }
-
-        .pd-top-110 {
-            padding-top: 110px;
-        }
-
-        .pd-top-120 {
-            padding-top: 120px;
-        }
-
-        .pd-top-135 {
-            padding-top: 135px;
-        }
-
-        .pd-top-130 {
-            padding-top: 130px;
-        }
-
-        .pd-top-140 {
-            padding-top: 140px;
-        }
-
-        .pd-top-150 {
-            padding-top: 150px;
-        }
-
-        .pd-bottom-100 {
-            padding-bottom: 100px;
-        }
-
-        .pd-bottom-97 {
-            padding-bottom: 97px;
-        }
-
-        .pd-bottom-65 {
-            padding-bottom: 65px;
-        }
-
-        .pd-bottom-105 {
-            padding-bottom: 105px;
-        }
-
-        .pd-bottom-110 {
-            padding-bottom: 110px;
-        }
-
-        .pd-bottom-120 {
-            padding-bottom: 120px;
-        }
-
-        .pd-bottom-130 {
-            padding-bottom: 130px;
-        }
-
-        .pd-bottom-140 {
-            padding-bottom: 140px;
-        }
-
-        .pd-bottom-150 {
-            padding-bottom: 150px;
-        }
-
-        .typed::after {
-            content: "|";
-            display: inline;
-            -webkit-animation: blink 0.7s infinite;
-            -moz-animation: blink 0.7s infinite;
-            animation: blink 0.7s infinite;
-        }
-
-        /*Removes cursor that comes with typed.js*/
-        .typed-cursor {
-            opacity: 0;
-            display: none !important;
-        }
-
-        /*Custom cursor animation*/
-        @keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @-webkit-keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @-moz-keyframes blink {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @media all and (max-width: 1199px) {
-            .banner-area .bg-image {
-                opacity: 0.2;
-                z-index: 0;
-            }
-
-            .banner-inner p {
-                margin: 0 20px !important;
-            }
-
-            .btn {
-                height: 50px;
-                line-height: 50px;
-            }
-
-            .pd-top-140 {
-                padding-top: 100px;
-            }
-
-            .pd-bottom-97 {
-                padding-bottom: 57px;
-            }
-
-            .pd-top-87 {
-                padding-top: 47px;
-            }
-
-            .banner-area {
-                padding: 228px 0px 218px;
-            }
-        }
-
-        @media all and (max-width: 991px) {
-            .nav-right-part-mobile {
-                display: block;
-            }
-
-            .banner-inner h1 {
-                font-size: 70px;
-            }
-        }
-
-        @media all and (max-width: 575px) {
-            .nav-right-part-desktop {
-                margin-left: 10px;
-            }
-
-            .section-title h5 {
-                font-size: 18px;
-            }
-
-            .counter-area {
-                transform: translateY(0);
-                margin-top: 140px;
-            }
-
-            .single-counter-inner h2 {
-                font-size: 30px;
-            }
         }
 
         @media all and (max-width: 767px) {
@@ -911,9 +336,6 @@
             border-radius: 5px;
         }
 
-
-
-
         h1 {
             font-size: 62px;
             line-height: 1.2333333333;
@@ -981,9 +403,6 @@
         }
 
 
-        /*---------------------------------------
-    ## Button
----------------------------------------*/
         .btn {
             height: 55px;
             line-height: 55px;
@@ -1091,9 +510,7 @@
             margin-left: 12px;
         }
 
-        /*------------------------------------------------
-    ## Section title
-------------------------------------------------*/
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -1175,64 +592,10 @@
         }
 
 
-        @keyframes backto-top-bounce {
-            0% {
-                transform: translateY(-5px);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
-
-            100% {
-                transform: translateY(-5px);
-            }
-        }
-
-
-        @keyframes sk-rotate {
-            100% {
-                transform: rotate(360deg);
-                -webkit-transform: rotate(360deg);
-            }
-        }
-
-        @keyframes sk-bounce {
-
-            0%,
-            100% {
-                transform: scale(0);
-                -webkit-transform: scale(0);
-            }
-
-            50% {
-                transform: scale(1);
-                -webkit-transform: scale(1);
-            }
-        }
-
-
-
-        @keyframes top-image-bounce {
-            0% {
-                transform: translateY(-8px);
-            }
-
-            50% {
-                transform: translateY(12px);
-            }
-
-            100% {
-                transform: translateY(-8px);
-            }
-        }
-
         .responsive-mobile-menu button:focus {
             outline: none;
             border: none;
         }
-
-
 
         .sopen {
             display: block;
@@ -1352,9 +715,7 @@
             cursor: pointer;
         }
 
-
-
-        /* Tablet Layout wide: 767px. */
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -1389,7 +750,7 @@
             }
         }
 
-        /* medium tablet layout 599px */
+       
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -1412,7 +773,7 @@
             }
         }
 
-        /*Form fields*/
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -1440,18 +801,18 @@
 
         /*Pagination Buttons*/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 700;
+            font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
             height: 37px;
             padding-top: 5px;
         }
 
-        /*Pagination Buttons - Current selected */
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 700;
+            font-weight: 400;
             border-radius: .25rem;
             background: #4F709C !important;
             border: 1px solid transparent;
@@ -1461,29 +822,25 @@
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 700;
+            font-weight: 400;
             border-radius: .25rem;
             background: #4F709C !important;
             border: 1px solid transparent;
         }
 
-        /*Add padding to bottom border */
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
-        /*Change colour of responsive icon*/
         table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
         table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
             background-color: #4F709C !important;
+
         }
 
         /* code responsive table */
         @media (max-width: 600px) {
-
-
             table {
                 width: 100%;
             }
@@ -1532,26 +889,30 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class="widget-section pd-top-47">
+    <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Approve</h2>
+                        <h2 class="title">Tambahan Peminjaman</h2>
 
                     </div>
                 </div>
             </div>
 
             <div class="container-table row justify-content-center">
-
+            <a href="tambah_item_tambahan" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -1561,72 +922,55 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                    <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Nama Penyewa
+                                            Nama Item
                                         </th>
 
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
-                                            Ruangan
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                            Harga
                                         </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
-                                            Jumlah Orang
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Deskripsi
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
-                                            Kode Booking
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Jenis
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Total Booking
-                                        </th>  
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                       
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no=0; foreach($approve as $row): $no++?>
+                                   <?php $no=0; foreach($tambahan as $row): $no++?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell=" " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <td data-cell="No " scope="row"
+                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             <?php echo $no?>
                                         </td>
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?>
+                                        <td data-cell="Nama " class="w-32 px-3 py-4">
+                                            <?php echo $row->nama?>
                                         </td>
-                                        <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>
+                                        <td data-cell="Harga " class="w-32 px-3 py-4">
+                                        <?php echo $row->harga?>
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            <?php echo $row->jumlah_orang?>
+                                        <td data-cell="Deskripsi " class="w-36 px-3 py-4">
+                                        <?php echo $row->deskripsi?>
                                         </td>
-                                        <td data-cell=" " class="text-center px-3 py-4">
-                                        <?php echo $row->kode_booking?>
-                                        </td>
-                                        <td data-cell=" Waktu " class="text-center px-3 py-4">
-                                        <?php
-                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
-
-                                            // Menampilkan durasi dalam format angka
-                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                        ?>
-                                        </td>
+                                        <td data-cell="Jenis " class="w-36 px-3 py-4">
+                                        <?php echo $row->jenis?>
+                                        </td> 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-
-                                            <button
-                                            onclick="terima(<?php echo $row->id ?>)"
+                                            <a href="update_tambahan"
                                                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
-                                                    <i class="fas fa-check"></i>
+                                                    <i class="fas fa-edit"></i>
                                                 </span>
-
-                                            </button>
-                                            <button onclick="tolak(<?php echo $row->id ?>)"
+                                            </a>
+                                            <button onclick="hapus()"
                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
@@ -1664,55 +1008,29 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
-        function terima(id) {
+
+        function hapus(id) {
             Swal.fire({
-                title: 'Apakah Mau Di Terima?',
-                text: "data ini tidak bisa diubah lagi!",
+                title: ' Apa Mau Menghapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya, terima!'
+                confirmButtonText: 'Hapus'
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
-                        position: 'center',
                         icon: 'success',
-                        title: 'Berhasill!!',
+                        title: 'Berhasil Menghapus',
                         showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setTimeout(() => {
-                        window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_terima/') ?>" + id;
-                    }, 1800);
+                        timer: 1500,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
+                    });
                 }
-            })
-        }
-        function tolak(id) {
-            Swal.fire({
-                title: 'Apakah Mau Di Tolak?',
-                text: "data ini tidak bisa diubah lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya, tolak!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Berhasill!!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setTimeout(() => {
-                        window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_tolak/') ?>" + id;
-                    }, 1800);
-                }
-            })
+            });
         }
     </script>
 
