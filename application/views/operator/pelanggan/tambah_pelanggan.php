@@ -10,13 +10,6 @@
        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-       <script src="https://cdn.tailwindcss.com"></script>
-       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
    </head>
 <body class="bg-gray-100 min-h-screen font-base">
 <?php $this->load->view('sidebar'); ?>
@@ -30,7 +23,6 @@
                                 <h1 id="title" class="text-4xl font-bold text-black-900">Tambah Data Pelanggan</h1>
                             </header>
                             <form action="<?php echo base_url('operator/aksi_tambah_pelanggan') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
-
                                
                                         <label for="nama" class="block">Nama</label>
                                         <input type="text" name="nama" id="no_lantai" 
@@ -46,9 +38,12 @@
                                    
 
                            <div class="text-center mt-10">
-                               <button onclick="tambah_data()" type="submit" id="submit" class="bg-white text-lg py-2 px-8 text-blue-500 border-2 border-blue-500 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white" value="TAMBAH">
+                            <a href="#" >
+                               <button type="submit" id="submit" 
+                                class="bg-white text-lg py-2 px-8 text-blue-500 border-2 border-blue-500 rounded-md transition-all duration-300 hover:bg-blue-500 hover:text-white" value="TAMBAH">
                                    TAMBAH
                                </button>
+                            </a>
                            </div>
                        </form>
                    </div>
@@ -59,34 +54,5 @@
        </div>
 
    </body>
-   <!-- SweetAlert -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-   <script>
-       function tambah_data() {
-           Swal.fire({
-               title: 'Ingin Menambah Data ?',
-               text: "data akan bertambah",
-               icon: 'question',
-               showCancelButton: true,
-               confirmButtonColor: '#3085d6',
-               cancelButtonColor: '#d33',
-               cancelButtonText: 'Batal',
-               confirmButtonText: 'Tambah'
-           })
-           .then((result) => {
-               if (result.isConfirmed) {
-                   Swal.fire({
-                       icon: 'success',
-                       title: 'Berhasil Ditambahkan',
-                       showConfirmButton: false,
-                       timer: 1500,
-                   }).then(function() {
-                       // Redirect ke URL setelah sukses
-                       window.location.href = "<?php echo base_url('operator/aksi_tambah_pelanggan/') ?>" ;
-                   });
-               }
-           });
-       }
-   </script>
 
    </html>
