@@ -10,12 +10,17 @@ class operator extends CI_Controller
         $this->load->helper('my_helper');
         $this->load->library('form_validation');
     }
+    public function edit_tambahan()
+    {
+        $this->load->view('operator/tambahan/edit_tambahan');
+    }
 
     public function detail($id)
     {
         $data['ruang'] = $this->m_model->get_data_by_id('ruangan', $id)->result();
         $this->load->view('operator/ruang/detail', $data);
     }
+  
 
     public function index()
     {
