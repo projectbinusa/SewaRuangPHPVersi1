@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Sewa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sewa Ruang</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -36,7 +33,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 16px; */
+            /* font-size: 17px; */
             background-color: #f1f1f1;
         }
 
@@ -52,7 +49,7 @@
             }
         }
 
-
+        /***default-btn-area***/
         .btn {
             height: 50px;
             line-height: 50px;
@@ -230,7 +227,7 @@
             opacity: 1;
         }
 
-
+        /***section-title***/
         .section-title {
             margin-bottom: 60px;
         }
@@ -398,8 +395,9 @@
         }
 
         a:hover {
-            color: var(--main-color);
+            color: white;
         }
+
 
 
         .btn {
@@ -422,6 +420,7 @@
             outline: 0;
             box-shadow: none;
         }
+
 
         .btn:after {
             content: "";
@@ -508,7 +507,6 @@
             color: var(--heading-color);
             margin-left: 12px;
         }
-
 
         .section-title {
             margin-bottom: 45px;
@@ -714,7 +712,7 @@
             cursor: pointer;
         }
 
-
+        /* Tablet Layout wide: 767px. */
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -749,7 +747,7 @@
             }
         }
 
-
+        /* medium tablet layout 599px */
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -772,7 +770,7 @@
             }
         }
 
-
+        /*Form fields*/
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -807,7 +805,7 @@
             padding-top: 5px;
         }
 
-
+        /*Pagination Buttons - Current selected */
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -888,6 +886,7 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -899,114 +898,142 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Report Sewa</h2>
+                        <h2 class="title">Peminjaman Tempat</h2>
 
                     </div>
                 </div>
             </div>
 
             <div class="container-table row justify-content-center">
+                <a href="tambah_peminjaman_tempat" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+                    <span class="pe-2">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Tambah
+                </a>
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table class="table table-striped" style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             Nama
                                         </th>
 
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Ruangan
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kapasitas
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
+                                            Jumlah Orang
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kode
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Kode Booking
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Snack
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                            Tambahan
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
                                             Total
                                         </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
 
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 0;
-                                    foreach ($peminjaman as $row) : $no++ ?>
+                                    foreach ($peminjaman as $row) :
+                                        $no++; ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
-                                            <!-- Penyewa -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Nama " class=" px-3 py-4">
                                                 <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
                                             </td>
-                                            <!-- Ruangan -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Ruangan " class=" px-3 py-4">
                                                 <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
                                             </td>
-                                            <!-- Kapasitas -->
-                                            <td class="w-36 px-3 py-4">
+                                            <td data-cell="Kapasitas " class="w-36 px-3 py-4">
                                                 <?php echo $row->jumlah_orang ?>
                                             </td>
-                                            <!-- Kode Booking -->
-                                            <td class="w-36 px-3 py-4">
+                                            <td data-cell="Kode " class=" px-3 py-4">
                                                 <?php echo $row->kode_booking ?>
                                             </td>
-                                            <!-- Snack -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_tambahan_byid($row->status) ?>
+
+
+                                            <td data-cell="Tambahan " class="w-32 px-3 py-4">
+                                            <?php
+                        // Memisahkan data tambahan menjadi array
+                        $tambahanArray = explode(',', $row->tambahan_nama);
+                        
+                        // Menampilkan setiap tambahan
+                        foreach ($tambahanArray as $tambahan) {
+                            echo $tambahan . '<br>';
+                        }
+                        ?>
                                             </td>
-                                            <!-- Total Booking -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
                                                 <?php
+                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
                                                 $tanggalBooking = new DateTime($row->tanggal_booking);
                                                 $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
                                                 $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                                echo $durasi->days . ' Hari';
+
+
+                                                // Menampilkan durasi dalam format angka
+                                                echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
                                                 ?>
                                             </td>
-                                            <!-- Total -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Total " class=" px-3 py-4">
                                                 <?php echo $row->total_harga ?>
                                             </td>
-                                            <!-- Status -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Status " class=" px-3 py-4 uppercase">
                                                 <?php echo $row->status ?>
                                             </td>
-                                            <!-- Aksi -->
-                                            <td class="justify-content-center px-3 py-4 flex">
-                                                <a href="<?php echo base_url('operator/update_report_sewa') ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+
+                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
                                                 </a>
+                                                <?php if ($row->status === 'booking') : ?>
+                                                    <button onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                        <span class="">
+                                                            <i class="fas fa-print"></i>
+                                                        </span>
+                                                    </button>
+
+                                                    </button>
+                                                <?php endif; ?>
                                                 <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
+
                                                 </button>
                                             </td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach ?>
                                 </tbody>
+                            </table>
+                            </form>
+                            </tbody>
                             </table>
                         </div>
                     </div>
@@ -1020,6 +1047,7 @@
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -1036,28 +1064,31 @@
 
         function hapus(id) {
             Swal.fire({
-                title: ' Apa Mau Menghapus?',
+                title: 'Apakah Mau Dihapus?',
                 text: "data ini tidak bisa dikembalikan lagi!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
+                confirmButtonText: 'Ya, hapus!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
+                        position: 'center',
                         icon: 'success',
-                        title: 'Berhasil Menghapus',
+                        title: 'Data Terhapus!!',
                         showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
-                    });
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('operator/hapus_peminjaman/') ?>" + id;
+                    }, 1800);
                 }
-            });
+            })
         }
     </script>
+
 
 </body>
 
