@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Sewa</title>
+    <title>Sewa Ruang</title>
     <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -907,7 +907,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-            <a href="tambah_tambahan" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+            <a href="tambah_item_tambahan" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>

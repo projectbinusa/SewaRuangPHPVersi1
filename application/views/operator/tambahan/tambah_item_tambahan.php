@@ -217,7 +217,7 @@
         <div class=" container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Tambahan Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Tambah Item Tambahan</h1>
             </header>
 
             <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form"

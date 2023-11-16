@@ -699,4 +699,12 @@ class operator extends CI_Controller
         $this->m_model->delete('peminjaman', 'id', $id);
         redirect(base_url('operator/tabel_report_sewa'));
     }
+    public function tambahan(){
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan', $data);
+    }
+    public function tambah_item_tambahan(){
+        $this->load->view('operator/tambahan/tambah_item_tambahan');
+    }
+    
 }
