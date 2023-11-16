@@ -505,7 +505,7 @@ class operator extends CI_Controller
             $harga += tampil_harga_tambahan_byid($id);
             // Jika jenis snack adalah makanan, kali dengan jumlah orang
             $tambahan_info = tampil_info_tambahan_byid($id);
-            if ($tambahan_info === 'Makanan') {
+            if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
                 $harga *= $jumlah_orang;
             }
         }
@@ -569,6 +569,7 @@ class operator extends CI_Controller
     public function edit_peminjaman_tempat($id)
     {
         $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
     }
 
@@ -605,7 +606,7 @@ class operator extends CI_Controller
     
                 // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
                 $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan') {
+                if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan' || $tambahan_info['jenis'] === 'Minuman') {
                     $harga_tambahan *= $jumlah_orang;
                 }
             }
@@ -705,6 +706,20 @@ class operator extends CI_Controller
     }
     public function tambah_item_tambahan(){
         $this->load->view('operator/tambahan/tambah_item_tambahan');
+    }
+    public function aksi_tambahan(){
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
+         $data=[
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi,
+         ];
+         $this->m_model->tambah_data('tambahan', $data);
+         redirect(base_url('operator/tambahan'));
     }
     
 }
