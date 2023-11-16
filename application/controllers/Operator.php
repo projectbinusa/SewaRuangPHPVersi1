@@ -428,14 +428,14 @@ class operator extends CI_Controller
     public function peminjaman_tempat()
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
-        $this->load->view('operator/table_peminjaman_tempat', $data);
+        $this->load->view('operator/peminjaman/table_peminjaman_tempat', $data);
     }
 
     public function tambah_peminjaman_tempat()
     {
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $this->load->view('operator/tambah_peminjaman_tempat', $data);
+        $this->load->view('operator/peminjaman/tambah_peminjaman_tempat', $data);
     }
 
     public function check_expired_bookings()
@@ -561,7 +561,7 @@ class operator extends CI_Controller
     public function edit_peminjaman_tempat($id)
     {
         $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
-        $this->load->view('operator/edit_peminjaman_tempat', $data);
+        $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
     }
 
     public function aksi_edit_peminjaman()
