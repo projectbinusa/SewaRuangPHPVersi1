@@ -211,37 +211,45 @@
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
                 <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
-                <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
-                    value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>">
-                <datalist id="browsers1" role="listbox">
-                    <?php foreach($ruangan as $row):?>
-                    <option value="<?php echo $row->id?>">L.<?php echo $row->no_lantai?>  R.<?php echo $row->no_ruang?></option>
-                    <?php endforeach?>
-                </datalist>
-                <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
-                <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
-                   value="<?php echo $row->jumlah_orang?>" required>
-                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <select id="underline_select" name="snack"
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected><?php echo tampil_nama_snack_byid($row->id_snack)?></option>
-                    <?php foreach($snack as $row):?>
-                    <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
-                    <?php endforeach?>
-                </select>
-                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="booking" id="total_booking" class="total_booking"
-                    value="<?php echo $row->tanggal_booking?>" required>
-                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
-                value="<?php echo $row->tanggal_berakhir?>" required>
+                    <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
+                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
+                        value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
+                    <datalist id="browsers1" role="listbox">
+                        <?php foreach ($ruangan as $row): ?>
+                            <option value="<?php echo $row->id ?>">L.
+                                <?php echo $row->no_lantai ?> R.
+                                <?php echo $row->no_ruang ?>
+                            </option>
+                        <?php endforeach ?>
+                    </datalist>
+                    <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
+                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
+                        value="<?php echo $row->jumlah_orang ?>" required>
 
-                <input type="submit" id="submit" class="submit" value="Submit">
-            </form>
-            <?php endforeach?>
+                    <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
+                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
+                        placeholder="Pilih Paket">
+
+                    <datalist id="browsers" id="checkbox" role="listbox">
+                        <div class="flex gap-3">
+                            <option style="" value="Paket 3">Paket 3</option>
+                            <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox">
+                        </div>
+
+                    </datalist>
+
+                    </datalist>
+                    <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
+                            class="required">*</span></label>
+                    <input type="date" name="booking" id="total_booking" class="total_booking"
+                        value="<?php echo $row->tanggal_booking ?>" required>
+                    <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
+                            class="required">*</span></label>
+                    <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
+                        value="<?php echo $row->tanggal_berakhir ?>" required>
+                    <input type="submit" id="submit" class="submit" value="Submit">
+                </form>
+            <?php endforeach ?>
         </div>
     </main>
 

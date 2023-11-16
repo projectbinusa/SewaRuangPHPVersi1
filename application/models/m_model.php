@@ -6,14 +6,14 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
-    public function get_ruang_by_id()
+    public function get_peminjaman_by_id()
     {
-        return $this->db->get_where('ruangan', array())->row();
+        return $this->db->get_where('peminjaman', array())->row();
     }
 
-    public function get_snack_by_id()
+    public function get_tambahan_by_id()
     {
-        return $this->db->get_where('snack', array())->row();
+        return $this->db->get_where('tambahan', array())->row();
     }
 
     public function search($keyword)
@@ -150,6 +150,7 @@ class M_model extends CI_Model
     {
         // Query untuk memeriksa konflik waktu
         $this->db->where('id_ruangan', $id_ruangan);
+        $this->db->where('status', 'booking');
         $this->db->where("('$start_time' BETWEEN tanggal_booking AND tanggal_berakhir OR '$end_time' BETWEEN tanggal_booking AND tanggal_berakhir)", NULL, FALSE);
         $query = $this->db->get('peminjaman');
 
