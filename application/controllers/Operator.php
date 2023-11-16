@@ -135,8 +135,7 @@ class operator extends CI_Controller
         $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
         $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
 
-
-        $snack = $this->m_model->get_snack_by_id();
+        $snack = $this->m_model->get_tambahan_by_id();
         $harga_snack = $snack->harga;
         $total_price = $harga_ruangan + $harga_snack;
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
@@ -652,10 +651,9 @@ class operator extends CI_Controller
 
     public function update_report_sewa()
     {
-        $data['peminjaman'] = $this->m_model-get_data('peminjaman')->result();
+        $data['peminjaman']=$this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
         $this->load->view('operator/pelanggan/update_report_sewa', $data);
     }
-
     public function aksi_update_report_sewa($id)
     {
         $id_ruangan = $this->input->post('ruang');
@@ -664,10 +662,10 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $generate = $this->generate_booking_code();
         $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
-        if (!empty($this->input->post('snack'))) {
-            $id_snack = $this->input->post('snack');
-            $harga = tampil_harga_snack_byid($id_snack);
+        $harga_ruangan= tampil_harga_ruangan_byid($id_ruangan);
+        if(!empty($this->input->post('snack'))){
+        $id_snack = $this->input->post('snack'); 
+        $harga = tampil_harga_snack_byid($id_snack);
         }
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
@@ -676,9 +674,9 @@ class operator extends CI_Controller
         $harga_snack = $harga * $jumlah;
         $harga_keseluruhan = $harga_snack + $harga_ruangan;
         $data = [
-            'id_pelanggan' => $id_pelanggan,
-            'id_ruangan' => $id_ruangan,
-            'id_snack' => $id_snack,
+            'id_pelanggan' =>$id_pelanggan,
+            'id_ruangan' =>$id_ruangan,
+            'id_snack' =>$id_snack,
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -686,9 +684,9 @@ class operator extends CI_Controller
             'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
-        $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
+        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
         $this->check_expired_bookings();
-        redirect(base_url('operator/pelanggan/tabel_report_sewa'));
+        redirect(base_url('operator/tabel_report_sewa'));
     }
 
     public function hapus_report_sewa()

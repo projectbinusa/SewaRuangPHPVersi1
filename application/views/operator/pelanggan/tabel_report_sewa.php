@@ -972,7 +972,7 @@
                                             </td>
                                             <!-- Snack -->
                                             <td class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_snack_byid($row->status) ?>
+                                                <?php echo tampil_nama_tambahan_byid($row->status) ?>
                                             </td>
                                             <!-- Total Booking -->
                                             <td class="w-32 px-3 py-4">
