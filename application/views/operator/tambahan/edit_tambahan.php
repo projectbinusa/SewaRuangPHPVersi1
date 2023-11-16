@@ -234,14 +234,15 @@
                 <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama item" required>
 
                 <label for="kapasitas" id="kapasitas-label">Harga<span class="required">*</span></label>
-                <input type="number" name="harga" id="kapasitas" class="kapasitas" placeholder="Ketik harga" required>
-                <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
-                    placeholder="Pilih Ruangan">
-                <datalist id="browsers1" role="listbox">
+                <input type="number" name="harga" id="kapasitas" class="kapasitas" placeholder="Masukkan harga" required>
+                <label for="no_ruang" id="name-label">Tambahan<span class="required">*</span></label>
+                <select id="underline_select" name="jenis"
+                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Pilih Jenis Tambahan</option>
                     <option value="Makanan">Makanan</option>
                     <option value="Alat">Alat</option>
-                </datalist>
+                </select>
+
                 <label for="nama" id="name-label">Deskripsi<span class="required">*</span></label>
                 <textarea required class="nama" name="deskripsi" placeholder=""></textarea>
 
