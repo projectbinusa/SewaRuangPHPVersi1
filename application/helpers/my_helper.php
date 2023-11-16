@@ -60,7 +60,6 @@ function tampil_code_penyewa_byid($id)
         return $stmt;
     }
 }
-
 function tampil_nama_tambahan_byid($id)
 {
     $ci = &get_instance();
