@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksport PDF</title>
+    <title>Your PDF</title>
     <style>
         body,
         html {
@@ -128,16 +128,43 @@
             text-align: center;
         }
     </style>
+
 </head>
 
-<body>
+<body style="text-align: center;">
 
     <div class="header">
         <img src="" alt="">
-        <h2>RuangSewa.com</h2>
+        <p style="font-size: 55px; font-weight: bold;"><span style="font-weight: italic;">Semarang</span></p>
+        <p style="color: #776B5D; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 50px; margin-top: 5%;">Semakin hebat!</p>
     </div>
 
     <div class="invoice-yu">
+
+        <p class="invoice" style="font-weight: bold;">Trans Semarang</p>
+        <p class="name-customer">Call Center 1-5000-94</p>
+        <p class="name-customer">BUS SG02 (BISG02)</p>
+        <p class="name-customer">NAME</p>
+    </div>
+
+    ------------------------------------------------------------------------------------
+    <h1>Regular Pelajar</h1>
+    ------------------------------------------------------------------------------------
+
+    <div class="baru">
+        <p>Transaksi  : 1.000</p>
+        <p>Tanggal    : 11/15/2023</p>
+    </div>
+
+    <div class="fer">
+        <img src="https://blog.aspose.com/id/barcode/php-barcode-generator-reader-and-scanner-api/images/generate-barcode.png" style="width:10%">
+    </div>
+
+    <div class="ort">
+        <p>Transaksi berlaku</p>
+        <p>Selama tidak meninggalkan</p>
+        <p>halte transit yang telah ditentukan</p>
+
         <h1 class="invoice">INVOICE</h1>
         <p class="name-customer">Customer</p>
     </div>
@@ -189,10 +216,13 @@
 
     </div><br><br><br>
     <div class="payment-info">
-        <h4>PAYMENT INFO</h4>
-        <p>Akun :<span><?php echo base_url('') ?></span></p>
-        <p>Nomor Akun :<span><?php echo base_url('') ?></span></p>
-        <p>embayaran melalui :<span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan) ?></span></p>
+        <?php foreach ($ruangan as $key) : ?>
+            <h4>PAYMENT INFO</h4>
+            <p>Bank Dana</p>
+            <p>Account Name :<span><?php echo base_url('') ?></span></p>
+            <p>Account No :<span><?php echo base_url('') ?></span></p>
+            <p>Payment by :<span><?php echo base_url('') ?></span></p>
+        <?php endforeach; ?>
     </div>
 </body>
 

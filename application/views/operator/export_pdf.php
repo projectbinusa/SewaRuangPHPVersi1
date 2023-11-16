@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,26 +23,27 @@
             text-align: center;
             background: #0C356A;
             color: whitesmoke;
-            padding: 30px;
+            padding: 60px;
+            margin-top: 10px;
         }
 
         .invoice {
-            margin-left: 70%;
-            font-weight: bold;
-            color: #1F4172;
-            margin-bottom: 0;
-        }
-
-        .invoice-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 3%;
+            margin-bottom: 0;
+            font-weight: bold;
+            color: #1F4172;
         }
 
-        .invoice p {
-            text-align: center;
-            margin: 0px;
+        .invoice h1 {
+            margin: 0;
+        }
+
+        .name-customer {
+            color: #1F4172;
+            font-size: larger;
+            margin-left: 50%;
         }
 
         .invoice-yu {
@@ -51,7 +53,7 @@
 
         .invoice-details table {
             margin-left: 5%;
-            font-size: 80%;
+            font-size: 90%;
         }
 
         .invoice-details table th {
@@ -59,8 +61,8 @@
         }
 
         .item-table {
-            padding-left: 50px;
-            padding-right: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
             width: 100%;
             border-collapse: collapse;
         }
@@ -75,32 +77,22 @@
             font-weight: bold;
             padding-top: 10px;
             padding-bottom: 10px;
-
         }
 
         .total #displayTotal::after {
-            content: ':';
-            display: inline-block;
-            border-bottom: 1px solid #1F4172;
-            padding-bottom: 4px;
-            margin-left: 5px;
-            margin-right: 20px;
-        }
-
-        .total span#displayTotal::after {
             content: attr(data-amount);
             display: inline-block;
             border-bottom: 1px solid #000000;
-            /* padding-bottom: 4px; */
             margin-left: 5px;
-            margin-right: 20px;
+            margin-bottom: auto;
+            margin-right: 60px;
         }
 
         .payment-info {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             color: #0C356A;
-            border-left: 18px solid #0C356A;
+            border-left: 20px solid #0C356A;
             margin-right: 20%;
             height: 20%;
             margin-top: 10%;
@@ -111,6 +103,10 @@
             margin-left: 18px;
         }
 
+        .payment-info .baru{
+            margin-top: 50px;
+        }
+
         .container {
             display: flex;
             float: right;
@@ -119,15 +115,19 @@
             font-size: medium;
         }
 
-        .name-customer {
-            color: #1F4172;
-            font-size: larger;
-        }
-
         .merah {
             text-align: center;
         }
     </style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksport PDF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
 <body>
@@ -178,7 +178,6 @@
             </tr>
             <?php $no++; ?>
         </tbody>
-
     </table>
     <br>
     <div class="container">
