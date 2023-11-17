@@ -66,15 +66,17 @@
             border-collapse: collapse;
         }
 
-        .item-table td,
-        .item-table th {
-            padding: 15px;
+        .item-table td {
+            padding: 25px;
             font-size: 80%;
         }
 
         .item-table th {
             background: #f2f2f2;
             font-weight: bold;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
         }
 
         .total {
@@ -120,22 +122,49 @@
             text-align: center;
         }
     </style>
+
 </head>
 
-<body>
+<body style="text-align: center;">
+
     <div class="header">
-        <h2>RuangSewa.com</h2>
+        <img src="" alt="">
+        <p style="font-size: 55px; font-weight: bold;"><span style="font-weight: italic;">Semarang</span></p>
+        <p style="color: #776B5D; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 50px; margin-top: 5%;">Semakin hebat!</p>
     </div>
 
     <div class="invoice-yu">
-        <h1 class="invoice">
-            CUSTOMER
-            <span class="name-customer">INVOICE</span>
-        </h1>
-        <p style="margin-left: 75%;"><?php echo date('F, j-Y'); ?></p>
+
+        <p class="invoice" style="font-weight: bold;">Trans Semarang</p>
+        <p class="name-customer">Call Center 1-5000-94</p>
+        <p class="name-customer">BUS SG02 (BISG02)</p>
+        <p class="name-customer">NAME</p>
+    </div>
+
+    ------------------------------------------------------------------------------------
+    <h1>Regular Pelajar</h1>
+    ------------------------------------------------------------------------------------
+
+    <div class="baru">
+        <p>Transaksi  : 1.000</p>
+        <p>Tanggal    : 11/15/2023</p>
+    </div>
+
+    <div class="fer">
+        <img src="https://blog.aspose.com/id/barcode/php-barcode-generator-reader-and-scanner-api/images/generate-barcode.png" style="width:10%">
+    </div>
+
+    <div class="ort">
+        <p>Transaksi berlaku</p>
+        <p>Selama tidak meninggalkan</p>
+        <p>halte transit yang telah ditentukan</p>
+
+        <h1 class="invoice">INVOICE</h1>
+        <p class="name-customer">Customer</p>
     </div>
 
     <div class="invoice-details">
+
         <table>
             <tr>
                 <td>Name Customer: <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($peminjaman->id_pelanggan) ?></span></td>
@@ -146,33 +175,31 @@
             <tr>
                 <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $peminjaman->kode_booking ?></span></td>
             </tr>
-        </table>
+            </table>
     </div>
 
     <br><br>
-
     <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Item</th>
                 <th>Jumlah</th>
-                <!-- <th></th> -->
                 <th>Harga sewa</th>
                 <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            $id_ruangan = $peminjaman->id_ruangan;
-            $id_tambahan = $peminjaman->id_tambahan;
-            // Fetch data from the database
-            $nama_ruangan = tampil_ruangan_byid($id_ruangan);
-            $nama_tambahan = tampil_nama_tambahan_byid($id_tambahan);
-            $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
-            $harga_tambahan = tampil_harga_tambahan_byid($id_tambahan);
-            $jumlah_tambahan = tampil_nama_tambahan_byid($id_tambahan);
-            $total_tamnbahan = tampil_jumlah_tambahan_byid($id_tambahan);
+            <?php $no = 1; ?>
+            <tr>
+                <td class="merah"><?php echo $no . '.'; ?></td>
+                <td class="merah"><?php echo format_ruangan(tampil_nama_ruangan_byid($peminjaman->id_ruangan)) . " - " . tampil_nama_tambahan_byid($peminjaman->id_tambahan) ?></td>
+                <td class="merah"><?php echo $no ?></td>
+                <td class="merah"><?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan)); ?></td>
+                <td class="merah"><?php echo convRupiah(intval(tampil_harga_ruangan_byid($peminjaman->id_ruangan)) + intval(tampil_harga_tambahan_byid($peminjaman->id_tambahan))); ?></td>
+            </tr>
+            <?php $no++; ?>
+        </tbody>
 
             $jumlah_orang = $peminjaman->jumlah_orang;
             ?>
@@ -193,15 +220,13 @@
     </table>
 
     <br>
-
-    <div class="container">
-        <div class="total" style="margin-bottom: -50%;">
-            <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah(intval($harga_ruangan) + intval($harga_tambahan)); ?>"></span>
+    <div class="container">                
+        <div class="total">
+            Total harga :
+            <span id="displayTotal" data-amount="<?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan) + tampil_harga_tambahan_byid($peminjaman->id_tambahan)); ?>"></span>
         </div>
-    </div>
 
-    <br><br><br>
-
+    </div><br><br><br>
     <div class="payment-info">
         <h4>PAYMENT INFO</h4>
         <?php date_default_timezone_set('Asia/Jakarta'); ?>

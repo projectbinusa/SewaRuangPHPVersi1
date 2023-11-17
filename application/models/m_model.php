@@ -6,19 +6,14 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
-    public function get_peminjaman_by_id($id)
+    public function get_peminjaman_by_id()
     {
-        // Assuming you have a table named 'peminjaman' and a column 'id'
-        $this->db->where('id', $id);
-        $query = $this->db->get('peminjaman');
-    
-        // Return the result if found, otherwise return false
-        return $query->num_rows() > 0 ? $query->row() : false;
+        return $this->db->get_where('peminjaman', array())->row();
     }
-    
-    public function get_tambahan_by_id($id)
+
+    public function get_tambahan_by_id()
     {
-        return $this->db->get_where('tambahan', array('id' => $id))->row();
+        return $this->db->get_where('tambahan', array())->row();
     }
 
     public function search($keyword)
@@ -52,12 +47,20 @@ class M_model extends CI_Model
         $data = $this->db->update($table, $data, $where);
         return $this->db->affected_rows();
     }
+   
 
     public function get_by_id($tabel, $id_column, $id)
     {
         $data = $this->db->where($id_column, $id)->get($tabel);
         return $data;
     }
+    public function ubah_data_report_sewa($tabel, $data, $where)
+    {
+        $data=$this->db->update($tabel, $data, $where);
+        return $this->db->affected_rows();
+    }
+   
+   
 
     public function get_data_by_id($table, $id)
     {
@@ -107,6 +110,9 @@ class M_model extends CI_Model
         $data = $this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
+    
+    
+    
     public function get_data_operator()
     {
         return $this->db->where('role', 'operator')
@@ -170,13 +176,13 @@ class M_model extends CI_Model
     }
     public function get_status_peminjaman()
     {
-        return $this->db->where_in('status', ['proses', 'booking', 'di tolak'])
-            ->get('peminjaman');
+    return $this->db->where_in('status', ['proses', 'booking', 'di tolak'])
+                    ->get('peminjaman');
     }
     public function get_status_proses()
     {
-        return $this->db->where('status', 'proses')
-            ->get('peminjaman');
+    return $this->db->where('status', 'proses')
+                    ->get('peminjaman');
     }
     public function get_status_selesai()
     {
@@ -188,30 +194,11 @@ class M_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('peminjaman', array('status' => $status));
     }
-
     public function get_by_update_report_sewa($tabel, $id_column, $id)
     {
         $data = $this->db->where($id_column, $id)->get($tabel);
         return $data;
     }
-    public function get_peminjaman_by_status()
-    {
-        $this->db->select('p.*, GROUP_CONCAT(t.nama) as tambahan_nama', false);
-        $this->db->from('peminjaman p');
-        $this->db->join('peminjaman_tambahan pt', 'pt.id_peminjaman = p.id', 'left');
-        $this->db->join('tambahan t', 'pt.id_tambahan = t.id', 'left');
-        $this->db->where_in('p.status', ['proses', 'booking']);
-        $this->db->group_by('p.id');
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-    public function delete_peminjaman_tambahan($condition)
-    {
-        // Hapus data dari tabel peminjaman_tambahan berdasarkan kondisi
-        $this->db->delete('peminjaman_tambahan', $condition);
-
-        // Mengembalikan status berhasil atau tidaknya operasi penghapusan
-        return $this->db->affected_rows() > 0;
-    }
+   
+   
 }
