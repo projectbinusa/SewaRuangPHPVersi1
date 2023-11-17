@@ -910,11 +910,6 @@
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
-                        <a href="export_report_sewa" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 px-full w-14 ml-auto mb-4 flex items-center justify-center">
-                            <button>
-                            <i class="fa-solid fa-download"></i>
-                            </button>
-                        </a>
                             <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
