@@ -430,7 +430,7 @@ class operator extends CI_Controller
 
     public function peminjaman_tempat()
     {
-        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
+        $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
         $this->load->view('operator/table_peminjaman_tempat', $data);
     }
 
@@ -547,23 +547,6 @@ class operator extends CI_Controller
         // Operasi berhasil
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
-    } else {
-        // Handle error jika peminjaman tidak berhasil dimasukkan
-        // Misalnya: Tampilkan pesan error atau lakukan rollback
-        echo "<script>alert('Gagal menambahkan data peminjaman.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-        return;
-    }
-}
-
-    public function hapus_peminjaman($id)
-    {
-        $this->m_model->delete('peminjaman', 'id', $id);
-        redirect(base_url('operator/peminjaman_tempat'));
-    }
-    public function edit_peminjaman_tempat($id)
-    {
-        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
-        $this->load->view('operator/edit_peminjaman_tempat', $data);
     }
 
     public function aksi_edit_peminjaman()
@@ -641,6 +624,7 @@ class operator extends CI_Controller
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
     }
+    
 
     public function tabel_report_sewa()
     {
@@ -655,7 +639,7 @@ class operator extends CI_Controller
     }
     public function aksi_update_report_sewa($id)
     {
-        $id_ruangan = $this->input->post('ruang');
+        $id_ruangan = ($this->input->post('ruangan'));
         $id_pelanggan = tampil_pelanggan_bynama($this->input->post('nama'));
         $jumlah = $this->input->post('kapasitas');
         $start_time = $this->input->post('booking');
@@ -673,9 +657,9 @@ class operator extends CI_Controller
         $harga_snack = $harga * $jumlah;
         $harga_keseluruhan = $harga_snack + $harga_ruangan;
         $data = [
-            'id_pelanggan' =>$id_pelanggan,
-            'id_ruangan' =>$id_ruangan,
-            'id_snack' =>$id_snack,
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'id_snack' => $id_snack,
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -685,196 +669,7 @@ class operator extends CI_Controller
         ];
         $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
         $this->check_expired_bookings();
-        redirect(base_url('operator/tabel_report_sewa'));
+        redirect(base_url('operator/peminjaman_tempat'));
     }
-
-    public function hapus_report_sewa()
-    {
-        $this->m_model->delete('peminjaman', 'id', $id);
-        redirect(base_url('operator/tabel_report_sewa'));
-    }
-
-//EXPORT PELANGGAN
-    public function export_pelanggan() {
-
-        // Load autoloader Composer
-        require 'vendor/autoload.php';
-        
-        $spreadsheet = new Spreadsheet();
-
-        // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
-        // Data yang akan diekspor (contoh data)
-        $data = $this->m_model->get_data('pelanggan')->result();
-        
-        // Buat objek Spreadsheet
-        $headers = ['ID','NAMA','PHONE','PAYMENT METHOD'];
-        $rowIndex = 1;
-        foreach ($headers as $header) {
-            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
-            $rowIndex++;
-        }
-        
-        // Isi data dari database
-        $rowIndex = 2;
-        foreach ($data as $rowData) {
-            $columnIndex = 1;
-            $id = '';
-            $nama = '';
-            $phone = '';
-            $payment_method = '';
-            foreach ($rowData as $cellName => $cellData) {
-                if($cellName == 'id'){
-                    $id = $cellData;
-                }elseif ($cellName == 'nama') {
-                   $nama = $cellData;
-                } elseif ($cellName == 'phone') {
-                    $phone = $cellData;
-                } elseif ($cellName == 'payment_method') {
-                    $payment_method = $cellData;
-                }
-        
-                // Anda juga dapat menambahkan logika lain jika perlu
-                
-                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
-                $columnIndex++;
-            }
-        
-            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
-            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $id);
-            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
-            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $phone);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $payment_method);
-        
-            $rowIndex++;
-        }
-        // Auto size kolom berdasarkan konten
-        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
-            $sheet->getColumnDimension($col)->setAutoSize(true);
-        }
-        
-        // Set style header
-        $headerStyle = [
-            'font' => ['bold' => true],
-            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-        ];
-        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
-        // Konfigurasi output Excel
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'DATA_PELANGGAN.xlsx'; // Nama file Excel yang akan dihasilkan
-        
-        // Set header HTTP untuk mengunduh file Excel
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
-        header('Cache-Control: max-age=0');
-        
-        // Outputkan file Excel ke browser
-        $writer->save('php://output');
-        
-    }
-    //function export data rekap absen keseluruhan
-
-// EXPORT REPORT SEWA 
-    public function export_report_sewa() {
-
-        // Load autoloader Composer
-        require 'vendor/autoload.php';
-        
-        $spreadsheet = new Spreadsheet();
-
-        // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
-        // Data yang akan diekspor (contoh data)
-        $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
-        
-        // Buat objek Spreadsheet
-        $headers = ['NO','NAMA','RUANGAN','KAPASITAS','KODE','SNACK','TANGGAL BOOKING','TANGGAL BERAKHIR','TOTAL','STATUS'];
-        $rowIndex = 1;
-        foreach ($headers as $header) {
-            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
-            $rowIndex++;
-        }
-        
-        // Isi data dari database
-        $rowIndex = 2;
-        foreach ($data as $rowData) {
-            $columnIndex = 1;
-            $id = '';
-            $id_pelanggan = '';
-            $id_ruangan = '';
-            $jumlah_orang = '';
-            $kode_booking = '';
-            $tanggal_booking = '';
-            $tanggal_berakhir = '';
-            $total_harga = '';
-            $status = '';
-            foreach ($rowData as $cellName => $cellData) {
-                if($cellName == 'id'){
-                    $id = $cellData;
-                }elseif ($cellName == 'id_pelanggan') {
-                   $id_pelanggan = $cellData;
-                }elseif ($cellName == 'id_ruangan') {
-                    $id_ruangan = $cellData;
-                }elseif ($cellName == 'jumlah_orang') {
-                    $jumlah_orang = $cellData;
-                }elseif ($cellName == 'kode_booking') {
-                    $kode_booking = $cellData;
-                }elseif ($cellName == 'tanggal_booking') {
-                    $tanggal_booking = $cellData;
-                }elseif ($cellName == 'tanggal_berakhir') {
-                    $tanggal_berakhir = $cellData;
-                }elseif ($cellName == 'total_harga') {
-                    $total_harga = $cellData;
-                }elseif ($cellName == 'status') {
-                    $status = $cellData;
-                }
-        
-                // Anda juga dapat menambahkan logika lain jika perlu
-                
-                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
-                $columnIndex++;
-            }
-        
-            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
-            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $id);
-            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $id_pelanggan);
-            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
-            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
-            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_berakhir);
-            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
-            $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
-        
-            $rowIndex++;
-        }
-        // Auto size kolom berdasarkan konten
-        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
-            $sheet->getColumnDimension($col)->setAutoSize(true);
-        }
-        
-        // Set style header
-        $headerStyle = [
-            'font' => ['bold' => true],
-            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-        ];
-        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
-        // Konfigurasi output Excel
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'DATA_REPORT_SEWA.xlsx'; // Nama file Excel yang akan dihasilkan
-        
-        // Set header HTTP untuk mengunduh file Excel
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
-        header('Cache-Control: max-age=0');
-        
-        // Outputkan file Excel ke browser
-        $writer->save('php://output');
-        
-    }
-    //function export data rekap absen keseluruhan
+    
 }
