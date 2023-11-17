@@ -20,7 +20,6 @@
             box-sizing: border-box;
         }
 
-
         body {
             font-family: "DM Sans", sans-serif;
             background-color: #E4F1FF;
@@ -99,6 +98,14 @@
             line-height: 1px;
         }
 
+        textarea {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            font-size: 1.6rem;
+            line-height: 1px;
+        }
+
         .nama,
         .hari,
         .no_lantai,
@@ -136,7 +143,9 @@
             color: #222;
         }
 
+
         /* style comboboxs */
+
         input {
             padding: 5px;
             height: 35px;
@@ -164,10 +173,6 @@
 
 
         @media only screen and (max-width: 800px) {
-            .password-toggle {
-                top: 56.5rem;
-                right: 3rem;
-            }
 
             .container {
                 padding: 1rem 1rem 0px 1rem;
@@ -193,6 +198,23 @@
                 font-size: 16px;
             }
         }
+
+
+        #checkboxCombo {
+            position: relative;
+            display: inline-block;
+        }
+
+        #checkboxCombo select {
+            width: 200px;
+            padding: 5px;
+        }
+
+        #checkboxCombo input[type="checkbox"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     </style>
 </head>
 
@@ -200,66 +222,37 @@
     <?php $this->load->view('sidebar'); ?>
 
     <main>
-        <div class="container">
+        <div class=" container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Tambah Item Tambahan</h1>
             </header>
-            <?php foreach ($peminjaman as $row): ?>
-                <form action="<?php echo base_url('operator/aksi_edit_peminjaman') ?>" method="post" id="survey-form"
-                    class="survey-form">
-                    <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id ?>">
-                    <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                    <input type="text" name="nama" id="nama" class="nama"
-                        value="<?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>">
 
-                    <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
-                        value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
-                    <datalist id="browsers1" role="listbox">
-                        <?php foreach ($ruangan as $row): ?>
-                            <option value="<?php echo $row->id ?>">L.
-                                <?php echo $row->no_lantai ?> R.
-                                <?php echo $row->no_ruang ?>
-                            </option>
-                        <?php endforeach ?>
-                    </datalist>
-                    <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
-                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
-                        value="<?php echo $row->jumlah_orang ?>" required>
+            <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form"
+                class="survey-form">
+                <label for="nama" id="name-label">Nama Item<span class="required">*</span></label>
+                <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama item" required>
 
-                    <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
-                        placeholder="Pilih Paket">
-                    <datalist id="browsers" id="checkbox" role="listbox">
-                        <div class="flex gap-3">
-                        <?php foreach($tambahan as $row):?>
-                        <option style=""><?php echo $row->nama?></option>
-                        <input style="width: 15px; margin-left: 5rem; margin-top:-2rem;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
-                        <?php endforeach?>
-                        </div>
-                    </datalist>
-
-                    </datalist>
-
-                    <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                            class="required">*</span></label>
-                    <input type="date" name="booking" id="total_booking" class="total_booking"
-                        value="<?php echo $row->tanggal_booking ?>" required>
-                    <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                            class="required">*</span></label>
-                    <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
-                        value="<?php echo $row->tanggal_berakhir ?>" required>
-                    <input type="submit" id="submit" class="submit" value="Submit">
-                </form>
-            <?php endforeach ?>
+                <label for="kapasitas" id="kapasitas-label">Harga<span class="required">*</span></label>
+                <input type="number" name="harga" id="kapasitas" class="kapasitas" placeholder="Ketik harga" required>
+                <label for="jenis" id="name-label">Jenis<span class="required">*</span></label>
+                <select id="underline_select" name="jenis"
+                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Pilih Jenisnya</option>
+                    <option value="Makanan">Makanan</option>
+                    <option value="Minuman">Minuman</option>
+                    <option value="Alat">Alat</option>
+                </select>
+                <label for="nama" id="name-label">Deskripsi<span class="required">*</span></label>
+                <textarea type="text" name="deskripsi" id="nama" class="nama" placeholder="Masukan Deskripsi" required>
+    </textarea>
+                <input type="submit" id="submit" class="submit" value="Submit">
+            </form>
         </div>
     </main>
 
-    <!-- script comboboxs -->
+    <!-- script comboboxs no lantai -->
     <script>
-        const checkbox = document.getElementById('checkbox');
-
         input.onfocus = function () {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
@@ -288,10 +281,12 @@
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
-            } else if (e.keyCode == 38) {
+            }
+            else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers.options);
-            } else if (e.keyCode == 13) {
+            }
+            else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -307,7 +302,76 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+        function removeActive(x) {
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("active");
+            }
+        }
+    </script>
 
+    <!-- script comboboxs no ruang -->
+    <script>
+        const checkbox = document.getElementById('checkbox');
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                // Checkbox is checked
+                console.log('Checkbox is checked. Selected value: ' + combo.value);
+            } else {
+                // Checkbox is unchecked
+                console.log('Checkbox is unchecked.');
+            }
+        });
+
+        input1.onfocus = function () {
+            browsers1.style.display = 'block';
+            input1.style.borderRadius = "5px 5px 0 0";
+        };
+        for (let option of browsers1.options) {
+            option.onclick = function () {
+                input1.value = option.value;
+                browsers1.style.display = 'none';
+                input1.style.borderRadius = "5px";
+            }
+        };
+
+        input1.oninput = function () {
+            currentFocus = -1;
+            var text = input1.value.toUpperCase();
+            for (let option of browsers1.options) {
+                if (option.value.toUpperCase().indexOf(text) > -1) {
+                    option.style.display = "block";
+                } else {
+                    option.style.display = "none";
+                }
+            };
+        }
+        var currentFocus = -1;
+        input1.onkeydown = function (e) {
+            if (e.keyCode == 40) {
+                currentFocus++
+                addActive(browsers1.options);
+            }
+            else if (e.keyCode == 38) {
+                currentFocus--
+                addActive(browsers1.options);
+            }
+            else if (e.keyCode == 13) {
+                e.preventDefault();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (browsers1.options) browsers1.options[currentFocus].click();
+                }
+            }
+        }
+
+        function addActive(x) {
+            if (!x) return false;
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            x[currentFocus].classList.add("active");
+        }
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
