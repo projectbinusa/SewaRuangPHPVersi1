@@ -131,10 +131,10 @@
             transition: all .3s;
         }
 
-            .submit:hover {
-                background-color: transparent;
-                color: #222;
-            }
+        .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
 
         /* style comboboxs */
         input {
@@ -169,52 +169,25 @@
                 right: 3rem;
             }
 
-            @media only screen and (max-width: 800px) {
-                .password-toggle {
-                    /* position: absolute; */
-                    top: 76%;
-                    /* transform: translateY(-50%); */
-                    right: 4.9rem;
-                    /* cursor: pointer; */
-
-                    /* style comboboxs */
-                    input {
-                        padding: 5px;
-                        height: 35px;
-                        border-bottom: 1px solid;
-                        outline: none;
-                    }
-                }
+            .container {
+                padding: 1rem 1rem 0px 1rem;
             }
 
-                    datalist {
-                        position: absolute;
-                        background-color: white;
-                        border-top: none;
-                        width: 350px;
-                        padding: 5px;
-                        max-height: 10rem;
-                        overflow-y: auto
-                    }
 
-                    option {
-                        background-color: white;
-                        padding: 4px;
-                        margin-bottom: 1px;
-                        font-size: 14px;
-                        cursor: pointer;
-                    }
+            .heading {
+                padding: 1.3em 9px 1.8rem 9px;
+            }
 
+            .survey-form {
+                padding: 1.3em 15px 1.8rem 15px;
 
-                    @media only screen and (max-width: 800px) {
-                        .password-toggle {
-                            top: 56.5rem;
-                            right: 3rem;
-                        }
+            }
 
-                        .container {
-                            padding: 1rem 1rem 0px 1rem;
-                        }
+            .main-heading {
+                font-size: 22px;
+                margin-bottom: 0;
+                text-align: center;
+            }
 
             label {
                 font-size: 16px;
@@ -230,63 +203,74 @@
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Update Report Sewa</h1>
+                <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
             </header>
-            <?php foreach($peminjaman as $row):?>
-            <form action="<?php echo base_url('operator/aksi_update_report_sewa/')?>" method="post" id="survey-form" class="survey-form">
-            <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id?>">
-                <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
+            <?php foreach ($peminjaman as $row):  $tanggal_booking = $row->tanggal_booking; $tanggal_berakhir = $row->tanggal_berakhir;?>
+                <form action="<?php echo base_url('operator/aksi_edit_peminjaman') ?>" method="post" id="survey-form"
+                    class="survey-form">
+                    <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id ?>">
+                    <label for="nama" id="name-label">Nama <span class="required">*</span></label>
+                    <input type="text" name="nama" id="nama" class="nama"
+                        value="<?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>">
 
-                <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
-                    value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>">
-                <datalist id="browsers1" role="listbox">
-                    <?php foreach($ruangan as $row):?>
-                    <option value="<?php echo $row->id?>">L.<?php echo $row->no_lantai?>  R.<?php echo $row->no_ruang?></option>
-                    <?php endforeach?>
-                </datalist>
-                <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
-                <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
-                   value="<?php echo $row->jumlah_orang?>" required>
-                <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
-                <select id="underline_select" name="snack"
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected><?php echo tampil_nama_tambahan_byid($row->status)?></option>
-                    <?php foreach($snack as $row):?>
-                    <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
-                    <?php endforeach?>
-                </select>
-                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="booking" id="total_booking" class="total_booking"
-                    value="<?php echo $row->tanggal_booking?>" required>
-                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
-                value="<?php echo $row->tanggal_berakhir?>" required>
+                    <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
+                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
+                        value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
+                    <datalist id="browsers1" role="listbox">
+                        <?php foreach ($ruangan as $row): ?>
+                            <option value="<?php echo $row->id ?>">L.
+                                <?php echo $row->no_lantai ?> R.
+                                <?php echo $row->no_ruang ?>
+                            </option>
+                        <?php endforeach ?>
+                    </datalist>
+                    <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
+                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
+                        value="<?php echo $row->jumlah_orang ?>" required>
 
-                <input type="submit" id="submit" class="submit" value="Submit">
-            </form>
-            <?php endforeach?>
+                    <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
+                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
+                        placeholder="Pilih Paket">
+                    <datalist id="browsers" id="checkbox" role="listbox">
+                        <div class="flex gap-3">
+                        <?php foreach($tambahan as $row):?>
+                        <option style=""><?php echo $row->nama?></option>
+                        <input style="width: 15px; margin-left: 5rem; margin-top:-2rem;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
+                        <?php endforeach?>
+                        </div>
+                    </datalist>
+
+                    </datalist>
+
+                    <label for="booking" id="booking-label">Booking Dari Tanggal<span class="required">*</span></label>
+<input type="date" name="booking" id="booking" class="total_booking" value="<?php echo $tanggal_booking  ?>" required>
+
+<label for="akhir_booking" id="akhir_booking-label">Booking Sampai Tanggal<span class="required">*</span></label>
+<input type="date" name="akhir_booking" id="akhir_booking" class="total_booking" value="<?php echo $tanggal_berakhir ?>" required>
+
+                    <input type="submit" id="submit" class="submit" value="Submit">
+                </form>
+            <?php endforeach ?>
         </div>
     </main>
 
     <!-- script comboboxs -->
     <script>
-        input.onfocus = function() {
+        const checkbox = document.getElementById('checkbox');
+
+        input.onfocus = function () {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function() {
+            option.onclick = function () {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function() {
+        input.oninput = function () {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -298,7 +282,7 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function(e) {
+        input.onkeydown = function (e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
@@ -332,9 +316,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function() {
+            $('#input').on('input', function () {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });

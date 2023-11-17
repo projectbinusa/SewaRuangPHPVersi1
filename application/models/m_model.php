@@ -6,14 +6,19 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
-    public function get_peminjaman_by_id()
+    public function get_peminjaman_by_id($id)
     {
-        return $this->db->get_where('peminjaman', array())->row();
+        // Assuming you have a table named 'peminjaman' and a column 'id'
+        $this->db->where('id', $id);
+        $query = $this->db->get('peminjaman');
+    
+        // Return the result if found, otherwise return false
+        return $query->num_rows() > 0 ? $query->row() : false;
     }
-
-    public function get_tambahan_by_id()
+    
+    public function get_tambahan_by_id($id)
     {
-        return $this->db->get_where('tambahan', array())->row();
+        return $this->db->get_where('tambahan', array('id' => $id))->row();
     }
 
     public function search($keyword)
@@ -58,7 +63,14 @@ class M_model extends CI_Model
     {
         // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
         $this->db->where('id', $id);
-        return $this->db->get($table);
+        return $this->db->get('peminjaman');
+    }
+
+    public function get_data_byid($table, $id)
+    {
+        // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
+        $this->db->where('id', $id);
+        return $this->db->get('ruangan');
     }
 
     public function hapus_data($table, $id)
