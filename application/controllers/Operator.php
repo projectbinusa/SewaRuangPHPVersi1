@@ -464,7 +464,6 @@ class operator extends CI_Controller
 
         return $code;
     }
-
     public function aksi_peminjaman()
     {
         $id_ruangan = $this->input->post('ruang');
@@ -639,6 +638,45 @@ class operator extends CI_Controller
         redirect(base_url('operator/tabel_report_sewa'));
     }
 
+
+    public function tambahan(){
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan',$data);
+    }
+    public function edit_tambahan($id){
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id' , $id)->result();
+        $this->load->view('operator/tambahan/edit_tambahan',$data);
+    }
+    public function aksi_tambahan(){
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
+
+        $data=[
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi,
+        ];
+        $this->m_model->tambah_data('tambahan', $data);
+        redirect(base_url('operator/tambahan'));
+    }
+    public function aksi_edit_tambahan(){
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
+
+        $data=[
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi,
+        ];
+        $this->m_model->update('tambahan' , $data, array('id'=>$this->input->post('id')));
+        redirect(base_url('operator/tambahan'));
+    }
     
 public function coba()
 {
