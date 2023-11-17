@@ -431,7 +431,7 @@ class operator extends CI_Controller
     public function peminjaman_tempat()
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
-        $this->load->view('operator/table_peminjaman_tempat', $data);
+        $this->load->view('operator/peminjaman/table_peminjaman_tempat', $data);
     }
 
     public function tambah_peminjaman_tempat()
@@ -677,67 +677,67 @@ class operator extends CI_Controller
     }
     
 
-    public function tabel_report_sewa()
-    {
-        $data['peminjaman']=$this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
-        $this->load->view('operator/report_sewa/tabel_report_sewa', $data);
-    }
+    // public function tabel_report_sewa()
+    // {
+    //     $data['peminjaman']=$this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
+    //     $this->load->view('operator/report_sewa/tabel_report_sewa', $data);
+    // }
 
 
-    public function update_report_sewa()
-    {
-        $data['peminjaman']=$this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
-        $this->load->view('operator/report_sewa/update_report_sewa', $data);
-    }
-    public function aksi_update_report_sewa()
-    {
-        $id_ruangan = ($this->input->post('ruangan'));
-        $id_pelanggan = tampil_pelanggan_bynama($this->input->post('nama'));
-        $jumlah = $this->input->post('kapasitas');
-        $start_time = $this->input->post('booking');
-        $generate = $this->generate_booking_code();
-        $end_time = $this->input->post('akhir_booking');
-        $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
-        if (!empty($this->input->post('snack'))) {
-            $id_snack = $this->input->post('snack');
-            $harga = tampil_harga_snack_byid($id_snack);
-        }
-        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-            return;
-        }
-        $harga_snack = $jumlah * $jumlah;
-        $harga_keseluruhan = $harga_snack + $harga_ruangan;
-        $data = [
-            'id_pelanggan' => $id_pelanggan,
-            'id_ruangan' => $id_ruangan,
-            'id_snack' => $id_snack,
-            'tanggal_booking' => $start_time,
-            'tanggal_berakhir' => $end_time,
-            'jumlah_orang' => $jumlah,
-            'kode_booking' => $generate,
-            'total_harga' => $harga_keseluruhan,
-            'status' => 'proses',
-        ];
-        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
-        $this->check_expired_bookings();
-        redirect(base_url('operator/peminjaman_tempat'));
-    }
+    // public function update_report_sewa()
+    // {
+    //     $data['peminjaman']=$this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
+    //     $this->load->view('operator/report_sewa/update_report_sewa', $data);
+    // }
+    // public function aksi_update_report_sewa()
+    // {
+    //     $id_ruangan = ($this->input->post('ruangan'));
+    //     $id_pelanggan = tampil_pelanggan_bynama($this->input->post('nama'));
+    //     $jumlah = $this->input->post('kapasitas');
+    //     $start_time = $this->input->post('booking');
+    //     $generate = $this->generate_booking_code();
+    //     $end_time = $this->input->post('akhir_booking');
+    //     $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
+    //     if (!empty($this->input->post('snack'))) {
+    //         $id_snack = $this->input->post('snack');
+    //         $harga = tampil_harga_snack_byid($id_snack);
+    //     }
+    //     if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
+    //         echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+    //         return;
+    //     }
+    //     $harga_snack = $jumlah * $jumlah;
+    //     $harga_keseluruhan = $harga_snack + $harga_ruangan;
+    //     $data = [
+    //         'id_pelanggan' => $id_pelanggan,
+    //         'id_ruangan' => $id_ruangan,
+    //         'id_snack' => $id_snack,
+    //         'tanggal_booking' => $start_time,
+    //         'tanggal_berakhir' => $end_time,
+    //         'jumlah_orang' => $jumlah,
+    //         'kode_booking' => $generate,
+    //         'total_harga' => $harga_keseluruhan,
+    //         'status' => 'proses',
+    //     ];
+    //     $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
+    //     $this->check_expired_bookings();
+    //     redirect(base_url('operator/peminjaman_tempat'));
+    // }
 
-    public function tabel_report_sewa()
-    {
+    // public function tabel_report_sewa()
+    // {
 
-        $this->load->view('operator/pelanggan/tabel_report_sewa');
-    }
+    //     $this->load->view('operator/pelanggan/tabel_report_sewa');
+    // }
 
-    public function tambah_report_sewa()
-    {
-        $this->load->view('operator/pelanggan/tambah_report_sewa');
-    }
+    // public function tambah_report_sewa()
+    // {
+    //     $this->load->view('operator/pelanggan/tambah_report_sewa');
+    // }
 
-    public function update_report_sewa()
-    {
-        $this->load->view('operator/pelanggan/update_report_sewa');
-    }
+    // public function update_report_sewa()
+    // {
+    //     $this->load->view('operator/pelanggan/update_report_sewa');
+    // }
     
 }

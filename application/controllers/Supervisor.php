@@ -19,65 +19,12 @@ class Supervisor extends CI_Controller {
         // }
     }
 
-    public function kirim()
-    {
-        $this->load->view('supervisor/kirim');
-    }
-    public function kirim_proses()
-    {
-        // Mengambil nilai dari form dengan metode yang tepat
-        $no_invoice = $this->input->post('no_invoice');
-        $nama_pengirim = $this->input->post('nama_pengirim');
-        $email = filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL);
-
-        // Memastikan data yang diterima tidak null dan email valid
-        if ($no_invoice && $nama_pengirim && $email !== false) {
-            // Buat objek PHPMailer
-            $mail = new PHPMailer(true);
-
-            try {
-                // Konfigurasi SMTP dan pengaturan lainnya
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'saputroandi763@gmail.com';
-                $mail->Password = 'zkza scib qoob vwzo';
-                $mail->Port = 465;
-                $mail->SMTPSecure = 'ssl';
-
-                // Set pengirim dan penerima
-                $mail->setFrom('saputroandi763@gmail.com');
-                $mail->addAddress($email, $nama_pengirim);
-
-                $mail->addReplyTo('nizarrestuaji18@gmail.com');
-                $mail->isHTML(true);
-                $mail->Subject = 'Mengirim Pesan dari PHP';
-                $mail->Body = 'Assalamualikum, Mas Nizar. Tes ' . $no_invoice . ' ';
-
-                // Kirim email
-                if ($mail->send()) {
-                    echo 'Pesan telah terkirim';
-                } else {
-                    echo 'Pesan tidak dapat terkirim. Mailer Error: ' . $mail->ErrorInfo;
-                }
-            } catch (Exception $e) {
-                echo 'Terjadi kesalahan: ' . $e->getMessage();
-            }
-        } else {
-            echo "Ada kesalahan dalam data yang diterima dari form atau alamat email tidak valid.";
-        }
-}
-
-    
+ 
 
     //function tampilan login
 	public function index()
 	{
 		$this->load->view('supervisor/dashboard');
-	}
-	public function coba()
-	{
-		$this->load->view('supervisor/test');
 	}
 	public function tambah_user_operator()
 	{

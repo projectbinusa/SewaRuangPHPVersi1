@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Auth extends CI_Controller {
     //function constructor unutk memanggil model library dan helper
     public function __construct()
@@ -120,15 +124,41 @@ class Auth extends CI_Controller {
         if (!empty($result)) {
             $generate = $this->generate_code();
             $code = $generate;
-            echo "<script>alert('Ini code verifikasi anda $code');
-            window.location.href = '" . base_url('auth/verifikasi_kode') . "';
-            </script>";
-            $data = [
-                'code' => $code,
-                'email' => $email
-            ];
-            $this->session->set_userdata($data);
-            
+            $mail = new PHPMailer(true);
+            try {
+                // Konfigurasi SMTP dan pengaturan lainnya
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'saputroandi763@gmail.com';
+                $mail->Password = 'zkza scib qoob vwzo';
+                $mail->Port = 465;
+                $mail->SMTPSecure = 'ssl';
+
+                // Set pengirim dan penerima
+                $mail->setFrom('saputroandi763@gmail.com');
+                $mail->addAddress($email, 'Sewa Ruang');
+
+                $mail->addReplyTo("$email");
+                $mail->isHTML(true);
+                $mail->Subject = 'Code Verifikasi Password';
+                $mail->Body = 'Berikut Code Verifikasi Untuk Reset Password '.$code.'';
+
+                // Kirim email
+                if ($mail->send()) {
+                    echo '<script>Pesan telah terkirim</script>';
+                    $data = [
+                        'code' => $code,
+                        'email' => $email
+                    ];
+                    $this->session->set_userdata($data);
+                    redirect(base_url('auth/verifikasi_kode'));
+                } else {
+                    echo '<script>Pesan tidak dapat terkirim.</script>';
+                }
+            } catch (Exception $e) {
+                echo 'Terjadi kesalahan: ' . $e->getMessage();
+            }           
 
         } else {
             echo "<script>
