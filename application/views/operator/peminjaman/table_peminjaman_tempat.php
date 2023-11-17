@@ -14,9 +14,7 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -422,7 +420,7 @@
             outline: 0;
             box-shadow: none;
         }
-        
+
 
         .btn:after {
             content: "";
@@ -829,7 +827,7 @@
 
         table.dataTable.no-footer {
             border-bottom: 1px solid #e2e8f0;
-             margin-top: 0.75em;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -838,8 +836,9 @@
             background-color: #4F709C !important;
 
         }
-          /* code responsive table */
-          @media (max-width: 600px) {
+
+        /* code responsive table */
+        @media (max-width: 600px) {
             table {
                 width: 100%;
             }
@@ -907,8 +906,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat"
-                    class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+                <a href="tambah_peminjaman_tempat" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -919,10 +917,8 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table class="table table-striped" style="min-width: 22rem;" id="example_data"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table class="table table-striped" style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="3" scope="col" class="px-3 py-3">
                                             No
@@ -960,11 +956,10 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 0;
-                                    foreach ($peminjaman as $row):
+                                    foreach ($peminjaman as $row) :
                                         $no++; ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="No " scope="row"
-                                                class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
                                             <td data-cell="Nama " class=" px-3 py-4">
@@ -980,15 +975,15 @@
                                                 <?php echo $row->kode_booking ?>
                                             </td>
 
-                                        <td data-cell="Tambahan " class="w-32 px-3 py-4">
-                                            <?php echo tampil_nama_tambahan_byid($row->id_tambahan)?>
-                                        </td>
-                                        <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
-                                        <?php
-                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                            <td data-cell="Tambahan " class="w-32 px-3 py-4">
+                                                <?php echo tampil_nama_tambahan_byid($row->id_tambahan) ?>
+                                            </td>
+                                            <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
+                                                <?php
+                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
                                                 // Menampilkan durasi dalam format angka
                                                 echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
@@ -1003,24 +998,19 @@
 
                                             <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                                <a
-                                                    href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
-                                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
                                                 </a>
-                                                <?php if ($row->status === 'booking'): ?>
-                                                    <button href=""
-                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                <?php if ($row->status === 'booking') : ?>
+                                                    <button onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                         <span class="">
                                                             <i class="fas fa-print"></i>
                                                         </span>
-
                                                     </button>
                                                 <?php endif; ?>
-                                                <button onclick="hapus(<?php echo $row->id ?>)"
-                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
@@ -1052,14 +1042,15 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_data').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
+
         function hapus(id) {
             Swal.fire({
                 title: 'Apakah Mau Dihapus?',
