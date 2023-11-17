@@ -920,6 +920,20 @@
        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
        <i class="fa-solid fa-plus"></i>   Tambah 
        </a>
+
+       <a href="export_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
+       onclick="showAddConfirmation()">
+        <button>
+            Export
+        </button>
+       </a>
+
+       <a href="import_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
+       onclick="showAddConfirmation()">
+        <button>
+            Import
+        </button>
+       </a>
      </h1>
 
                 <div class="col-lg-12">
