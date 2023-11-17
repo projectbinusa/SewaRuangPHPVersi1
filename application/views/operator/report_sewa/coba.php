@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewa Ruang</title>
-     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <title>Data Master Pelanggan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -18,20 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-    <!--Replace with your tailwind.css once created-->
+</head>
 
-    <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-    <!--Regular Datatables CSS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-
-       
     :root {
         --main-color: #4F709C;
         --main-color-opacity: 126, 86, 255;
@@ -1064,135 +1055,71 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
-</head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
+<body>
     <?php $this->load->view('sidebar'); ?>
-
     <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Report Sewa</h2>
+                        <h2 class="title">Data Pelanggan</h2>
 
                     </div>
                 </div>
             </div>
+    <div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6">
+        <div class="flex-2 p-3 w-full">
+            <!-- Tambah Pelanggan Button -->
+            <div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6">
+    <h1 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white flex items-center">
+       
+       <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
+       <i class="fa-solid fa-plus"></i>   Tambah 
+       </a>
+     </h1>
+               
+            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
-            <div class="container-table row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
+            <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th data-priority="5">No</th>
+                        <th data-priority="1">Name</th>
+                        <th data-priority="3">Phone</th>
+                        <th data-priority="4">Payment Method</th>
+                        <th data-priority="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 0;
+                    foreach ($pelanggan as $row) : $no++
+                    ?>
+                        <tr>
+                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $no ?></td>
+                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->nama ?></td>
+                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->phone ?></td>
+                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
+                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                <!-- Update Data -->
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded-lg" onclick="update(<?php echo $row->id ?>)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
 
-                            <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            No
-                                        </th>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            Nama
-                                        </th>
-
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
-                                            Ruangan
-                                        </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Kode
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Snack
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Total Booking
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Total
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Status
-                                        </th>
-
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Aksi
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 0;
-                                    foreach ($peminjaman as $row) : $no++ ?>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <?php echo $no ?>
-                                            </td>
-                                            <!-- Penyewa -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
-                                            </td>
-                                            <!-- Ruangan -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                            </td>
-                                            <!-- Kapasitas -->
-                                            <td class="w-36 px-3 py-4">
-                                                <?php echo $row->jumlah_orang ?>
-                                            </td>
-                                            <!-- Kode Booking -->
-                                            <td class="w-36 px-3 py-4">
-                                                <?php echo $row->kode_booking ?>
-                                            </td>
-                                            <!-- Snack -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_tambahan_byid($row->status) ?>
-                                            </td>
-                                            <!-- Total Booking -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php
-                                                $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                                echo $durasi->days . ' Hari';
-                                                ?>
-                                            </td>
-                                            <!-- Total -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php echo $row->total_harga ?>
-                                            </td>
-                                            <!-- Status -->
-                                            <td class="w-32 px-3 py-4">
-                                                <?php echo $row->status ?>
-                                            </td>
-                                            <!-- Aksi -->
-                                            <td class="justify-content-center px-3 py-4 flex">
-                                                <a href="<?php echo base_url('operator/update_report_sewa') ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                    <span class="">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                </a>
-                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                    <span class="">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+                                <!-- Hapus Data -->
+                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1.5 px-4 rounded-lg ml-3">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
         </div>
+    </div>
     </section>
-
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -1202,18 +1129,43 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
         $(document).ready(function() {
-
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
+            var table = $('#example').DataTable({
+                responsive: true
+            }).columns.adjust().responsive.recalc();
         });
+    </script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script>
+        function update(id) {
+            Swal.fire({
+                title: 'Ingin Mengubah Data Pelanggan',
+                text: " ",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya Ubah'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'Waitt',
+                        title: 'Loading ... ',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('operator/update_data/') ?>" + id;
+                    });
+                }
+            });
+        }
 
         function hapus(id) {
             Swal.fire({
-                title: ' Apa Mau Menghapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
+                title: ' Yakin Ingin Menghapus?',
+                text: "data tidak dikembalikan!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -1228,13 +1180,36 @@
                         showConfirmButton: false,
                         timer: 1500,
                     }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
+                        window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
                     });
                 }
             });
         }
-    </script>
 
+        function displaySweetAlert() {
+            const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+            const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+            if (message) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            } else if (error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: error,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = displaySweetAlert;
+    </script>
 </body>
 
 </html>
