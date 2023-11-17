@@ -237,6 +237,7 @@
                 <input type="number" name="harga" id="kapasitas" class="kapasitas" placeholder="Ketik harga" required>
                 <label for="jenis" id="name-label">Jenis<span class="required">*</span></label>
                 <select id="underline_select" name="jenis"
+                required
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Jenisnya</option>
                     <option value="Makanan">Makanan</option>
