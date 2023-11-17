@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eksport PDF</title>
     <style>
+        @page {
+            size: A5;
+        }
+
         body,
         html {
             margin: 0;
@@ -16,6 +20,7 @@
 
         body {
             font-family: Arial, sans-serif;
+            font-size: 12px;
             line-height: 1.2;
         }
 
@@ -64,6 +69,7 @@
             padding-left: 30px;
             padding-right: 30px;
             width: 100%;
+            padding: 20px;
             border-collapse: collapse;
         }
 
@@ -77,16 +83,6 @@
             font-weight: bold;
             padding-top: 10px;
             padding-bottom: 10px;
-        }
-
-        .total {
-            margin-bottom: 10%;
-        }
-
-        .total #displayTotal::before {
-            /* display: inline-block; */
-            vertical-align: top;
-            margin-right: 100%;
         }
 
         .total #displayTotal::after {
@@ -142,18 +138,14 @@
 
 <body>
     <div class="header">
+        <img src="image/foto.jpg" alt="">
         <h2>RuangSewa.com</h2>
     </div>
 
 
     <div class="invoice-yu">
-
-        <h1 class="invoice">
-            CUSTOMER
-            <span class="name-customer">INVOICE</span>
-        </h1>
-        <p style="margin-left: 75%;"><?php echo date('F, j-Y'); ?></p>
-
+        <h1 class="invoice">INVOICE</h1>
+        <p class="name-customer">Customer</p>
     </div>
 
     <div class="invoice-details">
@@ -170,6 +162,7 @@
             </tr>
         </table>
     </div>
+
     <br><br>
     <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
         <thead>
@@ -186,7 +179,6 @@
             <tr>
                 <td class="merah"><?php echo $no . '.'; ?></td>
                 <td class="merah"><?php echo format_ruangan(tampil_nama_ruangan_byid($peminjaman->id_ruangan)) . " - " . tampil_nama_tambahan_byid($peminjaman->id_tambahan) ?></td>
-                <td class="merah"><?php echo $peminjaman->jumlah_orang ?></td>
                 <td class="merah"><?php echo $no ?></td>
                 <td class="merah"><?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan)); ?></td>
                 <td class="merah"><?php echo convRupiah(intval(tampil_harga_ruangan_byid($peminjaman->id_ruangan)) + intval(tampil_harga_tambahan_byid($peminjaman->id_tambahan))); ?></td>
@@ -196,20 +188,26 @@
     </table>
     <br>
     <div class="container">
+        <div class="total">
+            Total harga :
+            <span id="displayTotal" data-amount="<?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan) + tampil_harga_tambahan_byid($peminjaman->id_tambahan)); ?>"></span>
+        </div>
 
+    <br>
+
+    <div class="container">
         <div class="total" style="margin-bottom: -50%;">
-            <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah(tampil_harga_ruangan_byid($peminjaman->id_ruangan) + tampil_harga_tambahan_byid($peminjaman->id_tambahan)); ?>"></span>
-
+            <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah(intval($harga_ruangan) + intval($harga_tambahan)); ?>"></span>
+        </div>
     </div>
+
     <br><br><br>
+
     <div class="payment-info">
-
-    <h4>PAYMENT INFO</h4>
-        <?php date_default_timezone_set('Asia/Jakarta'); ?>
-        <p class="baru">Tanggal :<span><?php echo date('F, j-Y'); ?></span></p>
-        <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
-        <p>Pembayaran melalui :<span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan) ?></span></p>
-
+        <h4>PAYMENT INFO</h4>
+        <p>Akun :<span><?php echo base_url('') ?></span></p>
+        <p>Nomor Akun :<span><?php echo base_url('') ?></span></p>
+        <p>embayaran melalui :<span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan) ?></span></p>
     </div>
 </body>
 

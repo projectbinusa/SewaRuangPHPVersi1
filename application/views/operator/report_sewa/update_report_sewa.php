@@ -220,6 +220,7 @@
                 font-size: 16px;
             }
         }
+    }
     </style>
 </head>
 
@@ -233,7 +234,7 @@
                 <h1 id="title" class="main-heading">Update Report Sewa</h1>
             </header>
             <?php foreach($peminjaman as $row):?>
-            <form action="<?php echo base_url('operator/aksi_update_report_sewa/')?>" method="post" id="survey-form" class="survey-form">
+            <form action="<?php echo base_url('operator/aksi_update_report_sewa')?>" method="post" id="survey-form" class="survey-form">
             <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id?>">
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
                 <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
@@ -252,7 +253,7 @@
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
                 <select id="underline_select" name="snack"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option selected><?php echo tampil_nama_tambahan_byid($row->status)?></option>
+                    <option selected><?php echo  tampil_nama_tambahan_byid($row->status)?></option>
                     <?php foreach($snack as $row):?>
                     <option value="<?php echo $row->id?>"><?php echo $row->nama?></option>
                     <?php endforeach?>
@@ -340,7 +341,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>

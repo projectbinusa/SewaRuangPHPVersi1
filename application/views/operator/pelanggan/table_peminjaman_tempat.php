@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peminjaman Tempat</title>
+    <title>Sewa Ruang</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 
@@ -19,7 +20,9 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -38,7 +41,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 17px; */
+            font-size: 17px;
             background-color: #f1f1f1;
         }
 
@@ -106,8 +109,6 @@
         .btn-base:after {
             background: #fff;
         }
-
-        .btn-base:hover::after {}
 
         .btn-border {
             color: var(--main-color);
@@ -767,7 +768,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -824,7 +826,7 @@
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            padding: 20px 10px 10px 10px;
+            padding: 20px 10px 10px 10px ;
         }
     </style>
 
@@ -832,7 +834,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <?php $this->load->view('sidebar'); ?>
+<?php $this->load->view('sidebar'); ?>
 
     <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
@@ -846,7 +848,8 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat" class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                <a href="tambah_peminjaman_tempat"
+                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -856,8 +859,10 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table style="min-width: 22rem;" id="example_data"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-4 py-3">
                                             No
@@ -865,25 +870,25 @@
                                         <th data-priority="2" scope="col" class="px-4 py-3">
                                             Nama
                                         </th>
-
+                                        
                                         <th data-priority="4" scope="col" class="px-4 py-3">
                                             Ruangan
                                         </th>
-
+                                      
                                         <th data-priority="6" scope="col" class="px-4 py-3">
-                                            Kode
+                                            Kode 
                                         </th>
-
-
-
+                                      
+                                      
+                                       
                                         <th data-priority="10" scope="col" class="px-4 py-3">
-                                            Hari Booking
+                                         Hari Booking
                                         </th>
                                         <th data-priority="10" scope="col" class="px-4 py-3">
-                                            Total
+                                         Total 
                                         </th>
-
-
+                                      
+                                      
                                         <th data-priority="13" scope="col" class="px-4 py-3">
                                             Status
                                         </th>
@@ -894,55 +899,59 @@
                                 </thead>
                                 <tbody>
                                     <tr class="bg-white border-b text-center dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row" class="px-3  py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="px-3  py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             1
                                         </td>
                                         <td data-cell="Nama " class=" px-4 py-3">
-                                            Sani Dahye
+                                            Sani Dahye 
                                         </td>
-
+                                     
                                         <td data-cell="Ruangan " class=" px-4 py-3">
-                                            004
+                                            004 
                                         </td>
-
+                                       
                                         <td data-cell="Kode " class=" px-4 py-3">
-                                            65789
+                                            65789 
                                         </td>
-
-
-
+                                     
+                                   
+                                      
                                         <td data-cell="Hari Booking " class="justify-content-center px-4 py-3">
-                                            09/11/2023 - 10/11/2023
+                                        09/11/2023 - 10/11/2023
                                         </td>
                                         <td data-cell="Total " class="justify-content-center px-4 py-3">
-                                            2.500.000
+                                        2.500.000
                                         </td>
-
-
+                                       
+                                      
                                         <td data-cell="Status " class="px-4 py-3">
                                             Pending
                                         </td>
                                         <td data-cell="Aksi" class="justify-content-center px-4 py-3 flex">
 
-                                            <a href="pelanggan/edit_peminjaman" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                            <a href="pelanggan/edit_peminjaman"
+                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
-
+                                                
                                             </a>
-
-                                            <a href="pelanggan/edit_peminjaman" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3  ml-3 rounded">
+                                            
+                                            <a href="pelanggan/edit_peminjaman"
+                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3  ml-3 rounded">
                                                 <span class="">
-                                                    <i class="fas fa-print"></i>
+                                                <i class="fas fa-print"></i>
                                                 </span>
-
+                                                
                                             </a>
-
-                                            <button onclick="" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                           
+                                            <button onclick=""
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
-
+                                                
                                             </button>
                                         </td>
                                     </tr>
@@ -966,11 +975,11 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_data').DataTable({
-                    responsive: true
-                })
+                responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });

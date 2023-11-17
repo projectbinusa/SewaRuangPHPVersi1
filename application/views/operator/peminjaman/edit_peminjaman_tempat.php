@@ -205,13 +205,11 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
             </header>
-            <?php foreach ($peminjaman as $row):  $tanggal_booking = $row->tanggal_booking; $tanggal_berakhir = $row->tanggal_berakhir;?>
-                <form action="<?php echo base_url('operator/aksi_edit_peminjaman') ?>" method="post" id="survey-form"
-                    class="survey-form">
-                    <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id ?>">
-                    <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                    <input type="text" name="nama" id="nama" class="nama"
-                        value="<?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>">
+            <?php foreach($peminjaman as $row):?>
+            <form action="<?php echo base_url('operator/aksi_edit_peminjaman')?>" method="post" id="survey-form" class="survey-form">
+            <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id?>">
+                <label for="nama" id="name-label">Nama <span class="required">*</span></label>
+                <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
                     <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
                     <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
@@ -242,12 +240,14 @@
 
                     </datalist>
 
-                    <label for="booking" id="booking-label">Booking Dari Tanggal<span class="required">*</span></label>
-<input type="date" name="booking" id="booking" class="total_booking" value="<?php echo $tanggal_booking  ?>" required>
-
-<label for="akhir_booking" id="akhir_booking-label">Booking Sampai Tanggal<span class="required">*</span></label>
-<input type="date" name="akhir_booking" id="akhir_booking" class="total_booking" value="<?php echo $tanggal_berakhir ?>" required>
-
+                    <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
+                            class="required">*</span></label>
+                    <input type="date" name="booking" id="total_booking" class="total_booking"
+                        value="<?php echo $row->tanggal_booking ?>" required>
+                    <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
+                            class="required">*</span></label>
+                    <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
+                        value="<?php echo $row->tanggal_berakhir ?>" required>
                     <input type="submit" id="submit" class="submit" value="Submit">
                 </form>
             <?php endforeach ?>
