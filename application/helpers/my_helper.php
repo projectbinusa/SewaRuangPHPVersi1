@@ -64,8 +64,7 @@ function tampil_nama_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('peminjaman');
-
+    $result = $ci->db->where('id', $id)->get('tambahan');
     foreach ($result->result() as $c) {
         $stmt = $c->nama;
         return $stmt;
@@ -78,6 +77,26 @@ function tampil_nama_ruangan_byid($id)
     $result = $ci->db->where('id', $id)->get('ruangan');
     foreach ($result->result() as $c) {
         $stmt = 'L.' . $c->no_lantai . ' ' . 'R.' . $c->no_ruang;
+        return $stmt;
+    }
+}
+function tampil_jumlah_tambahan_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('tambahan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->id;
+        return $stmt;
+    }
+}
+function tampil_ruangan_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('ruangan');
+    foreach ($result->result() as $c) {
+        $stmt ='R. ' . $c->no_ruang;
         return $stmt;
     }
 }
@@ -134,15 +153,10 @@ function tampil_pelanggan_bynama($nama)
 function tampil_id_byemail($email)
 {
     $ci = &get_instance();
-    $ci -> load->database();
+    $ci->load->database();
     $result = $ci->db->where('email', $email)->get('user');
     foreach ($result->result() as $c) {
         $stmt = $c->id;
         return $stmt;
     }
 }
-
-
-
-
-?>
