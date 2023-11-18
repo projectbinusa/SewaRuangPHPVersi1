@@ -975,7 +975,15 @@
                                             </td>
 
                                             <td data-cell="Tambahan " class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_tambahan_byid($row->id_tambahan) ?>
+                                            <?php
+                        // Memisahkan data tambahan menjadi array
+                        $tambahanArray = explode(',', $row->tambahan_nama);
+                        
+                        // Menampilkan setiap tambahan
+                        foreach ($tambahanArray as $tambahan) {
+                            echo $tambahan . '<br>';
+                        }
+                        ?>
                                             </td>
                                             <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
                                                 <?php

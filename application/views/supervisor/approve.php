@@ -1574,8 +1574,14 @@
                                         <th data-priority="9" scope="col" class="px-3 py-3">
                                             Jumlah Orang
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Kode Booking
+                                        </th>
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Booking Tanggal
+                                        </th>
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Sampai Tanggal
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
@@ -1604,6 +1610,12 @@
                                         </td>
                                         <td data-cell=" " class="text-center px-3 py-4">
                                         <?php echo $row->kode_booking?>
+                                        </td>
+                                        <td data-cell=" " class="text-center px-3 py-4">
+                                        <?php echo $row->tanggal_booking?>
+                                        </td>
+                                        <td data-cell=" " class="text-center px-3 py-4">
+                                        <?php echo $row->tanggal_berakhir?>
                                         </td>
                                         <td data-cell=" Waktu " class="text-center px-3 py-4">
                                         <?php

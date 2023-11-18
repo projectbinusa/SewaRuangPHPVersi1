@@ -439,7 +439,7 @@ class operator extends CI_Controller
 
     public function peminjaman_tempat()
     {
-        $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
+        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
         $this->load->view('operator/peminjaman/table_peminjaman_tempat', $data);
     }
 
