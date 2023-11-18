@@ -231,10 +231,10 @@
                     <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
                         placeholder="Pilih Paket">
                     <datalist id="browsers" id="checkbox" role="listbox">
-                        <div class="flex gap-3">
+                        <div class="">
                         <?php foreach($tambahan as $row):?>
                         <option style=""><?php echo $row->nama?></option>
-                        <input style="width: 15px; margin-left: 5rem; margin-top:-2rem;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
+                        <input style="width: 15px;  margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
                         <?php endforeach?>
                         </div>
                     </datalist>

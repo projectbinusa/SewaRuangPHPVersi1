@@ -13,7 +13,6 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        
          <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
@@ -21,6 +20,7 @@
 
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -33,7 +33,6 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
             background-color: #f1f1f1;
         }
         .content-text {
@@ -161,174 +160,7 @@
             margin-right: 7px;
         }
 
-        /*------------------------------------------------
-    ## Back Top
-------------------------------------------------*/
-        #back-to-top {
-            display: inline-block;
-            background-color: var(--main-color);
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            border-radius: 4px;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
-            opacity: 0;
-            animation: backto-top-bounce 4s infinite ease-in-out;
-            visibility: hidden;
-            z-index: 1000;
-        }
-
-        #back-to-top::after {
-            content: "";
-            position: absolute;
-            background: #fff;
-            top: 50%;
-            margin-top: -2.5px;
-            height: 3px;
-            width: 14px;
-            line-height: 50px;
-            transform: rotate(-43deg);
-            left: 8.5px;
-        }
-
-        #back-to-top::before {
-            content: "";
-            position: absolute;
-            background: #fff;
-            top: 50%;
-            margin-top: -2.5px;
-            height: 3px;
-            width: 14px;
-            line-height: 50px;
-            transform: rotate(43deg);
-            right: 8.5px;
-        }
-
-        #back-to-top:hover {
-            cursor: pointer;
-            background-color: #333;
-        }
-
-        #back-to-top:active {
-            background-color: #555;
-        }
-
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        @keyframes backto-top-bounce {
-            0% {
-                transform: translateY(-5px);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
-
-            100% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /***navbar-area***/
-        .navbar-area {
-            background: transparent;
-            padding: 0;
-            top: 0;
-            position: fixed;
-            z-index: 98;
-            width: 100% !important;
-            transition: all 0.4s;
-            background: transparent;
-        }
-
-        .navbar {
-            background: #0C356A;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-            transition: all 0.3s linear;
-        }
-
-        .top-nav-collapse {
-            box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
-            top: 0;
-            padding: 0;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            background: rgba(0, 33, 71, 1);
-        }
-
-        .navbar-area .nav-container {
-            transition: all 0.4s;
-            padding: 16px 12px;
-        }
-
-        .top-nav-collapse .nav-container {
-            background-color: transparent;
-            padding: 16px 12px;
-            transition: all 0.4s;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li {
-            margin-top: 0;
-            display: inline-block;
-            font-weight: 400;
-            line-height: 50px;
-            text-transform: capitalize;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li a {
-            color: #fff;
-            font-size: 16px;
-            text-decoration: none;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li+li {
-            margin-left: 20px;
-        }
-
-        .nav-right-part-desktop {
-            margin-left: 30px;
-        }
-
-        .nav-right-part ul {
-            padding: 0;
-            margin: 0;
-            display: inline-flex;
-        }
-
-        .nav-right-part ul li {
-            list-style: none;
-            align-self: center;
-        }
-
-        .nav-right-part-mobile {
-            display: none;
-        }
-
-        .nav-right-part-mobile ul li a {
-            text-decoration: none;
-            color: #fff;
-            padding: 0 10px;
-        }
-
-        .nav-right-part-mobile ul li .cart {
-            display: none;
-        }
-
-        .nav-right-part-mobile ul li .cart img {
-            height: 20px;
-            width: 20px;
-            filter: invert(1);
-        }
-
+   
         /***banner-area***/
         .banner-area {
             background: var(--main-gradient);
@@ -578,11 +410,6 @@
             visibility: visible;
             opacity: 1;
         }
-
-        /* 
-        .footer-area {
-            background: rgba(0, 33, 71, 0.9);
-        } */
 
 
         /***section-title***/
@@ -891,7 +718,6 @@
             margin: 0 auto 20px;
             box-shadow: 0 0 40px rgb(82 85 90 / 20%);
             border-radius: 5px;
-            height: 15rem;
         }
 
         /* .footer-bottom {
@@ -3656,10 +3482,8 @@
             padding: 0;
             text-align: center;
             cursor: pointer;
-            background: var(--main-color);
         }
 
-        .td-search-popup .search-form .submit-btn:hover,
         .td-search-popup .search-form .submit-btn:focus,
         .td-search-popup .search-form .submit-btn:active {
             outline: 0;
@@ -4600,357 +4424,6 @@
             width: auto;
         }
 
-        /****subscribe-area****/
-        .subscribe-inner-area {
-            padding: 41px 40px 30px;
-            border-radius: 10px;
-        }
-
-        .subscribe-inner-area h3 {
-            font-size: 28px;
-            font-weight: 500;
-        }
-
-        .subscribe-inner-area p {
-            font-size: 16px;
-            margin-bottom: 35px;
-        }
-
-        .subscribe-inner-area .single-input-inner {
-            position: relative;
-            border-radius: 10px;
-        }
-
-        .subscribe-inner-area .single-input-inner input {
-            height: 73px;
-            border-radius: 10px !important;
-            border: 0 !important;
-            font-size: 15px;
-            color: #636363;
-            padding: 0 190px 0 35px;
-        }
-
-        .subscribe-inner-area .single-input-inner .btn {
-            position: absolute;
-            right: 6.5px;
-            border-radius: 10px;
-            height: 60px;
-            line-height: 60px;
-            padding: 0 30px;
-            top: 6.5px;
-        }
-
-        .subscribe-inner-area .single-input-inner .btn i {
-            margin-right: 7px;
-        }
-
-        /***pricing-area***/
-        .single-pricing-inner-wrap {
-            box-shadow: 0 0 20px rgba(91, 91, 91, 0.1);
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .single-pricing-inner-wrap .single-pricing-inner {
-            position: relative;
-            z-index: 2;
-            padding: 45px 50px 50px;
-            background: #fff;
-        }
-
-        .single-pricing-inner-wrap:hover:after {
-            opacity: 1;
-            transform: rotateZ(3deg);
-        }
-
-        .single-pricing-inner-wrap:after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: var(--main-color);
-            top: -4px;
-            left: -1.2px;
-            opacity: 0;
-            transition: all 0.3s ease-in;
-        }
-
-        .single-pricing-inner-wrap .title {
-            font-weight: 500;
-        }
-
-        .single-pricing-inner-wrap .price-area {
-            font-size: 29px;
-            font-weight: 300;
-            color: var(--heading-color);
-            border-bottom: 1px solid #E2E2E2;
-            padding-bottom: 17px;
-            margin-bottom: 42px;
-        }
-
-        .single-pricing-inner-wrap .price-area span {
-            font-size: 55px;
-            font-weight: 500;
-        }
-
-        .single-pricing-inner-wrap .pricing-list {
-            text-align: left;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            margin-bottom: 42px;
-        }
-
-        .single-pricing-inner-wrap .pricing-list li {
-            font-size: 16px;
-            margin-bottom: 19px;
-        }
-
-        .single-pricing-inner-wrap .pricing-list li i {
-            color: var(--main-color);
-            margin-right: 20px;
-        }
-
-        .single-pricing-inner-wrap .pricing-list li.unable i {
-            color: #E5E5E5;
-        }
-
-        /********* institute-slider ************/
-        .institute-slider {
-            cursor: pointer;
-        }
-
-        .institute-slider .item img {
-            width: auto;
-            margin: auto;
-        }
-
-        .institute-slider .owl-nav {
-            display: none;
-        }
-
-        /********* events-area ************/
-        .events-area .single-blog-list-wrap {
-            padding: 80px 150px 80px 80px;
-        }
-
-        .events-area .event-thumb {
-            margin-left: -100px;
-        }
-
-        /**************** single-progress-inner *************/
-        .single-progress-inner {
-            margin: 0;
-            padding: 0;
-        }
-
-        .single-progress-inner li {
-            list-style: none;
-        }
-
-        .single-progress-inner li:last-child {
-            margin-bottom: 0;
-        }
-
-        .single-progress-inner li:nth-child(2) .progress-bg .progress-rate {
-            background: #F14D5D;
-        }
-
-        .single-progress-inner li:nth-child(3) .progress-bg .progress-rate {
-            background: #2878EB;
-        }
-
-        .single-progress-inner li:nth-child(4) .progress-bg .progress-rate {
-            background: #002147;
-        }
-
-        .single-progress-inner li:nth-child(5) .progress-bg .progress-rate {
-            background: #FFC800;
-        }
-
-        .progress-item {
-            margin-bottom: 20px;
-        }
-
-        .progress-item .progress-count-wrap {
-            position: absolute;
-            top: -35px;
-            right: -19px;
-        }
-
-        .progress-item.add-progress-start .progress-count-wrap {
-            position: absolute;
-            top: -35px;
-            right: -5px;
-        }
-
-        .progress-item.add-progress-full .progress-count-wrap {
-            position: absolute;
-            top: -35px;
-            right: 11px;
-        }
-
-        .progress-item .progress-count.counting {
-            font-weight: 400;
-            color: var(--heading-color);
-        }
-
-        .progress-item .counting-icons {
-            padding-left: 2px;
-            position: absolute;
-            display: inline-block;
-            font-weight: 400;
-            color: var(--heading-color);
-            top: 0;
-            right: -14px;
-        }
-
-        .progress-item .progress-bg {
-            position: relative;
-            height: 6px;
-            background: rgba(0, 33, 71, 0.1);
-        }
-
-        .progress-item .progress-bg .progress-rate {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 0;
-            height: 100%;
-            background: #1DC295;
-            transition: 2.5s;
-        }
-
-        /************* single-faq-inner ************/
-        .single-faq-inner {
-            border: 1px solid #DFDFDF;
-            padding: 22px 28px;
-            border-radius: 7px;
-            margin-bottom: 20px;
-        }
-
-        .single-faq-inner .card-header {
-            background: transparent;
-            border: 0;
-            padding: 0;
-            cursor: pointer !important;
-        }
-
-        .single-faq-inner .card-header button {
-            padding: 0;
-            font-weight: 600;
-            border: 0;
-            width: 100%;
-            text-align: left;
-            text-decoration: none;
-            font-size: 20px;
-            cursor: pointer !important;
-            position: relative;
-            color: var(--heading-color);
-        }
-
-        .single-faq-inner .card-header button i {
-            position: absolute;
-            right: 0;
-            padding-top: 3px;
-            color: var(--main-color);
-        }
-
-        .single-faq-inner .card-header button.collapsed i {
-            color: #9CA6B6;
-        }
-
-        .single-faq-inner .card-body {
-            padding: 0;
-            padding-top: 15px;
-        }
-
-        .single-faq-inner.style-no-border {
-            border: 0;
-            padding: 0;
-            margin-bottom: 30px;
-        }
-
-        .single-faq-inner.style-header-bg {
-            border: 0;
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        /************* ratings-list-inner ************/
-        .ratings-list-inner {
-            border: 1px solid #e5e5e5;
-            border-radius: 6px;
-            padding: 40px 30px;
-        }
-
-        .ratings-list-inner ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .ratings-list-inner ul li {
-            list-style: none;
-            margin-bottom: 3px;
-        }
-
-        .ratings-list-inner ul li:last-child {
-            margin-bottom: 0;
-        }
-
-        .ratings-list-inner ul li .progress-bar-inner {
-            display: inline-block;
-            width: 65%;
-        }
-
-        .ratings-list-inner ul li .progress-bar-inner .progress {
-            height: 6px;
-        }
-
-        .ratings-list-inner ul li .progress-bar-inner .progress .progress-bar {
-            background-color: #ffb700;
-        }
-
-        .ratings-list-inner ul li .counter-label {
-            margin-right: 10px;
-        }
-
-        .ratings-list-inner ul li .counter-label i {
-            color: #ffb700;
-            margin-right: 3px;
-        }
-
-        .ratings-list-inner ul li .counter-count {
-            margin-left: 10px;
-        }
-
-        .ratings-list-inner .total-avarage-rating h2 {
-            margin-bottom: 0;
-        }
-
-        .ratings-list-inner .total-avarage-rating .rating-inner i {
-            color: var(--main-color);
-        }
-
-        .event-detaila-inner .thumb img {
-            border-radius: 6px;
-        }
-
-        .event-detaila-inner .event-meta {
-            margin: 0;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-
-        .event-detaila-inner .event-meta li {
-            list-style: none;
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .event-detaila-inner .event-meta li:last-child {
-            margin-right: 0;
-        }
-
         /*********** single-gallery-inner ************/
         .single-gallery-inner {
             margin-bottom: 30px;
@@ -5001,8 +4474,684 @@
             transform: scale(1.1);
         }
 
-      
-   
+        /*----------------------------------------------
+    ## Course section style
+----------------------------------------------*/
+        .edmt-nav-tab {
+            margin-bottom: 42px;
+        }
+
+        .edmt-nav-tab ul {
+            text-align: center;
+            border: 0;
+            display: inline-block;
+        }
+
+        .edmt-nav-tab ul li {
+            display: inline-block;
+        }
+
+        .edmt-nav-tab ul li a {
+            border: 0 !important;
+            color: var(--heading-color);
+            font-size: 15px;
+            font-weight: 500;
+            height: 38px;
+            line-height: 38px;
+            border-radius: 40px !important;
+            padding: 0 25px !important;
+        }
+
+        .edmt-nav-tab ul li a.active {
+            background-color: var(--main-color) !important;
+            color: var(--heading-color) !important;
+        }
+
+        .edmt-nav-tab ul li:last-child {
+            margin-right: 0;
+        }
+
+        .single-course-inner {
+            border-radius: 7px;
+            border: 1px solid #F1F1F1;
+            margin-bottom: 30px;
+            position: relative;
+            transition: 0.4s;
+        }
+
+        .single-course-inner .thumb {
+            position: relative;
+            overflow: hidden;
+            border-radius: 7px 7px 0 0;
+        }
+
+        .single-course-inner .thumb img {
+            transform: scale(1);
+            transition: 0.9s;
+        }
+
+        .single-course-inner .details .details-inner {
+            padding: 20px 20px 16px;
+        }
+
+        .single-course-inner .details .details-inner h6 {
+            font-weight: 500;
+        }
+
+        .single-course-inner .details .emt-user {
+            margin-bottom: 13px;
+        }
+
+        .single-course-inner .details .emt-user .u-thumb,
+        .single-course-inner .details .emt-user .u-thumb img {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: rgba(253, 200, 0, 0.2);
+            display: inline-block;
+            margin-right: 7px;
+            box-shadow: 0px 1px 10px #c1bfbf;
+        }
+
+        .single-course-inner .details .emt-user .u-thumb img {
+            border-radius: 50%;
+        }
+
+        .single-course-inner .details .emt-user span {
+            font-size: 14px;
+            color: var(--heading-color);
+            font-weight: 500;
+        }
+
+        .single-course-inner .emt-course-meta {
+            border-top: 1px solid #F1F1F1;
+            padding: 14px 20px;
+            font-weight: 500;
+        }
+
+        .single-course-inner .emt-course-meta .rating {
+            color: var(--main-color);
+        }
+
+        .single-course-inner .emt-course-meta .rating span {
+            font-size: 15px;
+            color: rgba(13, 16, 52, 0.5);
+        }
+
+        .single-course-inner .emt-course-meta .price {
+            color: rgba(13, 16, 52, 0.5);
+        }
+
+        .single-course-inner .emt-course-meta .price span {
+            color: var(--heading-color);
+        }
+
+        .single-course-inner.style-bottom-thumb .thumb {
+            margin: 0 15px 15px;
+            border-radius: 7px;
+        }
+
+        .single-course-inner.style-bottom-thumb .thumb img {
+            transform: scale(1.05);
+        }
+
+        .single-course-inner.style-bottom-thumb .details .details-inner {
+            padding: 15px;
+        }
+
+        .single-course-inner.style-bottom-thumb .details .details-inner h6 {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+
+        .single-course-inner.style-bottom-thumb .emt-course-meta {
+            padding: 15px;
+        }
+
+        .single-course-inner.style-bottom-thumb .emt-course-meta .price {
+            height: 30px;
+            line-height: 31px;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 0 15px;
+            border-radius: 30px;
+            background: var(--main-color);
+            display: inline-block;
+            color: #fff;
+        }
+
+        .single-course-inner.style-two {
+            margin-top: 45px;
+        }
+
+        .single-course-inner.style-two .emt-thumb-icon {
+            height: 90px;
+            width: 90px;
+            line-height: 90px;
+            text-align: center;
+            border-radius: 5px;
+            background: var(--main-color);
+            position: absolute;
+            left: 20px;
+            top: -45px;
+            z-index: 2;
+        }
+
+        .single-course-inner.style-two .details h6 {
+            font-size: 20px;
+            margin-bottom: 0;
+        }
+
+        .single-course-inner.style-two:hover {
+            background: var(--heading-color);
+        }
+
+        .single-course-inner.style-two:hover .details h6 {
+            color: #fff;
+        }
+
+        .single-course-inner.style-two:hover .details .arrow-right img {
+            filter: invert(100);
+        }
+
+        .single-course-inner:hover {
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .single-course-inner:hover .thumb img {
+            transform: scale(1.1);
+        }
+
+        .course-course-detaila-inner .emt-user .u-thumb {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: rgba(253, 200, 0, 0.2);
+            display: inline-block;
+            margin-right: 7px;
+            box-shadow: 0px 1px 10px #c1bfbf;
+        }
+
+        .course-course-detaila-inner .emt-user .u-thumb img {
+            border-radius: 50%;
+        }
+
+        .course-course-detaila-inner .emt-user span {
+            font-size: 14px;
+            color: var(--heading-color);
+            font-weight: 500;
+        }
+
+        .course-course-detaila-inner .title {
+            margin-bottom: 20px;
+        }
+
+        .course-course-detaila-inner .thumb {
+            margin-bottom: 30px;
+        }
+
+        .course-course-detaila-inner .thumb img {
+            border-radius: 7px;
+        }
+
+        .course-details-nav-tab {
+            background: transparent;
+            margin-bottom: 44px;
+            border: 1px solid #CBD6E2;
+        }
+
+        .course-details-nav-tab ul {
+            margin: 0;
+            padding: 0;
+            border: 0 !important;
+        }
+
+        .course-details-nav-tab ul li {
+            margin-bottom: 0 !important;
+            width: 25%;
+        }
+
+        .course-details-nav-tab ul li a {
+            border: 0 !important;
+            border-right: 1px solid #CBD6E2 !important;
+            padding: 10px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 0 !important;
+            color: var(--heading-color) !important;
+        }
+
+        .course-details-nav-tab ul li a.active {
+            background: var(--main-color) !important;
+        }
+
+        .course-details-nav-tab ul li:last-child a {
+            border-right: 0 !important;
+        }
+
+        /*------------------------------------------------
+    blog style
+------------------------------------------------*/
+        .single-blog-inner {
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 7px;
+            transition: 0.4s;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .single-blog-inner .thumb {
+            position: relative;
+        }
+
+        .single-blog-inner .thumb .date {
+            font-size: 14px;
+            font-weight: 500;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 20px;
+            color: var(--heading-color);
+            background: var(--main-color);
+            display: inline-block;
+            border-radius: 30px;
+            position: absolute;
+            bottom: -17px;
+            left: 30px;
+        }
+
+        .single-blog-inner .details {
+            padding: 25px 30px 25px 30px;
+        }
+
+        .single-blog-inner .details .blog-meta {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 13px;
+        }
+
+        .single-blog-inner .details .blog-meta li {
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 12px;
+            color: var(--heading-color);
+        }
+
+        .single-blog-inner .details .blog-meta li i {
+            margin-right: 4px;
+        }
+
+        .single-blog-inner .details .blog-meta li:last-child {
+            margin-right: 0;
+        }
+
+        .single-blog-inner .details h5 {
+            margin-bottom: 16px;
+        }
+
+        .single-blog-inner .details .title {
+            margin-bottom: 16px;
+        }
+
+        .single-blog-inner .details p {
+            margin-bottom: 16px;
+        }
+
+        .single-blog-inner .details .read-more-text {
+            font-size: 14px;
+            color: var(--heading-color);
+            font-weight: 500;
+            transition: 0.4s;
+        }
+
+        .single-blog-inner .details .read-more-text i {
+            margin-left: 3px;
+        }
+
+        .single-blog-inner .details .read-more-text:hover {
+            color: var(--main-color);
+        }
+
+        .single-blog-inner.style-border {
+            margin-bottom: 50px;
+            border: 2px solid #E4EAF1;
+            box-shadow: none;
+        }
+
+        .single-blog-inner:hover {
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .single-blog-list-inner {
+            margin-bottom: 25px;
+        }
+
+        .single-blog-list-inner .date {
+            font-size: 23px;
+            font-weight: 500;
+            width: 60px;
+            height: 60px;
+            line-height: 1;
+            color: var(--heading-color);
+            background: var(--main-color);
+            display: inline-block;
+            border-radius: 7px;
+            text-align: center;
+            padding-top: 5px;
+            margin-right: 14px;
+        }
+
+        .single-blog-list-inner .date span {
+            font-size: 14px;
+        }
+
+        .single-blog-list-inner .details .blog-meta {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .single-blog-list-inner .details .blog-meta li {
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 12px;
+            color: var(--heading-color);
+        }
+
+        .single-blog-list-inner .details .blog-meta li i {
+            margin-right: 4px;
+        }
+
+        .single-blog-list-inner .details .blog-meta li:last-child {
+            margin-right: 0;
+        }
+
+        .single-blog-list-inner .details h5 {
+            margin-bottom: 0;
+        }
+
+        .single-blog-list-wrap {
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
+            padding: 0;
+            margin: 0;
+            padding: 38px 30px;
+            border-radius: 7px;
+        }
+
+        .single-blog-list-wrap>li {
+            list-style: none;
+            border-bottom: 1px solid #e8e6e6;
+            margin-bottom: 30px;
+        }
+
+        .single-blog-list-wrap>li:last-child {
+            margin-bottom: 0;
+            border: 0;
+        }
+
+        .single-blog-list-wrap>li:last-child .single-blog-list-inner {
+            margin-bottom: 0;
+        }
+
+        .single-blog-list-wrap.style-white>li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .single-blog-list-wrap.style-white>li:last-child {
+            margin-bottom: 0;
+            border: 0;
+        }
+
+        .single-blog-list-wrap.style-white>li:last-child .single-blog-list-inner {
+            margin-bottom: 0;
+        }
+
+        .single-blog-list-wrap.style-white .details .blog-meta li {
+            color: #fff;
+        }
+
+        .single-blog-list-wrap.style-white .details h5 {
+            color: #fff;
+        }
+
+        /************ page navigation ************/
+        .td-page-navigation .pagination {
+            display: inline-flex;
+            margin: 10px 0 0 0;
+        }
+
+        .td-page-navigation .pagination .pagination-arrow a {
+            border: 0;
+            transition: all 0.4s ease;
+        }
+
+        .td-page-navigation .pagination .pagination-arrow a:hover {
+            border: 0;
+        }
+
+        .td-page-navigation .pagination li a {
+            height: 55px;
+            width: 55px;
+            margin-right: 15px;
+            border: 0;
+            border-radius: 5px;
+            background-color: #F0F4F9;
+            line-height: 57px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: block;
+            color: var(--heading-color);
+            font-size: 18px;
+        }
+
+        .td-page-navigation .pagination li a:active,
+        .td-page-navigation .pagination li a:focus,
+        .td-page-navigation .pagination li a:hover {
+            background: var(--main-color);
+        }
+
+        .td-page-navigation .pagination li a.active {
+            background: var(--main-color);
+        }
+
+        .contact-form-inner.style-shadow {
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
+            background: #fff;
+            padding: 33px 40px 40px;
+            border-top: 5px solid var(--main-color);
+        }
+
+        /*********** event **********/
+        .single-event-inner {
+            margin-bottom: 25px;
+            border: 3px solid #F0F4F9;
+            transition: 0.4s;
+            padding: 40px 30px 35px 30px;
+            border-radius: 7px;
+        }
+
+        .single-event-inner .date {
+            font-size: 33px;
+            font-weight: 500;
+            width: 88px;
+            height: 88px;
+            line-height: 1.1;
+            color: var(--heading-color);
+            background: var(--main-color);
+            display: inline-block;
+            border-radius: 7px;
+            text-align: center;
+            padding-top: 5px;
+            margin-right: 25px;
+        }
+
+        .single-event-inner .date span {
+            font-size: 22px;
+        }
+
+        .single-event-inner .details .blog-meta {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .single-event-inner .details .blog-meta li {
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 12px;
+            color: var(--heading-color);
+        }
+
+        .single-event-inner .details .blog-meta li i {
+            margin-right: 4px;
+        }
+
+        .single-event-inner .details .blog-meta li:last-child {
+            margin-right: 0;
+        }
+
+        .single-event-inner .details p {
+            margin-bottom: 0;
+        }
+
+        .single-event-inner:hover {
+            background: #F0F4F9;
+        }
+
+        /******* team-details-page *********/
+        .team-details-page h3 {
+            font-size: 40px;
+            margin-bottom: 0;
+        }
+
+        .team-details-page span {
+            display: block;
+        }
+
+        .team-details-page .designation {
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        /******** blog-details-page-content ***********/
+        .blog-details-page-content .single-blog-inner {
+            box-shadow: none !important;
+        }
+
+        .blog-details-page-content .single-blog-inner .details {
+            padding: 0;
+            padding-top: 30px;
+        }
+
+        .blog-details-page-content blockquote {
+            background: #F0F4F9;
+            padding: 30px 40px;
+            border-left: 5px solid var(--main-color);
+            font-weight: 500;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border-radius: 7px;
+        }
+
+        /*********** tag-and-share ************/
+        .tag-and-share {
+            border-top: 1px solid #e9eaea;
+            border-bottom: 1px solid #e9eaea;
+            padding-bottom: 14px;
+            padding-top: 17px;
+            margin-top: 70px;
+        }
+
+        .tag-and-share .blog-share ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tag-and-share .blog-share ul li {
+            display: inline-block;
+            list-style: none;
+            margin-right: 15px;
+            color: #7e8699;
+        }
+
+        .tag-and-share .blog-share ul li:last-child {
+            margin-right: 0;
+        }
+
+        /******* blog-comment *******/
+        .blog-comment {
+            margin-top: 62px;
+        }
+
+        .blog-comment .media {
+            margin-bottom: 35px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #e9eaea;
+        }
+
+        .blog-comment .media a img {
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+
+        .blog-comment .media.nesting {
+            margin-left: 60px;
+        }
+
+        .blog-comment .media .media-body {
+            margin-left: 30px;
+        }
+
+        .blog-comment .media .media-body h5 {
+            position: relative;
+        }
+
+        .blog-comment .media .media-body h5 a {
+            font-size: 20px;
+            color: #14212b;
+        }
+
+        .blog-comment .media .media-body .date {
+            font-size: 12px;
+            color: #5a6378;
+            font-weight: 400;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        .blog-comment .media .media-body p {
+            font-size: 16px;
+            color: #5a6378;
+        }
+
+        .blog-comment .media .media-body a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--heading-color);
+        }
+
+        .blog-comment .media .media-body a:hover {
+            color: var(--main-color);
+        }
+
+        .blog-comment-form {
+            border: 1px solid #E2EEFF;
+            padding: 40px 40px 50px 40px;
+            border-radius: 7px;
+        }
+
+     
+    </style>
+
+    <!-- style table -->
+    <style>
+        
        /*Form fields*/
        .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
@@ -5071,41 +5220,115 @@
             background-color: #4F709C !important;
         }
 
-        /******* cara pesan *******/
-        .cara-memesan-landing-page {
-            max-width: 1120px;
-            padding: 0px 15px;
-            margin: 60px auto 35px;
+        /* code responsive table */
+        @media (max-width: 600px) {
+
+
+            table {
+                width: 100%;
+            }
+
+            tbody {
+                text-align: left;
+            }
+
+            .option-select {
+                font-size: 12px;
+            }
+
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
+
+            .responsive-3 {
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
         }
 
-        .cara-memesan-landing-page h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 40px;
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
         }
 
-        .cara-memesan-landing-page .step-by-step {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .all-section {
+            padding: 3rem;
         }
 
-        .cara-memesan-landing-page .step-by-step .step {
-            width: 300px;
-            text-align: center;
-            margin-bottom: 15px;
+        @media (max-width: 600px) {
+            .all-section {
+            padding: 5px;
         }
 
-        .cara-memesan-landing-page .step-by-step .step img {
-            height: 90px;
-            margin-bottom: 35px;
+            tbody {
+                text-align: left;
+            }
+
+            .option-select {
+                font-size: 12px;
+            }
+
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
+
+            .responsive-3 {
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
         }
 
-        .cara-memesan-landing-page .step-by-step .step p {
-            font-size: 16px;
+
+
+
+        .scroll {
+            overflow-y: auto;
+            background: #f9fcff;
         }
-     
-        
+
+
         /* ---------- Data Length Code ---------- */
 
         .container {
@@ -5271,40 +5494,52 @@
                 transform: none;
             }
         }
+
+         /******* cara pesan *******/
+         .cara-memesan-landing-page {
+            max-width: 1120px;
+            padding: 0px 15px;
+            margin: 60px auto 35px;
+        }
+
+        .cara-memesan-landing-page h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .cara-memesan-landing-page .step-by-step {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step {
+            width: 300px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step img {
+            height: 90px;
+            margin-bottom: 35px;
+        }
+
+        .cara-memesan-landing-page .step-by-step .step p {
+            font-size: 16px;
+        }
     </style>
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    
 
     <!-- Navigation -->
     <?php $this->load->view('sidebar'); ?>
 
-
-    <!-- Banner Area Start-->
-    <!-- <section id="banner" class="banner-area"
-        style="background-image: url('https://glints.com/id/lowongan/wp-content/uploads/2020/05/bonding-kantor-saat-corona.jpg');">
-        <div class="container">
-            <div class="row justify-content-center justify-content-xl-start">
-                <div class="col-xl-10 align-self-center">
-                    <div class="banner-inner text-xl-start text-center">
-                        <h1>Selamat Datang </h1>
-                        <p class="me-5">Di Website <span>Sewa Ruang</span></p>
-                    </div>
-                    <div class="counter-area-inner">
-                       
-                    </div>
-                    <div class="btn-area">
-                        <a class="btn btn-border-white page-scroll" href="#demo">Login</a>
-                        <a class="btn btn-white me-0" href="#">Look at Room</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- Banner Area End -->
-
-    <section>
+<!-- data length -->
+    <section class="pt-5 ">
     <div class="scroll">
         <div class="container two">
   <div class="grid-cards">
@@ -5364,19 +5599,19 @@
     </div>
     </section>
 
+
       <!-- about area start -->
-      <section  id="about" class="inner-section  p-5">
-    <div class="about-area" style="background-image: url('">
+      <section  id="about" class="inner-section  all-section">
+    <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
-                <div class="row">
+                <div class="md:flex gap-5">
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
                     <div class="col-lg-6 order-lg-1 align-self-center mt-4 mt-lg-0">
                         <div class="about-inner-wrap">  
                             <div class="section-title mb-0">
-                                <!-- <h6 class="sub-title style-btn">Sewa Ruang</h6> -->
                                 <h2 class="title">Mengenal ruang yang kami sewakan</h2>
                                 <br>
                                 
@@ -5396,16 +5631,44 @@
     </div>
    
 </section>
-    <!-- about area end -->
 
+  <!-- cara pesan Section -->
+  <section id="cara_pesan" class="inner-section  md:p-5 p-2">
+        <div style="background:#f4f5f7; padding:1px;">
+        <div class="cara-memesan-landing-page">
+            <h2>Cara mudah memesan ruangan</h2>
+            <div class="step-by-step">
 
-   <!-- Data Master Ruang -->
-   <section id="widget" class=" widget-section p-5">
+                <div class="step">
+                    <img style="margin-left: 5rem;" src="https://xwork.co/img/icon/lp-memesan-1-0.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>1. Temukan ruangan sesuai kebutuhan</p>
+                    <p>Temukan ruangan yang anda butuhkan, dari ribuan yang tersedia di Sewa Ruang</p>
+                </div>
+
+                <div class="step">
+                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-1.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>2. Pesan dan lakukan kunjungan survey</p>
+                    <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
+                </div>
+
+                <div class="step">
+                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
+                    <p>3. Deal dan pembayaran</p>
+                    <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </section>
+    
+    <!-- Data Master Ruang -->
+    <section id="widget" class=" widget-section all-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Data Master Ruang</h2>
+                        <h2 class="title">Data Master Ruangan</h2>
 
                     </div>
                 </div>
@@ -5442,10 +5705,10 @@
                                           1
                                         </td>
                                         <td data-cell="No Ruang " class="text-center px-6 py-4">
-                                        R 002
+                                        R 004
                                         </td>
                                         <td data-cell="No Lantai " class="text-center px-6 py-4">
-                                            L 014
+                                           L 002
                                         </td>
                                     </tr>
                 
@@ -5460,8 +5723,8 @@
         </div>
     </section>
 
-   <!-- Data Master Pelanggan -->
-   <section id="widget" class=" widget-section p-5">
+    <!-- Data Master Pelanggan -->
+    <section id="widget" class=" widget-section all-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5471,15 +5734,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="row justify-content-center">
-              
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
-
                             <table style="min-width: 22rem;" id="example_master_pelanggan"
-                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -5492,30 +5752,32 @@
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Telepon
                                         </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Payment Method
                                         </th>
-                                      
+                                       
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No  " scope="row"
-                                            class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          1
+                                        <td data-cell="No " scope="row"
+                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
                                         </td>
-                                        <td data-cell="Nama " class="text-center px-6 py-4">
-                                        Riska Mariskaa
+                                        <td data-cell="Nama" class="text-center px-3 py-4">
+                                        Ahmad Sony
                                         </td>
-                                        <td data-cell="Telepon " class="text-center px-6 py-4">
-                                            0896559826819
+                                        <td data-cell="Telepon" class="text-center px-3 py-4">
+                                           0897653873
                                         </td>
-                                        <td data-cell="Payment Method " class="text-center px-6 py-4">
+                                        <td data-cell="Payment Method " class="text-center px-3 py-4">
                                             -
                                         </td>
+                                       
+                                      
                                     </tr>
-                
+                                  
                                 </tbody>
                             </table>
                         </div>
@@ -5526,14 +5788,14 @@
 
         </div>
     </section>
-
-     <!-- Data Peminjaman Tempat -->
-   <section id="widget" class=" widget-section p-5">
+  
+    <!-- Peminjaman Tempat -->
+    <section id="widget" class=" widget-section all-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Data Peminjaman Tempat</h2>
+                        <h2 class="title">Peminjaman Tempat</h2>
 
                     </div>
                 </div>
@@ -5546,55 +5808,55 @@
                         <div class="relative">
 
                             <table style="min-width: 22rem;" id="example_peminjaman_tempat"
-                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                            No
+                                           No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama 
+                                            Nama
                                         </th>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            Ruangan
+                                           Ruangan
                                         </th>
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Kapasitas
                                         </th>
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                           Status
+                                            Status
                                         </th>
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Total Booking
+                                           Total Booking
                                         </th>
-                                      
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No  " scope="row"
-                                            class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          1
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
                                         </td>
-                                        <td data-cell="Nama " class="text-center px-6 py-4">
-                                        Muh Hatta Hanafi 
+                                        <td data-cell="Nama" class="text-center px-3 py-4">
+                                        Ahmad Sony
                                         </td>
-                                        <td data-cell="Ruangan " class="text-center px-6 py-4">
-                                            R 004 L 001
+                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                          L.404  R.303
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-6 py-4">
-                                            -
+                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                            AC 3 PK
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-6 py-4">
-                                            dibooking
+                                        <td data-cell="Status" class="text-center px-3 py-4">
+                                            selesai
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-6 py-4">
-                                            1.500.000
+                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                        1.500.000
                                         </td>
+                                       
                                     </tr>
-                
+
                                 </tbody>
                             </table>
                         </div>
@@ -5606,14 +5868,13 @@
         </div>
     </section>
 
-    
-     <!-- Data Report Sewa -->
-   <section id="widget" class=" widget-section p-5">
+    <!-- Report Sewa -->
+    <section id="widget" class=" widget-section all-section pb-24 pd-bottom-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Data Report Sewa</h2>
+                        <h2 class="title">Report Sewa</h2>
 
                     </div>
                 </div>
@@ -5625,56 +5886,55 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_report_sewa"
-                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table style="min-width: 22rem;" id="example_report"
+                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                            No
+                                           No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama 
+                                            Nama
                                         </th>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            Ruangan
+                                           Ruangan
                                         </th>
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Kapasitas
                                         </th>
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                           Status
+                                            Status
                                         </th>
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Total Booking
+                                           Total Booking
                                         </th>
-                                      
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No  " scope="row"
-                                            class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          1
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="Nama Penyewa " scope="row"
+                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
                                         </td>
-                                        <td data-cell="Nama " class="text-center px-6 py-4">
-                                        Muh Hatta Hanafi 
+                                        <td data-cell="Nama" class="text-center px-3 py-4">
+                                        Ahmad Sony
                                         </td>
-                                        <td data-cell="Ruangan " class="text-center px-6 py-4">
-                                            R 004 L 001
+                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                          L.404  R.303
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-6 py-4">
-                                            -
+                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                            AC 3 PK
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-6 py-4">
-                                            dibooking
+                                        <td data-cell="Status" class="text-center px-3 py-4">
+                                            selesai
                                         </td>
-                                        <td data-cell="Kapasitas " class="text-center px-6 py-4">
-                                            1.500.000
+                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                        1.500.000
                                         </td>
+                                       
                                     </tr>
-                
                                 </tbody>
                             </table>
                         </div>
@@ -5685,246 +5945,97 @@
 
         </div>
     </section>
+   
+  
+
      
-     <!-- cara pesan Section -->
-    <section id="cara_pesan" class="inner-section  p-5">
-        <div style="background:#f4f5f7; padding:1px;">
-        <div class="cara-memesan-landing-page">
-            <h2>Cara mudah memesan ruangan</h2>
-            <div class="step-by-step">
 
-                <div class="step">
-                    <img style="margin-left: 5rem;" src="https://xwork.co/img/icon/lp-memesan-1-0.png" alt="" class="initial-loaded" data-was-processed="true">
-                    <p>1. Temukan ruangan sesuai kebutuhan</p>
-                    <p>Temukan ruangan yang anda butuhkan, dari ribuan yang tersedia di Sewa Ruang</p>
-                </div>
-
-                <div class="step">
-                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-1.png" alt="" class="initial-loaded" data-was-processed="true">
-                    <p>2. Pesan dan lakukan kunjungan survey</p>
-                    <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
-                </div>
-
-                <div class="step">
-                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
-                    <p>3. Deal dan pembayaran</p>
-                    <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    </section>
-
-    <!-- ruang Section -->
-    <section id="ruang" class="featured-section  p-5 pd-bottom-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Ruang</h2>
-                        <!-- <p>We have created a new product that will help designers, developers and com-panies create websites for their startups quickly and easily.</p> -->
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://s3-ap-southeast-1.amazonaws.com/xwork-gallery/rooms/images/795/1524110425.04/795_1524110425.04.lg.JPEG" alt="img">
-                        Ruang Meeting
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://i0.wp.com/insight.mbiz.co.id/wp-content/uploads/2018/12/Ruang-meeting-amphitheater-ala-Google.png?resize=750%2C500&ssl=1" alt="img">
-                        Ruang Meeting
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://tikus.net/wp-content/uploads/2022/12/Mengenal-Jenis-jenis-Ruangan-Meeting-yang-Cocok-untuk-Anda.png" alt="img">
-                        Ruang Meeting
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://dbijapkm3o6fj.cloudfront.net/resources/5134,1004,1,6,4,0,600,450/-4601-/20190326223719/pertemuan-dan-acara.jpeg" alt="img">
-                       Ruang Acara
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://dbijapkm3o6fj.cloudfront.net/resources/32058,1004,1,6,4,0,600,450/-4601-/20220617223606/paket-meeting.jpeg" alt="img">
-                        Ruang Acara
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" style="height: ">
-                    <div class="featured-item">
-                        <img src="https://www.tourismvaganza.com/wp-content/uploads/2021/04/Image_Harmony-Ballroom-at-Holiday-Inn-Suites-Jakarta-Gajah-Mada-2.jpg" alt="img">
-                       Ruang Acara
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://image.archify.com/blog/l/ume93vjz.jpg" alt="img">
-                        Co Working Space
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://blog.flyspaces.com/hubfs/WeWork%20Menara%20Astra.jpg" alt="img">
-                       Co Working Space
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHTwqQRtPUrOpE3rDu61w1b71GrI9hiBSUWA&usqp=CAU" alt="img">
-                       Co Working Space
-                    </div>
-                </div>
-
-                <!-- <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/10.png" alt="img">
-                        Magnific Popup
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/12.png" alt="img">
-                        100% Responsive
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/11.png" alt="img">
-                        Google Fonts
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/14.png" alt="img">
-                        Well Documented
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/15.png" alt="img">
-                        Counter Up
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="featured-item">
-                        <img src="demo-landing/img/featured/13.png" alt="img">
-                        Wow Js
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </section>
 
     <!-- footer area start -->
-    <footer class="footer-area footer-area-2 bg-gray">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_about text-center">
-                            <a href="index.html"><img src="https://solverwp.com/demo/html/edumint/assets/img/logo-2.png"
-                                    alt="img"></a>
-                            <div class="details">
-                                <p>Edumint tetur sadipscing elitr tempor invidunt ut labore et dolore magna aliquyam
-                                    erat, sed diam voluptua.</p>
-                                <ul class="social-media">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_contact">
-                            <h4 class="widget-title">Contact Us</h4>
-                            <ul class="details">
-                                <li><i class="fa fa-map-marker"></i> 420 Love Sreet 133/2 Street NewYork</li>
-                                <li><i class="fa fa-envelope"></i> info.contact@gmail.com</li>
-                                <li><i class="fa fa-phone"></i> 012 345 678 9101</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_blog_list">
-                            <h4 class="widget-title">News & Blog</h4>
-                            <ul>
-                                <li>
-                                    <h6><a style="color: black; text-decoration: none;" href="blog-details.html">Big
-                                            Ideas Of Business Branding Info.</a></h6>
-                                    <span class="date"><i class="fa fa-calendar"></i>December 7, 2022</span>
-                                </li>
-                                <li>
-                                    <h6><a style="color: black; text-decoration: none;" href="blog-details.html">Ui/Ux
-                                            Ideas Of Business Branding Info.</a></h6>
-                                    <span class="date"><i class="fa fa-calendar"></i>December 7, 2022</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget_nav_menu">
-                            <h4 class="widget-title">Course</h4>
-                            <ul>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Branding
-                                        design</a></li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Ui/Ux designing
-                                    </a></li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Make Elements</a>
-                                </li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Business</a></li>
-                                <li><a style="color: black; text-decoration: none;" href="course.html">Graphics
-                                        design</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="footer-2 bg-gray-800 pt-6 md:pt-12">
+  <!-- <div class="container px-4 mx-auto"> -->
+
+    <!-- <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+
+      <div class="footer-info lg:w-1/3 md:px-4">
+        <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
+        <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
+        <div class="mt-4">
+          <button class="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
+            <span class="fab fa-facebook-f mr-2"></span> Follow
+          </button>
+          <button class="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
+            <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
+          </button>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 align-self-center">
-                        <p>Copyright 2023 by sewaruang.com</p>
-                    </div>
-                    <div class="col-md-7 text-md-right align-self-center mt-md-0 mt-2">
-                        <div class="widget_nav_menu">
-                            <ul>
-                                <li><a style="text-decoration: none;" href="index.html">Home</a></li>
-                                <li><a style="text-decoration: none;" href="about.html">About Us</a></li>
-                                <li><a style="text-decoration: none;" href="pricing.html">Our Pricing</a></li>
-                                <li><a style="text-decoration: none;" href="blog.html">blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
+        <div class="sm:flex">
+          <div class="sm:flex-1">
+            <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
+            <div>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
             </div>
+          </div>
+          <div class="sm:flex-1 mt-4 sm:mt-0">
+            <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
+            <div>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+
+      <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
+        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
+        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
+      </div>
+
+    </div> -->
+
+  <!-- </div> -->
+
+  <div class="border-t border-solid border-gray-900 mt-4 py-4">
+    <div class="container px-4 mx-auto">
+
+      <div class="md:flex md:-mx-4 md:items-center">
+        <div class="md:flex-1 md:px-4 text-center md:text-left">
+          <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
+        </div>
+        <div class="md:flex-1 md:px-4 text-center md:text-right">
+          <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
     <!-- footer area end -->
 
     <!-- back-to-top end -->
     <a id="back-to-top"></a>
 
+    
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
     <script>
         $(document).ready(function () {
 
             var table = $('#example_master_ruang').DataTable({
-                responsive: true
+                // responsive: true
             })
                 .columns.adjust()
                 .responsive.recalc();
@@ -5949,7 +6060,7 @@
         });
         $(document).ready(function () {
 
-            var table = $('#example_report_sewa').DataTable({
+            var table = $('#example_report').DataTable({
                 responsive: true
             })
                 .columns.adjust()
@@ -5958,5 +6069,6 @@
     </script>
 
 </body>
+
 
 </html>
