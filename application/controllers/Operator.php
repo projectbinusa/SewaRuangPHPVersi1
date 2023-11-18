@@ -699,6 +699,26 @@ class operator extends CI_Controller
         
         $spreadsheet = new Spreadsheet();
 
+	
+
+
+
+
+
+
+
+
+
+
+
+    public function tambahan(){
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan',$data);
+    }
+    public function edit_tambahan($id){
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id' , $id)->result();
+        $this->load->view('operator/tambahan/edit_tambahan',$data);
+
         // Buat lembar kerja aktif
        $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
@@ -770,6 +790,7 @@ class operator extends CI_Controller
         // Outputkan file Excel ke browser
         $writer->save('php://output');
         
+
     }
 
     // EXPORT REPORT SEWA 

@@ -1085,6 +1085,15 @@
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
+
+                        <a href="export_report_sewa" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2 px-full w-14 ml-auto mb-4 flex items-center justify-center">
+                            <button>
+                            <i class="fa-solid fa-download"></i>
+                            </button>
+                        </a>
+                            <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
                             <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             
                             <a href="export_report_sewa" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
@@ -1092,6 +1101,7 @@
                             </a>
 
                             <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
@@ -1135,23 +1145,23 @@
                                                 <?php echo $no ?>
                                             </td>
                                             <!-- Penyewa -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Nama" class="w-32 px-3 py-4">
                                                 <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
                                             </td>
                                             <!-- Ruangan -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Ruangan" class="w-32 px-3 py-4">
                                                 <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
                                             </td>
                                             <!-- Kapasitas -->
-                                            <td class="w-36 px-3 py-4">
+                                            <td data-cell="Kapasitas" class="w-36 px-3 py-4">
                                                 <?php echo $row->jumlah_orang ?>
                                             </td>
                                             <!-- Kode Booking -->
-                                            <td class="w-36 px-3 py-4">
+                                            <td data-cell="Kode" class="w-36 px-3 py-4">
                                                 <?php echo $row->kode_booking ?>
                                             </td>
                                             <!-- Snack -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Tambahan" class="w-32 px-3 py-4">
                                                 <?php echo tampil_nama_tambahan_byid($row->status) ?>
                                             </td>
                                             <!-- Total Booking -->
@@ -1164,7 +1174,7 @@
                                                 ?>
                                             </td>
                                             <!-- Total -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-call="" class="w-32 px-3 py-4">
                                                 <?php echo $row->total_harga ?>
                                             </td>
                                             <!-- Status -->
