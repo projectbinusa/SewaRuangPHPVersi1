@@ -115,7 +115,7 @@ class operator extends CI_Controller
                     $response = [
                         'status' => 'success',
                         'message' => 'Data berhasil ditambahkan.',
-                        'redirect' => base_url('operator'),
+                        'redirect' => base_url('operator/data_ruangan'),
                     ];
                 } else {
                     $response = [
@@ -289,7 +289,7 @@ class operator extends CI_Controller
                         $response = [
                             'status' => 'success',
                             'message' => 'Berhasil Mengubah Ruangan',
-                            'redirect' => base_url('operator'), // Redirect ke halaman daftar ruangan jika berhasil
+                            'redirect' => base_url('operator/data_ruangan'), // Redirect ke halaman daftar ruangan jika berhasil
                         ];
                     }
                 } else {
@@ -442,8 +442,10 @@ class operator extends CI_Controller
 
     public function peminjaman_tempat()
     {
-        $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
-        $this->load->view('operator/table_peminjaman_tempat', $data);
+
+        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
+        $this->load->view('operator/peminjaman/table_peminjaman_tempat', $data);
+
     }
 
     public function tambah_peminjaman_tempat()
@@ -555,9 +557,17 @@ class operator extends CI_Controller
                 return;
             }
         }
+
         $this->check_expired_bookings();
         // Operasi berhasil
         // Redirect atau tampilkan pesan sukses
+
+    }
+
+    public function hapus_peminjaman($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+
         redirect(base_url('operator/peminjaman_tempat'));
     }
 }
@@ -873,7 +883,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('ruangan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['ID', 'RUANGAN', 'LANTAI', 'KETERANGAN', 'HARGA'];
+        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN', 'HARGA'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -882,6 +892,7 @@ class operator extends CI_Controller
 
         // Isi data dari database
         $rowIndex = 2;
+        $no = 1;
         foreach ($data as $rowData) {
             $columnIndex = 1;
             $id = '';
@@ -910,12 +921,12 @@ class operator extends CI_Controller
 
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $id);
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $no_ruang);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $no_lantai);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $harga);
-
+            $no++;
             $rowIndex++;
         }
         // Auto size kolom berdasarkan konten
@@ -1021,7 +1032,7 @@ class operator extends CI_Controller
                     $this->m_model->tambah_data('ruangan', $data);
                 }
             }
-            redirect(base_url('operator/ruangan'));
+            redirect(base_url('operator/data_ruangan'));
         } else {
             echo 'Invalid file';
         }

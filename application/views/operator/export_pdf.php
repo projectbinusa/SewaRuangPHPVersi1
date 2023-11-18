@@ -83,69 +83,71 @@
         .item-table td,
         .item-table th {
             padding: 15px;
+        }
 
-            .item-table td,
-            .item-table th {
-                padding: 15px;
-                font-size: 80%;
-            }
+        .item-table td,
+        .item-table th {
+            padding: 15px;
+            font-size: 80%;
+        }
 
-            .item-table th {
-                background: #f2f2f2;
-                font-weight: bold;
-            }
+        .item-table th {
+            background: #f2f2f2;
+            font-weight: bold;
+        }
 
-            .total {
-                margin-bottom: 10%;
-            }
+        .total {
+            margin-bottom: 10%;
+        }
 
-            .total #displayTotal::after {
-                content: attr(data-amount);
-                display: inline-block;
-                border-bottom: 1px solid #000000;
-                margin-left: 5px;
-                margin-right: 30px;
-                margin-right: 30px;
-            }
+        .total #displayTotal::after {
+            content: attr(data-amount);
+            display: inline-block;
+            border-bottom: 1px solid #000000;
+            margin-left: 5px;
+            margin-right: 30px;
+            margin-right: 30px;
+        }
 
-            .payment-info {
-                /* font-size: 12px; */
-                /* font-size: 12px; */
-                font-weight: bold;
-                color: #0C356A;
-                border-left: 20px solid #0C356A;
-                margin-right: 50%;
-                height: 22%;
-                margin-top: 5%;
-                margin-right: 50%;
-                height: 22%;
-                margin-top: 5%;
-            }
+        .payment-info {
+            /* font-size: 12px; */
+            /* font-size: 12px; */
+            font-weight: bold;
+            color: #0C356A;
+            border-left: 20px solid #0C356A;
+            margin-right: 50%;
+            height: 22%;
+            margin-top: 5%;
+            margin-right: 50%;
+            height: 22%;
+            margin-top: 5%;
+        }
 
-            .payment-info h4,
-            .payment-info p {
-                margin-left: 18px;
-            }
+        .payment-info h4,
+        .payment-info p {
+            margin-left: 18px;
+        }
 
-            .payment-info .baru {
-                margin-top: 30px;
+        .payment-info .baru {
+            margin-top: 30px;
+        }
 
-                .payment-info .baru {
-                    margin-top: 30px;
-                }
+        .payment-info .baru {
+            margin-top: 30px;
+        }
 
-                .container {
-                    display: flex;
-                    float: right;
-                    color: #1F4172;
-                    font-weight: bold;
-                    font-size: 13px;
-                    font-size: 13px;
-                }
+        .container {
+            display: flex;
+            float: right;
+            color: #1F4172;
+            font-weight: bold;
+            font-size: 13px;
+            font-size: 13px;
+        }
 
-                .merah {
-                    text-align: center;
-                }
+        .merah {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -153,7 +155,6 @@
     <div class="header">
         <h2>RuangSewa.com</h2>
     </div>
-
     <div class="invoice-yu">
         <h1 class="invoice">
             CUSTOMER
@@ -162,7 +163,6 @@
         <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p>
         <!-- <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p> -->
     </div>
-
     <div class="invoice-details">
         <table>
             <tr>
@@ -176,11 +176,7 @@
             </tr>
         </table>
     </div>
-
-
     <br><br>
-
-
     <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
         <thead>
             <tr>
@@ -192,7 +188,6 @@
                 <th>Total</th>
             </tr>
         </thead>
-        <?php $no = 1; ?>
         <tbody>
             <?php
             $tanggalBooking = new DateTime($peminjaman->tanggal_booking);
@@ -210,41 +205,40 @@
             $jumlah_tambahan = tampil_nama_tambahan_byid($id_tambahan);
             $total_tamnbahan = tampil_jumlah_tambahan_byid($id_tambahan);
 
-            $total_tambahan = intval($total_tamnbahan) * intval($no);
+            $total_tambahan = $total_tamnbahan;
             $jumlah_ruang = tampil_no_ruangan_byid($id_ruangan);
             ?>
-            <tr>
-                <td class="merah"><?php echo format_ruangan($nama_ruangan) ?></td>
-                <td class="merah"><?php echo $durasi->days; ?></td>
-                <td class="merah"><?php echo convRupiah($harga_ruangan); ?></td>
-                <td class="merah"><?php echo convRupiah($harga_ruangan * $durasi->days); ?></td>
-            </tr>
+            <?php if (!empty($nama_ruangan)) : ?>
+                <tr>
+                    <td class="merah"><?php echo format_ruangan($nama_ruangan) ?></td>
+                    <td class="merah"><?php echo $durasi->days; ?></td>
+                    <td class="merah"><?php echo convRupiah($harga_ruangan); ?></td>
+                    <td class="merah"><?php echo convRupiah($harga_ruangan * $durasi->days); ?></td>
+                </tr>
+            <?php endif; ?>
 
-            <tr>
-                <td class="merah">
-                    <?php
-                    // Mengasumsikan $nama_tambahan adalah variabel yang berisi data tambahan
-                    if (is_array($nama_tambahan)) {
-                        // Periksa apakah ada lebih dari satu elemen dalam array
-                        if (count($nama_tambahan) > 1) {
-                            // Jika ada lebih dari satu elemen, gabungkan dengan tanda hubung
-                            echo implode(' - ', $nama_tambahan);
+            <?php if (!empty($nama_tambahan)) : ?>
+                <tr>
+                    <td class="merah">
+                        <?php
+                        if (is_array($nama_tambahan)) {
+                            if (count($nama_tambahan) > 1) {
+                                echo implode(' - ', $nama_tambahan);
+                            } else {
+                                echo reset($nama_tambahan);
+                            }
                         } else {
-                            // Jika hanya ada satu elemen, cetak elemen tersebut
-                            echo reset($nama_tambahan);
+                            echo $nama_tambahan;
                         }
-                    } else {
-                        // Jika $nama_tambahan bukanlah array, langsung mencetaknya
-                        echo $nama_tambahan;
-                    }
-                    ?>
-                </td>
-                <td class="merah"><?php echo $total_tambahan ?></td>
-                <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
-                <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
-            </tr>
+                        ?>
+                    </td>
+                    <td class="merah"><?php echo $total_tambahan ?></td>
+                    <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
+                    <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
+                </tr>
+            <?php endif; ?>
+
         </tbody>
-        <?php $no++ ?>
     </table>
     <br>
     <div class="container">
