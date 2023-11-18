@@ -182,8 +182,7 @@
 </head>
 
 <body>
-    <?php $this->load->view('sidebar'); ?>
-
+    <?php $this->load->view('sidebars'); ?>
     <main>
         <div class=" container">
             <header class="heading">
