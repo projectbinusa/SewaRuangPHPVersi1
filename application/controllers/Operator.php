@@ -561,7 +561,7 @@ class operator extends CI_Controller
         $this->check_expired_bookings();
         // Operasi berhasil
         // Redirect atau tampilkan pesan sukses
-
+    }
     }
 
     public function hapus_peminjaman($id)
@@ -570,7 +570,7 @@ class operator extends CI_Controller
 
         redirect(base_url('operator/peminjaman_tempat'));
     }
-}
+
     public function aksi_edit_peminjaman()
     {
         $id_ruangan = $this->input->post('ruang');
@@ -822,9 +822,16 @@ class operator extends CI_Controller
                     $total_harga = $cellData;
                 }elseif ($cellName == 'status') {
                     $status = $cellData;
+                }elseif ($cellName == 'tanggal_berakhir') {
+                    $tanggal_berakhir = $cellData;
                 }
-                // Anda juga dapat menambahkan logika lain jika perlu
-                
+
+                if (!empty($tanggal_booking) && !empty($tanggal_berakhir)) {
+                    $tanggalBooking = new DateTime($tanggal_booking);
+                    $tanggalBerakhir = new DateTime($tanggal_berakhir);
+                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                    $total_booking = $durasi->days . 'Hari';
+                }
                 // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                 $columnIndex++;
             }
@@ -836,7 +843,8 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_booking);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
             $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
             $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
             
