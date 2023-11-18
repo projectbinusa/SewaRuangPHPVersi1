@@ -680,6 +680,38 @@ class operator extends CI_Controller
             return;
         }
 
+        $harga_snack = $jumlah * $jumlah;
+        $harga_keseluruhan = $harga_snack + $harga_ruangan;
+        $data = [
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+           
+            'tanggal_booking' => $start_time,
+            'tanggal_berakhir' => $end_time,
+            'jumlah_orang' => $jumlah,
+            'kode_booking' => $generate,
+            'total_harga' => $harga_keseluruhan,
+            'status' => 'proses',
+        ];
+        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
+        $this->check_expired_bookings();
+        redirect(base_url('operator/tabel_report_sewa'));
+    }
+    //EXPORT PELANGGAN
+    public function export_pelanggan() {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+        
+        $spreadsheet = new Spreadsheet();
+
+    public function tambahan(){
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan',$data);
+    }
+    public function edit_tambahan($id){
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id' , $id)->result();
+        $this->load->view('operator/tambahan/edit_tambahan',$data);
         // Menghitung durasi dan harga ruangan
         $tanggalBooking = new DateTime($start_time);
         $tanggalBerakhir = new DateTime($end_time);
