@@ -5500,7 +5500,7 @@
     <?php $this->load->view('sidebar'); ?>
 
 
-<section>
+<section class="pt-5">
     <div class="scroll">
       
         <div class="container two">
@@ -5540,7 +5540,7 @@
     <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
-                <div class="row">
+                <div class="flex gap-5">
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
