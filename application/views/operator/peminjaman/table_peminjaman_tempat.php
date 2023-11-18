@@ -6,11 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
@@ -33,7 +41,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            /* font-size: 16px; */
             background-color: #f1f1f1;
         }
 
@@ -49,7 +57,7 @@
             }
         }
 
-        /***default-btn-area***/
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -227,7 +235,7 @@
             opacity: 1;
         }
 
-        /***section-title***/
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -395,9 +403,8 @@
         }
 
         a:hover {
-            color: white;
+            color: var(--main-color);
         }
-
 
 
         .btn {
@@ -420,7 +427,6 @@
             outline: 0;
             box-shadow: none;
         }
-
 
         .btn:after {
             content: "";
@@ -507,6 +513,7 @@
             color: var(--heading-color);
             margin-left: 12px;
         }
+
 
         .section-title {
             margin-bottom: 45px;
@@ -712,7 +719,7 @@
             cursor: pointer;
         }
 
-        /* Tablet Layout wide: 767px. */
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -747,7 +754,7 @@
             }
         }
 
-        /* medium tablet layout 599px */
+
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -770,7 +777,7 @@
             }
         }
 
-        /*Form fields*/
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -790,13 +797,13 @@
             margin-left: 9px;
         }
 
-        /*Row Hover*/
+       
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /*Pagination Buttons*/
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -805,7 +812,7 @@
             padding-top: 5px;
         }
 
-        /*Pagination Buttons - Current selected */
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -906,7 +913,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+                <a href="tambah_peminjaman_tempat" class="bg-blue-500 hover:bg-blue-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -917,7 +924,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table class="table table-striped" style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table class="table table-striped" style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="3" scope="col" class="px-3 py-3">
@@ -958,14 +965,14 @@
                                     <?php $no = 0;
                                     foreach ($peminjaman as $row) :
                                         $no++; ?>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <tr class="bg-white border-b dark:bg-gray-700 dark:border-gray-700">
                                             <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
-                                            <td data-cell="Nama " class=" px-3 py-4">
+                                            <td data-cell="Nama " class="W-32 px-3 py-4">
                                                 <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
                                             </td>
-                                            <td data-cell="Ruangan " class=" px-3 py-4">
+                                            <td data-cell="Ruangan " class="W-32 px-3 py-4">
                                                 <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
                                             </td>
                                             <td data-cell="Kapasitas " class="w-36 px-3 py-4">
@@ -998,7 +1005,7 @@
 
                                             <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>

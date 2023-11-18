@@ -926,7 +926,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center px-3 py-3">
@@ -960,7 +960,7 @@
                             <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
 
                                             <!-- Aksi -->
-                                            <td class="justify-content-center px-3 py-4 flex">
+                                            <td class="justify-content text-center px-3 py-4 flex">
                                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded-lg" onclick="update(<?php echo $row->id ?>)">
                                     <i class="fas fa-edit"></i>
                                 </button>
