@@ -33,7 +33,6 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
             background-color: #f1f1f1;
         }
 
@@ -906,7 +905,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+                <a href="tambah_peminjaman_tempat" class="bg-blue-500 hover:bg-blue-800 w-32 text-white font-bold py-2 px-2 rounded float-right relative z-50">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -937,7 +936,7 @@
                                             Kode Booking
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Snack
+                                            Tambahan
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
@@ -998,7 +997,7 @@
 
                                             <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
@@ -1008,6 +1007,8 @@
                                                         <span class="">
                                                             <i class="fas fa-print"></i>
                                                         </span>
+                                                    </button>
+
                                                     </button>
                                                 <?php endif; ?>
                                                 <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">

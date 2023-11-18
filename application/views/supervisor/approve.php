@@ -43,7 +43,7 @@
 
         .content-text {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            /* font-size: 17px; */
         }
 
         @media (min-width: 1200px) {
@@ -1537,7 +1537,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebars'); ?>
 
     <section id="widget" class="widget-section pd-top-47">
         <div class="container">
