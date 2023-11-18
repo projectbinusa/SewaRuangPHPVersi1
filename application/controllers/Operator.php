@@ -699,18 +699,6 @@ class operator extends CI_Controller
         
         $spreadsheet = new Spreadsheet();
 
-	
-
-
-
-
-
-
-
-
-
-
-
     public function tambahan(){
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $this->load->view('operator/tambahan/tambahan',$data);
