@@ -150,6 +150,7 @@ function tampil_pelanggan_bynama($nama)
         return $stmt;
     }
 }
+
 function tampil_id_byemail($email)
 {
     $ci = &get_instance();
