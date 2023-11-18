@@ -203,9 +203,7 @@
             $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
             $harga_tambahan = tampil_harga_tambahan_byid($id_tambahan);
             $jumlah_tambahan = tampil_nama_tambahan_byid($id_tambahan);
-            $total_tamnbahan = tampil_jumlah_tambahan_byid($id_tambahan);
-
-            $total_tambahan = $total_tamnbahan;
+            $total_tambahan = tampil_jumlah_tambahan_byid($id_tambahan);
             $jumlah_ruang = tampil_no_ruangan_byid($id_ruangan);
             ?>
             <?php if (!empty($nama_ruangan)) : ?>
@@ -216,7 +214,6 @@
                     <td class="merah"><?php echo convRupiah($harga_ruangan * $durasi->days); ?></td>
                 </tr>
             <?php endif; ?>
-
             <?php if (!empty($nama_tambahan)) : ?>
                 <tr>
                     <td class="merah">
@@ -237,7 +234,6 @@
                     <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
                 </tr>
             <?php endif; ?>
-
         </tbody>
     </table>
     <br>
@@ -253,6 +249,7 @@
         <?php date_default_timezone_set('Asia/Jakarta'); ?>
         <p class="baru">Tanggal :<span><?php echo date('F j,Y'); ?></span></p>
         <p>Jam Pemesanan : <span><?php echo date('H:i:s'); ?></span></p>
+        <p>pembayaran : <span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan); ?></span></p>
     </div>
 </body>
 
