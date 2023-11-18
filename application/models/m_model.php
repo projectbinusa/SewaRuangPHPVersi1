@@ -186,7 +186,12 @@ class M_model extends CI_Model
     }
     public function get_status_peminjaman()
     {
-        return $this->db->where_in('status', ['proses', 'booking', 'di tolak'])
+        return $this->db->where_in('status', ['proses', 'selesai', 'di tolak'])
+            ->get('peminjaman');
+    }
+    public function get_pelanggan()
+    {
+        return $this->db->where('id_pelanggan')
             ->get('peminjaman');
     }
     public function get_status_proses()
