@@ -135,9 +135,7 @@
             color: #222;
         }
 
-
         /* style comboboxs */
-
         input {
             padding: 5px;
             height: 35px;
@@ -244,10 +242,10 @@
                     placeholder="Pilih Paket">
              
                 <datalist id="browsers" id="checkbox" role="listbox">
-                    <div class="flex gap-3">
+                    <div class="">
                         <?php foreach($tambahan as $row):?>
                         <option style=""><?php echo $row->nama?></option>
-                        <input style="width: 15px; margin-left: 5rem;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
+                        <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
                         <?php endforeach?>
                     </div>
                 </datalist>
@@ -259,10 +257,7 @@
                         class="required">*</span></label>
                 <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                     placeholder="Ketik total hari booking" required>
-
-
-
-                <input type="submit" id="submit" class="submit" value="Submit">
+                    <input type="submit" id="submit" class="submit" value="Submit" style="background-color: #0C356A; height:42px; width: auto;">
             </form>
         </div>
     </main>
