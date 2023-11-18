@@ -23,6 +23,10 @@ class operator extends CI_Controller
 
     public function index()
     {
+        $this->load->view('operator/dashboard');
+    }
+    public function data_ruangan()
+    {
         $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
