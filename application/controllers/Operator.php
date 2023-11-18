@@ -652,6 +652,7 @@ class operator extends CI_Controller
         redirect(base_url('operator/peminjaman_tempat'));
     }
 
+
     public function tabel_report_sewa()
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
@@ -697,6 +698,7 @@ class operator extends CI_Controller
         $this->check_expired_bookings();
         redirect(base_url('operator/tabel_report_sewa'));
     }
+
     //EXPORT PELANGGAN
     public function export_pelanggan() {
 
@@ -705,70 +707,73 @@ class operator extends CI_Controller
         
         $spreadsheet = new Spreadsheet();
 
+    }
     public function tambahan(){
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $this->load->view('operator/tambahan/tambahan',$data);
     }
-    public function edit_tambahan($id){
-        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id' , $id)->result();
-        $this->load->view('operator/tambahan/edit_tambahan',$data);
-        // Menghitung durasi dan harga ruangan
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
+    // public function edit_tambahan($id){
+    //     $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id' , $id)->result();
+    //     $this->load->view('operator/tambahan/edit_tambahan',$data);
+    //     // Menghitung durasi dan harga ruangan
+    //     $tanggalBooking = new DateTime($start_time);
+    //     $tanggalBerakhir = new DateTime($end_time);
+    //     $durasi = $tanggalBooking->diff($tanggalBerakhir);
+    //     $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+    //     $harga_ruangan = $harga_ruangan_default * $durasi->days;
 
-        // Menghitung harga tambahan (snack)
-        $harga_tambahan = 0;
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $harga_tambahan += tampil_harga_tambahan_byid($id);
+    //     // Menghitung harga tambahan (snack)
+    //     $harga_tambahan = 0;
+    //     if (!empty($id_tambahan)) {
+    //         foreach ($id_tambahan as $id) {
+    //             $harga_tambahan += tampil_harga_tambahan_byid($id);
 
-                // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan') {
-                    $harga_tambahan *= $jumlah_orang;
-                }
-            }
-        }
+    //             // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
+    //             $tambahan_info = tampil_info_tambahan_byid($id);
+    //             if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan') {
+    //                 $harga_tambahan *= $jumlah_orang;
+    //             }
+    //         }
+    //     }
+    
 
-        // Menghitung total harga
-        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
+    //     // Menghitung total harga
+    //     $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
-        $data_peminjaman = [
-            'id_pelanggan' => $id_pelanggan,
-            'id_ruangan' => $id_ruangan,
-            'tanggal_booking' => $start_time,
-            'tanggal_berakhir' => $end_time,
-            'jumlah_orang' => $jumlah_orang,
-            'total_harga' => $harga_keseluruhan,
-        ];
+    //     // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+    //     $data_peminjaman = [
+    //         'id_pelanggan' => $id_pelanggan,
+    //         'id_ruangan' => $id_ruangan,
+    //         'tanggal_booking' => $start_time,
+    //         'tanggal_berakhir' => $end_time,
+    //         'jumlah_orang' => $jumlah_orang,
+    //         'total_harga' => $harga_keseluruhan,
+    //     ];
 
-        // Memperbarui data di tabel peminjaman
-        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
+    //     // Memperbarui data di tabel peminjaman
+    //     $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
 
-        // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete_peminjaman_tambahan(array('id_peminjaman' => $this->input->post('id')));
+    //     // Menghapus data tambahan sebelum menambah yang baru
+    //     $this->m_model->delete_peminjaman_tambahan(array('id_peminjaman' => $this->input->post('id')));
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $data_tambahan = [
-                    'id_peminjaman' => $this->input->post('id'),
-                    'id_tambahan' => $id,
-                ];
+    //     // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+    //     if (!empty($id_tambahan)) {
+    //         foreach ($id_tambahan as $id) {
+    //             $data_tambahan = [
+    //                 'id_peminjaman' => $this->input->post('id'),
+    //                 'id_tambahan' => $id,
+    //             ];
 
-                // Memasukkan data ke tabel peminjaman_tambahan
-                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
-            }
-        }
+    //             // Memasukkan data ke tabel peminjaman_tambahan
+    //             $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+    //         }
+    //     }
 
-        $this->check_expired_bookings();
-        // Redirect atau tampilkan pesan sukses
-        redirect(base_url('operator/peminjaman_tempat'));
-    }
+    //     $this->check_expired_bookings();
+    //     // Redirect atau tampilkan pesan sukses
+    //     redirect(base_url('operator/peminjaman_tempat'));
+    // }
+
 
     public function expor_ruangan()
     {
@@ -897,4 +902,5 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
+
 }
