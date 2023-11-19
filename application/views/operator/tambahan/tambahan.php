@@ -907,7 +907,7 @@
             </div>
 
             <div class="container-table row justify-content-center">
-            <a href="tambah_item_tambahan" class="bg-green-500 hover:bg-green-700 w-32 text-white font-bold py-2 px-2 rounded float-right">
+            <a href="tambah_item_tambahan" class="bg-blue-800  w-28 text-white font-bold py-2 px-2 rounded float-right">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
