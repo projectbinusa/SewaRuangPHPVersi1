@@ -64,9 +64,9 @@ function tampil_nama_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('tambahan');
+    $result = $ci->db->where('id', $id)->get('peminjaman_tambahan');
     foreach ($result->result() as $c) {
-        $stmt = $c->nama;
+        $stmt = $c->id_tambahan;
         return $stmt;
     }
 }
@@ -84,9 +84,9 @@ function tampil_jumlah_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('tambahan');
+    $result = $ci->db->where('id', $id)->get('peminjaman_tambahan');
     foreach ($result->result() as $c) {
-        $stmt = $c->id;
+        $stmt = $c->id_tambahan;
         return $stmt;
     }
 }
@@ -124,9 +124,9 @@ function tampil_harga_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('tambahan');
+    $result = $ci->db->where('id', $id)->get('peminjaman_tambahan');
     foreach ($result->result() as $c) {
-        $stmt = $c->harga;
+        $stmt = $c->id_tambahan;
         return $stmt;
     }
 }
@@ -150,6 +150,7 @@ function tampil_pelanggan_bynama($nama)
         return $stmt;
     }
 }
+
 function tampil_id_byemail($email)
 {
     $ci = &get_instance();

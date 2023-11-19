@@ -4619,7 +4619,6 @@
             display: inline-block;
             color: #fff;
         }
-
         .single-course-inner.style-two {
             margin-top: 45px;
         }
@@ -5065,7 +5064,6 @@
             padding-top: 17px;
             margin-top: 70px;
         }
-
         .tag-and-share .blog-share ul {
             margin: 0;
             padding: 0;
@@ -5627,7 +5625,7 @@
 </section>
 
   <!-- cara pesan Section -->
-  <section id="cara_pesan" class="inner-section  p-5">
+  <section id="cara_pesan" class="inner-section  md:p-5 p-2">
         <div style="background:#f4f5f7; padding:1px;">
         <div class="cara-memesan-landing-page">
             <h2>Cara mudah memesan ruangan</h2>
@@ -5644,13 +5642,11 @@
                     <p>2. Pesan dan lakukan kunjungan survey</p>
                     <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
                 </div>
-
                 <div class="step">
                     <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
                     <p>3. Deal dan pembayaran</p>
                     <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
                 </div>
-
             </div>
         </div>
     </div>
@@ -6066,5 +6062,6 @@
 
 
 </body>
+
 
 </html>

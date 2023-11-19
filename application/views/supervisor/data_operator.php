@@ -1629,6 +1629,14 @@
 
         }
 
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
+        }
+
+        .btn-export-p {
+            margin-left: 5px;
+        }
 
         /* code responsive table */
         @media (max-width: 600px) {
@@ -1676,19 +1684,12 @@
                 font-weight: bold;
             }
         }
-
-        .container-table {
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            padding: 20px 10px 10px 10px;
-        }
     </style>
 
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-<?php $this->load->view('sidebar'); ?>
-
+    <?php $this->load->view('sidebars'); ?>
     <section id="widget" class="p-10 widget-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
@@ -1701,13 +1702,31 @@
             </div>
 
             <div class="container-table row justify-content-center">
+                <button onclick="toggleModal()"
+                    class="bg-yellow-500 hover:bg-yellow-700 ml-auto w-28 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-file-import"></i>
+                    </span>
+                    Import
+                </button>
+                <a href=""
+                    class="bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded">
+                    <span class="pe-2">
+                        <i class="fas fa-file-export"></i>
+                    </span>
+                    Export
+                </a>
+
                 <a href="tambah_user_operator"
-                    class="bg-green-500 hover:bg-green-700 ml-auto w-32 text-white font-bold py-2 px-2 rounded">
+                    class="btn-export-p py-2 px-2 w-28 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded"
+                    onclick="toggleModal()">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
                     Tambah
                 </a>
+               
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -1753,17 +1772,16 @@
 
                                                 <a href="<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>"
                                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                    <span class="pe-2">
+                                                    <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
-                                                    Edit
                                                 </a>
                                                 <button onclick="hapus(<?php echo $row->id ?>)"
                                                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                    <span class="pe-2">
+                                                    <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
-                                                    Hapus
+                                                   
                                                 </button>
                                             </td>
                                         </tr>
@@ -1779,47 +1797,76 @@
         </div>
     </section>
 
+    <!-- modal -->
+    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-900 opacity-75">
+                </div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <label class="font-medium text-gray-800">File</label>
+                        <input type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    </div>
+                    <div class="bg-gray-200 px-4 py-3 text-right">
+                        <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
+                            onclick="toggleModal()"> Batal</button>
+                        <button type="button"
+                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function () {
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            var table = $('#examples').DataTable({
-            })
-        });
-        function hapus(id) {
-            Swal.fire({
-                title: 'Apakah Mau Dihapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya, hapus!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Data Terhapus!!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setTimeout(() => {
-                        window.location.href = "<?php echo base_url('supervisor/hapus_data_operator/') ?>" + id;
-                    }, 1800);
-                }
-            })
-        }
-    </script>
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script>
+            $(document).ready(function () {
 
+                var table = $('#examples').DataTable({
+                })
+            });
+            function hapus(id) {
+                Swal.fire({
+                    title: 'Apakah Mau Dihapus?',
+                    text: "data ini tidak bisa dikembalikan lagi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Data Terhapus!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(() => {
+                            window.location.href = "<?php echo base_url('supervisor/hapus_data_operator/') ?>" + id;
+                        }, 1800);
+                    }
+                })
+            }
+        </script>
+
+        <!-- script modal -->
+        <script>
+            function toggleModal() {
+                document.getElementById('modal').classList.toggle('hidden')
+            }
+        </script>
 </body>
 
 </html>

@@ -5496,7 +5496,7 @@
     
 
     <!-- Navigation -->
-    <?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebars'); ?>
 
 
 <section class="pt-5">
@@ -5858,7 +5858,7 @@
 
     <!-- back-to-top end -->
     <a id="back-to-top"></a>
-
+  
     
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

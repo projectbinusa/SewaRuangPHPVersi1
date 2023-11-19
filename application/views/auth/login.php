@@ -19,11 +19,21 @@
             position: relative;
         }
 
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input-container input {
+            padding-right: 30px;
+            /* Menambahkan ruang di sebelah kanan untuk ikon mata */
+        }
+
         .password-toggle-login {
             position: absolute;
-            top: 63%;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
             transform: translateY(-50%);
-            right: 8.3rem;
             cursor: pointer;
         }
 
@@ -235,18 +245,14 @@
 
                     <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
-                                    class="labelIcon"><span>Email*
+                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email*
                                 </span></label>
-                            <input type="email" name="email" class="input" id="emailAddress"
-                                placeholder="Enter your Email Address">
+                            <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png"
-                                    class="labelIcon"><span>Password*</span></label>
+                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
                             <div class="password-input-container">
-                                <input type="password" name="password" class="input" id="password"
-                                    placeholder="Enter your Password">
+                                <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
                         </div>

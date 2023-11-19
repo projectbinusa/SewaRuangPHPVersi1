@@ -911,22 +911,34 @@
             </div>
     </div>
     
+    
+    
     <div class="container-table row justify-content-center">
-   
-<div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6">
         
-    <h1 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white flex items-center">
-       
-       <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
-       <i class="fa-solid fa-plus"></i>   Tambah 
-       </a>
+        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
+            <i class="fa-solid fa-plus"></i> Tambah 
+        </a>
+        
+        <a href="export_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
+        onclick="showAddConfirmation()">
+        <i class="fa-solid fa-download"></i> Export
+    </a>
+    
+    <h1 class="text-gray-900 dark:text-white flex items-center">
+        <div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6 ">
+       <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data" class="flex items-center">
+        <input type="file" class="form-control ml-2" id="file" name="file">
+          <button type="submit" name="import_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+          <i class="fa-solid fa-upload"></i> Import
+          </button>
+        </form>
      </h1>
 
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center px-3 py-3">
@@ -960,7 +972,7 @@
                             <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
 
                                             <!-- Aksi -->
-                                            <td class="justify-content-center px-3 py-4 flex">
+                                            <td class="justify-content text-center px-3 py-4 flex">
                                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded-lg" onclick="update(<?php echo $row->id ?>)">
                                     <i class="fas fa-edit"></i>
                                 </button>

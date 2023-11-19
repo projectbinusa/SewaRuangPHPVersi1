@@ -43,7 +43,7 @@
 
         .content-text {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
+            /* font-size: 17px; */
         }
 
         @media (min-width: 1200px) {
@@ -1537,7 +1537,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebars'); ?>
 
     <section id="widget" class="widget-section pd-top-47">
         <div class="container">
@@ -1574,8 +1574,14 @@
                                         <th data-priority="9" scope="col" class="px-3 py-3">
                                             Jumlah Orang
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Kode Booking
+                                        </th>
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Booking Tanggal
+                                        </th>
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Sampai Tanggal
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total Booking
@@ -1604,6 +1610,12 @@
                                         </td>
                                         <td data-cell=" " class="text-center px-3 py-4">
                                         <?php echo $row->kode_booking?>
+                                        </td>
+                                        <td data-cell=" " class="text-center px-3 py-4">
+                                        <?php echo $row->tanggal_booking?>
+                                        </td>
+                                        <td data-cell=" " class="text-center px-3 py-4">
+                                        <?php echo $row->tanggal_berakhir?>
                                         </td>
                                         <td data-cell=" Waktu " class="text-center px-3 py-4">
                                         <?php

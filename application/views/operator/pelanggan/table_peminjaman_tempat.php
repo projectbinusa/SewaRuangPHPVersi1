@@ -849,7 +849,7 @@
 
             <div class="container-table row justify-content-center">
                 <a href="tambah_peminjaman_tempat"
-                    class="bg-green-500 hover:bg-green-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
+                    class="bg-blue-500 hover:bg-blue-700 ml-auto mr-3 w-32 text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -859,7 +859,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data"
+                            <table style="min-width: 12rem;" id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

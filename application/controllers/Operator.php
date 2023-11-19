@@ -115,7 +115,7 @@ class operator extends CI_Controller
                     $response = [
                         'status' => 'success',
                         'message' => 'Data berhasil ditambahkan.',
-                        'redirect' => base_url('operator'),
+                        'redirect' => base_url('operator/data_ruangan'),
                     ];
                 } else {
                     $response = [
@@ -286,7 +286,7 @@ class operator extends CI_Controller
                         $response = [
                             'status' => 'success',
                             'message' => 'Berhasil Mengubah Ruangan',
-                            'redirect' => base_url('operator'), // Redirect ke halaman daftar ruangan jika berhasil
+                            'redirect' => base_url('operator/data_ruangan'), // Redirect ke halaman daftar ruangan jika berhasil
                         ];
                     }
                 } else {
@@ -439,7 +439,7 @@ class operator extends CI_Controller
 
     public function peminjaman_tempat()
     {
-        $data['peminjaman'] = $this->m_model->get_status_peminjaman()->result();
+        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
         $this->load->view('operator/peminjaman/table_peminjaman_tempat', $data);
     }
 
@@ -548,7 +548,7 @@ class operator extends CI_Controller
                 if (!$tambahan_success) {
                     // Handle error jika tambahan tidak berhasil dimasukkan
                     // Misalnya: Tampilkan pesan error atau lakukan rollback
-                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('oper ator/tambah_peminjaman_tempat') . "';</script>";
                     return;
                 }
             }
@@ -563,7 +563,6 @@ class operator extends CI_Controller
             return;
         }
     }
-
 
     public function hapus_peminjaman($id)
     {
@@ -653,6 +652,7 @@ class operator extends CI_Controller
         redirect(base_url('operator/peminjaman_tempat'));
     }
 
+
     public function tabel_report_sewa()
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
@@ -681,63 +681,99 @@ class operator extends CI_Controller
             return;
         }
 
-        // Menghitung durasi dan harga ruangan
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
-
-        // Menghitung harga tambahan (snack)
-        $harga_tambahan = 0;
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $harga_tambahan += tampil_harga_tambahan_byid($id);
-
-                // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan') {
-                    $harga_tambahan *= $jumlah_orang;
-                }
-            }
-        }
-
-        // Menghitung total harga
-        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
-
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
-        $data_peminjaman = [
+        $harga_snack = $jumlah * $jumlah;
+        $harga_keseluruhan = $harga_snack + $harga_ruangan;
+        $data = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
+           
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
-            'jumlah_orang' => $jumlah_orang,
+            'jumlah_orang' => $jumlah,
+            'kode_booking' => $generate,
             'total_harga' => $harga_keseluruhan,
+            'status' => 'proses',
         ];
-
-        // Memperbarui data di tabel peminjaman
-        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-
-        // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete_peminjaman_tambahan(array('id_peminjaman' => $this->input->post('id')));
-
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $data_tambahan = [
-                    'id_peminjaman' => $this->input->post('id'),
-                    'id_tambahan' => $id,
-                ];
-
-                // Memasukkan data ke tabel peminjaman_tambahan
-                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
-            }
-        }
-
+        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
         $this->check_expired_bookings();
-        // Redirect atau tampilkan pesan sukses
-        redirect(base_url('operator/peminjaman_tempat'));
+        redirect(base_url('operator/tabel_report_sewa'));
     }
+
+    //EXPORT PELANGGAN
+    public function export_pelanggan() {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+        
+        $spreadsheet = new Spreadsheet();
+
+    }
+    public function tambahan(){
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan',$data);
+    }
+    // public function edit_tambahan($id){
+    //     $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id' , $id)->result();
+    //     $this->load->view('operator/tambahan/edit_tambahan',$data);
+    //     // Menghitung durasi dan harga ruangan
+    //     $tanggalBooking = new DateTime($start_time);
+    //     $tanggalBerakhir = new DateTime($end_time);
+    //     $durasi = $tanggalBooking->diff($tanggalBerakhir);
+    //     $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+    //     $harga_ruangan = $harga_ruangan_default * $durasi->days;
+
+    //     // Menghitung harga tambahan (snack)
+    //     $harga_tambahan = 0;
+    //     if (!empty($id_tambahan)) {
+    //         foreach ($id_tambahan as $id) {
+    //             $harga_tambahan += tampil_harga_tambahan_byid($id);
+
+    //             // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
+    //             $tambahan_info = tampil_info_tambahan_byid($id);
+    //             if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan') {
+    //                 $harga_tambahan *= $jumlah_orang;
+    //             }
+    //         }
+    //     }
+    
+
+    //     // Menghitung total harga
+    //     $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
+
+    //     // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+    //     $data_peminjaman = [
+    //         'id_pelanggan' => $id_pelanggan,
+    //         'id_ruangan' => $id_ruangan,
+    //         'tanggal_booking' => $start_time,
+    //         'tanggal_berakhir' => $end_time,
+    //         'jumlah_orang' => $jumlah_orang,
+    //         'total_harga' => $harga_keseluruhan,
+    //     ];
+
+    //     // Memperbarui data di tabel peminjaman
+    //     $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
+
+    //     // Menghapus data tambahan sebelum menambah yang baru
+    //     $this->m_model->delete_peminjaman_tambahan(array('id_peminjaman' => $this->input->post('id')));
+
+    //     // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+    //     if (!empty($id_tambahan)) {
+    //         foreach ($id_tambahan as $id) {
+    //             $data_tambahan = [
+    //                 'id_peminjaman' => $this->input->post('id'),
+    //                 'id_tambahan' => $id,
+    //             ];
+
+    //             // Memasukkan data ke tabel peminjaman_tambahan
+    //             $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+    //         }
+    //     }
+
+    //     $this->check_expired_bookings();
+    //     // Redirect atau tampilkan pesan sukses
+    //     redirect(base_url('operator/peminjaman_tempat'));
+    // }
+
 
     public function expor_ruangan()
     {
@@ -753,7 +789,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('ruangan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['ID', 'RUANGAN', 'LANTAI', 'KETERANGAN', 'HARGA'];
+        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN', 'HARGA'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -762,6 +798,7 @@ class operator extends CI_Controller
 
         // Isi data dari database
         $rowIndex = 2;
+        $no = 1;
         foreach ($data as $rowData) {
             $columnIndex = 1;
             $id = '';
@@ -790,12 +827,12 @@ class operator extends CI_Controller
 
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $id);
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $no_ruang);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $no_lantai);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $harga);
-
+            $no++;
             $rowIndex++;
         }
         // Auto size kolom berdasarkan konten
@@ -860,9 +897,10 @@ class operator extends CI_Controller
                     $this->m_model->tambah_data('ruangan', $data);
                 }
             }
-            redirect(base_url('operator/ruangan'));
+            redirect(base_url('operator/data_ruangan'));
         } else {
             echo 'Invalid file';
         }
     }
+
 }
