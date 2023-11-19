@@ -912,9 +912,7 @@
     </div>
     
     <div class="container-table row justify-content-center">
-   
 <div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6">
-        
     <h1 class="text-gray-900 dark:text-white flex items-center">
        
        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">

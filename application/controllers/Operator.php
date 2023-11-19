@@ -514,7 +514,6 @@ class operator extends CI_Controller
                 }
             }
         }
-
         // Menghitung total harga
         $harga_keseluruhan = $harga + $harga_ruangan;
 
