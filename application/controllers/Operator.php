@@ -13,6 +13,9 @@ class operator extends CI_Controller
         $this->load->model('m_model');
         $this->load->helper('my_helper');
         $this->load->library('form_validation');
+        if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'operator') {
+            redirect(base_url());
+        }
     }
     public function edit_tambahan()
     {
