@@ -1088,8 +1088,6 @@
 
                         
                             <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                
-                           
                             <a href="export_report_sewa" class="ml-auto inline-block px-4 py-2 bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold rounded float-right z-50">
                             <i class="fas fa-file-export"></i> Export 
                             </a>

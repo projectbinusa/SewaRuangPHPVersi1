@@ -160,16 +160,16 @@
 
             .password-toggle-baru {
                 position: absolute;
-                top: 55%;
+                top: 31%;
                 transform: translateY(-50%);
-                right: 3.9rem;
+                right: 4rem;
                 cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 73%;
+                top: 43%;
                 transform: translateY(-50%);
-                right: 3.9rem;
+                right: 4rem;
                 cursor: pointer;
             }
         }
