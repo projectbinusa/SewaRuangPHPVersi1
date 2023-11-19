@@ -4619,7 +4619,6 @@
             display: inline-block;
             color: #fff;
         }
-
         .single-course-inner.style-two {
             margin-top: 45px;
         }
@@ -5065,7 +5064,6 @@
             padding-top: 17px;
             margin-top: 70px;
         }
-
         .tag-and-share .blog-share ul {
             margin: 0;
             padding: 0;
@@ -5272,14 +5270,8 @@
             padding: 20px 10px 10px 10px;
         }
 
-        .all-section {
-            padding: 3rem;
-        }
-
         @media (max-width: 600px) {
-            .all-section {
-            padding: 5px;
-        }
+
 
             tbody {
                 text-align: left;
@@ -5539,7 +5531,7 @@
     <?php $this->load->view('sidebar'); ?>
 
 <!-- data length -->
-    <section class="pt-5 ">
+    <section class="pt-5">
     <div class="scroll">
         <div class="container two">
   <div class="grid-cards">
@@ -5601,11 +5593,11 @@
 
 
       <!-- about area start -->
-      <section  id="about" class="inner-section  all-section">
+      <section  id="about" class="inner-section  p-5">
     <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
-                <div class="md:flex gap-5">
+                <div class="flex gap-5">
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
@@ -5650,20 +5642,18 @@
                     <p>2. Pesan dan lakukan kunjungan survey</p>
                     <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
                 </div>
-
                 <div class="step">
                     <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
                     <p>3. Deal dan pembayaran</p>
                     <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
                 </div>
-
             </div>
         </div>
     </div>
     </section>
     
     <!-- Data Master Ruang -->
-    <section id="widget" class=" widget-section all-section">
+    <section id="widget" class=" widget-section p-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5724,7 +5714,7 @@
     </section>
 
     <!-- Data Master Pelanggan -->
-    <section id="widget" class=" widget-section all-section">
+    <section id="widget" class=" widget-section p-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5790,7 +5780,7 @@
     </section>
   
     <!-- Peminjaman Tempat -->
-    <section id="widget" class=" widget-section all-section">
+    <section id="widget" class=" widget-section p-5 pb-24 pd-bottom-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5869,7 +5859,7 @@
     </section>
 
     <!-- Report Sewa -->
-    <section id="widget" class=" widget-section all-section pb-24 pd-bottom-130">
+    <section id="widget" class=" widget-section p-5 pb-24 pd-bottom-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -6067,6 +6057,9 @@
                 .responsive.recalc();
         });
     </script>
+
+  
+
 
 </body>
 

@@ -514,7 +514,6 @@ class operator extends CI_Controller
                 }
             }
         }
-
         // Menghitung total harga
         $harga_keseluruhan = $harga + $harga_ruangan;
 
@@ -562,6 +561,9 @@ class operator extends CI_Controller
             echo "<script>alert('Gagal menambahkan data peminjaman.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
             return;
         }
+        $this->check_expired_bookings();
+        // Operasi berhasil
+        // Redirect atau tampilkan pesan sukses
     }
 
     public function hapus_peminjaman($id)
@@ -774,6 +776,110 @@ class operator extends CI_Controller
     //     redirect(base_url('operator/peminjaman_tempat'));
     // }
 
+    // EXPORT REPORT SEWA 
+    public function export_report_sewa() {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+        
+        $spreadsheet = new Spreadsheet();
+
+           
+
+        // Buat lembar kerja aktif
+       $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
+        
+        // Buat objek Spreadsheet
+        $headers = ['NO','NAMA','RUANGAN','KAPASITAS','KODE','SNACK','TOTAL BOOKING','TOTAL HARGA','STATUS'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+        
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $nama = '';
+            $id_ruangan = '';
+            $jumlah_orang = '';
+            $kode_booking = '';
+            $tanggal_booking = '';
+            $total_harga = '';
+            $status = '';
+            foreach ($rowData as $cellName => $cellData) {
+                if ($cellName == 'id_pelanggan') {
+                   $nama = tampil_nama_penyewa_byid($cellData);
+                }elseif ($cellName == 'id_ruangan') {
+                    $id_ruangan = tampil_nama_ruangan_byid($cellData);
+                }elseif ($cellName == 'jumlah_orang') {
+                    $jumlah_orang = $cellData;
+                }elseif ($cellName == 'kode_booking') {
+                    $kode_booking = $cellData;
+                }elseif ($cellName == 'tanggal_booking') {
+                    $tanggal_booking = $cellData;
+                }elseif ($cellName == 'total_harga') {
+                    $total_harga = $cellData;
+                }elseif ($cellName == 'status') {
+                    $status = $cellData;
+                }elseif ($cellName == 'tanggal_berakhir') {
+                    $tanggal_berakhir = $cellData;
+                }
+
+                if (!empty($tanggal_booking) && !empty($tanggal_berakhir)) {
+                    $tanggalBooking = new DateTime($tanggal_booking);
+                    $tanggalBerakhir = new DateTime($tanggal_berakhir);
+                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                    $total_booking = $durasi->days . 'Hari';
+                }
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+        
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
+            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
+            $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
+            
+        $no++;
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+        
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+        
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA_REPORT_SEWA.xlsx'; // Nama file Excel yang akan dihasilkan
+        
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+        
+    }
 
     public function expor_ruangan()
     {
