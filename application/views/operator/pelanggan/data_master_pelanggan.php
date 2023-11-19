@@ -911,21 +911,21 @@
             </div>
     </div>
     
+    
+    
     <div class="container-table row justify-content-center">
-   
-<div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6">
         
+        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
+            <i class="fa-solid fa-plus"></i> Tambah 
+        </a>
+        
+        <a href="export_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
+        onclick="showAddConfirmation()">
+        <i class="fa-solid fa-download"></i> Export
+    </a>
+    
     <h1 class="text-gray-900 dark:text-white flex items-center">
-       
-       <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
-       <i class="fa-solid fa-plus"></i> Tambah 
-       </a>
-
-       <a href="export_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
-       onclick="showAddConfirmation()">
-       <i class="fa-solid fa-download"></i> Export
-       </a>
-
+        <div class="container w-full md:w-4/4 xl:w-4/7  mx-auto px-6 ">
        <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data" class="flex items-center">
         <input type="file" class="form-control ml-2" id="file" name="file">
           <button type="submit" name="import_pelanggan" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105">
