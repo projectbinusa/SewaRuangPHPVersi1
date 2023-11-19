@@ -892,7 +892,7 @@
             }
 
             .btn-export-p {
-                margin-left: 6.8rem;
+               
             }
         }
     </style>
@@ -916,27 +916,12 @@
 
             <div class="container-table row justify-content-center">
                 <a href="tambah_peminjaman_tempat"
-                    class="bg-blue-500 hover:bg-blue-800 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+                    class="bg-blue-500 hover:bg-blue-800 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-10">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
                     Tambah
                 </a>
-
-                <a href=""
-                    class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50">
-                    <span class="pe-2">
-                        <i class="fas fa-file-export"></i>
-                    </span>
-                    Export
-                </a>
-
-                <button
-                    class="btn-export-p py-2 px-2 w-28 bg-yellow-500 hover:bg-yellow-700 font-bold text-white rounded"
-                    onclick="toggleModal()"><span class="pe-2">
-                        <i class="fas fa-file-import"></i>
-                    </span>Import</button>
-
 
                 <div class="col-lg-12">
                     <div class="header-item">
