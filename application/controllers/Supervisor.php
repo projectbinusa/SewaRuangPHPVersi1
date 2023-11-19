@@ -18,9 +18,9 @@ class Supervisor extends CI_Controller {
         $this->load->model('m_model');
 		$this->load->helper('my_helper');
 		$this->load->library('form_validation');
-		// if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'supervisor') {
-        //     redirect(base_url());
-        // }
+		if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'supervisor') {
+            redirect(base_url());
+        }
     }
 
  
@@ -205,7 +205,11 @@ class Supervisor extends CI_Controller {
                 $username = $worksheet->getCellByColumnAndRow(2,$row)->getValue();
                 $email = $worksheet->getCellByColumnAndRow(3,$row)->getValue();
                 $password = $worksheet->getCellByColumnAndRow(4,$row)->getValue();
-
+                $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+                $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');     
+                if($this->form_validation->run() === FALSE){
+                    echo "<alert>Password atau email tidak valid</alert>";
+                }
                 $data = [
                     'username' => $username,
                     'email' => $email,
