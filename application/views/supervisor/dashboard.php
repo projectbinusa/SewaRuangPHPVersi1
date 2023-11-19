@@ -33,7 +33,6 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            font-size: 17px;
             background-color: #f1f1f1;
         }
         .content-text {
@@ -5497,10 +5496,10 @@
     
 
     <!-- Navigation -->
-    <?php $this->load->view('sidebar'); ?>
+    <?php $this->load->view('sidebars'); ?>
 
 
-<section>
+<section class="pt-5">
     <div class="scroll">
       
         <div class="container two">
@@ -5540,7 +5539,7 @@
     <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
-                <div class="row">
+                <div class="flex gap-5">
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
@@ -5859,7 +5858,7 @@
 
     <!-- back-to-top end -->
     <a id="back-to-top"></a>
-
+  
     
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
