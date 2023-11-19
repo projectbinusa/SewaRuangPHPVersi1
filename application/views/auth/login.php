@@ -200,9 +200,9 @@
 
             .password-toggle-login {
                 position: absolute;
-                top: 65%;
+                top: 55%;
                 transform: translateY(-50%);
-                right: 2.1rem;
+                right: 0.5rem;
                 cursor: pointer;
             }
 

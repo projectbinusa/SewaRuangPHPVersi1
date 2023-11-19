@@ -909,7 +909,6 @@
                     </div>
                 </div>
             </div>
-    </div>
     
     <div class="container-table row justify-content-center">        
        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="bg-blue-500 hover:bg-blue-800 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-50">
