@@ -767,15 +767,12 @@ class operator extends CI_Controller
         
     }
 
-    // EXPORT REPORT SEWA 
     public function export_report_sewa() {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
         
         $spreadsheet = new Spreadsheet();
-
-           
 
         // Buat lembar kerja aktif
        $sheet = $spreadsheet->getActiveSheet();
@@ -817,9 +814,16 @@ class operator extends CI_Controller
                     $total_harga = $cellData;
                 }elseif ($cellName == 'status') {
                     $status = $cellData;
+                }elseif ($cellName == 'tanggal_berakhir') {
+                    $tanggal_berakhir = $cellData;
                 }
-                // Anda juga dapat menambahkan logika lain jika perlu
-                
+
+                if (!empty($tanggal_booking) && !empty($tanggal_berakhir)) {
+                    $tanggalBooking = new DateTime($tanggal_booking);
+                    $tanggalBerakhir = new DateTime($tanggal_berakhir);
+                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                    $total_booking = $durasi->days . 'Hari';
+                }
                 // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                 $columnIndex++;
             }
@@ -831,7 +835,8 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_booking);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
             $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
             $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
             
@@ -863,6 +868,7 @@ class operator extends CI_Controller
         $writer->save('php://output');
         
     }
+
 
     public function expor_ruangan()
     {

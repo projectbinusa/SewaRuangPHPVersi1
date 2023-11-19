@@ -190,9 +190,9 @@
 
             .password-toggle-register {
                 position: absolute;
-                top: 73%;
+                top: 65.5%;
                 transform: translateY(-50%);
-                right: 2.1rem;
+                right: 1.7rem;
                 cursor: pointer;
             }
 
