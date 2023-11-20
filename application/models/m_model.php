@@ -76,7 +76,7 @@ class M_model extends CI_Model
     {
         // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
         $this->db->where('id', $id);
-        return $this->db->get('peminjaman');
+        return $this->db->get('peminjaman_tambaha');
     }
 
     public function get_data_byid($table, $id)

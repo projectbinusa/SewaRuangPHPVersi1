@@ -32,7 +32,7 @@
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: true }">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
-          <img src="<?php echo base_url('image/logo.png') ?>" class="w-30 mt-5">
+          <img src="<?php echo base_url('image/logo.png') ?>" class="w-30 mt-3">
           <!-- <span class="text-gray-300 text-xl font-medium mx-2"></span> -->
         </div>
         <div class="flex md:hidden">
@@ -131,3 +131,4 @@
 </body>
 
 </html>
+
