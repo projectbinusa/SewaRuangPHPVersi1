@@ -23,7 +23,7 @@
             position: absolute;
             top: 70%;
             transform: translateY(-50%);
-            right: 7.9rem;
+            right: 8rem;
             cursor: pointer;
         }
 
@@ -146,6 +146,7 @@
         .LoginPageInnerContainer .LoginFormContainer .checkboxContainer label {
             display: block;
             padding: 0px 5px;
+            margin-left: 5px;
             color: #9aa4ad;
         }
 
@@ -190,9 +191,9 @@
 
             .password-toggle-register {
                 position: absolute;
-                top: 65.5%;
+                top: 37rem;
                 transform: translateY(-50%);
-                right: 1.7rem;
+                right: 1.8rem;
                 cursor: pointer;
             }
 
@@ -235,7 +236,7 @@
 
                     <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://o.remove.bg/downloads/b8d34e69-6003-46eb-8d9f-23b06a7ff07d/png-transparent-computer-icons-user-username-avatar-person-skill-thumbnail-removebg-preview.png"
+                            <label class="label" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png"
                                     class="labelIcon"><span>Username*
                                 </span></label>
                             <input type="text" name="username" class="input" id="username"
@@ -268,19 +269,20 @@
 </body>
 <script type="text/javascript">
     function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle-login');
+    var passwordField = document.getElementById('password');
+    var passwordToggle = document.querySelector('.password-toggle-register');
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.remove('fa-eye');
-            passwordToggle.classList.add('fa-eye-slash');
-        }
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        passwordToggle.classList.remove('fa-eye-slash');
+        passwordToggle.classList.add('fa-eye');
+    } else {
+        passwordField.type = "password";
+        passwordToggle.classList.remove('fa-eye');
+        passwordToggle.classList.add('fa-eye-slash');
     }
+}
+
 </script>
 
 </html>

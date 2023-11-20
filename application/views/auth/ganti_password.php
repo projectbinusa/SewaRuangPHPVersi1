@@ -140,7 +140,7 @@
             position: absolute;
             top: 40%;
             transform: translateY(-50%);
-            right: 40rem;
+            right: 39.5rem;
             cursor: pointer;
         }
 
@@ -148,7 +148,7 @@
             position: absolute;
             top: 56%;
             transform: translateY(-50%);
-            right: 40rem;
+            right: 39.5rem;
             cursor: pointer;
         }
 
@@ -160,14 +160,14 @@
 
             .password-toggle-baru {
                 position: absolute;
-                top: 31%;
+                top: 28%;
                 transform: translateY(-50%);
                 right: 4rem;
                 cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 43%;
+                top: 39%;
                 transform: translateY(-50%);
                 right: 4rem;
                 cursor: pointer;
