@@ -32,7 +32,7 @@
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: true }">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
-          <img src="<?php echo base_url('image/logo.png') ?>" class="w-30 mt-5">
+          <img src="<?php echo base_url('image/logo.png') ?>" class="w-30 mt-3">
           <!-- <span class="text-gray-300 text-xl font-medium mx-2"></span> -->
         </div>
         <div class="flex md:hidden">
@@ -46,7 +46,7 @@
       <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }">
         <ul>
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
-            <a href="<?php echo base_url('operator/dashboard') ?>" class="flex items-center">
+            <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white hover:text-black "></i>
               <span class="mx-2 text-white hover:text-black font-semibold">Dashboard</span>
             </a>
@@ -131,3 +131,4 @@
 </body>
 
 </html>
+

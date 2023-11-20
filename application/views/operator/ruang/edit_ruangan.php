@@ -75,8 +75,8 @@
         function deleteImage(imageId) {
             // Konfirmasi terlebih dahulu menggunakan SweetAlert2
             Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin menghapus gambar ini?',
+                title: 'Apakah Mau Dihapus?',
+                text: 'Gambar ini tidak bisa dikembalikan lagi!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
@@ -103,7 +103,7 @@
                                 });
                             } else if (response.status === 'error') {
                                 Swal.fire({
-                                    title: 'Gagal',
+                                    title: 'Sayang sekali!',
                                     text: response.message,
                                     icon: 'error',
                                 });

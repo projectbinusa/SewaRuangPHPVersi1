@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sewa Ruang</title>
 
     <!-- cdn fontawesome -->
@@ -138,9 +138,9 @@
 
         .password-toggle-baru {
             position: absolute;
-            top: 40%;
+            top: 40.5%;
             transform: translateY(-50%);
-            right: 40rem;
+            right: 39.5rem;
             cursor: pointer;
         }
 
@@ -148,31 +148,138 @@
             position: absolute;
             top: 56%;
             transform: translateY(-50%);
-            right: 40rem;
+            right: 39.5rem;
             cursor: pointer;
         }
 
-        @media only screen and (max-width: 800px) {
+        /* IP SE */
+        @media (min-width: 333px) and (max-width: 671px) {
 
             .form-group {
                 position: relative;
             }
+            .password-toggle-baru {
+                position: absolute;
+                top: 39.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 54.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+        }
+/* IP XR*/
+        @media (min-width: 414px) and (max-width: 896px) {
 
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 29%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 40.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+        }
+        /* IP 12 */
+        @media (min-width: 390px) and (max-width: 844px) {
+
+            .form-group {
+                position: relative;
+            }
             .password-toggle-baru {
                 position: absolute;
                 top: 31%;
                 transform: translateY(-50%);
-                right: 4rem;
+                right: 4.5rem;
                 cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
                 top: 43%;
                 transform: translateY(-50%);
-                right: 4rem;
+                right: 4.5rem;
                 cursor: pointer;
             }
         }
+        /* IP 14 */
+        @media (min-width: 430px) and (max-width: 932px) {
+
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 28%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 39%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+        }
+        /* PIXEL 7 */
+        @media (min-width: 412px) and (max-width: 915px) {
+
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 28.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 39.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+        }
+        /* Tablet */
+        @media (min-width: 800px) and (max-width: 1280px) {
+
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 43%;
+                transform: translateY(-50%);
+                right: 23rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 60%;
+                transform: translateY(-50%);
+                right: 23rem;
+                cursor: pointer;
+            }
+        }
+        
+        
     </style>
 </head>
 

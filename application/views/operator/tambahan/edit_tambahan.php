@@ -227,7 +227,7 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Tambahan Peminjaman</h1>
             </header>
-            <?php foreach($tambahan as $row):?>
+            <?php foreach($tambahan as $row): ?>
             <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form"
                 class="survey-form">
                 <input type="hidden" name="id" id="nama" value="<?php echo $row->id?>" class="nama" placeholder="Masukkan nama item" required>
