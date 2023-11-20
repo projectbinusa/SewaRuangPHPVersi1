@@ -19,7 +19,7 @@ class operator extends CI_Controller
     }
     public function edit_tambahan($id)
     {
-        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id', $id);
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id', $id)->result();
         $this->load->view('operator/tambahan/edit_tambahan', $data);
     }
     public function tambahan()
