@@ -1166,11 +1166,11 @@
                                                 ?>
                                             </td>
                                             <!-- Total -->
-                                            <td data-call="" class="w-32 px-3 py-4">
+                                            <td data-call="Total Booking" class="w-32 px-3 py-4">
                                                 <?php echo $row->total_harga ?>
                                             </td>
                                             <!-- Status -->
-                                            <td class="w-32 px-3 py-4">
+                                            <td data-cell="Status" class="w-32 px-3 py-4">
                                                 <?php echo $row->status ?>
                                             </td>
                                             <!-- Aksi -->

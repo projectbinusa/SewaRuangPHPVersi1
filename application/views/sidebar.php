@@ -15,20 +15,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
 </head>
 
-<style>
-  /* Default styles */
-li:hover span {
-    color: black; /* Warna teks ketika dihover */
-}
-li:hover i {
-    color: black; /* Warna ikon ketika dihover */
-}
-</style>
-
 <body class="bg-white min-h-screen font-base">
 
   <div id="app" class="flex flex-col md:flex-row w-full">
-    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }">
+  <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }" x-show="isOpen">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
           <img src="<?php echo base_url('image/logo.png') ?>" class="w-30 mt-5">
@@ -99,7 +89,6 @@ li:hover i {
           </ul>
         </ul>
       </nav>
-
 
       <script>
         // Gráfica de Usuarios
