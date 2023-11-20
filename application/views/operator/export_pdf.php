@@ -181,11 +181,11 @@
         <thead>
             <tr>
                 <th>Item</th>
-                <th>Jumlah</th>
+                <th>Jumlah Item</th>
                 <!-- <th></th> -->
                 <!-- <th></th> -->
-                <th>Harga sewa</th>
-                <th>Total</th>
+                <th>Harga</th>
+                <th>Total Harga</th>
             </tr>
         </thead>
         <tbody>
@@ -248,7 +248,7 @@
         <h4>PAYMENT INFO</h4>
         <?php date_default_timezone_set('Asia/Jakarta'); ?>
         <p class="baru">Tanggal :<span><?php echo date('F j,Y'); ?></span></p>
-        <p>Jam Pemesanan : <span><?php echo date('H:i:s'); ?></span></p>
+        <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
         <p>pembayaran : <span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan); ?></span></p>
     </div>
 </body>
