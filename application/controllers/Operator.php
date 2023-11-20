@@ -13,12 +13,54 @@ class operator extends CI_Controller
         $this->load->model('m_model');
         $this->load->helper('my_helper');
         $this->load->library('form_validation');
+        if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'operator') {
+            redirect(base_url());
+        }
     }
-    public function edit_tambahan()
+    public function edit_tambahan($id)
     {
-        $this->load->view('operator/tambahan/edit_tambahan');
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id', $id)->result();
+        $this->load->view('operator/tambahan/edit_tambahan', $data);
     }
+    public function tambahan()
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan', $data);
+    }
+    public function tambah_item_tambahan()
+    {
+        $this->load->view('operator/tambahan/tambah_item_tambahan');
+    }
+    public function aksi_edit_tambahan(){
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
 
+        $data=[
+            'nama'=> $nama,
+            'harga'=> $harga,
+            'jenis'=> $jenis,
+            'deskripsi'=>$deskripsi
+        ];
+        $this->m_model->update('user', $data, array('id'=>$this->input->post('id')));
+        redirect(base_url('operator/tambahan'));
+    }
+    public function aksi_tambahan(){
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
+
+        $data=[
+            'nama'=> $nama,
+            'harga'=> $harga,
+            'jenis'=> $jenis,
+            'deskripsi'=>$deskripsi
+        ];
+        $this->m_model->tambah_data('tambahan', $data);
+        redirect(base_url('operator/tambahan'));
+    }
     public function detail($id)
     {
         $data['ruang'] = $this->m_model->get_data_ruangan_by_id('ruangan', $id)->result();

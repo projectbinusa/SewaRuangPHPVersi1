@@ -911,14 +911,16 @@
             </div>
     
     <div class="container-table row justify-content-center">        
-       <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="bg-blue-500 hover:bg-blue-800 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-50">
-       <i class="fas fa-plus"></i> Tambah 
-       </a>
-
-       <a href="export_pelanggan" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
-       onclick="showAddConfirmation()">
-       <i class="fas fa-file-export"></i> Export
-       </a>
+        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="bg-blue-500 hover:bg-blue-800 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-50">
+            <i class="fas fa-plus"></i> Tambah 
+        </a>
+        
+        <a href="export_pelanggan" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
+        onclick="showAddConfirmation()">
+        <i class="fas fa-file-export"></i> Export
+    </a>
+    
+         
        <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data" class="flex items-center">
         <input type="file" class="form-control ml-2" id="file" name="file">
           <button type="submit" name="import_pelanggan" class="btn-export-p py-2 px-2 w-28 bg-yellow-500 hover:bg-yellow-700 font-bold text-white rounded ">
@@ -928,10 +930,10 @@
           </span>
           </button>
         </form>
-
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
+        
+       <div class="col-lg-12">
+           <div class="header-item">
+               <div class="relative">
 
                             <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
