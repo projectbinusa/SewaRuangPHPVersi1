@@ -201,8 +201,56 @@ class Supervisor extends CI_Controller
         $writer->save('php://output');
 
     }
+<<<<<<< HEAD
+    public function template_data_operator() {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+        
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+       $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        
+        // Buat objek Spreadsheet
+        $headers = ['NO','USERNAME', 'EMAIL' , 'PASSWORD'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+        
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+        
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+        
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE_DATA_OPERATOR.xlsx'; // Nama file Excel yang akan dihasilkan
+        
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+        
+    }
+    public function import_data_operator() {
+=======
     public function import_data_operator()
     {
+>>>>>>> ff52f454b2590952e332916792b6b57dcef7bb9a
         require 'vendor/autoload.php';
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
