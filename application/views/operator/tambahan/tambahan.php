@@ -11,8 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -898,6 +897,12 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
+    <!-- script modal -->
+    <script>
+      function toggleModal() {
+        document.getElementById('modal').classList.toggle('hidden')
+      }
+    </script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -921,58 +926,32 @@
                 <div class="header-item">
                     <div class="relative">
                         
-                        <a href="tambah_item_tambahan" class="bg-blue-800  w-28 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_item_tambahan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                                 <span class="pe-2">
                                     <i class="fas fa-plus"></i>
                                 </span>
                                 Tambah
                             </a>
 
-                        <a href="export_pelanggan" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
+                        <a href="export_tambahan" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
                              onclick="showAddConfirmation()">
                                  <i class="fas fa-file-export"></i> Export
                            </a>
                    
  
+                           <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+                           <span class="pe-2">
+                          <i class="fas fa-file-import"></i>
+                           </span>
+                           Import
+                           </button>
 
-                           <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
-                           <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="  w-25block text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                           <i class="fas fa-file-import"></i> Modal 
-                          
-                          </button>
-
-<div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                </svg>
-                <span class="sr-only">Close modal</span>
-            </button>
-            <div class="p-4 md:p-5 text-center">
-                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                </svg>
-                <br>
-        <input type="file" class="form-control ml-2" id="file" name="file">     
-                <br>
-                <br>
-                <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data" class="flex items-center">
-                <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                    Import
-                </button>
-                <a data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Kembali</a>
-    </form>
-            </div>
-        </div>
-    </div>
-</div>
+                           
 
 
 
                  
-                            <table style="min-width: 22rem;" id="example_data"
+                            <table style="min-width: 12rem;" id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -1020,7 +999,7 @@
                                         </td> 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
                                             <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -1045,7 +1024,27 @@
 
         </div>
     </section>
-    
+    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity">
+        <div class="absolute inset-0 bg-gray-900 opacity-75">
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+          <form action="<?php echo base_url('operator/import_tambahan'); ?>" method="post" enctype="multipart/form-data">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <label class="font-medium text-gray-800">File</label>
+              <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+
+            </div>
+            <div class="bg-gray-200 px-4 py-3 text-right">
+              <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+              <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
     <!-- jQuery -->
