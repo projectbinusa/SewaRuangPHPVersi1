@@ -5602,20 +5602,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Username  " scope="row"
-                                            class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          1
-                                        </td>
-                                        <td data-cell="Email " class="text-center px-6 py-4">
-                                        Muh Hatta Hanafi 
-                                        </td>
-                                        <td data-cell="Email " class="text-center px-6 py-4">
-                                            Hanafi@gmail.com
-                                        </td>
-                                    </tr>
-                
+                                <?php $no = 0;
+                                foreach ($operators as $row):
+                                    $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="Username  " scope="row"
+                                                class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Email " class="text-center px-6 py-4">
+                                            <?php echo $row->username ?>
+                                            </td>
+                                            <td data-cell="Email " class="text-center px-6 py-4">
+                                            <?php echo $row->email ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -5627,81 +5629,7 @@
         </div>
     </section>
 
-    <!-- Laporan Penyewa -->
-    <section id="widget" class=" widget-section p-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Laporan Penyewa</h2>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-                            <table style="min-width: 22rem;" id="example_laporan_penyewa"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                            No
-                                        </th>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama Penyewa
-                                        </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            No Ruang
-                                        </th>
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Jam Penggunaan
-                                        </th>
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Extra Waktu
-                                        </th>
-                                       
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
-                                        </td>
-                                        <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                        Ahmad Sony
-                                        </td>
-                                        <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                            R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="text-center px-3 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="text-center px-3 py-4">
-                                            -
-                                        </td>
-                                      
-                                    </tr>
-                                  
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
+  
   
     <!-- Approve -->
     <section id="widget" class=" widget-section p-5 pb-24 pd-bottom-130">
@@ -5742,35 +5670,55 @@
                                             Jam Penggunaan
                                         </th>
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Extra Waktu
+                                            Kode Booking
                                         </th>
-                                        
+                                        <th data-priority="7" scope="col" class="text-center px-3 py-3">
+                                            Tanggal 
+                                        </th>
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                           Waktu
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
-                                        </td>
-                                        <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                        Ahmad Sony
-                                        </td>
-                                        <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                            R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Jam Penggunaan " class="text-center px-3 py-4">
-                                            12.00 - 13.30
-                                        </td>
-                                        <td data-cell="Exstra Waktu " class="text-center px-3 py-4">
-                                            -
-                                        </td>
-                                       
-                                    </tr>
+                                <?php $no = 0;
+                                foreach ($approves as $row):
+                                    $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row"
+                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama Penyewa " class="text-center px-3 py-4">
+                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
+                                            </td>
+                                            <td data-cell="No Ruang " class="text-center px-3 py-4">
+                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                            <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <td data-cell="Kode Booking " class="text-center px-3 py-4">
+                                            <?php echo $row->kode_booking ?>
+                                            </td>
+                                            <td data-cell="Tanggal  " class="text-center px-3 py-4">
+                                            <?php echo $row->tanggal_booking ?> -  <?php echo $row->tanggal_berakhir ?>
+                                            </td>
+                                           
+                                            <td data-cell="Tanggal Berakhir " class="text-center px-3 py-4">
+                                            <?php
+                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                            $tanggalBooking = new DateTime($row->tanggal_booking);
+                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+
+                                            // Menampilkan durasi dalam format angka
+                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                            ?>                                        </td>
+                                       
+                                        </tr>
+                                <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>

@@ -1608,10 +1608,10 @@
                                         <td data-cell="Kapasitas " class="text-center px-3 py-4">
                                             <?php echo $row->jumlah_orang?>
                                         </td>
-                                        <td data-cell=" " class="text-center px-3 py-4">
+                                        <td data-cell="Kode Booking " class="text-center px-3 py-4">
                                         <?php echo $row->kode_booking?>
                                         </td>
-                                        <td data-cell=" " class="text-center px-3 py-4">
+                                        <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
                                         <?php echo $row->tanggal_booking?>
                                         </td>
                                         <td data-cell=" " class="text-center px-3 py-4">
