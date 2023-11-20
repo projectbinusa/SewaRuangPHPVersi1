@@ -1173,7 +1173,6 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
-<<<<<<< HEAD
     public function export_tambahan() {
 
         // Load autoloader Composer
@@ -1329,48 +1328,5 @@ class operator extends CI_Controller
        } else {
         echo 'Invalid File';
        }
-=======
-    public function import_tambahan()
-    {
-        if (isset($_FILES["file"]["name"])) {
-            $path = $_FILES["file"]["tmp_name"];
-            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
-            foreach ($object->getWorksheetIterator() as $worksheet) {
-                // untuk mencari tahu seberapa banyak data yg ada
-                $highestRow = $worksheet->getHighestRow();
-                $highestColumn = $worksheet->getHighestColumn();
-
-                // $row = 2; artine data dimulai dari baris ke2
-                for ($row = 2; $row <= $highestRow; $row++) {
-                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $harga = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $jenis = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-
-                    // Validate that none of the imported values are empty
-                    if (empty($nama) || empty($harga) || empty($deskripsi) || empty($jenis)) {
-                        // Handle the case where any of the required fields is empty
-                        // You may want to log an error, skip the row, or take other appropriate actions
-                        continue;
-                    }
-
-                    // Optionally, you may want to perform additional validation or processing on the data
-
-                    $data = array(
-                        'nama' => $nama,
-                        'harga' => $harga,
-                        'deskripsi' => $deskripsi,
-                        'jenis' => $harga
-                    );
-
-                    // untuk menambahkan ke database
-                    $this->m_model->tambah_data('tambahan', $data);
-                }
-            }
-            redirect(base_url('operator/tambahan'));
-        } else {
-            echo 'Invalid file';
-        }
->>>>>>> ff52f454b2590952e332916792b6b57dcef7bb9a
-    }
+}
 }

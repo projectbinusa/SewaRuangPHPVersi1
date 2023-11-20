@@ -201,7 +201,6 @@ class Supervisor extends CI_Controller
         $writer->save('php://output');
 
     }
-<<<<<<< HEAD
     public function template_data_operator() {
 
         // Load autoloader Composer
@@ -247,10 +246,6 @@ class Supervisor extends CI_Controller
         
     }
     public function import_data_operator() {
-=======
-    public function import_data_operator()
-    {
->>>>>>> ff52f454b2590952e332916792b6b57dcef7bb9a
         require 'vendor/autoload.php';
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
