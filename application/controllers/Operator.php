@@ -19,7 +19,7 @@ class operator extends CI_Controller
     }
     public function edit_tambahan($id)
     {
-        $data['tambahan'] = $this->m_model->get_by_id('tambahan' , 'id', $id)->result();
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan', 'id', $id)->result();
         $this->load->view('operator/tambahan/edit_tambahan', $data);
     }
     public function tambahan()
@@ -31,32 +31,34 @@ class operator extends CI_Controller
     {
         $this->load->view('operator/tambahan/tambah_item_tambahan');
     }
-    public function aksi_edit_tambahan(){
+    public function aksi_edit_tambahan()
+    {
         $nama = $this->input->post('nama');
         $harga = $this->input->post('harga');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
 
-        $data=[
-            'nama'=> $nama,
-            'harga'=> $harga,
-            'jenis'=> $jenis,
-            'deskripsi'=>$deskripsi
+        $data = [
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi
         ];
-        $this->m_model->update('user', $data, array('id'=>$this->input->post('id')));
+        $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
         redirect(base_url('operator/tambahan'));
     }
-    public function aksi_tambahan(){
+    public function aksi_tambahan()
+    {
         $nama = $this->input->post('nama');
         $harga = $this->input->post('harga');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
 
-        $data=[
-            'nama'=> $nama,
-            'harga'=> $harga,
-            'jenis'=> $jenis,
-            'deskripsi'=>$deskripsi
+        $data = [
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi
         ];
         $this->m_model->tambah_data('tambahan', $data);
         redirect(base_url('operator/tambahan'));
@@ -586,25 +588,25 @@ class operator extends CI_Controller
                 // Memasukkan data ke tabel peminjaman_tambahan
                 $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
 
-            if (!$tambahan_success) {
-                // Handle error jika tambahan tidak berhasil dimasukkan
-                // Misalnya: Tampilkan pesan error atau lakukan rollback
-                echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-                return;
+                if (!$tambahan_success) {
+                    // Handle error jika tambahan tidak berhasil dimasukkan
+                    // Misalnya: Tampilkan pesan error atau lakukan rollback
+                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+                    return;
+                }
             }
-        }
 
-        $this->check_expired_bookings();
-        // Operasi berhasil
-        // Redirect atau tampilkan pesan sukses
-}
+            $this->check_expired_bookings();
+            // Operasi berhasil
+            // Redirect atau tampilkan pesan sukses
+        }
     }
 
     public function hapus_peminjaman($id)
     {
         $this->m_model->delete('peminjaman', 'id', $id);
         redirect(base_url('operator/peminjaman_tempat'));
-}
+    }
     public function aksi_edit_peminjaman()
     {
         $nama = $this->input->post('nama');
@@ -715,7 +717,7 @@ class operator extends CI_Controller
         $data = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
-           
+
             'tanggal_booking' => $start_time,
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah,
@@ -723,34 +725,36 @@ class operator extends CI_Controller
             'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
-        $this->m_model->update('peminjaman', $data , array('id'=>$this->input->post('id')));
+        $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
         redirect(base_url('operator/tabel_report_sewa'));
     }
 
     //EXPORT PELANGGAN
-    public function export_pelanggan() {
+    public function export_pelanggan()
+    {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
-        
+
         $spreadsheet = new Spreadsheet();
 
         // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
         $data = $this->m_model->get_data('pelanggan')->result();
-        
+
         // Buat objek Spreadsheet
-        $headers = ['NO','NAMA','PHONE','PAYMENT METHOD'];
+        $headers = ['NO', 'NAMA', 'PHONE', 'PAYMENT METHOD'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
             $rowIndex++;
         }
-        
+
         // Isi data dari database
         $rowIndex = 2;
+        $no = 1;
         foreach ($data as $rowData) {
             $columnIndex = 1;
             $id = '';
@@ -758,77 +762,77 @@ class operator extends CI_Controller
             $phone = '';
             $payment_method = '';
             foreach ($rowData as $cellName => $cellData) {
-                if($cellName == 'id'){
+                if ($cellName == 'id') {
                     $id = $cellData;
-                }elseif ($cellName == 'nama') {
-                   $nama = $cellData;
+                } elseif ($cellName == 'nama') {
+                    $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
                 } elseif ($cellName == 'payment_method') {
                     $payment_method = $cellData;
                 }
-        
+
                 // Anda juga dapat menambahkan logika lain jika perlu
-                
+
                 // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                 $columnIndex++;
             }
-        
+
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $id);
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $phone);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $payment_method);
-        
+            $no++;
             $rowIndex++;
         }
         // Auto size kolom berdasarkan konten
         foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
-        
+
         // Set style header
         $headerStyle = [
             'font' => ['bold' => true],
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
         ];
         $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
+
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'DATA_PELANGGAN.xlsx'; // Nama file Excel yang akan dihasilkan
-        
+
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
-        
+
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-        
     }
 
-    public function export_report_sewa() {
+    public function export_report_sewa()
+    {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
-        
+
         $spreadsheet = new Spreadsheet();
 
         // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
         $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
-        
+
         // Buat objek Spreadsheet
-        $headers = ['NO','NAMA','RUANGAN','KAPASITAS','KODE','SNACK','TOTAL BOOKING','TOTAL HARGA','STATUS'];
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'SNACK', 'TOTAL BOOKING', 'TOTAL HARGA', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
             $rowIndex++;
         }
-        
+
         // Isi data dari database
         $rowIndex = 2;
         $no = 1;
@@ -843,20 +847,20 @@ class operator extends CI_Controller
             $status = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'id_pelanggan') {
-                   $nama = tampil_nama_penyewa_byid($cellData);
-                }elseif ($cellName == 'id_ruangan') {
+                    $nama = tampil_nama_penyewa_byid($cellData);
+                } elseif ($cellName == 'id_ruangan') {
                     $id_ruangan = tampil_nama_ruangan_byid($cellData);
-                }elseif ($cellName == 'jumlah_orang') {
+                } elseif ($cellName == 'jumlah_orang') {
                     $jumlah_orang = $cellData;
-                }elseif ($cellName == 'kode_booking') {
+                } elseif ($cellName == 'kode_booking') {
                     $kode_booking = $cellData;
-                }elseif ($cellName == 'tanggal_booking') {
+                } elseif ($cellName == 'tanggal_booking') {
                     $tanggal_booking = $cellData;
-                }elseif ($cellName == 'total_harga') {
+                } elseif ($cellName == 'total_harga') {
                     $total_harga = $cellData;
-                }elseif ($cellName == 'status') {
+                } elseif ($cellName == 'status') {
                     $status = $cellData;
-                }elseif ($cellName == 'tanggal_berakhir') {
+                } elseif ($cellName == 'tanggal_berakhir') {
                     $tanggal_berakhir = $cellData;
                 }
 
@@ -869,7 +873,7 @@ class operator extends CI_Controller
                 // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                 $columnIndex++;
             }
-        
+
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
             $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
@@ -880,34 +884,33 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
             $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
             $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
-            
-        $no++;
+
+            $no++;
             $rowIndex++;
         }
         // Auto size kolom berdasarkan konten
         foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
-        
+
         // Set style header
         $headerStyle = [
             'font' => ['bold' => true],
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
         ];
         $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
+
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'DATA_REPORT_SEWA.xlsx'; // Nama file Excel yang akan dihasilkan
-        
+
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
-        
+
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-        
     }
 
 
@@ -1038,5 +1041,45 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
+    public function import_pelanggan()
+    {
+        if (isset($_FILES["file"]["name"])) {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                // untuk mencari tahu seberapa banyak data yg ada
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
 
+                // $row = 2; artine data dimulai dari baris ke2
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $phone = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $payment_method = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+
+
+                    // Validate that none of the imported values are empty
+                    if (empty($nama) || empty($phone) || empty($payment_method)) {
+                        // Handle the case where any of the required fields is empty
+                        // You may want to log an error, skip the row, or take other appropriate actions
+                        continue;
+                    }
+
+                    // Optionally, you may want to perform additional validation or processing on the data
+
+                    $data = array(
+                        'nama' => $nama,
+                        'phone' => $phone,
+                        'payment_method' => $payment_method,
+                    );
+
+                    // untuk menambahkan ke database
+                    $this->m_model->tambah_data('pelanggan', $data);
+                }
+            }
+            redirect(base_url('operator/data_master_pelanggan'));
+        } else {
+            echo 'Invalid file';
+        }
+    }
 }
