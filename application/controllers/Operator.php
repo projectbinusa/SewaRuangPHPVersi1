@@ -17,6 +17,14 @@ class operator extends CI_Controller
             redirect(base_url());
         }
     }
+
+    public function index()
+    {
+        $data['report_sewa'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
+        $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
+        $this->load->view('operator/dashboard', $data);
+    }
+
     public function edit_tambahan($id)
     {
         $data['tambahan'] = $this->m_model->get_by_id('tambahan', 'id', $id)->result();
@@ -69,10 +77,6 @@ class operator extends CI_Controller
         $this->load->view('operator/ruang/detail', $data);
     }
 
-    public function index()
-    {
-        $this->load->view('operator/dashboard');
-    }
     public function data_ruangan()
     {
         $data['ruang'] = $this->m_model->get_data('ruangan')->result();

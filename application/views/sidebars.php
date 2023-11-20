@@ -46,7 +46,7 @@
       <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }">
         <ul>
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
-            <a href="<?php echo base_url('operator/dashboard') ?>" class="flex items-center">
+            <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white hover:text-black "></i>
               <span class="mx-2 text-white hover:text-black font-semibold">Dashboard</span>
             </a>
