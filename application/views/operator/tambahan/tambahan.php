@@ -932,9 +932,8 @@
                                 </span>
                                 Tambah
                             </a>
-
-                        <a href="export_tambahan" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
-                             onclick="showAddConfirmation()">
+                        <a href="<?php echo base_url('operator/export_tambahan')?>" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
+                        >
                                  <i class="fas fa-file-export"></i> Export
                            </a>
                    
