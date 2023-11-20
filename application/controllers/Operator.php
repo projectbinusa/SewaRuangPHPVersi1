@@ -192,6 +192,7 @@ class operator extends CI_Controller
     }
     public function export_pdf($id)
     {
+        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
         $data['peminjaman'] = $this->m_model->get_peminjaman_by_status($id);
         $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
         $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
@@ -1003,7 +1004,7 @@ class operator extends CI_Controller
         // Outputkan file Excel ke browser
         $writer->save('php://output');
     }
-    
+
     public function expor_tambahan()
     {
 
