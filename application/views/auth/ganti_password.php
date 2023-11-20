@@ -167,7 +167,7 @@
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 39%;
+                top: 38.5%;
                 transform: translateY(-50%);
                 right: 4rem;
                 cursor: pointer;
