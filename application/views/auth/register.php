@@ -236,7 +236,7 @@
 
                     <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://o.remove.bg/downloads/b8d34e69-6003-46eb-8d9f-23b06a7ff07d/png-transparent-computer-icons-user-username-avatar-person-skill-thumbnail-removebg-preview.png"
+                            <label class="label" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png"
                                     class="labelIcon"><span>Username*
                                 </span></label>
                             <input type="text" name="username" class="input" id="username"
