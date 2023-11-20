@@ -2146,838 +2146,6 @@
             }
         }
 
-        /*---------------------------------------------------
-    widget styles
-----------------------------------------------------*/
-        .td-sidebar .widget {
-            margin-bottom: 34px;
-        }
-
-        .td-sidebar .widget .widget-title {
-            margin-bottom: 23px;
-            font-size: 22px;
-            position: relative;
-        }
-
-        .widget_search {
-            padding: 0 !important;
-        }
-
-        .widget_search .search-form {
-            position: relative;
-            background: #fff;
-            border-radius: 0px;
-            overflow: hidden;
-        }
-
-        .widget_search .search-form .form-group {
-            margin-bottom: 0;
-        }
-
-        .widget_search .search-form input {
-            width: 100%;
-            border: 0;
-            height: 70px;
-            background: transparent;
-            padding: 0 82px 0 22px;
-            border: 2px solid #EAEAEA !important;
-        }
-
-        .widget_search .search-form input:focus {
-            border: 0;
-            outline: 0;
-        }
-
-        .widget_search .search-form button {
-            position: absolute;
-            right: 0;
-            border: 0;
-            background: var(--main-color);
-            cursor: pointer;
-            width: 75px;
-            top: 0;
-            height: 70px;
-        }
-
-        .widget_search .search-form button i {
-            color: var(--heading-color);
-        }
-
-        .widget_search .search-form button:active,
-        .widget_search .search-form button:focus {
-            box-shadow: none;
-            outline: 0;
-        }
-
-        .widget-recent-post ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 10px;
-            padding-bottom: 0;
-        }
-
-        .widget-recent-post ul li .media {
-            margin-bottom: 15px;
-            align-items: center;
-            border: 1px solid #E3E3E3;
-            border-radius: 5px;
-            padding: 15px;
-        }
-
-        .widget-recent-post ul li .media .media-left {
-            margin-right: 15px;
-        }
-
-        .widget-recent-post ul li .media .media-left img {
-            border-radius: 5px;
-        }
-
-        .widget-recent-post ul li .media .media-body .title {
-            margin-bottom: 10px;
-            font-size: 15px;
-        }
-
-        .widget-recent-post ul li .media .media-body .post-info {
-            font-weight: 400;
-            font-size: 12px;
-            color: var(--heading-color);
-        }
-
-        .widget-recent-post ul li .media .media-body .post-info i,
-        .widget-recent-post ul li .media .media-body .post-info svg {
-            margin-right: 5px;
-        }
-
-        .widget-recent-post ul li .media .media-body .post-info a {
-            color: var(--main-color);
-            font-weight: 500;
-        }
-
-        .widget-recent-post ul li:last-child {
-            border-bottom: 0 !important;
-        }
-
-        .widget_catagory ul {
-            padding-left: 0;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        .widget_catagory ul li {
-            list-style: none;
-            transition: all 0.4s ease;
-            margin-bottom: 15px;
-            border: 1px solid #E3E3E3;
-            border-radius: 5px;
-            padding: 11px 12px 11px 0;
-            position: relative;
-        }
-
-        .widget_catagory ul li a {
-            position: relative;
-            display: block;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--heading-color);
-            padding-left: 20px;
-        }
-
-        .widget_catagory ul li a:hover {
-            color: var(--heading-color);
-        }
-
-        .widget_catagory ul li a i {
-            padding-right: 10px;
-            font-size: 16px;
-            color: var(--heading-color);
-            position: absolute;
-            right: 0;
-            top: 6px;
-        }
-
-        .widget_catagory ul li:hover {
-            border: 1px solid var(--main-color);
-        }
-
-        .widget_catagory ul li:last-child {
-            margin-bottom: 0;
-        }
-
-        .widget_twitter ul {
-            padding-left: 0;
-        }
-
-        .widget_twitter ul li {
-            list-style: none;
-            transition: all 0.4s ease;
-            margin-bottom: 6px;
-            display: flex;
-            border-bottom: 1px solid #d2d0d0;
-            padding-bottom: 25px;
-            margin-bottom: 25px;
-        }
-
-        .widget_twitter ul li a {
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .widget_twitter ul li a i {
-            padding-right: 10px;
-            position: absolute;
-            left: 0;
-            top: 7px;
-        }
-
-        .widget_twitter ul li:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: 0;
-        }
-
-        .widget_tags .tagcloud a {
-            border: 1px solid #E3E3E3;
-            height: 40px;
-            line-height: 40px;
-            padding: 0 20px;
-            border-radius: 4px;
-            display: inline-block;
-            margin: 0 10px 15px 0;
-            font-family: "Lato", sans-serif;
-            font-weight: 400;
-            font-size: 14px;
-            color: #808080;
-        }
-
-        .widget_tags .tagcloud a:hover {
-            background: var(--main-color);
-            color: #ffffff;
-            border-color: var(--main-color);
-        }
-
-        /*********** widget_checkbox_list ************/
-        .widget_checkbox_list .single-checkbox:last-child {
-            margin-bottom: 0;
-            border-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .single-checkbox {
-            display: block;
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 7px;
-            padding-bottom: 7px;
-            cursor: pointer;
-            font-size: 16px;
-            color: var(--heading-color);
-            -webkit-user-select: none;
-            user-select: none;
-            border-bottom: 1px solid #E3E3E3;
-        }
-
-        .single-checkbox:hover input~.checkmark {
-            background-color: #ccc;
-        }
-
-        .single-checkbox input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-
-        .single-checkbox input:checked~.checkmark {
-            background-color: var(--main-color);
-        }
-
-        .single-checkbox input:checked~.checkmark:after {
-            display: block;
-        }
-
-        .single-checkbox .checkmark {
-            position: absolute;
-            top: 6px;
-            left: 0;
-            height: 15px;
-            width: 15px;
-            background-color: #eee;
-        }
-
-        .single-checkbox .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            left: 5px;
-            top: 2px;
-            width: 5px;
-            height: 10px;
-            border: solid var(--heading-color);
-            border-width: 0 1px 1px 0;
-            transform: rotate(45deg);
-        }
-
-        .widget-g-map iframe {
-            height: 350px;
-            width: 100%;
-            border: 0;
-            line-height: 1 !important;
-        }
-
-        .widget_event {
-            border-radius: 5px;
-            padding: 30px 25px;
-            background: var(--heading-color);
-        }
-
-        .widget_event ul {
-            padding: 0;
-            margin: 0;
-        }
-
-        .widget_event li {
-            color: #fff;
-            margin-bottom: 9px;
-            font-size: 16px;
-            list-style: none;
-        }
-
-        .widget_event li:last-child {
-            margin-bottom: 0;
-        }
-
-        .widget_event li i {
-            color: var(--main-color);
-            margin-right: 8px;
-        }
-
-        .widget_feature {
-            border: 1px solid #CBD6E2;
-        }
-
-        .widget_feature .widget-title {
-            padding: 18px 25px;
-            border-bottom: 1px solid #F0F4F9;
-            margin-bottom: 18px !important;
-        }
-
-        .widget_feature ul {
-            padding: 0 25px 20px;
-        }
-
-        .widget_feature ul li {
-            color: var(--heading-color);
-            font-size: 16px;
-            margin-bottom: 9px;
-            list-style: none;
-        }
-
-        .widget_feature ul li span {
-            font-weight: 500;
-            margin-right: 5px;
-        }
-
-        .widget_feature ul li i {
-            margin-right: 8px;
-        }
-
-        .widget_feature .price-wrap {
-            background-color: #F0F4F9;
-            padding: 34px 23px 40px;
-        }
-
-        .widget_feature .price-wrap h5 {
-            font-size: 22px;
-            margin-bottom: 28px;
-        }
-
-        .widget_feature .price-wrap h5 span {
-            font-weight: 400;
-            margin-left: 5px;
-        }
-
-        .widget_feature .price-wrap .btn {
-            width: 100%;
-        }
-
-        /*----------------------------------------------
-    # Nav bar 
-----------------------------------------------*/
-        .navbar-top {
-            padding: 13px 0 4px 0;
-            background: var(--main-color);
-        }
-
-        .navbar-top ul {
-            margin: 0;
-            padding: 0;
-            line-height: initial;
-        }
-
-        .navbar-top ul li {
-            display: inline-block;
-            list-style: none;
-            margin-right: 20px;
-            padding-bottom: 10px;
-        }
-
-        .navbar-top ul li:last-child {
-            margin-right: 0;
-        }
-
-        .navbar-top ul li p,
-        .navbar-top ul li a {
-            margin: 0;
-            font-size: 14px;
-            color: var(--heading-color);
-            font-weight: 500;
-        }
-
-        .navbar-top ul li p img,
-        .navbar-top ul li a img {
-            margin-right: 5px;
-        }
-
-        .navbar-top ul li p i,
-        .navbar-top ul li a i {
-            margin-right: 5px;
-        }
-
-        .navbar-top ul li a:hover {
-            color: #1DC295;
-        }
-
-        .navbar-top .topbar-right a {
-            margin: 0 7px;
-        }
-
-        .navbar-top .topbar-right li a i {
-            margin-right: 0;
-        }
-
-        .navbar-top .topbar-right li a:last-child {
-            margin-right: 0;
-        }
-
-        .navbar-top .topbar-right li:first-child {
-            margin: 0;
-            padding-right: 17px;
-        }
-
-        .navbar-top .topbar-right li:last-child {
-            border-right: 0;
-            padding-right: 0;
-        }
-
-        .navbar-area {
-            position: absolute;
-            width: 100%;
-            z-index: 99;
-        }
-
-        .navbar-area .nav-container {
-            background-color: transparent;
-            padding: 12px 15px;
-            transition: all 0.4s;
-        }
-
-        .navbar-area .nav-container .logo a {
-            font-weight: 700;
-            font-size: 24px;
-            color: #fff;
-        }
-
-        .navbar-area .nav-container .logo a img {
-            height: auto;
-        }
-
-        .navbar-area .nav-container .btn-transparent {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav {
-            display: block;
-            width: 100%;
-            padding-left: 80px;
-            text-align: left;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li {
-            display: inline-block;
-            font-weight: 500;
-            line-height: 50px;
-            text-transform: capitalize;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li a {
-            color: var(--heading-color);
-            font-weight: 500;
-            font-size: 17px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li:hover a {
-            color: var(--main-color);
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li+li {
-            margin-left: 15px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children {
-            position: relative;
-            z-index: 0;
-            padding-right: 14px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:before {
-            content: "";
-            position: absolute;
-            right: 3px;
-            top: 50%;
-            height: 10px;
-            width: 2px;
-            background: var(--heading-color);
-            transform: translateY(-50%);
-            transition: all 0.3s ease-in;
-            margin-top: 0px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:after {
-            content: "";
-            position: absolute;
-            right: -1px;
-            top: 25px;
-            height: 2px;
-            width: 10px;
-            background: var(--heading-color);
-            transform: translateY(-50%);
-            transition: all 0.3s ease-in;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:hover {
-            transition: all 0.4s ease;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:hover:before {
-            opacity: 0;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:hover:after {
-            background: var(--main-color);
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:hover>.sub-menu {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu {
-            position: absolute;
-            text-align: left;
-            min-width: 210px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            left: 0;
-            top: 100%;
-            box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
-            background-color: #fff;
-            z-index: 9;
-            overflow: hidden;
-            visibility: hidden;
-            opacity: 0;
-            transition: all 0.4s ease;
-            border-radius: 0;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu.border-bt0 {
-            border-bottom: 0px !important;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li {
-            display: block;
-            margin-left: 0;
-            line-height: 22px;
-            font-size: 15px;
-            transition: all 0.4s ease;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li a {
-            display: block;
-            padding: 10px 20px;
-            white-space: nowrap;
-            transition: all 0.3s;
-            color: #050a30;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li a:before {
-            position: absolute;
-            left: 17px;
-            top: 50%;
-            content: "";
-            font-family: "fontawesome";
-            /* IE 9 */
-            /* Chrome, Safari, Opera */
-            transform: translateY(-50%);
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.4s;
-            color: #fff;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li:hover {
-            background: #061539;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li:hover a {
-            color: #fff;
-            padding: 10px 20px 10px 30px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li:hover a:before {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li:last-child {
-            border-bottom: 0;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu .menu-item-has-children {
-            position: relative;
-            z-index: 0;
-            padding-right: 0px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu .menu-item-has-children:before {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            content: "";
-            font-family: "fontawesome";
-            /* IE 9 */
-            /* Chrome, Safari, Opera */
-            transform: translateY(-50%);
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu .menu-item-has-children>.sub-menu {
-            left: 100%;
-            top: 20px;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu .menu-item-has-children>.sub-menu .sub-menu .sub-menu {
-            left: auto;
-            right: 100%;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu .menu-item-has-children:hover>.sub-menu {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu .menu-item-has-children:hover>.sub-menu li:hover:before {
-            color: #fff;
-        }
-
-        .navbar-area .nav-container .navbar-collapse .navbar-nav>li {
-            margin-right: 12px;
-        }
-
-        .sticky-active {
-            animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
-            left: 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 999;
-            box-shadow: 0 10px 20px 0 rgba(46, 56, 220, 0.05);
-        }
-
-        .navbar-area-1.sticky-active {
-            background: #fff;
-        }
-
-        .navbar-area-2 {
-            background: rgba(0, 33, 71, 0.4);
-        }
-
-        .navbar-area-2 .nav-container .navbar-collapse .navbar-nav>li>a {
-            color: #fff;
-        }
-
-        .navbar-area-2 .nav-container .navbar-collapse .navbar-nav>li.menu-item-has-children:before {
-            background: #fff;
-        }
-
-        .navbar-area-2 .nav-container .navbar-collapse .navbar-nav>li.menu-item-has-children:after {
-            background: #fff;
-        }
-
-        .navbar-area-2.sticky-active {
-            background: var(--heading-color);
-        }
-
-        .navbar-area-3 {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-area-3 .nav-container .navbar-collapse .navbar-nav>li>a {
-            color: #fff;
-        }
-
-        .navbar-area-3 .nav-container .navbar-collapse .navbar-nav>li.menu-item-has-children:before {
-            background: #fff;
-        }
-
-        .navbar-area-3 .nav-container .navbar-collapse .navbar-nav>li.menu-item-has-children:after {
-            background: #fff;
-        }
-
-        .navbar-area-3.sticky-active {
-            background: var(--heading-color);
-            border-bottom: 0;
-        }
-
-        .navbar-nav {
-            opacity: 0;
-            margin-right: -30px;
-            visibility: hidden;
-            transition: all 0.3s ease 0s;
-        }
-
-        .menu-open {
-            opacity: 1;
-            margin-right: 0;
-            visibility: visible;
-        }
-
-        .bar1 {
-            width: 32px;
-            height: 2px;
-            margin-bottom: 5px;
-            position: absolute;
-            background: #fff;
-            z-index: 9999;
-            top: 10px;
-            right: -5px;
-        }
-
-        .bar2 {
-            width: 24px;
-            height: 2px;
-            margin-bottom: 5px;
-            position: absolute;
-            background: #fff;
-            z-index: 9999;
-            top: 17px;
-            right: -5px;
-        }
-
-        .bar3 {
-            width: 18px;
-            height: 2px;
-            margin-bottom: 5px;
-            position: absolute;
-            background: #fff;
-            z-index: 9999;
-            top: 24px;
-            right: -5px;
-        }
-
-        .responsive-mobile-menu button:focus {
-            outline: none;
-            border: none;
-        }
-
-        /**************** nav-right-part *************/
-        .nav-right-part .btn {
-            height: 45px;
-            line-height: 45px;
-            padding: 0 25px;
-        }
-
-        .nav-right-part a {
-            margin-left: 20px;
-            color: var(--heading-color);
-        }
-
-        .nav-right-part .search-bar {
-            border: 1px solid rgba(0, 33, 71, 0.2);
-            display: inline-block;
-            height: 45px;
-            width: 45px;
-            line-height: 43px;
-            text-align: center;
-        }
-
-        .nav-right-part .search-bar:hover {
-            background: var(--main-color);
-            border: 1px solid var(--main-color);
-        }
-
-        .nav-right-part .emt-phone-wrap {
-            display: inline-block;
-        }
-
-        .nav-right-part .emt-phone-wrap .emt-phone {
-            display: flex;
-        }
-
-        .nav-right-part .emt-phone-wrap .emt-phone i {
-            font-size: 22px;
-            display: inline-block;
-            border: 1px solid var(--main-color);
-            height: 45px;
-            width: 45px;
-            line-height: 45px;
-            border-radius: 50%;
-            text-align: center;
-            color: #fff;
-            margin-right: 10px;
-        }
-
-        .nav-right-part .emt-phone-wrap .emt-phone .phone-number {
-            line-height: 1.4;
-            font-size: 15px;
-            color: #fff;
-        }
-
-        .nav-right-part .emt-phone-wrap .emt-phone .phone-number span {
-            font-weight: 500;
-        }
-
-        .nav-right-part.style-black a {
-            color: #fff;
-        }
-
-        .nav-right-part.style-black .btn {
-            color: var(--heading-color);
-        }
-
-        .nav-right-part.style-black .search-bar {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-right-part.style-black .search-bar:hover {
-            border: 1px solid var(--main-color);
-        }
-
-        .nav-right-part-desktop {
-            margin-left: 20px;
-        }
-
-        .nav-right-part-mobile {
-            display: none;
-        }
-
-
 
         @media only screen and (max-width: 991px) {
             .navbar-area-2 .nav-container .navbar-collapse .navbar-nav>li.menu-item-has-children:before {
@@ -4474,445 +3642,6 @@
             transform: scale(1.1);
         }
 
-        /*----------------------------------------------
-    ## Course section style
-----------------------------------------------*/
-        .edmt-nav-tab {
-            margin-bottom: 42px;
-        }
-
-        .edmt-nav-tab ul {
-            text-align: center;
-            border: 0;
-            display: inline-block;
-        }
-
-        .edmt-nav-tab ul li {
-            display: inline-block;
-        }
-
-        .edmt-nav-tab ul li a {
-            border: 0 !important;
-            color: var(--heading-color);
-            font-size: 15px;
-            font-weight: 500;
-            height: 38px;
-            line-height: 38px;
-            border-radius: 40px !important;
-            padding: 0 25px !important;
-        }
-
-        .edmt-nav-tab ul li a.active {
-            background-color: var(--main-color) !important;
-            color: var(--heading-color) !important;
-        }
-
-        .edmt-nav-tab ul li:last-child {
-            margin-right: 0;
-        }
-
-        .single-course-inner {
-            border-radius: 7px;
-            border: 1px solid #F1F1F1;
-            margin-bottom: 30px;
-            position: relative;
-            transition: 0.4s;
-        }
-
-        .single-course-inner .thumb {
-            position: relative;
-            overflow: hidden;
-            border-radius: 7px 7px 0 0;
-        }
-
-        .single-course-inner .thumb img {
-            transform: scale(1);
-            transition: 0.9s;
-        }
-
-        .single-course-inner .details .details-inner {
-            padding: 20px 20px 16px;
-        }
-
-        .single-course-inner .details .details-inner h6 {
-            font-weight: 500;
-        }
-
-        .single-course-inner .details .emt-user {
-            margin-bottom: 13px;
-        }
-
-        .single-course-inner .details .emt-user .u-thumb,
-        .single-course-inner .details .emt-user .u-thumb img {
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            background: rgba(253, 200, 0, 0.2);
-            display: inline-block;
-            margin-right: 7px;
-            box-shadow: 0px 1px 10px #c1bfbf;
-        }
-
-        .single-course-inner .details .emt-user .u-thumb img {
-            border-radius: 50%;
-        }
-
-        .single-course-inner .details .emt-user span {
-            font-size: 14px;
-            color: var(--heading-color);
-            font-weight: 500;
-        }
-
-        .single-course-inner .emt-course-meta {
-            border-top: 1px solid #F1F1F1;
-            padding: 14px 20px;
-            font-weight: 500;
-        }
-
-        .single-course-inner .emt-course-meta .rating {
-            color: var(--main-color);
-        }
-
-        .single-course-inner .emt-course-meta .rating span {
-            font-size: 15px;
-            color: rgba(13, 16, 52, 0.5);
-        }
-
-        .single-course-inner .emt-course-meta .price {
-            color: rgba(13, 16, 52, 0.5);
-        }
-
-        .single-course-inner .emt-course-meta .price span {
-            color: var(--heading-color);
-        }
-
-        .single-course-inner.style-bottom-thumb .thumb {
-            margin: 0 15px 15px;
-            border-radius: 7px;
-        }
-
-        .single-course-inner.style-bottom-thumb .thumb img {
-            transform: scale(1.05);
-        }
-
-        .single-course-inner.style-bottom-thumb .details .details-inner {
-            padding: 15px;
-        }
-
-        .single-course-inner.style-bottom-thumb .details .details-inner h6 {
-            font-weight: 400;
-            margin-bottom: 0;
-        }
-
-        .single-course-inner.style-bottom-thumb .emt-course-meta {
-            padding: 15px;
-        }
-
-        .single-course-inner.style-bottom-thumb .emt-course-meta .price {
-            height: 30px;
-            line-height: 31px;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 0 15px;
-            border-radius: 30px;
-            background: var(--main-color);
-            display: inline-block;
-            color: #fff;
-        }
-        .single-course-inner.style-two {
-            margin-top: 45px;
-        }
-
-        .single-course-inner.style-two .emt-thumb-icon {
-            height: 90px;
-            width: 90px;
-            line-height: 90px;
-            text-align: center;
-            border-radius: 5px;
-            background: var(--main-color);
-            position: absolute;
-            left: 20px;
-            top: -45px;
-            z-index: 2;
-        }
-
-        .single-course-inner.style-two .details h6 {
-            font-size: 20px;
-            margin-bottom: 0;
-        }
-
-        .single-course-inner.style-two:hover {
-            background: var(--heading-color);
-        }
-
-        .single-course-inner.style-two:hover .details h6 {
-            color: #fff;
-        }
-
-        .single-course-inner.style-two:hover .details .arrow-right img {
-            filter: invert(100);
-        }
-
-        .single-course-inner:hover {
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        .single-course-inner:hover .thumb img {
-            transform: scale(1.1);
-        }
-
-        .course-course-detaila-inner .emt-user .u-thumb {
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
-            background: rgba(253, 200, 0, 0.2);
-            display: inline-block;
-            margin-right: 7px;
-            box-shadow: 0px 1px 10px #c1bfbf;
-        }
-
-        .course-course-detaila-inner .emt-user .u-thumb img {
-            border-radius: 50%;
-        }
-
-        .course-course-detaila-inner .emt-user span {
-            font-size: 14px;
-            color: var(--heading-color);
-            font-weight: 500;
-        }
-
-        .course-course-detaila-inner .title {
-            margin-bottom: 20px;
-        }
-
-        .course-course-detaila-inner .thumb {
-            margin-bottom: 30px;
-        }
-
-        .course-course-detaila-inner .thumb img {
-            border-radius: 7px;
-        }
-
-        .course-details-nav-tab {
-            background: transparent;
-            margin-bottom: 44px;
-            border: 1px solid #CBD6E2;
-        }
-
-        .course-details-nav-tab ul {
-            margin: 0;
-            padding: 0;
-            border: 0 !important;
-        }
-
-        .course-details-nav-tab ul li {
-            margin-bottom: 0 !important;
-            width: 25%;
-        }
-
-        .course-details-nav-tab ul li a {
-            border: 0 !important;
-            border-right: 1px solid #CBD6E2 !important;
-            padding: 10px 16px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 0 !important;
-            color: var(--heading-color) !important;
-        }
-
-        .course-details-nav-tab ul li a.active {
-            background: var(--main-color) !important;
-        }
-
-        .course-details-nav-tab ul li:last-child a {
-            border-right: 0 !important;
-        }
-
-        /*------------------------------------------------
-    blog style
-------------------------------------------------*/
-        .single-blog-inner {
-            margin-bottom: 30px;
-            overflow: hidden;
-            border-radius: 7px;
-            transition: 0.4s;
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
-        }
-
-        .single-blog-inner .thumb {
-            position: relative;
-        }
-
-        .single-blog-inner .thumb .date {
-            font-size: 14px;
-            font-weight: 500;
-            height: 35px;
-            line-height: 35px;
-            padding: 0 20px;
-            color: var(--heading-color);
-            background: var(--main-color);
-            display: inline-block;
-            border-radius: 30px;
-            position: absolute;
-            bottom: -17px;
-            left: 30px;
-        }
-
-        .single-blog-inner .details {
-            padding: 25px 30px 25px 30px;
-        }
-
-        .single-blog-inner .details .blog-meta {
-            margin: 0;
-            padding: 0;
-            margin-bottom: 13px;
-        }
-
-        .single-blog-inner .details .blog-meta li {
-            display: inline-block;
-            margin-right: 12px;
-            font-size: 12px;
-            color: var(--heading-color);
-        }
-
-        .single-blog-inner .details .blog-meta li i {
-            margin-right: 4px;
-        }
-
-        .single-blog-inner .details .blog-meta li:last-child {
-            margin-right: 0;
-        }
-
-        .single-blog-inner .details h5 {
-            margin-bottom: 16px;
-        }
-
-        .single-blog-inner .details .title {
-            margin-bottom: 16px;
-        }
-
-        .single-blog-inner .details p {
-            margin-bottom: 16px;
-        }
-
-        .single-blog-inner .details .read-more-text {
-            font-size: 14px;
-            color: var(--heading-color);
-            font-weight: 500;
-            transition: 0.4s;
-        }
-
-        .single-blog-inner .details .read-more-text i {
-            margin-left: 3px;
-        }
-
-        .single-blog-inner .details .read-more-text:hover {
-            color: var(--main-color);
-        }
-
-        .single-blog-inner.style-border {
-            margin-bottom: 50px;
-            border: 2px solid #E4EAF1;
-            box-shadow: none;
-        }
-
-        .single-blog-inner:hover {
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .single-blog-list-inner {
-            margin-bottom: 25px;
-        }
-
-        .single-blog-list-inner .date {
-            font-size: 23px;
-            font-weight: 500;
-            width: 60px;
-            height: 60px;
-            line-height: 1;
-            color: var(--heading-color);
-            background: var(--main-color);
-            display: inline-block;
-            border-radius: 7px;
-            text-align: center;
-            padding-top: 5px;
-            margin-right: 14px;
-        }
-
-        .single-blog-list-inner .date span {
-            font-size: 14px;
-        }
-
-        .single-blog-list-inner .details .blog-meta {
-            margin: 0;
-            padding: 0;
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-
-        .single-blog-list-inner .details .blog-meta li {
-            display: inline-block;
-            margin-right: 12px;
-            font-size: 12px;
-            color: var(--heading-color);
-        }
-
-        .single-blog-list-inner .details .blog-meta li i {
-            margin-right: 4px;
-        }
-
-        .single-blog-list-inner .details .blog-meta li:last-child {
-            margin-right: 0;
-        }
-
-        .single-blog-list-inner .details h5 {
-            margin-bottom: 0;
-        }
-
-        .single-blog-list-wrap {
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
-            padding: 0;
-            margin: 0;
-            padding: 38px 30px;
-            border-radius: 7px;
-        }
-
-        .single-blog-list-wrap>li {
-            list-style: none;
-            border-bottom: 1px solid #e8e6e6;
-            margin-bottom: 30px;
-        }
-
-        .single-blog-list-wrap>li:last-child {
-            margin-bottom: 0;
-            border: 0;
-        }
-
-        .single-blog-list-wrap>li:last-child .single-blog-list-inner {
-            margin-bottom: 0;
-        }
-
-        .single-blog-list-wrap.style-white>li {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .single-blog-list-wrap.style-white>li:last-child {
-            margin-bottom: 0;
-            border: 0;
-        }
-
-        .single-blog-list-wrap.style-white>li:last-child .single-blog-list-inner {
-            margin-bottom: 0;
-        }
-
-        .single-blog-list-wrap.style-white .details .blog-meta li {
-            color: #fff;
-        }
-
-        .single-blog-list-wrap.style-white .details h5 {
-            color: #fff;
-        }
-
         /************ page navigation ************/
         .td-page-navigation .pagination {
             display: inline-flex;
@@ -4960,191 +3689,6 @@
             padding: 33px 40px 40px;
             border-top: 5px solid var(--main-color);
         }
-
-        /*********** event **********/
-        .single-event-inner {
-            margin-bottom: 25px;
-            border: 3px solid #F0F4F9;
-            transition: 0.4s;
-            padding: 40px 30px 35px 30px;
-            border-radius: 7px;
-        }
-
-        .single-event-inner .date {
-            font-size: 33px;
-            font-weight: 500;
-            width: 88px;
-            height: 88px;
-            line-height: 1.1;
-            color: var(--heading-color);
-            background: var(--main-color);
-            display: inline-block;
-            border-radius: 7px;
-            text-align: center;
-            padding-top: 5px;
-            margin-right: 25px;
-        }
-
-        .single-event-inner .date span {
-            font-size: 22px;
-        }
-
-        .single-event-inner .details .blog-meta {
-            margin: 0;
-            padding: 0;
-            margin-bottom: 10px;
-            line-height: 1;
-        }
-
-        .single-event-inner .details .blog-meta li {
-            display: inline-block;
-            margin-right: 12px;
-            font-size: 12px;
-            color: var(--heading-color);
-        }
-
-        .single-event-inner .details .blog-meta li i {
-            margin-right: 4px;
-        }
-
-        .single-event-inner .details .blog-meta li:last-child {
-            margin-right: 0;
-        }
-
-        .single-event-inner .details p {
-            margin-bottom: 0;
-        }
-
-        .single-event-inner:hover {
-            background: #F0F4F9;
-        }
-
-        /******* team-details-page *********/
-        .team-details-page h3 {
-            font-size: 40px;
-            margin-bottom: 0;
-        }
-
-        .team-details-page span {
-            display: block;
-        }
-
-        .team-details-page .designation {
-            color: var(--heading-color);
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 500;
-        }
-
-        /******** blog-details-page-content ***********/
-        .blog-details-page-content .single-blog-inner {
-            box-shadow: none !important;
-        }
-
-        .blog-details-page-content .single-blog-inner .details {
-            padding: 0;
-            padding-top: 30px;
-        }
-
-        .blog-details-page-content blockquote {
-            background: #F0F4F9;
-            padding: 30px 40px;
-            border-left: 5px solid var(--main-color);
-            font-weight: 500;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            border-radius: 7px;
-        }
-
-        /*********** tag-and-share ************/
-        .tag-and-share {
-            border-top: 1px solid #e9eaea;
-            border-bottom: 1px solid #e9eaea;
-            padding-bottom: 14px;
-            padding-top: 17px;
-            margin-top: 70px;
-        }
-        .tag-and-share .blog-share ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .tag-and-share .blog-share ul li {
-            display: inline-block;
-            list-style: none;
-            margin-right: 15px;
-            color: #7e8699;
-        }
-
-        .tag-and-share .blog-share ul li:last-child {
-            margin-right: 0;
-        }
-
-        /******* blog-comment *******/
-        .blog-comment {
-            margin-top: 62px;
-        }
-
-        .blog-comment .media {
-            margin-bottom: 35px;
-            padding-bottom: 28px;
-            border-bottom: 1px solid #e9eaea;
-        }
-
-        .blog-comment .media a img {
-            border-radius: 50%;
-            height: 100px;
-            width: 100px;
-        }
-
-        .blog-comment .media.nesting {
-            margin-left: 60px;
-        }
-
-        .blog-comment .media .media-body {
-            margin-left: 30px;
-        }
-
-        .blog-comment .media .media-body h5 {
-            position: relative;
-        }
-
-        .blog-comment .media .media-body h5 a {
-            font-size: 20px;
-            color: #14212b;
-        }
-
-        .blog-comment .media .media-body .date {
-            font-size: 12px;
-            color: #5a6378;
-            font-weight: 400;
-            position: absolute;
-            right: 5px;
-            top: 5px;
-        }
-
-        .blog-comment .media .media-body p {
-            font-size: 16px;
-            color: #5a6378;
-        }
-
-        .blog-comment .media .media-body a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--heading-color);
-        }
-
-        .blog-comment .media .media-body a:hover {
-            color: var(--main-color);
-        }
-
-        .blog-comment-form {
-            border: 1px solid #E2EEFF;
-            padding: 40px 40px 50px 40px;
-            border-radius: 7px;
-        }
-
-     
     </style>
 
     <!-- style table -->
@@ -5217,104 +3761,14 @@
         table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
             background-color: #4F709C !important;
         }
-
-        /* code responsive table */
-        @media (max-width: 600px) {
-
-
-            table {
-                width: 100%;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-        }
+       
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
 
-        @media (max-width: 600px) {
-
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-        }
-
-
-
-
+    
         .scroll {
             overflow-y: auto;
             background: #f9fcff;
@@ -5322,7 +3776,6 @@
 
 
         /* ---------- Data Length Code ---------- */
-
         .container {
             max-width: 1400px;
             margin: auto;
@@ -5487,38 +3940,63 @@
             }
         }
 
-         /******* cara pesan *******/
-         .cara-memesan-landing-page {
-            max-width: 1120px;
-            padding: 0px 15px;
-            margin: 60px auto 35px;
-        }
+      .inner-section {
+        padding: 4%;
+      }
 
-        .cara-memesan-landing-page h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 40px;
-        }
+       /* code responsive table */
+        @media (max-width: 600px) {
+            table {
+                width: 100%;
+            }
 
-        .cara-memesan-landing-page .step-by-step {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
+            tbody {
+                text-align: left;
+            }
 
-        .cara-memesan-landing-page .step-by-step .step {
-            width: 300px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
+            .option-select {
+                font-size: 12px;
+            }
 
-        .cara-memesan-landing-page .step-by-step .step img {
-            height: 90px;
-            margin-bottom: 35px;
-        }
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
 
-        .cara-memesan-landing-page .step-by-step .step p {
-            font-size: 16px;
+            .responsive-3 {
+                width: 100%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
+
+            .inner-section {
+        padding: 4%;
+      }
+
+         @media (max-width: px) {
+            .inner-section {
+        padding: 4%;
+         }
+
         }
     </style>
 
@@ -5527,64 +4005,61 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     
 
-    <!-- Navigation -->
+    
     <?php $this->load->view('sidebar'); ?>
 
-<!-- data length -->
-    <section class="pt-5">
+ 
+    <section class="inner-section">
     <div class="scroll">
         <div class="container two">
   <div class="grid-cards">
     <div class="card">
-      <div class="card-body text-center">
+      <a href="<?php echo base_url("operator/data_ruangan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <!-- <i class="fas fa-id-card"></i> -->
           <h2 class="title mt-4">233</h2>
         </div>
         <p>Master Ruang
         </p>
-      </div>
+      </a>
       <div class="card-footer">
-        <a href="<?php echo base_url("supervisor/data_operator") ?>">Klik disini</a>
+        <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
       </div>
     </div>
+
     <div class="card">
-      <div class="card-body text-center">
+      <a  href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <!-- <i class="fas fa-list"></i> -->
           <h2 class="title mt-4">532</h2>
         </div>
         <p>Master Pelanggan
         </p>
-      </div>
+      </a>
       <div class="card-footer">
-        <a href="<?php echo base_url("supervisor/approve") ?>">Klik disini</a>
+        <a href="<?php echo base_url("operator/data_master_pelanggane") ?>">Klik disini</a>
       </div>
     </div>
     <div class="card">
-      <div class="card-body text-center">
+      <a  href="<?php echo base_url("operator/peminjaman_tempat") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <!-- <i class="fas fa-list"></i> -->
           <h2 class="title mt-4">532</h2>
         </div>
         <p>Peminjaman Tempat
         </p>
-      </div>
+      </a>
       <div class="card-footer">
-        <a href="<?php echo base_url("supervisor/approve") ?>">Klik disini</a>
+        <a href="<?php echo base_url("operator/peminjaman_tempat") ?>">Klik disini</a>
       </div>
     </div>
     <div class="card">
-      <div class="card-body text-center">
+      <a  href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <!-- <i class="fas fa-list"></i> -->
           <h2 class="title mt-4">532</h2>
         </div>
         <p>Report Sewa
         </p>
-      </div>
+      </a>
       <div class="card-footer">
-        <a href="<?php echo base_url("supervisor/approve") ?>">Klik disini</a>
+        <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
       </div>
     </div>
    
@@ -5593,11 +4068,11 @@
 
 
       <!-- about area start -->
-      <section  id="about" class="inner-section  p-5">
-    <div class="about-area " style="background-image: url('">
+      <section  id="about" class="inner-section">
+    <div class="about-area ">
         <div class="container">
             <div class="about-area-inner">
-                <div class="flex gap-5">
+                <div class="md:flex gap-5">
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
@@ -5622,38 +4097,10 @@
         </div>
     </div>
    
-</section>
+      </section>
 
-  <!-- cara pesan Section -->
-  <section id="cara_pesan" class="inner-section  md:p-5 p-2">
-        <div style="background:#f4f5f7; padding:1px;">
-        <div class="cara-memesan-landing-page">
-            <h2>Cara mudah memesan ruangan</h2>
-            <div class="step-by-step">
-
-                <div class="step">
-                    <img style="margin-left: 5rem;" src="https://xwork.co/img/icon/lp-memesan-1-0.png" alt="" class="initial-loaded" data-was-processed="true">
-                    <p>1. Temukan ruangan sesuai kebutuhan</p>
-                    <p>Temukan ruangan yang anda butuhkan, dari ribuan yang tersedia di Sewa Ruang</p>
-                </div>
-
-                <div class="step">
-                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-1.png" alt="" class="initial-loaded" data-was-processed="true">
-                    <p>2. Pesan dan lakukan kunjungan survey</p>
-                    <p>Lakukan kunjungan survey untuk melihat keadaan ruang kantor yang anda pilih, tentukan juga fasilitas pengurusan legalitas bagi perusahaan anda</p>
-                </div>
-                <div class="step">
-                    <img style="margin-left: 6rem;" src="https://xwork.co/img/icon/lp-memesan-1-2.png" alt="" class="initial-loaded" data-was-processed="true">
-                    <p>3. Deal dan pembayaran</p>
-                    <p>Apabila cocok, lakukan deal dan anda dapat melakukan pembayaran melalui XWORK, dan ruang kantor anda siap digunakan sesuai kebutuhan anda</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-    
     <!-- Data Master Ruang -->
-    <section id="widget" class=" widget-section p-5">
+    <section id="widget" class="inner-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5714,13 +4161,12 @@
     </section>
 
     <!-- Data Master Pelanggan -->
-    <section id="widget" class=" widget-section p-5">
+    <section id="widget" class="inner-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Data Master Pelanggan</h2>
-
                     </div>
                 </div>
             </div>
@@ -5745,29 +4191,28 @@
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Payment Method
                                         </th>
-                                       
-                                       
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $no = 0;
+                                foreach ($pelanggans as $row):
+                                    $no++ ?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
                                             class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
+                                            <?php echo $no ?>  
                                         </td>
                                         <td data-cell="Nama" class="text-center px-3 py-4">
-                                        Ahmad Sony
+                                            <?php echo $row->nama ?>
                                         </td>
                                         <td data-cell="Telepon" class="text-center px-3 py-4">
-                                           0897653873
+                                            <?php echo $row->phone ?>
                                         </td>
                                         <td data-cell="Payment Method " class="text-center px-3 py-4">
-                                            -
+                                            <?php echo $row->payment_method ?>
                                         </td>
-                                       
-                                      
                                     </tr>
-                                  
+                                  <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -5779,87 +4224,10 @@
         </div>
     </section>
   
-    <!-- Peminjaman Tempat -->
-    <section id="widget" class=" widget-section p-5 pb-24 pd-bottom-130">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Peminjaman Tempat</h2>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-              
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-
-                            <table style="min-width: 22rem;" id="example_peminjaman_tempat"
-                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                           No
-                                        </th>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama
-                                        </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                           Ruangan
-                                        </th>
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Status
-                                        </th>
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                           Total Booking
-                                        </th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
-                                        </td>
-                                        <td data-cell="Nama" class="text-center px-3 py-4">
-                                        Ahmad Sony
-                                        </td>
-                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                          L.404  R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Status" class="text-center px-3 py-4">
-                                            selesai
-                                        </td>
-                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
-                                        1.500.000
-                                        </td>
-                                       
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
+  
 
     <!-- Report Sewa -->
-    <section id="widget" class=" widget-section p-5 pb-24 pd-bottom-130">
+    <section id="widget" class="inner-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5894,37 +4262,72 @@
                                             Kapasitas
                                         </th>
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Status
+                                            Kode Booking
                                         </th>
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                           Tambahan
+                                        </th>
+                                        <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                            Total Booking
+                                        </th>
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                           Total
+                                        </th>
+                                        <th data-priority="9" scope="col" class="text-center px-3 py-3">
+                                           Status
                                         </th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            1
-                                        </td>
-                                        <td data-cell="Nama" class="text-center px-3 py-4">
-                                        Ahmad Sony
-                                        </td>
-                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                          L.404  R.303
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            AC 3 PK
-                                        </td>
-                                        <td data-cell="Status" class="text-center px-3 py-4">
-                                            selesai
-                                        </td>
-                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
-                                        1.500.000
-                                        </td>
+                                <?php $no = 0;
+                                foreach ($report_sewa as $row):
+                                    $no++ ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                        <td data-cell="Nama Penyewa " scope="row"
+                                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                           <?php echo $no ?>
+                                                        </td>
+                                                        <td data-cell="Nama" class="text-center px-3 py-4">
+                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                        </td>
+                                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                        </td>
+                                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                        <?php echo $row->jumlah_orang ?>
+                                                        </td>
+                                                        <td data-cell="Kode Booking" class="text-center px-3 py-4">
+                                                        <?php echo $row->kode_booking ?>
+                                                        </td>
+                                                        <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                        <?php echo tampil_nama_tambahan_byid($row->status) ?>
+                                                        </td>
+                                                        <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                        <?php
+                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                        echo $durasi->days . ' Hari';
+                                                        ?></td>
+                                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                                        <?php echo $row->total_harga ?>
+
+                                        
+                                                         </td>
+                                                        <td data-cell="Status" class="text-center px-3 py-4">
+                                                        <!-- <?php echo $row->status ?> -->
+
+                                                        <?php if ($row->status == "di tolak") {
+                                                            echo NULL;
+                                                        } else {
+                                                            echo $row->status;
+                                                        } ?>
+                                                         </td>
+
                                        
-                                    </tr>
+                                                    </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -6034,15 +4437,6 @@
         $(document).ready(function () {
 
             var table = $('#example_master_pelanggan').DataTable({
-                responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        $(document).ready(function () {
-
-            var table = $('#example_peminjaman_tempat').DataTable({
                 responsive: true
             })
                 .columns.adjust()

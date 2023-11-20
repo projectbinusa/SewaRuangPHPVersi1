@@ -64,9 +64,9 @@ function tampil_nama_tambahan_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('peminjaman_tambahan');
+    $result = $ci->db->where('id', $id)->get('tambahan');
     foreach ($result->result() as $c) {
-        $stmt = $c->id_tambahan;
+        $stmt = $c->nama;
         return $stmt;
     }
 }

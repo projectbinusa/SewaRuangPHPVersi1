@@ -893,6 +893,12 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
+    <!-- script modal -->
+    <script>
+      function toggleModal() {
+        document.getElementById('modal').classList.toggle('hidden')
+      }
+    </script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -915,21 +921,20 @@
             <i class="fas fa-plus"></i> Tambah 
         </a>
         
-        <a href="export_pelanggan" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
-        onclick="showAddConfirmation()">
-        <i class="fas fa-file-export"></i> Export
-    </a>
+        <a href="export_pelanggan" class="md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-green-500 hover:bg-green-700 w-28 text-white   rounded  relative z-50">
+                            
+                                 <i class="fas fa-file-export"></i> Export
+                           </a>
     
-         
-       <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data" class="flex items-center">
-        <input type="file" class="form-control ml-2" id="file" name="file">
-          <button type="submit" name="import_pelanggan" class="btn-export-p py-2 px-2 w-28 bg-yellow-500 hover:bg-yellow-700 font-bold text-white rounded ">
-          <i class="fas fa-file-import"></i> 
-          <span class="pe-2"> 
-            Import
-          </span>
-          </button>
-        </form>
+                           <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
+                           <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+                           <span class="pe-2">
+                          <i class="fas fa-file-import"></i>
+                           </span>
+                           Import
+                           </button>
+
+
         
        <div class="col-lg-12">
            <div class="header-item">
@@ -991,6 +996,27 @@
 
         </div>
     </section>
+    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity">
+        <div class="absolute inset-0 bg-gray-900 opacity-75">
+        </div>
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+          <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <label class="font-medium text-gray-800">File</label>
+              <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+
+            </div>
+            <div class="bg-gray-200 px-4 py-3 text-right">
+              <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+              <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 
     <!-- jQuery -->
