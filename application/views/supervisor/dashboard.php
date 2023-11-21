@@ -20,7 +20,8 @@
 
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">=
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -5223,9 +5224,8 @@
         /* code responsive table */
         @media (max-width: 600px) {
 
-
             table {
-                width: 100%;
+                width: 12rem;
             }
 
             tbody {
@@ -5242,81 +5242,20 @@
                 justify-content: left;
             }
 
-            .responsive-3 {
-                width: 100%;
-            }
 
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
         }
+
+        table {
+                width: 22rem;
+                overflow-x: scroll;
+            }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
 
-        @media (max-width: 600px) {
-
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-        }
-
-
-
-
+    
         .scroll {
             overflow-y: auto;
             background: #f9fcff;
@@ -5478,15 +5417,20 @@
             }
         }
 
-        @keyframes fadeInLeft {
-            0% {
-                transform: translate(-100%, 0);
-            }
+            @keyframes fadeInLeft {
+                0% {
+                    transform: translate(-100%, 0);
+                }
 
-            100% {
-                opacity: 1;
-                transform: none;
+                100% {
+                    opacity: 1;
+                    transform: none;
+                }
             }
+        }
+
+        .inner-section {
+            padding: 4%;
         }
     </style>
 
@@ -5535,11 +5479,11 @@
     </section>
 
       <!-- about area start -->
-      <section  id="about" class="inner-section  p-5">
+      <section  id="about" class="inner-section">
     <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
-                <div class="flex gap-5">
+                <div class="md:flex gap-5">
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
@@ -5567,7 +5511,7 @@
 </section>
     
     <!-- Data Operator -->
-    <section id="widget" class=" widget-section p-5">
+    <section id="widget" class=" inner-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5584,7 +5528,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data_operator"
+                            <table id="example_data_operator"
                                 class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -5605,18 +5549,18 @@
                                 <?php $no = 0;
                                 foreach ($operators as $row):
                                     $no++ ?>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="Username  " scope="row"
-                                                class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <?php echo $no ?>
-                                            </td>
-                                            <td data-cell="Email " class="text-center px-6 py-4">
-                                            <?php echo $row->username ?>
-                                            </td>
-                                            <td data-cell="Email " class="text-center px-6 py-4">
-                                            <?php echo $row->email ?>
-                                            </td>
-                                        </tr>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="Username  " scope="row"
+                                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Email " class="text-center px-6 py-4">
+                                                <?php echo $row->username ?>
+                                                </td>
+                                                <td data-cell="Email " class="text-center px-6 py-4">
+                                                <?php echo $row->email ?>
+                                                </td>
+                                            </tr>
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
@@ -5632,7 +5576,7 @@
   
   
     <!-- Approve -->
-    <section id="widget" class=" widget-section p-5 pb-24 pd-bottom-130">
+    <section id="widget" class="inner-section pb-24 pd-bottom-130">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -5649,12 +5593,12 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_approve"
+                            <table id="example_approve"
                                 class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                            No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
@@ -5684,40 +5628,40 @@
                                 <?php $no = 0;
                                 foreach ($approves as $row):
                                     $no++ ?>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="No " scope="row"
-                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <?php echo $no ?>
-                                            </td>
-                                            <td data-cell="Nama Penyewa " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="No " scope="row"
+                                                    class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
-                                            </td>
-                                            <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                            </td>
-                                            <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            <?php echo $row->jumlah_orang ?>
-                                            </td>
-                                            <td data-cell="Kode Booking " class="text-center px-3 py-4">
-                                            <?php echo $row->kode_booking ?>
-                                            </td>
-                                            <td data-cell="Tanggal  " class="text-center px-3 py-4">
-                                            <?php echo $row->tanggal_booking ?> -  <?php echo $row->tanggal_berakhir ?>
-                                            </td>
+                                                </td>
+                                                <td data-cell="No Ruang " class="text-center px-3 py-3">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                </td>
+                                                <td data-cell="Kapasitas " class="text-center px-3 py-3">
+                                                <?php echo $row->jumlah_orang ?>
+                                                </td>
+                                                <td data-cell="Kode Booking " class="text-center px-3 py-3">
+                                                <?php echo $row->kode_booking ?>
+                                                </td>
+                                                <td data-cell="Tanggal  " class="text-center px-3 py-3">
+                                                <?php echo $row->tanggal_booking ?> -  <?php echo $row->tanggal_berakhir ?>
+                                                </td>
                                            
-                                            <td data-cell="Tanggal Berakhir " class="text-center px-3 py-4">
-                                            <?php
-                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
+                                                <?php
+                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                            // Menampilkan durasi dalam format angka
-                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                            ?>                                        </td>
+                                                // Menampilkan durasi dalam format angka
+                                                echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                ?>                                        </td>
                                        
-                                        </tr>
+                                            </tr>
                                 <?php endforeach ?>
                                 </tbody>
                             </table>
@@ -5731,10 +5675,6 @@
     </section>
    
   
-
-     
-
-
     <!-- footer area start -->
     <div class="footer-2 bg-gray-800 pt-6 md:pt-12">
   <!-- <div class="container px-4 mx-auto"> -->

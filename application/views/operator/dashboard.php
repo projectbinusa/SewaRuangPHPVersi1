@@ -3592,103 +3592,6 @@
             width: auto;
         }
 
-        /*********** single-gallery-inner ************/
-        .single-gallery-inner {
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 7px;
-        }
-
-        .single-gallery-inner .thumb {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .single-gallery-inner .thumb:after {
-            content: "";
-            position: absolute;
-            background-image: linear-gradient(to top, #022334 11%, rgba(255, 255, 255, 0));
-            height: 85%;
-            width: 100%;
-            left: 0;
-            bottom: 0;
-            z-index: 2;
-        }
-
-        .single-gallery-inner .thumb img {
-            transition: 0.7s;
-        }
-
-        .single-gallery-inner .details {
-            position: absolute;
-            bottom: 0;
-            padding: 25px 30px;
-            z-index: 3;
-        }
-
-        .single-gallery-inner .details h4 {
-            color: #fff;
-            margin-bottom: 0;
-        }
-
-        .single-gallery-inner .details span {
-            color: #fff;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .single-gallery-inner:hover .thumb img {
-            transform: scale(1.1);
-        }
-
-        /************ page navigation ************/
-        .td-page-navigation .pagination {
-            display: inline-flex;
-            margin: 10px 0 0 0;
-        }
-
-        .td-page-navigation .pagination .pagination-arrow a {
-            border: 0;
-            transition: all 0.4s ease;
-        }
-
-        .td-page-navigation .pagination .pagination-arrow a:hover {
-            border: 0;
-        }
-
-        .td-page-navigation .pagination li a {
-            height: 55px;
-            width: 55px;
-            margin-right: 15px;
-            border: 0;
-            border-radius: 5px;
-            background-color: #F0F4F9;
-            line-height: 57px;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            display: block;
-            color: var(--heading-color);
-            font-size: 18px;
-        }
-
-        .td-page-navigation .pagination li a:active,
-        .td-page-navigation .pagination li a:focus,
-        .td-page-navigation .pagination li a:hover {
-            background: var(--main-color);
-        }
-
-        .td-page-navigation .pagination li a.active {
-            background: var(--main-color);
-        }
-
-        .contact-form-inner.style-shadow {
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.07);
-            background: #fff;
-            padding: 33px 40px 40px;
-            border-top: 5px solid var(--main-color);
-        }
     </style>
 
     <!-- style table -->
@@ -3946,58 +3849,18 @@
 
        /* code responsive table */
         @media (max-width: 600px) {
-            table {
-                width: 100%;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
+           table {
+            width: 12rem;
+           }
 
             .inner-section {
         padding: 4%;
       }
+    }
 
-         @media (max-width: px) {
-            .inner-section {
-        padding: 4%;
-         }
-
-        }
+    table {
+        width: 22rem;
+    }
     </style>
 
 </head>
@@ -4016,7 +3879,7 @@
     <div class="card">
       <a href="<?php echo base_url("operator/data_ruangan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">233</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_ruang?></h2>
         </div>
         <p>Master Ruang
         </p>
@@ -4029,7 +3892,7 @@
     <div class="card">
       <a  href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_pelanggan?></h2>
         </div>
         <p>Master Pelanggan
         </p>
@@ -4039,21 +3902,21 @@
       </div>
     </div>
     <div class="card">
-      <a  href="<?php echo base_url("operator/peminjaman_tempat") ?>" class="card-body text-center">
+      <a  href="<?php echo base_url("operator/tambahan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_tambahan?></h2>
         </div>
-        <p>Peminjaman Tempat
+        <p>Item Tambahan
         </p>
       </a>
       <div class="card-footer">
-        <a href="<?php echo base_url("operator/peminjaman_tempat") ?>">Klik disini</a>
+        <a href="<?php echo base_url("operator/tambahan") ?>">Klik disini</a>
       </div>
     </div>
     <div class="card">
       <a  href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_sewa?></h2>
         </div>
         <p>Report Sewa
         </p>
@@ -4117,7 +3980,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_master_ruang"
+                            <table id="example_master_ruang"
                                 class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -4135,20 +3998,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                <?php $no=0; foreach($ruang as $row): $no++?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No  " scope="row"
                                             class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          1
+                                          <?php echo $no?>
                                         </td>
                                         <td data-cell="No Ruang " class="text-center px-6 py-4">
-                                        R 004
+                                        <?php echo $row->no_ruang?>
                                         </td>
                                         <td data-cell="No Lantai " class="text-center px-6 py-4">
-                                           L 002
+                                        <?php echo $row->no_lantai?>
                                         </td>
                                     </tr>
-                
+                                    <?php endforeach?>
                                 </tbody>
                             </table>
                         </div>
@@ -4174,7 +4037,7 @@
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
-                            <table style="min-width: 22rem;" id="example_master_pelanggan"
+                            <table  id="example_master_pelanggan"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -4244,7 +4107,7 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_report"
+                            <table  id="example_report"
                                 class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -4301,7 +4164,15 @@
                                                         <?php echo $row->kode_booking ?>
                                                         </td>
                                                         <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                        <?php echo tampil_nama_tambahan_byid($row->status) ?>
+                                                        <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
                                                         </td>
                                                         <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                         <?php

@@ -955,24 +955,24 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             Nama Item
                                         </th>
 
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
                                             Harga
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
                                             Deskripsi
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Jenis
                                         </th>
                                        
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>

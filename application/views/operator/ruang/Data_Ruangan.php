@@ -73,7 +73,7 @@
 <body>
   <?php $this->load->view('sidebar'); ?>
   <!-- Area konten utama -->
-  <div class="flex-1 p-4 w-full ">
+  <div class="flex-1 p-4 w-full">
     <div class="relative w-full p-2 border bg-gray-300 border-blue-300 rounded shadow-lg">
       <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white flex items-center gap-3">
         Cari<i class="fas fa-search text-lg mt-2"></i>
@@ -181,6 +181,11 @@
       document.getElementById('modal').classList.toggle('hidden')
     }
   </script>
+  <script>
+  function navigateToDetail(detailUrl) {
+    window.location.href = detailUrl;
+  }
+</script>
 </body>
 
 </html>

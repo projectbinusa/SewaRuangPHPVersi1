@@ -943,21 +943,21 @@
                             <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                             Nama
                                         </th>
 
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Phone
                                         </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                             Payment Method
                                         </th>
                                         
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>

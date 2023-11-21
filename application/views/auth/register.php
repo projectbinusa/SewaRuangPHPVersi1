@@ -239,7 +239,7 @@
                             <label class="label" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png"
                                     class="labelIcon"><span>Username*
                                 </span></label>
-                            <input type="text" name="username" class="input" id="username"
+                            <input required type="text" name="username" class="input" id="username"
                                 placeholder="Enter your Username">
                         </div>
                         <div class="inputContainer">
