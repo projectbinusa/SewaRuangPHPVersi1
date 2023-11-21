@@ -71,7 +71,6 @@ class Auth extends CI_Controller {
 
             ];
             $this->session->set_userdata($data);
-            $this->check_expired_bookings();
             if ($result['role'] == 'supervisor') {
                 redirect(base_url() . "supervisor");
             } elseif ($result['role'] == 'operator') {
@@ -134,34 +133,34 @@ class Auth extends CI_Controller {
 
     return $code;
 }
-    public function aksi_forgot_pass()
-    {
-        $email = $this->input->post('email', true);
-        $data = ['email' => $email];
-        $query = $this->m_model->getwhere('user', $data);
-        $result = $query->row_array();
-        if (!empty($result)) {
-            $generate = $this->generate_code();
-            $code = $generate;
-            $mail = new PHPMailer(true);
-            try {
-                // Konfigurasi SMTP dan pengaturan lainnya
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'saputroandi763@gmail.com';
-                $mail->Password = 'zkza scib qoob vwzo';
-                $mail->Port = 465;
-                $mail->SMTPSecure = 'ssl';
+public function aksi_forgot_pass()
+{
+    $email = $this->input->post('email', true);
+    $data = ['email' => $email];
+    $query = $this->m_model->getwhere('user', $data);
+    $result = $query->row_array();
+    if (!empty($result)) {
+        $generate = $this->generate_code();
+        $code = $generate;
+        $mail = new PHPMailer(true);
+        try {
+            // Konfigurasi SMTP dan pengaturan lainnya
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'saputroandi763@gmail.com';
+            $mail->Password = 'zkza scib qoob vwzo';
+            $mail->Port = 465;
+            $mail->SMTPSecure = 'ssl';
 
-                // Set pengirim dan penerima
-                $mail->setFrom('saputroandi763@gmail.com');
-                $mail->addAddress($email, 'Sewa Ruang');
+            // Set pengirim dan penerima
+            $mail->setFrom('saputroandi763@gmail.com');
+            $mail->addAddress($email, 'Sewa Ruang');
 
-                $mail->addReplyTo("$email");
-                $mail->isHTML(true);
-                $mail->Subject = 'Code Verifikasi Password';
-                $mail->Body = 'Berikut Code Verifikasi Untuk Reset Password '.$code.'';
+            $mail->addReplyTo("$email");
+            $mail->isHTML(true);
+            $mail->Subject = 'Code Verifikasi Password';
+            $mail->Body = 'Berikut Code Verifikasi Untuk Reset Password '.$code.'';
 
                 // Kirim email
                 if ($mail->send()) {
@@ -187,15 +186,8 @@ class Auth extends CI_Controller {
         }
     }
     public function aksi_verifikasi(){
-        if(empty($this->session->userdata('code'))) {
-            redirect(base_url('auth/forgot_password'));
-        }
         $code = $this->input->post('code');
         if ($code == $this->session->userdata('code')) {
-            $data = [
-                'status' => true,
-            ];
-            $this->session->set_userdata($data);
             echo "<script>alert('Berhasill!!!');
             window.location.href = '" . base_url('auth/ganti_password') . "';
             </script>";
@@ -215,25 +207,22 @@ class Auth extends CI_Controller {
         $pass = $this->input->post('password');
         $con_pass = $this->input->post('con_password');
         $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');    
+    
         if ($this->form_validation->run() === FALSE) {
-            echo "<script>alert('Password minimal 8 karakter dan combinasi angka dan huruf');
-            window.location.href = '" . base_url('auth/ganti_password') . "';
-            </script>";
+            $this->session->set_flashdata('error', 'Password minimal 8 karakter dan kombinasi angka dan huruf');
+            redirect(base_url('auth/ganti_password'));
         } else {
             if($pass == $con_pass){
                 $data = [
                     'password' => md5($pass),
                 ];
                 $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
-                echo "<script>alert('Berhasill!!!');
-                window.location.href = '" . base_url() . "';
-                </script>";
+                $this->session->set_flashdata('success', 'Password berhasil diubah');
+                redirect(base_url());
             } else {
-                echo "<script>alert('Password dengan konfirmasi password harus sama');
-            window.location.href = '" . base_url('auth/ganti_password') . "';
-            </script>";
+                $this->session->set_flashdata('error', 'Password dengan konfirmasi password harus sama');
+                redirect(base_url('auth/ganti_password'));
             }
         }
-    }
-   
+    }    
 }

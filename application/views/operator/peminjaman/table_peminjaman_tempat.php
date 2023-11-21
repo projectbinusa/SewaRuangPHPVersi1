@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    
+
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -41,6 +47,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
+            /* font-size: 16px; */
             background-color: #f1f1f1;
         }
 
@@ -56,7 +63,7 @@
             }
         }
 
-        /***default-btn-area***/
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -234,7 +241,7 @@
             opacity: 1;
         }
 
-        /***section-title***/
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -402,9 +409,8 @@
         }
 
         a:hover {
-            color: white;
+            color: var(--main-color);
         }
-
 
 
         .btn {
@@ -427,7 +433,6 @@
             outline: 0;
             box-shadow: none;
         }
-
 
         .btn:after {
             content: "";
@@ -515,6 +520,7 @@
             margin-left: 12px;
         }
 
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -719,7 +725,7 @@
             cursor: pointer;
         }
 
-        /* Tablet Layout wide: 767px. */
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -754,7 +760,7 @@
             }
         }
 
-        /* medium tablet layout 599px */
+       
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -777,7 +783,7 @@
             }
         }
 
-        /*Form fields*/
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -797,22 +803,22 @@
             margin-left: 9px;
         }
 
-        /*Row Hover*/
+        /Row Hover/
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /*Pagination Buttons*/
+        /Pagination Buttons/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 400;
+            font-weight: 900;
             border-radius: .25rem;
             border: 1px solid transparent;
             height: 37px;
             padding-top: 5px;
         }
 
-        /*Pagination Buttons - Current selected */
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -833,8 +839,7 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -844,65 +849,59 @@
 
         }
 
-        .container-table {
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            padding: 20px 10px 10px 10px;
-        }
-
-        .btn-export-p {
-            margin-left: 41.6rem;
-        }
-
         /* code responsive table */
-        @media (max-width: 600px) {
-            table {
-                width: 100%;
-            }
+        @media only screen and (max-width: 800px) {
 
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-
-            .btn-export-p {
-               
-            }
+       .container {
+        padding: 1rem 1rem 0px 1rem;
         }
-    </style>
 
+
+        .heading {
+        padding: 1.3em 9px 1.8rem 9px;
+        } 
+
+        .survey-form {
+         padding: 1.3em 15px 1.8rem 15px;
+
+        }
+
+       .main-heading {
+       font-size: 22px;
+       margin-bottom: 0;
+       text-align: center;
+       }
+
+label {
+    font-size: 16px;
+}
+}
+
+
+#checkboxCombo {
+position: relative;
+display: inline-block;
+}
+
+#checkboxCombo select {
+width: 200px;
+padding: 5px;
+}
+
+#checkboxCombo input[type="checkbox"] {
+position: absolute;
+top: 0;
+right: 0;
+}
+             
+        
+    </style>
+    <!-- script modal -->
+    <script>
+      function toggleModal() {
+        document.getElementById('modal').classList.toggle('hidden')
+      }
+    </script>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -919,49 +918,48 @@
                     </div>
                 </div>
             </div>
-
-            <div class="container-table row justify-content-center">
-                <a href="tambah_peminjaman_tempat"
-                    class=" bg-blue-500 hover:bg-blue-700 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-10">
-                    <span class="pe-2">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    Tambah
-                </a>
-
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-
-                        <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        </div>
+        <div class="container-table row justify-content-center">
+            
+            <div class="col-lg-12">
+                <div class="header-item">
+                    <div class="relative">
+                        
+                        <a href="tambah_item_tambahan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                                <span class="pe-2">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                Tambah
+                            </a>
+                            <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             No
                                         </th>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                             Nama
                                         </th>
 
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                             Ruangan
                                         </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                             Jumlah Orang
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Kode Booking
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                             Tambahan
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                             Total Booking
                                         </th>
-                                        <th data-priority="7" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                             Total
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Status
                                         </th>
 
@@ -979,20 +977,20 @@
                                                 class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
-                                            <td data-cell="Nama " class=" px-3 py-4">
+                                            <td data-cell="Nama " class="text-center px-3 py-4">
                                                 <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
                                             </td>
-                                            <td data-cell="Ruangan " class=" px-3 py-4">
+                                            <td data-cell="Ruangan " class="text-center px-3 py-4">
                                                 <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
                                             </td>
-                                            <td data-cell="Kapasitas " class="w-36 px-3 py-4">
+                                            <td data-cell="Kapasitas " class="text-center w-36 px-3 py-4">
                                                 <?php echo $row->jumlah_orang ?>
                                             </td>
-                                            <td data-cell="Kode " class=" px-3 py-4">
+                                            <td data-cell="Kode " class="text-center px-3 py-4">
                                                 <?php echo $row->kode_booking ?>
                                             </td>
 
-                                            <td data-cell="Tambahan " class="w-32 px-3 py-4">
+                                            <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">
                                                 <?php
                                                 // Memisahkan data tambahan menjadi array
                                                 $tambahanArray = explode(',', $row->tambahan_nama);
@@ -1014,10 +1012,10 @@
                                                 echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
                                                 ?>
                                             </td>
-                                            <td data-cell="Total " class=" px-3 py-4">
+                                            <td data-cell="Total " class="text-center px-3 py-4">
                                                 <?php echo $row->total_harga ?>
                                             </td>
-                                            <td data-cell="Status " class=" px-3 py-4 uppercase">
+                                            <td data-cell="Status " class="text-center px-3 py-4 uppercase">
                                                 <?php echo $row->status ?>
                                             </td>
 
@@ -1141,6 +1139,7 @@
                 document.getElementById('modal').classList.toggle('hidden')
             }
         </script>
+
 </body>
 
 </html>
