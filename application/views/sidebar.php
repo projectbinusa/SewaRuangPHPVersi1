@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-            <a href="<?php echo base_url('operator/report_sewa') ?>" class="flex items-center">
+            <a href="<?php echo base_url('operator/tabel_report_sewa') ?>" class="flex items-center">
               <i class="fa-regular fa-folder-open text-white"></i>
               <span class="mx-2 text-white font-semibold">Report Sewa</span>
             </a>
@@ -75,7 +75,7 @@
       <ul>
         <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center ml-auto ">
           <i class="fa-solid fa-right-from-bracket text-white hover:text-bg-black"></i>
-          <span class="mx-2 text-white  hover:text-bg-black font-semibold mb-12">Keluar</span>
+          <span class="mx-2 text-white  hover:text-bg-black font-semibold">Keluar</span>
         </a>
       </ul>
     </ul>
