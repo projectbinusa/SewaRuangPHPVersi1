@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-         <!--Regular Datatables CSS-->
+    <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -35,8 +32,9 @@
             font-family: "DM Sans", sans-serif;
             background-color: #f1f1f1;
         }
+
         .content-text {
-            font-family:"DM Sans", sans-serif ;
+            font-family: "DM Sans", sans-serif;
             font-size: 17px;
         }
 
@@ -160,7 +158,7 @@
             margin-right: 7px;
         }
 
-   
+
         /***banner-area***/
         .banner-area {
             background: var(--main-gradient);
@@ -2679,11 +2677,6 @@
             opacity: 0.97;
         }
 
-        .mfp-zoom-in {
-            /* animate in */
-            /* animate out */
-        }
-
         .mfp-zoom-in .mfp-content {
             opacity: 0;
             transition: all 0.4s ease;
@@ -3693,9 +3686,8 @@
 
     <!-- style table -->
     <style>
-        
-       /*Form fields*/
-       .dataTables_wrapper select,
+        /*Form fields*/
+        .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
             padding-left: 1rem;
@@ -3761,14 +3753,14 @@
         table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
             background-color: #4F709C !important;
         }
-       
+
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
 
-    
+
         .scroll {
             overflow-y: auto;
             background: #f9fcff;
@@ -3779,150 +3771,150 @@
         .container {
             max-width: 1400px;
             margin: auto;
+        }
 
-            &.two .card::after {
-                content: '';
-                width: 80px;
-                height: 80px;
-                background: #4F709C;
-                position: absolute;
-                top: -30px;
-                border-radius: 35%;
-                left: -20px;
+        &.two .card::after {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background: #4F709C;
+            position: absolute;
+            top: -30px;
+            border-radius: 35%;
+            left: -20px;
+        }
+
+        .grid-cards {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            max-width: 1400px;
+            margin: 1rem auto;
+
+            @media (max-width: 922px) and (min-width: 601px) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .grid-cards {
-                display: flex;
-                justify-content: center;
+            @media (max-width: 600px) {
+                flex-direction: column;
+            }
+
+            .card {
+                position: relative;
                 flex: 1;
-                max-width: 1400px;
-                margin: 1rem auto;
+                background: #fff;
+                padding: 1rem 1rem 1.5rem;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                border-radius: 1rem;
+                min-height: 170px;
+                margin: 15px;
+                transition: all ease 0.3s;
+                overflow: hidden;
+                animation: fadeInLeft 1.5s backwards;
 
-                @media (max-width: 922px) and (min-width: 601px) {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
+                &:nth-child(2) {
+                    animation-delay: 0.15s;
                 }
 
-                @media (max-width: 600px) {
-                    flex-direction: column;
+                &:nth-child(3) {
+                    animation-delay: 0.2s;
                 }
 
-                .card {
+                &:nth-child(4) {
+                    animation-delay: 0.3s;
+                }
+
+                &:hover {
+                    transform: translateY(-6px);
+                    -webkit-transform: translateY(-6px);
+                }
+
+                img {
+                    /* Google SEO - CLS optimize */
+                    aspect-ratio: 500 / 320;
+
+                    width: 100%;
+                    border-radius: 12px;
+                    margin-bottom: 15px;
                     position: relative;
-                    flex: 1;
-                    background: #fff;
-                    padding: 1rem 1rem 1.5rem;
-                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-                    border-radius: 1rem;
-                    min-height: 170px;
-                    margin: 15px;
-                    transition: all ease 0.3s;
-                    overflow: hidden;
-                    animation: fadeInLeft 1.5s backwards;
+                    max-height: 320px;
+                    object-fit: cover;
+                    box-shadow: 0 6px 16px -7px #aaa;
+                }
 
-                    &:nth-child(2) {
-                        animation-delay: 0.15s;
-                    }
+                .card-body {
+                    color: #676767;
+                    width: 100%;
+                    margin-bottom: 40px;
+                    padding: 0 0.8rem;
+                    position: relative;
 
-                    &:nth-child(3) {
-                        animation-delay: 0.2s;
-                    }
-
-                    &:nth-child(4) {
-                        animation-delay: 0.3s;
-                    }
-
-                    &:hover {
-                        transform: translateY(-6px);
-                        -webkit-transform: translateY(-6px);
-                    }
-
-                    img {
-                        //Google SEO - CLS optimize
-                        aspect-ratio: 500 / 320;
-
-                        width: 100%;
-                        border-radius: 12px;
-                        margin-bottom: 15px;
-                        position: relative;
-                        max-height: 320px;
-                        object-fit: cover;
-                        box-shadow: 0 6px 16px -7px #aaa;
-                    }
-
-                    .card-body {
-                        color: #676767;
-                        width: 100%;
-                        margin-bottom: 40px;
-                        padding: 0 0.8rem;
-                        position: relative;
-
-                        .icon {
-                            display: flex;
-                            width: 100%;
-                            text-align: left;
-                            padding: 15px 0;
-
-                            i {
-                                position: relative;
-                                font-size: 25px;
-                                transition: 0.5s;
-                                line-height: 0;
-                                top: -7px;
-                                left: -12px;
-                                z-index: 2;
-
-                                &::before {
-                                    background: #FFD854;
-                                    background-clip: border-box;
-                                    -webkit-background-clip: text;
-                                    -webkit-text-fill-color: transparent;
-                                }
-                            }
-
-                            h3 {
-                                margin: -9px 0 0 20px;
-                            }
-                        }
-
-                        .title-card {
-                            text-align: center;
-                            padding-bottom: 10px;
-                          
-                        }
-
-                        p {
-                            font-size: 14px;
-                            line-height: 22px;
-                            font-weight: 300;
-                        }
-                    }
-
-                    .card-footer {
+                    .icon {
                         display: flex;
-                        justify-content: flex-end;
-                        position: absolute;
-                        bottom: 0;
-                        width: calc(100% - 1rem);
+                        width: 100%;
+                        text-align: left;
+                        padding: 15px 0;
 
-                        a {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            background: #FFD854;
-                            color: #fff;
-                            text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.08);
-                            font-size: 1rem;
-                            font-weight: 700;
-                            text-decoration: none;
-                            width: 56%;
-                            height: 40px;
-                            border-top-left-radius: 1rem;
-                            border-bottom-right-radius: 1rem;
+                        i {
+                            position: relative;
+                            font-size: 25px;
+                            transition: 0.5s;
+                            line-height: 0;
+                            top: -7px;
+                            left: -12px;
+                            z-index: 2;
 
-                            &:hover {
-                                filter: brightness(0.98);
+                            &::before {
+                                background: #FFD854;
+                                background-clip: border-box;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
                             }
+                        }
+
+                        h3 {
+                            margin: -9px 0 0 20px;
+                        }
+                    }
+
+                    .title-card {
+                        text-align: center;
+                        padding-bottom: 10px;
+
+                    }
+
+                    p {
+                        font-size: 14px;
+                        line-height: 22px;
+                        font-weight: 300;
+                    }
+                }
+
+                .card-footer {
+                    display: flex;
+                    justify-content: flex-end;
+                    position: absolute;
+                    bottom: 0;
+                    width: calc(100% - 1rem);
+
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #FFD854;
+                        color: #fff;
+                        text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.08);
+                        font-size: 1rem;
+                        font-weight: 700;
+                        text-decoration: none;
+                        width: 56%;
+                        height: 40px;
+                        border-top-left-radius: 1rem;
+                        border-bottom-right-radius: 1rem;
+
+                        &:hover {
+                            filter: brightness(0.98);
                         }
                     }
                 }
@@ -3940,11 +3932,11 @@
             }
         }
 
-      .inner-section {
-        padding: 4%;
-      }
+        .inner-section {
+            padding: 4%;
+        }
 
-       /* code responsive table */
+        /* code responsive table */
         @media (max-width: 600px) {
             table {
                 width: 100%;
@@ -3989,27 +3981,36 @@
             }
 
             .inner-section {
-        padding: 4%;
-      }
+                padding: 4%;
+            }
 
-         @media (max-width: px) {
-            .inner-section {
-        padding: 4%;
-         }
+            @media (max-width: px) {
+                .inner-section {
+                    padding: 4%;
+                }
 
+            }
         }
     </style>
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    
-
-    
     <?php $this->load->view('sidebar'); ?>
-
- 
     <section class="inner-section">
+        <div class="scroll">
+            <div class="container two">
+                <div class="grid-cards">
+                    <div class="card">
+                        <a href="<?php echo base_url("operator/data_ruangan") ?>" class="card-body text-center">
+                            <div class="section-title mb-0">
+                                <h2 class="title mt-4">233</h2>
+                            </div>
+                            <p>Master Ruang
+                            </p>
+                        </a>
+                        <div class="card-footer">
+                            <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
+                        </div>
     <div class="scroll">
         <div class="container two">
   <div class="grid-cards">
@@ -4076,28 +4077,71 @@
                     <div class="col-lg-6 order-lg-12 align-self-center">
                         <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
-                    <div class="col-lg-6 order-lg-1 align-self-center mt-4 mt-lg-0">
-                        <div class="about-inner-wrap">  
+                    <div class="card">
+                        <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
                             <div class="section-title mb-0">
-                                <h2 class="title">Mengenal ruang yang kami sewakan</h2>
-                                <br>
-                                
+                                <h2 class="title mt-4">532</h2>
                             </div>
-                            <p class="content-text">Ruangan yang nyaman serta memiliki fasilitas yang lengkap merupakan salah satu kunci kesuksesan acara anda. di Sewa Ruang ini terdapat berbagai ruangan. Seperti ruang meeting untuk meeting bisnis anda , ada ruang acara yang tersedia berbagai fasilitas di dalamnya.</p>
-
-                            <p class="content-text">Banyak ruang yang dapat anda pilih berdasarkan corak interior, lokasi yang strategis,harga sesuai budget ataupun disesuaikan dengan kebutuhan klien.</p>
-
-                            <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat klien puas dengan meet yang anda buat.</p>
-
-                        
+                            <p>Master Pelanggan
+                            </p>
+                        </a>
+                        <div class="card-footer">
+                            <a href="<?php echo base_url("operator/data_master_pelanggane") ?>">Klik disini</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="<?php echo base_url("operator/peminjaman_tempat") ?>" class="card-body text-center">
+                            <div class="section-title mb-0">
+                                <h2 class="title mt-4">532</h2>
+                            </div>
+                            <p>Peminjaman Tempat
+                            </p>
+                        </a>
+                        <div class="card-footer">
+                            <a href="<?php echo base_url("operator/peminjaman_tempat") ?>">Klik disini</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
+                            <div class="section-title mb-0">
+                                <h2 class="title mt-4">532</h2>
+                            </div>
+                            <p>Report Sewa
+                            </p>
+                        </a>
+                        <div class="card-footer">
+                            <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-   
-      </section>
+    </section>
+    <!-- about area start -->
+    <section id="about" class="inner-section">
+        <div class="about-area ">
+            <div class="container">
+                <div class="about-area-inner">
+                    <div class="md:flex gap-5">
+                        <div class="col-lg-6 order-lg-12 align-self-center">
+                            <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
+                        </div>
+                        <div class="col-lg-6 order-lg-1 align-self-center mt-4 mt-lg-0">
+                            <div class="about-inner-wrap">
+                                <div class="section-title mb-0">
+                                    <h2 class="title">Mengenal ruang yang kami sewakan</h2>
+                                    <br>
+                                </div>
+                                <p class="content-text">Ruangan yang nyaman serta memiliki fasilitas yang lengkap merupakan salah satu kunci kesuksesan acara anda. di Sewa Ruang ini terdapat berbagai ruangan. Seperti ruang meeting untuk meeting bisnis anda , ada ruang acara yang tersedia berbagai fasilitas di dalamnya.</p>
+                                <p class="content-text">Banyak ruang yang dapat anda pilih berdasarkan corak interior, lokasi yang strategis,harga sesuai budget ataupun disesuaikan dengan kebutuhan klien.</p>
+                                <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat klien puas dengan meet yang anda buat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Data Master Ruang -->
     <section id="widget" class="inner-section">
@@ -4106,35 +4150,40 @@
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Data Master Ruangan</h2>
-
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center">
-              
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
-
-                            <table style="min-width: 22rem;" id="example_master_ruang"
-                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table style="min-width: 22rem;" id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            No Ruang 
+                                            No Ruang
                                         </th>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             No Lantai
                                         </th>
-                                      
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            1
+                                        </td>
+                                        <td data-cell="No Ruang " class="text-center px-6 py-4">
+                                            R 004
+                                        </td>
+                                        <td data-cell="No Lantai " class="text-center px-6 py-4">
+                                            L 002
+                                        </td>
+                                    </tr>
                                 <?php $no=0; foreach($ruang as $row): $no++?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No  " scope="row"
@@ -4155,8 +4204,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -4174,16 +4221,14 @@
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
-                            <table style="min-width: 22rem;" id="example_master_pelanggan"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table style="min-width: 22rem;" id="example_master_pelanggan" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama 
+                                            Nama
                                         </th>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Telepon
@@ -4194,38 +4239,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php $no = 0;
-                                foreach ($pelanggans as $row):
-                                    $no++ ?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no ?>  
-                                        </td>
-                                        <td data-cell="Nama" class="text-center px-3 py-4">
-                                            <?php echo $row->nama ?>
-                                        </td>
-                                        <td data-cell="Telepon" class="text-center px-3 py-4">
-                                            <?php echo $row->phone ?>
-                                        </td>
-                                        <td data-cell="Payment Method " class="text-center px-3 py-4">
-                                            <?php echo $row->payment_method ?>
-                                        </td>
-                                    </tr>
-                                  <?php endforeach ?>
+                                    <?php $no = 0;
+                                    foreach ($pelanggans as $row) :
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama" class="text-center px-3 py-4">
+                                                <?php echo $row->nama ?>
+                                            </td>
+                                            <td data-cell="Telepon" class="text-center px-3 py-4">
+                                                <?php echo $row->phone ?>
+                                            </td>
+                                            <td data-cell="Payment Method " class="text-center px-3 py-4">
+                                                <?php echo $row->payment_method ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
-  
-  
-
     <!-- Report Sewa -->
     <section id="widget" class="inner-section">
         <div class="container">
@@ -4233,30 +4272,24 @@
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Report Sewa</h2>
-
                     </div>
                 </div>
             </div>
-
             <div class="row justify-content-center">
-              
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
-
-                            <table style="min-width: 22rem;" id="example_report"
-                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table style="min-width: 22rem;" id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                           No
+                                            No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Nama
                                         </th>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                           Ruangan
+                                            Ruangan
                                         </th>
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Kapasitas
@@ -4265,21 +4298,62 @@
                                             Kode Booking
                                         </th>
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                           Tambahan
+                                            Tambahan
                                         </th>
                                         <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                           Total Booking
+                                            Total Booking
                                         </th>
                                         <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                           Total
+                                            Total
                                         </th>
                                         <th data-priority="9" scope="col" class="text-center px-3 py-3">
-                                           Status
+                                            Status
                                         </th>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $no = 0;
+                                    foreach ($report_sewa as $row) :
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama" class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            </td>
+                                            <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <td data-cell="Kode Booking" class="text-center px-3 py-4">
+                                                <?php echo $row->kode_booking ?>
+                                            </td>
+                                            <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_tambahan_byid($row->status) ?>
+                                            </td>
+                                            <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                <?php
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                echo $durasi->days . ' Hari';
+                                                ?></td>
+                                            <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                                <?php echo $row->total_harga ?>
+                                            </td>
+                                            <td data-cell="Status" class="text-center px-3 py-4">
+                                                <!-- <?php echo $row->status ?> -->
+
+                                                <?php if ($row->status == "di tolak") {
+                                                    echo NULL;
+                                                } else {
+                                                    echo $row->status;
+                                                } ?>
+                                            </td>
+                                        </tr>
                                 <?php $no = 0;
                                 foreach ($report_sewa as $row):
                                     $no++ ?>
@@ -4342,127 +4416,56 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
-   
-  
-
-     
-
-
-    <!-- footer area start -->
     <div class="footer-2 bg-gray-800 pt-6 md:pt-12">
-  <!-- <div class="container px-4 mx-auto"> -->
-
-    <!-- <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
-
-      <div class="footer-info lg:w-1/3 md:px-4">
-        <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
-        <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
-        <div class="mt-4">
-          <button class="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
-            <span class="fab fa-facebook-f mr-2"></span> Follow
-          </button>
-          <button class="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
-            <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
-          </button>
-        </div>
-      </div>
-
-      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
-        <div class="sm:flex">
-          <div class="sm:flex-1">
-            <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
-            <div>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
+        <div class="border-t border-solid border-gray-900 mt-4 py-4">
+            <div class="container px-4 mx-auto">
+                <div class="md:flex md:-mx-4 md:items-center">
+                    <div class="md:flex-1 md:px-4 text-center md:text-left">
+                        <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
+                    </div>
+                    <div class="md:flex-1 md:px-4 text-center md:text-right">
+                        <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="sm:flex-1 mt-4 sm:mt-0">
-            <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
-            <div>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
-        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
-        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
-      </div>
-
-    </div> -->
-
-  <!-- </div> -->
-
-  <div class="border-t border-solid border-gray-900 mt-4 py-4">
-    <div class="container px-4 mx-auto">
-
-      <div class="md:flex md:-mx-4 md:items-center">
-        <div class="md:flex-1 md:px-4 text-center md:text-left">
-          <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
-        </div>
-        <div class="md:flex-1 md:px-4 text-center md:text-right">
-          <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
-        </div>
-      </div>
-
     </div>
-  </div>
-
-</div>
     <!-- footer area end -->
-
-    <!-- back-to-top end -->
     <a id="back-to-top"></a>
-
-    
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_master_ruang').DataTable({
-                // responsive: true
-            })
+                    // responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_master_pelanggan').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_report').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
     </script>
-
-  
-
-
 </body>
 
 
