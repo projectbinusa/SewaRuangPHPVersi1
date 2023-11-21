@@ -9,11 +9,11 @@
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 </head>
 
-<body class="h-screen overflow-hidden flex flex-col bg-gray-100">
+<body class="h-screen flex flex-col bg-gray-100">
   <?php $this->load->view('sidebar'); ?>
   <!-- Area konten utama -->
-  <div class="min-h-screen overflow-hidden flex mt-28 justify-center items-start md:mx-16 lg:mx-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <div class="min-h-screen flex mt-20 justify-center items-start md:mx-16 lg:mx-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-4 max-w-screen-xl mx-auto">
       <?php foreach ($ruang as $row) : ?>
         <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700 w-full">
           <div class="w-full">
