@@ -161,6 +161,10 @@
             cursor: pointer;
         }
 
+        .contain-all {
+            overflow-y: scroll;
+            height: 38rem;
+        }
 
         @media only screen and (max-width: 800px) {
 
@@ -211,7 +215,7 @@
 <body>
     <?php $this->load->view('sidebar'); ?>
 
-    <main>
+    <main class="contain-all">
         <div class=" container">
             <header class="heading">
                 <div class="green-bar"></div>
@@ -240,13 +244,16 @@
                 <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
                 <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
                     placeholder="Pilih Paket">
-             
+
                 <datalist id="browsers" id="checkbox" role="listbox">
                     <div class="">
-                        <?php foreach($tambahan as $row):?>
-                        <option style=""><?php echo $row->nama?></option>
-                        <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
-                        <?php endforeach?>
+                        <?php foreach ($tambahan as $row): ?>
+                            <option style="">
+                                <?php echo $row->nama ?>
+                            </option>
+                            <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox"
+                                name="tambahan[]" value="<?php echo $row->id ?>">
+                        <?php endforeach ?>
                     </div>
                 </datalist>
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
@@ -257,7 +264,8 @@
                         class="required">*</span></label>
                 <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                     placeholder="Ketik total hari booking" required>
-                    <input type="submit" id="submit" class="submit" value="Submit" style="background-color: #0C356A; height:42px; width: auto;">
+                <input type="submit" id="submit" class="submit" value="Submit"
+                    style="background-color: #0C356A; height:42px; width: auto;">
             </form>
         </div>
     </main>
