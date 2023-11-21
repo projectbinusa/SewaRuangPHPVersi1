@@ -318,6 +318,29 @@
         </div>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    <?php if ($this->session->flashdata('success')) { ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Mengganti!',
+            text: '<?php echo $this->session->flashdata('success'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url(); ?>';
+        });
+    <?php } ?>
+
+    <?php if ($this->session->flashdata('error')) { ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal Mengganti!',
+            text: '<?php echo $this->session->flashdata('error'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
+        });
+    <?php } ?>
+</script>
+
 <script type="text/javascript">
     function togglePassword_baru() {
         var passwordField = document.getElementById('password_baru');

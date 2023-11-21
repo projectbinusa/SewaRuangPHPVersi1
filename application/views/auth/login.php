@@ -265,6 +265,18 @@
         </div>
     </div>
 </body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    <?php if ($this->session->flashdata('error')) { ?>
+        // Tampilkan SweetAlert jika terdapat error dari session
+        Swal.fire({
+            icon: 'error',
+            title: 'Login Gagal',
+            text: '<?php echo $this->session->flashdata('error'); ?>'
+        });
+    <?php } ?>
+</script>
 <script type="text/javascript">
     function togglePassword() {
         var passwordField = document.getElementById('password');

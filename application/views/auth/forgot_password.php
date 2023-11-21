@@ -155,6 +155,26 @@
         </div>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    <?php if ($this->session->flashdata('success')) { ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Pesan Terkirim!',
+            text: '<?php echo $this->session->flashdata('success'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url('auth/verifikasi_kode'); ?>';
+        });
+    <?php } ?>
 
-
+    <?php if ($this->session->flashdata('error')) { ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Pesan Gagal Terkirim!',
+            text: '<?php echo $this->session->flashdata('error'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url('auth/forgot_password'); ?>';
+        });
+    <?php } ?>
+</script>
 </html>

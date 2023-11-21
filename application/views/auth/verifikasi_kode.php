@@ -149,11 +149,30 @@
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
         </div>
     </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    <?php if ($this->session->flashdata('success')) { ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Verifikasi Berhasil!',
+            text: '<?php echo $this->session->flashdata('success'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
+        });
+    <?php } ?>
 
+    <?php if ($this->session->flashdata('error')) { ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Verifikasi Gagal!',
+            text: '<?php echo $this->session->flashdata('error'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url('auth/verifikasi_kode'); ?>';
+        });
+    <?php } ?>
+</script>
 
 </html>
