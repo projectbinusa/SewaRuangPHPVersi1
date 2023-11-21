@@ -1640,48 +1640,27 @@
         /* code responsive table */
         @media (max-width: 600px) {
 
-
             table {
-                width: 100%;
+                width: 5rem;
+                overflow: scroll;
             }
 
-            tbody {
-                text-align: left;
+            .btn-style {
+                /* font-size: small; */
+                width: 20%;
             }
+        }
 
-            .option-select {
-                font-size: 12px;
-            }
+        table {
+            width: 22rem;
+        }
 
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
+        .table-section {
+            padding: 4%;
+        }
 
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
+        .btn-style {
+            width: 11%;
         }
     </style>
 
@@ -1689,7 +1668,7 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <?php $this->load->view('sidebars'); ?>
-    <section id="widget" class="p-10 widget-section pd-top-47">
+    <section id="widget" class=" table-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -1701,15 +1680,17 @@
             </div>
 
             <div class="container-table row justify-content-center">
+
+            
                 <button onclick="toggleModal()"
-                    class="bg-yellow-500 hover:bg-yellow-700 ml-auto w-28 text-white font-bold py-2 px-2 rounded">
+                    class="btn-style bg-yellow-500 hover:bg-yellow-700 md:ml-auto text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-file-import"></i>
                     </span>
                     Import
                 </button>
                 <a href="export_data_operator"
-                    class="bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded">
+                    class="btn-style bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-file-export"></i>
                     </span>
@@ -1717,7 +1698,7 @@
                 </a>
 
                 <a href="tambah_user_operator"
-                    class="btn-export-p py-2 px-2 w-28 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded"
+                    class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded"
                     onclick="toggleModal()">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
@@ -1729,8 +1710,8 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="examples"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table id="examples"
+                                class="text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -1740,10 +1721,10 @@
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Username
                                         </th>
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Email
                                         </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -1807,22 +1788,23 @@
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <form action="<?php echo base_url('supervisor/import_data_operator') ?>" method="post"
                             enctype="multipart/form-data">
-                          
-                            
+
+
                             <label class="font-medium text-gray-800">File</label>
                             <input name="file" type="file"
                                 class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
 
                     </div>
                     <div class="bg-gray-200 px-4 py-3 text-right">
-                        
+
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
                             onclick="toggleModal()"> Batal</button>
                         <button type="submit"
                             class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                            <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2"
-                            onclick=""> Download Template</button>
-                        </div>
+                        <button type="button"
+                            class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                            Download Template</button>
+                    </div>
                     </form>
                 </div>
             </div>
