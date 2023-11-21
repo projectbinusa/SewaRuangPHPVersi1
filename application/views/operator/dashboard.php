@@ -2677,6 +2677,11 @@
             opacity: 0.97;
         }
 
+        .mfp-zoom-in {
+            /* animate in */
+            /* animate out */
+        }
+
         .mfp-zoom-in .mfp-content {
             opacity: 0;
             transition: all 0.4s ease;
@@ -3771,150 +3776,150 @@
         .container {
             max-width: 1400px;
             margin: auto;
-        }
 
-        &.two .card::after {
-            content: '';
-            width: 80px;
-            height: 80px;
-            background: #4F709C;
-            position: absolute;
-            top: -30px;
-            border-radius: 35%;
-            left: -20px;
-        }
-
-        .grid-cards {
-            display: flex;
-            justify-content: center;
-            flex: 1;
-            max-width: 1400px;
-            margin: 1rem auto;
-
-            @media (max-width: 922px) and (min-width: 601px) {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+            &.two .card::after {
+                content: '';
+                width: 80px;
+                height: 80px;
+                background: #4F709C;
+                position: absolute;
+                top: -30px;
+                border-radius: 35%;
+                left: -20px;
             }
 
-            @media (max-width: 600px) {
-                flex-direction: column;
-            }
-
-            .card {
-                position: relative;
+            .grid-cards {
+                display: flex;
+                justify-content: center;
                 flex: 1;
-                background: #fff;
-                padding: 1rem 1rem 1.5rem;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-                border-radius: 1rem;
-                min-height: 170px;
-                margin: 15px;
-                transition: all ease 0.3s;
-                overflow: hidden;
-                animation: fadeInLeft 1.5s backwards;
+                max-width: 1400px;
+                margin: 1rem auto;
 
-                &:nth-child(2) {
-                    animation-delay: 0.15s;
+                @media (max-width: 922px) and (min-width: 601px) {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
                 }
 
-                &:nth-child(3) {
-                    animation-delay: 0.2s;
+                @media (max-width: 600px) {
+                    flex-direction: column;
                 }
 
-                &:nth-child(4) {
-                    animation-delay: 0.3s;
-                }
-
-                &:hover {
-                    transform: translateY(-6px);
-                    -webkit-transform: translateY(-6px);
-                }
-
-                img {
-                    /* Google SEO - CLS optimize */
-                    aspect-ratio: 500 / 320;
-
-                    width: 100%;
-                    border-radius: 12px;
-                    margin-bottom: 15px;
+                .card {
                     position: relative;
-                    max-height: 320px;
-                    object-fit: cover;
-                    box-shadow: 0 6px 16px -7px #aaa;
-                }
+                    flex: 1;
+                    background: #fff;
+                    padding: 1rem 1rem 1.5rem;
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                    border-radius: 1rem;
+                    min-height: 170px;
+                    margin: 15px;
+                    transition: all ease 0.3s;
+                    overflow: hidden;
+                    animation: fadeInLeft 1.5s backwards;
 
-                .card-body {
-                    color: #676767;
-                    width: 100%;
-                    margin-bottom: 40px;
-                    padding: 0 0.8rem;
-                    position: relative;
+                    &:nth-child(2) {
+                        animation-delay: 0.15s;
+                    }
 
-                    .icon {
-                        display: flex;
+                    &:nth-child(3) {
+                        animation-delay: 0.2s;
+                    }
+
+                    &:nth-child(4) {
+                        animation-delay: 0.3s;
+                    }
+
+                    &:hover {
+                        transform: translateY(-6px);
+                        -webkit-transform: translateY(-6px);
+                    }
+
+                    img {
+                        //Google SEO - CLS optimize
+                        aspect-ratio: 500 / 320;
+
                         width: 100%;
-                        text-align: left;
-                        padding: 15px 0;
+                        border-radius: 12px;
+                        margin-bottom: 15px;
+                        position: relative;
+                        max-height: 320px;
+                        object-fit: cover;
+                        box-shadow: 0 6px 16px -7px #aaa;
+                    }
 
-                        i {
-                            position: relative;
-                            font-size: 25px;
-                            transition: 0.5s;
-                            line-height: 0;
-                            top: -7px;
-                            left: -12px;
-                            z-index: 2;
+                    .card-body {
+                        color: #676767;
+                        width: 100%;
+                        margin-bottom: 40px;
+                        padding: 0 0.8rem;
+                        position: relative;
 
-                            &::before {
-                                background: #FFD854;
-                                background-clip: border-box;
-                                -webkit-background-clip: text;
-                                -webkit-text-fill-color: transparent;
+                        .icon {
+                            display: flex;
+                            width: 100%;
+                            text-align: left;
+                            padding: 15px 0;
+
+                            i {
+                                position: relative;
+                                font-size: 25px;
+                                transition: 0.5s;
+                                line-height: 0;
+                                top: -7px;
+                                left: -12px;
+                                z-index: 2;
+
+                                &::before {
+                                    background: #FFD854;
+                                    background-clip: border-box;
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                }
+                            }
+
+                            h3 {
+                                margin: -9px 0 0 20px;
                             }
                         }
 
-                        h3 {
-                            margin: -9px 0 0 20px;
+                        .title-card {
+                            text-align: center;
+                            padding-bottom: 10px;
+
+                        }
+
+                        p {
+                            font-size: 14px;
+                            line-height: 22px;
+                            font-weight: 300;
                         }
                     }
 
-                    .title-card {
-                        text-align: center;
-                        padding-bottom: 10px;
-
-                    }
-
-                    p {
-                        font-size: 14px;
-                        line-height: 22px;
-                        font-weight: 300;
-                    }
-                }
-
-                .card-footer {
-                    display: flex;
-                    justify-content: flex-end;
-                    position: absolute;
-                    bottom: 0;
-                    width: calc(100% - 1rem);
-
-                    a {
+                    .card-footer {
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background: #FFD854;
-                        color: #fff;
-                        text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.08);
-                        font-size: 1rem;
-                        font-weight: 700;
-                        text-decoration: none;
-                        width: 56%;
-                        height: 40px;
-                        border-top-left-radius: 1rem;
-                        border-bottom-right-radius: 1rem;
+                        justify-content: flex-end;
+                        position: absolute;
+                        bottom: 0;
+                        width: calc(100% - 1rem);
 
-                        &:hover {
-                            filter: brightness(0.98);
+                        a {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: #FFD854;
+                            color: #fff;
+                            text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.08);
+                            font-size: 1rem;
+                            font-weight: 700;
+                            text-decoration: none;
+                            width: 56%;
+                            height: 40px;
+                            border-top-left-radius: 1rem;
+                            border-bottom-right-radius: 1rem;
+
+                            &:hover {
+                                filter: brightness(0.98);
+                            }
                         }
                     }
                 }
@@ -3992,10 +3997,16 @@
             }
         }
     </style>
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+
     <?php $this->load->view('sidebar'); ?>
+
+
     <section class="inner-section">
         <div class="scroll">
             <div class="container two">
@@ -4011,72 +4022,8 @@
                         <div class="card-footer">
                             <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
                         </div>
-    <div class="scroll">
-        <div class="container two">
-  <div class="grid-cards">
-    <div class="card">
-      <a href="<?php echo base_url("operator/data_ruangan") ?>" class="card-body text-center">
-        <div class="section-title mb-0">
-          <h2 class="title mt-4"><?php echo $jumlah_ruang?></h2>
-        </div>
-        <p>Master Ruang
-        </p>
-      </a>
-      <div class="card-footer">
-        <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <a  href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
-        <div class="section-title mb-0">
-          <h2 class="title mt-4"><?php echo $jumlah_pelanggan?></h2>
-        </div>
-        <p>Master Pelanggan
-        </p>
-      </a>
-      <div class="card-footer">
-        <a href="<?php echo base_url("operator/data_master_pelanggane") ?>">Klik disini</a>
-      </div>
-    </div>
-    <div class="card">
-      <a  href="<?php echo base_url("operator/tambahan") ?>" class="card-body text-center">
-        <div class="section-title mb-0">
-          <h2 class="title mt-4"><?php echo $jumlah_tambahan?></h2>
-        </div>
-        <p>Item Tambahan
-        </p>
-      </a>
-      <div class="card-footer">
-        <a href="<?php echo base_url("operator/tambahan") ?>">Klik disini</a>
-      </div>
-    </div>
-    <div class="card">
-      <a  href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
-        <div class="section-title mb-0">
-          <h2 class="title mt-4"><?php echo $jumlah_sewa?></h2>
-        </div>
-        <p>Report Sewa
-        </p>
-      </a>
-      <div class="card-footer">
-        <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
-      </div>
-    </div>
-   
-    </div>
-    </section>
-
-
-      <!-- about area start -->
-      <section  id="about" class="inner-section">
-    <div class="about-area ">
-        <div class="container">
-            <div class="about-area-inner">
-                <div class="md:flex gap-5">
-                    <div class="col-lg-6 order-lg-12 align-self-center">
-                        <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
+
                     <div class="card">
                         <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
                             <div class="section-title mb-0">
@@ -4113,10 +4060,11 @@
                             <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
                         </div>
                     </div>
+
                 </div>
-            </div>
-        </div>
     </section>
+
+
     <!-- about area start -->
     <section id="about" class="inner-section">
         <div class="about-area ">
@@ -4131,16 +4079,22 @@
                                 <div class="section-title mb-0">
                                     <h2 class="title">Mengenal ruang yang kami sewakan</h2>
                                     <br>
+
                                 </div>
                                 <p class="content-text">Ruangan yang nyaman serta memiliki fasilitas yang lengkap merupakan salah satu kunci kesuksesan acara anda. di Sewa Ruang ini terdapat berbagai ruangan. Seperti ruang meeting untuk meeting bisnis anda , ada ruang acara yang tersedia berbagai fasilitas di dalamnya.</p>
+
                                 <p class="content-text">Banyak ruang yang dapat anda pilih berdasarkan corak interior, lokasi yang strategis,harga sesuai budget ataupun disesuaikan dengan kebutuhan klien.</p>
+
                                 <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat klien puas dengan meet yang anda buat.</p>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 
     <!-- Data Master Ruang -->
@@ -4150,14 +4104,17 @@
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Data Master Ruangan</h2>
+
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center">
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
+
                             <table style="min-width: 22rem;" id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -4170,9 +4127,11 @@
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             No Lantai
                                         </th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             1
@@ -4184,26 +4143,15 @@
                                             L 002
                                         </td>
                                     </tr>
-                                <?php $no=0; foreach($ruang as $row): $no++?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No  " scope="row"
-                                            class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          <?php echo $no?>
-                                        </td>
-                                        <td data-cell="No Ruang " class="text-center px-6 py-4">
-                                        <?php echo $row->no_ruang?>
-                                        </td>
-                                        <td data-cell="No Lantai " class="text-center px-6 py-4">
-                                        <?php echo $row->no_lantai?>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach?>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </section>
 
@@ -4263,8 +4211,13 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </section>
+
+
+
     <!-- Report Sewa -->
     <section id="widget" class="inner-section">
         <div class="container">
@@ -4272,13 +4225,17 @@
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Report Sewa</h2>
+
                     </div>
                 </div>
             </div>
+
             <div class="row justify-content-center">
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
+
                             <table style="min-width: 22rem;" id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -4309,6 +4266,7 @@
                                         <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                             Status
                                         </th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -4343,6 +4301,8 @@
                                                 ?></td>
                                             <td data-cell="Total Booking" class="text-center px-3 py-4">
                                                 <?php echo $row->total_harga ?>
+
+
                                             </td>
                                             <td data-cell="Status" class="text-center px-3 py-4">
                                                 <!-- <?php echo $row->status ?> -->
@@ -4353,62 +4313,9 @@
                                                     echo $row->status;
                                                 } ?>
                                             </td>
+
+
                                         </tr>
-                                <?php $no = 0;
-                                foreach ($report_sewa as $row):
-                                    $no++ ?>
-                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                        <td data-cell="Nama Penyewa " scope="row"
-                                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                           <?php echo $no ?>
-                                                        </td>
-                                                        <td data-cell="Nama" class="text-center px-3 py-4">
-                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
-                                                        </td>
-                                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                                        </td>
-                                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                                        <?php echo $row->jumlah_orang ?>
-                                                        </td>
-                                                        <td data-cell="Kode Booking" class="text-center px-3 py-4">
-                                                        <?php echo $row->kode_booking ?>
-                                                        </td>
-                                                        <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                        <?php
-                                                // Memisahkan data tambahan menjadi array
-                                                $tambahanArray = explode(',', $row->tambahan_nama);
-
-                                                // Menampilkan setiap tambahan
-                                                foreach ($tambahanArray as $tambahan) {
-                                                    echo $tambahan . '<br>';
-                                                }
-                                                ?>
-                                                        </td>
-                                                        <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                        <?php
-                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                                        echo $durasi->days . ' Hari';
-                                                        ?></td>
-                                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
-                                                        <?php echo $row->total_harga ?>
-
-                                        
-                                                         </td>
-                                                        <td data-cell="Status" class="text-center px-3 py-4">
-                                                        <!-- <?php echo $row->status ?> -->
-
-                                                        <?php if ($row->status == "di tolak") {
-                                                            echo NULL;
-                                                        } else {
-                                                            echo $row->status;
-                                                        } ?>
-                                                         </td>
-
-                                       
-                                                    </tr>
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
@@ -4416,11 +4323,70 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </section>
+
+
+
+
+
+
+    <!-- footer area start -->
     <div class="footer-2 bg-gray-800 pt-6 md:pt-12">
+        <!-- <div class="container px-4 mx-auto"> -->
+
+        <!-- <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+
+      <div class="footer-info lg:w-1/3 md:px-4">
+        <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
+        <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
+        <div class="mt-4">
+          <button class="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
+            <span class="fab fa-facebook-f mr-2"></span> Follow
+          </button>
+          <button class="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
+            <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
+          </button>
+        </div>
+      </div>
+
+      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
+        <div class="sm:flex">
+          <div class="sm:flex-1">
+            <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
+            <div>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
+            </div>
+          </div>
+          <div class="sm:flex-1 mt-4 sm:mt-0">
+            <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
+            <div>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
+              <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
+        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
+        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
+      </div>
+
+    </div> -->
+
+        <!-- </div> -->
+
         <div class="border-t border-solid border-gray-900 mt-4 py-4">
             <div class="container px-4 mx-auto">
+
                 <div class="md:flex md:-mx-4 md:items-center">
                     <div class="md:flex-1 md:px-4 text-center md:text-left">
                         <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
@@ -4429,16 +4395,24 @@
                         <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </div>
     <!-- footer area end -->
+
+    <!-- back-to-top end -->
     <a id="back-to-top"></a>
+
+
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
     <script>
         $(document).ready(function() {
 
@@ -4466,6 +4440,10 @@
                 .responsive.recalc();
         });
     </script>
+
+
+
+
 </body>
 
 
