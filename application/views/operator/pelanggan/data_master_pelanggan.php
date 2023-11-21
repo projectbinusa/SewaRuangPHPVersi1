@@ -5,28 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-    <!--Replace with your tailwind.css once created-->
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
+        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+        <!--Replace with your tailwind.css once created-->
 
-    <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- fontawesome cdn -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
 
-    <!--Regular Datatables CSS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+        <!--Regular Datatables CSS-->
+        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+        <!--Responsive Extension Datatables CSS-->
+        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    
+        
+
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
@@ -844,7 +851,7 @@
         }
 
         /* code responsive table */
-        @media (max-width: 600px) {
+        @media (max-width: 800px) {
             table {
                 width: 100%;
             }
@@ -864,7 +871,7 @@
             }
 
             .responsive-3 {
-                width: 100%;
+                width: 90%;
             }
 
             th {
@@ -893,15 +900,19 @@
             padding: 20px 10px 10px 10px;
         }
     </style>
-    <!-- script modal -->
+ 
     <script>
       function toggleModal() {
         document.getElementById('modal').classList.toggle('hidden')
       }
     </script>
+
+
+   
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   
     <?php $this->load->view('sidebar'); ?>
@@ -915,49 +926,56 @@
                     </div>
                 </div>
             </div>
-    
-    <div class="container-table row justify-content-center">        
-        <a href="<?php echo base_url('operator/tambah_pelanggan') ?>" class="bg-blue-500 hover:bg-blue-800 w-28 text-white font-bold py-2 px-2 rounded float-right relative z-50">
-            <i class="fas fa-plus"></i> Tambah 
-        </a>
-        
-        <a href="export_pelanggan" class="md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-green-500 hover:bg-green-700 w-28 text-white   rounded  relative z-50">
-                            
-                                 <i class="fas fa-file-export"></i> Export
-                           </a>
-    
-                           <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css"  rel="stylesheet" />
-                           <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+        </div>
+        <div class="container-table row justify-content-center">
+            
+            <div class="col-lg-12">
+                <div class="header-item">
+                    <div class="relative">
+                        
+                        <a href="tambah_pelanggan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                                <span class="pe-2">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                Tambah
+                            </a>
+
+                            <a href="expor_pelanggan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
+              <i class="fas fa-file-export"></i> Export
+            </a>
+                         
+            
+            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
                            <span class="pe-2">
                           <i class="fas fa-file-import"></i>
                            </span>
                            Import
                            </button>
 
+                                      
+    
+                         
 
         
-       <div class="col-lg-12">
-           <div class="header-item">
-               <div class="relative">
 
-                            <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                             Nama
                                         </th>
 
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Phone
                                         </th>
-                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Payment Method
                                         </th>
                                         
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -974,16 +992,19 @@
                             <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
 
                                             <!-- Aksi -->
-                                            <td class="justify-content text-center px-3 py-4 flex">
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded-lg" onclick="update(<?php echo $row->id ?>)">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                            <a href="<?php echo base_url('operator/update_data/') . $row->id ?>"
+                                                class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                <span class="">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                            </a>
+                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
                                                 </button>
-                                            </td>
+                                        </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -1011,7 +1032,7 @@
             </div>
             <div class="bg-gray-200 px-4 py-3 text-right">
               <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+              <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
             </div>
           </form>
         </div>
