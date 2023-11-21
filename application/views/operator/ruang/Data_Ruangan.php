@@ -165,7 +165,7 @@
         </div>
       </div>
     </div>
-
+<!-- baru -->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         // Get scroll buttons
