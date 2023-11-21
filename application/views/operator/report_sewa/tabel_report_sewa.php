@@ -1112,7 +1112,7 @@
                                             Kode
                                         </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Snack
+                                            Tambahan
                                         </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Total Booking
@@ -1154,7 +1154,15 @@
                                             </td>
                                             <!-- Snack -->
                                             <td data-cell="Tambahan" class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_tambahan_byid($row->status) ?>
+                                            <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
                                             </td>
                                             <!-- Total Booking -->
                                             <td class="w-32 px-3 py-4">

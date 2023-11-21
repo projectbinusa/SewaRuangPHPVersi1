@@ -20,8 +20,13 @@ class operator extends CI_Controller
 
     public function index()
     {
-        $data['report_sewa'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
+        $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
+        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
+        $data['jumlah_ruang'] = $this-> m_model->get_data('ruangan')->num_rows();
+        $data['jumlah_pelanggan'] = $this-> m_model->get_data('pelanggan')->num_rows();
+        $data['jumlah_tambahan'] = $this-> m_model->get_data('tambahan')->num_rows();
+        $data['jumlah_sewa'] = $this-> m_model->get_data('tambahan')->num_rows();
         $this->load->view('operator/dashboard', $data);
     }
 
@@ -477,15 +482,6 @@ class operator extends CI_Controller
         redirect(base_url('operator/data_master_pelanggan'));
     }
 
-    public function report_sewa()
-    {
-        $this->load->view('operator/pelanggan/report_sewa');
-    }
-    public function dashboard()
-    {
-        $this->load->view('operator/pelanggan/dashboard');
-    }
-
     public function peminjaman_tempat()
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
@@ -689,9 +685,9 @@ class operator extends CI_Controller
     }
 
 
-    public function tabel_report_sewa()
+    public function report_sewa()
     {
-        $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman')->result();
+        $data['peminjaman'] = $this->m_model->get_report_sewa_by_status();
         $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
     }
 

@@ -29,12 +29,30 @@ class Auth extends CI_Controller {
 
     public function verifikasi_kode()
   {
+    if(empty($this->session->userdata('code'))) {
+        redirect(base_url('auth/forgot_password'));
+    }
     $this->load->view('auth/verifikasi_kode');
   }
   public function ganti_password()
   {
+    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        redirect(base_url('auth/forgot_password'));
+    } else if(empty($this->session->userdata('status'))) {
+        redirect(base_url('auth/verifikasi_kode'));
+    }
     $this->load->view('auth/ganti_password');
   }
+  public function check_expired_bookings()
+    {
+        // Implementasi logika untuk memeriksa pemesanan yang berakhir dan mengubah statusnya
+
+        $bookings = $this->m_model->get_expired_bookings();
+
+        foreach ($bookings as $booking) {
+            $this->m_model->update_status($booking->id, 'selesai');
+        }
+    }
      //function aksi login
     public function aksi_login()
     {
@@ -53,6 +71,7 @@ class Auth extends CI_Controller {
 
             ];
             $this->session->set_userdata($data);
+            $this->check_expired_bookings();
             if ($result['role'] == 'supervisor') {
                 redirect(base_url() . "supervisor");
             } elseif ($result['role'] == 'operator') {
@@ -168,8 +187,15 @@ class Auth extends CI_Controller {
         }
     }
     public function aksi_verifikasi(){
+        if(empty($this->session->userdata('code'))) {
+            redirect(base_url('auth/forgot_password'));
+        }
         $code = $this->input->post('code');
         if ($code == $this->session->userdata('code')) {
+            $data = [
+                'status' => true,
+            ];
+            $this->session->set_userdata($data);
             echo "<script>alert('Berhasill!!!');
             window.location.href = '" . base_url('auth/ganti_password') . "';
             </script>";
@@ -181,6 +207,11 @@ class Auth extends CI_Controller {
         }
     }
     public function aksi_ganti_password(){
+        if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+            redirect(base_url('auth/forgot_password'));
+        } else if(empty($this->session->userdata('status'))) {
+            redirect(base_url('auth/verifikasi_kode'));
+        }
         $pass = $this->input->post('password');
         $con_pass = $this->input->post('con_password');
         $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');    

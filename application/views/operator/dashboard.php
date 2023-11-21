@@ -4016,7 +4016,7 @@
     <div class="card">
       <a href="<?php echo base_url("operator/data_ruangan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">233</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_ruang?></h2>
         </div>
         <p>Master Ruang
         </p>
@@ -4029,7 +4029,7 @@
     <div class="card">
       <a  href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_pelanggan?></h2>
         </div>
         <p>Master Pelanggan
         </p>
@@ -4039,21 +4039,21 @@
       </div>
     </div>
     <div class="card">
-      <a  href="<?php echo base_url("operator/peminjaman_tempat") ?>" class="card-body text-center">
+      <a  href="<?php echo base_url("operator/tambahan") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_tambahan?></h2>
         </div>
-        <p>Peminjaman Tempat
+        <p>Item Tambahan
         </p>
       </a>
       <div class="card-footer">
-        <a href="<?php echo base_url("operator/peminjaman_tempat") ?>">Klik disini</a>
+        <a href="<?php echo base_url("operator/tambahan") ?>">Klik disini</a>
       </div>
     </div>
     <div class="card">
       <a  href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_sewa?></h2>
         </div>
         <p>Report Sewa
         </p>
@@ -4135,20 +4135,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                <?php $no=0; foreach($ruang as $row): $no++?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No  " scope="row"
                                             class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          1
+                                          <?php echo $no?>
                                         </td>
                                         <td data-cell="No Ruang " class="text-center px-6 py-4">
-                                        R 004
+                                        <?php echo $row->no_ruang?>
                                         </td>
                                         <td data-cell="No Lantai " class="text-center px-6 py-4">
-                                           L 002
+                                        <?php echo $row->no_lantai?>
                                         </td>
                                     </tr>
-                
+                                    <?php endforeach?>
                                 </tbody>
                             </table>
                         </div>
@@ -4301,7 +4301,15 @@
                                                         <?php echo $row->kode_booking ?>
                                                         </td>
                                                         <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                        <?php echo tampil_nama_tambahan_byid($row->status) ?>
+                                                        <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
                                                         </td>
                                                         <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                         <?php
