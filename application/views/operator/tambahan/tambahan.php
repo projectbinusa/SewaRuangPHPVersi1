@@ -17,6 +17,8 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -932,10 +934,9 @@
                                 </span>
                                 Tambah
                             </a>
-                        <a href="<?php echo base_url('operator/export_tambahan')?>" class="bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold py-2 px-2 rounded float-right  z-50" 
-                        >
-                                 <i class="fas fa-file-export"></i> Export
-                           </a>
+                            <a href="expor_tambahan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
+              <i class="fas fa-file-export"></i> Export
+            </a>
                    
  
                            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
@@ -955,20 +956,20 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             No
                                         </th>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                             Nama Item
                                         </th>
 
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Harga
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Deskripsi
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                             Jenis
                                         </th>
                                        
@@ -981,19 +982,19 @@
                                    <?php $no=0; foreach($tambahan as $row): $no++?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td data-cell="No " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             <?php echo $no?>
                                         </td>
-                                        <td data-cell="Nama " class="w-32 px-3 py-4">
+                                        <td data-cell="Nama " class="text-center w-32 px-3 py-4">
                                             <?php echo $row->nama?>
                                         </td>
-                                        <td data-cell="Harga " class="w-32 px-3 py-4">
+                                        <td data-cell="Harga " class="text-center w-32 px-3 py-4">
                                         <?php echo $row->harga?>
                                         </td>
-                                        <td data-cell="Deskripsi " class="w-36 px-3 py-4">
+                                        <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
                                         <?php echo $row->deskripsi?>
                                         </td>
-                                        <td data-cell="Jenis " class="w-36 px-3 py-4">
+                                        <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
                                         <?php echo $row->jenis?>
                                         </td> 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
