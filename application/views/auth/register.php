@@ -267,6 +267,24 @@
         </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    <?php if ($this->session->flashdata('sukses')) { ?>
+        Swal.fire({
+            icon: 'sukses',
+            title: 'Registrasi Berhasil',
+            text: '<?php echo $this->session->flashdata('sukses'); ?>'
+        });
+    <?php } ?>
+
+    <?php if ($this->session->flashdata('error_email')) { ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Registrasi Gagal',
+            text: '<?php echo $this->session->flashdata('error_email'); ?>'
+        });
+    <?php } ?>
+</script>
 <script type="text/javascript">
     function togglePassword() {
     var passwordField = document.getElementById('password');
