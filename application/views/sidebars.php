@@ -18,16 +18,18 @@
   /* Default styles */
   li:hover span,
   li.active span {
-      color: black; /* Warna teks ketika dihover atau ditekan */
+    color: black;
+    /* Warna teks ketika dihover atau ditekan */
   }
+
   li:hover i,
   li.active i {
-      color: black; /* Warna ikon ketika dihover atau ditekan */
+    color: black;
+    /* Warna ikon ketika dihover atau ditekan */
   }
 </style>
 
 <body class="bg-white min-h-screen font-base">
-
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: true }">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
@@ -66,21 +68,16 @@
         </ul>
       </div>
     </aside>
-
     <!-- Main Content -->
     <div class="w-full md:flex-1">
       <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
-        <ul class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
-          <ul>
-            <a href="http://localhost/exc_sewa_ruang/" class="flex items-center ml-auto ">
-              <i class="fa-solid fa-right-from-bracket text-white hover:"></i>
-              <span class="mx-2 text-white font-semibold">Keluar</span>
-            </a>
-          </ul>
+        <ul class="px-2 py-2 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
+          <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center ml-auto ">
+            <i class="fa-solid fa-right-from-bracket text-white hover:"></i>
+            <span class="text-white font-semibold">Keluar</span>
+          </a>
         </ul>
       </nav>
-
-
       <script>
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
@@ -131,4 +128,3 @@
 </body>
 
 </html>
-
