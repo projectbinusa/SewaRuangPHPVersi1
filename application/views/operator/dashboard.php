@@ -4011,6 +4011,71 @@
                         <div class="card-footer">
                             <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
                         </div>
+    <div class="scroll">
+        <div class="container two">
+  <div class="grid-cards">
+    <div class="card">
+      <a href="<?php echo base_url("operator/data_ruangan") ?>" class="card-body text-center">
+        <div class="section-title mb-0">
+          <h2 class="title mt-4"><?php echo $jumlah_ruang?></h2>
+        </div>
+        <p>Master Ruang
+        </p>
+      </a>
+      <div class="card-footer">
+        <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <a  href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
+        <div class="section-title mb-0">
+          <h2 class="title mt-4"><?php echo $jumlah_pelanggan?></h2>
+        </div>
+        <p>Master Pelanggan
+        </p>
+      </a>
+      <div class="card-footer">
+        <a href="<?php echo base_url("operator/data_master_pelanggane") ?>">Klik disini</a>
+      </div>
+    </div>
+    <div class="card">
+      <a  href="<?php echo base_url("operator/tambahan") ?>" class="card-body text-center">
+        <div class="section-title mb-0">
+          <h2 class="title mt-4"><?php echo $jumlah_tambahan?></h2>
+        </div>
+        <p>Item Tambahan
+        </p>
+      </a>
+      <div class="card-footer">
+        <a href="<?php echo base_url("operator/tambahan") ?>">Klik disini</a>
+      </div>
+    </div>
+    <div class="card">
+      <a  href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
+        <div class="section-title mb-0">
+          <h2 class="title mt-4"><?php echo $jumlah_sewa?></h2>
+        </div>
+        <p>Report Sewa
+        </p>
+      </a>
+      <div class="card-footer">
+        <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
+      </div>
+    </div>
+   
+    </div>
+    </section>
+
+
+      <!-- about area start -->
+      <section  id="about" class="inner-section">
+    <div class="about-area ">
+        <div class="container">
+            <div class="about-area-inner">
+                <div class="md:flex gap-5">
+                    <div class="col-lg-6 order-lg-12 align-self-center">
+                        <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                     </div>
                     <div class="card">
                         <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
@@ -4119,6 +4184,20 @@
                                             L 002
                                         </td>
                                     </tr>
+                                <?php $no=0; foreach($ruang as $row): $no++?>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td data-cell="No  " scope="row"
+                                            class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                          <?php echo $no?>
+                                        </td>
+                                        <td data-cell="No Ruang " class="text-center px-6 py-4">
+                                        <?php echo $row->no_ruang?>
+                                        </td>
+                                        <td data-cell="No Lantai " class="text-center px-6 py-4">
+                                        <?php echo $row->no_lantai?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach?>
                                 </tbody>
                             </table>
                         </div>
@@ -4275,6 +4354,61 @@
                                                 } ?>
                                             </td>
                                         </tr>
+                                <?php $no = 0;
+                                foreach ($report_sewa as $row):
+                                    $no++ ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                        <td data-cell="Nama Penyewa " scope="row"
+                                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                           <?php echo $no ?>
+                                                        </td>
+                                                        <td data-cell="Nama" class="text-center px-3 py-4">
+                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                        </td>
+                                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                        </td>
+                                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                        <?php echo $row->jumlah_orang ?>
+                                                        </td>
+                                                        <td data-cell="Kode Booking" class="text-center px-3 py-4">
+                                                        <?php echo $row->kode_booking ?>
+                                                        </td>
+                                                        <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                        <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
+                                                        </td>
+                                                        <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                        <?php
+                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                        echo $durasi->days . ' Hari';
+                                                        ?></td>
+                                                        <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                                        <?php echo $row->total_harga ?>
+
+                                        
+                                                         </td>
+                                                        <td data-cell="Status" class="text-center px-3 py-4">
+                                                        <!-- <?php echo $row->status ?> -->
+
+                                                        <?php if ($row->status == "di tolak") {
+                                                            echo NULL;
+                                                        } else {
+                                                            echo $row->status;
+                                                        } ?>
+                                                         </td>
+
+                                       
+                                                    </tr>
                                     <?php endforeach ?>
                                 </tbody>
                             </table>

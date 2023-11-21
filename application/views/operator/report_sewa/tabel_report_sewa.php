@@ -1091,7 +1091,7 @@
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 
                                     <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
@@ -1101,26 +1101,26 @@
                                         <th data-priority="2" scope="col" class="px-3 py-3">
                                             Ruangan
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
                                             Kapasitas
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Kode
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Snack
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                            Tambahan
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
                                             Total Booking
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
                                             Total
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
 
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -1150,7 +1150,15 @@
                                             </td>
                                             <!-- Snack -->
                                             <td data-cell="Tambahan" class="w-32 px-3 py-4">
-                                                <?php echo tampil_nama_tambahan_byid($row->status) ?>
+                                            <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
                                             </td>
                                             <!-- Total Booking -->
                                             <td class="w-32 px-3 py-4">
