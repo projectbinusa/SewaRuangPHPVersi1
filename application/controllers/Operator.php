@@ -1173,46 +1173,160 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
-    public function import_tambahan()
-    {
-        if (isset($_FILES["file"]["name"])) {
-            $path = $_FILES["file"]["tmp_name"];
-            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
-            foreach ($object->getWorksheetIterator() as $worksheet) {
-                // untuk mencari tahu seberapa banyak data yg ada
-                $highestRow = $worksheet->getHighestRow();
-                $highestColumn = $worksheet->getHighestColumn();
+    public function export_tambahan() {
 
-                // $row = 2; artine data dimulai dari baris ke2
-                for ($row = 2; $row <= $highestRow; $row++) {
-                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $harga = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $jenis = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+        
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
-                    // Validate that none of the imported values are empty
-                    if (empty($nama) || empty($harga) || empty($deskripsi) || empty($jenis)) {
-                        // Handle the case where any of the required fields is empty
-                        // You may want to log an error, skip the row, or take other appropriate actions
-                        continue;
-                    }
-
-                    // Optionally, you may want to perform additional validation or processing on the data
-
-                    $data = array(
-                        'nama' => $nama,
-                        'harga' => $harga,
-                        'deskripsi' => $deskripsi,
-                        'jenis' => $harga
-                    );
-
-                    // untuk menambahkan ke database
-                    $this->m_model->tambah_data('tambahan', $data);
-                }
-            }
-            redirect(base_url('operator/tambahan'));
-        } else {
-            echo 'Invalid file';
+        // Buat lembar kerja aktif
+       $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_data('tambahan')->result();
+        
+        // Buat objek Spreadsheet
+        $headers = ['NO','NAMA ITEM', 'HARGA', 'JENIS' , 'DESKRIPSI'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
         }
+        
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $nama = '';
+            $harga = ''; 
+            $jenis = ''; 
+            $deskripsi = ''; 
+            foreach ($rowData as $cellName => $cellData) {
+                if($cellName == 'nama'){
+                    $nama = $cellData;
+                }elseif ($cellName == 'harga') {
+                    $harga = $cellData;
+                }
+                elseif ($cellName == 'jenis') {
+                    $jenis = $cellData;
+                }
+                elseif ($cellName == 'deskripsi') {
+                    $deskripsi = $cellData;
+                }
+        
+                // Anda juga dapat menambahkan logika lain jika perlu
+                
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+        
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $harga);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jenis);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $deskripsi);
+            $no++;
+        
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+        
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+        
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
+        
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+        
     }
+    public function template_tambahan() {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+        
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+       $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        
+        // Buat objek Spreadsheet
+        $headers = ['NO','NAMA ITEM', 'HARGA', 'JENIS' , 'DESKRIPSI'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+        
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+        
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+        
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE_DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
+        
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+        
+    }
+    public function import_tambahan() {
+        require 'vendor/autoload.php';
+       if(isset($_FILES["file"]["name"])){
+        $path = $_FILES["file"]["tmp_name"];
+        $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+        foreach($object->getWorksheetIterator() as $worksheet)
+        {
+            $highestRow= $worksheet->getHighestRow();
+            $highestColumn = $worksheet->getHighestColumn();
+            for($row=2 ; $row<=$highestRow; $row++) {
+                $nama = $worksheet->getCellByColumnAndRow(2,$row)->getValue();
+                $harga = $worksheet->getCellByColumnAndRow(3,$row)->getValue();
+                $jenis = $worksheet->getCellByColumnAndRow(4,$row)->getValue(); 
+                $deskripsi = $worksheet->getCellByColumnAndRow(5,$row)->getValue(); 
+                $data = [
+                    'nama' => $nama,
+                    'harga' => $harga,
+                    'jenis' => $jenis,
+                    'deskripsi'=> $deskripsi
+                ];
+                $this->m_model->tambah_data('tambahan', $data);
+            }
+        }
+        redirect(base_url('operator/tambahan'));
+       } else {
+        echo 'Invalid File';
+       }
+}
 }
