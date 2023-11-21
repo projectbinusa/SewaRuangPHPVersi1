@@ -12,6 +12,8 @@
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -5465,16 +5467,16 @@
                 }
             }
 
-        @keyframes fadeInLeft {
-            0% {
-                transform: translate(-100%, 0);
-            }
+            @keyframes fadeInLeft {
+                0% {
+                    transform: translate(-100%, 0);
+                }
 
-            100% {
-                opacity: 1;
-                transform: none;
+                100% {
+                    opacity: 1;
+                    transform: none;
+                }
             }
-        }
     </style>
 </head>
 
