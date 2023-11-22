@@ -269,22 +269,35 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('sukses')) { ?>
+   <?php if ($this->session->flashdata('success')): ?>
         Swal.fire({
-            icon: 'sukses',
-            title: 'Registrasi Berhasil',
-            text: '<?php echo $this->session->flashdata('sukses'); ?>'
+            icon: 'success',
+            title: 'Login Berhasil',
+            text: '<?= $this->session->flashdata('success'); ?>',
+            timer: 2500,
+            showConfirmButton: false,
+            timerProgressBar: true
+        }).then(() => {
+            // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+            window.location.href = ''; // Ganti 'halaman_dashboard.php' dengan halaman yang diinginkan setelah login berhasil
         });
-    <?php } ?>
-
-    <?php if ($this->session->flashdata('error_email')) { ?>
+        </script>
+    <?php endif; ?>
+<script>
+    <?php if ($this->session->flashdata('error_email')): ?>
         Swal.fire({
             icon: 'error',
             title: 'Registrasi Gagal',
-            text: '<?php echo $this->session->flashdata('error_email'); ?>'
+            text: '<?= $this->session->flashdata('error_email'); ?>',
+            timer: 2500,
+            showConfirmButton: false,
+            timerProgressBar: true
         });
-    <?php } ?>
-</script>
+    </script>
+    <?php endif; ?>
+
+
+
 <script type="text/javascript">
     function togglePassword() {
     var passwordField = document.getElementById('password');
