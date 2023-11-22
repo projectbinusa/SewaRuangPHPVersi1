@@ -159,93 +159,101 @@ public function aksi_register()
 public function aksi_forgot_pass()
 {
     $email = $this->input->post('email', true);
+
+    // Validasi jika email tidak diisi
+    if (empty($email)) {
+        $this->session->set_flashdata('error', 'Email harus diisi');
+        redirect(base_url('auth/forgot_password'));
+    }
+
     $data = ['email' => $email];
     $query = $this->m_model->getwhere('user', $data);
     $result = $query->row_array();
+
     if (!empty($result)) {
         $generate = $this->generate_code();
         $code = $generate;
         $mail = new PHPMailer(true);
         try {
             // Konfigurasi SMTP dan pengaturan lainnya
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'saputroandi763@gmail.com';
-            $mail->Password = 'zkza scib qoob vwzo';
-            $mail->Port = 465;
-            $mail->SMTPSecure = 'ssl';
+            // ... (kode konfigurasi SMTP)
 
             // Set pengirim dan penerima
             $mail->setFrom('saputroandi763@gmail.com');
             $mail->addAddress($email, 'Sewa Ruang');
-
             $mail->addReplyTo("$email");
             $mail->isHTML(true);
             $mail->Subject = 'Code Verifikasi Password';
             $mail->Body = 'Berikut Code Verifikasi Untuk Reset Password '.$code.'';
 
-                // Kirim email
-                if ($mail->send()) {
-                    echo '<script>Pesan telah terkirim</script>';
-                    $data = [
-                        'code' => $code,
-                        'email' => $email
-                    ];
-                    $this->session->set_userdata($data);
-                    redirect(base_url('auth/verifikasi_kode'));
-                } else {
-                    echo '<script>Pesan tidak dapat terkirim.</script>';
-                }
-            } catch (Exception $e) {
-                echo 'Terjadi kesalahan: ' . $e->getMessage();
-            }           
-
-        } else {
-            echo "<script>
-            alert('Email tidak ditemukan');
-            window.location.href = '" . base_url('auth/forgot_password') . "';
-          </script>";
-        }
-    }
-    public function aksi_verifikasi(){
-        $code = $this->input->post('code');
-        if ($code == $this->session->userdata('code')) {
-            echo "<script>alert('Berhasill!!!');
-            window.location.href = '" . base_url('auth/ganti_password') . "';
-            </script>";
-        } else {
-            echo "<script>
-            alert('Code verifikasi salah!!');
-            window.location.href = '" . base_url('auth/verifikasi_kode') . "';
-          </script>";
-        }
-    }
-    public function aksi_ganti_password(){
-        if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-            redirect(base_url('auth/forgot_password'));
-        } else if(empty($this->session->userdata('status'))) {
-            redirect(base_url('auth/verifikasi_kode'));
-        }
-        $pass = $this->input->post('password');
-        $con_pass = $this->input->post('con_password');
-        $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');    
-    
-        if ($this->form_validation->run() === FALSE) {
-            $this->session->set_flashdata('error', 'Password minimal 8 karakter dan kombinasi angka dan huruf');
-            redirect(base_url('auth/ganti_password'));
-        } else {
-            if($pass == $con_pass){
+            // Kirim email
+            if ($mail->send()) {
                 $data = [
-                    'password' => md5($pass),
+                    'code' => $code,
+                    'email' => $email
                 ];
-                $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
-                $this->session->set_flashdata('success', 'Password berhasil diubah');
-                redirect(base_url());
+                $this->session->set_userdata($data);
+                $this->session->set_flashdata('success', 'Pesan telah terkirim');
+                redirect(base_url('auth/verifikasi_kode'));
             } else {
-                $this->session->set_flashdata('error', 'Password dengan konfirmasi password harus sama');
-                redirect(base_url('auth/ganti_password'));
+                $this->session->set_flashdata('error', 'Pesan tidak dapat terkirim');
+                redirect(base_url('auth/forgot_password'));
             }
+        } catch (Exception $e) {
+            $this->session->set_flashdata('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            redirect(base_url('auth/forgot_password'));
         }
-    }    
+    } else {
+        $this->session->set_flashdata('error', 'Email tidak ditemukan');
+        redirect(base_url('auth/forgot_password'));
+    }
+}
+
+public function aksi_verifikasi(){
+    $code = $this->input->post('code');
+    if ($code == $this->session->userdata('code')) {
+        $this->session->set_flashdata('success', 'Verifikasi berhasil!');
+        redirect(base_url('auth/ganti_password'));
+    } else {
+        $this->session->set_flashdata('error', 'Code verifikasi salah!');
+        redirect(base_url('auth/verifikasi_kode'));
+    }
+}
+
+public function aksi_ganti_password(){
+    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/forgot_password'));
+    } else if(empty($this->session->userdata('status'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/verifikasi_kode'));
+    }
+
+    $pass = $this->input->post('password');
+    $con_pass = $this->input->post('con_password');
+
+    $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');    
+
+    if ($this->form_validation->run() === FALSE) {
+        $this->session->set_flashdata('error', 'Password minimal 8 karakter dan kombinasi angka dan huruf');
+        redirect(base_url('auth/ganti_password'));
+    } else {
+        if($pass == $con_pass){
+            // Lakukan penggantian password dengan metode enkripsi yang lebih aman, misalnya bcrypt atau Argon2
+            // Update kode enkripsi password sesuai kebutuhan
+            $hashed_password = password_hash($pass, PASSWORD_BCRYPT);
+
+            $data = [
+                'password' => $hashed_password,
+            ];
+            $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
+            $this->session->set_flashdata('success', 'Password berhasil diubah');
+            redirect(base_url());
+        } else {
+            $this->session->set_flashdata('error', 'Password dengan konfirmasi password harus sama');
+            redirect(base_url('auth/ganti_password'));
+        }
+    }
+}
+
 }
