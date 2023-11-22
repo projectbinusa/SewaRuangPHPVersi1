@@ -238,4 +238,17 @@ class M_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function get_peminjaman_pdf_by_id($id)
+    {
+        $this->db->select('p.*, GROUP_CONCAT(t.id) as id_tambahan', false);
+        $this->db->from('peminjaman p');
+        $this->db->join('peminjaman_tambahan pt', 'pt.id_peminjaman = p.id', 'left');
+        $this->db->join('tambahan t', 'pt.id_tambahan = t.id', 'left');
+        $this->db->where('p.id', $id);
+        $this->db->group_by('p.id');
+    
+        return $this->db->get();
+    }
+
 }

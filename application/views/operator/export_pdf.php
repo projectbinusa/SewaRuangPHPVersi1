@@ -7,12 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eksport PDF</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
-        @page {
-            size: A5;
-        }
-
         @page {
             size: A5;
         }
@@ -26,7 +21,6 @@
         body {
             font-family: Arial, sans-serif;
             font-size: 12px;
-            font-size: 12px;
             line-height: 1.2;
         }
 
@@ -34,7 +28,6 @@
             text-align: center;
             background: #0C356A;
             color: whitesmoke;
-            padding: 40px;
             padding: 40px;
             margin-top: 10px;
         }
@@ -54,7 +47,6 @@
 
         .name-customer {
             color: #1F4172;
-            font-size: 85%;
             font-size: 85%;
             margin-left: 50%;
         }
@@ -76,13 +68,7 @@
         .item-table {
             width: 100%;
             padding: 20px;
-            padding: 20px;
             border-collapse: collapse;
-        }
-
-        .item-table td,
-        .item-table th {
-            padding: 15px;
         }
 
         .item-table td,
@@ -106,18 +92,12 @@
             border-bottom: 1px solid #000000;
             margin-left: 5px;
             margin-right: 30px;
-            margin-right: 30px;
         }
 
         .payment-info {
-            /* font-size: 12px; */
-            /* font-size: 12px; */
             font-weight: bold;
             color: #0C356A;
             border-left: 20px solid #0C356A;
-            margin-right: 50%;
-            height: 22%;
-            margin-top: 5%;
             margin-right: 50%;
             height: 22%;
             margin-top: 5%;
@@ -132,16 +112,11 @@
             margin-top: 30px;
         }
 
-        .payment-info .baru {
-            margin-top: 30px;
-        }
-
         .container {
             display: flex;
             float: right;
             color: #1F4172;
             font-weight: bold;
-            font-size: 13px;
             font-size: 13px;
         }
 
@@ -150,107 +125,103 @@
         }
     </style>
 </head>
-
 <body>
-    <div class="header">
-        <h2>RuangSewa.com</h2>
-    </div>
-    <div class="invoice-yu">
-        <h1 class="invoice">
-            CUSTOMER
-            <span class="name-customer">INVOICE</span>
-        </h1>
-        <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p>
-        <!-- <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p> -->
-    </div>
-    <div class="invoice-details">
-        <table>
-            <tr>
-                <td>Name Customer: <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($peminjaman->id_pelanggan) ?></span></td>
-            </tr>
-            <tr>
-                <td>Nomor Telephone :<span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($peminjaman->id_pelanggan) ?></span></td>
-            </tr>
-            <tr>
-                <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $peminjaman->kode_booking ?></span></td>
-            </tr>
-        </table>
-    </div>
-    <br><br>
-    <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Jumlah Item</th>
-                <!-- <th></th> -->
-                <!-- <th></th> -->
-                <th>Harga</th>
-                <th>Total Harga</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $tanggalBooking = new DateTime($peminjaman->tanggal_booking);
-            $tanggalBerakhir = new DateTime($peminjaman->tanggal_berakhir);
-            $durasi = $tanggalBooking->diff($tanggalBerakhir);
-            echo $durasi->days;
-
-            $id_ruangan = $peminjaman->id_ruangan;
-            $id_tambahan = $peminjaman->id_tambahan;
-            // Fetch data from the database
-            $nama_ruangan = tampil_ruangan_byid($id_ruangan);
-            $nama_tambahan = tampil_nama_tambahan_byid($id_tambahan);
-            $harga_ruangan = tampil_harga_ruangan_byid($id_ruangan);
-            $harga_tambahan = tampil_harga_tambahan_byid($id_tambahan);
-            $jumlah_tambahan = tampil_nama_tambahan_byid($id_tambahan);
-            $total_tambahan = tampil_jumlah_tambahan_byid($id_tambahan);
-            $jumlah_ruang = tampil_no_ruangan_byid($id_ruangan);
-            ?>
-            <?php if (!empty($nama_ruangan)) : ?>
-                <tr>
-                    <td class="merah"><?php echo format_ruangan($nama_ruangan) ?></td>
-                    <td class="merah"><?php echo $durasi->days; ?></td>
-                    <td class="merah"><?php echo convRupiah($harga_ruangan); ?></td>
-                    <td class="merah"><?php echo convRupiah($harga_ruangan * $durasi->days); ?></td>
-                </tr>
-            <?php endif; ?>
-            <?php if (!empty($nama_tambahan)) : ?>
-                <tr>
-                    <td class="merah">
-                        <?php
-                        if (is_array($nama_tambahan)) {
-                            if (count($nama_tambahan) > 1) {
-                                echo implode(' - ', $nama_tambahan);
-                            } else {
-                                echo reset($nama_tambahan);
-                            }
-                        } else {
-                            echo $nama_tambahan;
-                        }
-                        ?>
-                    </td>
-                    <td class="merah"><?php echo $total_tambahan ?></td>
-                    <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
-                    <td class="merah"><?php echo convRupiah($harga_tambahan); ?></td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    <br>
-    <div class="container">
-        <div class="total" style="margin-bottom: -50%;">
-            <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah(intval($harga_ruangan * $durasi->days) + intval($harga_tambahan)); ?>"></span>
+<?php if ($peminjaman) : ?>
+        <?php foreach ($peminjaman as $row) : ?>
+        <div class="header">
+            <h2>RuangSewa.com</h2>
         </div>
-    </div>
-    </div>
-    <br><br><br>
-    <div class="payment-info">
-        <h4>PAYMENT INFO</h4>
-        <?php date_default_timezone_set('Asia/Jakarta'); ?>
-        <p class="baru">Tanggal :<span><?php echo date('F j,Y'); ?></span></p>
-        <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
-        <p>pembayaran : <span><?php echo tampil_pyment_penyewa_byid($peminjaman->id_pelanggan); ?></span></p>
-    </div>
+        <div class="invoice-yu">
+            <h1 class="invoice">
+                CUSTOMER
+                <span class="name-customer">INVOICE</span>
+            </h1>
+            <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p>
+        </div>
+        <div class="invoice-details">
+            <table>
+                <tr>
+                    <td>Name Customer: <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></span></td>
+                </tr>
+                <tr>
+                    <td>Nomor Telephone :<span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($row->id_pelanggan) ?></span></td>
+                </tr>
+                <tr>
+                    <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Jumlah Item</th>
+                    <th>Harga</th>
+                    <th>Total Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($row->id_ruangan)) : ?>
+                    <tr>
+                        <td class="merah"><?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?></td>
+                        <td class="merah"> <?php
+                            $tanggalBooking = new DateTime($row->tanggal_booking);
+                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                            $hari = $durasi->days;
+                            $harga = tampil_harga_ruangan_byid($row->id_ruangan);
+                            echo $durasi->days . ' Hari';
+                        ?></td>
+                        <td class="merah"><?php echo convRupiah(tampil_harga_ruangan_byid($row->id_ruangan)); ?></td>
+                        <td class="merah"><?php echo convRupiah($harga * $hari); ?></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if (!empty($row->id_tambahan)) : ?>
+                        <?php foreach (explode(',', $row->id_tambahan) as $id_tambahan) : ?>
+                            <tr>
+                                <td class="merah">
+                                    <?php echo tampil_nama_tambahan_byid($id_tambahan) ?>
+                                </td>
+                                <td class="merah"><?php
+                                    if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
+                                        echo '1';
+                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
+                                        echo $row->jumlah_orang;
+                                    }
+                                ?></td>
+                                <td class="merah"><?php echo convRupiah(tampil_harga_tambahan_byid($id_tambahan)); ?></td>
+                                <td class="merah"><?php
+                                    if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
+                                        echo convRupiah(tampil_harga_tambahan_byid($id_tambahan));
+                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
+                                        echo convRupiah(tampil_harga_tambahan_byid($id_tambahan) * $row->jumlah_orang);
+                                    }
+                                ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+            </tbody>
+        </table>
+        <br>
+        <div class="container">
+            <div class="total" style="margin-bottom: -50%;">
+                <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah($row->total_harga) ?>"></span>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="payment-info">
+            <h4>PAYMENT INFO</h4>
+            <?php date_default_timezone_set('Asia/Jakarta'); ?>
+            <p class="baru">Tanggal :<span><?php echo date('F j,Y'); ?></span></p>
+            <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
+            <p>pembayaran : <span><?php echo tampil_pyment_penyewa_byid($row->id_pelanggan); ?></span></p>
+        </div>
+    <?php endforeach; ?>
+    <?php else: ?>
+        <p>Data peminjaman tidak ditemukan.</p>
+    <?php endif; ?>
 </body>
+
 
 </html>

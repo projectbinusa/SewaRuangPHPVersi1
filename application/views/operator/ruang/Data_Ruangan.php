@@ -152,6 +152,16 @@
   </div>
   </div>
 
+  <!-- Scroll Up Button -->
+  <button id="scrollUpBtn" class="fixed bottom-5 right-5 p-2 bg-blue-500 text-white rounded-full cursor-pointer">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Scroll Down Button -->
+  <button id="scrollDownBtn" class="fixed bottom-5 right-16 p-2 bg-blue-500 text-white rounded-full cursor-pointer">
+    <i class="fas fa-chevron-down"></i>
+  </button>
+
   <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
     <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <div class="fixed inset-0 transition-opacity">
@@ -175,17 +185,46 @@
       </div>
     </div>
   </div>
-  <!-- script modal -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollUpBtn = document.getElementById("scrollUpBtn");
+      const scrollDownBtn = document.getElementById("scrollDownBtn");
+
+      window.addEventListener("scroll", function() {
+        // If the scroll position is at the top, hide scrollUpBtn, otherwise, show it
+        scrollUpBtn.style.display = window.scrollY === 0 ? "none" : "block";
+
+        // If the user has scrolled to the bottom of the page, hide scrollDownBtn, otherwise, show it
+        scrollDownBtn.style.display =
+          window.innerHeight + window.scrollY >= document.body.scrollHeight ? "none" : "block";
+      });
+
+      scrollUpBtn.addEventListener("click", function() {
+        scrollSmoothly(-5500);
+      });
+
+      scrollDownBtn.addEventListener("click", function() {
+        scrollSmoothly(5500);
+      });
+
+      function scrollSmoothly(offset) {
+        window.scrollBy({
+          top: offset,
+          behavior: "smooth",
+        });
+      }
+    });
+  </script>
   <script>
     function toggleModal() {
       document.getElementById('modal').classList.toggle('hidden')
     }
   </script>
   <script>
-  function navigateToDetail(detailUrl) {
-    window.location.href = detailUrl;
-  }
-</script>
+    function navigateToDetail(detailUrl) {
+      window.location.href = detailUrl;
+    }
+  </script>
 </body>
 
 </html>
