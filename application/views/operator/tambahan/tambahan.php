@@ -883,7 +883,7 @@
                                 </span>
                                 Tambah
                             </a>
-                            <a href="expor_tambahan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
+                            <a href="expor_tambahan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50 mr-2" onclick="showExportConfirmation()">
               <i class="fas fa-file-export"></i> Export
             </a>
                    <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
