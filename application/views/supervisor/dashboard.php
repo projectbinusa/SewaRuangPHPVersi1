@@ -5224,21 +5224,7 @@
         @media (max-width: 600px) {
 
             table {
-                width: 4.5rem;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
+                width: 4rem;
             }
 
 
