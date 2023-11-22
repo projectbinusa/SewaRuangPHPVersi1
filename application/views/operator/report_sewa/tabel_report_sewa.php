@@ -41,8 +41,9 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 16px; */
             background-color: #f1f1f1;
+            min-height: screen;
+            position: relative;
         }
 
         @media (min-width: 1200px) {
@@ -755,28 +756,7 @@
         }
 
        
-        @media only screen and (max-width: 575px) {
-            .navbar-area .nav-container {
-                margin: 0px 0px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 10px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
-                padding: 15px 20px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
-                padding: 15px 20px;
-            }
-
-            .search-popup .search-form {
-                min-width: 350px;
-            }
-        }
-
+       
        
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
@@ -797,15 +777,15 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
+        /*Row Hover*/
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
+        /*Pagination Buttons*/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 900;
+            font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
             height: 37px;
@@ -844,50 +824,24 @@
         }
 
         /* code responsive table */
-        @media only screen and (max-width: 800px) {
-
-       .container {
-        padding: 1rem 1rem 0px 1rem;
+        @media (max-width: 600px) {
+            table {
+                width: 4.5rem;
+            }
         }
 
-
-        .heading {
-        padding: 1.3em 9px 1.8rem 9px;
-        } 
-
-        .survey-form {
-         padding: 1.3em 15px 1.8rem 15px;
-
+        .inner-section {
+            padding: 4%;
         }
 
-       .main-heading {
-       font-size: 22px;
-       margin-bottom: 0;
-       text-align: center;
-       }
+        table {
+                width: 12rem;
+            }
 
-label {
-    font-size: 16px;
-}
-}
-
-
-#checkboxCombo {
-position: relative;
-display: inline-block;
-}
-
-#checkboxCombo select {
-width: 200px;
-padding: 5px;
-}
-
-#checkboxCombo input[type="checkbox"] {
-position: absolute;
-top: 0;
-right: 0;
-}
-       
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
+        }
     </style>
 </head>
 
