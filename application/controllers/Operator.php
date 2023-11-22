@@ -189,34 +189,26 @@ class operator extends CI_Controller
         echo json_encode($response);
     }
 
+
     public function pdf()
     {
         $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
         $this->load->view('operator/pdf', $data);
     }
+
     public function export_pdf($id)
     {
-        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
-        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status($id);
-        $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
-        $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $peminjaman = $this->m_model->get_peminjaman_by_id($peminjaman_id);
-        $tambahan = $this->m_model->get_tambahan_by_id($tambahan_id);
-        $data['peminjaman'] = $peminjaman;
-        $data['tambahan'] = $tambahan;
-
+        $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
+        
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
             $this->pdf->load_view('operator/export_pdf', $data);
             $this->pdf->render();
-
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            $this->load->view('operator/download_pdf', $data);
+            $this->load->view('operator/export_pdf', $data);
         }
     }
-
     public function edit_ruangan($id)
     {
         // Ambil data ruangan dari database berdasarkan $id
@@ -610,6 +602,7 @@ class operator extends CI_Controller
             $this->check_expired_bookings();
             // Operasi berhasil
             // Redirect atau tampilkan pesan sukses
+            redirect(base_url('operator/peminjaman_tempat'));
         }
     }
 

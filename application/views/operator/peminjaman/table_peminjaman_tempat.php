@@ -925,7 +925,7 @@ right: 0;
                 <div class="header-item">
                     <div class="relative">
                         
-                        <a href="tambah_item_tambahan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                                 <span class="pe-2">
                                     <i class="fas fa-plus"></i>
                                 </span>
@@ -1028,16 +1028,12 @@ right: 0;
                                                     </span>
                                                 </a>
                                                 <?php if ($row->status === 'booking'): ?>
-                                                    <button
-                                                        onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'"
-                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                        <span class="">
-                                                            <i class="fas fa-print"></i>
-                                                        </span>
-                                                    </button>
-
-                                                    </button>
-                                                <?php endif; ?>
+    <button onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+        <span class="">
+            <i class="fas fa-print"></i>
+        </span>
+    </button>
+<?php endif; ?>
                                                 <button onclick="hapus(<?php echo $row->id ?>)"
                                                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
