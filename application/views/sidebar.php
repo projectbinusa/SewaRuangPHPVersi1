@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-white  font-base ">
+<body class="bg-white font-base ">
 
 <div id="app" class="flex flex-col md:flex-row w-full overflow-y-auto">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }" :class="{ 'hidden': !isOpen }">
@@ -127,7 +127,7 @@
         menuBtn.addEventListener('click', () => {
           sideNav.classList.toggle('hidden'); // Agrega o quita la clase 'hidden' para mostrar u ocultar la navegación lateral
         });
-</script>
+      </script>
 
 </body>
 

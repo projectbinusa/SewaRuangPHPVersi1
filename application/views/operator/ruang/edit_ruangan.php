@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Data Ruangan</title>
+    <title>Sewa Ruang</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -15,7 +15,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 </head>
-
+<style>
+    .green-bar {
+            background-color: #4F709C;
+            height: 1rem;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+</style>
 <body>
     <?php $this->load->view('sidebar'); ?>
     <div class="p-8 w-full md:w-cover flex justify-center items-center m-auto">
@@ -24,7 +35,7 @@
         <main>
             <div class="container mx-auto p-auto ml-auto w-10/12">
                 <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
-                    <div class="h-3 w-full absolute top-0 left-0 rounded-t-lg" style="background: #0C356A;"></div>
+                <div class="green-bar"></div>
                     <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
                 </header>
 
