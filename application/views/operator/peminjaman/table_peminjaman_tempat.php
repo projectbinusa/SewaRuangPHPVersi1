@@ -925,7 +925,7 @@ right: 0;
                 <div class="header-item">
                     <div class="relative">
                         
-                        <a href="tambah_item_tambahan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                                 <span class="pe-2">
                                     <i class="fas fa-plus"></i>
                                 </span>
