@@ -1638,13 +1638,19 @@
         @media (max-width: 600px) {
 
             table {
-                width: 5rem;
+                width: 4.5rem;
                 overflow: scroll;
             }
 
+            .testt {
+                display: block;
+                padding: 0;
+            }
+            
             .btn-style {
-                /* font-size: small; */
-                width: 20%;
+                font-size: small;
+                width: 5.5rem;
+                height: 2rem;
             }
         }
 
@@ -1656,27 +1662,34 @@
             padding: 4%;
         }
 
+        
+        .testt {
+                display: flex;
+                gap: 5px;
+                float: right
+            }
+
         .btn-style {
-            width: 11%;
+            width: 6.5rem;
         }
     </style>
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body class="" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <?php $this->load->view('sidebars'); ?>
-    <section id="widget" class=" table-section pd-top-47">
+    <section id="widget" class="table-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Data Operator</h2>
-
                     </div>
                 </div>
             </div>
 
             <div class="container-table row justify-content-center">
+
 
 
                 <button onclick="toggleModal()" class="btn-style bg-yellow-500 hover:bg-yellow-700 md:ml-auto text-white font-bold py-2 px-2 rounded">
@@ -1700,23 +1713,27 @@
                 </a>
 
 
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
                             <table id="examples" class="text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
                                     <tr>
-                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                             Username
                                         </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Email
                                         </th>
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -1726,18 +1743,22 @@
                                     foreach ($operator as $row) :
                                         $no++ ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="No " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+
+                                            <td data-cell="No " scope="row"
+                                                class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
-                                            <td data-cell="Nama Penyewa " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell="Nama Penyewa " scope="row"
+                                                class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+
                                                 <?php echo $row->username ?>
                                             </td>
-                                            <td data-cell="Email " class="text-center px-6 py-4">
+                                            <td data-cell="Email " class="text-center px-3 py-3">
                                                 <?php echo $row->email ?>
                                             </td>
 
 
-                                            <td data-cell="Aksi" class="px-3 py-4 flex justify-content-center">
+                                            <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
 
                                                 <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded" onclick="showEditConfirmation('<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>')">
                                                     <span class="">
@@ -1921,6 +1942,7 @@
             $(document).ready(function() {
 
                 var table = $('#examples').DataTable({})
+
             });
 
             function hapus(id) {

@@ -166,84 +166,8 @@
             margin-right: 7px;
         }
 
-        /*------------------------------------------------
-    ## Back Top
-------------------------------------------------*/
-        #back-to-top {
-            display: inline-block;
-            background-color: var(--main-color);
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            border-radius: 4px;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
-            opacity: 0;
-            animation: backto-top-bounce 4s infinite ease-in-out;
-            visibility: hidden;
-            z-index: 1000;
-        }
+   
 
-        #back-to-top::after {
-            content: "";
-            position: absolute;
-            background: #fff;
-            top: 50%;
-            margin-top: -2.5px;
-            height: 3px;
-            width: 14px;
-            line-height: 50px;
-            transform: rotate(-43deg);
-            left: 8.5px;
-        }
-
-        #back-to-top::before {
-            content: "";
-            position: absolute;
-            background: #fff;
-            top: 50%;
-            margin-top: -2.5px;
-            height: 3px;
-            width: 14px;
-            line-height: 50px;
-            transform: rotate(43deg);
-            right: 8.5px;
-        }
-
-        #back-to-top:hover {
-            cursor: pointer;
-            background-color: #333;
-        }
-
-        #back-to-top:active {
-            background-color: #555;
-        }
-
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* .back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 44px;
-  height: 44px;
-  color: #fff;
-  background-color: var(--main-color);
-  text-align: center;
-  line-height: 44px;
-  z-index: 99;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  display: none;
-  animation: backto-top-bounce 4s infinite ease-in-out;
-  border-radius: 4px;
-} */
         @keyframes backto-top-bounce {
             0% {
                 transform: translateY(-5px);
@@ -503,9 +427,9 @@
             transition: transform 12s;
         }
 
-        .widget-section  {
+        /* .widget-section  {
             padding: 0px 40px 15px 40px;
-        }
+        } */
         .widget-section .inner-item {
             margin-bottom: 20px;
         }
@@ -605,13 +529,6 @@
             opacity: 1;
         }
 
-        /* 
-        .footer-area {
-            background: rgba(0, 33, 71, 0.9);
-        } */
-
-
-        /***section-title***/
         .section-title {
             margin-bottom: 60px;
         }
@@ -737,7 +654,7 @@
 
             100% {
                 opacity: 1;
-            }
+}
         }
 
         @-webkit-keyframes blink {
@@ -767,7 +684,7 @@
                 opacity: 1;
             }
         }
-
+  
         @media all and (max-width: 1199px) {
             .banner-area .bg-image {
                 opacity: 0.2;
@@ -878,41 +795,6 @@
                 width: 160px;
             }
         }
-
-        @media all and (max-width: 320px) {
-            .main-logo img {
-                width: 110px;
-            }
-
-            .nav-right-part ul li {
-                font-size: 15px;
-            }
-
-            .nav-right-part ul li a {
-                padding: 0 7px;
-            }
-        }
-
-        .featured-item {
-            box-shadow: 0 0 40px rgb(82 85 90 / 10%);
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 40px 20px 35px 20px;
-            background: #fff;
-            border-radius: 5px;
-            color: #1d1d1d;
-            font-size: 22px;
-        }
-
-        .featured-item img {
-            display: block;
-            margin: 0 auto 20px;
-            box-shadow: 0 0 40px rgb(82 85 90 / 20%);
-            border-radius: 5px;
-        }
-
-
-
 
         h1 {
             font-size: 62px;
@@ -1480,57 +1362,37 @@
             background-color: #4F709C !important;
         }
 
-        /* code responsive table */
-        @media (max-width: 600px) {
-
-
-            table {
-                width: 100%;
+        table {
+                width: 22rem;
             }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
+
+        .inner-section {
+            padding: 4%;
+        }
+        .testt {
+                display: flex;
+                gap: 5px;
+                float: right
+            }
+
+        /* code responsive table */
+        @media (max-width: 600px) {
+
+            table {
+                width: 4rem;
+            }
+            .testt {
+                display: block;
+                padding: 0;
+            }
+        }
+
+      
     </style>
 
 </head>
@@ -1539,54 +1401,69 @@
 
     <?php $this->load->view('sidebars'); ?>
 
-    <section id="widget" class="widget-section pd-top-47">
+    <section id="widget" class="inner-section pd-top-47">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Approve</h2>
-
                     </div>
                 </div>
             </div>
 
             <div class="container-table row justify-content-center">
+            <div class="testt">
+                    <button onclick="tolak_semua()"
+                        class="btn-style bg-red-500 hover:bg-red-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
+                        <span class="pe-2">
+                        <i class="fas fa-trash-alt"></i>
+                        </span>
+                        Tolak Semua
+                    </button>
 
+                    <button   onclick="terima_semua()"
+                        class="btn-style  py-2 px-2 bg-green-500 hover:bg-green-700 font-bold text-white rounded">
+                        <span class="pe-2">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Terima Semua
+                    </button>
+                </div>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
-                            <table style="min-width: 22rem;" id="example_data"
+                            <table id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                    <th data-priority="3" scope="col" class="px-3 py-3">
+                                    <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
                                         </th>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
                                             Nama Penyewa
                                         </th>
 
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
                                             Ruangan
                                         </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
                                             Jumlah Orang
                                         </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Kode Booking
                                         </th>
                                         <th data-priority="6" scope="col" class="px-3 py-3">
                                             Booking Tanggal
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
                                             Sampai Tanggal
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Total Booking
                                         </th>  
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -1701,6 +1578,31 @@
                 }
             })
         }
+        function terima_semua() {
+            Swal.fire({
+                title: 'Apakah Mau Di Terima Semua?',
+                text: "data ini tidak bisa diubah lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, terima semua!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Berhasill!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_terima_semua') ?>";
+                    }, 1800);
+                }
+            })
+        }
         function tolak(id) {
             Swal.fire({
                 title: 'Apakah Mau Di Tolak?',
@@ -1722,6 +1624,31 @@
                     })
                     setTimeout(() => {
                         window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_tolak/') ?>" + id;
+                    }, 1800);
+                }
+            })
+        }
+        function tolak_semua() {
+            Swal.fire({
+                title: 'Apakah Mau Di Tolak Semua?',
+                text: "data ini tidak bisa diubah lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, tolak tolak semua!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Berhasill!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_tolak_semua/') ?>";
                     }, 1800);
                 }
             })

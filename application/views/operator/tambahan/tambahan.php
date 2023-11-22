@@ -47,8 +47,10 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 16px; */
             background-color: #f1f1f1;
+            min-height: screen;
+            position: relative;
+            overflow: hidden;
         }
 
         @media (min-width: 1200px) {
@@ -860,7 +862,7 @@
 
     <?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class="inner-section">
+    <section id="widget" class="inner-section max-h-screen overflow-x-auto">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -883,7 +885,7 @@
                                 </span>
                                 Tambah
                             </a>
-                            <a href="expor_tambahan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50 mr-2" onclick="showExportConfirmation()">
+                            <a href="expor_tambahan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
               <i class="fas fa-file-export"></i> Export
             </a>
                    <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
