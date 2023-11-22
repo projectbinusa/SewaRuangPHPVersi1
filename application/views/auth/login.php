@@ -278,7 +278,7 @@
             timerProgressBar: true // Menampilkan progress bar
         }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-                window.location.href = 'http://localhost/exc_sewa_ruang/operator'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
             }
         });
     <?php endif; ?>
@@ -294,7 +294,7 @@
             timerProgressBar: true // Menampilkan progress bar
         }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-                window.location.href = ''; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
             }
         });
     <?php endif; ?>
