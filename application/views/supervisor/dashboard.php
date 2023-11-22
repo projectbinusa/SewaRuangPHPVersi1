@@ -20,8 +20,7 @@
 
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">=
+
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -5225,7 +5224,7 @@
         @media (max-width: 600px) {
 
             table {
-                width: 12rem;
+                width: 4.5rem;
             }
 
             tbody {
@@ -5417,33 +5416,36 @@
             }
         }
 
-            @keyframes fadeInLeft {
-                0% {
-                    transform: translate(-100%, 0);
-                }
+        @keyframes fadeInLeft {
+            0% {
+                transform: translate(-100%, 0);
+            }
 
-                100% {
-                    opacity: 1;
-                    transform: none;
-                }
+            100% {
+                opacity: 1;
+                transform: none;
             }
         }
 
         .inner-section {
             padding: 4%;
         }
+
+        h2 .title {
+            font-size: 14px;
+        }
     </style>
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body class=" min-h-screen overflow-hidden" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     
 
     <!-- Navigation -->
     <?php $this->load->view('sidebars'); ?>
 
-
-<section class="pt-5">
+<div class="max-h-screen overflow-y-auto">
+<section class="">
     <div class="scroll">
       
         <div class="container two">
@@ -5464,7 +5466,6 @@
     <div class="card">
       <div class="card-body text-center">
         <div class="section-title mb-0">
-          <!-- <i class="fas fa-list"></i> -->
           <h2 class="title mt-4">532</h2>
         </div>
         <p>Approve List
@@ -5610,9 +5611,6 @@
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Kapasitas
                                         </th>
-                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Jam Penggunaan
-                                        </th>
                                         <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                             Kode Booking
                                         </th>
@@ -5676,7 +5674,7 @@
    
   
     <!-- footer area start -->
-    <div class="footer-2 bg-gray-800 pt-6 md:pt-12">
+    <div class="footer-2 bg-gray-800 inner-section md:pt-12">
   <!-- <div class="container px-4 mx-auto"> -->
 
     <!-- <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
@@ -5740,6 +5738,8 @@
 
     </div>
   </div>
+
+</div>
 
 </div>
     <!-- footer area end -->
