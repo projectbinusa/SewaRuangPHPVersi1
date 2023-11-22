@@ -110,8 +110,8 @@ class Supervisor extends CI_Controller
         $data['operator'] = $this->m_model->get_data_operator()->result();
         $this->load->view('supervisor/data_operator', $data);
     }
-
-
+    
+    
     public function edit_user_operator($id)
     {
         $data['operator'] = $this->m_model->get_by_id('user', 'id', $id)->result();

@@ -1676,7 +1676,7 @@
 
 </head>
 
-<body class="" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <?php $this->load->view('sidebars'); ?>
     <section id="widget" class="table-section pd-top-47">
         <div class="container">
