@@ -1374,12 +1374,21 @@
         .inner-section {
             padding: 4%;
         }
+        .testt {
+                display: flex;
+                gap: 5px;
+                float: right
+            }
 
         /* code responsive table */
         @media (max-width: 600px) {
 
             table {
                 width: 4rem;
+            }
+            .testt {
+                display: block;
+                padding: 0;
             }
         }
 
@@ -1403,7 +1412,23 @@
             </div>
 
             <div class="container-table row justify-content-center">
+            <div class="testt">
+                    <button onclick="tolak_semua()"
+                        class="btn-style bg-red-500 hover:bg-red-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
+                        <span class="pe-2">
+                        <i class="fas fa-trash-alt"></i>
+                        </span>
+                        Tolak Semua
+                    </button>
 
+                    <button   onclick="terima_semua()"
+                        class="btn-style  py-2 px-2 bg-green-500 hover:bg-green-700 font-bold text-white rounded">
+                        <span class="pe-2">
+                            <i class="fas fa-check"></i>
+                        </span>
+                        Terima Semua
+                    </button>
+                </div>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
@@ -1553,6 +1578,31 @@
                 }
             })
         }
+        function terima_semua() {
+            Swal.fire({
+                title: 'Apakah Mau Di Terima Semua?',
+                text: "data ini tidak bisa diubah lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, terima semua!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Berhasill!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_terima_semua') ?>";
+                    }, 1800);
+                }
+            })
+        }
         function tolak(id) {
             Swal.fire({
                 title: 'Apakah Mau Di Tolak?',
@@ -1574,6 +1624,31 @@
                     })
                     setTimeout(() => {
                         window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_tolak/') ?>" + id;
+                    }, 1800);
+                }
+            })
+        }
+        function tolak_semua() {
+            Swal.fire({
+                title: 'Apakah Mau Di Tolak Semua?',
+                text: "data ini tidak bisa diubah lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, tolak tolak semua!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Berhasill!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('supervisor/aksi_approve_di_tolak_semua/') ?>";
                     }, 1800);
                 }
             })

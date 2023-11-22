@@ -1710,8 +1710,7 @@
                     </a>
 
                     <a href="tambah_user_operator"
-                        class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded"
-                        onclick="toggleModal()">
+                        class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
                         <span class="pe-2">
                             <i class="fas fa-plus"></i>
                         </span>
