@@ -35,7 +35,7 @@
         
 
 
-        <style>
+    <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
         :root {
@@ -63,7 +63,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -241,7 +241,7 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -520,7 +520,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -725,7 +725,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -760,7 +760,7 @@
             }
         }
 
-       
+
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -783,7 +783,7 @@
             }
         }
 
-       
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -803,22 +803,22 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
+       
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 900;
+            font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
             height: 37px;
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -839,7 +839,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -850,49 +851,54 @@
         }
 
         /* code responsive table */
-        @media only screen and (max-width: 800px) {
+        @media (max-width: 800px) {
+            table {
+                width: 100%;
+            }
 
-       .container {
-        padding: 1rem 1rem 0px 1rem;
+            tbody {
+                text-align: left;
+            }
+
+            .option-select {
+                font-size: 12px;
+            }
+
+            .td {
+                padding-right: none;
+                display: flex;
+                justify-content: left;
+            }
+
+            .responsive-3 {
+                width: 90%;
+            }
+
+            th {
+                display: none;
+            }
+
+            td {
+                display: grid;
+                gap: 0.5rem;
+                grid-template-columns: 15ch auto;
+                padding: 0.75em 1rem;
+            }
+
+            td:first-child {
+                padding-top: 2rem;
+            }
+
+            td::before {
+                content: attr(data-cell) "  : ";
+                font-weight: bold;
+            }
         }
 
-
-        .heading {
-        padding: 1.3em 9px 1.8rem 9px;
-        } 
-
-        .survey-form {
-         padding: 1.3em 15px 1.8rem 15px;
-
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
         }
-
-       .main-heading {
-       font-size: 22px;
-       margin-bottom: 0;
-       text-align: center;
-       }
-
-label {
-    font-size: 16px;
-}
-}
-
-
-#checkboxCombo {
-position: relative;
-display: inline-block;
-}
-
-#checkboxCombo select {
-width: 200px;
-padding: 5px;
-}
-
-#checkboxCombo input[type="checkbox"] {
-position: absolute;
-top: 0;
-right: 0;
-}
     </style>
  
     <script>
@@ -934,7 +940,7 @@ right: 0;
                                 Tambah
                             </a>
 
-                            <a href="expor_pelanggan" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
+                            <a href="expor_pelanggan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
               <i class="fas fa-file-export"></i> Export
             </a>
                          

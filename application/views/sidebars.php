@@ -14,22 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
 </head>
-<style>
-  /* Default styles */
-  li:hover span,
-  li.active span {
-    color: black;
-    /* Warna teks ketika dihover atau ditekan */
-  }
-
-  li:hover i,
-  li.active i {
-    color: black;
-    /* Warna ikon ketika dihover atau ditekan */
-  }
-</style>
-
-<body class="bg-white font-base">
+<body class="bg-white min-h-screen font-base">
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 bg-blue-900 text-white" x-data="{ isOpen: true }">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
@@ -49,20 +34,20 @@
         <ul>
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
-              <i class="fas fa-home mr-2 text-white hover:text-black "></i>
-              <span class="mx-2 text-white hover:text-black font-semibold">Dashboard</span>
+              <i class="fas fa-home mr-2 text-white "></i>
+              <span class="mx-2 text-white font-semibold">Dashboard</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor/data_operator') ?>" class="flex items-center">
-              <i class="fa-solid fa-restroom text-white hover:text-black"></i>
-              <span class="mx-2 text-white hover:text-black font-semibold">Data Operator</span>
+              <i class="fa-solid fa-restroom text-white"></i>
+              <span class="mx-2 text-white font-semibold">Data Operator</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor/approve') ?>" class="flex items-center">
-              <i class="fas fa-users text-white hover:text-black"></i>
-              <span class="mx-2 text-white hover:text-black font-semibold">Approve</span>
+              <i class="fas fa-users text-white"></i>
+              <span class="mx-2 text-white font-semibold">Approve</span>
             </a>
           </li>
         </ul>
