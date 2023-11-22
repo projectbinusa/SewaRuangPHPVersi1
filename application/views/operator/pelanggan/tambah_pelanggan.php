@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html lang="en">
 
 
@@ -47,9 +47,9 @@
 
 
                                <div class="text-center mt-9">
-                                   <button type="submit" id="submit" class="py-2 px-8 text-white duration-300 hover:bg-blue-500" style="background-color: #0C356A;" required>
-                                       TAMBAH
-                                   </button>
+                               <button onclick="tambah_data()" type="submit" class="py-2 px-8 text-white duration-300 hover:bg-blue-500" style="background-color: #0C356A;">
+                                TAMBAH
+                               </button>
 
                                </div>
                        </form>
@@ -63,32 +63,34 @@
    </body>
    <!-- SweetAlert -->
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-   <script>
-       function tambah_data() {
-           Swal.fire({
-                   title: 'Ingin Menambah Data ?',
-                   text: "data akan bertambah",
-                   icon: 'question',
-                   showCancelButton: true,
-                   confirmButtonColor: '#3085d6',
-                   cancelButtonColor: '#d33',
-                   cancelButtonText: 'Batal',
-                   confirmButtonText: 'Tambah'
-               })
-               .then((result) => {
-                   if (result.isConfirmed) {
-                       Swal.fire({
-                           icon: 'success',
-                           title: 'Berhasil Ditambahkan',
-                           showConfirmButton: false,
-                           timer: 1500,
-                       }).then(function() {
-                           // Redirect ke URL setelah sukses
-                           window.location.href = "<?php echo base_url('operator/aksi_tambah_pelanggan/') ?>";
-                       });
-                   }
-               });
-       }
-   </script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.js"></script>
+    <script>
+        function tambah_data() {
+            Swal.fire({
+                title: 'Ingin Menambah Data?',
+                text: "Data akan bertambah",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Tambah'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses penambahan data atau operasi lainnya di sini
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Ditambahkan',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function () {
+                        // Redirect ke URL setelah pesan sukses ditampilkan
+                        window.location.href = "";
+                    });
+                }
+            });
+        }
+    </script>
 
    </html>
