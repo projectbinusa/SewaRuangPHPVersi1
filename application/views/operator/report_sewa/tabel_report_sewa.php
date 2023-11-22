@@ -868,9 +868,9 @@
 
                         <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <a href="export_report_sewa" class="ml-auto inline-block px-4 py-2 bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold rounded float-right z-50">
+                                <button onclick="exportReportSewa()" class="ml-auto inline-block px-4 py-2 bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold rounded float-right z-50">
                                     <i class="fas fa-file-export"></i> Export
-                                </a>
+                                </button>
 
                                 
                                     <tr>
@@ -1027,7 +1027,34 @@
             });
         }
     </script>
-
+<script>
+        function exportReportSewa() {
+            Swal.fire({
+                title: 'Ekspor Data Report Sewa?',
+                text: "Anda akan mengexport data report sewa",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Export'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    // Contoh:
+                    window.location.href = "<?php echo base_url('operator/export_report_sewa') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data sewa berhasil diexport',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true // Menampilkan progress bar
+                    });
+                }
+            });
+        }
+</script>
 </body>
 
 </html>

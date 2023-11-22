@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 tambah_data_pelanggan
    <!DOCTYPE html>
+=======
+<!DOCTYPE html>
+>>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
    <html lang="en">
 
 
@@ -80,8 +84,19 @@ tambah_data_pelanggan
                                    <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
 
 
+<<<<<<< HEAD
                                    <label for="payment_method" class="block">Payment Method</label>
                                    <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+=======
+                               <label for="payment_method" class="block">Payment Method</label>
+                               <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+
+
+                               <div class="text-center mt-9">
+                               <button onclick="tambah_data()" type="submit" class="py-2 px-8 text-white duration-300 hover:bg-blue-500" style="background-color: #0C356A;">
+                                TAMBAH
+                               </button>
+>>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
 
                                    <div class="text-center mt-10">
                                        <input type="submit" id="submit" class="submit" value="Submit">
@@ -98,32 +113,34 @@ tambah_data_pelanggan
    </body>
    <!-- SweetAlert -->
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-   <script>
-       function tambah_data() {
-           Swal.fire({
-                   title: 'Ingin Menambah Data ?',
-                   text: "data akan bertambah",
-                   icon: 'question',
-                   showCancelButton: true,
-                   confirmButtonColor: '#3085d6',
-                   cancelButtonColor: '#d33',
-                   cancelButtonText: 'Batal',
-                   confirmButtonText: 'Tambah'
-               })
-               .then((result) => {
-                   if (result.isConfirmed) {
-                       Swal.fire({
-                           icon: 'success',
-                           title: 'Berhasil Ditambahkan',
-                           showConfirmButton: false,
-                           timer: 1500,
-                       }).then(function() {
-                           // Redirect ke URL setelah sukses
-                           window.location.href = "<?php echo base_url('operator/aksi_tambah_pelanggan/') ?>";
-                       });
-                   }
-               });
-       }
-   </script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.js"></script>
+    <script>
+        function tambah_data() {
+            Swal.fire({
+                title: 'Ingin Menambah Data?',
+                text: "Data akan bertambah",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Tambah'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses penambahan data atau operasi lainnya di sini
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Ditambahkan',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function () {
+                        // Redirect ke URL setelah pesan sukses ditampilkan
+                        window.location.href = "";
+                    });
+                }
+            });
+        }
+    </script>
 
    </html>
