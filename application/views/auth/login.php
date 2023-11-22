@@ -265,18 +265,44 @@
         </div>
     </div>
 </body>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('error')) { ?>
+    <?php if ($this->session->flashdata('error')): ?>
         // Tampilkan SweetAlert jika terdapat error dari session
         Swal.fire({
             icon: 'error',
             title: 'Login Gagal',
-            text: '<?php echo $this->session->flashdata('error'); ?>'
+            text: '<?= $this->session->flashdata('error'); ?>',
+            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (3.5 detik)
+            showConfirmButton: false, // Menghilangkan tombol "OK"
+            timerProgressBar: true // Menampilkan progress bar
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = 'http://localhost/exc_sewa_ruang/operator'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+            }
         });
-    <?php } ?>
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('success')): ?>
+        // Tampilkan SweetAlert jika login berhasil
+        Swal.fire({
+            icon: 'success',
+            title: 'Registrasi Berhasil',
+            text: '<?= $this->session->flashdata('success'); ?>',
+            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (3.5 detik)
+            showConfirmButton: false, // Menghilangkan tombol "OK"
+            timerProgressBar: true // Menampilkan progress bar
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = ''; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+            }
+        });
+    <?php endif; ?>
 </script>
+
+
+
+
 <script type="text/javascript">
     function togglePassword() {
         var passwordField = document.getElementById('password');
