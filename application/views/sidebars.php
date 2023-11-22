@@ -29,9 +29,9 @@
   }
 </style>
 
-<body class="bg-white min-h-screen font-base">
+<body class="bg-white font-base">
   <div id="app" class="flex flex-col md:flex-row w-full">
-    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: true }">
+    <aside style="background-color: #0C356A;" class="w-full md:w-64 bg-blue-900 text-white" x-data="{ isOpen: true }">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
           <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2" style="width: 70%;">
