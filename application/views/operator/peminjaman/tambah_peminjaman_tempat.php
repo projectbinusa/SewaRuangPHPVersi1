@@ -212,11 +212,11 @@
     </style>
 </head>
 
-<body>
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main class="contain-all">
-        <div class=" container">
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>

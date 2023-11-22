@@ -761,28 +761,7 @@
         }
 
        
-        @media only screen and (max-width: 575px) {
-            .navbar-area .nav-container {
-                margin: 0px 0px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 10px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
-                padding: 15px 20px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
-                padding: 15px 20px;
-            }
-
-            .search-popup .search-form {
-                min-width: 350px;
-            }
-        }
-
+       
        
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
@@ -852,47 +831,17 @@
         /* code responsive table */
         @media (max-width: 600px) {
             table {
-                width: 100%;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
+                width: 4.5rem;
             }
         }
+
+        .inner-section {
+            padding: 4%;
+        }
+
+        table {
+                width: 12rem;
+            }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -911,7 +860,7 @@
 
     <?php $this->load->view('sidebar'); ?>
 
-    <section id="widget" class="p-10 widget-section pd-top-120">
+    <section id="widget" class="inner-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -937,21 +886,13 @@
                             <a href="expor_tambahan" class="ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
               <i class="fas fa-file-export"></i> Export
             </a>
-                   
- 
-                           <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+                   <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
                            <span class="pe-2">
                           <i class="fas fa-file-import"></i>
                            </span>
                            Import
                            </button>
-
-                           
-
-
-
-                 
-                            <table style="min-width: 12rem;" id="example_data"
+                            <table id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
