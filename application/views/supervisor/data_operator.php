@@ -1911,18 +1911,8 @@
                         setTimeout(() => {
                             Swal.close(); // Tutup SweetAlert loading
 
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Pengguna operator ditambahkan.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Redirect setelah berhasil menambah data
-                                    window.location.href = 'tambah_user_operator';
-                                }
-                            });
+                            // Redirect setelah berhasil menambah data
+                            window.location.href = 'tambah_user_operator';
                         }, 1500); // Simulasi waktu penambahan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });
@@ -1953,18 +1943,8 @@
                         setTimeout(() => {
                             Swal.close(); // Tutup SweetAlert loading
 
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Pengguna operator diubah.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Navigasi ke halaman edit setelah berhasil mengedit data
-                                    window.location.href = url;
-                                }
-                            });
+                            // Navigasi ke halaman edit setelah berhasil mengedit data
+                            window.location.href = url;
                         }, 1500); // Simulasi waktu pengeditan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });
