@@ -797,13 +797,13 @@
         margin-left: 9px;
     }
 
-    /Row Hover/
+    /* /Row Hover/ */
     table.dataTable.hover tbody tr:hover,
     table.dataTable.display tbody tr:hover {
         background-color: #ebf4ff;
     }
 
-    /Pagination Buttons/
+    /* /Pagination Buttons/ */
     .dataTables_wrapper .dataTables_paginate .paginate_button {
         font-weight: 400;
         border-radius: .25rem;
@@ -967,7 +967,7 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
+        /* /Row Hover/ */
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;

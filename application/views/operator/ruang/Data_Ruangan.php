@@ -76,7 +76,19 @@
   <main class="contain-all max-h-screen overflow-y-auto">
     <!-- Area konten utama -->
     <div class="flex-1 p-4 w-full">
-      <div class="relative w-full p-2 border bg-gray-300 border-blue-300 rounded shadow-lg">
+      <div class="relative w-full p-2 border bg--300 rounded shadow-lg">
+        <?php if ($ruang) : ?>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
+            <?php $count = 0; ?>
+            <?php foreach ($ruang as $row) : ?>
+              <?php if ($count < 6) : ?>
+                <!-- Konten ruangan -->
+              <?php endif; ?>
+              <?php $count++; ?>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+
         <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white flex items-center gap-3">
           Cari<i class="fas fa-search text-lg mt-2"></i>
           <div class="ml-auto">
@@ -92,8 +104,8 @@
                 <i class="fas fa-file-export"></i> Export
               </a>
 
-              <a href="<?php echo base_url('operator/tambah_ruang')?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
-                Tambah
+              <a id="showAddConfirmation" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded" onclick="showAddConfirmation()">
+                <i class="fas fa-plus"></i> Tambah
               </a>
             </div>
           </div>
@@ -153,16 +165,6 @@
       </div>
     </div>
     </div>
-
-    <!-- Scroll Up Button -->
-    <button id="scrollUpBtn" class="fixed bottom-5 right-5 p-2 bg-blue-500 text-white rounded-full cursor-pointer">
-      <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Scroll Down Button -->
-    <button id="scrollDownBtn" class="fixed bottom-5 right-16 p-2 bg-blue-500 text-white rounded-full cursor-pointer">
-      <i class="fas fa-chevron-down"></i>
-    </button>
 
     <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
       <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -230,5 +232,32 @@
     }
   </script>
 
+  <script>
+    function showAddConfirmation() {
+      Swal.fire({
+        title: 'Konfirmasi',
+        text: 'Anda yakin ingin menambahkan ruangan?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak',
+        customClass: {
+          popup: 'custom-swal-popup',
+          title: 'custom-swal-title',
+          text: 'custom-swal-text',
+          confirmButton: 'custom-swal-confirm-button',
+          cancelButton: 'custom-swal-cancel-button'
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Arahkan ke URL untuk menambah ruangan jika dikonfirmasi
+          window.location = 'tambah_ruang';
+        }
+      });
+    }
+  </script>
+
+
 </body>
+
 </html>
