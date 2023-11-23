@@ -23,10 +23,10 @@ class operator extends CI_Controller
         $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
         $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
-        $data['jumlah_ruang'] = $this-> m_model->get_data('ruangan')->num_rows();
-        $data['jumlah_pelanggan'] = $this-> m_model->get_data('pelanggan')->num_rows();
-        $data['jumlah_tambahan'] = $this-> m_model->get_data('tambahan')->num_rows();
-        $data['jumlah_sewa'] = $this-> m_model->get_data('tambahan')->num_rows();
+        $data['jumlah_ruang'] = $this->m_model->get_data('ruangan')->num_rows();
+        $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
+        $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
+        $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
         $this->load->view('operator/dashboard', $data);
     }
 
@@ -122,8 +122,8 @@ class operator extends CI_Controller
         }
 
         // Validasi harga
-        if (empty($harga) || !is_numeric($harga)) {
-            $errors[] = 'Harga harus diisi dengan angka dan tidak boleh kosong.';
+        if (empty($harga) || !filter_var($harga, FILTER_VALIDATE_INT)) {
+            $errors[] = 'Harga harus diisi dengan angka (tanpa ".") dan tidak boleh kosong.';
         } elseif ($harga < 0) {
             $errors[] = 'Harga tidak boleh negatif.';
         }
@@ -195,29 +195,20 @@ class operator extends CI_Controller
         $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
         $this->load->view('operator/pdf', $data);
     }
+
     public function export_pdf($id)
     {
-        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
-        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status($id);
-        $peminjaman_id = $this->uri->segment(4); // Assuming the ID is passed as the fourth segment
-        $tambahan_id = $this->uri->segment(5); // Assuming the ID is passed as the fifth segment
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $peminjaman = $this->m_model->get_peminjaman_by_id($peminjaman_id);
-        $tambahan = $this->m_model->get_tambahan_by_id($tambahan_id);
-        $data['peminjaman'] = $peminjaman;
-        $data['tambahan'] = $tambahan;
-
+        $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
+        
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
             $this->pdf->load_view('operator/export_pdf', $data);
             $this->pdf->render();
-
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            $this->load->view('operator/download_pdf', $data);
+            $this->load->view('operator/export_pdf', $data);
         }
     }
-
     public function edit_ruangan($id)
     {
         // Ambil data ruangan dari database berdasarkan $id
@@ -246,6 +237,8 @@ class operator extends CI_Controller
         // Load the form validation library
         $this->load->library('form_validation');
 
+        $this->load->library('form_validation');
+
         // Set custom error messages for form validation
         $this->form_validation->set_message('required', 'Kolom {field} wajib diisi.');
         $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka.');
@@ -253,7 +246,8 @@ class operator extends CI_Controller
         $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
         $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka untuk harga.');
 
-        // Set validation rules
+        // Additional validation for 'harga' to ensure it's an integer
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric|callback_check_integer');
         $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|numeric');
         $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|alpha_numeric');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
@@ -370,6 +364,14 @@ class operator extends CI_Controller
         }
     }
 
+    public function check_integer($str)
+    {
+        if (filter_var($str, FILTER_VALIDATE_INT) === false) {
+            $this->form_validation->set_message('check_integer', 'Kolom {field} harus berisi angka tanpa desimal.');
+            return false;
+        }
+        return true;
+    }
 
     public function hapus_image($id)
     {
@@ -600,6 +602,7 @@ class operator extends CI_Controller
             $this->check_expired_bookings();
             // Operasi berhasil
             // Redirect atau tampilkan pesan sukses
+            redirect(base_url('operator/peminjaman_tempat'));
         }
     }
 
@@ -691,7 +694,7 @@ class operator extends CI_Controller
         $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
     }
 
-    public function update_report_sewa()
+    public function update_report_sewa($id)
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
         $this->load->view('operator/pelanggan/update_report_sewa', $data);
@@ -882,7 +885,6 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
             $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
             $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
             $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
@@ -1169,54 +1171,53 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
-    public function export_tambahan() {
+    public function export_tambahan()
+    {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
-        
+
         $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
         // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
         $data = $this->m_model->get_data('tambahan')->result();
-        
+
         // Buat objek Spreadsheet
-        $headers = ['NO','NAMA ITEM', 'HARGA', 'JENIS' , 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'JENIS', 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
             $rowIndex++;
         }
-        
+
         // Isi data dari database
         $rowIndex = 2;
         $no = 1;
         foreach ($data as $rowData) {
             $columnIndex = 1;
             $nama = '';
-            $harga = ''; 
-            $jenis = ''; 
-            $deskripsi = ''; 
+            $harga = '';
+            $jenis = '';
+            $deskripsi = '';
             foreach ($rowData as $cellName => $cellData) {
-                if($cellName == 'nama'){
+                if ($cellName == 'nama') {
                     $nama = $cellData;
-                }elseif ($cellName == 'harga') {
+                } elseif ($cellName == 'harga') {
                     $harga = $cellData;
-                }
-                elseif ($cellName == 'jenis') {
+                } elseif ($cellName == 'jenis') {
                     $jenis = $cellData;
-                }
-                elseif ($cellName == 'deskripsi') {
+                } elseif ($cellName == 'deskripsi') {
                     $deskripsi = $cellData;
                 }
-        
+
                 // Anda juga dapat menambahkan logika lain jika perlu
-                
+
                 // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
                 $columnIndex++;
             }
-        
+
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
             $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
@@ -1225,104 +1226,103 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jenis);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $deskripsi);
             $no++;
-        
+
             $rowIndex++;
         }
         // Auto size kolom berdasarkan konten
         foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
-        
+
         // Set style header
         $headerStyle = [
             'font' => ['bold' => true],
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
         ];
         $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
+
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
-        
+
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
-        
+
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-        
     }
-    public function template_tambahan() {
+    public function template_tambahan()
+    {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
-        
+
         $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
         // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
-        
+
         // Buat objek Spreadsheet
-        $headers = ['NO','NAMA ITEM', 'HARGA', 'JENIS' , 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'JENIS', 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
             $rowIndex++;
         }
-        
+
         // Auto size kolom berdasarkan konten
         foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
-        
+
         // Set style header
         $headerStyle = [
             'font' => ['bold' => true],
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
         ];
         $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
+
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'TEMPLATE_DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
-        
+
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
-        
+
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-        
     }
-    public function import_tambahan() {
+    public function import_tambahan()
+    {
         require 'vendor/autoload.php';
-       if(isset($_FILES["file"]["name"])){
-        $path = $_FILES["file"]["tmp_name"];
-        $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
-        foreach($object->getWorksheetIterator() as $worksheet)
-        {
-            $highestRow= $worksheet->getHighestRow();
-            $highestColumn = $worksheet->getHighestColumn();
-            for($row=2 ; $row<=$highestRow; $row++) {
-                $nama = $worksheet->getCellByColumnAndRow(2,$row)->getValue();
-                $harga = $worksheet->getCellByColumnAndRow(3,$row)->getValue();
-                $jenis = $worksheet->getCellByColumnAndRow(4,$row)->getValue(); 
-                $deskripsi = $worksheet->getCellByColumnAndRow(5,$row)->getValue(); 
-                $data = [
-                    'nama' => $nama,
-                    'harga' => $harga,
-                    'jenis' => $jenis,
-                    'deskripsi'=> $deskripsi
-                ];
-                $this->m_model->tambah_data('tambahan', $data);
+        if (isset($_FILES["file"]["name"])) {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $harga = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $jenis = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $deskripsi = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $data = [
+                        'nama' => $nama,
+                        'harga' => $harga,
+                        'jenis' => $jenis,
+                        'deskripsi' => $deskripsi
+                    ];
+                    $this->m_model->tambah_data('tambahan', $data);
+                }
             }
+            redirect(base_url('operator/tambahan'));
+        } else {
+            echo 'Invalid File';
         }
-        redirect(base_url('operator/tambahan'));
-       } else {
-        echo 'Invalid File';
-       }
-}
+    }
 }

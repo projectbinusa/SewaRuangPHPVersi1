@@ -4,10 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Ruangan</title>
+    <title>Sewa Ruang</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 </head>
+<style>
+    .green-bar {
+        background-color: #4F709C;
+        height: 1rem;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .submit {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #f4f4f4;
+        background-color: #4F709C;
+        border: 3px solid #4F709C;
+        border-radius: 1rem;
+        width: 8rem;
+        height: 2.5rem;
+        padding: 3px 2rem;
+        margin: 20px auto 10px auto;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    .submit:hover {
+        background-color: transparent;
+        color: #222;
+    }
+</style>
 
 <body class="bg-gray-100">
     <?php $this->load->view('sidebar'); ?>
@@ -17,7 +51,7 @@
             <main>
                 <div class="container mx-auto p-auto md:w-10/12">
                     <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
-                        <div class="h-3 w-full absolute top-0 left-0 rounded-t-lg" style="background:#0C356A;"></div>
+                        <div class="green-bar"></div>
                         <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Tambah Data Ruangan</h1>
                     </header>
 
@@ -48,8 +82,8 @@
                                 <input type="text" name="deskripsi" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                             </div>
                         </div>
-                        <div class="text-center mt-10">
-                            <input type="submit" id="submit" class="bg-transparent border border-blue-900 text-blue-600 font-semibold uppercase tracking-wide text-lg py-2 px-8 rounded-lg cursor-pointer hover-border-transparent hover-bg-blue-600 hover-text-blue-100 transition duration-300" value="Tambah">
+                        <div class="text-center mt-1">
+                            <input type="submit" id="submit" class="submit mt" value="Submit">
                         </div>
                     </form>
                 </div>
