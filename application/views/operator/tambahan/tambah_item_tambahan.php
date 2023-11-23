@@ -215,13 +215,18 @@
             top: 0;
             right: 0;
         }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 38rem;
+        }
     </style>
 </head>
 
-<body>
+<body class="min-h-screen relative overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main>
+    <main class="contain-all max-h-screen overflow-x-auto">
         <div class=" container">
             <header class="heading">
                 <div class="green-bar"></div>

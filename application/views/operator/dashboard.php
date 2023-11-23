@@ -1998,15 +1998,15 @@
                                                     <?php echo $row->kode_booking ?>
                                                 </td>
                                                 <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                    <?php
-                                                    // Memisahkan data tambahan menjadi array
-                                                    $tambahanArray = explode(',', $row->tambahan_nama);
+                                                <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->id_tambahan);
 
-                                                    // Menampilkan setiap tambahan
-                                                    foreach ($tambahanArray as $tambahan) {
-                                                        echo $tambahan . '<br>';
-                                                    }
-                                                    ?>
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
                                                 </td>
                                                 <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                     <?php

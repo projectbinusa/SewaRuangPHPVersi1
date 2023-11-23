@@ -171,14 +171,19 @@
             label {
                 font-size: 16px;
             }
+
+            .contain-all {
+            overflow-y: scroll;
+            height:auto;
+        }
         }
     </style>
 </head>
 
-<body>
+<body class="">
 <?php $this->load->view('sidebars'); ?>
 
-    <main>
+    <main class="">
         <div class="container-tambah-user">
             <header class="heading">
                 <div class="green-bar"></div>
