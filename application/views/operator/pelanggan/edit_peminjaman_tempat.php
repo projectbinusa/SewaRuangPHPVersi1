@@ -146,10 +146,10 @@
     </style>
 </head>
 
-<body>
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main>
+    <main class="contain-all max-h-screen overflow-y-auto">
         <div class="px-36 pt-10 container">
             <header class="heading">
                 <div class="green-bar"></div>

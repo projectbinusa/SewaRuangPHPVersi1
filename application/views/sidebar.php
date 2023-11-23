@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-white  font-base ">
+<body class="bg-white font-base ">
 
 <div id="app" class="flex flex-col md:flex-row w-full overflow-y-auto">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }" :class="{ 'hidden': !isOpen }">
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-            <a href="<?php echo base_url('operator/tabel_report_sewa') ?>" class="flex items-center">
+            <a href="<?php echo base_url('operator/report_sewa') ?>" class="flex items-center">
               <i class="fa-regular fa-folder-open text-white"></i>
               <span class="mx-2 text-white font-semibold">Report Sewa</span>
             </a>
@@ -127,7 +127,7 @@
         menuBtn.addEventListener('click', () => {
           sideNav.classList.toggle('hidden'); // Agrega o quita la clase 'hidden' para mostrar u ocultar la navegación lateral
         });
-</script>
+      </script>
 
 </body>
 

@@ -5,37 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-        <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
-        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-        <!--Replace with your tailwind.css once created-->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-        <!-- fontawesome cdn -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+    <!--Replace with your tailwind.css once created-->
 
-        <!--Regular Datatables CSS-->
-        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-        <!--Responsive Extension Datatables CSS-->
-        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-    
-        
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-        <style>
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
+
+
+
+    <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
         :root {
@@ -63,7 +62,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -241,7 +240,7 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -520,7 +519,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -725,7 +724,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -760,7 +759,7 @@
             }
         }
 
-       
+
         @media only screen and (max-width: 575px) {
             .navbar-area .nav-container {
                 margin: 0px 0px;
@@ -783,7 +782,7 @@
             }
         }
 
-       
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -803,14 +802,12 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
-        table.dataTable.hover tbody tr:hover,
+        /Row Hover/ table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
+        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 900;
             border-radius: .25rem;
             border: 1px solid transparent;
@@ -818,7 +815,7 @@
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -852,89 +849,105 @@
         /* code responsive table */
         @media only screen and (max-width: 800px) {
 
-       .container {
-        padding: 1rem 1rem 0px 1rem;
+            .container {
+                padding: 1rem 1rem 0px 1rem;
+            }
+
+
+            .heading {
+                padding: 1.3em 9px 1.8rem 9px;
+            }
+
+            .survey-form {
+                padding: 1.3em 15px 1.8rem 15px;
+
+            }
+
+            .main-heading {
+                font-size: 22px;
+                margin-bottom: 0;
+                text-align: center;
+            }
+
+            label {
+                font-size: 16px;
+            }
         }
 
 
-        .heading {
-        padding: 1.3em 9px 1.8rem 9px;
-        } 
-
-        .survey-form {
-         padding: 1.3em 15px 1.8rem 15px;
-
+        #checkboxCombo {
+            position: relative;
+            display: inline-block;
         }
 
-       .main-heading {
-       font-size: 22px;
-       margin-bottom: 0;
-       text-align: center;
-       }
+        #checkboxCombo select {
+            width: 200px;
+            padding: 5px;
+        }
 
-label {
-    font-size: 16px;
-}
-}
-
-
-#checkboxCombo {
-position: relative;
-display: inline-block;
-}
-
-#checkboxCombo select {
-width: 200px;
-padding: 5px;
-}
-
-#checkboxCombo input[type="checkbox"] {
-position: absolute;
-top: 0;
-right: 0;
-}
+        #checkboxCombo input[type="checkbox"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
     </style>
- 
+
     <script>
-      function toggleModal() {
-        document.getElementById('modal').classList.toggle('hidden')
-      }
+        function toggleModal() {
+            document.getElementById('modal').classList.toggle('hidden')
+        }
     </script>
 
 
-   
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->load->view('sidebar'); ?>
-    <section id="widget" class="p-10 widget-section pd-top-120">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Data Master Pelanggan</h2>
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <section id="widget" class="p-10 widget-section pd-top-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">Data Master Pelanggan</h2>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-table row justify-content-center">
-            
-            <div class="col-lg-12">
-                <div class="header-item">
-                    <div class="relative">
-                        
-                        <a href="tambah_pelanggan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+            <div class="container-table row justify-content-center">
+
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+
+                            <a href="tambah_pelanggan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                                 <span class="pe-2">
                                     <i class="fas fa-plus"></i>
                                 </span>
                                 Tambah
                             </a>
 
-                            <a href="expor_pelanggan" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" onclick="showExportConfirmation()">
+<<<<<<< HEAD
+                            <a href="expor_pelanggan" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
+                                <i class="fas fa-file-export"></i> Export
+                            </a>
+
+
+                            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+                                <span class="pe-2">
+                                    <i class="fas fa-file-import"></i>
+                                </span>
+                                Import
+                            </button>
+
+
+
+
+=======
+                            <a onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" >
               <i class="fas fa-file-export"></i> Export
             </a>
                          
@@ -945,12 +958,9 @@ right: 0;
                            </span>
                            Import
                            </button>
+>>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
 
-                                      
-    
-                         
 
-        
 
                             <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -968,37 +978,36 @@ right: 0;
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                             Payment Method
                                         </th>
-                                        
+
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                    $no = 0;
-                    foreach ($pelanggan as $row) : $no++
-                    ?>
-                        <tr>
-                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $no ?></td>
-                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->nama ?></td>
-                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->phone ?></td>
-                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
+                                    <?php
+                                    $no = 0;
+                                    foreach ($pelanggan as $row) : $no++
+                                    ?>
+                                        <tr>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $no ?></td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->nama ?></td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->phone ?></td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700"><?php echo $row->payment_method ?> </td>
 
                                             <!-- Aksi -->
                                             <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                            <a href="<?php echo base_url('operator/update_data/') . $row->id ?>"
-                                                class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                            </a>
-                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
                                                 </button>
-                                        </td>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -1006,34 +1015,68 @@ right: 0;
                         </div>
                     </div>
                 </div>
-            
 
 
-        </div>
-    </section>
-    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <div class="fixed inset-0 transition-opacity">
-        <div class="absolute inset-0 bg-gray-900 opacity-75">
-        </div>
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-          <form action="<?php echo base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data">
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <label class="font-medium text-gray-800">File</label>
-              <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
 
             </div>
+<<<<<<< HEAD
+        </section>
+        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-900 opacity-75">
+                </div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <form action="<?php echo base_url('operator/import_pelanggan') ?>" method="post"
+                            enctype="multipart/form-data">
+
+
+                            <label class="font-medium text-gray-800">File</label>
+                            <input name="file" type="file"
+                                class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+
+                    </div>
+                    <div class="bg-gray-200 px-4 py-3 text-right">
+
+                        <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
+                            onclick="toggleModal()"> Batal</button>
+                        <button type="submit"
+                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                        <button type="button"
+                            class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                            Download Template</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+=======
             <div class="bg-gray-200 px-4 py-3 text-right">
               <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-            </div>
+              <button onclick="importData()" type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>            </div>
           </form>
+>>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
         </div>
-      </div>
-    </div>
+        
+        
+            <!-- jQuery -->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+            <!--Datatables -->
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+            <script>
+                $(document).ready(function() {
 
+<<<<<<< HEAD
+                    var table = $('#example_data').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
+=======
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -1091,6 +1134,58 @@ right: 0;
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
+         function importData() {
+            Swal.fire({
+                title: 'Import Data?',
+                text: "Anda akan mengimport data",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Import'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses impor data di sini
+                    // Contoh:
+                    window.location.href = "<?php echo base_url('operator/data_master_pelanggan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil diimport',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true // Menampilkan progress bar
+                    });
+                }
+            });
+        }
+        function exportData() {
+            Swal.fire({
+                title: 'Export Data?',
+                text: "Anda akan mengexport data",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Export'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    // Contoh:
+                    window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil diexport',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true // Menampilkan progress bar
+                    });
+                }
+            });
+        }
         function update(id) {
             Swal.fire({
                 title: 'Ingin Mengubah Data Pelanggan',
@@ -1108,6 +1203,7 @@ right: 0;
                         title: 'Loading ... ',
                         showConfirmButton: false,
                         timer: 1500,
+                        timerProgressBar: true // Menampilkan progress bar
                     }).then(function() {
                         window.location.href = "<?php echo base_url('operator/update_data/') ?>" + id;
                     });
@@ -1132,6 +1228,7 @@ right: 0;
                         title: 'Berhasil Menghapus',
                         showConfirmButton: false,
                         timer: 1500,
+                        timerProgressBar: true // Menampilkan progress bar
                     }).then(function() {
                         window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
                     });
@@ -1149,21 +1246,123 @@ right: 0;
                     text: message,
                     icon: 'success',
                     confirmButtonText: 'OK'
+>>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
                 });
-            } else if (error) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: error,
-                    icon: 'error',
-                    confirmButtonText: 'OK'
+
+                function hapus(id) {
+                    Swal.fire({
+                        title: ' Apa Mau Menghapus?',
+                        text: "data ini tidak bisa dikembalikan lagi!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Hapus'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil Menghapus',
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(function() {
+                                window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
+                            });
+                        }
+                    });
+                }
+            </script>
+            <!-- jQuery -->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+            <!--Datatables -->
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                        responsive: true
+                    }).columns.adjust().responsive.recalc();
                 });
-            }
-        }
+            </script>
 
-        // Call the function when the page loads
-        window.onload = displaySweetAlert;
-    </script>
+            <!-- SweetAlert -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+            <script>
+                function update(id) {
+                    Swal.fire({
+                        title: 'Ingin Mengubah Data Pelanggan',
+                        text: " ",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Ya Ubah'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'Waitt',
+                                title: 'Loading ... ',
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(function() {
+                                window.location.href = "<?php echo base_url('operator/update_data/') ?>" + id;
+                            });
+                        }
+                    });
+                }
 
+                function hapus(id) {
+                    Swal.fire({
+                        title: ' Yakin Ingin Menghapus?',
+                        text: "data tidak dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Hapus'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil Menghapus',
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(function() {
+                                window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
+                            });
+                        }
+                    });
+                }
+
+                function displaySweetAlert() {
+                    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+                    const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+                    if (message) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                    } else if (error) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: error,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                }
+
+                // Call the function when the page loads
+                window.onload = displaySweetAlert;
+            </script>
 </body>
 
+     
 </html>
