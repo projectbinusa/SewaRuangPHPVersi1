@@ -67,6 +67,28 @@ class Supervisor extends CI_Controller
         $data['approve'] = $this->m_model->get_status_proses()->result();
         $this->load->view('supervisor/approve', $data);
     }
+    public function aksi_approve_di_terima_semua()
+    {
+        $data = [
+            'status' => 'booking',
+        ];
+        $approve = $this->m_model->get_status_proses()->result();
+        foreach($approve as $row){
+            $this->m_model->update('peminjaman', $data, array('id' => $row->id));
+        }
+        redirect(base_url('supervisor/approve'));
+    }
+    public function aksi_approve_di_tolak_semua()
+    {
+        $data = [
+            'status' => 'di tolak',
+        ];
+        $approve = $this->m_model->get_status_proses()->result();
+        foreach($approve as $row){
+            $this->m_model->update('peminjaman', $data, array('id' => $row->id));
+        }
+        redirect(base_url('supervisor/approve'));
+    }
     public function aksi_approve_di_terima($id)
     {
         $data = [
@@ -88,8 +110,8 @@ class Supervisor extends CI_Controller
         $data['operator'] = $this->m_model->get_data_operator()->result();
         $this->load->view('supervisor/data_operator', $data);
     }
-
-
+    
+    
     public function edit_user_operator($id)
     {
         $data['operator'] = $this->m_model->get_by_id('user', 'id', $id)->result();

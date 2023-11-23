@@ -124,7 +124,7 @@
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
-            padding: 8px 2rem;
+            padding: 3px 2rem;
             margin: 40px auto 10px auto;
             cursor: pointer;
             transition: all .3s;
