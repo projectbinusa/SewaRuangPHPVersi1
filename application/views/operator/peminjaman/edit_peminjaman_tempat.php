@@ -209,20 +209,22 @@
             $berakhir = $row->tanggal_berakhir; $jumlah=  $row->jumlah_orang;?>
             <form action="<?php echo base_url('operator/aksi_edit_peminjaman')?>" method="post" id="survey-form" class="survey-form">
             <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id?>">
+            <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking?>">
+            <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir?>">
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
                 <input type="text" name="nama" id="nama"  required class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
                     <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                    <input class="no_ruang" autocomplete="off" role="combobox" required list="" id="input1" name="ruang"
-                        value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
-                    <datalist id="browsers1" role="listbox">
-                        <?php foreach ($ruangan as $row): ?>
-                            <option value="<?php echo $row->id ?>">L.
-                                <?php echo $row->no_lantai ?> R.
-                                <?php echo $row->no_ruang ?>
-                            </option>
-                        <?php endforeach ?>
-                    </datalist>
+                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
+                    value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
+                <datalist id="browsers1" role="listbox">
+                    <?php foreach ($ruangan as $row): ?>
+                        <option value="<?php echo $row->id ?>">L.
+                            <?php echo $row->no_lantai ?> R.
+                            <?php echo $row->no_ruang ?>
+                        </option>
+                    <?php endforeach ?>
+                </datalist>
                     <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
                         value="<?php echo $jumlah?>" required>
