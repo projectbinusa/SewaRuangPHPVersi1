@@ -28,9 +28,9 @@
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
+   
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-
 
         :root {
             --main-color: #4F709C;
@@ -41,8 +41,9 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 16px; */
             background-color: #f1f1f1;
+            min-height: screen;
+            position: relative;
         }
 
         @media (min-width: 1200px) {
@@ -57,7 +58,7 @@
             }
         }
 
-
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -235,7 +236,7 @@
             opacity: 1;
         }
 
-
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -514,7 +515,7 @@
             margin-left: 12px;
         }
 
-
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -719,7 +720,7 @@
             cursor: pointer;
         }
 
-
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -754,30 +755,9 @@
             }
         }
 
-
-        @media only screen and (max-width: 575px) {
-            .navbar-area .nav-container {
-                margin: 0px 0px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 10px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
-                padding: 15px 20px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
-                padding: 15px 20px;
-            }
-
-            .search-popup .search-form {
-                min-width: 350px;
-            }
-        }
-
-
+       
+       
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -797,12 +777,14 @@
             margin-left: 9px;
         }
 
-        /Row Hover/ table.dataTable.hover tbody tr:hover,
+        /*Row Hover*/
+        table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
+        /*Pagination Buttons*/
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
@@ -810,7 +792,7 @@
             padding-top: 5px;
         }
 
-
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -831,8 +813,7 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -845,215 +826,17 @@
         /* code responsive table */
         @media (max-width: 600px) {
             table {
-                width: 100%;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
+                width: 4.5rem;
             }
         }
 
-
-        @media only screen and (max-width: 767px) {
-            .logo-wrapper.mobile-logo {
-                display: block;
-                width: 100%;
-            }
-
-            .responsive-mobile-menu {
-                display: block;
-                width: 100%;
-                position: relative;
-            }
-
-            .responsive-mobile-menu .navbar-toggler {
-                position: absolute;
-                left: calc(100% - 130px);
-                top: 10px;
-            }
-
-            .table-responsive {
-                display: block !important;
-            }
-
-            .btn-custom-default,
-            .btn-custom-white {
-                font-size: 14PX;
-                line-height: 33px;
-                padding: 6px 20px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 0px !important;
-            }
+        .inner-section {
+            padding: 4%;
         }
 
-
-        @media only screen and (max-width: 575px) {
-            .navbar-area .nav-container {
-                margin: 0px 0px;
+        table {
+                width: 12rem;
             }
-
-            .navbar-area .logo {
-                padding-top: 10px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
-                padding: 15px 20px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
-                padding: 15px 20px;
-            }
-
-            .search-popup .search-form {
-                min-width: 350px;
-            }
-        }
-
-
-        .dataTables_wrapper select,
-        .dataTables_wrapper .dataTables_filter input {
-            color: #4F709C;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            padding-top: .5rem;
-            padding-bottom: .5rem;
-            line-height: 1.25;
-            border-width: 2px;
-            border-radius: .25rem;
-            border-color: #F5F7F8;
-            background-color: #F5F7F8;
-            margin: 10px 0;
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            margin-left: 9px;
-        }
-
-        /Row Hover/ table.dataTable.hover tbody tr:hover,
-        table.dataTable.display tbody tr:hover {
-            background-color: #ebf4ff;
-        }
-
-        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 400;
-            border-radius: .25rem;
-            border: 1px solid transparent;
-            height: 37px;
-            padding-top: 5px;
-        }
-
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            color: white !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 400;
-            border-radius: .25rem;
-            background: #4F709C !important;
-            border: 1px solid transparent;
-        }
-
-        /*Pagination Buttons - Hover */
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            color: white !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 400;
-            border-radius: .25rem;
-            background: #4F709C !important;
-            border: 1px solid transparent;
-        }
-
-        table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            margin-top: 0.75em;
-            margin-bottom: 0.75em;
-        }
-
-        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-            background-color: #4F709C !important;
-
-        }
-
-        /* code responsive table */
-        @media (max-width: 600px) {
-            table {
-                width: 100%;
-            }
-
-            tbody {
-                text-align: left;
-            }
-
-            .option-select {
-                font-size: 12px;
-            }
-
-            .td {
-                padding-right: none;
-                display: flex;
-                justify-content: left;
-            }
-
-            .responsive-3 {
-                width: 100%;
-            }
-
-            th {
-                display: none;
-            }
-
-            td {
-                display: grid;
-                gap: 0.5rem;
-                grid-template-columns: 15ch auto;
-                padding: 0.75em 1rem;
-            }
-
-            td:first-child {
-                padding-top: 2rem;
-            }
-
-            td::before {
-                content: attr(data-cell) "  : ";
-                font-weight: bold;
-            }
-        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -1083,13 +866,13 @@
                         <div class="relative">
 
 
-                            <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <a href="export_report_sewa" class="ml-auto inline-block px-4 py-2 bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold rounded float-right z-50">
-                                    <i class="fas fa-file-export"></i> Export
-                                </a>
-
+                        <table style="min-width: 12 rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <button onclick="exportReportSewa()" class="ml-auto inline-block px-4 py-2 bg-green-500 hover:bg-green-700 md:ml-0 md:mr-2 w-28 text-white font-bold rounded float-right z-50">
+                                    <i class="fas fa-file-export"></i> Export
+                                </button>
 
+                                
                                     <tr>
                                         <th data-priority="2" scope="col" class="px-3 py-3">
                                             No
@@ -1116,11 +899,11 @@
                                         <th data-priority="6" scope="col" class="px-3 py-3">
                                             Total
                                         </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
 
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -1152,7 +935,7 @@
                                             <td data-cell="Tambahan" class="w-32 px-3 py-4">
                                             <?php
                                                 // Memisahkan data tambahan menjadi array
-                                                $tambahanArray = explode(',', $row->tambahan_nama);
+                                                $tambahanArray = explode(',', $row->id_tambahan);
 
                                                 // Menampilkan setiap tambahan
                                                 foreach ($tambahanArray as $tambahan) {
@@ -1244,7 +1027,34 @@
             });
         }
     </script>
-
+<script>
+        function exportReportSewa() {
+            Swal.fire({
+                title: 'Ekspor Data Report Sewa?',
+                text: "Anda akan mengexport data report sewa",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Export'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    // Contoh:
+                    window.location.href = "<?php echo base_url('operator/export_report_sewa') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data sewa berhasil diexport',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true // Menampilkan progress bar
+                    });
+                }
+            });
+        }
+</script>
 </body>
 
 </html>
