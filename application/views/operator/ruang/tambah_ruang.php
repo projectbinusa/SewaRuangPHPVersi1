@@ -32,7 +32,7 @@
         width: 8rem;
         height: 2.5rem;
         padding: 3px 2rem;
-        margin: 20px auto 10px auto;
+        margin: 40px auto 10px auto;
         cursor: pointer;
         transition: all .3s;
     }
@@ -54,7 +54,7 @@
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
-        padding: 8px 2rem;
+        padding: 3px 2rem;
         margin: 40px auto 10px auto;
         cursor: pointer;
         transition: all .3s;
@@ -66,7 +66,7 @@
     }
 </style>
 
-<body class="bg-gray-100 relative min-h-screen overflow-hidden">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="p-8 w-full md:w-full flex justify-center items-center m-auto">
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="text-center mt-1">
-                                <input type="submit" id="submit" class="submit mt" value="Submit">
+                                <input type="submit" id="submit" class="submit font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem        width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s" value="Submit">
                             </div>
                         </form>
                     </div>

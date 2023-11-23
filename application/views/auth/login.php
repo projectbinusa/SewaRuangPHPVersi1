@@ -250,7 +250,8 @@
                             <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
+                            <label class="label" for="emailAddress">
+                                <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
                             <div class="password-input-container">
                                 <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
