@@ -161,8 +161,8 @@
     </style>
 </head>
 
-<body>
-    <main>
+<body class="relative min-h-screen overflow-hidden">
+    <main class="contain-all max-h-screen overflow-y-auto">
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
@@ -178,30 +178,22 @@
                 <input type="text" name="no_ruang" id="no_ruang" class="no_ruang" placeholder="Ketik no ruang" required>
 
                 <label for="kapasitas" id="kapasitas-label">Kapasitas<span class="required">*</span></label>
-                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Ketik kapasitas ruangan" required>
+                <input type="kapasitas" name="kapasitas" id="kapasitas" class="kapasitas" placeholder="Ketik kapasitas ruangan" required>
 
                 <label for="snack" id="snack-label">Snack<span class="required">*</span></label>
                 <input type="snack" name="snack" id="snack" class="snack" placeholder="Ketik snack jika ada" required>
 
                 <label for="extra_time" id="extra_time-label">Extra Time<span class="required">*</span></label>
-                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time"
-                    placeholder="Ketik extra time jika ada" required>
+                <input type="extra_time" name="extra_time" id="extra_time" class="extra_time" placeholder="Ketik extra time jika ada" required>
 
-                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span
-                        class="required">*</span></label>
-                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan"
-                    placeholder="Ketik jam penggunaan" required>
+                <label for="jam_penggunaan" id="jam_penggunaan-label">Jam Penggunaan<span class="required">*</span></label>
+                <input type="jam_penggunaan" name="jam_penggunaan" id="jam_penggunaan" class="jam_penggunaan" placeholder="Ketik jam penggunaan" required>
 
-                <label for="total_booking" id="total_booking-label">Total Hari Booking<span
-                        class="required">*</span></label>
-                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
+                <label for="total_booking" id="total_booking-label">Total Hari Booking<span class="required">*</span></label>
+                <input type="total_booking" name="total_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
         </div>
     </main>
 </body>
