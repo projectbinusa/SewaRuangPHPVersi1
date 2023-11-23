@@ -1022,12 +1022,10 @@
                                             </a>
 
                                             <?php if ($row->status === 'booking') : ?>
-                                                <button onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-print"></i>
                                                     </span>
-                                                </button>
-
                                                 </button>
                                             <?php endif; ?>
                                             <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
@@ -1084,6 +1082,43 @@
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script>
+            function printConfirmation(printUrl) {
+                Swal.fire({
+                    title: 'Konfirmasi Cetak',
+                    text: 'Anda yakin ingin mencetak?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Cetak!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Mencetak Struk',
+                            text: 'Mohon tunggu...',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
+                            // timerProgressBar: true,
+                            willOpen: () => {
+                                Swal.showLoading();
+                                // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
+                                // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
+                                // Jangan lupa untuk menutup SweetAlert ketika selesai
+                                // Misalnya: Swal.close();
+                            }
+                        }).then(() => {
+                            // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
+                            window.location.href = printUrl;
+                        });
+                    }
+                });
+            }
+        </script>
+
         <script>
             $(document).ready(function() {
 

@@ -38,7 +38,7 @@
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
-        padding: 8px 2rem;
+        padding: 3px 2rem;
         margin: 40px auto 10px auto;
         cursor: pointer;
         transition: all .3s;
@@ -61,19 +61,42 @@
         border-radius: 1rem;
         width: 8rem;
         height: 2.5rem;
-        padding: 8px 2rem;
+        padding: 3px 2rem;
         margin: 40px auto 10px auto;
         cursor: pointer;
-        transition: color 0.3s, background-color 0.3s;
+        transition: all .3s;
     }
 
     .survey-form .submit:hover {
         background-color: transparent;
         color: #222;
     }
+    .baru {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #f4f4f4;
+        background-color: #4F709C;
+        border: 3px solid #4F709C;
+        border-radius: 1rem;
+        width: 13rem;
+        height: 2.5rem;
+        padding: 3px 2rem;
+        margin: 5px auto 10px auto;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    .baru:hover {
+        background-color: transparent;
+        color: #222;
+    }
+
+    
 </style>
 
-<body class="relative min-h-screen overflow-hidden">
+<body class="relative min-h-screen md:overflow-y-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="p-8 w-full md:w-cover flex justify-center items-center m-auto">
@@ -120,7 +143,7 @@
                         <div class="text-center mt-10">
                             <input type="submit" id="submit" class="submit" value="Submit">
                             <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
-                                <input type="button" id="submitt" style="border-radius: 10px;" class="inline-block font-semibold text-white text-lg py-2 px-8 bg-black hover:bg-black" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
+                                <input type="button" id="submitt" style="border-radius: 10px;" class="baru" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
                             </form>
                         </div>
                     </form>
