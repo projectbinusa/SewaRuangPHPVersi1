@@ -305,8 +305,66 @@
         }
     </script>
 
-    <!-- script disable -->
+    <!-- script comboboxs no ruang -->
+    <script>
+        input1.onfocus = function () {
+            browsers1.style.display = 'block';
+            input1.style.borderRadius = "5px 5px 0 0";
+        };
+        for (let option of browsers1.options) {
+            option.onclick = function () {
+                input1.value = option.value;
+                browsers1.style.display = 'none';
+                input1.style.borderRadius = "5px";
+            }
+        };
 
+        input1.oninput = function () {
+            currentFocus = -1;
+            var text = input1.value.toUpperCase();
+            for (let option of browsers1.options) {
+                if (option.value.toUpperCase().indexOf(text) > -1) {
+                    option.style.display = "block";
+                } else {
+                    option.style.display = "none";
+                }
+            };
+        }
+        var currentFocus = -1;
+        input1.onkeydown = function (e) {
+            if (e.keyCode == 40) {
+                currentFocus++
+                addActive(browsers1.options);
+            }
+            else if (e.keyCode == 38) {
+                currentFocus--
+                addActive(browsers1.options);
+            }
+            else if (e.keyCode == 13) {
+                e.preventDefault();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (browsers1.options) browsers1.options[currentFocus].click();
+                }
+            }
+        }
+
+        function addActive(x) {
+            if (!x) return false;
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            x[currentFocus].classList.add("active");
+        }
+        function removeActive(x) {
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("active");
+            }
+        }
+    </script>
+
+
+    <!-- script disable -->
     <script>
         $(document).ready(function () {
             // Menangkap perubahan pada input di atasnya

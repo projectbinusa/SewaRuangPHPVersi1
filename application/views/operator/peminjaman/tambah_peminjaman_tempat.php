@@ -144,7 +144,7 @@
         }
 
         datalist {
-            position: absolute;
+            /* position: absolute; */
             background-color: white;
             border-top: none;
             width: 350px;
@@ -209,6 +209,38 @@
             top: 0;
             right: 0;
         }
+
+        .fields {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .fields label{
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .input-fields {
+            display: flex;
+            width: calc(100% /3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+
+        .input-fields input {
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        }
     </style>
 </head>
 
@@ -223,9 +255,16 @@
             </header>
 
             <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama penyewa" required>
+                class="survey-form ">
+                <div class="">
+                    <label for="nama" id="name-label">Nama <span class="required">*</span></label>
+                    <input type="text" name="nama" id="nama" class="nama "
+                        placeholder="Masukkan nama penyewa" required>
+
+                    <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
+                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas "
+                        placeholder="Ketik kapasitas ruangan" required>
+                </div>
 
                 <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
                 <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
@@ -238,9 +277,8 @@
                         </option>
                     <?php endforeach ?>
                 </datalist>
-                <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
-                <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
-                    placeholder="Ketik kapasitas ruangan" required>
+
+
                 <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
                 <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
                     placeholder="Pilih Paket">
@@ -248,7 +286,7 @@
                 <datalist id="browsers" id="checkbox" role="listbox">
                     <div class="">
                         <?php foreach ($tambahan as $row): ?>
-                            <option style="">
+                            <option>
                                 <?php echo $row->nama ?>
                             </option>
                             <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox"
@@ -256,6 +294,8 @@
                         <?php endforeach ?>
                     </div>
                 </datalist>
+
+                <div class="fields">
                 <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
                         class="required">*</span></label>
                 <input type="date" name="booking" id="total_booking" class="total_booking"
@@ -264,6 +304,8 @@
                         class="required">*</span></label>
                 <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                     placeholder="Ketik total hari booking" required>
+                    </div>
+
                 <input type="submit" id="submit" class="submit" value="Submit"
                     style="background-color: #0C356A; height:42px; width: auto;">
             </form>
