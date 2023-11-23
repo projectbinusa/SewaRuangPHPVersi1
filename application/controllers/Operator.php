@@ -496,6 +496,13 @@ class operator extends CI_Controller
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/peminjaman/tambah_peminjaman_tempat', $data);
     }
+    public function edit_peminjaman_tempat($id)
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
+    }
 
     public function check_expired_bookings()
     {
@@ -623,11 +630,6 @@ class operator extends CI_Controller
         // Mendapatkan ID pelanggan berdasarkan nama
         $id_pelanggan = tampil_pelanggan_bynama($nama);
 
-        // Memeriksa konflik waktu
-        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-            return;
-        }
 
         // Menghitung durasi dan harga ruangan
         $tanggalBooking = new DateTime($start_time);
@@ -644,7 +646,7 @@ class operator extends CI_Controller
 
                 // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
                 $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan' || $tambahan_info['jenis'] === 'Minuman') {
+                if ($tambahan_info && $tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
                     $harga_tambahan *= $jumlah_orang;
                 }
             }
@@ -657,8 +659,6 @@ class operator extends CI_Controller
         $data_peminjaman = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
-            'tanggal_booking' => $start_time,
-            'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah_orang,
             'total_harga' => $harga_keseluruhan,
         ];
@@ -667,7 +667,7 @@ class operator extends CI_Controller
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
 
         // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete_peminjaman_tambahan(array('id_peminjaman' => $this->input->post('id')));
+        $this->m_model->delete(array('peminjaman_tamnbahan','id_peminjaman' => $this->input->post('id')));
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {

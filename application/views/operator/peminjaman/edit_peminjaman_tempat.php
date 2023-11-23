@@ -206,14 +206,14 @@
                 <h1 id="title" class="main-heading">Form Edit Peminjaman</h1>
             </header>
             <?php foreach($peminjaman as $row): $booking = $row->tanggal_booking;
-            $berakhir = $row->tanggal_berakhir;?>
+            $berakhir = $row->tanggal_berakhir; $jumlah=  $row->jumlah_orang;?>
             <form action="<?php echo base_url('operator/aksi_edit_peminjaman')?>" method="post" id="survey-form" class="survey-form">
-            <input type="hidden" name="id" id="nama" class="nama" value="<?php echo $row->id?>">
+            <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id?>">
                 <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                <input type="text" name="nama" id="nama" class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
+                <input type="text" name="nama" id="nama"  required class="nama" value="<?php  echo tampil_nama_penyewa_byid($row->id_pelanggan)?>">
 
                     <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
+                    <input class="no_ruang" autocomplete="off" role="combobox" required list="" id="input1" name="ruang"
                         value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
                     <datalist id="browsers1" role="listbox">
                         <?php foreach ($ruangan as $row): ?>
@@ -225,26 +225,19 @@
                     </datalist>
                     <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas"
-                        value="<?php echo $row->jumlah_orang ?>" required>
+                        value="<?php echo $jumlah?>" required>
 
                     <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
+                    <input required class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
                         placeholder="Pilih Paket">
                     <datalist id="browsers" id="checkbox" role="listbox">
                         <div class="">
                         <?php foreach($tambahan as $row):?>
                         <option style=""><?php echo $row->nama?></option>
-                        <input style="width: 15px;  margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
+                        <input  style="width: 15px;  margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id?>">
                         <?php endforeach?>
                         </div>
                     </datalist>
-
-                    <label for="booking" id="booking-label">Booking Dari Tanggal<span class="required">*</span></label>
-<input type="date" name="booking" id="booking" class="total_booking" value="<?php echo $booking ?>" required>
-
-<label for="akhir_booking" id="akhir_booking-label">Booking Sampai Tanggal<span class="required">*</span></label>
-<input type="date" name="akhir_booking" id="akhir_booking" class="total_booking" value="<?php echo $berakhir ?>" required>
-
                     <input type="submit" id="submit" class="submit" value="Submit">
                 </form>
             <?php endforeach ?>
