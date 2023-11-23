@@ -1017,7 +1017,7 @@
 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a onclick="editPeminjaman(event, '<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>')" href="#" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
+                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
                                                 <span class=""><i class="fas fa-edit"></i></span>
                                             </a>
 
@@ -1128,37 +1128,6 @@
                     .columns.adjust()
                     .responsive.recalc();
             });
-
-            function editPeminjaman(event, url) {
-                event.preventDefault(); // Menghentikan aksi default dari tautan
-
-                Swal.fire({
-                    title: 'Edit Data Peminjaman?',
-                    text: "Anda akan mengedit data peminjaman",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Edit'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Lakukan proses edit data di sini, jika diperlukan
-
-                        // Menampilkan SweetAlert "berhasil mengubah" setelah edit berhasil
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil Mengubah',
-                            showConfirmButton: false,
-                            timer: 1500 // Timer 2.5 detik
-                        }).then(() => {
-                            // Redirect ke halaman edit setelah konfirmasi edit dari SweetAlert
-                            window.location.href = url;
-                        });
-                    }
-                });
-            }
-
 
             function hapus(id) {
                 Swal.fire({

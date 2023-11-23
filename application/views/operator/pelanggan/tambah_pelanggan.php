@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html lang="en">
 
 
@@ -82,8 +82,7 @@
                                    <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
 
                                    <div class="text-center mt-10">
-                                       <input type="submit" id="submit" class="submit" value="Submit">
-                                   </div>
+                                   <button onclick="tambahPelanggan()"><input type="button" id="submit" class="submit" value="Submit"></button>                                   </div>
                                </div>
                            </form>
                        </div>
@@ -94,5 +93,56 @@
            </div>
        </main>
    </body>
+   <script>
+    function tambahPelanggan() {
+    Swal.fire({
+        title: 'Apakah Anda ingin menambah pelanggan?',
+        text: 'Pastikan data sudah benar!',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Ya, tambah!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            redirectToTambahPelanggan();
+        }
+    });
+}
 
+function redirectToTambahPelanggan() {
+    // Tambahkan logika redirect di sini setelah konfirmasi
+    // window.location.href = "<?php echo base_url('operator/data_master_pelanggan') ?>";
+    console.log('Redirect ke data_master_pelanggan setelah konfirmasi');
+}
+
+</script>
+
+<script>
+function displaySweetAlert() {
+    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+    const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+    if (message) {
+        Swal.fire({
+            title: 'Success!',
+            text: message,
+            timer: 1500,
+            icon: 'success',
+            showConfirmButton: false,
+            timerProgressBar: true
+        });
+    } else if (error) {
+        Swal.fire({
+            title: 'Error!',
+            text: error,
+            timer: 1500,
+            icon: 'error',
+            showConfirmButton: false,
+            timerProgressBar: true
+        });
+    }
+}
+   </script>
    </html>
