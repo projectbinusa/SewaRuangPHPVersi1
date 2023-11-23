@@ -124,13 +124,36 @@
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
-            padding: 3px 2rem;
+            padding: 8px 2rem;
             margin: 40px auto 10px auto;
             cursor: pointer;
             transition: all .3s;
         }
 
         .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
             background-color: transparent;
             color: #222;
         }
@@ -306,8 +329,7 @@
                     placeholder="Ketik total hari booking" required>
                     </div>
 
-                <input type="submit" id="submit" class="submit" value="Submit"
-                    style="background-color: #0C356A; height:42px; width: auto;">
+                <input type="submit" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
