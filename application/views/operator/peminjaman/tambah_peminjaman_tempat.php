@@ -240,7 +240,7 @@
             flex-wrap: wrap;
         }
 
-        .fields label{
+        .fields label {
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -277,23 +277,19 @@
                 <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>
             </header>
 
-            <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form"
-                class="survey-form ">
+            <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form" class="survey-form ">
                 <div class="">
                     <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                    <input type="text" name="nama" id="nama" class="nama "
-                        placeholder="Masukkan nama penyewa" required>
+                    <input type="text" name="nama" id="nama" class="nama " placeholder="Masukkan nama penyewa" required>
 
                     <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
-                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas "
-                        placeholder="Ketik kapasitas ruangan" required>
+                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas " placeholder="Ketik kapasitas ruangan" required>
                 </div>
 
                 <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang"
-                    placeholder="Pilih Ruangan">
+                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang" placeholder="Pilih Ruangan">
                 <datalist id="browsers1" role="listbox">
-                    <?php foreach ($ruangan as $row): ?>
+                    <?php foreach ($ruangan as $row) : ?>
                         <option value="<?php echo $row->id ?>">L.
                             <?php echo $row->no_lantai ?> R.
                             <?php echo $row->no_ruang ?>
@@ -303,31 +299,25 @@
 
 
                 <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
-                    placeholder="Pilih Paket">
+                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
 
                 <datalist id="browsers" id="checkbox" role="listbox">
                     <div class="">
-                        <?php foreach ($tambahan as $row): ?>
+                        <?php foreach ($tambahan as $row) : ?>
                             <option>
                                 <?php echo $row->nama ?>
                             </option>
-                            <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox"
-                                name="tambahan[]" value="<?php echo $row->id ?>">
+                            <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id ?>">
                         <?php endforeach ?>
                     </div>
                 </datalist>
 
                 <div class="fields">
-                <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
-                <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                        class="required">*</span></label>
-                <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
-                    placeholder="Ketik total hari booking" required>
-                    </div>
+                    <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span class="required">*</span></label>
+                    <input type="date" name="booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
+                    <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span class="required">*</span></label>
+                    <input type="date" name="akhir_booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
+                </div>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -336,19 +326,19 @@
 
     <!-- script comboboxs no lantai -->
     <script>
-        input.onfocus = function () {
+        input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -360,16 +350,14 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -385,6 +373,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -396,7 +385,7 @@
     <script>
         const checkbox = document.getElementById('checkbox');
 
-        checkbox.addEventListener('change', function () {
+        checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
                 // Checkbox is checked
                 console.log('Checkbox is checked. Selected value: ' + combo.value);
@@ -406,19 +395,19 @@
             }
         });
 
-        input1.onfocus = function () {
+        input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers1.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input1.value = option.value;
                 browsers1.style.display = 'none';
                 input1.style.borderRadius = "5px";
             }
         };
 
-        input1.oninput = function () {
+        input1.oninput = function() {
             currentFocus = -1;
             var text = input1.value.toUpperCase();
             for (let option of browsers1.options) {
@@ -430,16 +419,14 @@
             };
         }
         var currentFocus = -1;
-        input1.onkeydown = function (e) {
+        input1.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers1.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers1.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -455,6 +442,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -465,9 +453,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });

@@ -877,7 +877,7 @@
                 <div class="header-item">
                     <div class="relative">
 
-                        <a href="javascript:void(0);" onclick="tambahItemConfirmation()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_item_tambahan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
@@ -938,7 +938,7 @@
                                             <?php echo $row->jenis ?>
                                         </td>
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                            <a href="javascript:void(0);" onclick="editTambahanConfirmation('<?php echo base_url('operator/edit_tambahan/') . $row->id ?>')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                            <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -997,90 +997,6 @@
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script>
-            function editTambahanConfirmation(url) {
-                Swal.fire({
-                    title: 'Mau Mengedit Item?',
-                    text: 'Anda akan mengedit item tambahan.',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Mengedit Item...',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
-
-                        // Simulasi pengeditan item (gantilah dengan logika sesuai kebutuhan Anda)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Item tambahan berhasil diedit.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Redirect ke halaman edit_tambahan setelah berhasil mengedit item
-                                    window.location.href = url;
-                                }
-                            });
-                        }, 1500); // Simulasi waktu pengeditan item (gantilah dengan waktu sesuai kebutuhan Anda)
-                    }
-                });
-            }
-        </script>
-        <script>
-            function tambahItemConfirmation() {
-                Swal.fire({
-                    title: 'Mau Menambah Item?',
-                    text: 'Anda akan menambah item tambahan.',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Menambah Item...',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
-
-                        // Simulasi penambahan item (gantilah dengan logika sesuai kebutuhan Anda)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Item tambahan ditambahkan.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Redirect ke halaman tambah_item_tambahan setelah berhasil menambah item
-                                    window.location.href = 'tambah_item_tambahan';
-                                }
-                            });
-                        }, 1500); // Simulasi waktu penambahan item (gantilah dengan waktu sesuai kebutuhan Anda)
-                    }
-                });
-            }
-        </script>
         <script>
             function eksporDanArahkan() {
                 Swal.fire({
