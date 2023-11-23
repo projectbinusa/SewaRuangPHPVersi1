@@ -123,7 +123,7 @@ class operator extends CI_Controller
 
         // Validasi harga
         if (empty($harga) || !filter_var($harga, FILTER_VALIDATE_INT)) {
-            $errors[] = 'Harga harus diisi dengan angka (tanpa desimal) dan tidak boleh kosong.';
+            $errors[] = 'Harga harus diisi dengan angka (tanpa ".") dan tidak boleh kosong.';
         } elseif ($harga < 0) {
             $errors[] = 'Harga tidak boleh negatif.';
         }
@@ -694,7 +694,7 @@ class operator extends CI_Controller
         $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
     }
 
-    public function update_report_sewa()
+    public function update_report_sewa($id)
     {
         $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
         $this->load->view('operator/pelanggan/update_report_sewa', $data);
@@ -885,7 +885,6 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
             $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
             $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
             $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
