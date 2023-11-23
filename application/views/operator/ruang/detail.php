@@ -9,7 +9,7 @@
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 </head>
 
-<body class="relative min-h-screen overflow-hidden flex flex-col bg-gray-100">
+<body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
   <main class="contain-all max-h-screen ">
     <!-- Area konten utama -->

@@ -17,27 +17,74 @@
 </head>
 <style>
     .green-bar {
-            background-color: #4F709C;
-            height: 1rem;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-        }
+        background-color: #4F709C;
+        height: 1rem;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .submit {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #f4f4f4;
+        background-color: #4F709C;
+        border: 3px solid #4F709C;
+        border-radius: 1rem;
+        width: 8rem;
+        height: 2.5rem;
+        padding: 8px 2rem;
+        margin: 40px auto 10px auto;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    .submit:hover {
+        background-color: transparent;
+        color: #222;
+    }
+
+    /* Spesifikasi ditingkatkan untuk tombol "submit" */
+    .survey-form .submit {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #f4f4f4;
+        background-color: #4F709C;
+        border: 3px solid #4F709C;
+        border-radius: 1rem;
+        width: 8rem;
+        height: 2.5rem;
+        padding: 8px 2rem;
+        margin: 40px auto 10px auto;
+        cursor: pointer;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .survey-form .submit:hover {
+        background-color: transparent;
+        color: #222;
+    }
 </style>
-<body>
+
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
-    <div class="p-8 w-full md:w-cover flex justify-center items-center m-auto">
-    <div class="max-w-screen-xl w-full mx-auto">
-        <!-- Konten halaman Anda di sini -->
-        <main>
-            <div class="container mx-auto p-auto ml-auto w-10/12">
-                <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
-                <div class="green-bar"></div>
-                    <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
-                </header>
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="p-8 w-full md:w-cover flex justify-center items-center m-auto">
+            <div class="max-w-screen-xl w-full mx-auto">
+                <!-- Konten halaman Anda di sini -->
+                <!-- <main> -->
+                <div class="container mx-auto p-auto ml-auto w-10/12">
+                    <header class="bg-white p-7 rounded-lg shadow-lg mb-8 relative">
+                        <div class="green-bar"></div>
+                        <h1 id="title" class="text-4xl px-7 text-medium text-black-900">Edit Data Ruangan</h1>
+                    </header>
 
                     <form action="<?php echo base_url('operator/aksi_edit_ruangan/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                         <div class="flex flex-wrap">
@@ -71,17 +118,17 @@
                         <input type="hidden" name="id" id="room_id" value="<?php echo $ruangan->id; ?>">
 
                         <div class="text-center mt-10">
-                            <input type="submit" id="submit" style="border-radius: 10px;" class="inline-block font-semibold text-white text-lg py-2 px-8 bg-blue-500 hover:bg-blue-600" value="Ubah">
+                            <input type="submit" id="submit" class="submit" value="Submit">
                             <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                                 <input type="button" id="submitt" style="border-radius: 10px;" class="inline-block font-semibold text-white text-lg py-2 px-8 bg-black hover:bg-black" value="Hapus Gambar" onclick="deleteImage('<?= $ruangan->id ?>')">
                             </form>
                         </div>
                     </form>
                 </div>
-            </main>
+                <!-- </main> -->
+            </div>
         </div>
-    </div>
-
+    </main>
     <script>
         function deleteImage(imageId) {
             // Konfirmasi terlebih dahulu menggunakan SweetAlert2

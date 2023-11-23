@@ -72,7 +72,7 @@
 
 <body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
-  
+
   <main class="contain-all max-h-screen overflow-y-auto">
     <!-- Area konten utama -->
     <div class="flex-1 p-4 w-full">
@@ -92,8 +92,8 @@
                 <i class="fas fa-file-export"></i> Export
               </a>
 
-              <a id="showAddConfirmation" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded" onclick="showAddConfirmation()">
-                <i class="fas fa-plus"></i> Tambah
+              <a href="<?php echo base_url('operator/tambah_ruang')?>" class="ml-auto inline-block px-4 py-2 bg-blue-700 hover:bg-blue-500 text-white font-semibold text-base rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105" onclick="showAddConfirmation()">
+                Tambah
               </a>
             </div>
           </div>
@@ -189,73 +189,46 @@
     </div>
   </main>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const scrollUpBtn = document.getElementById("scrollUpBtn");
-        const scrollDownBtn = document.getElementById("scrollDownBtn");
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const scrollUpBtn = document.getElementById("scrollUpBtn");
+      const scrollDownBtn = document.getElementById("scrollDownBtn");
 
-        window.addEventListener("scroll", function() {
-          // If the scroll position is at the top, hide scrollUpBtn, otherwise, show it
-          scrollUpBtn.style.display = window.scrollY === 0 ? "none" : "block";
+      window.addEventListener("scroll", function() {
+        // If the scroll position is at the top, hide scrollUpBtn, otherwise, show it
+        scrollUpBtn.style.display = window.scrollY === 0 ? "none" : "block";
 
-          // If the user has scrolled to the bottom of the page, hide scrollDownBtn, otherwise, show it
-          scrollDownBtn.style.display =
-            window.innerHeight + window.scrollY >= document.body.scrollHeight ? "none" : "block";
-        });
-
-        scrollUpBtn.addEventListener("click", function() {
-          scrollSmoothly(-5500);
-        });
-
-        scrollDownBtn.addEventListener("click", function() {
-          scrollSmoothly(5500);
-        });
-
-        function scrollSmoothly(offset) {
-          window.scrollBy({
-            top: offset,
-            behavior: "smooth",
-          });
-        }
+        // If the user has scrolled to the bottom of the page, hide scrollDownBtn, otherwise, show it
+        scrollDownBtn.style.display =
+          window.innerHeight + window.scrollY >= document.body.scrollHeight ? "none" : "block";
       });
-    </script>
-    <script>
-      function toggleModal() {
-        document.getElementById('modal').classList.toggle('hidden')
-      }
-    </script>
-    <script>
-      function navigateToDetail(detailUrl) {
-        window.location.href = detailUrl;
-      }
-    </script>
 
-    <script>
-      function showAddConfirmation() {
-        Swal.fire({
-          title: 'Konfirmasi',
-          text: 'Anda yakin ingin menambahkan ruangan?',
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'Ya',
-          cancelButtonText: 'Tidak',
-          customClass: {
-            popup: 'custom-swal-popup',
-            title: 'custom-swal-title',
-            text: 'custom-swal-text',
-            confirmButton: 'custom-swal-confirm-button',
-            cancelButton: 'custom-swal-cancel-button'
-          },
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // Arahkan ke URL untuk menambah ruangan jika dikonfirmasi
-            window.location = 'tambah_ruang';
-          }
+      scrollUpBtn.addEventListener("click", function() {
+        scrollSmoothly(-5500);
+      });
+
+      scrollDownBtn.addEventListener("click", function() {
+        scrollSmoothly(5500);
+      });
+
+      function scrollSmoothly(offset) {
+        window.scrollBy({
+          top: offset,
+          behavior: "smooth",
         });
       }
-    </script>
-
+    });
+  </script>
+  <script>
+    function toggleModal() {
+      document.getElementById('modal').classList.toggle('hidden')
+    }
+  </script>
+  <script>
+    function navigateToDetail(detailUrl) {
+      window.location.href = detailUrl;
+    }
+  </script>
 
 </body>
-
 </html>

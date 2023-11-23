@@ -857,11 +857,11 @@
     </script>
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" class="relative min-h-screen overflow-hidden">
 
     <?php $this->load->view('sidebar'); ?>
-
-    <section id="widget" class="inner-section max-h-screen overflow-x-auto">
+<main class="contain-all max-h-screen overflow-y-auto">
+        <section id="widget" class="inner-section max-h-screen overflow-x-auto">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -998,7 +998,8 @@
                 </div>
             </div>
         </div>
-
+    </div>
+</main>
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
