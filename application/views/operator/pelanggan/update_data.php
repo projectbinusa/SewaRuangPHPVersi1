@@ -11,61 +11,37 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
-    .green-bar {
-        background-color: #4F709C;
-        height: 1rem;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-    }
+      .green-bar {
+           background-color: #4F709C;
+           height: 1rem;
+           width: 100%;
+           position: absolute;
+           top: 0;
+           left: 0;
+           border-top-left-radius: 1rem;
+           border-top-right-radius: 1rem;
+       }
 
-    .submit {
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #f4f4f4;
-        background-color: #4F709C;
-        border: 3px solid #4F709C;
-        border-radius: 1rem;
-        width: 8rem;
-        height: 2.5rem;
-        padding: 8px 2rem;
-        margin: 40px auto 10px auto;
-        cursor: pointer;
-        transition: all .3s;
-    }
+       .submit {
+           font-size: 14px;
+           font-weight: 600;
+           text-transform: uppercase;
+           letter-spacing: 1px;
+           border: 3px solid #4F709C;
+           border-radius: 1rem;
+           width: 8rem;
+           height: 2.5rem;
+           padding: 3px 2rem;
+           margin: 40px auto 10px auto;
+           cursor: pointer;
+           transition: all .3s;
+       }
 
-    .submit:hover {
-        background-color: transparent;
-        color: #222;
-    }
+   
 
-    /* Spesifikasi ditingkatkan untuk tombol "submit" */
-    .survey-form .submit {
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #f4f4f4;
-        background-color: #4F709C;
-        border: 3px solid #4F709C;
-        border-radius: 1rem;
-        width: 8rem;
-        height: 2.5rem;
-        padding: 8px 2rem;
-        margin: 40px auto 10px auto;
-        cursor: pointer;
-        transition: all .3s;
-    }
+   
 
-    .survey-form .submit:hover {
-        background-color: transparent;
-        color: #222;
-    }
+  
 </style>
 
 <body class="bg-gray-100 relative min-h-screen overflow-hidden font-base">
@@ -87,10 +63,10 @@
                             <label for="nama" class="block">Nama</label>
                             <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $row->nama ?>">
 
-                            <label for="phone" class="block">Phone</label>
+                            <label for="phone" class="block">No Telepon</label>
                             <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $row->phone ?>">
 
-                            <label for="payment_method" class="block">Payment Method</label>
+                            <label for="payment_method" class="block">Metode Pembayaran</label>
                             <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $row->payment_method ?>">
 
 
