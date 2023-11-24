@@ -186,7 +186,7 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 38rem;
+            height: 50rem;
         }
 
         @media only screen and (max-width: 800px) {
@@ -195,6 +195,9 @@
                 padding: 1rem 1rem 0px 1rem;
             }
 
+            .contain-all {
+                height: 90rem;
+            }
 
             .heading {
                 padding: 1.3em 9px 1.8rem 9px;
@@ -270,7 +273,7 @@
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main class="contain-all max-h-screen overflow-y-auto">
+    <main class="contain-all h-screen overflow-y-auto">
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>

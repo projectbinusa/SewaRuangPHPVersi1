@@ -206,7 +206,7 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 38rem;
+            height: 70rem;
         }
 
         @media only screen and (max-width: 800px) {
@@ -293,7 +293,7 @@
                         id="edit-form" class="bg-white p-4 rounded-lg shadow-lg text-lg"
                         enctype="multipart/form-data">
                         <input type="button" id="submitt" style="border-radius: 10px;"
-                            class="hapus_gambar font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem  width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s"
+                            class="hapus_gambar font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem  width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s mr"
                             value="Hapus Foto" onclick="deleteImage('<?= $ruangan->id ?>')">
                     </form>
                 </div>

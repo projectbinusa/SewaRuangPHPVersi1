@@ -194,7 +194,7 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 38rem;
+            height: 70rem;
         }
 
         @media only screen and (max-width: 800px) {

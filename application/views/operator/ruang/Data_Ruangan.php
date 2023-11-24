@@ -90,7 +90,7 @@
         <?php endif; ?>
 
         <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white flex items-center gap-3">
-          Cari<i class="fas fa-search text-lg mt-2"></i>
+          <span class="hidden md:inline">Cari <i class="fas fa-search text-lg mt-2"></i></span>
           <div class="ml-auto">
             <div class="items-center justify-between w-full mb-4">
               <button class="btn-export-p inline-block px-4 py-2 bg-yellow-500 hover:bg-yellow-800 text-white font-semibold text-base rounded ml-auto" onclick="toggleModal()">
@@ -104,7 +104,7 @@
                 <i class="fas fa-file-export"></i> Export
               </a>
 
-              <a id="showAddConfirmation" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded" onclick="showAddConfirmation()">
+              <a href="<?php echo base_url('operator/tambah_ruang') ?>" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded">
                 <i class="fas fa-plus"></i> Tambah
               </a>
             </div>
@@ -146,8 +146,8 @@
                     <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
                       <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                       <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
-                      <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
-                      <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
+                      <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
+                      <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
                       <!-- <i class="fas fa-trash"></i> -->
                   </a>
                 </div>
@@ -256,28 +256,7 @@
       window.location.href = detailUrl;
     }
 
-    function showAddConfirmation() {
-      Swal.fire({
-        title: 'Konfirmasi',
-        text: 'Anda yakin ingin menambahkan ruangan?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-        customClass: {
-          popup: 'custom-swal-popup',
-          title: 'custom-swal-title',
-          text: 'custom-swal-text',
-          confirmButton: 'custom-swal-confirm-button',
-          cancelButton: 'custom-swal-cancel-button'
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Arahkan ke URL untuk menambah ruangan jika dikonfirmasi
-          window.location = 'tambah_ruang';
-        }
-      });
-    }
+   
   </script>
 
 </body>
