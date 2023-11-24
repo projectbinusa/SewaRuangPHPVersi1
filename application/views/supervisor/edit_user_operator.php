@@ -186,7 +186,8 @@
             </header>
             <?php foreach($operator as $row):?>
             <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
+            class="survey-form">
+            <input value="<?php echo $row->id?>" type="hidden" name="id" id="username" class="username" placeholder="Masukkan nama anda">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
                 <input value="<?php echo $row->username?>" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
                     required>
@@ -197,7 +198,7 @@
                 <label for="password" id="password-label">Password<span class="required">*</span></label>
                 <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                 <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
-                    required>
+                   >
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
