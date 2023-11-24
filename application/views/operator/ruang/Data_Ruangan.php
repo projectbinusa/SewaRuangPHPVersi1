@@ -141,28 +141,30 @@
             <?php $count = 0; ?>
             <?php foreach ($ruang as $row) : ?>
               <?php if ($count < 6) : ?>
-                <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto" onclick="navigateToDetail('<?php echo base_url('operator/detail/' . $row->id); ?>')">
-                  <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                    <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                    <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
-                    <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
-                  </div>
+                <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                  <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                    <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                      <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                      <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
+                      <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
+                      <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
+                      <!-- <i class="fas fa-trash"></i> -->
+                  </a>
                 </div>
-              <?php endif; ?>
-              <?php $count++; ?>
-            <?php endforeach; ?>
-          </div>
-
-          <?php if ($count > 6) : ?>
-            <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
-          <?php endif; ?>
-
-        <?php else : ?>
-          <div class="col-lg-4 col-md-6 mx-auto">
-            <p class="text-center text-gray-600">No data available in table </p>
+                </a>
           </div>
         <?php endif; ?>
+        <?php $count++; ?>
+      <?php endforeach; ?>
       </div>
+      <?php if ($count > 6) : ?>
+        <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+      <?php endif; ?>
+    <?php else : ?>
+      <div class="col-lg-4 col-md-6 mx-auto">
+        <p class="text-center text-gray-600">No data available in table </p>
+      </div>
+    <?php endif; ?>
     </div>
     </div>
 
@@ -192,6 +194,31 @@
   </main>
 
   <script>
+    function hapus(id) {
+      Swal.fire({
+        title: ' Apa Mau Menghapus?',
+        text: "data ini tidak bisa dikembalikan lagi!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Hapus'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Menghapus',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(function() {
+            window.location.href = "<?php echo base_url('operator/hapus_data_ruangan/') ?>" + id;
+          });
+        }
+      });
+    }
+  </script>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
       const scrollDownBtn = document.getElementById("scrollDownBtn");
@@ -220,19 +247,15 @@
         });
       }
     });
-  </script>
-  <script>
+
     function toggleModal() {
       document.getElementById('modal').classList.toggle('hidden')
     }
-  </script>
-  <script>
+
     function navigateToDetail(detailUrl) {
       window.location.href = detailUrl;
     }
-  </script>
 
-  <script>
     function showAddConfirmation() {
       Swal.fire({
         title: 'Konfirmasi',
@@ -256,7 +279,6 @@
       });
     }
   </script>
-
 
 </body>
 
