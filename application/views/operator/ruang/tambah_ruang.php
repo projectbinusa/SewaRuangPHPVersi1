@@ -126,42 +126,79 @@
                 e.preventDefault();
 
                 if (e.submitter.id === "submit") {
-                    document.getElementById("submit").disabled = true;
+                    // Display SweetAlert confirmation before submitting
+                    Swal.fire({
+                        title: 'Konfirmasi',
+                        text: 'Apakah Anda yakin ingin menyimpan data?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Batal'
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            // If user clicks "Ya", proceed with AJAX submission
+                            document.getElementById("submit").disabled = true;
 
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo base_url('operator/aksi_tambah_ruangan') ?>",
-                        data: new FormData(this),
-                        contentType: false,
-                        processData: false,
-                        dataType: "json",
-                        success: function(response) {
-                            if (response.status === 'success') {
-                                Swal.fire({
-                                    title: 'Berhasil',
-                                    text: response.message,
-                                    icon: 'success'
-                                }).then(function() {
-                                    Swal.fire({
-                                        title: 'Mengalihkan...',
-                                        timer: 1500,
-                                        icon: 'success',
-                                        showConfirmButton: false
-                                    }).then(function() {
-                                        window.location.href = response.redirect;
-                                    });
-                                });
-                            } else {
-                                Swal.fire({
-                                    title: 'Gagal',
-                                    text: response.message,
-                                    icon: 'error'
-                                });
+                            $.ajax({
+                                type: "POST",
+                                url: "<?php echo base_url('operator/aksi_tambah_ruangan') ?>",
+                                data: new FormData(form),
+                                contentType: false,
+                                processData: false,
+                                dataType: "json",
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        // Show success SweetAlert and then redirect
+                                        Swal.fire({
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                            icon: 'success',
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        }).then(function() {
+                                            window.location.href = response.redirect;
+                                        });
+                                    } else {
+                                        // Display error messages
+                                        if (response.errors) {
+                                            response.errors.forEach(function(error) {
+                                                Swal.fire({
+                                                    title: 'Gagal',
+                                                    text: error,
+                                                    icon: 'error',
+                                                    showConfirmButton: false,
+                                                    timer: 2000
+                                                });
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                title: 'Gagal',
+                                                text: response.message,
+                                                icon: 'error',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            });
+                                        }
 
-                                document.getElementById("submit").disabled = false;
-                            }
+                                        // Use setTimeout to wait for the error message to be visible
+                                        setTimeout(function() {
+                                            document.getElementById("submit").disabled = false;
+                                        }, 2000); // Adjust the duration as needed
+                                    }
+                                }
+                            });
                         }
                     });
+                } else if (e.submitter.id === "cancel") {
+                    // Handle the "Batal" button click event here
+                    Swal.fire({
+                        title: 'Aksi dibatalkan',
+                        text: 'Anda membatalkan aksi penyimpanan data.',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    // Optionally, you can redirect or perform other actions when canceling
                 }
             });
         });
