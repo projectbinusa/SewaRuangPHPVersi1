@@ -81,20 +81,20 @@ class Auth extends CI_Controller {
             $this->session->set_userdata($data);
 
             if ($result['role'] == 'supervisor') {
-                $this->session->set_flashdata('success', 'Anda berhasil login','required');
+                $this->session->set_flashdata('login_supervisor', 'Anda berhasil login');
                 redirect(base_url() . "supervisor");
             } elseif ($result['role'] == 'operator') {
-                $this->session->set_flashdata('berhasil', 'Anda berhasil login','required');
+                $this->session->set_flashdata('login_operator', 'Anda berhasil login');
                 redirect(base_url() . 'operator');
             }
         } else {
             // Password salah
-            $this->session->set_flashdata('error', 'Password salah','required');
+            $this->session->set_flashdata('error', 'Password salah');
             redirect(base_url());
         }
     } else {
         // Email salah
-        $this->session->set_flashdata('error', 'Email salah','required');
+        $this->session->set_flashdata('error', 'Email salah');
         redirect(base_url());
     }
 }
