@@ -818,7 +818,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -847,6 +848,11 @@
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 70rem;
+        }
     </style>
     <!-- script modal -->
     <script>
@@ -859,7 +865,7 @@
 <body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
   
-  <main class="contain-all max-h-screen overflow-y-auto">
+  <main class="contain-all h-screen">
     <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">

@@ -16,7 +16,7 @@
     <div class="min-h-screen flex mt-20 justify-center items-start md:mx-16 lg:mx-16">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 gap-4 max-w-screen-xl mx-auto">
         <?php foreach ($ruang as $row) : ?>
-          <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-blue-700 w-full">
+          <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 w-full">
             <div class="w-full">
               <?php if (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) : ?>
                 <img class="object-cover w-full h-48 md:h-64 lg:h-72 xl:h-80" src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="Room Image">

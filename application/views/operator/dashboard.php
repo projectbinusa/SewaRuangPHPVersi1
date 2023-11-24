@@ -1699,9 +1699,9 @@
                                 </div>
                                 <p>Master Ruang</p>
                             </a>
-                            <!-- <div class="card-footer">
+                            <div class="card-footer">
                                 <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
-                            </div> -->
+                            </div>
                         </div>
 
 
@@ -1715,9 +1715,9 @@
                                 <p>Master Pelanggan
                                 </p>
                             </a>
-                            <!-- <div class="card-footer">
+                            <div class="card-footer">
                                 <a href="<?php echo base_url("operator/data_master_pelanggane") ?>">Klik disini</a>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="card">
                             <a href="<?php echo base_url("operator/tambahan") ?>" class="card-body text-center">
@@ -1729,9 +1729,9 @@
                                 <p>Item Tambahan
                                 </p>
                             </a>
-                            <!-- <div class="card-footer">
+                            <div class="card-footer">
                                 <a href="<?php echo base_url("operator/tambahan") ?>">Klik disini</a>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="card">
                             <a href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
@@ -1743,9 +1743,9 @@
                                 <p>Report Sewa
                                 </p>
                             </a>
-                            <!-- <div class="card-footer">
+                            <div class="card-footer">
                                 <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
-                            </div> -->
+                            </div>
                         </div>
 
                     </div>
