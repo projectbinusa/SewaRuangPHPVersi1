@@ -1297,6 +1297,50 @@ class operator extends CI_Controller
         // Outputkan file Excel ke browser
         $writer->save('php://output');
     }
+    public function template_pelanggan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'PEMBAYARAN', ];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE_DATA_PELANGGAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
     public function import_tambahan()
     {
         require 'vendor/autoload.php';

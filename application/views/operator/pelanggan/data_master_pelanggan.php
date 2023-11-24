@@ -1024,7 +1024,7 @@
                         <button onclick="importpelanggan()" type="submit"
                             class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                         <button type="button"
-                            class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                            class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
                             Download Template</button>
                     </div>
                     </form>
@@ -1108,6 +1108,30 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Data berhasil diexport',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
+        function template() {
+            Swal.fire({
+                title: 'Download Template Data Pelanggan?',
+                text: "Anda akan mengdownload template data pelanggan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Download'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil didownload',
                         showConfirmButton: false,
                         timer: 2500,
                     });
