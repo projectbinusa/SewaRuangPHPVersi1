@@ -256,7 +256,7 @@
                     // Display SweetAlert confirmation before submitting
                     Swal.fire({
                         title: 'Konfirmasi',
-                        text: 'Apakah Anda yakin ingin menyimpan data?',
+                        text: 'Apakah Anda yakin ingin menambah data?',
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonText: 'Ya',
