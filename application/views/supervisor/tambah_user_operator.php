@@ -9,6 +9,8 @@
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -18,16 +20,14 @@
             box-sizing: border-box;
         }
 
-
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
         }
 
-        .container-tambah-user {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
             margin: 1rem auto;
@@ -98,6 +98,7 @@
             line-height: 1px;
         }
 
+
         .username,
         .email,
         .password {
@@ -129,7 +130,41 @@
             color: #222;
         }
 
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
 
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* style comboboxs */
+        input {
+            padding: 5px;
+            height: 35px;
+            border-bottom: 1px solid;
+            outline: none;
+        }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 38rem;
+        }
 
         .form-group {
             position: relative;
@@ -137,19 +172,21 @@
 
         .password-toggle {
             position: absolute;
-            top: 82%;
+            top: 80%;
+            right: 12.7rem;
             transform: translateY(-50%);
-            right: 12.9rem;
             cursor: pointer;
+            color: #555;
         }
 
         @media only screen and (max-width: 800px) {
+
             .password-toggle {
-                top: 57.7rem;
+                top: 74%;
                 right: 3rem;
             }
 
-            .container-tambah-user {
+            .container {
                 padding: 1rem 1rem 0px 1rem;
             }
 
@@ -172,45 +209,15 @@
             label {
                 font-size: 16px;
             }
-
-            .contain-all {
-                overflow-y: scroll;
-                height: auto;
-            }
         }
-
-        .inputContainer {
-            position: relative;
-        }
-
-        .password-input-container {
-            position: relative;
-        }
-
-        .password-toggle-login {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #555;
-            /* Adjust the color as needed */
-        }
-
-        .custom-hr {
-        height: 1px;
-        background-color: #555; /* Adjust the color as needed */
-        border: none;
-        margin: 10px 0; /* Adjust the margin as needed */
-    }
     </style>
 </head>
 
-<body class="relative min-h-screen overflow-hidden">
+<body class="relative h-screen overflow-hidden">
     <?php $this->load->view('sidebars'); ?>
 
-    <main class="contain-all max-h-screen overflow-y-auto">
-        <div class="container-tambah-user">
+    <main class="contain-all h-screen overflow-y-auto">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Tambah Operator</h1>
@@ -229,19 +236,17 @@
                     </label>
                     <div class="password-input-container">
                         <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
-                        <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
+                        <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                     </div>
                     <hr class="custom-hr">
                 </div>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
         </div>
     </main>
-</body>
-<script>
+
+    <script>
     function togglePassword() {
         var passwordInput = document.getElementById("password");
         var passwordToggle = document.querySelector(".password-toggle-login");
@@ -257,5 +262,6 @@
         }
     }
 </script>
+</body>
 
 </html>

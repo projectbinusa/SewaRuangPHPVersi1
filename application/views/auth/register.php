@@ -93,6 +93,12 @@
             margin-top: 5px;
             margin-bottom: 40px;
         }
+        .validasiPassword {
+            font-size: 14px;
+            color: red;
+            margin-top: 5px;
+            margin-bottom: 40px;
+        }
 
         .LoginPageInnerContainer .LoginFormContainer .inputContainer {
             color: #3f3f45;
@@ -270,7 +276,7 @@
                             </div>
                         </div>
 
-                        <p class="subHeader">*Minimal 8 karakter dengan kombinasi huruf kecil, huruf besar, dan angka</p>
+                        <p class="validasiPassword">*Minimal 8 karakter dengan kombinasi huruf kecil, huruf besar, dan angka</p>
 
                         <button name="submit" type="submit" class="LoginButton">Register</button>
 
