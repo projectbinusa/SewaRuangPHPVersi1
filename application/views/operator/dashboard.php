@@ -2114,6 +2114,7 @@
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
         $(document).ready(function() {
@@ -2141,12 +2142,26 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
-    </script>
 
+        // Sweetalert Login
+        function displaySweetAlert() {
+    const login_operator = "<?php echo $this->session->flashdata('login_operator'); ?>";
 
+    if (login_operator) {
+        Swal.fire({
+            title: 'Login Berhasil',
+            text: login_operator,
+            icon: 'success',
+            showConfirmButton: false, // Untuk menghilangkan tombol OK
+            timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+        });
+    }
+}
+
+window.onload = displaySweetAlert;
+
+</script>
 
 
 </body>
-
-
 </html>

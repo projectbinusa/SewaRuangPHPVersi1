@@ -1051,7 +1051,7 @@
 
                 function hapus(id) {
                     Swal.fire({
-                        title: ' Apa Mau Menghapus?',
+                        title: 'Apakah Mau Menghapus?',
                         text: "data ini tidak bisa dikembalikan lagi!",
                         icon: 'warning',
                         showCancelButton: true,
@@ -1072,24 +1072,6 @@
                         }
                     });
                 }
-            </script>
-            <!-- jQuery -->
-            <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-            <!--Datatables -->
-            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    var table = $('#example').DataTable({
-                        responsive: true
-                    }).columns.adjust().responsive.recalc();
-                });
-            </script>
-
-            <!-- SweetAlert -->
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-            <script>
         function ExportPelanggan() {
             Swal.fire({
                 title: 'Export Data Pelanggan?',
@@ -1107,7 +1089,7 @@
                     
                     Swal.fire({
                         icon: 'success',
-                        title: 'Data berhasil diexport',
+                        title: 'Data pelanggan berhasil diexport',
                         showConfirmButton: false,
                         timer: 2500,
                     });
@@ -1155,7 +1137,7 @@
             
             Swal.fire({
                 icon: 'success',
-                title: 'Data Pelanggan berhasil diimpor',
+                title: 'Data pelanggan berhasil diimpor',
                 showConfirmButton: false, // Menghilangkan tombol "OK"
                 timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
             });
@@ -1194,7 +1176,7 @@
 
                     if (message) {
                         Swal.fire({
-                            title: 'Success!',
+                            title: 'Berhasil Mengubah Data',
                             text: message,
                             timer: 2500,
                             icon: 'success',
