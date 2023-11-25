@@ -83,6 +83,12 @@
             margin-top: 5px;
             margin-bottom: 40px;
         }
+        .subArteris {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 40px;
+        }
 
         .LoginPageInnerContainer .LoginFormContainer .inputContainer {
             color: #3f3f45;
@@ -271,6 +277,8 @@
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
                         </div>
+
+                        <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf, angka, dan simbol</p>
                         <button name="submit" type="submit" class="LoginButton">Register</button>
 
                     </form>
