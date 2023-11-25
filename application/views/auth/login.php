@@ -250,7 +250,8 @@
                             <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
+                            <label class="label" for="emailAddress">
+                                <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
                             <div class="password-input-container">
                                 <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
@@ -282,27 +283,7 @@
             }
         });
     <?php endif; ?>
-
-    <?php if ($this->session->flashdata('success')): ?>
-        // Tampilkan SweetAlert jika login berhasil
-        Swal.fire({
-            icon: 'success',
-            title: 'Registrasi Berhasil',
-            text: '<?= $this->session->flashdata('success'); ?>',
-            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (3.5 detik)
-            showConfirmButton: false, // Menghilangkan tombol "OK"
-            timerProgressBar: true // Menampilkan progress bar
-        }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.timer) {
-                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
-            }
-        });
-    <?php endif; ?>
 </script>
-
-
-
-
 <script type="text/javascript">
     function togglePassword() {
         var passwordField = document.getElementById('password');

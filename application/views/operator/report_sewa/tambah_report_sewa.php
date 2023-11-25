@@ -797,13 +797,13 @@
         margin-left: 9px;
     }
 
-    /Row Hover/
+    /* /Row Hover/ */
     table.dataTable.hover tbody tr:hover,
     table.dataTable.display tbody tr:hover {
         background-color: #ebf4ff;
     }
 
-    /Pagination Buttons/
+    /* /Pagination Buttons/ */
     .dataTables_wrapper .dataTables_paginate .paginate_button {
         font-weight: 400;
         border-radius: .25rem;
@@ -967,13 +967,13 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
+        /* /Row Hover/ */
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
+        /* /Pagination Buttons/ */
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -1062,6 +1062,51 @@
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
+        }
+
+        .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 3px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 3px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
         }
     </style>
 </head>

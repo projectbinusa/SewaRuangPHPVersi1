@@ -119,21 +119,37 @@ class Supervisor extends CI_Controller
     }
     public function aksi_update_user_operator()
     {
-        $password_baru = $this->input->post('password_baru');
+        $password_baru = $this->input->post('password');
         $email = $this->input->post('email');
         $username = $this->input->post('username');
         $data = [
             'email' => $email,
             'username' => $username,
         ];
+    
         $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
-        $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
-        if (!empty($password_baru) && $this->form_validation->run() === TRUE) {
-            $data['password'] = md5($password_baru);
+    
+        // Pengecekan password baru dan validasi form
+        if (!empty($password_baru)) {
+            $this->form_validation->set_rules('password_baru', 'Password Baru', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
+    
+            if ($this->form_validation->run() === TRUE) {
+                // Ganti password hanya jika password baru tidak kosong dan validasi berhasil
+                $data['password'] = password_hash($password_baru, PASSWORD_DEFAULT);
+            } else {
+                // Validasi form gagal
+                // Handle kesalahan, misalnya tampilkan pesan kesalahan
+                echo "<script>alert('Validasi form gagal. Silakan periksa input Anda.'); window.location.href = '" . base_url('supervisor/data_operator') . "';</script>";
+                return;
+            }
         }
+    
+        // Perbarui data di tabel user
         $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
+    
+        // Redirect ke halaman data_operator setelah berhasil
         redirect(base_url('supervisor/data_operator'));
-    }
+    }    
     public function edit_laporan_penyewa()
     {
         $this->load->view('supervisor/edit_laporan_penyewa');

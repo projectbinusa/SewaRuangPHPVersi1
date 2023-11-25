@@ -46,8 +46,9 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 16px; */
             background-color: #f1f1f1;
+            min-height: screen;
+            position: relative;
         }
 
         @media (min-width: 1200px) {
@@ -62,7 +63,7 @@
             }
         }
 
-
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -240,7 +241,7 @@
             opacity: 1;
         }
 
-
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -519,7 +520,7 @@
             margin-left: 12px;
         }
 
-
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -724,7 +725,7 @@
             cursor: pointer;
         }
 
-
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -759,30 +760,9 @@
             }
         }
 
-
-        @media only screen and (max-width: 575px) {
-            .navbar-area .nav-container {
-                margin: 0px 0px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 10px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
-                padding: 15px 20px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
-                padding: 15px 20px;
-            }
-
-            .search-popup .search-form {
-                min-width: 350px;
-            }
-        }
-
-
+       
+       
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -802,20 +782,22 @@
             margin-left: 9px;
         }
 
-        /Row Hover/ table.dataTable.hover tbody tr:hover,
+        /Row Hover/
+        table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 900;
+        /Pagination Buttons/
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
             height: 37px;
             padding-top: 5px;
         }
 
-
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -836,7 +818,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -847,50 +830,26 @@
         }
 
         /* code responsive table */
-        @media only screen and (max-width: 800px) {
-
-            .container {
-                padding: 1rem 1rem 0px 1rem;
-            }
-
-
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
-
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
-
-            }
-
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
-
-            label {
-                font-size: 16px;
+        @media (max-width: 600px) {
+            table {
+                width: 4.5rem;
             }
         }
 
-
-        #checkboxCombo {
-            position: relative;
-            display: inline-block;
+        .inner-section {
+            padding: 4%;
         }
 
-        #checkboxCombo select {
-            width: 200px;
-            padding: 5px;
-        }
+        table {
+                width: 12rem;
+            }
 
-        #checkboxCombo input[type="checkbox"] {
-            position: absolute;
-            top: 0;
-            right: 0;
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
         }
     </style>
+ 
 
     <script>
         function toggleModal() {
@@ -930,10 +889,9 @@
                                 Tambah
                             </a>
 
-<<<<<<< HEAD
-                            <a href="expor_pelanggan" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
+                            <button onclick="ExportPelanggan()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
                                 <i class="fas fa-file-export"></i> Export
-                            </a>
+                            </button>
 
 
                             <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
@@ -946,19 +904,6 @@
 
 
 
-=======
-                            <a onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right relative z-50" >
-              <i class="fas fa-file-export"></i> Export
-            </a>
-                         
-            
-            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
-                           <span class="pe-2">
-                          <i class="fas fa-file-import"></i>
-                           </span>
-                           Import
-                           </button>
->>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
 
 
 
@@ -973,10 +918,10 @@
                                         </th>
 
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Phone
+                                            No Telepon
                                         </th>
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Payment Method
+                                            Metode Pembayaran
                                         </th>
 
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
@@ -1019,7 +964,6 @@
 
 
             </div>
-<<<<<<< HEAD
         </section>
         <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
         <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -1043,7 +987,7 @@
 
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
                             onclick="toggleModal()"> Batal</button>
-                        <button type="submit"
+                        <button onclick="importpelanggan()" type="submit"
                             class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                         <button type="button"
                             class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
@@ -1052,12 +996,6 @@
                     </form>
                 </div>
             </div>
-=======
-            <div class="bg-gray-200 px-4 py-3 text-right">
-              <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button onclick="importData()" type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>            </div>
-          </form>
->>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
         </div>
         
         
@@ -1070,183 +1008,11 @@
             <script>
                 $(document).ready(function() {
 
-<<<<<<< HEAD
                     var table = $('#example_data').DataTable({
                             responsive: true
                         })
                         .columns.adjust()
                         .responsive.recalc();
-=======
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        function hapus(id) {
-            Swal.fire({
-                title: ' Apa Mau Menghapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menghapus',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
-                    });
-                }
-            });
-        }
-    </script>
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var table = $('#example').DataTable({
-                responsive: true
-            }).columns.adjust().responsive.recalc();
-        });
-    </script>
-
-    <!-- SweetAlert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <script>
-         function importData() {
-            Swal.fire({
-                title: 'Import Data?',
-                text: "Anda akan mengimport data",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Import'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses impor data di sini
-                    // Contoh:
-                    window.location.href = "<?php echo base_url('operator/data_master_pelanggan') ?>";
-                    
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data berhasil diimport',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    });
-                }
-            });
-        }
-        function exportData() {
-            Swal.fire({
-                title: 'Export Data?',
-                text: "Anda akan mengexport data",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Export'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    // Contoh:
-                    window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
-                    
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data berhasil diexport',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    });
-                }
-            });
-        }
-        function update(id) {
-            Swal.fire({
-                title: 'Ingin Mengubah Data Pelanggan',
-                text: " ",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya Ubah'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'Waitt',
-                        title: 'Loading ... ',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/update_data/') ?>" + id;
-                    });
-                }
-            });
-        }
-
-        function hapus(id) {
-            Swal.fire({
-                title: ' Yakin Ingin Menghapus?',
-                text: "data tidak dikembalikan!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menghapus',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
-                    });
-                }
-            });
-        }
-
-        function displaySweetAlert() {
-            const message = "<?php echo $this->session->flashdata('sukses'); ?>";
-            const error = "<?php echo $this->session->flashdata('error'); ?>";
-
-            if (message) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: message,
-                    icon: 'success',
-                    confirmButtonText: 'OK'
->>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
                 });
 
                 function hapus(id) {
@@ -1267,7 +1033,7 @@
                                 showConfirmButton: false,
                                 timer: 1500,
                             }).then(function() {
-                                window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
+                                window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
                             });
                         }
                     });
@@ -1290,10 +1056,59 @@
             <!-- SweetAlert -->
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
             <script>
+        function ExportPelanggan() {
+            Swal.fire({
+                title: 'Export Data Pelanggan?',
+                text: "Anda akan mengexport data pelanggan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Export'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil diexport',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
+        function importpelanggan() {
+    Swal.fire({
+        title: 'Import Data Pelanggan?',
+        text: "Anda akan mengimpor data pelanggan",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Import'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Lakukan proses impor data pelanggan di sini
+            window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Data Pelanggan berhasil diimpor',
+                showConfirmButton: false, // Menghilangkan tombol "OK"
+                timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
+            });
+        }
+    });
+}
+
                 function update(id) {
                     Swal.fire({
                         title: 'Ingin Mengubah Data Pelanggan',
-                        text: " ",
+                        text: "Data akan diubah",
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -1306,37 +1121,14 @@
                                 icon: 'Waitt',
                                 title: 'Loading ... ',
                                 showConfirmButton: false,
-                                timer: 1500,
+                                timer: 2500,
                             }).then(function() {
-                                window.location.href = "<?php echo base_url('operator/update_data/') ?>" + id;
+                                window.location.href = "" + id;
                             });
                         }
                     });
                 }
-
-                function hapus(id) {
-                    Swal.fire({
-                        title: ' Yakin Ingin Menghapus?',
-                        text: "data tidak dikembalikan!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        cancelButtonText: 'Batal',
-                        confirmButtonText: 'Hapus'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil Menghapus',
-                                showConfirmButton: false,
-                                timer: 1500,
-                            }).then(function() {
-                                window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
-                            });
-                        }
-                    });
-                }
+                
 
                 function displaySweetAlert() {
                     const message = "<?php echo $this->session->flashdata('sukses'); ?>";
@@ -1346,15 +1138,19 @@
                         Swal.fire({
                             title: 'Success!',
                             text: message,
+                            timer: 2500,
                             icon: 'success',
-                            confirmButtonText: 'OK'
+                            showConfirmButton: false,                            
+                            timerProgressBar: true
                         });
                     } else if (error) {
                         Swal.fire({
                             title: 'Error!',
                             text: error,
+                            timer: 2500,
                             icon: 'error',
-                            confirmButtonText: 'OK'
+                            showConfirmButton: false,                            
+                            timerProgressBar: true
                         });
                     }
                 }

@@ -7,18 +7,24 @@
   <title>Sewa Ruang</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
 </head>
-<body class="bg-white font-base ">
 
-<div id="app" class="flex flex-col md:flex-row w-full overflow-y-auto">
-    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen" x-data="{ isOpen: true }" :class="{ 'hidden': !isOpen }">
-      <div class="flex items-center justify-between p-4 h-16">
+<body class="bg-white min-h-screen font-base">
+  <div id="app" class="flex flex-col md:flex-row w-full">
+    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: true }">
+      <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
-          <img src="<?php echo base_url('image/logo.png') ?>" class="mt-1" style="width: 70%;">
+          <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2" style="width: 70%;">
+          <!-- <span class="text-gray-300 text-xl font-medium mx-2"></span> -->
         </div>
         <div class="flex md:hidden">
-          <button @click="isOpen = !isOpen" class="text-gray-300">
+          <button type="button" @click="isOpen = !isOpen" class="text-gray-300 hover:text-gray-500 focus:outline-none focus:text-gray-500">
             <svg class="fill-current w-8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -27,6 +33,7 @@
       </div>
       <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }">
         <ul>
+          <!-- Your existing sidebar content here -->
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 hover:text-black">
             <a href="<?php echo base_url('operator') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white "></i>
@@ -62,26 +69,22 @@
               <i class="fas fa-qrcode text-white"></i>
               <span class="mx-2 text-white font-semibold">Menu Tambahan</span>
             </a>
-          </li>
+          </li> 
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+          <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center">
+          <i class="fa-solid fa-right-from-bracket text-white"></i>
+          <span class="text-white font-semibold mx-2">Keluar</span>
+            </a>
+          </li> 
         </ul>
-
-      </div>
+     </div>
     </aside>
-
     <!-- Main Content -->
-    <div class="w-full md:flex-1 overflow-y-auto">
-  <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
-    <ul class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
-      <ul>
-        <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center ml-auto ">
-          <i class="fa-solid fa-right-from-bracket text-white hover:text-bg-black"></i>
-          <span class="mx-2 text-white  hover:text-bg-black font-semibold">Keluar</span>
-        </a>
-      </ul>
-    </ul>
-  </nav>
-
-  <script>
+    <div class="w-full md:flex-1">
+      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
+      
+      </nav>
+      <script>
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
           type: 'doughnut',
@@ -128,7 +131,6 @@
           sideNav.classList.toggle('hidden'); // Agrega o quita la clase 'hidden' para mostrar u ocultar la navegación lateral
         });
       </script>
-
 </body>
 
 </html>

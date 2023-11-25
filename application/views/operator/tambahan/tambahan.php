@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    
+
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -64,7 +63,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -242,7 +241,7 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -521,7 +520,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -726,7 +725,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -761,9 +760,9 @@
             }
         }
 
-       
-       
-       
+
+
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -798,7 +797,7 @@
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -819,7 +818,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -841,28 +841,32 @@
         }
 
         table {
-                width: 12rem;
-            }
+            width: 12rem;
+        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 70rem;
+        }
     </style>
     <!-- script modal -->
     <script>
-      function toggleModal() {
-        document.getElementById('modal').classList.toggle('hidden')
-      }
+        function toggleModal() {
+            document.getElementById('modal').classList.toggle('hidden')
+        }
     </script>
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-    <?php $this->load->view('sidebar'); ?>
-
-    <section id="widget" class="inner-section max-h-screen overflow-x-auto">
-        <div class="container">
+<body class="relative min-h-screen overflow-hidden">
+  <?php $this->load->view('sidebar'); ?>
+  
+  <main class="contain-all h-screen">
+    <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
@@ -873,81 +877,78 @@
             </div>
         </div>
         <div class="container-table row justify-content-center">
-            
+
             <div class="col-lg-12">
                 <div class="header-item">
                     <div class="relative">
-                        
-                        <a href="tambah_item_tambahan" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
-                                <span class="pe-2">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                Tambah
-                            </a>
-                            <a href="expor_tambahan" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
-              <i class="fas fa-file-export"></i> Export
-            </a>
-                   <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
-                           <span class="pe-2">
-                          <i class="fas fa-file-import"></i>
-                           </span>
-                           Import
-                           </button>
-                            <table id="example_data"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            No
-                                        </th>
-                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                            Nama Item
-                                        </th>
 
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Harga
-                                        </th>
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Deskripsi
-                                        </th>
-                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Jenis
-                                        </th>
-                                       
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            Aksi
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <?php $no=0; foreach($tambahan as $row): $no++?>
+                        <a href="tambah_item_tambahan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                            <span class="pe-2">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            Tambah
+                        </a>
+
+                        <a href="javascript:void(0);" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
+                            <i class="fas fa-file-export"></i> Ekspor
+                        </a>
+                        <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+                            <span class="pe-2">
+                                <i class="fas fa-file-import"></i>
+                            </span>
+                            Import
+                        </button>
+                        <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                        No
+                                    </th>
+                                    <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                        Nama Item
+                                    </th>
+
+                                    <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                        Harga
+                                    </th>
+                                    <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                        Deskripsi
+                                    </th>
+                                    <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                        Jenis
+                                    </th>
+
+                                    <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 0;
+                                foreach ($tambahan as $row) : $no++ ?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no?>
+                                        <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <?php echo $no ?>
                                         </td>
                                         <td data-cell="Nama " class="text-center w-32 px-3 py-4">
-                                            <?php echo $row->nama?>
+                                            <?php echo $row->nama ?>
                                         </td>
                                         <td data-cell="Harga " class="text-center w-32 px-3 py-4">
-                                        <?php echo $row->harga?>
+                                            <?php echo $row->harga ?>
                                         </td>
                                         <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
-                                        <?php echo $row->deskripsi?>
+                                            <?php echo $row->deskripsi ?>
                                         </td>
                                         <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
-                                        <?php echo $row->jenis?>
-                                        </td> 
+                                            <?php echo $row->jenis ?>
+                                        </td>
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                            <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>"
-                                                class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                            <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
                                             </a>
-                                            <button onclick="hapus()"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                            <button onclick="hapus()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
@@ -955,13 +956,13 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <?php endforeach?>
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
 
 
         </div>
@@ -972,75 +973,129 @@
                 <div class="absolute inset-0 bg-gray-900 opacity-75">
                 </div>
                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <form action="<?php echo base_url('operator/import_tambahan') ?>" method="post"
-                            enctype="multipart/form-data">
+                        <form action="<?php echo base_url('operator/import_tambahan') ?>" method="post" enctype="multipart/form-data">
 
 
                             <label class="font-medium text-gray-800">File</label>
-                            <input name="file" type="file"
-                                class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+                            <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
 
                     </div>
                     <div class="bg-gray-200 px-4 py-3 text-right">
 
-                        <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
-                            onclick="toggleModal()"> Batal</button>
-                        <button type="submit"
-                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                        <button type="button"
-                            class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                        <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                        <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
                             Download Template</button>
                     </div>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
+  </main>
 
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script>
+            function eksporDanArahkan() {
+                Swal.fire({
+                    title: 'yakin mengekspor data?',
+                    text: 'Data akan di ekspor.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Tambahkan logika ekspor Anda di sini
+                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
+                        // atau mengirim permintaan ke server untuk mengekspor data
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function () {
+                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
+                        setTimeout(function() {
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: 'Data Anda telah diekspor.',
+                                icon: 'success',
+                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                                showConfirmButton: false,
+                            });
 
-            var table = $('#example_data').DataTable({
-                responsive: true
-            })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        function hapus(id) {
+                            // Redirect setelah berhasil mengekspor
+                            setTimeout(function() {
+                                window.location.href = 'expor_tambahan';
+                            }, 500); // Penundaan 2 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                    }
+                });
+            },
+            function template() {
             Swal.fire({
-                title: ' Apa Mau Menghapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
+                title: 'Download Template Data Tambahan?',
+                text: "Anda akan mengdownload template data tambahan",
+                icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
+                confirmButtonText: 'Download'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/template_tambahan') ?>";
+                    
                     Swal.fire({
                         icon: 'success',
-                        title: 'Berhasil Menghapus',
+                        title: 'Data berhasil didownload',
                         showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
+                        timer: 2500,
                     });
                 }
             });
         }
-    </script>
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                var table = $('#example_data').DataTable({
+                        responsive: true
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
+
+            function hapus(id) {
+                Swal.fire({
+                    title: ' Apa Mau Menghapus?',
+                    text: "data ini tidak bisa dikembalikan lagi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Hapus'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil Menghapus',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(function() {
+                            window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
+                        });
+                    }
+                });
+            }
+        </script>
 
 </body>
 

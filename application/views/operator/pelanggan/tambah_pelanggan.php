@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-
-tambah_data_pelanggan
-   <!DOCTYPE html>
-=======
 <!DOCTYPE html>
->>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
    <html lang="en">
 
 
@@ -42,8 +36,6 @@ tambah_data_pelanggan
            font-weight: 600;
            text-transform: uppercase;
            letter-spacing: 1px;
-           color: #f4f4f4;
-           background-color: #4F709C;
            border: 3px solid #4F709C;
            border-radius: 1rem;
            width: 8rem;
@@ -54,10 +46,7 @@ tambah_data_pelanggan
            transition: all .3s;
        }
 
-       .submit:hover {
-           background-color: transparent;
-           color: #222;
-       }
+      
    </style>
 
    <body class="bg-gray-100 relative min-h-screen overflow-hidden font-base">
@@ -73,35 +62,23 @@ tambah_data_pelanggan
                                <div class="green-bar"></div>
                                <h1 id="title" class="text-4xl">Tambah Data Pelanggan</h1>
                            </header>
-                           <form action="<?php echo base_url('operator/aksi_tambah_pelanggan') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
+                           <form action="<?php echo base_url('operator/data_master_pelanggan') ?>" method="post" id="survey-form" class="bg-white p-7 rounded-lg shadow-lg mb-8 text-lg" enctype="multipart/form-data">
                                <div class="w-full">
                                    <label for="nama" class="block">Nama</label>
-                                   <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                   <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required>
 
 
 
-                                   <label for="phone" class="block">Phone</label>
-                                   <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                   <label for="phone" class="block">No Telepon</label>
+                                   <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required>
 
 
-<<<<<<< HEAD
-                                   <label for="payment_method" class="block">Payment Method</label>
-                                   <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
-=======
-                               <label for="payment_method" class="block">Payment Method</label>
-                               <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                                   <label for="payment_method" class="block">Metode Pembayaran</label>
+                                   <input type="text" name="payment_method" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required>
 
-
-                               <div class="text-center mt-9">
-                               <button onclick="tambah_data()" type="submit" class="py-2 px-8 text-white duration-300 hover:bg-blue-500" style="background-color: #0C356A;">
-                                TAMBAH
-                               </button>
->>>>>>> cb8f13d556f35d35cf1358b89c2173463a305883
-
-                                   <div class="text-center mt-10">
-                                       <input type="submit" id="submit" class="submit" value="Submit">
-                                   </div>
-                               </div>
+                                   <div class="text-center mt-1">
+                                <input type="submit" id="submit" class="submit font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem        width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s" value="Submit">
+                            </div>
                            </form>
                        </div>
                    </main>
@@ -110,37 +87,94 @@ tambah_data_pelanggan
            </div>
            </div>
        </main>
-   </body>
-   <!-- SweetAlert -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.js"></script>
+      <!-- Include jQuery before SweetAlert2 and your other scripts -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        function tambah_data() {
-            Swal.fire({
-                title: 'Ingin Menambah Data?',
-                text: "Data akan bertambah",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Tambah'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses penambahan data atau operasi lainnya di sini
+        $(document).ready(function() {
+            const form = document.getElementById("survey-form");
 
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                if (e.submitter.id === "submit") {
+                    // Display SweetAlert confirmation before submitting
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Ditambahkan',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function () {
-                        // Redirect ke URL setelah pesan sukses ditampilkan
-                        window.location.href = "";
+                        title: 'Konfirmasi',
+                        text: 'Apakah Anda yakin ingin menyimpan data?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Batal'
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            // If user clicks "Ya", proceed with AJAX submission
+                            document.getElementById("submit").disabled = true;
+
+                            $.ajax({
+                                type: "POST",
+                                url: "<?php echo base_url('operator/aksi_tambah_pelanggan') ?>",
+                                data: new FormData(form),
+                                contentType: false,
+                                processData: false,
+                                dataType: "json",
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        // Show success SweetAlert and then redirect
+                                        Swal.fire({
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                            icon: 'success',
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        }).then(function() {
+                                            window.location.href = response.redirect;
+                                        });
+                                    } 
+                                }
+                            });
+                        }
                     });
+                } else if (e.submitter.id === "cancel") {
+                    // Handle the "Batal" button click event here
+                    Swal.fire({
+                        title: 'Aksi dibatalkan',
+                        text: 'Anda membatalkan aksi penyimpanan data.',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    // Optionally, you can redirect or perform other actions when canceling
                 }
             });
-        }
+        });
     </script>
+   </body>
 
+<script>
+function displaySweetAlert() {
+    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+    const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+    if (message) {
+        Swal.fire({
+            title: 'Success!',
+            text: message,
+            timer: 1500,
+            icon: 'success',
+            showConfirmButton: false,
+            timerProgressBar: true
+        });
+    } else if (error) {
+        Swal.fire({
+            title: 'Error!',
+            text: error,
+            timer: 1500,
+            icon: 'error',
+            showConfirmButton: false,
+            timerProgressBar: true
+        });
+    }
+}
+   </script>
    </html>

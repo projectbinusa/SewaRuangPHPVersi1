@@ -189,7 +189,6 @@ class operator extends CI_Controller
         echo json_encode($response);
     }
 
-
     public function pdf()
     {
         $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
@@ -199,7 +198,7 @@ class operator extends CI_Controller
     public function export_pdf($id)
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-        
+
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
             $this->pdf->load_view('operator/export_pdf', $data);
@@ -373,6 +372,34 @@ class operator extends CI_Controller
         return true;
     }
 
+    public function hapus_data_ruangan($id)
+    {
+        // Ambil data ruangan
+        $ruangan = $this->m_model->get_ruangan_by_id($id);
+
+        // Pastikan data ruangan ditemukan
+        if (!$ruangan) {
+            $this->session->set_flashdata('error', 'Data ruangan tidak ditemukan.');
+            redirect('operator/data_ruangan');
+        }
+
+        // Hapus gambar dari folder image/ruangan jika ada
+        $image_file = $ruangan->image;
+        if ($image_file) {
+            $image_path = 'image/ruangan/' . $image_file;
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        }
+
+        // Hapus data dari tabel ruangan
+        $this->m_model->delete('ruangan', 'id', $id);
+
+        // Tampilkan pesan sukses dan alihkan ke halaman data ruangan
+        $this->session->set_flashdata('success', 'Data ruangan berhasil dihapus.');
+        redirect('operator/data_ruangan');
+    }
+
     public function hapus_image($id)
     {
         // Ambil data ruangan dari database berdasarkan ID
@@ -495,6 +522,13 @@ class operator extends CI_Controller
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/peminjaman/tambah_peminjaman_tempat', $data);
+    }
+    public function edit_peminjaman_tempat($id)
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
     }
 
     public function check_expired_bookings()
@@ -623,11 +657,6 @@ class operator extends CI_Controller
         // Mendapatkan ID pelanggan berdasarkan nama
         $id_pelanggan = tampil_pelanggan_bynama($nama);
 
-        // Memeriksa konflik waktu
-        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-            return;
-        }
 
         // Menghitung durasi dan harga ruangan
         $tanggalBooking = new DateTime($start_time);
@@ -644,7 +673,7 @@ class operator extends CI_Controller
 
                 // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
                 $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info['jenis'] === 'Makanan' || $tambahan_info['jenis'] === 'Minuman') {
+                if ($tambahan_info && $tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
                     $harga_tambahan *= $jumlah_orang;
                 }
             }
@@ -657,8 +686,6 @@ class operator extends CI_Controller
         $data_peminjaman = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
-            'tanggal_booking' => $start_time,
-            'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah_orang,
             'total_harga' => $harga_keseluruhan,
         ];
@@ -667,7 +694,7 @@ class operator extends CI_Controller
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
 
         // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete_peminjaman_tambahan(array('id_peminjaman' => $this->input->post('id')));
+        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
@@ -749,7 +776,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('pelanggan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'PHONE', 'PAYMENT METHOD'];
+        $headers = ['NO', 'NAMA', 'NO TELEPON', 'METODE PEMBAYARAN'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1288,6 +1315,50 @@ class operator extends CI_Controller
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'TEMPLATE_DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+    public function template_pelanggan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'PEMBAYARAN',];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE_DATA_PELANGGAN.xlsx'; // Nama file Excel yang akan dihasilkan
 
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <!--Regular Datatables CSS-->
@@ -1700,17 +1697,16 @@
                                         <?php echo $jumlah_ruang ?>
                                     </h2>
                                 </div>
-                                <p>Master Ruang
-                                </p>
+                                <p>Master Ruang</p>
                             </a>
                             <div class="card-footer">
                                 <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
                             </div>
                         </div>
 
+
                         <div class="card">
-                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>"
-                                class="card-body text-center">
+                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_pelanggan ?>
@@ -1738,8 +1734,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <a href="<?php echo base_url("operator/tabel_report_sewa") ?>"
-                                class="card-body text-center">
+                            <a href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_sewa ?>
@@ -1764,8 +1759,7 @@
                     <div class="about-area-inner">
                         <div class="md:flex gap-5">
                             <div class="col-lg-6 order-lg-12 align-self-center">
-                                <img
-                                    src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
+                                <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
                             </div>
                             <div class="col-lg-6 order-lg-1 align-self-center mt-4 mt-lg-0">
                                 <div class="about-inner-wrap">
@@ -1814,10 +1808,8 @@
                         <div class="header-item">
                             <div class="relative">
 
-                                <table id="example_master_ruang"
-                                    class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1833,11 +1825,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($ruang as $row):
+                                        foreach ($ruang as $row) :
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No  " scope="row"
-                                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="No Ruang " class="text-center px-6 py-4">
@@ -1873,10 +1864,8 @@
                     <div class="col-lg-12">
                         <div class="header-item">
                             <div class="relative">
-                                <table id="example_master_pelanggan"
-                                    class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_master_pelanggan" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1894,11 +1883,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($pelanggans as $row):
+                                        foreach ($pelanggans as $row) :
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row"
-                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama" class="text-center px-3 py-4">
@@ -1941,10 +1929,8 @@
                         <div class="header-item">
                             <div class="relative">
 
-                                <table id="example_report"
-                                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1978,11 +1964,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($report_sewa as $row):
+                                        foreach ($report_sewa as $row) :
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Nama Penyewa " scope="row"
-                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama" class="text-center px-3 py-4">
@@ -2000,7 +1985,7 @@
                                                 <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                     <?php
                                                     // Memisahkan data tambahan menjadi array
-                                                    $tambahanArray = explode(',', $row->tambahan_nama);
+                                                    $tambahanArray = explode(',', $row->id_tambahan);
 
                                                     // Menampilkan setiap tambahan
                                                     foreach ($tambahanArray as $tambahan) {
@@ -2129,39 +2114,54 @@
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_master_ruang').DataTable({
-                // responsive: true
-            })
+                    // responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_master_pelanggan').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_report').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
-    </script>
 
+        // Sweetalert Login
+        function displaySweetAlert() {
+    const login_operator = "<?php echo $this->session->flashdata('login_operator'); ?>";
 
+    if (login_operator) {
+        Swal.fire({
+            title: 'Login Berhasil',
+            text: login_operator,
+            icon: 'success',
+            showConfirmButton: false, // Untuk menghilangkan tombol OK
+            timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+        });
+    }
+}
+
+window.onload = displaySweetAlert;
+
+</script>
 
 
 </body>
-
-
 </html>

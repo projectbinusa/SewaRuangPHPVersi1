@@ -813,7 +813,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -874,14 +875,14 @@
 
                                 
                                     <tr>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
                                         </th>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
                                             Nama
                                         </th>
 
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
                                             Ruangan
                                         </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
@@ -890,16 +891,16 @@
                                         <th data-priority="5" scope="col" class="px-3 py-3">
                                             Kode
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
                                             Tambahan
                                         </th>
                                         <th data-priority="7" scope="col" class="px-3 py-3">
                                             Total Booking
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
                                             Total
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="10" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
 
@@ -1026,11 +1027,9 @@
                 }
             });
         }
-    </script>
-<script>
         function exportReportSewa() {
             Swal.fire({
-                title: 'Ekspor Data Report Sewa?',
+                title: 'Export Data Report Sewa?',
                 text: "Anda akan mengexport data report sewa",
                 icon: 'question',
                 showCancelButton: true,

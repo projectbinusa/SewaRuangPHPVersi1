@@ -13,10 +13,8 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -29,9 +27,7 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -67,7 +63,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -245,7 +241,7 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -524,7 +520,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -729,7 +725,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -764,9 +760,9 @@
             }
         }
 
-       
-       
-       
+
+
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -801,7 +797,7 @@
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -844,12 +840,57 @@
         }
 
         table {
-                width: 12rem;
-            }
+            width: 12rem;
+        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
+        }
+
+        .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
         }
     </style>
     <!-- script modal -->
@@ -860,11 +901,9 @@
     </script>
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
-
-    <section id="widget" class="max-h-screen overflow-x-auto inner-section pd-top-120">
+    <!-- <main class="contain-all max-h-screen overflow-y-auto"> -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -881,16 +920,14 @@
                 <div class="header-item">
                     <div class="relative">
 
-                        <a href="tambah_peminjaman_tempat"
-                            class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
                             Tambah
                         </a>
                         <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead
-                                class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                         No
@@ -928,11 +965,10 @@
                             </thead>
                             <tbody>
                                 <?php $no = 0;
-                                foreach ($peminjaman as $row):
+                                foreach ($peminjaman as $row) :
                                     $no++; ?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             <?php echo $no ?>
                                         </td>
                                         <td data-cell="Nama " class="text-center px-3 py-4">
@@ -979,25 +1015,18 @@
 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>"
-                                                class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
+                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
+                                                <span class=""><i class="fas fa-edit"></i></span>
                                             </a>
-                                            <?php if ($row->status === 'booking'): ?>
-                                                <button
-                                                    onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'"
-                                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+
+                                            <?php if ($row->status === 'booking') : ?>
+                                                <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-print"></i>
                                                     </span>
                                                 </button>
-
-                                                </button>
                                             <?php endif; ?>
-                                            <button onclick="hapus(<?php echo $row->id ?>)"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
@@ -1018,34 +1047,30 @@
 
 
         </div>
-    </section>
+        </section>
 
 
-    <!-- modal -->
-    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-gray-900 opacity-75">
-                </div>
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <label class="font-medium text-gray-800">File</label>
-                        <input type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-
+        <!-- modal -->
+        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-900 opacity-75">
                     </div>
-                    <div class="bg-gray-200 px-4 py-3 text-right">
-                        <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
-                            onclick="toggleModal()"> Batal</button>
-                        <button type="button"
-                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                    <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <label class="font-medium text-gray-800">File</label>
+                            <input type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+
+                        </div>
+                        <div class="bg-gray-200 px-4 py-3 text-right">
+                            <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                            <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -1055,11 +1080,48 @@
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script>
-            $(document).ready(function () {
+            function printConfirmation(printUrl) {
+                Swal.fire({
+                    title: 'Konfirmasi Cetak',
+                    text: 'Anda yakin ingin mencetak?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Cetak!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Mencetak Struk',
+                            text: 'Mohon tunggu...',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
+                            // timerProgressBar: true,
+                            willOpen: () => {
+                                Swal.showLoading();
+                                // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
+                                // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
+                                // Jangan lupa untuk menutup SweetAlert ketika selesai
+                                // Misalnya: Swal.close();
+                            }
+                        }).then(() => {
+                            // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
+                            window.location.href = printUrl;
+                        });
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            $(document).ready(function() {
 
                 var table = $('#example_data').DataTable({
-                    responsive: true
-                })
+                        responsive: true
+                    })
                     .columns.adjust()
                     .responsive.recalc();
             });

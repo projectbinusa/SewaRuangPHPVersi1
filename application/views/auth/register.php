@@ -218,6 +218,24 @@
         .LoginPageContainer::-webkit-scrollbar-thumb:hover {
             background: #4520ff;
         }
+
+        .inputContainer {
+            position: relative;
+        }
+
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-toggle-login {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #555;
+            /* Adjust the color as needed */
+        }
     </style>
 </head>
 
@@ -236,29 +254,23 @@
 
                     <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png"
-                                    class="labelIcon"><span>Username*
+                            <label class="label" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username*
                                 </span></label>
-                            <input required type="text" name="username" class="input" id="username"
-                                placeholder="Enter your Username">
+                            <input required type="text" name="username" class="input" id="username" placeholder="Enter your Username">
                         </div>
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png"
-                                    class="labelIcon"><span>Email*
+                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email*
                                 </span></label>
-                            <input type="email" name="email" class="input" id="emailAddress"
-                                placeholder="Enter your Email Address">
+                            <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
-                        <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/g5SvdfG.png"
-                                    class="labelIcon"><span>Password*</span></label>
+                         <div class="inputContainer">
+                            <label class="label" for="emailAddress">
+                            <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
                             <div class="password-input-container">
-                                <input type="password" name="password" class="input" id="password"
-                                    placeholder="Enter your Password">
-                                <i class="password-toggle-register fa fa-eye-slash" onclick="togglePassword()"></i>
+                                <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
+                                <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
                         </div>
-
                         <button name="submit" type="submit" class="LoginButton">Register</button>
 
                     </form>
@@ -269,22 +281,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-   <?php if ($this->session->flashdata('success')): ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Login Berhasil',
-            text: '<?= $this->session->flashdata('success'); ?>',
-            timer: 2500,
-            showConfirmButton: false,
-            timerProgressBar: true
-        }).then(() => {
-            // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
-            window.location.href = ''; // Ganti 'halaman_dashboard.php' dengan halaman yang diinginkan setelah login berhasil
-        });
-        </script>
-    <?php endif; ?>
-<script>
-    <?php if ($this->session->flashdata('error_email')): ?>
+    <?php if ($this->session->flashdata('error_email')) : ?>
         Swal.fire({
             icon: 'error',
             title: 'Registrasi Gagal',
@@ -293,27 +290,38 @@
             showConfirmButton: false,
             timerProgressBar: true
         });
-    </script>
+<?php endif; ?>
+
+<?php if ($this->session->flashdata('success')): ?>
+        // Tampilkan SweetAlert jika login berhasil
+        Swal.fire({
+            icon: 'success',
+            title: 'Registrasi Berhasil',
+            text: '<?= $this->session->flashdata('success'); ?>',
+            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (3.5 detik)
+            showConfirmButton: false, // Menghilangkan tombol "OK"
+            timerProgressBar: true // Menampilkan progress bar
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+            }
+        });
     <?php endif; ?>
 
-
-
-<script type="text/javascript">
     function togglePassword() {
-    var passwordField = document.getElementById('password');
-    var passwordToggle = document.querySelector('.password-toggle-register');
+        var passwordInput = document.getElementById("password");
+        var passwordToggle = document.querySelector(".password-toggle-login");
 
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-        passwordToggle.classList.remove('fa-eye-slash');
-        passwordToggle.classList.add('fa-eye');
-    } else {
-        passwordField.type = "password";
-        passwordToggle.classList.remove('fa-eye');
-        passwordToggle.classList.add('fa-eye-slash');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.classList.remove("fa-eye-slash");
+            passwordToggle.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            passwordToggle.classList.remove("fa-eye");
+            passwordToggle.classList.add("fa-eye-slash");
+        }
     }
-}
-
 </script>
 
 </html>

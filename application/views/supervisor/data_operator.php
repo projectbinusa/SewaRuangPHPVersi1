@@ -1646,7 +1646,7 @@
                 display: block;
                 padding: 0;
             }
-            
+
             .btn-style {
                 font-size: small;
                 width: 5.5rem;
@@ -1662,12 +1662,12 @@
             padding: 4%;
         }
 
-        
+
         .testt {
-                display: flex;
-                gap: 5px;
-                float: right
-            }
+            display: flex;
+            gap: 5px;
+            float: right
+        }
 
         .btn-style {
             width: 6.5rem;
@@ -1689,22 +1689,18 @@
             </div>
 
             <div class="container-table row justify-content-center">
-
-
-
                 <button onclick="toggleModal()" class="btn-style bg-yellow-500 hover:bg-yellow-700 md:ml-auto text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-file-import"></i>
                     </span>
                     Import
                 </button>
-                <a onclick="exportData()" class="btn-style bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
+                <a href="javascript:void(0);" onclick="exportData()" class="btn-style bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-file-export"></i>
                     </span>
                     Export
                 </a>
-
                 <a href="#" class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded" onclick="showAddConfirmation()">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
@@ -1712,16 +1708,13 @@
                     Tambah
                 </a>
 
-
-
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
                             <table id="examples" class="text-sm text-left text-gray-500 dark:text-gray-400">
 
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 
                                     <tr>
                                         <th data-priority="1" scope="col" class="text-center px-3 py-3">
@@ -1744,12 +1737,10 @@
                                         $no++ ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
-                                            <td data-cell="No " scope="row"
-                                                class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
-                                            <td data-cell="Nama Penyewa " scope="row"
-                                                class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
                                                 <?php echo $row->username ?>
                                             </td>
@@ -1781,8 +1772,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
@@ -1796,17 +1785,13 @@
                 <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <form action="<?php echo base_url('supervisor/import_data_operator') ?>" method="post" enctype="multipart/form-data">
-
-
                             <label class="font-medium text-gray-800">File</label>
                             <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-
                     </div>
                     <div class="bg-gray-200 px-4 py-3 text-right">
-
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                         <button onclick="importWithConfirmation()" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
                             Download Template</button>
                     </div>
                     </form>
@@ -1817,7 +1802,8 @@
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -1834,110 +1820,160 @@
                     cancelButtonText: 'Batal'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        importWithLoading();
+                        Swal.fire({
+                            title: 'Loading...',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            willOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        // Simulate import process (replace this with your actual import logic)
+                        setTimeout(() => {
+                            Swal.close(); // Tutup SweetAlert loading
+
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: 'Data berhasil diimport.',
+                                icon: 'success',
+                                timer: 1500,
+                                timerProgressBar: true,
+                                didClose: () => {
+                                    // Get the form action URL
+                                    const formActionUrl = document.getElementById('importForm').action;
+                                    // Redirect to the form action URL
+                                    window.location.href = formActionUrl;
+                                }
+                            });
+                        }, 1000); // Simulated loading time (replace with actual import time)
                     }
                 });
-            }
-
-            function importWithLoading() {
-                Swal.fire({
-                    title: 'Mohon tunggu...',
-                    allowOutsideClick: false,
-                    onBeforeOpen: () => {
-                        Swal.showLoading();
-                    }
-                });
-
-                // Simulate an asynchronous process (replace this with your actual import logic)
-                setTimeout(() => {
-                    // Call your import function here
-                    importFunction();
-
-                    // Show success message
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Import Berhasil!',
-                        showConfirmButton: false,
-                        timer: 1500 // Adjust the timer as needed
-                    });
-
-                    // Close the SweetAlert2 loading spinner
-                    Swal.close();
-                }, 2000); // Adjust the timeout as needed
-            }
-
-            function importFunction() {
-                // Replace this with your actual import logic
-                console.log('Importing...');
-                // You can perform the actual import operation here
             }
         </script>
-
         <script>
             function exportData() {
                 Swal.fire({
-                    title: 'Export Data?',
-                    text: "Anda akan mengekspor data",
+                    title: 'yakin mengekspor data?',
+                    text: 'Data akan di ekspor.',
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Export'
+                    confirmButtonText: 'Ya'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Lakukan proses ekspor data di sini
-                        // Contoh:
-                        window.location.href = "<?php echo base_url('supervisor/export_data_operator') ?>";
+                        // Tambahkan logika ekspor Anda di sini
+                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
+                        // atau mengirim permintaan ke server untuk mengekspor data
 
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data berhasil diekspor',
-                            showConfirmButton: false,
-                            timer: 1000,
-                        });
+                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
+                        setTimeout(function() {
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: 'Data Anda telah diekspor.',
+                                icon: 'success',
+                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                                showConfirmButton: false,
+                            });
+
+                            // Redirect setelah berhasil mengekspor
+                            setTimeout(function() {
+                                window.location.href = 'export_data_operator';
+                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
                     }
                 });
             }
+            function template() {
+            Swal.fire({
+                title: 'Download Template Data Operator?',
+                text: "Anda akan mengdownload template data operator",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Download'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('supervisor/template_data_operator') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil didownload',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
         </script>
         <script>
             function showAddConfirmation() {
                 Swal.fire({
-                    title: 'Apakah Anda yakin?',
+                    title: 'Mau Menambah Data?',
                     text: 'Anda akan menambahkan pengguna operator.',
-                    icon: 'warning',
+                    icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, tambahkan!',
+                    confirmButtonText: 'Ya',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // If confirmed, redirect to the "tambah_user_operator" link
-                        window.location.href = 'tambah_user_operator';
+                        Swal.fire({
+                            title: 'Menambah Data...',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            willOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        // Simulasi penambahan data (gantilah dengan logika sesuai kebutuhan Anda)
+                        setTimeout(() => {
+                            Swal.close(); // Tutup SweetAlert loading
+
+                            // Redirect setelah berhasil menambah data
+                            window.location.href = 'tambah_user_operator';
+                        }, 1500); // Simulasi waktu penambahan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });
             }
         </script>
-
         <script>
             function showEditConfirmation(url) {
                 Swal.fire({
-                    title: 'Apakah Anda yakin?',
+                    title: 'Mau Mengedit Data?',
                     text: 'Anda akan mengedit pengguna operator.',
-                    icon: 'warning',
+                    icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, edit!',
+                    confirmButtonText: 'Ya',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // If confirmed, navigate to the edit page
-                        window.location.href = url;
+                        Swal.fire({
+                            title: 'Mengubah Data...',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            willOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        // Simulasi pengeditan data (gantilah dengan logika sesuai kebutuhan Anda)
+                        setTimeout(() => {
+                            Swal.close(); // Tutup SweetAlert loading
+
+                            // Navigasi ke halaman edit setelah berhasil mengedit data
+                            window.location.href = url;
+                        }, 1500); // Simulasi waktu pengeditan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });
             }
         </script>
-
         <script>
             $(document).ready(function() {
 

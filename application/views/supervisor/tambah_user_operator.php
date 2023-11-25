@@ -9,6 +9,8 @@
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -18,16 +20,14 @@
             box-sizing: border-box;
         }
 
-
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
         }
 
-        .container-tambah-user {
+        .container {
             min-width: 20rem;
             max-width: 65rem;
             margin: 1rem auto;
@@ -98,6 +98,7 @@
             line-height: 1px;
         }
 
+
         .username,
         .email,
         .password {
@@ -129,7 +130,41 @@
             color: #222;
         }
 
-     
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* style comboboxs */
+        input {
+            padding: 5px;
+            height: 35px;
+            border-bottom: 1px solid;
+            outline: none;
+        }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 38rem;
+        }
 
         .form-group {
             position: relative;
@@ -137,19 +172,21 @@
 
         .password-toggle {
             position: absolute;
-            top: 82%;
+            top: 80%;
+            right: 12.7rem;
             transform: translateY(-50%);
-            right: 12.9rem;
             cursor: pointer;
+            color: #555;
         }
 
-          @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 800px) {
+
             .password-toggle {
-                top: 57.7rem;
+                top: 74%;
                 right: 3rem;
             }
 
-            .container-tambah-user {
+            .container {
                 padding: 1rem 1rem 0px 1rem;
             }
 
@@ -157,6 +194,7 @@
             .heading {
                 padding: 1.3em 9px 1.8rem 9px;
             }
+
             .survey-form {
                 padding: 1.3em 15px 1.8rem 15px;
 
@@ -175,55 +213,55 @@
     </style>
 </head>
 
-<body>
-<?php $this->load->view('sidebars'); ?>
+<body class="relative h-screen overflow-hidden">
+    <?php $this->load->view('sidebars'); ?>
 
-    <main>
-        <div class="container-tambah-user">
+    <main class="contain-all h-screen overflow-y-auto">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Tambah Operator</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
+            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form" class="survey-form">
                 <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
-                    required>
+                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
                 <label for="email" id="email-label">Email<span class="required">*</span></label>
                 <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
-                <label for="password" id="password-label">Password<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
-                    required>
+                <div class="inputContainer">
+                    <label class="label" for="password">
+                        <span>Password*</span>
+                    </label>
+                    <div class="password-input-container">
+                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
+                        <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
+                    </div>
+                    <hr class="custom-hr">
+                </div>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
-
-
         </div>
     </main>
-</body>
-<script type="text/javascript">
+
+    <script>
     function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
+        var passwordInput = document.getElementById("password");
+        var passwordToggle = document.querySelector(".password-toggle-login");
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
-
-
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.classList.remove("fa-eye-slash");
+            passwordToggle.classList.add("fa-eye");
         } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
-
+            passwordInput.type = "password";
+            passwordToggle.classList.remove("fa-eye");
+            passwordToggle.classList.add("fa-eye-slash");
         }
     }
 </script>
+</body>
 
 </html>
