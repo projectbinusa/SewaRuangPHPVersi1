@@ -320,7 +320,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('success')) { ?>
+    <?php if ($this->session->flashdata('success_pass')) { ?>
         Swal.fire({
             icon: 'success',
             title: 'Berhasil Mengganti!',

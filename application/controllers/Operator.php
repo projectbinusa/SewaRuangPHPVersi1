@@ -117,8 +117,8 @@ class operator extends CI_Controller
         }
 
         // Validasi no_ruang
-        if (empty($no_ruang) || !ctype_alnum($no_ruang)) {
-            $errors[] = 'Nomor Ruang hanya boleh berisi angka atau huruf.';
+        if (empty($no_ruang) || !preg_match('/^[a-zA-Z0-9\s]+$/', $no_ruang)) {
+            $errors[] = 'Ruang hanya boleh berisi angka atau huruf';
         }
 
         // Validasi harga
@@ -248,7 +248,7 @@ class operator extends CI_Controller
         // Additional validation for 'harga' to ensure it's an integer
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric|callback_check_integer');
         $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|numeric');
-        $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|alpha_numeric');
+        $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|regex_match[/^[a-zA-Z0-9 ]+$/]');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
 
@@ -694,10 +694,7 @@ class operator extends CI_Controller
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
 
         // Menghapus data tambahan sebelum menambah yang baru
-        $id = $this->m_model->get_id_peminjaman($this->input->post('id'))->result();
-        foreach($id as $row){
-            $this->m_model->delete('tambahan', 'id', $row->id);
-        }
+        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
