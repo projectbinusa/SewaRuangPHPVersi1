@@ -897,14 +897,12 @@
                                         <th data-priority="7" scope="col" class="px-3 py-3">
                                             Total Booking
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Total
-                                        </th>
-                                        <th data-priority="10" scope="col" class="px-3 py-3">
+                                        
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
 
-                                        <th data-priority="9" scope="col" class="text-center px-3 py-3">
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
@@ -954,9 +952,7 @@
                                                 ?>
                                             </td>
                                             <!-- Total -->
-                                            <td data-call="Total Booking" class="w-32 px-3 py-4">
-                                                <?php echo $row->total_harga ?>
-                                            </td>
+                                            
                                             <!-- Status -->
                                             <td data-cell="Status" class="w-32 px-3 py-4">
                                                 <?php echo $row->status ?>

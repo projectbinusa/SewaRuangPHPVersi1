@@ -71,7 +71,7 @@
             </a>
           </li> 
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-          <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center">
+          <a onclick="KeluarOPT(id)" class="flex items-center">
           <i class="fa-solid fa-right-from-bracket text-white"></i>
           <span class="text-white font-semibold mx-2">Keluar</span>
             </a>
@@ -85,6 +85,48 @@
       
       </nav>
       <script>
+        function KeluarOPT(id) {
+    swal.fire({
+        title: ' Yakin Ingin Keluar?',
+        text: "",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Keluar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil Keluar',
+                showConfirmButton: false,
+                timer: 1500,
+
+            }).then(function() {
+                window.location.href = "<?php echo base_url('auth/logout/')?>" + id;
+            });
+        }
+    });
+}
+
+function displaySweetAlert() {
+    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+
+    if (message) {
+        Swal.fire({
+            title: 'Success!',
+            text: message,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    } 
+}
+
+// Call the function when the page loads
+window.onload = displaySweetAlert;
+
+
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
           type: 'doughnut',
