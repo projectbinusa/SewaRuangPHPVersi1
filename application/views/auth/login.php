@@ -268,7 +268,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('error')): ?>
+    <?php if ($this->session->flashdata('error')) : ?>
         // Tampilkan SweetAlert jika terdapat error dari session
         Swal.fire({
             icon: 'error',
