@@ -44,13 +44,13 @@
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/data_ruangan') ?>" class="flex items-center">
               <i class="fa-solid fa-building-circle-check text-white"></i> 
-              <span class="mx-2 text-white font-semibold">data master ruang</span>
+              <span class="mx-2 text-white font-semibold">Data Master Ruang</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/data_master_pelanggan') ?>" class="flex items-center">
               <i class="fas fa-users text-white"></i>
-              <span class="mx-2 text-white font-semibold">data master pelanggan</span>
+              <span class="mx-2 text-white font-semibold">Data Master Pelanggan</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">

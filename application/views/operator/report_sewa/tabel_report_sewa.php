@@ -933,13 +933,7 @@
                                             <!-- Snack -->
                                             <td data-cell="Tambahan" class="w-32 px-3 py-4">
                                             <?php
-                                                // Memisahkan data tambahan menjadi array
-                                                $tambahanArray = explode(',', $row->id_tambahan);
-
-                                                // Menampilkan setiap tambahan
-                                                foreach ($tambahanArray as $tambahan) {
-                                                    echo $tambahan . '<br>';
-                                                }
+                                               echo tampil_jumlah_tambahan_byid($row->id_tambahan)
                                                 ?>
                                             </td>
                                             <!-- Total Booking -->
