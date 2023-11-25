@@ -30,6 +30,8 @@ class Supervisor extends CI_Controller
     {
         $data['approves'] = $this->m_model->get_status_proses()->result();
         $data['operators'] = $this->m_model->get_data_operator()->result();
+        $data['jumlah_operator'] = $this->m_model->get_data_operator()->num_rows();
+        $data['jumlah_approve'] = $this->m_model->get_status_proses()->num_rows();
         $this->load->view('supervisor/dashboard', $data);
     }
 
@@ -43,7 +45,7 @@ class Supervisor extends CI_Controller
         $password = $this->input->post('password');
         $username = $this->input->post('username');
 
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^\S+@\S+\.\S+$/]');
         $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
 
         if ($this->form_validation->run() === FALSE) {
@@ -120,22 +122,22 @@ class Supervisor extends CI_Controller
     public function aksi_update_user_operator()
     {
         $password_baru = $this->input->post('password');
-        $email = $this->input->post('email');
+        $email = $this->input->post('email', true);
         $username = $this->input->post('username');
         $data = [
             'email' => $email,
             'username' => $username,
         ];
     
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^\S+@\S+\.\S+$/]');
     
         // Pengecekan password baru dan validasi form
         if (!empty($password_baru)) {
-            $this->form_validation->set_rules('password_baru', 'Password Baru', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
+            $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
     
             if ($this->form_validation->run() === TRUE) {
                 // Ganti password hanya jika password baru tidak kosong dan validasi berhasil
-                $data['password'] = password_hash($password_baru, PASSWORD_DEFAULT);
+                $data['password'] = md5($password_baru);
             } else {
                 // Validasi form gagal
                 // Handle kesalahan, misalnya tampilkan pesan kesalahan

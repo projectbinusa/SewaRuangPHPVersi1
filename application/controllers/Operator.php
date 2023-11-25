@@ -694,7 +694,10 @@ class operator extends CI_Controller
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
 
         // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
+        $id = $this->m_model->get_id_peminjaman($this->input->post('id'))->result();
+        foreach($id as $row){
+            $this->m_model->delete('tambahan', 'id', $row->id);
+        }
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
@@ -857,7 +860,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'SNACK', 'TOTAL BOOKING', 'TOTAL HARGA', 'STATUS'];
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE','TAMBAHAN','SNACK', 'TOTAL BOOKING', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -873,8 +876,8 @@ class operator extends CI_Controller
             $id_ruangan = '';
             $jumlah_orang = '';
             $kode_booking = '';
+            $id_tambahan = '';
             $tanggal_booking = '';
-            $total_harga = '';
             $status = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'id_pelanggan') {
@@ -885,10 +888,10 @@ class operator extends CI_Controller
                     $jumlah_orang = $cellData;
                 } elseif ($cellName == 'kode_booking') {
                     $kode_booking = $cellData;
+                } elseif ($cellName == 'id_tambahan') {
+                    $id_tambahan = $cellData;
                 } elseif ($cellName == 'tanggal_booking') {
                     $tanggal_booking = $cellData;
-                } elseif ($cellName == 'total_harga') {
-                    $total_harga = $cellData;
                 } elseif ($cellName == 'status') {
                     $status = $cellData;
                 } elseif ($cellName == 'tanggal_berakhir') {
@@ -912,8 +915,8 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
-            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_harga);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $id_tambahan);
+            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_booking);
             $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
 
             $no++;

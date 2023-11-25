@@ -185,6 +185,11 @@
             cursor: pointer;
         }
 
+        
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
+        }
 
         @media only screen and (max-width: 800px) {
             .password-toggle {
@@ -235,24 +240,31 @@
                     <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id ?>">
                     <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking ?>">
                     <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir ?>">
-                    <label for="nama" id="name-label">Nama <span class="required">*</span></label>
-                    <input type="text" name="nama" id="nama" required class="nama" value="<?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>">
+                    
+                    <label for="nama" class="header-text" id="name-label">Nama </span></label>
+                    <select id="underline_select" name="jenis" required
+                        class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <option selected>Pilih Nama Penyewa</option>
+                        <option value="Rania Marwa">
+                        Rania Marwa
+                        </option>
+                    </select>
 
-                    <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang" value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
-                    <datalist id="browsers1" role="listbox">
-                        <?php foreach ($ruangan as $row) : ?>
-                            <option value="<?php echo $row->id ?>">L.
-                                <?php echo $row->no_lantai ?> R.
-                                <?php echo $row->no_ruang ?>
-                            </option>
-                        <?php endforeach ?>
-                    </datalist>
-                    <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
+                    <label for="no_ruang" class="header-text" id="name-label"> Ruangan</span></label>
+                    <select id="underline_select" name="jenis" required
+                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                
+                        <option selected>Pilih Ruangan</option>
+                        <option value="Test">
+                         Test
+                        </option>
+                  
+                </select>
+                    <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
-                    <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                    <input required class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
+                    <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
+                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
                     <datalist id="browsers" id="checkbox" role="listbox">
                         <div class="">
                             <?php foreach ($tambahan as $row) : ?>

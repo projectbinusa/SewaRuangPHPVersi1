@@ -283,6 +283,23 @@
             }
         });
     <?php endif; ?>
+
+    <?php if ($this->session->flashdata('success')): ?>
+        // Tampilkan SweetAlert jika login berhasil
+        Swal.fire({
+            icon: 'success',
+            title: 'Registrasi Berhasil',
+            text: '<?= $this->session->flashdata('success'); ?>',
+            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (3.5 detik)
+            showConfirmButton: false, // Menghilangkan tombol "OK"
+            timerProgressBar: true // Menampilkan progress bar
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+            }
+        });
+    <?php endif; ?>
+
 </script>
 <script type="text/javascript">
     function togglePassword() {

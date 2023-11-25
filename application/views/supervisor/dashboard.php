@@ -5440,7 +5440,7 @@
       <div class="card-body text-center">
         <div class="section-title mb-0">
           <!-- <i class="fas fa-id-card"></i> -->
-          <h2 class="title mt-4">233</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_operator?></h2>
         </div>
         <p>Data Operator
         </p>
@@ -5452,7 +5452,7 @@
     <div class="card">
       <div class="card-body text-center">
         <div class="section-title mb-0">
-          <h2 class="title mt-4">532</h2>
+          <h2 class="title mt-4"><?php echo $jumlah_approve?></h2>
         </div>
         <p>Approve List
         </p>

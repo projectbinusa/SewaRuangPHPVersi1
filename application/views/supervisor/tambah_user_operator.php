@@ -171,19 +171,29 @@
         }
 
         .password-toggle {
-            position: absolute;
-            top: 80%;
-            right: 12.7rem;
-            transform: translateY(-50%);
+            margin-left: 45.5rem;
+            transform: translateY(-1.7rem);
             cursor: pointer;
             color: #555;
+        }
+
+        .subArteris {
+            color: #555;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
         }
 
         @media only screen and (max-width: 800px) {
 
             .password-toggle {
-                top: 74%;
-                right: 3rem;
+                margin-left: 14.4rem;
+                transform: translateY(-1.7rem);
             }
 
             .container {
@@ -224,15 +234,15 @@
             </header>
 
             <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form" class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
+                <label for="username" class="header-text" id="name-label">Name</span></label>
                 <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
+                <label for="email" class="header-text" id="email-label">Email</span></label>
                 <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
                 <div class="inputContainer">
-                    <label class="label" for="password">
-                        <span>Password*</span>
+                    <label class="label header-text" for="password">
+                        <span>Password</span>
                     </label>
                     <div class="password-input-container">
                         <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
@@ -240,6 +250,8 @@
                     </div>
                     <hr class="custom-hr">
                 </div>
+
+                <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf, angka, dan simbol</p>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
