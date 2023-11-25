@@ -171,19 +171,24 @@
         }
 
         .password-toggle {
-            position: absolute;
-            top: 80%;
-            right: 12.7rem;
-            transform: translateY(-50%);
+            margin-left: 45.5rem;
+            transform: translateY(-1.7rem);
             cursor: pointer;
             color: #555;
+        }
+
+        .subArteris {
+            color: red;
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 10px;
         }
 
         @media only screen and (max-width: 800px) {
 
             .password-toggle {
-                top: 74%;
-                right: 3rem;
+                margin-left: 14.4rem;
+                transform: translateY(-1.7rem);
             }
 
             .container {
@@ -235,11 +240,13 @@
                         <span>Password*</span>
                     </label>
                     <div class="password-input-container">
-                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password" required>
+                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                         <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                     </div>
                     <hr class="custom-hr">
                 </div>
+
+                <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf, angka, dan simbol</p>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>

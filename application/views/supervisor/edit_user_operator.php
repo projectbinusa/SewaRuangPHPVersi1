@@ -171,18 +171,17 @@
         }
 
         .password-toggle {
-            position: absolute;
-            margin-top: 17px;
-            transform: translateY(-50%);
             margin-left: 45.5rem;
+            transform: translateY(2rem);
             cursor: pointer;
+            color: #555;
         }
 
         @media only screen and (max-width: 800px) {
 
             .password-toggle {
-                top: 57.6rem;
-                right: 3rem;
+                margin-left: 14.4rem;
+                transform: translateY(2rem);
             }
 
             .container {

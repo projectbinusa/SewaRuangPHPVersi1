@@ -1638,7 +1638,7 @@
         @media (max-width: 600px) {
 
             table {
-                width: 4.5rem;
+                width: 4rem;
                 overflow: scroll;
             }
 
