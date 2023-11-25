@@ -205,7 +205,7 @@
                     </div>
 
                     <div class="w-full px-7">
-                        <label for="no_ruang" class="block">Ruang</label>
+                        <label for="no_ruang" class="block">Nomor Ruang</label>
                         <input type="text" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
 
@@ -213,16 +213,13 @@
                         <label for="harga" class="block">Harga</label>
                         <input type="text" name="harga" id="harga" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
-
-
-
-                    <div class="w-full px-7">
-                        <label for="deskripsi" class="block">Keterangan</label>
-                        <input type="text" name="deskripsi" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
-                    </div>
                     <div class="w-full px-7">
                         <label for="foto" class="block">Foto Ruangan</label>
                         <input type="file" name="foto" id="foto" class="foto w-full  border-b-2 border-gray-300">
+                    </div>
+                    <div class="w-full px-7">
+                        <label for="deskripsi" class="block">Keterangan</label>
+                        <input type="text" name="deskripsi" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
 
                 </div>
