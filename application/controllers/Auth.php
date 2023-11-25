@@ -36,11 +36,11 @@ class Auth extends CI_Controller {
   }
   public function ganti_password()
   {
-    // if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-    //     redirect(base_url('auth/forgot_password'));
-    // } else if(empty($this->session->userdata('status'))) {
-    //     redirect(base_url('auth/verifikasi_kode'));
-    // }
+    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        redirect(base_url('auth/forgot_password'));
+    } else if(empty($this->session->userdata('status'))) {
+        redirect(base_url('auth/verifikasi_kode'));
+    }
     $this->load->view('auth/ganti_password');
   }
   public function check_expired_bookings()
@@ -200,8 +200,8 @@ public function aksi_forgot_pass()
                     'email' => $email
                 ];
                 $this->session->set_userdata($data);
-                $this->session->set_flashdata('success', 'Pesan telah terkirim');
-                redirect(base_url('auth/verifikasi_kode'));
+                $this->session->set_flashdata('success_forgot', 'Pesan telah terkirim');
+                redirect(base_url('auth/forgot_password'));
             } else {
                 $this->session->set_flashdata('error', 'Pesan tidak dapat terkirim. Error: ' . $mail->ErrorInfo);
                 redirect(base_url('auth/forgot_password'));
@@ -220,8 +220,12 @@ public function aksi_forgot_pass()
 public function aksi_verifikasi(){
     $code = $this->input->post('code');
     if ($code == $this->session->userdata('code')) {
-        $this->session->set_flashdata('success', 'Verifikasi berhasil!');
-        redirect(base_url('auth/ganti_password'));
+        $data = [
+            'status' => true,
+        ];
+        $this->session->set_userdata($data);
+        $this->session->set_flashdata('success_code', 'Verifikasi berhasil!');
+        redirect(base_url('auth/verifikasi_kode'));
     } else {
         $this->session->set_flashdata('error', 'Code verifikasi salah!');
         redirect(base_url('auth/verifikasi_kode'));
@@ -229,13 +233,13 @@ public function aksi_verifikasi(){
 }
 
 public function aksi_ganti_password(){
-    // if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-    //     $this->session->set_flashdata('error', 'Sesi tidak valid');
-    //     redirect(base_url('auth/forgot_password'));
-    // } else if(empty($this->session->userdata('status'))) {
-    //     $this->session->set_flashdata('error', 'Sesi tidak valid');
-    //     redirect(base_url('auth/verifikasi_kode'));
-    // }
+    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/forgot_password'));
+    } else if(empty($this->session->userdata('status'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/verifikasi_kode'));
+    }
 
     $pass = $this->input->post('password');
     $con_pass = $this->input->post('con_password');
@@ -246,17 +250,17 @@ public function aksi_ganti_password(){
         $this->session->set_flashdata('error', 'Password minimal 8 karakter dan kombinasi angka dan huruf');
         redirect(base_url('auth/ganti_password'));
     } else {
-        if($pass == $con_pass){
+        if($pass == $con_pass && !empty($pass)){
             // Lakukan penggantian password dengan metode enkripsi yang lebih aman, misalnya bcrypt atau Argon2
             // Update kode enkripsi password sesuai kebutuhan
-            $hashed_password = password_hash($pass, PASSWORD_BCRYPT);
+            $hashed_password = md5($pass);
 
             $data = [
                 'password' => $hashed_password,
             ];
             $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
-            $this->session->set_flashdata('success', 'Password berhasil diubah');
-            redirect(base_url());
+            $this->session->set_flashdata('success_pass', 'Password berhasil diubah');
+            redirect(base_url('auth/ganti_password'));
         } else {
             $this->session->set_flashdata('error', 'Password dengan konfirmasi password harus sama');
             redirect(base_url('auth/ganti_password'));
