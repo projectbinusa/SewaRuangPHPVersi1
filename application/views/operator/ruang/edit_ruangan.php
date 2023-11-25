@@ -191,7 +191,7 @@
             background-color: #4F709C;
             border: 3px solid #4F709C;
             border-radius: 1rem;
-            width: 8rem;
+            width: 10rem;
             height: 2.5rem;
             padding: 8px 2rem;
             margin: 40px auto 10px auto;
@@ -286,14 +286,14 @@
                 </div>
                 <div class="text-center mt-1 flex gap-1">
                     <input type="submit" id="submit"
-                        class="submit font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem  width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s"
+                        class="submit "
                         value="Submit">
 
                     <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post"
                         id="edit-form" class="bg-white p-4 rounded-lg shadow-lg text-lg"
                         enctype="multipart/form-data">
                         <input type="button" id="submitt" style="border-radius: 10px;"
-                            class="hapus_gambar font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem  width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s mr"
+                            class="hapus_gambar "
                             value="Hapus Foto" onclick="deleteImage('<?= $ruangan->id ?>')">
                     </form>
                 </div>
