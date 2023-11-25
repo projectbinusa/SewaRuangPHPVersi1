@@ -176,6 +176,11 @@
             cursor: pointer;
             color: #555;
         }
+        
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
+        }
 
         @media only screen and (max-width: 800px) {
 
@@ -226,15 +231,15 @@
                     class="survey-form">
                     <input value="<?php echo $row->id ?>" type="hidden" name="id" id="username" class="username"
                         placeholder="Masukkan nama anda">
-                    <label for="username" id="name-label">Name<span class="required">*</span></label>
+                    <label for="username" class="header-text" id="name-label">Name</span></label>
                     <input value="<?php echo $row->username ?>" type="text" name="username" id="username" class="username"
                         placeholder="Masukkan nama anda" required>
 
-                    <label for="email" id="email-label">Email<span class="required">*</span></label>
+                    <label for="email" class="header-text" id="email-label">Email</span></label>
                     <input value="<?php echo $row->email ?>" type="email" name="email" id="email" class="email"
                         placeholder="Masukkan email anda" required>
 
-                    <label for="password" id="password-label">Password<span class="required">*</span></label>
+                    <label for="password" class="header-text" id="password-label">Password</span></label>
                     <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                     <input type="password" name="password" id="password" class="password"
                         placeholder="Masukkan password anda">
