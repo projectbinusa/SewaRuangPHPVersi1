@@ -1104,7 +1104,8 @@
         }
     });
 }
-
+</script>
+<script>
                 function update(id) {
                     Swal.fire({
                         title: 'Ingin Mengubah Data Pelanggan',
@@ -1136,7 +1137,7 @@
 
                     if (message) {
                         Swal.fire({
-                            title: 'Success!',
+                            title: 'Berhasil Mengubah Data Pelanggan',
                             text: message,
                             timer: 2500,
                             icon: 'success',
