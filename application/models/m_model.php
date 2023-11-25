@@ -24,9 +24,6 @@ class M_model extends CI_Model
     public function search($keyword)
     {
         $this->db->like('no_ruang', $keyword);
-        $this->db->or_like('no_lantai', $keyword);
-        $this->db->or_like('harga', $keyword);
-        $this->db->or_like('deskripsi', $keyword);
         $query = $this->db->get('ruangan');
         return $query->result();
     }
