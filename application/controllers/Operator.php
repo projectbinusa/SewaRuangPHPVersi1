@@ -694,7 +694,7 @@ class operator extends CI_Controller
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
 
         // Menghapus data tambahan sebelum menambah yang baru
-        $id = $this->m_model->get_data('tambahan')->result();
+        $id = $this->m_model->get_id_peminjaman($this->input->post('id'))->result();
         foreach($id as $row){
             $this->m_model->delete('tambahan', 'id', $row->id);
         }

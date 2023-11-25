@@ -72,12 +72,6 @@ class M_model extends CI_Model
         return $this->db->get('ruangan');
     }
 
-    public function get_data_by_id($table, $id)
-    {
-        // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
-        $this->db->where('id', $id);
-        return $this->db->get('peminjaman_tambaha');
-    }
 
     public function get_data_byid($table, $id)
     {
