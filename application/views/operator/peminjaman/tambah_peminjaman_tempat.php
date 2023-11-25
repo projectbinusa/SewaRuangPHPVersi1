@@ -188,6 +188,11 @@
             overflow-y: scroll;
             height: 50rem;
         }
+        
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
+        }
 
         @media only screen and (max-width: 800px) {
 
@@ -283,7 +288,7 @@
             <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form"
                 class="survey-form ">
                 <div class="">
-                    <label for="nama" id="name-label">Nama <span class="required">*</span></label>
+                    <label for="nama" class="header-text" id="name-label">Nama </span></label>
                     <select id="underline_select" name="jenis" required
                         class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option selected>Pilih Nama Penyewa</option>
@@ -292,12 +297,12 @@
                         </option>
                     </select>
 
-                    <label for="kapasitas" id="kapasitas-label">Jumlah Orang<span class="required">*</span></label>
-                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas "
+                    <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</label>
+                    <input type="number" name="kapasitas" class="kapasitas" id="kapasitas" class="kapasitas "
                         placeholder="Ketik kapasitas ruangan" required>
                 </div>
 
-                <label for="no_ruang" id="name-label">Ruangan<span class="required">*</span></label>
+                <label for="no_ruang" class="header-text" id="name-label">Ruangan</span></label>
                 <select id="underline_select" name="jenis" required
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <?php foreach ($ruangan as $row): ?>
@@ -310,7 +315,7 @@
                 </select>
 
 
-                <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
+                <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
                 <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
                     placeholder="Pilih Paket">
 
@@ -327,12 +332,10 @@
                 </datalist>
 
                 <div class="fields">
-                    <label for="total_booking" id="total_booking-label">Booking Dari Tanggal<span
-                            class="required">*</span></label>
+                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Dari Tanggal</span></label>
                     <input type="date" name="booking" id="total_booking" class="total_booking"
                         placeholder="Ketik total hari booking" required>
-                    <label for="total_booking" id="total_booking-label">Booking Sampai Tanggal<span
-                            class="required">*</span></label>
+                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Sampai Tanggal</span></label>
                     <input type="date" name="akhir_booking" id="total_booking" class="total_booking"
                         placeholder="Ketik total hari booking" required>
                 </div>

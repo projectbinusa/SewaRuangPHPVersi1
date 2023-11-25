@@ -178,10 +178,15 @@
         }
 
         .subArteris {
-            color: red;
+            color: #555;
             font-size: 14px;
             margin-top: 15px;
             margin-bottom: 10px;
+        }
+
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
         }
 
         @media only screen and (max-width: 800px) {
@@ -229,15 +234,15 @@
             </header>
 
             <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form" class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
+                <label for="username" class="header-text" id="name-label">Name</span></label>
                 <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
+                <label for="email" class="header-text" id="email-label">Email</span></label>
                 <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
                 <div class="inputContainer">
-                    <label class="label" for="password">
-                        <span>Password*</span>
+                    <label class="label header-text" for="password">
+                        <span>Password</span>
                     </label>
                     <div class="password-input-container">
                         <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
