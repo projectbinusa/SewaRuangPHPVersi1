@@ -235,7 +235,7 @@
                         <span>Password*</span>
                     </label>
                     <div class="password-input-container">
-                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
+                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password" required>
                         <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                     </div>
                     <hr class="custom-hr">

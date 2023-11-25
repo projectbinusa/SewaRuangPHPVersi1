@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 class Auth extends CI_Controller {
@@ -36,11 +36,11 @@ class Auth extends CI_Controller {
   }
   public function ganti_password()
   {
-    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-        redirect(base_url('auth/forgot_password'));
-    } else if(empty($this->session->userdata('status'))) {
-        redirect(base_url('auth/verifikasi_kode'));
-    }
+    // if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+    //     redirect(base_url('auth/forgot_password'));
+    // } else if(empty($this->session->userdata('status'))) {
+    //     redirect(base_url('auth/verifikasi_kode'));
+    // }
     $this->load->view('auth/ganti_password');
   }
   public function check_expired_bookings()
@@ -174,17 +174,24 @@ public function aksi_forgot_pass()
         $generate = $this->generate_code();
         $code = $generate;
         $mail = new PHPMailer(true);
+        
         try {
             // Konfigurasi SMTP dan pengaturan lainnya
-            // ... (kode konfigurasi SMTP)
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'saputroandi763@gmail.com';
+            $mail->Password = 'qzgu djvr zfgz qtsf';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
 
             // Set pengirim dan penerima
-            $mail->setFrom('saputroandi763@gmail.com');
+            $mail->setFrom('saputroandi763@gmail.com', 'Sewa Ruang');
             $mail->addAddress($email, 'Sewa Ruang');
             $mail->addReplyTo("$email");
             $mail->isHTML(true);
-            $mail->Subject = 'Code Verifikasi Password';
-            $mail->Body = 'Berikut Code Verifikasi Untuk Reset Password '.$code.'';
+            $mail->Subject = 'Kode Verifikasi Password';
+            $mail->Body = "Berikut Kode Verifikasi anda $generate";
 
             // Kirim email
             if ($mail->send()) {
@@ -196,7 +203,7 @@ public function aksi_forgot_pass()
                 $this->session->set_flashdata('success', 'Pesan telah terkirim');
                 redirect(base_url('auth/verifikasi_kode'));
             } else {
-                $this->session->set_flashdata('error', 'Pesan tidak dapat terkirim');
+                $this->session->set_flashdata('error', 'Pesan tidak dapat terkirim. Error: ' . $mail->ErrorInfo);
                 redirect(base_url('auth/forgot_password'));
             }
         } catch (Exception $e) {
@@ -208,6 +215,7 @@ public function aksi_forgot_pass()
         redirect(base_url('auth/forgot_password'));
     }
 }
+
 
 public function aksi_verifikasi(){
     $code = $this->input->post('code');
@@ -221,13 +229,13 @@ public function aksi_verifikasi(){
 }
 
 public function aksi_ganti_password(){
-    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-        $this->session->set_flashdata('error', 'Sesi tidak valid');
-        redirect(base_url('auth/forgot_password'));
-    } else if(empty($this->session->userdata('status'))) {
-        $this->session->set_flashdata('error', 'Sesi tidak valid');
-        redirect(base_url('auth/verifikasi_kode'));
-    }
+    // if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+    //     $this->session->set_flashdata('error', 'Sesi tidak valid');
+    //     redirect(base_url('auth/forgot_password'));
+    // } else if(empty($this->session->userdata('status'))) {
+    //     $this->session->set_flashdata('error', 'Sesi tidak valid');
+    //     redirect(base_url('auth/verifikasi_kode'));
+    // }
 
     $pass = $this->input->post('password');
     $con_pass = $this->input->post('con_password');

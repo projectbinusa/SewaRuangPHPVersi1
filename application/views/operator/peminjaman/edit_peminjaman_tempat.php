@@ -239,7 +239,7 @@
                     <input type="text" name="nama" id="nama" required class="nama" value="<?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>">
 
                     <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang" value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>">
+                    <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang" value="<?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>" required>
                     <datalist id="browsers1" role="listbox">
                         <?php foreach ($ruangan as $row) : ?>
                             <option value="<?php echo $row->id ?>">L.
@@ -252,7 +252,7 @@
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
                     <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                    <input required class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
+                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
                     <datalist id="browsers" id="checkbox" role="listbox">
                         <div class="">
                             <?php foreach ($tambahan as $row) : ?>

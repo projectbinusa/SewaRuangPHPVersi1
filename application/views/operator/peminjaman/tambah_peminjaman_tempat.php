@@ -290,7 +290,7 @@
                 </div>
 
                 <label for="no_ruang" id="name-label"> Ruangan<span class="required">*</span></label>
-                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang" placeholder="Pilih Ruangan">
+                <input class="no_ruang" autocomplete="off" role="combobox" list="" id="input1" name="ruang" placeholder="Pilih Ruangan" required>
                 <datalist id="browsers1" role="listbox">
                     <?php foreach ($ruangan as $row) : ?>
                         <option value="<?php echo $row->id ?>">L.
@@ -302,8 +302,7 @@
 
 
                 <label for="snack" id="snack-label">Tambahan<span class="required">*</span></label>
-                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
-
+                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Tambahan">
                 <datalist id="browsers" id="checkbox" role="listbox">
                     <div class="">
                         <?php foreach ($tambahan as $row) : ?>
