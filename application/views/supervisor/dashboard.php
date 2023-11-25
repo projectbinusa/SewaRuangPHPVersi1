@@ -5768,6 +5768,22 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
+
+        function displaySweetAlert() {
+    const login_supervisor = "<?php echo $this->session->flashdata('login_supervisor'); ?>";
+
+    if (login_supervisor) {
+        Swal.fire({
+            title: 'Login Berhasil',
+            text: login_supervisor,
+            icon: 'success',
+            showConfirmButton: false, // Untuk menghilangkan tombol OK
+            timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+        });
+    }
+}
+
+window.onload = displaySweetAlert;
     </script>
 
   

@@ -903,7 +903,7 @@
 
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
-    <main class="contain-all max-h-screen overflow-y-auto">
+    <!-- <main class="contain-all max-h-screen overflow-y-auto"> -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -1015,17 +1015,15 @@
 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a onclick="editPeminjaman(event, '<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>')" href="#" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
+                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
                                                 <span class=""><i class="fas fa-edit"></i></span>
                                             </a>
 
                                             <?php if ($row->status === 'booking') : ?>
-                                                <button onclick="window.location.href='<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>'" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-print"></i>
                                                     </span>
-                                                </button>
-
                                                 </button>
                                             <?php endif; ?>
                                             <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
@@ -1073,7 +1071,6 @@
                 </div>
             </div>
         </div>
-    </main>
 
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -1083,6 +1080,43 @@
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script>
+            function printConfirmation(printUrl) {
+                Swal.fire({
+                    title: 'Konfirmasi Cetak',
+                    text: 'Anda yakin ingin mencetak?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Cetak!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Mencetak Struk',
+                            text: 'Mohon tunggu...',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
+                            // timerProgressBar: true,
+                            willOpen: () => {
+                                Swal.showLoading();
+                                // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
+                                // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
+                                // Jangan lupa untuk menutup SweetAlert ketika selesai
+                                // Misalnya: Swal.close();
+                            }
+                        }).then(() => {
+                            // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
+                            window.location.href = printUrl;
+                        });
+                    }
+                });
+            }
+        </script>
+
+        <script>
             $(document).ready(function() {
 
                 var table = $('#example_data').DataTable({
@@ -1091,37 +1125,6 @@
                     .columns.adjust()
                     .responsive.recalc();
             });
-
-            function editPeminjaman(event, url) {
-                event.preventDefault(); // Menghentikan aksi default dari tautan
-
-                Swal.fire({
-                    title: 'Edit Data Peminjaman?',
-                    text: "Anda akan mengedit data peminjaman",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Edit'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Lakukan proses edit data di sini, jika diperlukan
-
-                        // Menampilkan SweetAlert "berhasil mengubah" setelah edit berhasil
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil Mengubah',
-                            showConfirmButton: false,
-                            timer: 1500 // Timer 2.5 detik
-                        }).then(() => {
-                            // Redirect ke halaman edit setelah konfirmasi edit dari SweetAlert
-                            window.location.href = url;
-                        });
-                    }
-                });
-            }
-
 
             function hapus(id) {
                 Swal.fire({

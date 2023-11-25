@@ -1027,11 +1027,9 @@
                 }
             });
         }
-    </script>
-<script>
         function exportReportSewa() {
             Swal.fire({
-                title: 'Ekspor Data Report Sewa?',
+                title: 'Export Data Report Sewa?',
                 text: "Anda akan mengexport data report sewa",
                 icon: 'question',
                 showCancelButton: true,

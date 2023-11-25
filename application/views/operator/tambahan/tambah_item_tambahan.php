@@ -98,27 +98,27 @@
             line-height: 1px;
         }
 
+        .nama,
+        .hari,
+        .no_lantai,
+        .snack,
+        .jam_penggunaan,
+        .no_ruang,
+        .total_booking,
+        .deskripsi,
+        .kapasitas {
+            min-height: 2rem;
+            padding: 1rem 0;
+            border: none;
+            border-bottom: 1px solid #bcb9b9;
+        }
+
         textarea {
             display: block;
             width: 100%;
             margin: 5px 0;
             font-size: 1.6rem;
             line-height: 1px;
-        }
-
-        .nama,
-        .hari,
-        .no_lantai,
-        .extra_time,
-        .snack,
-        .jam_penggunaan,
-        .no_ruang,
-        .total_booking,
-        .kapasitas {
-            min-height: 2rem;
-            padding: 1rem 0;
-            border: none;
-            border-bottom: 1px solid #bcb9b9;
         }
 
         .submit {
@@ -132,7 +132,7 @@
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
-            padding: 3px 2rem;
+            padding: 8px 2rem;
             margin: 40px auto 10px auto;
             cursor: pointer;
             transition: all .3s;
@@ -143,9 +143,30 @@
             color: #222;
         }
 
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
 
         /* style comboboxs */
-
         input {
             padding: 5px;
             height: 35px;
@@ -154,7 +175,7 @@
         }
 
         datalist {
-            position: absolute;
+            /* position: absolute; */
             background-color: white;
             border-top: none;
             width: 350px;
@@ -171,6 +192,10 @@
             cursor: pointer;
         }
 
+        .contain-all {
+            overflow-y: scroll;
+            height: 70rem;
+        }
 
         @media only screen and (max-width: 800px) {
 
@@ -199,38 +224,17 @@
             }
         }
 
-
-        #checkboxCombo {
-            position: relative;
-            display: inline-block;
-        }
-
-        #checkboxCombo select {
-            width: 200px;
-            padding: 5px;
-        }
-
-        #checkboxCombo input[type="checkbox"] {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .contain-all {
-            overflow-y: scroll;
-            height: 38rem;
-        }
     </style>
 </head>
 
-<body class="min-h-screen relative overflow-hidden">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main class="contain-all max-h-screen overflow-x-auto">
-        <div class=" container">
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Item Tambahan</h1>
+                <h1 id="title" class="main-heading">Form Tambahan Peminjaman</h1>
             </header>
 
             <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form"
@@ -250,15 +254,15 @@
                     <option value="Alat">Alat</option>
                 </select>
                 <label for="nama" id="name-label">Deskripsi<span class="required">*</span></label>
-                <textarea type="text" name="deskripsi" id="nama" class="nama" placeholder="Masukan Deskripsi" required>
+                <textarea type="text" name="deskripsi" id="nama" class="deskripsi" placeholder="Masukan Deskripsi" required>
     </textarea>
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
 
-    <!-- script comboboxs no lantai -->
-    <script>
+     <!-- script comboboxs no lantai -->
+     <script>
         input.onfocus = function () {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";

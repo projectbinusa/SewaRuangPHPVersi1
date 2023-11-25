@@ -13,7 +13,7 @@
   <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
   body {
@@ -90,7 +90,7 @@
         <?php endif; ?>
 
         <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white flex items-center gap-3">
-          Cari<i class="fas fa-search text-lg mt-2"></i>
+          <span class="hidden md:inline">Cari <i class="fas fa-search text-lg mt-2"></i></span>
           <div class="ml-auto">
             <div class="items-center justify-between w-full mb-4">
               <button class="btn-export-p inline-block px-4 py-2 bg-yellow-500 hover:bg-yellow-800 text-white font-semibold text-base rounded ml-auto" onclick="toggleModal()">
@@ -100,11 +100,11 @@
                 Import
               </button>
 
-              <a href="expor_ruangan" class="ml-3 inline-block px-4 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base rounded" onclick="showExportConfirmation()">
+              <button onclick="Exportruangan()" class="ml-3 inline-block px-4 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base rounded" onclick="showExportConfirmation()">
                 <i class="fas fa-file-export"></i> Export
-              </a>
+              </button>
 
-              <a id="showAddConfirmation" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded" onclick="showAddConfirmation()">
+              <a href="<?php echo base_url('operator/tambah_ruang') ?>" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded">
                 <i class="fas fa-plus"></i> Tambah
               </a>
             </div>
@@ -141,28 +141,30 @@
             <?php $count = 0; ?>
             <?php foreach ($ruang as $row) : ?>
               <?php if ($count < 6) : ?>
-                <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto" onclick="navigateToDetail('<?php echo base_url('operator/detail/' . $row->id); ?>')">
-                  <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                    <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                    <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
-                    <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
-                  </div>
+                <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                  <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                    <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                      <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                      <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
+                      <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
+                      <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
+                      <!-- <i class="fas fa-trash"></i> -->
+                  </a>
                 </div>
-              <?php endif; ?>
-              <?php $count++; ?>
-            <?php endforeach; ?>
-          </div>
-
-          <?php if ($count > 6) : ?>
-            <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
-          <?php endif; ?>
-
-        <?php else : ?>
-          <div class="col-lg-4 col-md-6 mx-auto">
-            <p class="text-center text-gray-600">No data available in table </p>
+                </a>
           </div>
         <?php endif; ?>
+        <?php $count++; ?>
+      <?php endforeach; ?>
       </div>
+      <?php if ($count > 6) : ?>
+        <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+      <?php endif; ?>
+    <?php else : ?>
+      <div class="col-lg-4 col-md-6 mx-auto">
+        <p class="text-center text-gray-600">No data available in table </p>
+      </div>
+    <?php endif; ?>
     </div>
     </div>
 
@@ -192,6 +194,56 @@
   </main>
 
   <script>
+
+function Exportruangan() {
+            Swal.fire({
+                title: 'Export Data Ruangan?',
+                text: "Anda akan mengexport data ruangan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Export'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/expor_ruangan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data ruangan berhasil diexport',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
+    function hapus(id) {
+      Swal.fire({
+        title: ' Apa Mau Menghapus?',
+        text: "data ini tidak bisa dikembalikan lagi!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Hapus'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Menghapus',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(function() {
+            window.location.href = "<?php echo base_url('operator/hapus_data_ruangan/') ?>" + id;
+          });
+        }
+      });
+    }
+  </script>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
       const scrollDownBtn = document.getElementById("scrollDownBtn");
@@ -220,43 +272,17 @@
         });
       }
     });
-  </script>
-  <script>
+
     function toggleModal() {
       document.getElementById('modal').classList.toggle('hidden')
     }
-  </script>
-  <script>
+
     function navigateToDetail(detailUrl) {
       window.location.href = detailUrl;
     }
-  </script>
 
-  <script>
-    function showAddConfirmation() {
-      Swal.fire({
-        title: 'Konfirmasi',
-        text: 'Anda yakin ingin menambahkan ruangan?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Ya',
-        cancelButtonText: 'Tidak',
-        customClass: {
-          popup: 'custom-swal-popup',
-          title: 'custom-swal-title',
-          text: 'custom-swal-text',
-          confirmButton: 'custom-swal-confirm-button',
-          cancelButton: 'custom-swal-cancel-button'
-        },
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // Arahkan ke URL untuk menambah ruangan jika dikonfirmasi
-          window.location = 'tambah_ruang';
-        }
-      });
-    }
+   
   </script>
-
 
 </body>
 

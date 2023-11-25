@@ -98,27 +98,27 @@
             line-height: 1px;
         }
 
+        .nama,
+        .hari,
+        .no_lantai,
+        .snack,
+        .jam_penggunaan,
+        .no_ruang,
+        .total_booking,
+        .deskripsi,
+        .kapasitas {
+            min-height: 2rem;
+            padding: 1rem 0;
+            border: none;
+            border-bottom: 1px solid #bcb9b9;
+        }
+
         textarea {
             display: block;
             width: 100%;
             margin: 5px 0;
             font-size: 1.6rem;
             line-height: 1px;
-        }
-
-        .nama,
-        .hari,
-        .no_lantai,
-        .extra_time,
-        .snack,
-        .jam_penggunaan,
-        .no_ruang,
-        .total_booking,
-        .kapasitas {
-            min-height: 2rem;
-            padding: 1rem 0;
-            border: none;
-            border-bottom: 1px solid #bcb9b9;
         }
 
         .submit {
@@ -132,7 +132,7 @@
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
-            padding: 3px 2rem;
+            padding: 8px 2rem;
             margin: 40px auto 10px auto;
             cursor: pointer;
             transition: all .3s;
@@ -143,6 +143,28 @@
             color: #222;
         }
 
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
 
         /* style comboboxs */
         input {
@@ -153,7 +175,7 @@
         }
 
         datalist {
-            position: absolute;
+            /* position: absolute; */
             background-color: white;
             border-top: none;
             width: 350px;
@@ -170,6 +192,10 @@
             cursor: pointer;
         }
 
+        .contain-all {
+            overflow-y: scroll;
+            height: 38rem;
+        }
 
         @media only screen and (max-width: 800px) {
 
@@ -190,7 +216,6 @@
             .main-heading {
                 font-size: 22px;
                 margin-bottom: 0;
-                height: 3rem;
                 text-align: center;
             }
 
@@ -199,39 +224,19 @@
             }
         }
 
-
-        #checkboxCombo {
-            position: relative;
-            display: inline-block;
-        }
-
-        #checkboxCombo select {
-            width: 200px;
-            padding: 5px;
-        }
-
-        #checkboxCombo input[type="checkbox"] {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .contain-all {
-            overflow-y: scroll;
-            height: 38rem;
-        }
     </style>
 </head>
 
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main class="contain-all max-h-screen overflow-x-auto">
-        <div class=" container">
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Edit Tambahan Peminjaman</h1>
+                <h1 id="title" class="main-heading">Form Tambahan Peminjaman</h1>
             </header>
+
             <?php foreach($tambahan as $row): ?>
             <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form"
                 class="survey-form">

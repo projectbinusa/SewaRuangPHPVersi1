@@ -281,21 +281,6 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('success')) : ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Login Berhasil',
-            text: '<?= $this->session->flashdata('success'); ?>',
-            timer: 2500,
-            showConfirmButton: false,
-            timerProgressBar: true
-        }).then(() => {
-            // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
-            window.location.href = ''; // Ganti 'halaman_dashboard.php' dengan halaman yang diinginkan setelah login berhasil
-        });
-</script>
-<?php endif; ?>
-<script>
     <?php if ($this->session->flashdata('error_email')) : ?>
         Swal.fire({
             icon: 'error',
@@ -305,10 +290,24 @@
             showConfirmButton: false,
             timerProgressBar: true
         });
-</script>
 <?php endif; ?>
 
-<script>
+<?php if ($this->session->flashdata('success')): ?>
+        // Tampilkan SweetAlert jika login berhasil
+        Swal.fire({
+            icon: 'success',
+            title: 'Registrasi Berhasil',
+            text: '<?= $this->session->flashdata('success'); ?>',
+            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (3.5 detik)
+            showConfirmButton: false, // Menghilangkan tombol "OK"
+            timerProgressBar: true // Menampilkan progress bar
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Redirect atau lakukan tindakan lain jika diperlukan setelah SweetAlert hilang
+            }
+        });
+    <?php endif; ?>
+
     function togglePassword() {
         var passwordInput = document.getElementById("password");
         var passwordToggle = document.querySelector(".password-toggle-login");

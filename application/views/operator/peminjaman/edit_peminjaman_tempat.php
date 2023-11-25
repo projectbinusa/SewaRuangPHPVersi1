@@ -168,7 +168,7 @@
         }
 
         datalist {
-            position: absolute;
+            /* position: absolute; */
             background-color: white;
             border-top: none;
             width: 350px;

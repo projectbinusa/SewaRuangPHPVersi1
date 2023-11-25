@@ -46,8 +46,9 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 16px; */
             background-color: #f1f1f1;
+            min-height: screen;
+            position: relative;
         }
 
         @media (min-width: 1200px) {
@@ -62,7 +63,7 @@
             }
         }
 
-
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -240,7 +241,7 @@
             opacity: 1;
         }
 
-
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -519,7 +520,7 @@
             margin-left: 12px;
         }
 
-
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -724,7 +725,7 @@
             cursor: pointer;
         }
 
-
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -759,30 +760,9 @@
             }
         }
 
-
-        @media only screen and (max-width: 575px) {
-            .navbar-area .nav-container {
-                margin: 0px 0px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 10px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .form-control {
-                padding: 15px 20px;
-            }
-
-            .widget.footer-widget .subscribe-form.subscribe-form-style2 .btn {
-                padding: 15px 20px;
-            }
-
-            .search-popup .search-form {
-                min-width: 350px;
-            }
-        }
-
-
+       
+       
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -802,20 +782,22 @@
             margin-left: 9px;
         }
 
-        /Row Hover/ table.dataTable.hover tbody tr:hover,
+        /Row Hover/
+        table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 900;
+        /Pagination Buttons/
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
             height: 37px;
             padding-top: 5px;
         }
 
-
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -836,7 +818,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -847,50 +830,26 @@
         }
 
         /* code responsive table */
-        @media only screen and (max-width: 800px) {
-
-            .container {
-                padding: 1rem 1rem 0px 1rem;
-            }
-
-
-            .heading {
-                padding: 1.3em 9px 1.8rem 9px;
-            }
-
-            .survey-form {
-                padding: 1.3em 15px 1.8rem 15px;
-
-            }
-
-            .main-heading {
-                font-size: 22px;
-                margin-bottom: 0;
-                text-align: center;
-            }
-
-            label {
-                font-size: 16px;
+        @media (max-width: 600px) {
+            table {
+                width: 4.5rem;
             }
         }
 
-
-        #checkboxCombo {
-            position: relative;
-            display: inline-block;
+        .inner-section {
+            padding: 4%;
         }
 
-        #checkboxCombo select {
-            width: 200px;
-            padding: 5px;
-        }
+        table {
+                width: 12rem;
+            }
 
-        #checkboxCombo input[type="checkbox"] {
-            position: absolute;
-            top: 0;
-            right: 0;
+        .container-table {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            padding: 20px 10px 10px 10px;
         }
     </style>
+ 
 
     <script>
         function toggleModal() {
@@ -959,10 +918,10 @@
                                         </th>
 
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Phone
+                                            No Telepon
                                         </th>
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Payment Method
+                                            Metode Pembayaran
                                         </th>
 
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">

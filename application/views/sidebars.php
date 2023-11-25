@@ -58,8 +58,8 @@
       <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
         <ul class="px-2 py-2 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
           <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center ml-auto ">
-            <i class="fa-solid fa-right-from-bracket text-white hover:"></i>
             <span class="text-white font-semibold">Keluar</span>
+            <i class="fa-solid fa-right-from-bracket text-white hover:"></i>
           </a>
         </ul>
       </nav>

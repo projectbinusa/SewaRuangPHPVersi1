@@ -1791,7 +1791,7 @@
                     <div class="bg-gray-200 px-4 py-3 text-right">
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                         <button onclick="importWithConfirmation()" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
                             Download Template</button>
                     </div>
                     </form>
@@ -1885,6 +1885,30 @@
                     }
                 });
             }
+            function template() {
+            Swal.fire({
+                title: 'Download Template Data Operator?',
+                text: "Anda akan mengdownload template data operator",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Download'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('supervisor/template_data_operator') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil didownload',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
         </script>
         <script>
             function showAddConfirmation() {
@@ -1911,18 +1935,8 @@
                         setTimeout(() => {
                             Swal.close(); // Tutup SweetAlert loading
 
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Pengguna operator ditambahkan.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Redirect setelah berhasil menambah data
-                                    window.location.href = 'tambah_user_operator';
-                                }
-                            });
+                            // Redirect setelah berhasil menambah data
+                            window.location.href = 'tambah_user_operator';
                         }, 1500); // Simulasi waktu penambahan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });
@@ -1953,18 +1967,8 @@
                         setTimeout(() => {
                             Swal.close(); // Tutup SweetAlert loading
 
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Pengguna operator diubah.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Navigasi ke halaman edit setelah berhasil mengedit data
-                                    window.location.href = url;
-                                }
-                            });
+                            // Navigasi ke halaman edit setelah berhasil mengedit data
+                            window.location.href = url;
                         }, 1500); // Simulasi waktu pengeditan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });

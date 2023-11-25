@@ -9,6 +9,8 @@
     <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -18,10 +20,8 @@
             box-sizing: border-box;
         }
 
-
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 1.6rem; */
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
@@ -98,6 +98,7 @@
             line-height: 1px;
         }
 
+
         .username,
         .email,
         .password {
@@ -129,7 +130,41 @@
             color: #222;
         }
 
-     
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* style comboboxs */
+        input {
+            padding: 5px;
+            height: 35px;
+            border-bottom: 1px solid;
+            outline: none;
+        }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 38rem;
+        }
 
         .form-group {
             position: relative;
@@ -137,13 +172,14 @@
 
         .password-toggle {
             position: absolute;
-            top: 80%;
+            margin-top: 17px;
             transform: translateY(-50%);
-            right: 12.9rem;
+            margin-left: 45.5rem;
             cursor: pointer;
         }
 
         @media only screen and (max-width: 800px) {
+
             .password-toggle {
                 top: 57.6rem;
                 right: 3rem;
@@ -157,6 +193,7 @@
             .heading {
                 padding: 1.3em 9px 1.8rem 9px;
             }
+
             .survey-form {
                 padding: 1.3em 15px 1.8rem 15px;
 
@@ -176,54 +213,59 @@
 </head>
 
 <body class="relative min-h-screen overflow-hidden">
-  <?php $this->load->view('sidebars'); ?>
+    <?php $this->load->view('sidebars'); ?>
 
-  <main class="contain-all max-h-screen overflow-y-auto">
-        <div class=" container">
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Edit Operator</h1>
             </header>
-            <?php foreach($operator as $row):?>
-            <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="username" id="name-label">Name<span class="required">*</span></label>
-                <input value="<?php echo $row->username?>" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
-                    required>
-              
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
-                <input value="<?php echo $row->email?>" type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
-                <label for="password" id="password-label">Password<span class="required">*</span></label>
-                <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda"
-                    required>
+            <?php foreach ($operator as $row): ?>
+                <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
+                    class="survey-form">
+                    <input value="<?php echo $row->id ?>" type="hidden" name="id" id="username" class="username"
+                        placeholder="Masukkan nama anda">
+                    <label for="username" id="name-label">Name<span class="required">*</span></label>
+                    <input value="<?php echo $row->username ?>" type="text" name="username" id="username" class="username"
+                        placeholder="Masukkan nama anda" required>
 
-                <input type="submit" id="submit" class="submit" value="Submit">
-            </form>
-            <?php endforeach?>
+                    <label for="email" id="email-label">Email<span class="required">*</span></label>
+                    <input value="<?php echo $row->email ?>" type="email" name="email" id="email" class="email"
+                        placeholder="Masukkan email anda" required>
+
+                    <label for="password" id="password-label">Password<span class="required">*</span></label>
+                    <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
+                    <input type="password" name="password" id="password" class="password"
+                        placeholder="Masukkan password anda">
+
+                    <input type="submit" id="submit" class="submit" value="Submit">
+                </form>
+            <?php endforeach ?>
         </div>
     </main>
-</body>
 
-<script type="text/javascript">
-    function togglePassword() {
-        var passwordField = document.getElementById('password');
-        var passwordToggle = document.querySelector('.password-toggle');
+    <script type="text/javascript">
+        function togglePassword() {
+            var passwordField = document.getElementById('password');
+            var passwordToggle = document.querySelector('.password-toggle');
 
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            passwordToggle.classList.remove('fa-eye-slash');
-            passwordToggle.classList.add('fa-eye');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                passwordToggle.classList.remove('fa-eye-slash');
+                passwordToggle.classList.add('fa-eye');
 
 
-        } else {
-            passwordField.type = "password";
-            passwordToggle.classList.add('fa-eye-slash');
-            passwordToggle.classList.remove('fa-eye');
+            } else {
+                passwordField.type = "password";
+                passwordToggle.classList.add('fa-eye-slash');
+                passwordToggle.classList.remove('fa-eye');
 
+            }
         }
-    }
-</script>
+    </script>
+
+</body>
 
 </html>

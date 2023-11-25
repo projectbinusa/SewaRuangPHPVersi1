@@ -818,7 +818,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -847,6 +848,11 @@
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
+
+        .contain-all {
+            overflow-y: scroll;
+            height: 70rem;
+        }
     </style>
     <!-- script modal -->
     <script>
@@ -859,7 +865,7 @@
 <body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
   
-  <main class="contain-all max-h-screen overflow-y-auto">
+  <main class="contain-all h-screen">
     <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -876,7 +882,7 @@
                 <div class="header-item">
                     <div class="relative">
 
-                        <a href="javascript:void(0);" onclick="tambahItemConfirmation()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_item_tambahan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
@@ -937,7 +943,7 @@
                                             <?php echo $row->jenis ?>
                                         </td>
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                            <a href="javascript:void(0);" onclick="editTambahanConfirmation('<?php echo base_url('operator/edit_tambahan/') . $row->id ?>')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                            <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                 <span class="">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -980,7 +986,7 @@
 
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                         <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
+                        <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
                             Download Template</button>
                     </div>
                     </form>
@@ -997,90 +1003,6 @@
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script>
-            function editTambahanConfirmation(url) {
-                Swal.fire({
-                    title: 'Mau Mengedit Item?',
-                    text: 'Anda akan mengedit item tambahan.',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Mengedit Item...',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
-
-                        // Simulasi pengeditan item (gantilah dengan logika sesuai kebutuhan Anda)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Item tambahan berhasil diedit.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Redirect ke halaman edit_tambahan setelah berhasil mengedit item
-                                    window.location.href = url;
-                                }
-                            });
-                        }, 1500); // Simulasi waktu pengeditan item (gantilah dengan waktu sesuai kebutuhan Anda)
-                    }
-                });
-            }
-        </script>
-        <script>
-            function tambahItemConfirmation() {
-                Swal.fire({
-                    title: 'Mau Menambah Item?',
-                    text: 'Anda akan menambah item tambahan.',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Menambah Item...',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
-
-                        // Simulasi penambahan item (gantilah dengan logika sesuai kebutuhan Anda)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Item tambahan ditambahkan.',
-                                icon: 'success',
-                                timer: 1500,
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Redirect ke halaman tambah_item_tambahan setelah berhasil menambah item
-                                    window.location.href = 'tambah_item_tambahan';
-                                }
-                            });
-                        }, 1500); // Simulasi waktu penambahan item (gantilah dengan waktu sesuai kebutuhan Anda)
-                    }
-                });
-            }
-        </script>
         <script>
             function eksporDanArahkan() {
                 Swal.fire({
@@ -1114,7 +1036,31 @@
                         }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
                     }
                 });
-            }
+            },
+            function template() {
+            Swal.fire({
+                title: 'Download Template Data Tambahan?',
+                text: "Anda akan mengdownload template data tambahan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Download'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/template_tambahan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil didownload',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
         </script>
         <script>
             $(document).ready(function() {
