@@ -13,6 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-white min-h-screen font-base">
@@ -42,7 +43,7 @@
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/data_ruangan') ?>" class="flex items-center">
-              <i class="fa-solid fa-restroom text-white"></i>
+              <i class="fa-solid fa-building-circle-check text-white"></i> 
               <span class="mx-2 text-white font-semibold">data master ruang</span>
             </a>
           </li>
@@ -69,64 +70,21 @@
               <i class="fas fa-qrcode text-white"></i>
               <span class="mx-2 text-white font-semibold">Menu Tambahan</span>
             </a>
-          </li> 
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-          <a onclick="KeluarOPT(id)" class="flex items-center">
-          <i class="fa-solid fa-right-from-bracket text-white"></i>
-          <span class="text-white font-semibold mx-2">Keluar</span>
-            </a>
-          </li> 
+          </li>
         </ul>
-     </div>
+      </div>
     </aside>
     <!-- Main Content -->
     <div class="w-full md:flex-1">
       <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
-      
+        <ul class="px-1 py-2 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
+          <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center">
+            <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
+            <span class="text-white font-semibold mx-2 mb-0">Keluar</span>
+          </a>
+        </ul>
       </nav>
       <script>
-        function KeluarOPT(id) {
-    swal.fire({
-        title: ' Yakin Ingin Keluar?',
-        text: "",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Batal',
-        confirmButtonText: 'Keluar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil Keluar',
-                showConfirmButton: false,
-                timer: 1500,
-
-            }).then(function() {
-                window.location.href = "<?php echo base_url('auth/logout/')?>" + id;
-            });
-        }
-    });
-}
-
-function displaySweetAlert() {
-    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
-
-    if (message) {
-        Swal.fire({
-            title: 'Success!',
-            text: message,
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    } 
-}
-
-// Call the function when the page loads
-window.onload = displaySweetAlert;
-
-
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
           type: 'doughnut',
