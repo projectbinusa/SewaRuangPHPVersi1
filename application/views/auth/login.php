@@ -268,7 +268,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('error')) : ?>
+    <?php if ($this->session->flashdata('error')): ?>
         // Tampilkan SweetAlert jika terdapat error dari session
         Swal.fire({
             icon: 'error',
@@ -300,6 +300,21 @@
         });
     <?php endif; ?>
 
+function displaySweetAlert() {
+    const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+
+    if (success_keluar) {
+        Swal.fire({
+            title: 'Berhasil Keluar',
+            text: success_keluar,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2500
+        });
+    }
+}
+
+window.onload = displaySweetAlert;
 </script>
 <script type="text/javascript">
     function togglePassword() {
