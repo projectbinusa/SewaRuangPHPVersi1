@@ -1007,8 +1007,8 @@
         <script>
             function eksporDanArahkan() {
                 Swal.fire({
-                    title: 'yakin mengekspor data?',
-                    text: 'Data akan di ekspor.',
+                    title: 'Yakin mengexport data?',
+                    text: 'Data akan di export.',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -1024,7 +1024,7 @@
                         setTimeout(function() {
                             Swal.fire({
                                 title: 'Berhasil!',
-                                text: 'Data Anda telah diekspor.',
+                                text: 'Data Anda telah diexport.',
                                 icon: 'success',
                                 timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
                                 showConfirmButton: false,
@@ -1075,7 +1075,7 @@
 
             function hapus(id) {
                 Swal.fire({
-                    title: ' Apa Mau Menghapus?',
+                    title: ' Apakah Mau Dihapus?',
                     text: "data ini tidak bisa dikembalikan lagi!",
                     icon: 'warning',
                     showCancelButton: true,
