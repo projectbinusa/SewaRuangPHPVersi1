@@ -470,28 +470,13 @@ class operator extends CI_Controller
         // $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $this->load->view('operator/pelanggan/tambah_pelanggan');
     }
-    // public function aksi_tambah_pelanggan()
-    // {
-    //     $nama = $this->input->post('nama');
-    //     $phone = $this->input->post('phone');
-    //     $payment_method = $this->input->post('payment_method');
 
-    //     $data = array(
-    //         'nama' => $nama,
-    //         'phone' => $phone,
-    //         'payment_method' => $payment_method
-    //     );
-
-    //     $this->m_model->tambah_data('pelanggan', $data);
-    //     redirect(base_url('operator/data_master_pelanggan'));
-    // }
-
-    // // update data pelanggan
-    // public function update_data($id)
-    // {
-    //     $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
-    //     $this->load->view('operator/pelanggan/update_data', $data);
-    // }
+    // update data pelanggan
+    public function update_data($id)
+    {
+        $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
+        $this->load->view('operator/pelanggan/update_data', $data);
+    }
 
 
     public function aksi_tambah_pelanggan()
@@ -573,6 +558,12 @@ class operator extends CI_Controller
     {
         $this->m_model->delete('pelanggan', 'id', $id);
         redirect(base_url('operator/data_master_pelanggan'));
+    }
+    // Hapus Pelanggan
+    public function hapus_tambahan($id)
+    {
+        $this->m_model->delete('tambahan', 'id', $id);
+        redirect(base_url('operator/tambahan'));
     }
 
     public function peminjaman_tempat()

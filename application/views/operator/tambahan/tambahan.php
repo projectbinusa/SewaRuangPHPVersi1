@@ -866,17 +866,18 @@
 <body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
   
-  <main class="contain-all h-screen">
-    <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Tambahan Peminjaman</h2>
+  <main class="contain-all max-h-screen overflow-y-auto">
+        <section id="widget" class="p-10 widget-section pd-top-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">Tambahan Peminjaman</h2>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         <div class="container-table row justify-content-center">
 
             <div class="col-lg-12">
@@ -891,13 +892,13 @@
                         </a>
 
                         <a href="javascript:void(0);" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
-                            <i class="fas fa-file-export"></i> Ekspor
+                            <i class="fas fa-file-export"></i> Expor
                         </a>
                         <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
                             <span class="pe-2">
                                 <i class="fas fa-file-import"></i>
                             </span>
-                            Import
+                            Impor
                         </button>
                         <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -949,7 +950,7 @@
                                                     <i class="fas fa-edit"></i>
                                                 </span>
                                             </a>
-                                            <button onclick="hapus('<?php echo $row->id ?>')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                 <span class="">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </span>
@@ -986,9 +987,9 @@
                     <div class="bg-gray-200 px-4 py-3 text-right">
 
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                        <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                        <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
                         <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                            Download Template</button>
+                            Unduh Templat</button>
                     </div>
                     </form>
                 </div>
@@ -1063,40 +1064,40 @@
             });
         }
         </script>
-        <script>
-            $(document).ready(function() {
+         <script>
+                $(document).ready(function() {
 
-                var table = $('#example_data').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
-            });
-
-            function hapus(id) {
-                Swal.fire({
-                    title: ' Apakah Mau Dihapus?',
-                    text: "data ini tidak bisa dikembalikan lagi!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Hapus'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil Menghapus',
-                            showConfirmButton: false,
-                            timer: 1500,
-                        }).then(function() {
-                            window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
-                        });
-                    }
+                    var table = $('#example_data').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
                 });
-            }
-        </script>
+
+                function hapus(id) {
+                    Swal.fire({
+                        title: ' Apakah Mau Dihapus?',
+                        text: "data ini tidak bisa dikembalikan lagi!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Hapus'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil Menghapus',
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(function() {
+                                window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
+                            });
+                        }
+                    });
+                }
+            </script>
 
 </body>
 
