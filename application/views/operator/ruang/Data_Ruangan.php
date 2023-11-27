@@ -120,20 +120,6 @@
       </div>
     </div>
 
-    <script>
-      document.getElementById('searchForm').addEventListener('submit', function() {
-        // You can add any additional logic here if needed
-      });
-
-      document.getElementById('searchButton').addEventListener('click', function() {
-        document.getElementById('searchForm').submit();
-      });
-
-      document.querySelector('input[name="keyword"]').addEventListener('input', function() {
-        document.getElementById('searchForm').submit();
-      });
-    </script>
-
     <div class="container">
       <div class="row justify-content-center">
         <?php if ($ruang) : ?>
@@ -186,7 +172,7 @@
                 <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                 <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                 <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                            Download Template</button>
+                  Download Template</button>
               </div>
             </form>
           </div>
@@ -196,6 +182,18 @@
   </main>
 
   <script>
+    document.getElementById('searchForm').addEventListener('submit', function() {
+      // You can add any additional logic here if needed
+    });
+
+    document.getElementById('searchButton').addEventListener('click', function() {
+      document.getElementById('searchForm').submit();
+    });
+
+    document.querySelector('input[name="keyword"]').addEventListener('input', function() {
+      document.getElementById('searchForm').submit();
+    });
+
     function Exportruangan() {
       Swal.fire({
         title: 'Export Data Ruangan?',
@@ -244,8 +242,7 @@
         }
       });
     }
-  </script>
-  <script>
+
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
       const scrollDownBtn = document.getElementById("scrollDownBtn");
