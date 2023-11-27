@@ -26,11 +26,11 @@
             </div>
             <div class="flex flex-col justify-between p-4 lg:p-6 flex-grow">
               <h5 class="mb-2 text-xl lg:text-2xl font-bold text-gray-900 text-center dark:text-white">
-                <?php echo format_ruangan($row->no_ruang); ?>
+                <?php echo $row->no_ruang; ?>
               </h5>
               <p class="mb-3 font-normal text-lg text-center dark:text-gray-700"><?php echo convRupiah($row->harga); ?></p>
               <p class="mb-3 font-normal text-lg text-center dark:text-gray-700">
-                <?php echo format_lantai($row->no_lantai); ?>
+                <?php echo $row->no_lantai; ?>
               </p>
               <p class="mb-3 font-normal text-gray-700 text-center dark:text-gray-400"><?php echo $row->deskripsi; ?></p>
             </div>

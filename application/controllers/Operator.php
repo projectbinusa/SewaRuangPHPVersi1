@@ -113,13 +113,18 @@ class operator extends CI_Controller
         $errors = [];
 
         // Validasi no_lantai
-        if (empty($no_lantai) || !is_numeric($no_lantai)) {
-            $errors[] = 'Nomor Lantai harus diisi dengan angka dan tidak boleh kosong.';
+        // Validasi no_lantai
+        if (empty($no_lantai) || !preg_match('/^[0-9\s]*Lantai[0-9\s]*$/', $no_lantai)) {
+            $errors[] = 'Nomor Lantai harus mengandung kata "Lantai" dan hanya boleh berisi angka, spasi, dan kata "Lantai".';
+        } elseif (stripos($no_lantai, 'Lantai') === false || !preg_match('/^[a-zA-Z0-9\s]+$/i', $no_lantai)) {
+            $errors[] = 'Nomor lantai harus mengandung kata "Lantai" dan hanya boleh berisi angka.';
         }
 
         // Validasi no_ruang
         if (empty($no_ruang) || !preg_match('/^[a-zA-Z0-9\s]+$/', $no_ruang)) {
             $errors[] = 'Ruang hanya boleh berisi angka atau huruf';
+        } elseif (stripos($no_ruang, 'Ruang') === false || !preg_match('/^[a-zA-Z0-9\s]+$/i', $no_ruang)) {
+            $errors[] = 'Ruangan harus mengandung kata "Ruang" dan hanya boleh berisi angka atau huruf';
         }
 
         // Validasi harga
@@ -190,6 +195,11 @@ class operator extends CI_Controller
         echo json_encode($response);
     }
 
+    public function pdf()
+    {
+        $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
+        $this->load->view('operator/pdf', $data);
+    }
 
     public function export_pdf($id)
     {
@@ -197,11 +207,11 @@ class operator extends CI_Controller
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
-            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
+            $this->pdf->load_view('operator/export_pdf', $data);
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            $this->load->view('operator/peminjaman/export_pdf', $data);
+            $this->load->view('operator/export_pdf', $data);
         }
     }
     public function edit_ruangan($id)
@@ -240,11 +250,13 @@ class operator extends CI_Controller
         $this->form_validation->set_message('alpha_numeric', 'Kolom {field} hanya boleh berisi huruf dan angka.');
         $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
         $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka untuk harga.');
+        $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Lantai", angka, dan harus mengandung kata "Lantai".');
+        $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Ruang", angka, dan harus mengandung kata "Ruang".');
 
         // Additional validation for 'harga' to ensure it's an integer
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric|callback_check_integer');
-        $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|numeric');
-        $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|regex_match[/^[a-zA-Z0-9 ]+$/]');
+        $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|regex_match[/^[0-9\s]*Lantai[0-9\s]*$/]');
+        $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|regex_match[/^[a-zA-Z0-9\s]*Ruang[a-zA-Z0-9\s]*$/]');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
 
@@ -480,62 +492,62 @@ class operator extends CI_Controller
     //     $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
     //     $this->load->view('operator/pelanggan/update_data', $data);
     // }
-   
+
 
     public function aksi_tambah_pelanggan()
-{
-    $nama = $this->input->post('nama');
-    $phone = $this->input->post('phone');
-    $payment_method = $this->input->post('payment_method');
+    {
+        $nama = $this->input->post('nama');
+        $phone = $this->input->post('phone');
+        $payment_method = $this->input->post('payment_method');
 
-    $errors = [];
+        $errors = [];
 
-    // Validasi nama
-    if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
-        $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
-    }
+        // Validasi nama
+        if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
+            $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
+        }
 
-    // Validasi phone
-    if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
-        $errors[] = 'Isi nomor telepon hanya dengan angka';
-    }
+        // Validasi phone
+        if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
+            $errors[] = 'Isi nomor telepon hanya dengan angka';
+        }
 
-    // Validasi payment_method
-    if (empty($payment_method) || !preg_match('/^[a-zA-Z0-9\s]+$/', $payment_method)) {
-        $errors[] = 'Isi metode pembayaran dengan benar';
-    }
+        // Validasi payment_method
+        if (empty($payment_method) || !preg_match('/^[a-zA-Z0-9\s]+$/', $payment_method)) {
+            $errors[] = 'Isi metode pembayaran dengan benar';
+        }
 
-    if (count($errors) > 0) {
-        $response = [
-            'status' => 'error',
-            'message' => implode(' ', $errors),
-        ];
-    } else {
-        $data = [
-            'nama' => $nama,
-            'phone' => $phone,
-            'payment_method' => $payment_method,
-        ];
-
-        $inserted = $this->m_model->tambah_data('pelanggan', $data);
-
-        if ($inserted) {
-            $response = [
-                'status' => 'success',
-                'message' => 'Data berhasil ditambahkan.',
-                'redirect' => base_url('operator/data_master_pelanggan'),
-            ];
-        } else {
+        if (count($errors) > 0) {
             $response = [
                 'status' => 'error',
-                'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                'message' => implode(' ', $errors),
             ];
-        }
-    }
+        } else {
+            $data = [
+                'nama' => $nama,
+                'phone' => $phone,
+                'payment_method' => $payment_method,
+            ];
 
-    // Menggunakan echo json_encode untuk response AJAX
-    echo json_encode($response);
-}
+            $inserted = $this->m_model->tambah_data('pelanggan', $data);
+
+            if ($inserted) {
+                $response = [
+                    'status' => 'success',
+                    'message' => 'Data berhasil ditambahkan.',
+                    'redirect' => base_url('operator/data_master_pelanggan'),
+                ];
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                ];
+            }
+        }
+
+        // Menggunakan echo json_encode untuk response AJAX
+        echo json_encode($response);
+    }
 
 
     // aksi update data pelanggan
@@ -910,7 +922,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE','TAMBAHAN','SNACK', 'TOTAL BOOKING', 'STATUS'];
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'TAMBAHAN', 'SNACK', 'TOTAL BOOKING', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
