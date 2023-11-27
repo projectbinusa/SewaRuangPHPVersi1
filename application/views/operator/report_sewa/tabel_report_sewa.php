@@ -1002,7 +1002,7 @@
 
         function hapus(id) {
             Swal.fire({
-                title: ' Apa Mau Menghapus?',
+                title: ' Apakah Mau Dihapus?',
                 text: "data ini tidak bisa dikembalikan lagi!",
                 icon: 'warning',
                 showCancelButton: true,
