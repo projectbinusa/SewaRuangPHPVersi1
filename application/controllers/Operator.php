@@ -460,31 +460,87 @@ class operator extends CI_Controller
 
     public function tambah_pelanggan()
     {
-        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+        // $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $this->load->view('operator/pelanggan/tambah_pelanggan');
     }
-    public function aksi_tambah_pelanggan()
-    {
-        $nama = $this->input->post('nama');
-        $phone = $this->input->post('phone');
-        $payment_method = $this->input->post('payment_method');
+    // public function aksi_tambah_pelanggan()
+    // {
+    //     $nama = $this->input->post('nama');
+    //     $phone = $this->input->post('phone');
+    //     $payment_method = $this->input->post('payment_method');
 
-        $data = array(
+    //     $data = array(
+    //         'nama' => $nama,
+    //         'phone' => $phone,
+    //         'payment_method' => $payment_method
+    //     );
+
+    //     $this->m_model->tambah_data('pelanggan', $data);
+    //     redirect(base_url('operator/data_master_pelanggan'));
+    // }
+
+    // // update data pelanggan
+    // public function update_data($id)
+    // {
+    //     $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
+    //     $this->load->view('operator/pelanggan/update_data', $data);
+    // }
+   
+
+    public function aksi_tambah_pelanggan()
+{
+    $nama = $this->input->post('nama');
+    $phone = $this->input->post('phone');
+    $payment_method = $this->input->post('payment_method');
+
+    $errors = [];
+
+    // Validasi nama
+    if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
+        $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
+    }
+
+    // Validasi phone
+    if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
+        $errors[] = 'Isi nomor telepon hanya dengan angka';
+    }
+
+    // Validasi payment_method
+    if (empty($payment_method) || !preg_match('/^[a-zA-Z0-9\s]+$/', $payment_method)) {
+        $errors[] = 'Isi metode pembayaran dengan benar';
+    }
+
+    if (count($errors) > 0) {
+        $response = [
+            'status' => 'error',
+            'message' => implode(' ', $errors),
+        ];
+    } else {
+        $data = [
             'nama' => $nama,
             'phone' => $phone,
-            'payment_method' => $payment_method
-        );
+            'payment_method' => $payment_method,
+        ];
 
-        $this->m_model->tambah_data('pelanggan', $data);
-        redirect(base_url('operator/data_master_pelanggan'));
+        $inserted = $this->m_model->tambah_data('pelanggan', $data);
+
+        if ($inserted) {
+            $response = [
+                'status' => 'success',
+                'message' => 'Data berhasil ditambahkan.',
+                'redirect' => base_url('operator/data_master_pelanggan'),
+            ];
+        } else {
+            $response = [
+                'status' => 'error',
+                'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+            ];
+        }
     }
 
-    // update data pelanggan
-    public function update_data($id)
-    {
-        $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
-        $this->load->view('operator/pelanggan/update_data', $data);
-    }
+    // Menggunakan echo json_encode untuk response AJAX
+    echo json_encode($response);
+}
 
 
     // aksi update data pelanggan
