@@ -27,6 +27,7 @@ class operator extends CI_Controller
         $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
         $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
         $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
+        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/dashboard', $data);
     }
 
@@ -521,6 +522,7 @@ class operator extends CI_Controller
     {
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $this->load->view('operator/peminjaman/tambah_peminjaman_tempat', $data);
     }
     public function edit_peminjaman_tempat($id)

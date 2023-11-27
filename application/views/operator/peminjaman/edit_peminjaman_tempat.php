@@ -244,20 +244,25 @@
                     <label for="nama" class="header-text" id="name-label">Nama </span></label>
                     <select id="underline_select" name="jenis" required
                         class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option selected>Pilih Nama Penyewa</option>
-                        <option value="Rania Marwa">
-                        Rania Marwa
+                        <option selected><?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?></option>
+                        <?php foreach($pelanggan as $row):?>
+                        <option value="<?php echo $row->id?>">
+                           <?php echo $row->nama?>
                         </option>
+                        <?php endforeach?>
                     </select>
 
                     <label for="no_ruang" class="header-text" id="name-label"> Ruangan</span></label>
                     <select id="underline_select" name="jenis" required
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                 
-                        <option selected>Pilih Ruangan</option>
-                        <option value="Test">
-                         Test
+                        <option selected><?php echo tampil_nama_ruangan_byid($row->id_ruangan)?></option>
+                        <?php foreach ($ruangan as $row): ?>
+                        <option value="<?php echo $row->id?>">L
+                            <?php echo $row->no_lantai ?> R
+                            <?php echo $row->no_ruang ?>
                         </option>
+                    <?php endforeach ?>
                   
                 </select>
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>

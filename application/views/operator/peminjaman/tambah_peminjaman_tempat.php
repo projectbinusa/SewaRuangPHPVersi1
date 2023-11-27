@@ -292,9 +292,11 @@
                     <select id="underline_select" name="jenis" required
                         class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option selected>Pilih Nama Penyewa</option>
-                        <option value="Rania Marwa">
-                            Rania Marwa
+                        <?php foreach($pelanggan as $row):?>
+                        <option value="<?php echo $row->id?>">
+                           <?php echo $row->nama?>
                         </option>
+                        <?php endforeach?>
                     </select>
 
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</label>
@@ -307,7 +309,7 @@
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <?php foreach ($ruangan as $row): ?>
                         <option selected>Pilih Ruangan</option>
-                        <option value="L <?php echo $row->no_lantai ?> R <?php echo $row->no_ruang ?>">L
+                        <option value="<?php echo $row->id?>">L
                             <?php echo $row->no_lantai ?> R
                             <?php echo $row->no_ruang ?>
                         </option>

@@ -44,13 +44,13 @@
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/data_ruangan') ?>" class="flex items-center">
               <i class="fa-solid fa-building-circle-check text-white"></i> 
-              <span class="mx-2 text-white font-semibold">data master ruang</span>
+              <span class="mx-2 text-white font-semibold">Data Master Ruang</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/data_master_pelanggan') ?>" class="flex items-center">
               <i class="fas fa-users text-white"></i>
-              <span class="mx-2 text-white font-semibold">data master pelanggan</span>
+              <span class="mx-2 text-white font-semibold">Data Master Pelanggan</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
@@ -78,13 +78,46 @@
     <div class="w-full md:flex-1">
       <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
         <ul class="px-1 py-2 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
-          <a href="<?php echo base_url('auth/logout') ?>" class="flex items-center">
+          <a onclick="KeluarOPT()" class="flex items-center">
             <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
             <span class="text-white font-semibold mx-2 mb-0">Keluar</span>
           </a>
         </ul>
       </nav>
       <script>
+function displaySweetAlert() {
+    const login_supervisor = "<?php echo $this->session->flashdata('login_supervisor'); ?>";
+
+    if (login_supervisor) {
+        Swal.fire({
+            title: 'Login Berhasil',
+            text: login_supervisor,
+            icon: 'success',
+            showConfirmButton: false, // Untuk menghilangkan tombol OK
+            timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+        });
+    }
+}
+
+function KeluarOPT(id) {
+  const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+    Swal.fire({
+        title: 'Yakin Ingin Keluar',
+        text: "",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Keluar'
+    }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to logout controller/action
+                window.location.href = 'auth/logout'; // Change this to your logout URL
+            }
+        });
+  }
+
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
           type: 'doughnut',

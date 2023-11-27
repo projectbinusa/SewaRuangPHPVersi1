@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,20 +122,6 @@
       </div>
     </div>
 
-    <script>
-      document.getElementById('searchForm').addEventListener('submit', function() {
-        // You can add any additional logic here if needed
-      });
-
-      document.getElementById('searchButton').addEventListener('click', function() {
-        document.getElementById('searchForm').submit();
-      });
-
-      document.querySelector('input[name="keyword"]').addEventListener('input', function() {
-        document.getElementById('searchForm').submit();
-      });
-    </script>
-
     <div class="container">
       <div class="row justify-content-center">
         <?php if ($ruang) : ?>
@@ -171,30 +156,83 @@
     </div>
     </div>
 
-          <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-              <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-gray-900 opacity-75">
-                </div>
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                  <form action="<?php echo base_url('operator/import_ruang'); ?>" method="post" enctype="multipart/form-data">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                      <div class="flex items-center mb-3">
-                        <label class="font-medium text-gray-800">File</label>
-                      </div>
-                      <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-                    </div>
-                    <div class="bg-gray-200 px-4 py-3 text-right">
-                      <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                      <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+      <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity">
+          <div class="absolute inset-0 bg-gray-900 opacity-75">
           </div>
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+          <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <form action="<?php echo base_url('operator/import_ruang'); ?>" method="post" enctype="multipart/form-data">
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="flex items-center mb-3">
+                  <label class="font-medium text-gray-800">File</label>
+                </div>
+                <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+              </div>
+              <div class="bg-gray-200 px-4 py-3 text-right">
+                <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
+                            Download Template</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
+  <script>
+    function Exportruangan() {
+      Swal.fire({
+        title: 'Export Data Ruangan?',
+        text: "Anda akan mengexport data ruangan",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Export'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Lakukan proses ekspor data di sini
+          window.location.href = "<?php echo base_url('operator/expor_ruangan') ?>";
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Data ruangan berhasil diexport',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        }
+      });
+    }
+
+    function hapus(id) {
+      Swal.fire({
+        title: ' Apa Mau Menghapus?',
+        text: "data ini tidak bisa dikembalikan lagi!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Hapus'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Menghapus',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(function() {
+            window.location.href = "<?php echo base_url('operator/hapus_data_ruangan/') ?>" + id;
+          });
+        }
+      });
+    }
+  </script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
