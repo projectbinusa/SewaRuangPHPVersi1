@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,11 +67,14 @@
   .custom-swal-cancel-button:hover {
     background-color: #cc0000;
   }
-</style>
 
+  .contain-all {
+    overflow-y: scroll;
+    height: 100rem;
+  }
+</style>
 <body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
-
   <main class="contain-all max-h-screen overflow-y-auto">
     <!-- Area konten utama -->
     <div class="flex-1 p-4 w-full">
@@ -90,7 +92,7 @@
         <?php endif; ?>
 
         <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white flex items-center gap-3">
-          <span class="hidden md:inline">Cari <i class="fas fa-search text-lg mt-2"></i></span>
+          <span class="hidden md:inline">Cari</span>
           <div class="ml-auto">
             <div class="items-center justify-between w-full mb-4">
               <button class="btn-export-p inline-block px-4 py-2 bg-yellow-500 hover:bg-yellow-800 text-white font-semibold text-base rounded ml-auto" onclick="toggleModal()">
@@ -113,8 +115,8 @@
 
         <div class="flex items-center justify-between w-full mb-4">
           <form id="searchForm" action="<?php echo base_url('operator/search'); ?>" method="post" class="flex items-center w-full">
-            <button type="submit" class="mr-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded">Cari</button>
-            <input type="text" name="keyword" placeholder="Cari..." class="border rounded py-2 px-4 w-full" />
+            <button type="submit" class="mr-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded"><i class="fas fa-search text-lg mt-2"></i></button>
+            <input type="text" name="keyword" placeholder="Cari Ruangan..." class="border rounded py-2 px-4 w-full" />
           </form>
         </div>
       </div>
@@ -126,20 +128,20 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
             <?php $count = 0; ?>
             <?php foreach ($ruang as $row) : ?>
-              <?php if ($count < 6) : ?>
-                <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                  <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
-                    <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                      <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                      <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
-                      <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
-                      <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
-                      <!-- <i class="fas fa-trash"></i> -->
-                  </a>
-                </div>
+              <!-- <?php if ($count < 6) : ?> -->
+              <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded">
+                <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                  <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                    <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                    <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
+                    <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
+                    <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
+                    <!-- <i class="fas fa-trash"></i> -->
                 </a>
+              </div>
+              </a>
           </div>
-        <?php endif; ?>
+          <?php endif; ?>
         <?php $count++; ?>
       <?php endforeach; ?>
       </div>
@@ -172,7 +174,7 @@
                 <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                 <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                 <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                  Download Template</button>
+                            Download Template</button>
               </div>
             </form>
           </div>
@@ -182,18 +184,6 @@
   </main>
 
   <script>
-    document.getElementById('searchForm').addEventListener('submit', function() {
-      // You can add any additional logic here if needed
-    });
-
-    document.getElementById('searchButton').addEventListener('click', function() {
-      document.getElementById('searchForm').submit();
-    });
-
-    document.querySelector('input[name="keyword"]').addEventListener('input', function() {
-      document.getElementById('searchForm').submit();
-    });
-
     function Exportruangan() {
       Swal.fire({
         title: 'Export Data Ruangan?',
@@ -242,7 +232,8 @@
         }
       });
     }
-
+  </script>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
       const scrollDownBtn = document.getElementById("scrollDownBtn");
@@ -255,6 +246,11 @@
         scrollDownBtn.style.display =
           window.innerHeight + window.scrollY >= document.body.scrollHeight ? "none" : "block";
       });
+
+      // Scroll to the bottom when the page loads
+      window.onload = function() {
+        window.scrollTo(0, document.body.scrollHeight);
+      };
 
       scrollUpBtn.addEventListener("click", function() {
         scrollSmoothly(-5500);
@@ -271,16 +267,14 @@
         });
       }
     });
+    function navigateToDetail(detailUrl) {
+      window.location.href = detailUrl;
+    };
 
     function toggleModal() {
       document.getElementById('modal').classList.toggle('hidden')
     }
-
-    function navigateToDetail(detailUrl) {
-      window.location.href = detailUrl;
-    }
   </script>
-
 </body>
 
 </html>
