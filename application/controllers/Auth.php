@@ -220,6 +220,10 @@ public function aksi_forgot_pass()
 public function aksi_verifikasi(){
     $code = $this->input->post('code');
     if ($code == $this->session->userdata('code')) {
+        $data = [
+            'status' => true,
+        ];
+        $this->session->set_userdata($data);
         $this->session->set_flashdata('success', 'Verifikasi berhasil!');
         redirect(base_url('auth/ganti_password'));
     } else {

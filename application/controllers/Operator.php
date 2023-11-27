@@ -190,11 +190,6 @@ class operator extends CI_Controller
         echo json_encode($response);
     }
 
-    public function pdf()
-    {
-        $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
-        $this->load->view('operator/pdf', $data);
-    }
 
     public function export_pdf($id)
     {
@@ -202,11 +197,11 @@ class operator extends CI_Controller
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
-            $this->pdf->load_view('operator/export_pdf', $data);
+            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            $this->load->view('operator/export_pdf', $data);
+            $this->load->view('operator/peminjaman/export_pdf', $data);
         }
     }
     public function edit_ruangan($id)
