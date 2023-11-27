@@ -473,37 +473,37 @@
             <form action="<?php echo base_url('operator/aksi_edit_ruangan/' . $ruangan->id) ?>" method="post" id="edit-form" class="survey-form survey-form" enctype="multipart/form-data">
                 <div class="flex flex-wrap">
 
-                    <div class="w-full px-7">
-                        <label for="no_lantai" class="block">Nomor Lantai</label>
+                    <div class="w-full px-1">
+                        <label for="no_lantai" class="block font-bold">Nomor Lantai</label>
                         <input type="text" name="no_lantai" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->no_lantai; ?>">
                     </div>
 
-                    <div class="w-full px-7">
-                        <label for="no_ruang" class="block">Ruang</label>
+                    <div class="w-full px-1">
+                        <label for="no_ruang" class="block font-bold">Ruang</label>
                         <input type="text" name="no_ruang" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->no_ruang; ?>">
                     </div>
 
-                    <div class="w-full px-7">
-                        <label for="harga" class="block">Harga</label>
+                    <div class="w-full px-1">
+                        <label for="harga" class="block font-bold">Harga</label>
                         <input type="text" name="harga" id="harga" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->harga; ?>">
                     </div>
 
-                    <div class="w-full px-7">
-                        <label for="foto" class="block">Foto Ruangan</label>
+                    <div class="w-full px-1">
+                        <label for="foto" class="block font-bold">Foto Ruangan</label>
                         <input type="file" name="foto" id="foto" class="foto w-full  border-b-2 border-gray-300">
                     </div>
 
-                    <div class="w-full px-7">
-                        <label for="deskripsi" class="block">Keterangan</label>
+                    <div class="w-full px-1">
+                        <label for="deskripsi" class="block font-bold">Keterangan</label>
                         <input type="text" name="deskripsi" id="deskripsi" class="w-full min-h-8 p-4 border-b-2 border-gray-300" value="<?php echo $ruangan->deskripsi; ?>">
                     </div>
 
                     <input type="hidden" name="id" id="room_id" value="<?php echo $ruangan->id; ?>">
 
                 </div>
-                <div class="text-center mt-1 flex gap-1">
-                    <input type="submit" id="submit" class="submit " value="Submit">
+                <div class="text-center mt-1 flex">
                     <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-4 rounded-lg shadow-lg text-lg" enctype="multipart/form-data">
+                    <input type="submit" id="submit" class="submit " value="Submit">
                         <input type="button" id="submitt" style="border-radius: 10px;" class="hapus_gambar" value="Hapus Foto" onclick="deleteImage('<?= $ruangan->id ?>')">
                     </form>
                 </div>

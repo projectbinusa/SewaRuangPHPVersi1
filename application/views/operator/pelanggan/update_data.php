@@ -290,16 +290,16 @@
                   <div class="">
                     <input name="id" type="hidden" value="<?php echo $row->id ?>">
 
-                    <label for="nama" class="block">Nama</label>
+                    <label for="nama" class="block font-bold">Nama</label>
                     <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->nama ?>" >
 
 
 
-                    <label for="phone" class="block">No Telepon</label>
+                    <label for="phone" class="block font-bold">No Telepon</label>
                     <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->phone ?>" >
 
 
-                    <label for="payment_method" class="block">Metode Pembayaran</label>
+                    <label for="payment_method" class="block font-bold">Metode Pembayaran</label>
                     <input type="text" name="payment_method" id="deskripsi"
                         class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->payment_method ?>" >
 

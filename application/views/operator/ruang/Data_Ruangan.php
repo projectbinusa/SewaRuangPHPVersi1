@@ -165,7 +165,7 @@
         <?php endif; ?>
       <?php else : ?>
         <div class="col-lg-4 col-md-6 mx-auto">
-          <p class="text-center text-gray-600">No data available in table </p>
+          <p class="text-center text-gray-600">data Tidak Ditemukan</p>
         </div>
       <?php endif; ?>
       </div>
@@ -187,9 +187,9 @@
             </div>
             <div class="bg-gray-200 px-4 py-3 text-right">
               <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+              <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
               <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                Download Template</button>
+              Unduh Templat</button>
             </div>
           </form>
         </div>

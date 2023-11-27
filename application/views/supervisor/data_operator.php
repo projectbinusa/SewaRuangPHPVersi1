@@ -1693,13 +1693,13 @@
                     <span class="pe-2">
                         <i class="fas fa-file-import"></i>
                     </span>
-                    Import
+                    Impor
                 </button>
                 <a href="javascript:void(0);" onclick="exportData()" class="btn-style bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
                     <span class="pe-2">
                         <i class="fas fa-file-export"></i>
                     </span>
-                    Export
+                    Ekspor
                 </a>
                 <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>" class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
                     <span class="pe-2">
@@ -1721,7 +1721,7 @@
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Username
+                                            Nama
                                         </th>
                                         <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                             Email
@@ -1785,14 +1785,14 @@
                 <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <form action="<?php echo base_url('supervisor/import_data_operator') ?>" method="post" enctype="multipart/form-data">
-                            <label class="font-medium text-gray-800">File</label>
+                            <label class="font-medium text-gray-800">Berkas</label>
                             <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
                     </div>
                     <div class="bg-gray-200 px-4 py-3 text-right">
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                         <button onclick="importWithConfirmation()" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                         <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                            Download Template</button>
+                            Unduh Templat</button>
                     </div>
                     </form>
                 </div>
@@ -1941,7 +1941,7 @@
                     }
                 })
             }
-            
+
             function toggleModal() {
                 document.getElementById('modal').classList.toggle('hidden')
             }

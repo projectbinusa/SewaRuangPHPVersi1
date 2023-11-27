@@ -916,11 +916,11 @@
         </div>
         <div class="container-table row justify-content-center">
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-12">
                 <div class="header-item">
                     <div class="relative">
 
-                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
