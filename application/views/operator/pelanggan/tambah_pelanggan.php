@@ -99,17 +99,26 @@
         }
 
         .nama,
+        .hari,
         .no_lantai,
         .snack,
         .jam_penggunaan,
         .no_ruang,
         .total_booking,
-        /* .foto, */
+        .deskripsi,
         .kapasitas {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
             border-bottom: 1px solid #bcb9b9;
+        }
+
+        textarea {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            font-size: 1.6rem;
+            line-height: 1px;
         }
 
         .submit {
@@ -157,6 +166,32 @@
             color: #222;
         }
 
+        /* style comboboxs */
+        input {
+            padding: 5px;
+            height: 35px;
+            border-bottom: 1px solid;
+            outline: none;
+        }
+
+        datalist {
+            /* position: absolute; */
+            background-color: white;
+            border-top: none;
+            width: 350px;
+            padding: 5px;
+            max-height: 10rem;
+            overflow-y: auto
+        }
+
+        option {
+            background-color: white;
+            padding: 4px;
+            margin-bottom: 1px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
         .contain-all {
             overflow-y: scroll;
             height: 70rem;
@@ -183,7 +218,12 @@
                 margin-bottom: 0;
                 text-align: center;
             }
+
+            label {
+                font-size: 16px;
+            }
         }
+
     </style>
 </head>
 
@@ -201,17 +241,17 @@
                 <div class="flex flex-wrap">
                     <div class="w-full px-7">
                         <label for="nama" class="block">Nama</label>
-                        <input type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik nama lengkap anda" >
                     </div>
 
                     <div class="w-full px-7">
-                        <label for="phone" class="block">No Telfon</label>
-                        <input type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <label for="phone" class="block">No Telepon</label>
+                        <input type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik no telepon anda" >
                     </div>
 
                     <div class="w-full px-7">
                         <label for="payment_method" class="block">Metode Pembayaran</label>
-                        <input type="text" name="payment_method" id="payment_method" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input type="text" name="payment_method" id="payment_method" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik pembayaran anda melalui" >
                     </div>
                 </div>
                 <div class="text-center mt-1">
