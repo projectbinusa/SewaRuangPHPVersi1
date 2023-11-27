@@ -233,7 +233,7 @@
             font-weight: bold;
             font-size: 15px;
         }
-iki style
+/* iki style */
     </style>
 </head>
 
