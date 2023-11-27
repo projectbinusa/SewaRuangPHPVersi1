@@ -66,7 +66,7 @@
       <script>
 function KeluarSPV(id) {
     swal.fire({
-        title: ' Yakin Ingin Keluar?',
+        title: 'Yakin Ingin Keluar?',
         text: "",
         icon: 'question',
         showCancelButton: true,
@@ -74,20 +74,13 @@ function KeluarSPV(id) {
         cancelButtonColor: '#d33',
         cancelButtonText: 'Batal',
         confirmButtonText: 'Keluar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil Keluar',
-                showConfirmButton: false,
-                timer: 1500,
-
-            }).then(function() {
-                window.location.href = "<?php echo base_url('auth/logout/')?>" + id;
-            });
-        }
-    });
-}
+      }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to logout controller/action
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
+            }
+        });
+  }
 
 function displaySweetAlert() {
     const message = "<?php echo $this->session->flashdata('sukses'); ?>";

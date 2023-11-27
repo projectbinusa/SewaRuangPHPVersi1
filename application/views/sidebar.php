@@ -113,7 +113,7 @@ function KeluarOPT(id) {
     }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect to logout controller/action
-                window.location.href = 'auth/logout'; // Change this to your logout URL
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
             }
         });
   }
