@@ -35,10 +35,7 @@
             font-family: "DM Sans", sans-serif;
             background-color: #f1f1f1;
         }
-        .content-text {
-            font-family:"DM Sans", sans-serif ;
-            font-size: 17px;
-        }
+       
 
         @media (min-width: 1200px) {
 

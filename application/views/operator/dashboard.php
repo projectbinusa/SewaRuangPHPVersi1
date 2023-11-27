@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <!--Regular Datatables CSS-->
@@ -1706,7 +1709,8 @@
 
 
                         <div class="card">
-                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
+                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>"
+                                class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_pelanggan ?>
@@ -1734,7 +1738,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <a href="<?php echo base_url("operator/tabel_report_sewa") ?>" class="card-body text-center">
+                            <a href="<?php echo base_url("operator/tabel_report_sewa") ?>"
+                                class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_sewa ?>
@@ -1751,298 +1756,318 @@
                     </div>
         </section>
 
+        <section class="inner-section">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Ruangan</h2>
 
-        <!-- about area start -->
-        <section id="about" class="inner-section">
-            <div class="about-area ">
-                <div class="container">
-                    <div class="about-area-inner">
-                        <div class="md:flex gap-5">
-                            <div class="col-lg-6 order-lg-12 align-self-center">
-                                <img src="https://ifcjakarta.co.id/blog/uploads/berita/20230816153735_bg_ruang_meeting_kantor_(1).jpg">
-                            </div>
-                            <div class="col-lg-6 order-lg-1 align-self-center mt-4 mt-lg-0">
-                                <div class="about-inner-wrap">
-                                    <div class="section-title mb-0">
-                                        <h2 class="title">Mengenal ruang yang kami sewakan</h2>
-                                        <br>
+                    </div>
+                </div>
+            </div>
 
+            <div class="container">
+                <div class="row justify-content-center">
+                    <?php if ($ruang): ?>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  hover:text-gray-900 transition duration-100 mx-auto"
+                            id="roomList">
+                            <?php $count = 0; ?>
+                            <?php foreach ($ruang as $row): ?>
+                                <?php if ($count < 6): ?>
+                                    <div
+                                        class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                                        <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                                            <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
+                                                    alt="Gambar Ruangan"
+                                                    class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3">
+                                                    <?php echo format_ruangan($row->no_ruang); ?>
+                                                </h2>
+                                        </a>
                                     </div>
-                                    <p class="content-text">Ruangan yang nyaman serta memiliki fasilitas yang lengkap
-                                        merupakan salah satu kunci kesuksesan acara anda. di Sewa Ruang ini terdapat
-                                        berbagai ruangan. Seperti ruang meeting untuk meeting bisnis anda , ada ruang
-                                        acara yang tersedia berbagai fasilitas di dalamnya.</p>
-
-                                    <p class="content-text">Banyak ruang yang dapat anda pilih berdasarkan corak
-                                        interior, lokasi yang strategis,harga sesuai budget ataupun disesuaikan dengan
-                                        kebutuhan klien.</p>
-
-                                    <p class="content-text">Sewa ruang ini akan mempermudah meeting anda dan membuat
-                                        klien puas dengan meet yang anda buat.</p>
-
-
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
+                            <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php if ($count > 6): ?>
+                        <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari
+                            <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.
+                        </p>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <p class="text-center text-gray-600">No data available in table </p>
+                    </div>
+                <?php endif; ?>
+
+    </section>
+
+   
+    <!-- Data Master Ruang -->
+    <section id="widget" class="inner-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Data Master Ruangan</h2>
+
                     </div>
                 </div>
             </div>
 
-        </section>
+            <div class="row justify-content-center">
 
-        <!-- Data Master Ruang -->
-        <section id="widget" class="inner-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="section-title">
-                            <h2 class="title">Data Master Ruangan</h2>
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
 
-                        </div>
-                    </div>
-                </div>
+                            <table id="example_master_ruang"
+                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            No Ruang
+                                        </th>
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            No Lantai
+                                        </th>
 
-                <div class="row justify-content-center">
-
-                    <div class="col-lg-12">
-                        <div class="header-item">
-                            <div class="relative">
-
-                                <table id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                No Ruang
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                No Lantai
-                                            </th>
-
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach ($ruang as $row):
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No  " scope="row"
+                                                class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="No Ruang " class="text-center px-6 py-4">
+                                                <?php echo $row->no_ruang ?>
+                                            </td>
+                                            <td data-cell="No Lantai " class="text-center px-6 py-4">
+                                                <?php echo $row->no_lantai ?>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($ruang as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="No Ruang " class="text-center px-6 py-4">
-                                                    <?php echo $row->no_ruang ?>
-                                                </td>
-                                                <td data-cell="No Lantai " class="text-center px-6 py-4">
-                                                    <?php echo $row->no_lantai ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- Data Master Pelanggan -->
-        <section id="widget" class="inner-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="section-title">
-                            <h2 class="title">Data Master Pelanggan</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="header-item">
-                            <div class="relative">
-                                <table id="example_master_pelanggan" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                Nama
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Telepon
-                                            </th>
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                Payment Method
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($pelanggans as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama" class="text-center px-3 py-4">
-                                                    <?php echo $row->nama ?>
-                                                </td>
-                                                <td data-cell="Telepon" class="text-center px-3 py-4">
-                                                    <?php echo $row->phone ?>
-                                                </td>
-                                                <td data-cell="Payment Method " class="text-center px-3 py-4">
-                                                    <?php echo $row->payment_method ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- Report Sewa -->
-        <section id="widget" class="inner-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="section-title">
-                            <h2 class="title">Report Sewa</h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-
-                    <div class="col-lg-12">
-                        <div class="header-item">
-                            <div class="relative">
-
-                                <table id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                Nama
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Ruangan
-                                            </th>
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                Kapasitas
-                                            </th>
-                                            <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                                Kode Booking
-                                            </th>
-                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                                Tambahan
-                                            </th>
-                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                                Total Booking
-                                            </th>
-                                            <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                                Total
-                                            </th>
-                                            <th data-priority="9" scope="col" class="text-center px-3 py-3">
-                                                Status
-                                            </th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($report_sewa as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama" class="text-center px-3 py-4">
-                                                    <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
-                                                </td>
-                                                <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                                </td>
-                                                <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                                    <?php echo $row->jumlah_orang ?>
-                                                </td>
-                                                <td data-cell="Kode Booking" class="text-center px-3 py-4">
-                                                    <?php echo $row->kode_booking ?>
-                                                </td>
-                                                <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                   <?php echo tampil_jumlah_tambahan_byid($row->id_tambahan)?>
-                                                </td>
-                                                <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                    <?php
-                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                                    echo $durasi->days . ' Hari';
-                                                    ?>
-                                                </td>
-                                                <td data-cell="Total Booking" class="text-center px-3 py-4">
-                                                    <?php echo $row->total_harga ?>
-
-
-                                                </td>
-                                                <td data-cell="Status" class="text-center px-3 py-4">
-                                                    <!-- <?php echo $row->status ?> -->
-
-                                                    <?php if ($row->status == "di tolak") {
-                                                        echo NULL;
-                                                    } else {
-                                                        echo $row->status;
-                                                    } ?>
-                                                </td>
-
-
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- footer area start -->
-        <div class="footer-2 bg-gray-800 inner-section">
-
-            <div class="border-t border-solid border-gray-900 mt-4 py-4">
-                <div class="container px-4 mx-auto">
-
-                    <div class="md:flex md:-mx-4 md:items-center">
-                        <div class="md:flex-1 md:px-4 text-center md:text-left">
-                            <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
-                        </div>
-                        <div class="md:flex-1 md:px-4 text-center md:text-right">
-                            <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All
-                                rights reserved.</a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
 
         </div>
+    </section>
+
+    <!-- Data Master Pelanggan -->
+    <section id="widget" class="inner-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Data Master Pelanggan</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+                            <table id="example_master_pelanggan"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            Nama
+                                        </th>
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            Telepon
+                                        </th>
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                            Payment Method
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach ($pelanggans as $row):
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row"
+                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama" class="text-center px-3 py-4">
+                                                <?php echo $row->nama ?>
+                                            </td>
+                                            <td data-cell="Telepon" class="text-center px-3 py-4">
+                                                <?php echo $row->phone ?>
+                                            </td>
+                                            <td data-cell="Payment Method " class="text-center px-3 py-4">
+                                                <?php echo $row->payment_method ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Report Sewa -->
+    <section id="widget" class="inner-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Report Sewa</h2>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+
+                            <table id="example_report"
+                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            Nama
+                                        </th>
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            Ruangan
+                                        </th>
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                            Kapasitas
+                                        </th>
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                            Kode Booking
+                                        </th>
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                            Tambahan
+                                        </th>
+                                        <th data-priority="7" scope="col" class="text-center px-3 py-3">
+                                            Total Booking
+                                        </th>
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                            Total
+                                        </th>
+                                        <th data-priority="9" scope="col" class="text-center px-3 py-3">
+                                            Status
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach ($report_sewa as $row):
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="Nama Penyewa " scope="row"
+                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama" class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            </td>
+                                            <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <td data-cell="Kode Booking" class="text-center px-3 py-4">
+                                                <?php echo $row->kode_booking ?>
+                                            </td>
+                                            <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                <?php echo tampil_jumlah_tambahan_byid($row->id_tambahan) ?>
+                                            </td>
+                                            <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                <?php
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                echo $durasi->days . ' Hari';
+                                                ?>
+                                            </td>
+                                            <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                                <?php echo $row->total_harga ?>
+
+
+                                            </td>
+                                            <td data-cell="Status" class="text-center px-3 py-4">
+                                                <!-- <?php echo $row->status ?> -->
+
+                                                <?php if ($row->status == "di tolak") {
+                                                    echo NULL;
+                                                } else {
+                                                    echo $row->status;
+                                                } ?>
+                                            </td>
+
+
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- footer area start -->
+    <div class="footer-2 bg-gray-800 inner-section">
+
+        <div class="border-t border-solid border-gray-900 mt-4 py-4">
+            <div class="container px-4 mx-auto">
+
+                <div class="md:flex md:-mx-4 md:items-center">
+                    <div class="md:flex-1 md:px-4 text-center md:text-left">
+                        <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
+                    </div>
+                    <div class="md:flex-1 md:px-4 text-center md:text-right">
+                        <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All
+                            rights reserved.</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
     </div>
 
 
@@ -2061,28 +2086,28 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_master_ruang').DataTable({
-                    // responsive: true
-                })
+                // responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_master_pelanggan').DataTable({
-                    responsive: true
-                })
+                responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_report').DataTable({
-                    responsive: true
-                })
+                responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });
