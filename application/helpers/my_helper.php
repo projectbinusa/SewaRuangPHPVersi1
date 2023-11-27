@@ -9,7 +9,7 @@ if (!function_exists('convRupiah')) {
 if (!function_exists('format_ruangan')) {
     function format_ruangan($nomor_ruangan)
     {
-        return 'ruang ' . $nomor_ruangan;
+        return 'Ruang ' . $nomor_ruangan;
     }
 }
 

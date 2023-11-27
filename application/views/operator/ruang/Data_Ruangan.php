@@ -123,7 +123,6 @@
           </div>
         </div>
       </div>
-
       <script>
         document.getElementById('searchForm').addEventListener('submit', function() {
           // You can add any additional logic here if needed
@@ -137,21 +136,21 @@
           document.getElementById('searchForm').submit();
         });
       </script>
-
       <div class="container">
         <div class="row justify-content-center">
           <?php if ($ruang) : ?>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
+            <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
               <?php $count = 0; ?>
               <?php foreach ($ruang as $row) : ?>
                 <?php if ($count < 6) : ?>
-                  <div onclick="<?php echo base_url('operator/detail/' . $row->id); ?>" class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                    <a href="">
+                  <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                    <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
                       <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
                         <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                        <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo format_ruangan($row->no_ruang); ?></h2>
+                        <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
+                        <!-- <i class="fas fa-trash"></i> -->
                     </a>
                   </div>
                   </a>
@@ -227,7 +226,7 @@
 
     function hapus(id) {
       Swal.fire({
-        title: ' Apakah Mau Dihapus?',
+        title: ' Apa Mau Menghapus?',
         text: "data ini tidak bisa dikembalikan lagi!",
         icon: 'warning',
         showCancelButton: true,
