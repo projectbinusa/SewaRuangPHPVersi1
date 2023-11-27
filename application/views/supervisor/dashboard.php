@@ -5462,8 +5462,57 @@
     </div>
     </section>
 
+    <section class="inner-section">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2 class="title">Ruangan</h2>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <?php if ($ruang): ?>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  hover:text-gray-900 transition duration-100 mx-auto"
+                            id="roomList">
+                            <?php $count = 0; ?>
+                            <?php foreach ($ruang as $row): ?>
+                                <?php if ($count < 6): ?>
+                                    <div
+                                        class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                                        <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                                            <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
+                                                    alt="Gambar Ruangan"
+                                                    class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3">
+                                                    <?php echo format_ruangan($row->no_ruang); ?>
+                                                </h2>
+                                        </a>
+                                    </div>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                            <?php $count++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php if ($count > 6): ?>
+                        <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari
+                            <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.
+                        </p>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <p class="text-center text-gray-600">No data available </p>
+                    </div>
+                <?php endif; ?>
+
+    </section>
+
       <!-- about area start -->
-      <section  id="about" class="inner-section">
+      <!-- <section  id="about" class="inner-section">
     <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
@@ -5492,7 +5541,7 @@
         </div>
     </div>
    
-</section>
+</section> -->
     
     <!-- Data Operator -->
     <section id="widget" class=" inner-section">
@@ -5658,11 +5707,11 @@
   
     <!-- footer area start -->
     <div class="footer-2 bg-gray-800 inner-section md:pt-12">
-  <!-- <div class="container px-4 mx-auto"> -->
+  <div class="container px-4 mx-auto">
 
-    <!-- <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+    <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
 
-      <div class="footer-info lg:w-1/3 md:px-4">
+      <!-- <div class="footer-info lg:w-1/3 md:px-4">
         <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
         <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
         <div class="mt-4">
@@ -5673,7 +5722,7 @@
             <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
           </button>
         </div>
-      </div>
+      </div> -->
 
       <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
         <div class="sm:flex">
@@ -5686,7 +5735,13 @@
               <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
             </div>
           </div>
-          <div class="sm:flex-1 mt-4 sm:mt-0">
+          
+         
+        </div>
+      </div>
+      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
+        <div class="sm:flex">
+          <div class="sm:flex-1">
             <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
             <div>
               <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
@@ -5695,6 +5750,8 @@
               <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
             </div>
           </div>
+
+         
         </div>
       </div>
 
@@ -5703,11 +5760,11 @@
         <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
       </div>
 
-    </div> -->
+    </div>
 
-  <!-- </div> -->
+  </div>
 
-  <div class="border-t border-solid border-gray-900 mt-4 py-4">
+  <div class="">
     <div class="container px-4 mx-auto">
 
       <div class="md:flex md:-mx-4 md:items-center">
