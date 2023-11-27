@@ -134,14 +134,12 @@ public function aksi_register()
     }
 }
 
-     
      //function aksi logout
      public function logout()
-     {
-         $this->session->sess_destroy($data);
-         $this->session->set_flashdata('success_keluar', 'Anda Berhasil Keluar.');
-         redirect(base_url('auth'));
-     }
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('auth'));
+    }
 
     public function forgot_password()
 	{

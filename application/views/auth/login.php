@@ -7,6 +7,7 @@
     <title>Sewa Ruang</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
     <style>
@@ -266,7 +267,6 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
     <?php if ($this->session->flashdata('error')): ?>
         // Tampilkan SweetAlert jika terdapat error dari session
@@ -300,21 +300,25 @@
         });
     <?php endif; ?>
 
-function displaySweetAlert() {
-    const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+    function displaySweetAlert() {
+            const success_logout = "<?php echo $this->session->flashdata('success_logout'); ?>";
 
-    if (success_keluar) {
-        Swal.fire({
-            title: 'Berhasil Keluar',
-            text: success_keluar,
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 2500
-        });
-    }
-}
+            if (success_logout) {
+                Swal.fire({
+                    title: 'Berhasil Keluar',
+                    text: success_logout,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            }
+        }
 
-window.onload = displaySweetAlert;
+        // Memanggil fungsi saat halaman siap
+        window.onload = function() {
+            displaySweetAlert();
+        };
+
 </script>
 <script type="text/javascript">
     function togglePassword() {
