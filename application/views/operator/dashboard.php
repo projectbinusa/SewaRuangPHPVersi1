@@ -2008,7 +2008,15 @@
                                                 <?php echo $row->kode_booking ?>
                                             </td>
                                             <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                <?php echo tampil_jumlah_tambahan_byid($row->id_tambahan) ?>
+                                            <?php
+                                            // Memisahkan data tambahan menjadi array
+                                            $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                            // Menampilkan setiap tambahan
+                                            foreach ($tambahanArray as $tambahan) {
+                                                echo $tambahan . '<br>';
+                                            }
+                                            ?>
                                             </td>
                                             <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                 <?php
@@ -2027,9 +2035,9 @@
                                                 <!-- <?php echo $row->status ?> -->
 
                                                 <?php if ($row->status == "di tolak") {
-                                                    echo NULL;
+                                                    echo "DI TOLAK";
                                                 } else {
-                                                    echo $row->status;
+                                                    echo "SELESAI";
                                                 } ?>
                                             </td>
 
