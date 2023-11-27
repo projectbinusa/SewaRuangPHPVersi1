@@ -241,12 +241,12 @@
             <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form"
                 class="survey-form">
                 <input type="hidden" name="id" id="nama" value="<?php echo $row->id?>" class="nama" placeholder="Masukkan nama item" required>
-                <label for="nama" id="name-label">Nama Item<span class="required">*</span></label>
+                <label for="nama" id="name-label" class="font-bold">Nama Item</label>
                 <input type="text" name="nama" id="nama" value="<?php echo $row->nama?>" class="nama" placeholder="Masukkan nama item" required>
 
-                <label for="kapasitas" id="kapasitas-label">Harga<span class="required">*</span></label>
+                <label for="kapasitas" id="kapasitas-label" class="font-bold">Harga</label>
                 <input type="number" value="<?php echo $row->harga?>" name="harga" id="kapasitas" class="kapasitas" placeholder="Masukkan harga" required>
-                <label for="no_ruang" id="name-label">Tambahan<span class="required">*</span></label>
+                <label for="no_ruang" id="name-label" class="font-bold">Tambahan</label>
                 <select id="underline_select" name="jenis"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option value="<?php echo $row->nama?>"><?php echo $row->jenis?></option>
@@ -254,7 +254,7 @@
                     <option value="Alat">Alat</option>
                 </select>
 
-                <label for="nama" id="name-label">Deskripsi<span class="required">*</span></label>
+                <label for="nama" id="name-label" class="font-bold">Deskripsi</label>
                 <textarea required class="nama" name="deskripsi" placeholder=""><?php echo $row->deskripsi?></textarea>
 
                 <input type="submit" id="submit" class="submit" value="Submit">

@@ -781,14 +781,14 @@
         .dataTables_wrapper .dataTables_filter input {
             margin-left: 9px;
         }
-
-        /Row Hover/
+/* 
+        /Row Hover/ */
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
+        /* /Pagination Buttons/ */
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -856,13 +856,9 @@
             document.getElementById('modal').classList.toggle('hidden')
         }
     </script>
-
-
-
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <section id="widget" class="p-10 widget-section pd-top-120">

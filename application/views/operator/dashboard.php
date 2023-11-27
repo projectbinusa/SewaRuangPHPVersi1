@@ -1738,7 +1738,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <a href="<?php echo base_url("operator/tabel_report_sewa") ?>"
+                            <a href="<?php echo base_url("operator/report_sewa") ?>"
                                 class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
@@ -1749,7 +1749,7 @@
                                 </p>
                             </a>
                             <div class="card-footer">
-                                <a href="<?php echo base_url("operator/tabel_report_sewa") ?>">Klik disini</a>
+                                <a href="<?php echo base_url("operator/report_sewa") ?>">Klik disini</a>
                             </div>
                         </div>
 
