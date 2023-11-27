@@ -99,13 +99,12 @@
         }
 
         .nama,
-        .hari,
         .no_lantai,
-        .extra_time,
         .snack,
         .jam_penggunaan,
         .no_ruang,
         .total_booking,
+        /* .foto, */
         .kapasitas {
             min-height: 2rem;
             padding: 1rem 0;
@@ -158,35 +157,9 @@
             color: #222;
         }
 
-        /* style comboboxs */
-        input {
-            padding: 5px;
-            height: 35px;
-            border-bottom: 1px solid;
-            outline: none;
-        }
-
-        datalist {
-            /* position: absolute; */
-            background-color: white;
-            border-top: none;
-            width: 350px;
-            padding: 5px;
-            max-height: 10rem;
-            overflow-y: auto
-        }
-
-        option {
-            background-color: white;
-            padding: 4px;
-            margin-bottom: 1px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
         .contain-all {
             overflow-y: scroll;
-            height: 50rem;
+            height: 70rem;
         }
 
         @media only screen and (max-width: 800px) {
@@ -195,9 +168,6 @@
                 padding: 1rem 1rem 0px 1rem;
             }
 
-            .contain-all {
-                height: 90rem;
-            }
 
             .heading {
                 padding: 1.3em 9px 1.8rem 9px;
@@ -213,63 +183,6 @@
                 margin-bottom: 0;
                 text-align: center;
             }
-
-            label {
-                font-size: 16px;
-            }
-        }
-
-
-        #checkboxCombo {
-            position: relative;
-            display: inline-block;
-        }
-
-        #checkboxCombo select {
-            width: 200px;
-            padding: 5px;
-        }
-
-        #checkboxCombo input[type="checkbox"] {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .fields {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .fields label {
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .input-fields {
-            display: flex;
-            width: calc(100% /3 - 15px);
-            flex-direction: column;
-            margin: 4px 0;
-        }
-
-        .input-fields input {
-            outline: none;
-            font-size: 14px;
-            font-weight: 400;
-            color: #333;
-            border-radius: 5px;
-            border: 1px solid #aaa;
-            padding: 0 15px;
-            height: 42px;
-            margin: 8px 0;
-        }
-        .header-text {
-            font-weight: bold;
-            font-size: 15px;
         }
     </style>
 </head>
@@ -277,92 +190,122 @@
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main class="contain-all h-screen overflow-y-auto">
+    <main class="contain-all max-h-screen overflow-y-auto">
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Form Tambah Pelanggan</h1>
+                <h1 id="title" class="main-heading">Form Data Pelanggan</h1>
             </header>
-          
-            
-            <form action="<?php echo base_url('operator/aksi_tambah_pelanggan') ?>" method="post" id="survey-form"
-            class="survey-form ">
 
-                <div class="">
-                    <label for="nama" class="block">Nama</label>
-                    <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required >
-
-
-
-                    <label for="phone" class="block">No Telepon</label>
-                    <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required >
-
-
-                    <label for="payment_method" class="block">Metode Pembayaran</label>
-                    <input type="text" name="payment_method" id="deskripsi"
-                        class="w-full min-h-8 p-4 border-b-2 border-gray-300" required >
-
-                        <div class="text-center mt-1">
-                            <input type="submit" id="submit"
-                                class="submit font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem        width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s"
-                                value="Submit" onclick="tambah()">
-                        </div>
+            <form action="<?php echo base_url('operator/aksi_tambah_ruangan') ?>" method="post" id="survey-form" class="survey-form ">
+                <div class="flex flex-wrap">
+                    <div class="w-full px-7">
+                        <label for="nama" class="block">Nama</label>
+                        <input type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
-                </form>
+
+                    <div class="w-full px-7">
+                        <label for="phone" class="block">No Telfon</label>
+                        <input type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                    </div>
+
+                    <div class="w-full px-7">
+                        <label for="payment_method" class="block">Metode Pembayaran</label>
+                        <input type="text" name="payment_method" id="payment_method" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                    </div>
+                </div>
+                <div class="text-center mt-1">
+                    <input type="submit" id="submit" class="submit font-size-14px ont-weight-600 text-transform-uppercase letter-spacing-1px color-#f4f4f4 background-color-#4F709C border-3px-solid-#4F709C border-radius-1rem        width-8rem height-2.5rem padding-3px-2rem margin-40px-auto-10px-auto cursor-pointer transition-all .3s" value="Submit">
+                </div>
+            </form>
         </div>
     </main>
-      <!-- jQuery -->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Include jQuery before SweetAlert2 and your other scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        $(document).ready(function() {
+            const form = document.getElementById("survey-form");
 
-<!--Datatables -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var table = $('#example').DataTable({
-            responsive: true
-        }).columns.adjust().responsive.recalc();
-    });
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
 
+                if (e.submitter.id === "submit") {
+                    // Display SweetAlert confirmation before submitting
+                    Swal.fire({
+                        title: 'Konfirmasi',
+                        text: 'Apakah Anda yakin ingin menambah data?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Batal'
+                    }).then(function(result) {
+                        if (result.isConfirmed) {
+                            // If user clicks "Ya", proceed with AJAX submission
+                            document.getElementById("submit").disabled = true;
 
-<script>
-     $(document).ready(function() {
-                    var table = $('#example').DataTable({
-                        responsive: true
-                    }).columns.adjust().responsive.recalc();
-                });
-            </script>
-            <script>
-     
-     function tambah(id) {
-        Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
-  }
-});
-}
-    
-</script>
+                            $.ajax({
+                                type: "POST",
+                                url: "<?php echo base_url('operator/aksi_tambah_pelanggan') ?>",
+                                data: new FormData(form),
+                                contentType: false,
+                                processData: false,
+                                dataType: "json",
+                                success: function(response) {
+                                    if (response.status === 'success') {
+                                        // Show success SweetAlert and then redirect
+                                        Swal.fire({
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                            icon: 'success',
+                                            showConfirmButton: false,
+                                            timer: 2000
+                                        }).then(function() {
+                                            window.location.href = response.redirect;
+                                        });
+                                    } else {
+                                        // Display error messages
+                                        if (response.errors) {
+                                            response.errors.forEach(function(error) {
+                                                Swal.fire({
+                                                    title: 'Gagal',
+                                                    text: error,
+                                                    icon: 'error',
+                                                    showConfirmButton: false,
+                                                    timer: 2000
+                                                });
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                title: 'Gagal',
+                                                text: response.message,
+                                                icon: 'error',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            });
+                                        }
 
-
-
-
+                                        // Re-enable the submit button immediately upon encountering an error
+                                        document.getElementById("submit").disabled = false;
+                                    }
+                                }
+                            });
+                        }
+                    });
+                } else if (e.submitter.id === "cancel") {
+                    // Handle the "Batal" button click event here
+                    Swal.fire({
+                        title: 'Aksi dibatalkan',
+                        text: 'Anda membatalkan aksi penyimpanan data.',
+                        icon: 'info',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    // Optionally, you can redirect or perform other actions when canceling
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
-
-
-
