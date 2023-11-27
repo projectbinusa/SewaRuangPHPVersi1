@@ -138,7 +138,7 @@
 
         .password-toggle-baru {
             position: absolute;
-            top: 40.5%;
+            top: 50.5%;
             transform: translateY(-50%);
             right: 39.5rem;
             cursor: pointer;
@@ -151,130 +151,24 @@
             right: 39.5rem;
             cursor: pointer;
         }
-
-        /* IP SE */
-        @media (min-width: 333px) and (max-width: 671px) {
-
-            .form-group {
-                position: relative;
-            }
-            .password-toggle-baru {
-                position: absolute;
-                top: 39.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-            .password-toggle-konfirmasi {
-                position: absolute;
-                top: 54.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-        }
-/* IP XR*/
-        @media (min-width: 414px) and (max-width: 896px) {
+    
+        @media only screen and (max-width: 1200px) {
 
             .form-group {
                 position: relative;
             }
             .password-toggle-baru {
                 position: absolute;
-                top: 29%;
+                top: 36.5%;
                 transform: translateY(-50%);
-                right: 4.5rem;
+                right: 30.5rem;
                 cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 40.5%;
+                top: 51%;
                 transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-        }
-        /* IP 12 */
-        @media (min-width: 390px) and (max-width: 844px) {
-
-            .form-group {
-                position: relative;
-            }
-            .password-toggle-baru {
-                position: absolute;
-                top: 31%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-            .password-toggle-konfirmasi {
-                position: absolute;
-                top: 43%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-        }
-        /* IP 14 */
-        @media (min-width: 430px) and (max-width: 932px) {
-
-            .form-group {
-                position: relative;
-            }
-            .password-toggle-baru {
-                position: absolute;
-                top: 28%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-            .password-toggle-konfirmasi {
-                position: absolute;
-                top: 39%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-        }
-        /* PIXEL 7 */
-        @media (min-width: 412px) and (max-width: 915px) {
-
-            .form-group {
-                position: relative;
-            }
-            .password-toggle-baru {
-                position: absolute;
-                top: 28.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-            .password-toggle-konfirmasi {
-                position: absolute;
-                top: 39.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
-            }
-        }
-        /* Tablet */
-        @media (min-width: 800px) and (max-width: 1280px) {
-
-            .form-group {
-                position: relative;
-            }
-            .password-toggle-baru {
-                position: absolute;
-                top: 43%;
-                transform: translateY(-50%);
-                right: 23rem;
-                cursor: pointer;
-            }
-            .password-toggle-konfirmasi {
-                position: absolute;
-                top: 60%;
-                transform: translateY(-50%);
-                right: 23rem;
+                right: 30.5rem;
                 cursor: pointer;
             }
         }
