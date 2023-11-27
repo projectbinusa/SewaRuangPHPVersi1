@@ -228,6 +228,12 @@
         .LoginPageContainer::-webkit-scrollbar-thumb:hover {
             background: #4520ff;
         }
+
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
+        }
+iki style
     </style>
 </head>
 
@@ -246,13 +252,13 @@
 
                     <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email*
+                            <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
                             <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress">
-                                <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
+                            <label class="label header-text" for="emailAddress">
+                                <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password</span></label>
                             <div class="password-input-container">
                                 <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>

@@ -242,7 +242,14 @@
             color: #555;
             /* Adjust the color as needed */
         }
+
+        .header-text {
+            font-weight: bold;
+            font-size: 15px;
+        }
     </style>
+
+    
 </head>
 
 <body>
@@ -260,25 +267,25 @@
 
                     <form action="<?php echo base_url('auth/aksi_register') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username*
+                            <label class="label header-text" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username
                                 </span></label>
                             <input required type="text" name="username" class="input" id="username" placeholder="Enter your Username">
                         </div>
                         <div class="inputContainer">
-                            <label class="label" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email*
+                            <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
                             <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                          <div class="inputContainer">
-                            <label class="label" for="emailAddress">
-                            <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password*</span></label>
+                            <label class="label header-text" for="emailAddress">
+                            <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password</span></label>
                             <div class="password-input-container">
                                 <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
                         </div>
 
-                        <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf, angka, dan simbol</p>
+                        <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf dan angka</p>
                         <button name="submit" type="submit" class="LoginButton">Register</button>
 
                     </form>
