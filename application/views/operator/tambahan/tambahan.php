@@ -828,6 +828,7 @@
             background-color: #4F709C !important;
 
         }
+        
 
         /* code responsive table */
         @media (max-width: 600px) {
