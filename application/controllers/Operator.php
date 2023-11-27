@@ -946,7 +946,6 @@ class operator extends CI_Controller
         $writer->save('php://output');
     }
 
-
     public function expor_ruangan()
     {
 
