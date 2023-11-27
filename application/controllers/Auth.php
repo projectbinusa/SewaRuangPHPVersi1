@@ -136,10 +136,19 @@ public function aksi_register()
 
      //function aksi logout
      public function logout()
-    {
-        $this->session->sess_destroy();
-        redirect(base_url('auth'));
-    }
+     {
+         $role = $this->session->userdata('role');
+         
+         if ($role === 'operator') {
+             $this->session->set_flashdata('success_logout', 'Anda Berhasil Keluar');
+         } elseif ($role === 'supervisor') {
+             $this->session->set_flashdata('success_logout', 'Anda Berhasil Keluar');
+         }
+         
+         $this->session->sess_destroy();
+         redirect(base_url('auth'));
+     }
+     
 
     public function forgot_password()
 	{

@@ -101,11 +101,11 @@
                   <span class="pe-2">
                     <i class="fas fa-file-import"></i>
                   </span>
-                  Import
+                  Impor
                 </button>
 
-                <button onclick="Exportruangan()" class="ml-3 inline-block px-4 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base rounded" onclick="showExportConfirmation()">
-                  <i class="fas fa-file-export"></i> Export
+                <button onclick="Eksporruangan()" class="ml-3 inline-block px-4 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base rounded" onclick="showExportConfirmation()">
+                  <i class="fas fa-file-export"></i> Expor
                 </button>
 
                 <a href="<?php echo base_url('operator/tambah_ruang') ?>" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded">
@@ -199,16 +199,16 @@
   </div>
 
   <script>
-    function Exportruangan() {
+    function Eksporruangan() {
       Swal.fire({
-        title: 'Export Data Ruangan?',
-        text: "Anda akan mengexport data ruangan",
+        title: 'Ekspor Data Ruangan?',
+        text: "Anda akan mengekspor data ruangan",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Batal',
-        confirmButtonText: 'Export'
+        confirmButtonText: 'Ekspor'
       }).then((result) => {
         if (result.isConfirmed) {
           // Lakukan proses ekspor data di sini
@@ -216,7 +216,7 @@
 
           Swal.fire({
             icon: 'success',
-            title: 'Data ruangan berhasil diexport',
+            title: 'Data ruangan berhasil diekspor',
             showConfirmButton: false,
             timer: 2500,
           });
