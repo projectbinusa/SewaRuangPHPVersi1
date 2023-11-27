@@ -36,11 +36,11 @@ class Auth extends CI_Controller {
   }
   public function ganti_password()
   {
-    // if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-    //     redirect(base_url('auth/forgot_password'));
-    // } else if(empty($this->session->userdata('status'))) {
-    //     redirect(base_url('auth/verifikasi_kode'));
-    // }
+    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        redirect(base_url('auth/forgot_password'));
+    } else if(empty($this->session->userdata('status'))) {
+        redirect(base_url('auth/verifikasi_kode'));
+    }
     $this->load->view('auth/ganti_password');
   }
   public function check_expired_bookings()
@@ -231,13 +231,13 @@ public function aksi_verifikasi(){
 }
 
 public function aksi_ganti_password(){
-    // if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-    //     $this->session->set_flashdata('error', 'Sesi tidak valid');
-    //     redirect(base_url('auth/forgot_password'));
-    // } else if(empty($this->session->userdata('status'))) {
-    //     $this->session->set_flashdata('error', 'Sesi tidak valid');
-    //     redirect(base_url('auth/verifikasi_kode'));
-    // }
+    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/forgot_password'));
+    } else if(empty($this->session->userdata('status'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/verifikasi_kode'));
+    }
 
     $pass = $this->input->post('password');
     $con_pass = $this->input->post('con_password');
@@ -251,7 +251,7 @@ public function aksi_ganti_password(){
         if($pass == $con_pass){
             // Lakukan penggantian password dengan metode enkripsi yang lebih aman, misalnya bcrypt atau Argon2
             // Update kode enkripsi password sesuai kebutuhan
-            $hashed_password = password_hash($pass, PASSWORD_BCRYPT);
+            $hashed_password = md5($pass);
 
             $data = [
                 'password' => $hashed_password,
