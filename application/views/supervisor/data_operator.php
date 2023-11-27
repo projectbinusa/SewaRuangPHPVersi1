@@ -1701,7 +1701,7 @@
                     </span>
                     Export
                 </a>
-                <a href="#" class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded" onclick="showAddConfirmation()">
+                <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>" class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
                     <span class="pe-2">
                         <i class="fas fa-plus"></i>
                     </span>
@@ -1751,7 +1751,7 @@
 
                                             <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
 
-                                                <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded" onclick="showEditConfirmation('<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>')">
+                                                <a href="<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
@@ -1850,8 +1850,7 @@
                     }
                 });
             }
-        </script>
-        <script>
+
             function exportData() {
                 Swal.fire({
                     title: 'yakin mengekspor data?',
@@ -1885,96 +1884,32 @@
                     }
                 });
             }
+
             function template() {
-            Swal.fire({
-                title: 'Download Template Data Operator?',
-                text: "Anda akan mengdownload template data operator",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Download'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    window.location.href = "<?php echo base_url('supervisor/template_data_operator') ?>";
-                    
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data berhasil didownload',
-                        showConfirmButton: false,
-                        timer: 2500,
-                    });
-                }
-            });
-        }
-        </script>
-        <script>
-            function showAddConfirmation() {
                 Swal.fire({
-                    title: 'Mau Menambah Data?',
-                    text: 'Anda akan menambahkan pengguna operator.',
+                    title: 'Download Template Data Operator?',
+                    text: "Anda akan mengdownload template data operator",
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Download'
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        // Lakukan proses ekspor data di sini
+                        window.location.href = "<?php echo base_url('supervisor/template_data_operator') ?>";
+
                         Swal.fire({
-                            title: 'Menambah Data...',
-                            allowOutsideClick: false,
+                            icon: 'success',
+                            title: 'Data berhasil didownload',
                             showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
+                            timer: 2500,
                         });
-
-                        // Simulasi penambahan data (gantilah dengan logika sesuai kebutuhan Anda)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
-                            // Redirect setelah berhasil menambah data
-                            window.location.href = 'tambah_user_operator';
-                        }, 1500); // Simulasi waktu penambahan data (gantilah dengan waktu sesuai kebutuhan Anda)
                     }
                 });
             }
-        </script>
-        <script>
-            function showEditConfirmation(url) {
-                Swal.fire({
-                    title: 'Mau Mengedit Data?',
-                    text: 'Anda akan mengedit pengguna operator.',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Mengubah Data...',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
 
-                        // Simulasi pengeditan data (gantilah dengan logika sesuai kebutuhan Anda)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
-                            // Navigasi ke halaman edit setelah berhasil mengedit data
-                            window.location.href = url;
-                        }, 1500); // Simulasi waktu pengeditan data (gantilah dengan waktu sesuai kebutuhan Anda)
-                    }
-                });
-            }
-        </script>
-        <script>
             $(document).ready(function() {
 
                 var table = $('#examples').DataTable({})
@@ -2006,10 +1941,7 @@
                     }
                 })
             }
-        </script>
-
-        <!-- script modal -->
-        <script>
+            
             function toggleModal() {
                 document.getElementById('modal').classList.toggle('hidden')
             }
