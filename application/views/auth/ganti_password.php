@@ -138,37 +138,60 @@
 
         .password-toggle-baru {
             position: absolute;
-            top: 50.5%;
+            top: 38%;
             transform: translateY(-50%);
-            right: 39.5rem;
+            right: 44rem;
             cursor: pointer;
         }
 
         .password-toggle-konfirmasi {
             position: absolute;
-            top: 56%;
+            top: 52.5%;
             transform: translateY(-50%);
-            right: 39.5rem;
+            right: 44rem;
             cursor: pointer;
         }
-    
-        @media only screen and (max-width: 1200px) {
+
+        /* IP SE */
+        @media (min-width: 333px) and (max-width: 671px) {
 
             .form-group {
                 position: relative;
             }
             .password-toggle-baru {
                 position: absolute;
-                top: 36.5%;
+                top: 37.5%;
                 transform: translateY(-50%);
-                right: 30.5rem;
+                right: 4.5rem;
                 cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 51%;
+                top: 51.5%;
                 transform: translateY(-50%);
-                right: 30.5rem;
+                right: 4.5rem;
+                cursor: pointer;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 100px)(max-width: 1200px) {
+
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 38%;
+                transform: translateY(-50%);
+                right: 31rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 52%;
+                transform: translateY(-50%);
+                right: 31rem;
                 cursor: pointer;
             }
         }
@@ -229,6 +252,16 @@
             icon: 'error',
             title: 'Gagal Mengganti!',
             text: '<?php echo $this->session->flashdata('error'); ?>'
+        }).then(() => {
+            window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
+        });
+    <?php } ?>
+    
+    <?php if ($this->session->flashdata('success_code')) { ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Verifikasi Berhasil!',
+            text: '<?php echo $this->session->flashdata('success'); ?>'
         }).then(() => {
             window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
         });
