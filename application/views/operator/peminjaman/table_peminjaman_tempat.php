@@ -47,6 +47,7 @@
         body {
             font-family: "DM Sans", sans-serif;
             background-color: #f1f1f1;
+            min-height: screen;
             position: relative;
         }
 
@@ -891,11 +892,6 @@
             background-color: transparent;
             color: #222;
         }
-
-        .contain-all {
-            overflow-y: scroll;
-            height: 200vh;
-        }
     </style>
     <!-- script modal -->
     <script>
@@ -905,25 +901,26 @@
     </script>
 </head>
 
-<body class="relative h-screen overflow-hidden">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
-    <main class="mx-4 my-8">
-        <div class="container mx-auto my-8">
+    <!-- <main class="contain-all max-h-screen overflow-y-auto"> -->
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Peminjaman Tempat</h2>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="w-full lg:w-10/12 mx-auto p-4">
+        <div class="container-table row justify-content-center">
 
-            <div class="col-lg-12 p-12">
+            <div class="col-lg-12">
                 <div class="header-item">
                     <div class="relative">
 
-                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
+                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
@@ -1054,8 +1051,8 @@
 
 
         <!-- modal -->
-        <div class="fixed z-50 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-            <div class="flex items-center justify-center min-height-200vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <div class="fixed inset-0 transition-opacity">
                     <div class="absolute inset-0 bg-gray-900 opacity-75">
                     </div>
@@ -1068,101 +1065,100 @@
                         </div>
                         <div class="bg-gray-200 px-4 py-3 text-right">
                             <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                            <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                            <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        function printConfirmation(printUrl) {
-            Swal.fire({
-                title: 'Konfirmasi Cetak',
-                text: 'Anda yakin ingin mencetak?',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Cetak!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: 'Mencetak Struk',
-                        text: 'Mohon tunggu...',
-                        icon: 'info',
-                        allowOutsideClick: false,
-                        showConfirmButton: false,
-                        timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
-                        // timerProgressBar: true,
-                        willOpen: () => {
-                            Swal.showLoading();
-                            // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
-                            // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
-                            // Jangan lupa untuk menutup SweetAlert ketika selesai
-                            // Misalnya: Swal.close();
-                        }
-                    }).then(() => {
-                        // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
-                        window.location.href = printUrl;
-                    });
-                }
-            });
-        }
-    </script>
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script>
+            function printConfirmation(printUrl) {
+                Swal.fire({
+                    title: 'Konfirmasi Cetak',
+                    text: 'Anda yakin ingin mencetak?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Cetak!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Mencetak Struk',
+                            text: 'Mohon tunggu...',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
+                            // timerProgressBar: true,
+                            willOpen: () => {
+                                Swal.showLoading();
+                                // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
+                                // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
+                                // Jangan lupa untuk menutup SweetAlert ketika selesai
+                                // Misalnya: Swal.close();
+                            }
+                        }).then(() => {
+                            // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
+                            window.location.href = printUrl;
+                        });
+                    }
+                });
+            }
+        </script>
 
-    <script>
-        $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
 
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        function hapus(id) {
-            Swal.fire({
-                title: 'Apakah Mau Dihapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya, hapus!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Data Terhapus!!',
-                        showConfirmButton: false,
-                        timer: 1500
+                var table = $('#example_data').DataTable({
+                        responsive: true
                     })
-                    setTimeout(() => {
-                        window.location.href = "<?php echo base_url('operator/hapus_peminjaman/') ?>" + id;
-                    }, 1800);
-                }
-            })
-        }
-    </script>
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
 
-    <!-- script modal -->
-    <script>
-        function toggleModal() {
-            document.getElementById('modal').classList.toggle('hidden')
-        }
-    </script>
+            function hapus(id) {
+                Swal.fire({
+                    title: 'Apakah Mau Dihapus?',
+                    text: "data ini tidak bisa dikembalikan lagi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Data Terhapus!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(() => {
+                            window.location.href = "<?php echo base_url('operator/hapus_peminjaman/') ?>" + id;
+                        }, 1800);
+                    }
+                })
+            }
+        </script>
+
+        <!-- script modal -->
+        <script>
+            function toggleModal() {
+                document.getElementById('modal').classList.toggle('hidden')
+            }
+        </script>
 
 </body>
 

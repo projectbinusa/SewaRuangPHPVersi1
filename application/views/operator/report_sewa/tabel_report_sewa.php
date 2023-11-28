@@ -782,13 +782,13 @@
             margin-left: 9px;
         }
 
-        /*Row Hover*/
+        /Row Hover/
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /*Pagination Buttons*/
+        /Pagination Buttons/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -901,7 +901,7 @@
     </script>
 </head>
 
-<body class="relative min-h-screen overflow-hidden">
+<body class="relative min-h-screen ">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <section id="widget" class="p-10 widget-section pd-top-120">
@@ -949,9 +949,7 @@
                                     <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                         Total Booking
                                     </th>
-                                    <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                        Total
-                                    </th>
+                                   
                                     <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                         Status
                                     </th>
@@ -1004,16 +1002,14 @@
                                             echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
                                             ?>
                                         </td>
-                                        <td data-cell="Total " class="text-center px-3 py-4">
-                                            <?php echo $row->total_harga ?>
-                                        </td>
+                                        
                                         <td data-cell="Status " class="text-center px-3 py-4 uppercase">
                                             <?php echo $row->status ?>
                                         </td>
 
                                         <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
+                                            <a href="<?php echo base_url('operator/update_report_sewa/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
                                                 <span class=""><i class="fas fa-edit"></i></span>
                                             </a>
 
