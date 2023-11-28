@@ -56,14 +56,33 @@
     <!-- Main Content -->
     <div class="w-full md:flex-1">
       <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
-        <ul class="px-2 py-2 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 ml-auto">
-          <a onclick="KeluarSPV()" class="flex items-center ml-auto ">
-            <span class="text-white font-semibold">Keluar</span>
-            <i class="fa-solid fa-right-from-bracket text-white hover:"></i>
+        <ul class="px-1 py-2 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
+          <a onclick="KeluarOPT()" class="flex items-center">
+            <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
+            <span class="text-white font-semibold mx-2 mb-0">Keluar</span>
           </a>
         </ul>
       </nav>
       <script>
+        function KeluarOPT(id) {
+  const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+    Swal.fire({
+        title: 'Yakin Ingin Keluar',
+        text: "",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Keluar'
+    }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to logout controller/action
+                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
+            }
+        });
+  }
+  
 function KeluarSPV(id) {
     swal.fire({
         title: 'Yakin Ingin Keluar?',
