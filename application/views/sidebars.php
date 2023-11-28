@@ -13,14 +13,15 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-white min-h-screen font-base">
   <div id="app" class="flex flex-col md:flex-row w-full">
-    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: true }">
+    <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: window.innerWidth >= 768 }" @resize.window="isOpen = window.innerWidth >= 768">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
           <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2" style="width: 70%;">
-          <!-- <span class="text-gray-300 text-xl font-medium mx-2"></span> -->
         </div>
         <div class="flex md:hidden">
           <button type="button" @click="isOpen = !isOpen" class="text-gray-300 hover:text-gray-500 focus:outline-none focus:text-gray-500">
@@ -30,8 +31,8 @@
           </button>
         </div>
       </div>
-      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }">
-        <ul>
+      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" @click.away="isOpen = false" x-show="isOpen">
+      <ul>
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white "></i>
@@ -64,58 +65,38 @@
         </ul>
       </nav>
       <script>
+        function displaySweetAlert() {
+          const login_supervisor = "<?php echo $this->session->flashdata('login_supervisor'); ?>";
+
+          if (login_supervisor) {
+            Swal.fire({
+              title: 'Login Berhasil',
+              text: login_supervisor,
+              icon: 'success',
+              showConfirmButton: false, // Untuk menghilangkan tombol OK
+              timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+            });
+          }
+        }
+
         function KeluarOPT(id) {
-  const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
-    Swal.fire({
-        title: 'Yakin Ingin Keluar',
-        text: "",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Batal',
-        confirmButtonText: 'Keluar'
-    }).then((result) => {
+          const success_keluar = "<?php echo $this->session->flashdata('success_keluar'); ?>";
+          Swal.fire({
+            title: 'Yakin Ingin Keluar',
+            text: "",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Keluar'
+          }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to logout controller/action
-                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
+              // Redirect to logout controller/action
+              window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
             }
-        });
-  }
-  
-function KeluarSPV(id) {
-    swal.fire({
-        title: 'Yakin Ingin Keluar?',
-        text: "",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Batal',
-        confirmButtonText: 'Keluar'
-      }).then((result) => {
-            if (result.isConfirmed) {
-                // Redirect to logout controller/action
-                window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
-            }
-        });
-  }
-
-function displaySweetAlert() {
-    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
-
-    if (message) {
-        Swal.fire({
-            title: 'Success!',
-            text: message,
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    } 
-}
-
-// Call the function when the page loads
-window.onload = displaySweetAlert;
+          });
+        }
 
         // Gráfica de Usuarios
         var usersChart = new Chart(document.getElementById('usersChart'), {
@@ -154,13 +135,16 @@ window.onload = displaySweetAlert;
             }
           }
         });
+        // Menutup sidebar ketika lebar layar kurang dari 768px
+        window.addEventListener('resize', () => {
+          const windowWidth = window.innerWidth;
+          const isMobile = windowWidth < 768;
 
-        // Agregar lógica para mostrar/ocultar la navegación lateral al hacer clic en el ícono de menú
-        const menuBtn = document.getElementById('menuBtn');
-        const sideNav = document.getElementById('sideNav');
-
-        menuBtn.addEventListener('click', () => {
-          sideNav.classList.toggle('hidden'); // Agrega o quita la clase 'hidden' para mostrar u ocultar la navegación lateral
+          if (isMobile) {
+            document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = false;
+          } else {
+            document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = true;
+          }
         });
       </script>
 </body>
