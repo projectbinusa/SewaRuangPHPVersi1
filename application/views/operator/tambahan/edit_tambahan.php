@@ -249,8 +249,9 @@
                 <label for="no_ruang" id="name-label" class="font-bold">Tambahan</label>
                 <select id="underline_select" name="jenis"
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option value="<?php echo $row->nama?>"><?php echo $row->jenis?></option>
+                    <option value="<?php echo $row->jenis?>"><?php echo $row->jenis?></option>
                     <option value="Makanan">Makanan</option>
+                    <option value="Minuman">Minuman</option>
                     <option value="Alat">Alat</option>
                 </select>
 

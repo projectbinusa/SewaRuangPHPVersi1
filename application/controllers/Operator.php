@@ -58,7 +58,7 @@ class operator extends CI_Controller
             'jenis' => $jenis,
             'deskripsi' => $deskripsi
         ];
-        $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
+        $this->m_model->update('tambahan', $data, array('id' => $this->input->post('id')));
         redirect(base_url('operator/tambahan'));
     }
     public function aksi_tambahan()
@@ -206,11 +206,11 @@ class operator extends CI_Controller
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
-            $this->pdf->load_view('operator/export_pdf', $data);
+            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            $this->load->view('operator/export_pdf', $data);
+            $this->load->view('operator/peminjaman/export_pdf', $data);
         }
     }
     public function edit_ruangan($id)
@@ -582,6 +582,7 @@ class operator extends CI_Controller
     {
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
         $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
     }
@@ -710,7 +711,6 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
 
         // Mendapatkan ID pelanggan berdasarkan nama
-        $id_pelanggan = tampil_pelanggan_bynama($nama);
 
 
         // Menghitung durasi dan harga ruangan
@@ -739,7 +739,7 @@ class operator extends CI_Controller
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
-            'id_pelanggan' => $id_pelanggan,
+            'id_pelanggan' => $nama,
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
             'total_harga' => $harga_keseluruhan,
@@ -747,14 +747,19 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
+        if(!empty($id_tambahan)){
 
-        // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
+            // Menghapus data tambahan sebelum menambah yang baru
+            $id = $this->m_model->get_tambahan_by_id_peminjaman($this->input->post('id'))->result();
+            foreach($id as $row ){
+                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+      }
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
             foreach ($id_tambahan as $id) {
                 $data_tambahan = [
+                    'id_pelanggan' => $nama,
                     'id_peminjaman' => $this->input->post('id'),
                     'id_tambahan' => $id,
                 ];
@@ -763,7 +768,7 @@ class operator extends CI_Controller
                 $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
             }
         }
-
+    }
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));

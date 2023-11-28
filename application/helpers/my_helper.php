@@ -66,7 +66,7 @@ function tampil_nama_ruangan_byid($id)
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('ruangan');
     foreach ($result->result() as $c) {
-        $stmt = 'L.' . $c->no_lantai . ' ' . 'R.' . $c->no_ruang;
+        $stmt = $c->no_lantai . ' '  . $c->no_ruang;
         return $stmt;
     }
 }

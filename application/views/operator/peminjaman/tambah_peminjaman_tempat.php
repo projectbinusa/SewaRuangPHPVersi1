@@ -289,7 +289,7 @@
                 class="survey-form ">
                 <div class="">
                     <label for="nama" class="header-text" id="name-label">Nama </span></label>
-                    <select id="underline_select" name="jenis" required
+                    <select id="underline_select" name="nama" required
                         class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option selected>Pilih Nama Penyewa</option>
                         <?php foreach($pelanggan as $row):?>
@@ -305,12 +305,12 @@
                 </div>
 
                 <label for="no_ruang" class="header-text" id="name-label">Ruangan</span></label>
-                <select id="underline_select" name="jenis" required
+                <select id="underline_select" name="ruang" required
                     class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Pilih Ruangan</option>
                     <?php foreach ($ruangan as $row): ?>
-                        <option selected>Pilih Ruangan</option>
-                        <option value="<?php echo $row->id?>">L
-                            <?php echo $row->no_lantai ?> R
+                        <option value="<?php echo $row->id?>">
+                            <?php echo $row->no_lantai ?>
                             <?php echo $row->no_ruang ?>
                         </option>
                     <?php endforeach ?>

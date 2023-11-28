@@ -119,6 +119,11 @@ class M_model extends CI_Model
         return $this->db->where('role', 'operator')
             ->get('user');
     }
+    public function get_tambahan_by_id_peminjaman($id)
+    {
+        return $this->db->where('id_peminjaman', $id)
+            ->get('peminjaman_tambahan');
+    }
 
     public function hapus_image($file_path)
     {
