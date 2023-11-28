@@ -886,7 +886,7 @@
                             </a>
 
                             <button onclick="ExportPelanggan()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
-                                <i class="fas fa-file-export"></i> Export
+                                <i class="fas fa-file-export"></i> Eskpor
                             </button>
 
 
