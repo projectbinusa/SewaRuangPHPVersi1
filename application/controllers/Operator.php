@@ -252,12 +252,12 @@ class operator extends CI_Controller
         $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Lantai", angka, dan harus mengandung kata "Lantai".');
         $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Ruang", angka, dan harus mengandung kata "Ruang".');
 
-        // Additional validation for 'harga' to ensure it's an integer
-        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric|callback_check_integer');
-        $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|regex_match[/^[0-9\s]*Lantai[0-9\s]*$/]');
+        // Run validation
+        $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|regex_match[/^Lantai[0-9\s]+$/]');
         $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|regex_match[/^[a-zA-Z0-9\s]*Ruang[a-zA-Z0-9\s]*$/]');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+
 
         // Run validation
         if ($this->form_validation->run() == false) {
