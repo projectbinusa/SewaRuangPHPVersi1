@@ -85,7 +85,7 @@ class operator extends CI_Controller
 
     public function data_ruangan($offset = 0)
     {
-        $limit = 7; // Number of records per page
+        $limit = 6; // Number of records per page
 
         $this->load->model('m_model');
 
@@ -95,7 +95,7 @@ class operator extends CI_Controller
         $this->load->library('pagination');
 
         // Configure pagination
-        $config['base_url'] = base_url('controller/data_ruangan');
+        $config['base_url'] = base_url('operator/data_ruangan');
         $config['total_rows'] = $this->m_model->count_records('ruangan');
         $config['per_page'] = $limit;
 
