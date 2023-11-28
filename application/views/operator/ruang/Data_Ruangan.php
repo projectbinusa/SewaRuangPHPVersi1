@@ -72,6 +72,43 @@
   .contain-all {
     height: 100%;
   }
+
+  .custom-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .custom-pagination a {
+    text-decoration: none;
+    padding: 4px 10px;
+    margin: 0 4px;
+    border: 2px solid #005abf;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    background-color: #005abf;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .custom-pagination a:hover,
+  .custom-pagination .current {
+    background-color: #000;
+    color: #005abf;
+    border-color: #000;
+  }
+
+  .custom-pagination .current {
+    cursor: default;
+  }
+
+  .pagination {
+    text-align: center;
+    color: #ff0000;
+  }
 </style>
 
 <body class="relative min-h-screen overflow-hidden">
@@ -80,18 +117,7 @@
     <main class="h-screen">
       <!-- Area konten utama -->
       <div class="flex-1 p-4 w-full">
-        <div class="relative w-full p-2 border bg--300 rounded shadow-lg">
-          <?php if ($ruang) : ?>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
-              <?php $count = 0; ?>
-              <?php foreach ($ruang as $row) : ?>
-                <?php if ($count < 6) : ?>
-                  <!-- Konten ruangan -->
-                <?php endif; ?>
-                <?php $count++; ?>
-              <?php endforeach; ?>
-            </div>
-          <?php endif; ?>
+        <div class="relative w-full p-2 border bg--300 rounded shadow-lg pt-5">
 
           <h1 class="text-4xl font-bold mb-2 text-gray-900 dark:text-white flex items-center gap-3">
             <span class="hidden md:inline">Cari</span>
@@ -159,11 +185,10 @@
           <?php $count++; ?>
         <?php endforeach; ?>
         </div>
-        <?php if ($count > 6) : ?>
-          <p class="text-center text-gray-600 mt-10">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
-        <?php endif; ?>
-        <div class="text-center mt-2">
-          <p class=" border-4 text-xl space-x-3 "><?php echo $pagination_links; ?></p>
+        <div class="custom-pagination">
+          <div class="pagination">
+            <?php echo $pagination_links; ?>
+          </div>
         </div>
       <?php else : ?>
         <div class="col-lg-4 col-md-6 mx-auto">
