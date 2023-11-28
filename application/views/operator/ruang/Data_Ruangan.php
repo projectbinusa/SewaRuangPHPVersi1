@@ -105,7 +105,7 @@
                 </button>
 
                 <button onclick="Eksporruangan()" class="ml-3 inline-block px-4 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base rounded" onclick="showExportConfirmation()">
-                  <i class="fas fa-file-export"></i> Expor
+                  <i class="fas fa-file-export"></i> Ekspor
                 </button>
 
                 <a href="<?php echo base_url('operator/tambah_ruang') ?>" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded">
@@ -144,16 +144,26 @@
               <?php $count = 0; ?>
               <?php foreach ($ruang as $row) : ?>
                 <?php if ($count < 6) : ?>
-                  <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                    <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
-                      <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                  <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto room-card" data-room-id="<?php echo $row->id; ?>">
+                    <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                      <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
                         <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                         <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
                     </a>
+
                   </div>
-                  </a>
+                <?php endif; ?>
+                <?php $count++; ?>
+              <?php endforeach; ?>
+            </div>
+            <?php if ($count > 6) : ?>
+              <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+            <?php endif; ?>
+          <?php else : ?>
+            <div class="col-lg-4 col-md-6 mx-auto">
+              <p class="text-center text-gray-600">data Tidak Ditemukan</p>
             </div>
           <?php endif; ?>
           <?php $count++; ?>
@@ -168,37 +178,36 @@
       <?php else : ?>
         <div class="col-lg-4 col-md-6 mx-auto">
           <p class="text-center text-gray-600">data Tidak Ditemukan</p>
-        </div>
-      <?php endif; ?>
-      </div>
-  </div>
 
-  <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-    <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <div class="fixed inset-0 transition-opacity">
-        <div class="absolute inset-0 bg-gray-900 opacity-75">
-        </div>
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-          <form action="<?php echo base_url('operator/import_ruang'); ?>" method="post" enctype="multipart/form-data">
-            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div class="flex items-center mb-3">
-                <label class="font-medium text-gray-800">File</label>
-              </div>
-              <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-            </div>
-            <div class="bg-gray-200 px-4 py-3 text-right">
-              <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
-              <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                Unduh Templat</button>
-            </div>
-          </form>
         </div>
       </div>
-    </div>
-  </div>
-  </main>
+
+      <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-900 opacity-75">
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+            <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+              <form action="<?php echo base_url('operator/import_ruang'); ?>" method="post" enctype="multipart/form-data">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                  <div class="flex items-center mb-3">
+                    <label class="font-medium text-gray-800">File</label>
+                  </div>
+                  <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+                </div>
+                <div class="bg-gray-200 px-4 py-3 text-right">
+                  <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                  <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                  <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
+                    Unduh Templat</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 
   <script>
@@ -249,9 +258,24 @@
           });
         }
       });
-    }
-  </script>
-  <script>
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // Select all elements with the class 'room-card' and attach a click event
+    document.querySelectorAll('.room-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        // Get the room ID from the data-room-id attribute
+        var roomId = card.getAttribute('data-room-id');
+
+        // Build the URL for the detail page using the room ID
+        var detailUrl = "<?php echo base_url('operator/detail/') ?>" + roomId;
+
+        // Navigate to the detail page
+        window.location.href = detailUrl;
+      });
+    });
+  });
+
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
       const scrollDownBtn = document.getElementById("scrollDownBtn");

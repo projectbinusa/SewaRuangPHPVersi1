@@ -163,7 +163,7 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 38rem;
+            height: auto;
         }
 
         .form-group {
