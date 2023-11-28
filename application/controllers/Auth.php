@@ -209,7 +209,7 @@ public function aksi_forgot_pass()
                     'email' => $email
                 ];
                 $this->session->set_userdata($data);
-                $this->session->set_flashdata('success', 'Pesan telah terkirim');
+                $this->session->set_flashdata('success_forgot', 'Pesan telah terkirim');
                 redirect(base_url('auth/verifikasi_kode'));
             } else {
                 $this->session->set_flashdata('error', 'Pesan tidak dapat terkirim. Error: ' . $mail->ErrorInfo);
@@ -233,7 +233,7 @@ public function aksi_verifikasi(){
             'status' => true,
         ];
         $this->session->set_userdata($data);
-        $this->session->set_flashdata('success', 'Verifikasi berhasil!');
+        $this->session->set_flashdata('success_code', 'Verifikasi berhasil!');
         redirect(base_url('auth/ganti_password'));
     } else {
         $this->session->set_flashdata('error', 'Code verifikasi salah!');
@@ -268,7 +268,7 @@ public function aksi_ganti_password(){
                 'password' => $hashed_password,
             ];
             $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
-            $this->session->set_flashdata('success', 'Password berhasil diubah');
+            $this->session->set_flashdata('success_pass', 'Password berhasil diubah');
             redirect(base_url());
         } else {
             $this->session->set_flashdata('error', 'Password dengan konfirmasi password harus sama');
