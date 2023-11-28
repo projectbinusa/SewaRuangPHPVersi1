@@ -105,7 +105,7 @@
                 </button>
 
                 <button onclick="Eksporruangan()" class="ml-3 inline-block px-4 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base rounded" onclick="showExportConfirmation()">
-                  <i class="fas fa-file-export"></i> Expor
+                  <i class="fas fa-file-export"></i> Ekspor
                 </button>
 
                 <a href="<?php echo base_url('operator/tambah_ruang') ?>" class="ml-2 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base rounded">
@@ -136,6 +136,7 @@
           document.getElementById('searchForm').submit();
         });
       </script>
+
       <div class="container">
         <div class="row justify-content-center">
           <?php if ($ruang) : ?>
@@ -150,7 +151,6 @@
                         <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
-                        <!-- <i class="fas fa-trash"></i> -->
                     </a>
                   </div>
                   </a>
@@ -160,8 +160,11 @@
         <?php endforeach; ?>
         </div>
         <?php if ($count > 6) : ?>
-          <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+          <p class="text-center text-gray-600 mt-10">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
         <?php endif; ?>
+        <div class="text-center mt-2">
+          <p class=" border-4 text-xl space-x-3 "><?php echo $pagination_links; ?></p>
+        </div>
       <?php else : ?>
         <div class="col-lg-4 col-md-6 mx-auto">
           <p class="text-center text-gray-600">data Tidak Ditemukan</p>
@@ -188,7 +191,7 @@
               <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
               <button type="submit" name="import" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
               <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-              Unduh Templat</button>
+                Unduh Templat</button>
             </div>
           </form>
         </div>
@@ -246,9 +249,24 @@
           });
         }
       });
-    }
-  </script>
-  <script>
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Select all elements with the class 'room-card' and attach a click event
+      document.querySelectorAll('.room-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+          // Get the room ID from the data-room-id attribute
+          var roomId = card.getAttribute('data-room-id');
+
+          // Build the URL for the detail page using the room ID
+          var detailUrl = "<?php echo base_url('operator/detail/') ?>" + roomId;
+
+          // Navigate to the detail page
+          window.location.href = detailUrl;
+        });
+      });
+    });
+
     document.addEventListener("DOMContentLoaded", function() {
       const scrollUpBtn = document.getElementById("scrollUpBtn");
       const scrollDownBtn = document.getElementById("scrollDownBtn");
