@@ -18,9 +18,9 @@
             box-sizing: border-box;
         }
 
-        html {
+        /* html {
             font-size: 62.5%;
-        }
+        } */
 
         body {
             font-family: "DM Sans", sans-serif;
