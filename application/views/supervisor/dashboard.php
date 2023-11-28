@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-         <!--Regular Datatables CSS-->
+    <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -35,7 +32,7 @@
             font-family: "DM Sans", sans-serif;
             background-color: #f1f1f1;
         }
-       
+
 
         @media (min-width: 1200px) {
 
@@ -157,7 +154,7 @@
             margin-right: 7px;
         }
 
-   
+
         /***banner-area***/
         .banner-area {
             background: var(--main-gradient);
@@ -5142,15 +5139,12 @@
             padding: 40px 40px 50px 40px;
             border-radius: 7px;
         }
-
-     
     </style>
 
     <!-- style table -->
     <style>
-        
-       /*Form fields*/
-       .dataTables_wrapper select,
+        /*Form fields*/
+        .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
             padding-left: 1rem;
@@ -5228,16 +5222,16 @@
         }
 
         table {
-                width: 22rem;
-                overflow-x: scroll;
-            }
+            width: 22rem;
+            overflow-x: scroll;
+        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
 
-    
+
         .scroll {
             overflow-y: auto;
             background: #f9fcff;
@@ -5358,7 +5352,7 @@
                         .title-card {
                             text-align: center;
                             padding-bottom: 10px;
-                          
+
                         }
 
                         p {
@@ -5422,97 +5416,88 @@
 </head>
 
 <body class=" min-h-screen overflow-hidden" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    
+
 
     <!-- Navigation -->
     <?php $this->load->view('sidebars'); ?>
 
-<div class="max-h-screen overflow-y-auto">
-<section class="">
-    <div class="scroll">
-      
-        <div class="container two">
-  <div class="grid-cards">
-    <div class="card">
-      <div class="card-body text-center">
-        <div class="section-title mb-0">
-          <!-- <i class="fas fa-id-card"></i> -->
-          <h2 class="title mt-4"><?php echo $jumlah_operator?></h2>
-        </div>
-        <p>Data Operator
-        </p>
-      </div>
-      <div class="card-footer">
-        <a href="<?php echo base_url("supervisor/data_operator") ?>">Klik disini</a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body text-center">
-        <div class="section-title mb-0">
-          <h2 class="title mt-4"><?php echo $jumlah_approve?></h2>
-        </div>
-        <p>Approve List
-        </p>
-      </div>
-      <div class="card-footer">
-        <a href="<?php echo base_url("supervisor/approve") ?>">Klik disini</a>
-      </div>
-    </div>
-   
-    </div>
-    </section>
+    <div class="max-h-screen overflow-y-auto">
+        <section class="">
+            <div class="scroll">
 
-    <section class="inner-section">
+                <div class="container two">
+                    <div class="grid-cards">
+                        <div class="card">
+                            <a href="<?php echo base_url("supervisor/data_operator") ?>" class="card-body text-center">
+                                <div class="section-title mb-0">
+                                    <h2 class="title mt-4">
+                                        <?php echo $jumlah_operator ?>
+                                    </h2>
+                                </div>
+                                <p>Data Operator
+                                </p>
+                            </a>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url("supervisor/data_operator") ?>">Klik disini</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <a href="<?php echo base_url("supervisor/approve") ?>" class="card-body text-center">
+                                <div class="section-title mb-0">
+                                    <h2 class="title mt-4">
+                                        <?php echo $jumlah_approve ?>
+                                    </h2>
+                                </div>
+                                <p>Approve List
+                                </p>
+                            </a>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url("supervisor/approve") ?>">Klik disini</a>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+        <section class="inner-section">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
                         <h2 class="title">Ruangan</h2>
-
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php if ($ruang): ?>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  hover:text-gray-900 transition duration-100 mx-auto"
-                            id="roomList">
+                    <?php if ($ruang) : ?>
+                        <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
                             <?php $count = 0; ?>
-                            <?php foreach ($ruang as $row): ?>
-                                <?php if ($count < 6): ?>
-                                    <div
-                                        class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                                        <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
-                                            <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
-                                                    alt="Gambar Ruangan"
-                                                    class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3">
-                                                    <?php echo format_ruangan($row->no_ruang); ?>
-                                                </h2>
-                                        </a>
+                            <?php foreach ($ruang as $row) : ?>
+                                <?php if ($count < 6) : ?>
+                                    <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto room-card" data-room-id="<?php echo $row->id; ?>">
+                                        <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                            <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
+                                                <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
+                                                <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
+                                            </a>
+                                        </div>
                                     </div>
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-                            <?php $count++; ?>
-                        <?php endforeach; ?>
-                    </div>
-                    <?php if ($count > 6): ?>
-                        <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari
-                            <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.
-                        </p>
+                                <?php endif; ?>
+                                <?php $count++; ?>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php if ($count > 6) : ?>
+                            <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-lg-4 col-md-6 mx-auto">
+                            <p class="text-center text-gray-600">data Tidak Ditemukan</p>
+                        </div>
                     <?php endif; ?>
-                <?php else: ?>
-                    <div class="col-lg-4 col-md-6 mx-auto">
-                        <p class="text-center text-gray-600">No data available </p>
-                    </div>
-                <?php endif; ?>
+        </section>
 
-    </section>
-
-      <!-- about area start -->
-      <!-- <section  id="about" class="inner-section">
+        <!-- about area start -->
+        <!-- <section  id="about" class="inner-section">
     <div class="about-area " style="background-image: url('">
         <div class="container">
             <div class="about-area-inner">
@@ -5542,176 +5527,170 @@
     </div>
    
 </section> -->
-    
-    <!-- Data Operator -->
-    <section id="widget" class=" inner-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Data Operator</h2>
 
-                    </div>
-                </div>
-            </div>
+        <!-- Data Operator -->
+        <section id="widget" class=" inner-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">Data Operator</h2>
 
-            <div class="row justify-content-center">
-              
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
-
-                            <table id="example_data_operator"
-                                class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                            No
-                                        </th>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Username 
-                                        </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            Email
-                                        </th>
-                                      
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php $no = 0;
-                                foreach ($operators as $row):
-                                    $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Username  " scope="row"
-                                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Email " class="text-center px-6 py-4">
-                                                <?php echo $row->username ?>
-                                                </td>
-                                                <td data-cell="Email " class="text-center px-6 py-4">
-                                                <?php echo $row->email ?>
-                                                </td>
-                                            </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="row justify-content-center">
 
-        </div>
-    </section>
+                    <div class="col-lg-12">
+                        <div class="header-item">
+                            <div class="relative">
 
-  
-  
-    <!-- Approve -->
-    <section id="widget" class="inner-section pb-24 pd-bottom-130">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Approve</h2>
+                                <table id="example_data_operator" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                                No
+                                            </th>
+                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                Username
+                                            </th>
+                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                Email
+                                            </th>
 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 0;
+                                        foreach ($operators as $row) :
+                                            $no++ ?>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Email " class="text-center px-6 py-4">
+                                                    <?php echo $row->username ?>
+                                                </td>
+                                                <td data-cell="Email " class="text-center px-6 py-4">
+                                                    <?php echo $row->email ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
+        </section>
 
-            <div class="row justify-content-center">
-              
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
 
-                            <table id="example_approve"
-                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                           No
-                                        </th>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama Penyewa
-                                        </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            No Ruang
-                                        </th>
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Kapasitas
-                                        </th>
-                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                            Kode Booking
-                                        </th>
-                                        <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                            Tanggal 
-                                        </th>
-                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                           Waktu
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php $no = 0;
-                                foreach ($approves as $row):
-                                    $no++ ?>
+
+        <!-- Approve -->
+        <section id="widget" class="inner-section pb-24 pd-bottom-130">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">Approve</h2>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-12">
+                        <div class="header-item">
+                            <div class="relative">
+
+                                <table id="example_approve" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                                No
+                                            </th>
+                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                Nama Penyewa
+                                            </th>
+                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                No Ruang
+                                            </th>
+                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                                Kapasitas
+                                            </th>
+                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                                Kode Booking
+                                            </th>
+                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
+                                                Tanggal
+                                            </th>
+                                            <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                                Waktu
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 0;
+                                        foreach ($approves as $row) :
+                                            $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row"
-                                                    class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
-                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                    <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
                                                 </td>
                                                 <td data-cell="No Ruang " class="text-center px-3 py-3">
-                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
                                                 </td>
                                                 <td data-cell="Kapasitas " class="text-center px-3 py-3">
-                                                <?php echo $row->jumlah_orang ?>
+                                                    <?php echo $row->jumlah_orang ?>
                                                 </td>
                                                 <td data-cell="Kode Booking " class="text-center px-3 py-3">
-                                                <?php echo $row->kode_booking ?>
+                                                    <?php echo $row->kode_booking ?>
                                                 </td>
                                                 <td data-cell="Tanggal  " class="text-center px-3 py-3">
-                                                <?php echo $row->tanggal_booking ?> -  <?php echo $row->tanggal_berakhir ?>
+                                                    <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
                                                 </td>
-                                           
-                                                <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
-                                                <?php
-                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                // Menampilkan durasi dalam format angka
-                                                echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                                ?>                                        </td>
-                                       
+                                                <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
+                                                    <?php
+                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+
+                                                    // Menampilkan durasi dalam format angka
+                                                    echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                    ?> </td>
+
                                             </tr>
-                                <?php endforeach ?>
-                                </tbody>
-                            </table>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
+        </section>
 
 
-        </div>
-    </section>
-   
-  
-    <!-- footer area start -->
-    <div class="footer-2 bg-gray-800 inner-section md:pt-12">
-  <div class="container px-4 mx-auto">
+        <!-- footer area start -->
+        <div class="footer-2 bg-gray-800 inner-section md:pt-12">
+            <div class="container px-4 mx-auto">
 
-    <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+                <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
 
-      <!-- <div class="footer-info lg:w-1/3 md:px-4">
+                    <!-- <div class="footer-info lg:w-1/3 md:px-4">
         <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
         <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
         <div class="mt-4">
@@ -5724,70 +5703,70 @@
         </div>
       </div> -->
 
-      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
-        <div class="sm:flex">
-          <div class="sm:flex-1">
-            <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
-            <div>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
-            </div>
-          </div>
-          
-         
-        </div>
-      </div>
-      <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
-        <div class="sm:flex">
-          <div class="sm:flex-1">
-            <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
-            <div>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
-              <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
-            </div>
-          </div>
+                    <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
+                        <div class="sm:flex">
+                            <div class="sm:flex-1">
+                                <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
+                                <div>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
+                                </div>
+                            </div>
 
-         
-        </div>
-      </div>
 
-      <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
-        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
-        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
-      </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
+                        <div class="sm:flex">
+                            <div class="sm:flex-1">
+                                <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
+                                <div>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
+                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
+                        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
+                        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="">
+                <div class="container px-4 mx-auto">
+
+                    <div class="md:flex md:-mx-4 md:items-center">
+                        <div class="md:flex-1 md:px-4 text-center md:text-left">
+                            <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
+                        </div>
+                        <div class="md:flex-1 md:px-4 text-center md:text-right">
+                            <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
-
-  <div class="">
-    <div class="container px-4 mx-auto">
-
-      <div class="md:flex md:-mx-4 md:items-center">
-        <div class="md:flex-1 md:px-4 text-center md:text-left">
-          <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
-        </div>
-        <div class="md:flex-1 md:px-4 text-center md:text-right">
-          <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-</div>
     <!-- footer area end -->
 
     <!-- back-to-top end -->
     <a id="back-to-top"></a>
-  
-    
+
+
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -5796,51 +5775,51 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_data_operator').DataTable({
-                // responsive: true
-            })
+                    // responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_laporan_penyewa').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_approve').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
         function displaySweetAlert() {
-    const login_supervisor = "<?php echo $this->session->flashdata('login_supervisor'); ?>";
+            const login_supervisor = "<?php echo $this->session->flashdata('login_supervisor'); ?>";
 
-    if (login_supervisor) {
-        Swal.fire({
-            title: 'Login Berhasil',
-            text: login_supervisor,
-            icon: 'success',
-            showConfirmButton: false, // Untuk menghilangkan tombol OK
-            timer: 2500 // Tambahkan timer di sini (dalam milidetik)
-        });
-    }
-}
+            if (login_supervisor) {
+                Swal.fire({
+                    title: 'Login Berhasil',
+                    text: login_supervisor,
+                    icon: 'success',
+                    showConfirmButton: false, // Untuk menghilangkan tombol OK
+                    timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+                });
+            }
+        }
 
-window.onload = displaySweetAlert;
+        window.onload = displaySweetAlert;
     </script>
 
-  
+
 
 
 </body>
