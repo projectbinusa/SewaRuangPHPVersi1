@@ -745,7 +745,7 @@
             }
 
             .table-responsive {
-                display: block !important;
+                 : block !important;
             }
 
             .btn-custom-default,
