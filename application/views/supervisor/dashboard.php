@@ -30,7 +30,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            background-color: #f1f1f1;
+            /* background-color: #f1f1f1; */
         }
 
 
@@ -2702,7 +2702,7 @@
         .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li a {
             display: block;
             padding: 10px 20px;
-            white-space: nowrap;
+            /* white-space: nowrap; */
             transition: all 0.3s;
             color: #050a30;
             font-size: 14px;
