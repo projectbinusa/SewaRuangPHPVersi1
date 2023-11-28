@@ -30,7 +30,7 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* background-color: #f1f1f1; */
+            background-color: #f1f1f1;
         }
 
 
@@ -2702,7 +2702,7 @@
         .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li a {
             display: block;
             padding: 10px 20px;
-            /* white-space: nowrap; */
+            white-space: nowrap;
             transition: all 0.3s;
             color: #050a30;
             font-size: 14px;
@@ -5407,6 +5407,9 @@
         .inner-section {
             padding: 4%;
         }
+        .inner-section-lenght {
+            padding: 2%;
+        }
 
         h2 .title {
             font-size: 14px;
@@ -5422,16 +5425,15 @@
     <?php $this->load->view('sidebars'); ?>
 
     <div class="max-h-screen overflow-y-auto">
-        <section class="">
-            <div class="scroll">
-
+    <section class="inner-section-lenght">
+            <div class="">
                 <div class="container two">
                     <div class="grid-cards">
                         <div class="card">
                             <a href="<?php echo base_url("supervisor/data_operator") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
-                                        <?php echo $jumlah_operator ?>
+                                    <?php echo $jumlah_operator ?>
                                     </h2>
                                 </div>
                                 <p>Data Operator
@@ -5445,7 +5447,7 @@
                             <a href="<?php echo base_url("supervisor/approve") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
-                                        <?php echo $jumlah_approve ?>
+                                    <?php echo $jumlah_approve ?>
                                     </h2>
                                 </div>
                                 <p>Approve List
@@ -5467,34 +5469,42 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php if ($ruang) : ?>
-                        <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
-                            <?php $count = 0; ?>
-                            <?php foreach ($ruang as $row) : ?>
-                                <?php if ($count < 6) : ?>
-                                    <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto room-card" data-room-id="<?php echo $row->id; ?>">
-                                        <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                            <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
-                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
-                                                <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
-                                                <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
-                                <?php $count++; ?>
+                    <?php if ($ruang): ?>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  hover:text-gray-900 transition duration-100 mx-auto"
+                                id="roomList">
+                                <?php $count = 0; ?>
+                                <?php foreach ($ruang as $row): ?>
+                                        <?php if ($count < 6): ?>
+                                                <div
+                                                    class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                                                    <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                                                        <div class="bg-white pt-0 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                                            <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
+                                                                alt="Gambar Ruangan"
+                                                                class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                                            <h2 class="text-2xl text-gray-800 font-semibold mb-3">
+                                                                <?php echo format_ruangan($row->no_ruang); ?>
+                                                            </h2>
+                                                    </a>
+                                                </div>
+                                                </a>
+                                            </div>
+                                    <?php endif; ?>
+                                    <?php $count++; ?>
                             <?php endforeach; ?>
                         </div>
-                        <?php if ($count > 6) : ?>
-                            <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+                        <?php if ($count > 6): ?>
+                                <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari
+                                    <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.
+                                </p>
                         <?php endif; ?>
-                    <?php else : ?>
+                <?php else: ?>
                         <div class="col-lg-4 col-md-6 mx-auto">
-                            <p class="text-center text-gray-600">data Tidak Ditemukan</p>
+                            <p class="text-center text-gray-600">No data available </p>
                         </div>
-                    <?php endif; ?>
-        </section>
+                <?php endif; ?>
+
+    </section>
 
         <!-- about area start -->
         <!-- <section  id="about" class="inner-section">
@@ -5563,19 +5573,19 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($operators as $row) :
+                                        foreach ($operators as $row):
                                             $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Email " class="text-center px-6 py-4">
-                                                    <?php echo $row->username ?>
-                                                </td>
-                                                <td data-cell="Email " class="text-center px-6 py-4">
-                                                    <?php echo $row->email ?>
-                                                </td>
-                                            </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Email " class="text-center px-6 py-4">
+                                                        <?php echo $row->username ?>
+                                                    </td>
+                                                    <td data-cell="Email " class="text-center px-6 py-4">
+                                                        <?php echo $row->email ?>
+                                                    </td>
+                                                </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
@@ -5636,41 +5646,41 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($approves as $row) :
+                                        foreach ($approves as $row):
                                             $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
-                                                    <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
+                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
-                                                </td>
-                                                <td data-cell="No Ruang " class="text-center px-3 py-3">
-                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                                </td>
-                                                <td data-cell="Kapasitas " class="text-center px-3 py-3">
-                                                    <?php echo $row->jumlah_orang ?>
-                                                </td>
-                                                <td data-cell="Kode Booking " class="text-center px-3 py-3">
-                                                    <?php echo $row->kode_booking ?>
-                                                </td>
-                                                <td data-cell="Tanggal  " class="text-center px-3 py-3">
-                                                    <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
-                                                </td>
+                                                    </td>
+                                                    <td data-cell="No Ruang " class="text-center px-3 py-3">
+                                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                    </td>
+                                                    <td data-cell="Kapasitas " class="text-center px-3 py-3">
+                                                        <?php echo $row->jumlah_orang ?>
+                                                    </td>
+                                                    <td data-cell="Kode Booking " class="text-center px-3 py-3">
+                                                        <?php echo $row->kode_booking ?>
+                                                    </td>
+                                                    <td data-cell="Tanggal  " class="text-center px-3 py-3">
+                                                        <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
+                                                    </td>
 
-                                                <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
-                                                    <?php
-                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                    <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
+                                                        <?php
+                                                        // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                    // Menampilkan durasi dalam format angka
-                                                    echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                                    ?> </td>
+                                                        // Menampilkan durasi dalam format angka
+                                                        echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                        ?> </td>
 
-                                            </tr>
+                                                </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
