@@ -157,18 +157,6 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('success_forgot')): ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Pesan Terkirim!',
-            text: '<?php echo $this->session->flashdata('success'); ?>',
-            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (dalam contoh ini, 2500ms atau 2,5 detik)
-            showConfirmButton: false // Menghilangkan tombol "OK"
-        }).then(() => {
-            window.location.href = '<?php echo base_url('auth/verifikasi_kode'); ?>';
-        });
-    <?php endif; ?>
-
     <?php if ($this->session->flashdata('error')): ?>
         Swal.fire({
             icon: 'error',
