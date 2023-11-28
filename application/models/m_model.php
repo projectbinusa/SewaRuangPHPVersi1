@@ -21,9 +21,22 @@ class M_model extends CI_Model
         return $this->db->get_where('tambahan', array('id' => $id))->row();
     }
 
+    public function get_data_pagination($table, $limit, $offset)
+    {
+        return $this->db->get($table, $limit, $offset)->result();
+    }
+
+    public function count_records($table)
+    {
+        return $this->db->count_all($table);
+    }
+
     public function search($keyword)
     {
-        $this->db->like('no_ruang', $keyword);
+        $this->db->like('no_lantai', $keyword);
+        $this->db->or_like('no_ruang', $keyword);
+        $this->db->or_like('harga', $keyword);
+        $this->db->or_like('deskripsi', $keyword);
         $query = $this->db->get('ruangan');
         return $query->result();
     }
@@ -118,11 +131,6 @@ class M_model extends CI_Model
     {
         return $this->db->where('role', 'operator')
             ->get('user');
-    }
-    public function get_tambahan_by_id_peminjaman($id)
-    {
-        return $this->db->where('id_peminjaman', $id)
-            ->get('peminjaman_tambahan');
     }
 
     public function hapus_image($file_path)
@@ -248,8 +256,7 @@ class M_model extends CI_Model
         $this->db->join('tambahan t', 'pt.id_tambahan = t.id', 'left');
         $this->db->where('p.id', $id);
         $this->db->group_by('p.id');
-    
+
         return $this->db->get();
     }
-
 }

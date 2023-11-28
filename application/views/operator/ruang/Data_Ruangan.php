@@ -136,6 +136,7 @@
           document.getElementById('searchForm').submit();
         });
       </script>
+
       <div class="container">
         <div class="row justify-content-center">
           <?php if ($ruang) : ?>
@@ -150,8 +151,8 @@
                         <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
                         <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
-                      </a>
-                    </div>
+                    </a>
+
                   </div>
                 <?php endif; ?>
                 <?php $count++; ?>
@@ -165,6 +166,19 @@
               <p class="text-center text-gray-600">data Tidak Ditemukan</p>
             </div>
           <?php endif; ?>
+          <?php $count++; ?>
+        <?php endforeach; ?>
+        </div>
+        <?php if ($count > 6) : ?>
+          <p class="text-center text-gray-600 mt-10">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
+        <?php endif; ?>
+        <div class="text-center mt-2">
+          <p class=" border-4 text-xl space-x-3 "><?php echo $pagination_links; ?></p>
+        </div>
+      <?php else : ?>
+        <div class="col-lg-4 col-md-6 mx-auto">
+          <p class="text-center text-gray-600">data Tidak Ditemukan</p>
+
         </div>
       </div>
 
