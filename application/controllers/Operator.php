@@ -113,18 +113,17 @@ class operator extends CI_Controller
         $errors = [];
 
         // Validasi no_lantai
-        // Validasi no_lantai
-        if (empty($no_lantai) || !preg_match('/^[0-9\s]*Lantai[0-9\s]*$/', $no_lantai)) {
-            $errors[] = 'Nomor Lantai harus mengandung kata "Lantai" dan hanya boleh berisi angka, spasi, dan kata "Lantai".';
-        } elseif (stripos($no_lantai, 'Lantai') === false || !preg_match('/^[a-zA-Z0-9\s]+$/i', $no_lantai)) {
-            $errors[] = 'Nomor lantai harus mengandung kata "Lantai" dan hanya boleh berisi angka.';
+        if (empty($no_lantai) || !preg_match('/^Lantai[0-9\s]+$/', $no_lantai)) {
+            $errors[] = 'Nomor Lantai harus diawali dengan kata "Lantai" dan diikuti oleh angka';
+        } elseif (stripos($no_lantai, 'Lantai') === false || !preg_match('/^Lantai[0-9\s]+$/i', $no_lantai)) {
+            $errors[] = 'Nomor lantai harus mengandung kata "Lantai" di awal dan diikuti oleh angka';
         }
 
         // Validasi no_ruang
-        if (empty($no_ruang) || !preg_match('/^[a-zA-Z0-9\s]+$/', $no_ruang)) {
-            $errors[] = 'Ruang hanya boleh berisi angka atau huruf';
-        } elseif (stripos($no_ruang, 'Ruang') === false || !preg_match('/^[a-zA-Z0-9\s]+$/i', $no_ruang)) {
-            $errors[] = 'Ruangan harus mengandung kata "Ruang" dan hanya boleh berisi angka atau huruf';
+        if (empty($no_ruang) || !preg_match('/^Ruang[a-zA-Z0-9\s]*$/', $no_ruang)) {
+            $errors[] = 'Ruangan harus diawali dengan kata "Ruang" dan diikuti oleh angka atau huruf';
+        } elseif (stripos($no_ruang, 'Ruang') === false || !preg_match('/^Ruang[a-zA-Z0-9\s]+$/i', $no_ruang)) {
+            $errors[] = 'Ruangan harus mengandung kata "Ruang" di awal dan diikuti oleh angka atau huruf';
         }
 
         // Validasi harga
