@@ -244,7 +244,7 @@
                     <label for="nama" class="header-text" id="name-label">Nama </span></label>
                     <select id="underline_select" name="jenis" required
                         class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option selected><?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?></option>
+                        <option value="<?php echo $row->id_pelanggan?>"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?></option>
                         <?php foreach($pelanggan as $row):?>
                         <option value="<?php echo $row->id?>">
                            <?php echo $row->nama?>
