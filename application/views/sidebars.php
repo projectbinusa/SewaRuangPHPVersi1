@@ -21,7 +21,7 @@
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: window.innerWidth >= 768 }" @resize.window="isOpen = window.innerWidth >= 768">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
-          <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2" style="width: 70%;">
+          <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2 w-32 md:w-40">
         </div>
         <div class="flex md:hidden">
           <button type="button" @click="isOpen = !isOpen" class="text-gray-300 hover:text-gray-500 focus:outline-none focus:text-gray-500">
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" @click.away="isOpen = false" x-show="isOpen">
-      <ul>
+        <ul>
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white "></i>
@@ -51,12 +51,18 @@
               <span class="mx-2 text-white font-semibold">Approve</span>
             </a>
           </li>
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
+            <a onclick="KeluarOPT()" class="flex items-center">
+              <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
+              <span class="text-white font-semibold mx-2 mb-0">Keluar</span>
+            </a>
+          </li>
         </ul>
       </div>
     </aside>
     <!-- Main Content -->
     <div class="w-full md:flex-1">
-      <nav style="background-color: #0C356A;" class="md:flex justify-between items-center p-4 shadow-md h-16">
+      <nav style="background-color: #0C356A;" class="hidden md:flex justify-between items-center p-4 shadow-md h-16">
         <ul class="px-1 py-2 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
           <a onclick="KeluarOPT()" class="flex items-center">
             <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
