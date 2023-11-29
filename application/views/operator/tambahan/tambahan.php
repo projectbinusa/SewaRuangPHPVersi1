@@ -909,7 +909,7 @@
                             </button>
                         
 
-                        <button type="button" onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
+                        <!-- <button type="button" onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
                             <i class="fas fa-file-export"></i> Ekspor
                         </button>
                         <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
@@ -917,7 +917,7 @@
                                 <i class="fas fa-file-import"></i>
                             </span>
                             Impor
-                        </button>
+                        </button> -->
 
                         <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
