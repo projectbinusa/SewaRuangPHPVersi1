@@ -782,14 +782,12 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
-        table.dataTable.hover tbody tr:hover,
+        /Row Hover/ table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
+        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
@@ -904,147 +902,147 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
-    <section id="widget" class="p-10 widget-section pd-top-120">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Peminjaman Tempat</h2>
+        <section id="widget" class="p-10 widget-section pd-top-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">Peminjaman Tempat</h2>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-table row justify-content-center py-5">
+            <div class="container-table row justify-content-center py-5">
 
-            <div class="col-lg-12 p-12">
-                <div class="header-item">
-                    <div class="relative">
+                <div class="col-lg-12 p-12">
+                    <div class="header-item">
+                        <div class="relative">
 
-                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
-                            <span class="pe-2">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            Tambah
-                        </a>
-                        <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                        No
-                                    </th>
-                                    <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                        Nama
-                                    </th>
+                            <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
+                                <span class="pe-2">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                Tambah
+                            </a>
+                            <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                            Nama
+                                        </th>
 
-                                    <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                        Ruangan
-                                    </th>
-                                    <th data-priority="9" scope="col" class="text-center px-3 py-3">
-                                        Jumlah Orang
-                                    </th>
-                                    <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                        Kode Booking
-                                    </th>
-                                    <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                        Tambahan
-                                    </th>
-                                    <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                        Total Booking
-                                    </th>
-                                    <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                        Total
-                                    </th>
-                                    <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                        Status
-                                    </th>
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                            Ruangan
+                                        </th>
+                                        <th data-priority="9" scope="col" class="text-center px-3 py-3">
+                                            Jumlah Orang
+                                        </th>
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                            Kode Booking
+                                        </th>
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                            Tambahan
+                                        </th>
+                                        <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                            Total Booking
+                                        </th>
+                                        <th data-priority="7" scope="col" class="text-center px-3 py-3">
+                                            Total
+                                        </th>
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                            Status
+                                        </th>
 
-                                    <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                        Aksi
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 0;
-                                foreach ($peminjaman as $row) :
-                                    $no++; ?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no ?>
-                                        </td>
-                                        <td data-cell="Nama " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
-                                        </td>
-                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center w-36 px-3 py-4">
-                                            <?php echo $row->jumlah_orang ?>
-                                        </td>
-                                        <td data-cell="Kode " class="text-center px-3 py-4">
-                                            <?php echo $row->kode_booking ?>
-                                        </td>
-
-                                        <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">
-                                            <?php
-                                            // Memisahkan data tambahan menjadi array
-                                            $tambahanArray = explode(',', $row->tambahan_nama);
-
-                                            // Menampilkan setiap tambahan
-                                            foreach ($tambahanArray as $tambahan) {
-                                                echo $tambahan . '<br>';
-                                            }
-                                            ?>
-                                        </td>
-                                        <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
-                                            <?php
-                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
-
-                                            // Menampilkan durasi dalam format angka
-                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                            ?>
-                                        </td>
-                                        <td data-cell="Total " class="text-center px-3 py-4">
-                                            <?php echo $row->total_harga ?>
-                                        </td>
-                                        <td data-cell="Status " class="text-center px-3 py-4 uppercase">
-                                            <?php echo $row->status ?>
-                                        </td>
-
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-
-                                            <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
-                                                <span class=""><i class="fas fa-edit"></i></span>
-                                            </a>
-
-                                            <?php if ($row->status === 'booking') : ?>
-                                                <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                    <span class="">
-                                                        <i class="fas fa-print"></i>
-                                                    </span>
-                                                </button>
-                                            <?php endif; ?>
-                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
-
-                                            </button>
-                                        </td>
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            Aksi
+                                        </th>
                                     </tr>
-                                <?php endforeach ?>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach ($peminjaman as $row) :
+                                        $no++; ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama " class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            </td>
+                                            <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <td data-cell="Kapasitas " class="text-center w-36 px-3 py-4">
+                                                <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <td data-cell="Kode " class="text-center px-3 py-4">
+                                                <?php echo $row->kode_booking ?>
+                                            </td>
+
+                                            <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">
+                                                <?php
+                                                // Memisahkan data tambahan menjadi array
+                                                $tambahanArray = explode(',', $row->tambahan_nama);
+
+                                                // Menampilkan setiap tambahan
+                                                foreach ($tambahanArray as $tambahan) {
+                                                    echo $tambahan . '<br>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
+                                                <?php
+                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+
+                                                // Menampilkan durasi dalam format angka
+                                                echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                ?>
+                                            </td>
+                                            <td data-cell="Total " class="text-center px-3 py-4">
+                                                <?php echo $row->total_harga ?>
+                                            </td>
+                                            <td data-cell="Status " class="text-center px-3 py-4 uppercase">
+                                                <?php echo $row->status ?>
+                                            </td>
+
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+
+                                                <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
+                                                    <span class=""><i class="fas fa-edit"></i></span>
+                                                </a>
+
+                                                <?php if ($row->status === 'booking') : ?>
+                                                    <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                        <span class="">
+                                                            <i class="fas fa-print"></i>
+                                                        </span>
+                                                    </button>
+                                                <?php endif; ?>
+                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                            </form>
                             </tbody>
-                        </table>
-                        </form>
-                        </tbody>
-                        </table>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
     <!-- modal -->
