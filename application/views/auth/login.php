@@ -274,6 +274,19 @@
     </div>
 </body>
 <script>
+   <?php if ($this->session->flashdata('success_pass')) { ?>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil Mengganti Password!',
+        text: '<?php echo $this->session->flashdata('success'); ?>',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(() => {
+        window.location.href = '<?php echo base_url(); ?>';
+    });
+<?php } ?>
+
+    
     <?php if ($this->session->flashdata('error')): ?>
         // Tampilkan SweetAlert jika terdapat error dari session
         Swal.fire({

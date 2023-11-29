@@ -18,9 +18,9 @@
             box-sizing: border-box;
         }
 
-        /* html {
+        html {
             font-size: 62.5%;
-        } */
+        }
 
         body {
             font-family: "DM Sans", sans-serif;
@@ -34,58 +34,6 @@
             min-width: 20rem;
             max-width: 65rem;
             margin: 4rem auto;
-        }
-
-        .showPassword {
-            margin-left: 19.5rem;
-        }
-
-        .LoginPageContainer {
-            height: 100vh;
-            overflow: auto;
-        }
-
-        .LoginPageContainer::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .LoginPageContainer::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .LoginPageContainer::-webkit-scrollbar-thumb:hover {
-            background: #4520ff;
-        }
-
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer {
-            color: #3f3f45;
-            margin: 20px 0px;
-        }
-
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer .label {
-            display: flex;
-            width: 100%;
-            justify-content: flex-start;
-            align-items: center;
-            margin-right: 7px;
-            margin-bottom: 10px;
-        }
-
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer .label .labelIcon {
-            width: 20px;
-            margin-right: 10px;
-            display: block;
-        }
-
-        .LoginPageInnerContainer .LoginFormContainer .inputContainer .input {
-            display: block;
-            width: calc(100% - 20px);
-            font-size: 15px;
-            padding: 10px;
-            border: 1px solid #d6d7db;
-            border-radius: 5px;
-            margin-top: 5px;
-            outline: 0px !important;
         }
 
         .heading,
@@ -188,7 +136,7 @@
             position: relative;
         }
 
-        /* .password-toggle-baru {
+        .password-toggle-baru {
             position: absolute;
             top: 38%;
             transform: translateY(-50%);
@@ -202,96 +150,93 @@
             transform: translateY(-50%);
             right: 44rem;
             cursor: pointer;
-        } */
+        }
 
-        @media only screen and (max-width: 1200px) {
-            .LoginPageInnerContainer {
-                width: 100%
+        /* IP SE */
+        @media (min-width: 333px) and (max-width: 671px) {
+
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 37.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 51.5%;
+                transform: translateY(-50%);
+                right: 4.5rem;
+                cursor: pointer;
             }
         }
 
-        @media only screen and (max-width: 200px) {
-            .LoginPageInnerContainer {
-                display: none;
+        /* Tablet */
+        @media (min-width: 100px)(max-width: 1200px) {
+
+            .form-group {
+                position: relative;
+            }
+            .password-toggle-baru {
+                position: absolute;
+                top: 38%;
+                transform: translateY(-50%);
+                right: 31rem;
+                cursor: pointer;
+            }
+            .password-toggle-konfirmasi {
+                position: absolute;
+                top: 52%;
+                transform: translateY(-50%);
+                right: 31rem;
+                cursor: pointer;
             }
         }
-        .password-toggle-baru {
-            position: absolute;
-            top: 26%;
-            transform: translateY(-50%);
-            right: 4rem;
-            cursor: pointer;
-        }
-
-        .password-toggle-konfirmasi {
-            position: absolute;
-            top: 36%;
-            transform: translateY(-50%);
-            right: 4rem;
-            cursor: pointer;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-
-        .header-text {
-            font-weight: bold;
-            font-size: 15px;
-        }
+        
+        
     </style>
 </head>
 
 <body>
     <main>
-        <div class="LoginPageContainer">
-            <div class="LoginPageInnerContainer">
-                <div class="LoginFormContainer">
-                    <div class="container">
-                        <header class="heading">
-                            <div class="green-bar"></div>
-                            <h1 id="title" class="main-heading">Ubah Password</h1>
-                        </header>
+        <div class="container">
+            <header class="heading">
+                <div class="green-bar"></div>
+                <h1 id="title" class="main-heading">Ubah Password</h1>
+            </header>
 
-                        <form action="<?php echo base_url('auth/aksi_ganti_password') ?>" method="post" id="survey-form" class="survey-form">
-                            <!-- <p>Silahkan masukkan password baru kamu untuk</p> -->
-                            <div class="inputContainer">
-                                <label class="label header-text" for="emailAddress"><span>Password Baru*</span></label>
-                                <div class="password-input-container">
-                                    <input type="password" name="password" class="password_baru" id="password_baru" placeholder="Enter your Password">
-                                    <i class="password-toggle-baru fa fa-eye-slash" onclick="togglePassword_baru()"></i>
-                                </div>
-                            </div>
-                            <div class="inputContainer">
-                                <label class="label header-text" for="emailAddress"><span>Konfirmasi Password*</span></label>
-                                <div class="password-input-container">
-                                    <input type="password" name="password" class="password_konfirmasi" id="password_konfirmasi" placeholder="Enter your Password">
-                                    <i class="password-toggle-konfirmasi fa fa-eye-slash" onclick="ttogglePassword_konfirmasi()"></i>
-                                </div>
-                            </div>
-
-                            <input type="submit" id="submit" class="submit" value="Submit">
-                        </form>
-
-
+            <form action="<?php echo base_url('auth/aksi_ganti_password')?>" method="post" id="survey-form"
+                class="survey-form">
+                <!-- <p>Silahkan masukkan password baru kamu untuk</p> -->
+                <div class="inputContainer">
+                    <label class="label" for="emailAddress"><span>Password Baru*</span></label>
+                    <div class="password-input-container">
+                        <input type="password" name="password" class="password_baru" id="password_baru"
+                            placeholder="Enter your Password">
+                        <i class="password-toggle-baru fa fa-eye-slash" onclick="togglePassword_baru()"></i>
                     </div>
                 </div>
-            </div>
+                <div class="inputContainer">
+                    <label class="label" for="emailAddress"><span>Konfirmasi Password*</span></label>
+                    <div class="password-input-container">
+                        <input type="password" name="con_password" class="password_konfirmasi" id="password_konfirmasi"
+                            placeholder="Enter your Password">
+                        <i class="password-toggle-konfirmasi fa fa-eye-slash" onclick="togglePassword_konfirmasi()"></i>
+                    </div>
+                </div>
+
+                <input type="submit" id="submit" class="submit" value="Submit">
+            </form>
+
+
         </div>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    <?php if ($this->session->flashdata('success_pass')) { ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil Mengganti!',
-            text: '<?php echo $this->session->flashdata('success'); ?>'
-        }).then(() => {
-            window.location.href = '<?php echo base_url(); ?>';
-        });
-    <?php } ?>
 
     <?php if ($this->session->flashdata('error')) { ?>
         Swal.fire({
@@ -302,18 +247,19 @@
             window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
         });
     <?php } ?>
-
+    
     <?php if ($this->session->flashdata('success_code')) { ?>
-        Swal.fire({
-            icon: 'success',
-            title: 'Verifikasi Berhasil!',
-            text: '<?php echo $this->session->flashdata('success'); ?>',
-            showConfirmButton: false, // Menghilangkan tombol OK
-            timer: 2500 // Timer 2500 milidetik sebelum mengarahkan pengguna kembali
-        }).then(() => {
-            window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
-        });
-    <?php } ?>
+    Swal.fire({
+        icon: 'success',
+        title: 'Verifikasi Berhasil!',
+        text: '<?php echo $this->session->flashdata('success'); ?>',
+        showConfirmButton: false,
+        timer: 2500
+    }).then(() => {
+        window.location.href = '<?php echo base_url('auth/ganti_password'); ?>';
+    });
+<?php } ?>
+
 </script>
 
 <script type="text/javascript">
@@ -331,7 +277,7 @@
             passwordToggle.classList.add('fa-eye-slash');
         }
     }
-
+  
 
     function togglePassword_konfirmasi() {
         var passwordField = document.getElementById('password_konfirmasi');

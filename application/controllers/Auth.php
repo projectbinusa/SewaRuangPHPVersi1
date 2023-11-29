@@ -301,25 +301,34 @@ public function aksi_verifikasi(){
     }
 }
 
-public function aksi_ganti_password(){
-    if(empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
-        $this->session->set_flashdata('error', 'Sesi tidak valid');
-        redirect(base_url('auth/forgot_password'));
-    } else if(empty($this->session->userdata('status'))) {
-        $this->session->set_flashdata('error', 'Sesi tidak valid');
-        redirect(base_url('auth/verifikasi_kode'));
-    }
-
+public function aksi_ganti_password() {
     $pass = $this->input->post('password');
     $con_pass = $this->input->post('con_password');
 
-    $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');    
+    if (empty($pass) || empty($con_pass)) {
+        $this->session->set_flashdata('error', 'Kedua kolom password harus diisi');
+        redirect(base_url('auth/ganti_password'));
+        return;
+    }
+
+    if (empty($this->session->userdata('status')) && empty($this->session->userdata('code'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/forgot_password'));
+        return;
+    } else if (empty($this->session->userdata('status'))) {
+        $this->session->set_flashdata('error', 'Sesi tidak valid');
+        redirect(base_url('auth/verifikasi_kode'));
+        return;
+    }
+
+    $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
 
     if ($this->form_validation->run() === FALSE) {
         $this->session->set_flashdata('error', 'Password minimal 8 karakter dan kombinasi angka dan huruf');
         redirect(base_url('auth/ganti_password'));
+        return;
     } else {
-        if($pass == $con_pass){
+        if ($pass == $con_pass) {
             // Lakukan penggantian password dengan metode enkripsi yang lebih aman, misalnya bcrypt atau Argon2
             // Update kode enkripsi password sesuai kebutuhan
             $hashed_password = md5($pass);
@@ -327,14 +336,16 @@ public function aksi_ganti_password(){
             $data = [
                 'password' => $hashed_password,
             ];
-            $this->m_model->update('user', $data , array('id'=>tampil_id_byemail($this->session->userdata('email'))));
+            $this->m_model->update('user', $data, array('id' => tampil_id_byemail($this->session->userdata('email'))));
             $this->session->set_flashdata('success_pass', 'Password berhasil diubah');
             redirect(base_url());
         } else {
             $this->session->set_flashdata('error', 'Password dengan konfirmasi password harus sama');
             redirect(base_url('auth/ganti_password'));
+            return;
         }
     }
 }
+
 
 }
