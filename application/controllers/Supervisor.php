@@ -28,6 +28,9 @@ class Supervisor extends CI_Controller
     //function tampilan login
     public function index()
     {
+      
+
+
         $data['approves'] = $this->m_model->get_status_proses()->result();
         $data['operators'] = $this->m_model->get_data_operator()->result();
         $data['jumlah_operator'] = $this->m_model->get_data_operator()->num_rows();
@@ -76,7 +79,7 @@ class Supervisor extends CI_Controller
             'status' => 'booking',
         ];
         $approve = $this->m_model->get_status_proses()->result();
-        foreach($approve as $row){
+        foreach ($approve as $row) {
             $this->m_model->update('peminjaman', $data, array('id' => $row->id));
         }
         redirect(base_url('supervisor/approve'));
@@ -87,7 +90,7 @@ class Supervisor extends CI_Controller
             'status' => 'di tolak',
         ];
         $approve = $this->m_model->get_status_proses()->result();
-        foreach($approve as $row){
+        foreach ($approve as $row) {
             $this->m_model->update('peminjaman', $data, array('id' => $row->id));
         }
         redirect(base_url('supervisor/approve'));
@@ -113,8 +116,8 @@ class Supervisor extends CI_Controller
         $data['operator'] = $this->m_model->get_data_operator()->result();
         $this->load->view('supervisor/data_operator', $data);
     }
-    
-    
+
+
     public function edit_user_operator($id)
     {
         $data['operator'] = $this->m_model->get_by_id('user', 'id', $id)->result();
@@ -129,13 +132,13 @@ class Supervisor extends CI_Controller
             'email' => $email,
             'username' => $username,
         ];
-    
+
         $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^\S+@\S+\.\S+$/]');
-    
+
         // Pengecekan password baru dan validasi form
         if (!empty($password_baru)) {
             $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
-    
+
             if ($this->form_validation->run() === TRUE) {
                 // Ganti password hanya jika password baru tidak kosong dan validasi berhasil
                 $data['password'] = md5($password_baru);
@@ -146,13 +149,13 @@ class Supervisor extends CI_Controller
                 return;
             }
         }
-    
+
         // Perbarui data di tabel user
         $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
-    
+
         // Redirect ke halaman data_operator setelah berhasil
         redirect(base_url('supervisor/data_operator'));
-    }    
+    }
     public function edit_laporan_penyewa()
     {
         $this->load->view('supervisor/edit_laporan_penyewa');
@@ -242,51 +245,53 @@ class Supervisor extends CI_Controller
         $writer->save('php://output');
 
     }
-    public function template_data_operator() {
+    public function template_data_operator()
+    {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
-        
+
         $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
         // Buat lembar kerja aktif
-       $sheet = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->getActiveSheet();
         // Data yang akan diekspor (contoh data)
-        
+
         // Buat objek Spreadsheet
-        $headers = ['NO','USERNAME', 'EMAIL' , 'PASSWORD'];
+        $headers = ['NO', 'USERNAME', 'EMAIL', 'PASSWORD'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
             $rowIndex++;
         }
-        
+
         // Auto size kolom berdasarkan konten
         foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
             $sheet->getColumnDimension($col)->setAutoSize(true);
         }
-        
+
         // Set style header
         $headerStyle = [
             'font' => ['bold' => true],
             'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
         ];
         $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-        
+
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'TEMPLATE_DATA_OPERATOR.xlsx'; // Nama file Excel yang akan dihasilkan
-        
+
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
         header('Cache-Control: max-age=0');
-        
+
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-        
+
     }
-    public function import_data_operator() {
+    public function import_data_operator()
+    {
         require 'vendor/autoload.php';
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];

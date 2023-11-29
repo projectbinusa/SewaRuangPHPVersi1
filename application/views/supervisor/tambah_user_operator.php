@@ -171,14 +171,14 @@
         }
 
         .password-toggle {
-            margin-left: 45.5rem;
-            transform: translateY(-1.7rem);
+            margin-left: 96%;
+            transform: translateY(-1.9rem);
             cursor: pointer;
             color: #555;
         }
 
         .subArteris {
-            color: #555;
+            color: red;
             font-size: 14px;
             margin-top: 15px;
             margin-bottom: 10px;
@@ -233,9 +233,11 @@
                 <h1 id="title" class="main-heading">Form Tambah Operator</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form" class="survey-form">
+            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
+                class="survey-form">
                 <label for="username" class="header-text" id="name-label">Name</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
+                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
+                    required>
 
                 <label for="email" class="header-text" id="email-label">Email</span></label>
                 <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
@@ -245,13 +247,14 @@
                         <span>Password</span>
                     </label>
                     <div class="password-input-container">
-                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
+                        <input type="password" name="password" class="input" id="password"
+                            placeholder="Enter your Password">
                         <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                     </div>
                     <hr class="custom-hr">
                 </div>
 
-                <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf, angka, dan simbol</p>
+                <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf dan angka</p>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -259,21 +262,21 @@
     </main>
 
     <script>
-    function togglePassword() {
-        var passwordInput = document.getElementById("password");
-        var passwordToggle = document.querySelector(".password-toggle-login");
+        function togglePassword() {
+            var passwordInput = document.getElementById("password");
+            var passwordToggle = document.querySelector(".password-toggle-login");
 
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            passwordToggle.classList.remove("fa-eye-slash");
-            passwordToggle.classList.add("fa-eye");
-        } else {
-            passwordInput.type = "password";
-            passwordToggle.classList.remove("fa-eye");
-            passwordToggle.classList.add("fa-eye-slash");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.classList.remove("fa-eye-slash");
+                passwordToggle.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.classList.remove("fa-eye");
+                passwordToggle.classList.add("fa-eye-slash");
+            }
         }
-    }
-</script>
+    </script>
 </body>
 
 </html>

@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <!--Regular Datatables CSS-->
@@ -1677,6 +1680,46 @@
                 padding: 4%;
             }
         }
+
+
+        /* Style Pagination */
+
+        .custom-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .custom-pagination a {
+            text-decoration: none;
+            padding: 4px 10px;
+            margin: 0 4px;
+            border: 2px solid #005abf;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            background-color: #005abf;
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .custom-pagination a:hover,
+        .custom-pagination .current {
+            background-color: #000;
+            color: #005abf;
+            border-color: #000;
+        }
+
+        .custom-pagination .current {
+            cursor: default;
+        }
+
+        .pagination {
+            text-align: center;
+            color: #ff0000;
+        }
     </style>
 
 </head>
@@ -1706,7 +1749,8 @@
 
 
                         <div class="card">
-                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
+                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>"
+                                class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_pelanggan ?>
@@ -1760,33 +1804,42 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php if ($ruang) : ?>
-                        <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
+                    <?php if ($ruang): ?>
+                        <div id="roomList"
+                            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto"
+                            id="roomList">
                             <?php $count = 0; ?>
-                            <?php foreach ($ruang as $row) : ?>
-                                <?php if ($count < 6) : ?>
-                                    <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto room-card" data-room-id="<?php echo $row->id; ?>">
-                                        <div class="bg-white pt-10 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                            <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
-                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3"><?php echo $row->no_ruang; ?></h2>
-                                                <a class="inline-block px-3 py-1 font-semibold text-white bg-blue-500 hover:bg-blue-700 ml-3 rounded-md" href="<?php echo base_url('operator/edit_ruangan/' . $row->id); ?>"><i class="fas fa-edit"></i></a>
-                                                <a class="inline-block px-3 py-1 font-semibold text-white bg-red-500 hover:bg-red-700 ml-3 rounded-md" onclick="hapus('<?php echo $row->id; ?>')"><i class="fas fa-trash"></i></a>
-                                            </a>
-                                        </div>
+                            <?php foreach ($ruang as $row): ?>
+                                <?php if ($count < 6): ?>
+                                    <div
+                                        class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                                        <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                                            <div class="bg-white pt-5pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
+                                                    alt="Gambar Ruangan"
+                                                    class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3">
+                                                    <?php echo $row->no_ruang; ?>
+                                                </h2>
+                                            </div>
+                                        </a>
                                     </div>
                                 <?php endif; ?>
                                 <?php $count++; ?>
                             <?php endforeach; ?>
                         </div>
-                        <?php if ($count > 6) : ?>
-                            <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.</p>
-                        <?php endif; ?>
-                    <?php else : ?>
+                        <div class="custom-pagination">
+                            <div class="pagination">
+                                <?php echo $pagination_links; ?>
+                            </div>
+                        </div>
+                    <?php else: ?>
                         <div class="col-lg-4 col-md-6 mx-auto">
                             <p class="text-center text-gray-600">data Tidak Ditemukan</p>
                         </div>
                     <?php endif; ?>
+                </div>
+            </div>
         </section>
 
 
@@ -1808,8 +1861,10 @@
                         <div class="header-item">
                             <div class="relative">
 
-                                <table id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_master_ruang"
+                                    class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead
+                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1825,10 +1880,11 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($ruang as $row) :
+                                        foreach ($ruang as $row):
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No  " scope="row"
+                                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="No Ruang " class="text-center px-6 py-4">
@@ -1864,8 +1920,10 @@
                     <div class="col-lg-12">
                         <div class="header-item">
                             <div class="relative">
-                                <table id="example_master_pelanggan" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_master_pelanggan"
+                                    class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead
+                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1883,10 +1941,11 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($pelanggans as $row) :
+                                        foreach ($pelanggans as $row):
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No " scope="row"
+                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama" class="text-center px-3 py-4">
@@ -1929,8 +1988,10 @@
                         <div class="header-item">
                             <div class="relative">
 
-                                <table id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_report"
+                                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead
+                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1964,10 +2025,11 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($report_sewa as $row) :
+                                        foreach ($report_sewa as $row):
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="Nama Penyewa " scope="row"
+                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama" class="text-center px-3 py-4">
@@ -2082,7 +2144,8 @@
 
                     <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
                         <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
-                        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
+                        <button
+                            class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
                     </div>
 
                 </div>
@@ -2097,7 +2160,8 @@
                             <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
                         </div>
                         <div class="md:flex-1 md:px-4 text-center md:text-right">
-                            <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+                            <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All
+                                rights reserved.</a>
                         </div>
                     </div>
 
@@ -2123,28 +2187,28 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_master_ruang').DataTable({
-                    // responsive: true
-                })
+                // responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_master_pelanggan').DataTable({
-                    responsive: true
-                })
+                responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             var table = $('#example_report').DataTable({
-                    responsive: true
-                })
+                responsive: true
+            })
                 .columns.adjust()
                 .responsive.recalc();
         });

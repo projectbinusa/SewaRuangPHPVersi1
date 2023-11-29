@@ -18,16 +18,36 @@ class operator extends CI_Controller
         }
     }
 
-    public function index()
+    public function index($offset = 0)
     {
+
+        $limit = 6; // Number of records per page
+
+        $this->load->model('m_model');
+
+
+        // Load pagination library
+        $this->load->library('pagination');
+
+        // Configure pagination
+        $config['base_url'] = base_url('operator/dashboard');
+        $config['total_rows'] = $this->m_model->count_records('ruangan');
+        $config['per_page'] = $limit;
+
+        $this->pagination->initialize($config);
+
+        // Create pagination links
+        $data['pagination_links'] = $this->pagination->create_links();
+
+        $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
+
         $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
-        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
         $data['jumlah_ruang'] = $this->m_model->get_data('ruangan')->num_rows();
         $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
         $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
         $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
-        $data['ruang'] = $this->m_model->get_data('ruangan')->result();
+        // $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/dashboard', $data);
     }
 
@@ -85,7 +105,7 @@ class operator extends CI_Controller
 
     public function data_ruangan($offset = 0)
     {
-        $limit = 7; // Number of records per page
+        $limit = 6; // Number of records per page
 
         $this->load->model('m_model');
 
@@ -95,7 +115,7 @@ class operator extends CI_Controller
         $this->load->library('pagination');
 
         // Configure pagination
-        $config['base_url'] = base_url('controller/data_ruangan');
+        $config['base_url'] = base_url('operator/data_ruangan');
         $config['total_rows'] = $this->m_model->count_records('ruangan');
         $config['per_page'] = $limit;
 
@@ -1136,91 +1156,6 @@ class operator extends CI_Controller
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'DATA RUANGAN.xlsx'; // Nama file Excel yang akan dihasilkan
-
-        // Set header HTTP untuk mengunduh file Excel
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
-        header('Cache-Control: max-age=0');
-
-        // Outputkan file Excel ke browser
-        $writer->save('php://output');
-    }
-
-    public function expor_tambahan()
-    {
-
-        // Load autoloader Composer
-        require 'vendor/autoload.php';
-
-        $spreadsheet = new Spreadsheet();
-
-        // Buat lembar kerja aktif
-        $sheet = $spreadsheet->getActiveSheet();
-        // Data yang akan diekspor (contoh data)
-        $data = $this->m_model->get_data('tambahan')->result();
-
-        // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'DESKRIPSI', 'JENIS'];
-        $rowIndex = 1;
-        foreach ($headers as $header) {
-            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
-            $rowIndex++;
-        }
-
-        // Isi data dari database
-        $rowIndex = 2;
-        $no = 1;
-        foreach ($data as $rowData) {
-            $columnIndex = 1;
-            $id = '';
-            $nama = '';
-            $harga = '';
-            $deskripsi = '';
-            $jenis = '';
-            foreach ($rowData as $cellName => $cellData) {
-                if ($cellName == 'id') {
-                    $id = $cellData;
-                } elseif ($cellName == 'nama') {
-                    $nama = $cellData;
-                } elseif ($cellName == 'harga') {
-                    $harga = $cellData;
-                } elseif ($cellName == 'deskripsi') {
-                    $deskripsi = $cellData;
-                } elseif ($cellName == 'jenis') {
-                    $jenis = $cellData;
-                }
-
-                // Anda juga dapat menambahkan logika lain jika perlu
-
-                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
-                $columnIndex++;
-            }
-
-            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
-            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
-            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $harga);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
-            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $jenis);
-            $no++;
-            $rowIndex++;
-        }
-        // Auto size kolom berdasarkan konten
-        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
-            $sheet->getColumnDimension($col)->setAutoSize(true);
-        }
-
-        // Set style header
-        $headerStyle = [
-            'font' => ['bold' => true],
-            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-        ];
-        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-
-        // Konfigurasi output Excel
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'PEMINJAMAN TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
 
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

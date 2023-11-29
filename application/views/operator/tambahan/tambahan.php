@@ -891,6 +891,7 @@
                             Tambah
                         </a>
 
+
                         <!-- <a href="javascript:void(0);" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
                             <i class="fas fa-file-export"></i> Ekspor
                         </a> -->
@@ -907,6 +908,17 @@
                                 Impor
                             </button>
                         
+
+                        <button type="button" onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
+                            <i class="fas fa-file-export"></i> Ekspor
+                        </button>
+                        <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+                            <span class="pe-2">
+                                <i class="fas fa-file-import"></i>
+                            </span>
+                            Impor
+                        </button>
+
                         <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
@@ -1011,16 +1023,19 @@
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script>
-            function eksporDanArahkan() {
+          
+          function exportData() {
                 Swal.fire({
-                    title: 'Yakin mengexport data?',
-                    text: 'Data akan di export.',
-                    icon: 'warning',
+                    title: 'yakin mengekspor data?',
+                    text: 'Data akan di ekspor.',
+                    icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
@@ -1035,7 +1050,7 @@
                         setTimeout(function() {
                             Swal.fire({
                                 title: 'Berhasil!',
-                                text: 'Data Anda telah diexport.',
+                                text: 'Data Anda telah diekspor.',
                                 icon: 'success',
                                 timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
                                 showConfirmButton: false,
@@ -1043,12 +1058,12 @@
 
                             // Redirect setelah berhasil mengekspor
                             setTimeout(function() {
-                                window.location.href = 'expor_tambahan';
-                            }, 500); // Penundaan 2 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                                window.location.href = 'export_tambahan';
+                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
                         }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
                     }
                 });
-            },
+            };
             function template() {
             Swal.fire({
                 title: 'Download Template Data Tambahan?',
