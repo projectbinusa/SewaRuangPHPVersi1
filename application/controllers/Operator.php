@@ -652,7 +652,7 @@ class operator extends CI_Controller
         );
         $eksekusi = $this->m_model->ubah_data('pelanggan', $data, array('id' => $this->input->post('id')));
         if ($eksekusi) {
-            $this->session->set_flashdata('sukses', 'berhasil');
+            $this->session->set_flashdata('sukses', 'Berhasil');
             redirect(base_url('operator/data_master_pelanggan'));
         } else {
             $this->session->set_flashdata('error', 'gagal..');
@@ -805,11 +805,15 @@ class operator extends CI_Controller
     public function hapus_peminjaman($id)
     {
         $this->m_model->delete('peminjaman', 'id', $id);
+        $tambahan = $this->m_model->get_tambahan($id)->result();
+            foreach($tambahan as $row){
+                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+            }
         redirect(base_url('operator/peminjaman_tempat'));
     }
     public function aksi_edit_peminjaman()
     {
-        $nama = $this->input->post('nama');
+        $id_pelanggan = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
         $start_time = $this->input->post('booking');
@@ -817,8 +821,6 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
 
         // Mendapatkan ID pelanggan berdasarkan nama
-        $id_pelanggan = tampil_pelanggan_bynama($nama);
-
 
         // Menghitung durasi dan harga ruangan
         $tanggalBooking = new DateTime($start_time);

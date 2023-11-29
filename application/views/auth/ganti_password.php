@@ -95,7 +95,21 @@
             margin: 2rem 0;
             font-size: 1.6rem;
         }
+        .subArteris {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 40px;
+        }
 
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input-container input {
+            padding-right: 30px;
+            /* Menambahkan ruang di sebelah kanan untuk ikon mata */
+        }
 
         .password_baru,
         .password_konfirmasi {
@@ -138,17 +152,19 @@
 
         .password-toggle-baru {
             position: absolute;
-            top: 38%;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
             transform: translateY(-50%);
-            right: 44rem;
             cursor: pointer;
         }
 
         .password-toggle-konfirmasi {
             position: absolute;
-            top: 52.5%;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
             transform: translateY(-50%);
-            right: 44rem;
             cursor: pointer;
         }
 
@@ -160,17 +176,19 @@
             }
             .password-toggle-baru {
                 position: absolute;
-                top: 37.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
+            transform: translateY(-50%);
+            cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 51.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
+            transform: translateY(-50%);
+            cursor: pointer;
             }
         }
 
@@ -212,22 +230,22 @@
                 class="survey-form">
                 <!-- <p>Silahkan masukkan password baru kamu untuk</p> -->
                 <div class="inputContainer">
-                    <label class="label" for="emailAddress"><span>Password Baru*</span></label>
+                    <label class="label" for="emailAddress"><span><strong>Password Baru</strong></span></label>
                     <div class="password-input-container">
                         <input type="password" name="password" class="password_baru" id="password_baru"
-                            placeholder="Enter your Password">
+                            placeholder="Masukkan Password Baru">
                         <i class="password-toggle-baru fa fa-eye-slash" onclick="togglePassword_baru()"></i>
                     </div>
                 </div>
                 <div class="inputContainer">
-                    <label class="label" for="emailAddress"><span>Konfirmasi Password*</span></label>
+                    <label class="label" for="emailAddress"><span><strong>Konfirmasi Password</strong></span></label>
                     <div class="password-input-container">
                         <input type="password" name="con_password" class="password_konfirmasi" id="password_konfirmasi"
-                            placeholder="Enter your Password">
+                            placeholder="Masukkan Konfirmasi Password">
                         <i class="password-toggle-konfirmasi fa fa-eye-slash" onclick="togglePassword_konfirmasi()"></i>
                     </div>
                 </div>
-
+                <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf dan angka</p>
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
 

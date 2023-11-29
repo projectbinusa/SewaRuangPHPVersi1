@@ -125,6 +125,10 @@
             color: #222;
         }
 
+        #email-label {
+        font-weight: bold;
+        }
+
         a:link,
         a:visited {
             color: #008080;
@@ -143,7 +147,7 @@
             <form action="<?php echo base_url('auth/aksi_forgot_pass') ?>" method="post" id="survey-form"
                 class="survey-form">
                 <p>Silahkan masukkan email kamu untuk verifikasi code</p>
-                <label for="email" id="email-label">Email<span class="required">*</span></label>
+                <label for="email" id="email-label">Email<span class="required"></span></label>
                 <input type="email" name="email" id="email" class="email" placeholder="Ketik email anda"
                     required>
 
