@@ -83,12 +83,12 @@
     text-decoration: none;
     padding: 4px 10px;
     margin: 0 4px;
-    border: 2px solid #005abf;
+    border: 2px solid #4f709c;
     border-radius: 4px;
     color: #fff;
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    background-color: #005abf;
+    background-color: #4f709c;
     display: inline-block;
     margin-left: 5px;
     margin-right: 5px;
@@ -96,8 +96,8 @@
 
   .custom-pagination a:hover,
   .custom-pagination .current {
-    background-color: #000;
-    color: #005abf;
+    background-color: #394c66;
+    color: #243142;
     border-color: #000;
   }
 
@@ -107,7 +107,7 @@
 
   .pagination {
     text-align: center;
-    color: #ff0000;
+    color: #3971bf;
   }
 </style>
 
