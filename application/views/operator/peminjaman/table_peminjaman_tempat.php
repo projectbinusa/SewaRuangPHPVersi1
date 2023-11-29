@@ -913,19 +913,20 @@
                     </div>
                 </div>
             </div>
-            <div class="container-table row justify-content-center py-5">
+            <div class="container-table row justify-content-center">
 
-                <div class="col-lg-12 p-12">
+                <div class="col-lg-12">
                     <div class="header-item">
                         <div class="relative">
 
-                            <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
-                                <span class="pe-2">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                Tambah
+                            <a href="tambah_peminjaman_tempat">
+                                <button class="mr-2 ml-3 inline-block px-[17px] py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
+                                    <i class="fas fa-plus"></i> Tambah
+                                </button>
                             </a>
-                            <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+
+
+                            <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">

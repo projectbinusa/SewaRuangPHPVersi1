@@ -96,6 +96,14 @@
             font-size: 1.6rem;
         }
 
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input-container input {
+            padding-right: 30px;
+            /* Menambahkan ruang di sebelah kanan untuk ikon mata */
+        }
 
         .password_baru,
         .password_konfirmasi {
@@ -138,17 +146,19 @@
 
         .password-toggle-baru {
             position: absolute;
-            top: 38%;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
             transform: translateY(-50%);
-            right: 44rem;
             cursor: pointer;
         }
 
         .password-toggle-konfirmasi {
             position: absolute;
-            top: 52.5%;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
             transform: translateY(-50%);
-            right: 44rem;
             cursor: pointer;
         }
 
@@ -160,17 +170,19 @@
             }
             .password-toggle-baru {
                 position: absolute;
-                top: 37.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
+            transform: translateY(-50%);
+            cursor: pointer;
             }
             .password-toggle-konfirmasi {
                 position: absolute;
-                top: 51.5%;
-                transform: translateY(-50%);
-                right: 4.5rem;
-                cursor: pointer;
+            top: 50%;
+            right: 10px;
+            /* Menyesuaikan posisi ikon ke kanan */
+            transform: translateY(-50%);
+            cursor: pointer;
             }
         }
 

@@ -208,7 +208,7 @@ public function aksi_forgot_pass()
                         <style>
                             /* CSS styling */
                             body {
-                                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                                font-family: "Lucida Console", Courier, monospace;
                                 background-color: #f2f2f2;
                                 margin: 0;
                                 padding: 0;
