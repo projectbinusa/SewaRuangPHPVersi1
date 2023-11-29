@@ -1112,6 +1112,7 @@
                 }
 
                 function importpelanggan() {
+                    window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
                     Swal.fire({
                         title: 'Import Data Pelanggan?',
                         text: "Anda akan mengimpor data pelanggan",
@@ -1120,12 +1121,11 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         cancelButtonText: 'Batal',
-                        confirmButtonText: 'Import'
+                        confirmButtonText: 'Impor'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Lakukan proses impor data pelanggan di sini
-                            window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
-
+                           
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Data Pelanggan berhasil diimpor',
