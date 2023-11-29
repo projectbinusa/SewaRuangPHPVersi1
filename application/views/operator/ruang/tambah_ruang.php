@@ -290,7 +290,7 @@
                                                 text: response.message,
                                                 icon: 'error',
                                                 showConfirmButton: false,
-                                                timer: 20000
+                                                timer: 2000
                                             });
                                         }
 
