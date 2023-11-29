@@ -1,1116 +1,1458 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewa Ruang</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-    <!--Replace with your tailwind.css once created-->
-
-    <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!--Regular Datatables CSS-->
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
-    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-
-        :root {
-            --main-color: #4F709C;
-            --main-color-opacity: 126, 86, 255;
-            --main-gradient: linear-gradient(to right, #2878EB, #F129C9);
-            --heading-color: #002147;
-        }
-
-        body {
-            font-family: "DM Sans", sans-serif;
-            background-color: #f1f1f1;
-            min-height: screen;
-            position: relative;
-        }
-
-        @media (min-width: 1200px) {
-
-            .container,
-            .container-lg,
-            .container-md,
-            .container-sm,
-            .container-xl,
-            .container-xxl {
-                max-width: 1170px;
-            }
-        }
-
-
-        .btn {
-            height: 50px;
-            line-height: 50px;
-            padding: 0 32px;
-            overflow: hidden;
-            position: relative;
-            border: 0;
-            transition: all 0.5s ease 0s;
-            font-weight: 700;
-            display: inline-block;
-            transform: perspective(1px) translateZ(0);
-            border-radius: 5px;
-        }
-
-        .btn:focus,
-        .btn:active {
-            outline: 0;
-            box-shadow: none;
-        }
-
-        .btn:after {
-            content: "";
-            background: var(--main-color);
-            position: absolute;
-            transition: all 0.9s ease 0s;
-            z-index: -1;
-            height: 100%;
-            left: -35%;
-            top: 0;
-            transform: skew(30deg);
-            transform-origin: top left;
-            width: 0;
-        }
-
-        .btn:hover {
-            color: #fff;
-        }
-
-        .btn:hover:after {
-            height: 100%;
-            width: 135%;
-        }
-
-        .btn-base {
-            color: var(--heading-color);
-            border: 0;
-            background: var(--main-color);
-        }
-
-        .btn-base:after {
-            background: #fff;
-        }
-
-        .btn-base:hover::after {
-            background: var(--main-color);
-        }
-
-        .btn-border {
-            color: var(--main-color);
-            border: 1px solid var(--main-color);
-            background: transparent;
-        }
-
-        .btn-border:hover {
-            color: #fff;
-        }
-
-        .btn-border-white {
-            color: #fff;
-            border: 1px solid #fff;
-            background: transparent;
-        }
-
-        .btn-border-white:hover {
-            background: #fff;
-            opacity: 1;
-            color: var(--heading-color);
-        }
-
-        .btn-border-white:hover::after {
-            background: #fff;
-        }
-
-        .btn-white {
-            color: var(--heading-color);
-            border: 0;
-            background: #fff;
-            font-size: 14px;
-            transition: all 0.3s ease 0s;
-        }
-
-        .btn-white:hover {
-            color: var(--heading-color);
-        }
-
-        .btn-white:hover:after {
-            background: #fff;
-        }
-
-        .btn-area {
-            margin-top: 25px;
-        }
-
-        .btn-area .btn {
-            margin-right: 7px;
-        }
-
-
-
-        .header-item {
-            display: block;
-        }
-
-        .header-item .thumb {
-            position: relative;
-            display: block;
-        }
-
-        .header-item .thumb:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.4s;
-            border-radius: 5px;
-        }
-
-        .header-item .thumb img {
-            transition: 0.4s;
-            border-radius: 5px;
-        }
-
-        .header-item:hover .thumb img {
-            transform: scale(1.05);
-        }
-
-        .header-item:hover .thumb:after {
-            visibility: visible;
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .cm-soon-title {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .inner-item:hover .cm-soon-title {
-            color: #fff;
-        }
-
-        .inner-item .btn {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 16px;
-            color: #fff;
-            margin-top: -22px;
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.4s;
-            color: var(--heading-color);
-        }
-
-        .inner-item:hover .btn {
-            visibility: visible;
-            opacity: 1;
-        }
-
-
-        .section-title {
-            margin-bottom: 60px;
-        }
-
-        .section-title h5 {
-            font-weight: 600;
-            color: var(--main-color);
-            margin-bottom: 6px;
-        }
-
-        .section-title h2 {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--heading-color);
-        }
-
-        .section-title p {
-            font-size: 22px;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.4);
-        }
-
-        @media all and (max-width: 767px) {
-            .nav-right-part ul li .btn {
-                display: none;
-            }
-
-            .nav-right-part-mobile ul li .cart {
-                display: block;
-            }
-
-            .nav-right-part-desktop {
-                margin-left: 0px;
-            }
-
-            .banner-inner h1 {
-                line-height: 46px;
-                font-size: 33px;
-                margin-bottom: 15px;
-            }
-
-            .banner-inner p {
-                font-size: 18px;
-                line-height: inherit;
-                letter-spacing: 0;
-            }
-
-            .banner-inner p span {
-                font-size: 20px;
-            }
-
-            .banner-area {
-                padding: 180px 0px 100px;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-
-            .btn-area {
-                margin-top: 45px;
-            }
-
-            .btn {
-                padding: 0 21px;
-            }
-
-            .main-logo img {
-                width: 160px;
-            }
-        }
-
-        @media all and (max-width: 320px) {
-            .main-logo img {
-                width: 110px;
-            }
-
-            .nav-right-part ul li {
-                font-size: 15px;
-            }
-
-            .nav-right-part ul li a {
-                padding: 0 7px;
-            }
-        }
-
-        .featured-item {
-            box-shadow: 0 0 40px rgb(82 85 90 / 10%);
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 40px 20px 35px 20px;
-            background: #fff;
-            border-radius: 5px;
-            color: #1d1d1d;
-            font-size: 22px;
-        }
-
-        .featured-item img {
-            display: block;
-            margin: 0 auto 20px;
-            box-shadow: 0 0 40px rgb(82 85 90 / 20%);
-            border-radius: 5px;
-        }
-
-        h1 {
-            font-size: 62px;
-            line-height: 1.2333333333;
-        }
-
-        h2 {
-            font-size: 46px;
-            line-height: 1.3380952381;
-        }
-
-        h3 {
-            font-size: 30px;
-            line-height: 1.3833333333;
-        }
-
-        h4 {
-            font-size: 24px;
-            line-height: 1.3380952381;
-        }
-
-        h5 {
-            font-size: 20px;
-            line-height: 1.3380952381;
-        }
-
-        h6 {
-            font-size: 16px;
-            line-height: 1.3830952381;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: var(--heading-color);
-            font-weight: 700;
-        }
-
-        p {
-            color: var(--paragraph-color);
-            -webkit-hyphens: auto;
-            hyphens: auto;
-            margin-bottom: 10px;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: 0.4s;
-        }
-
-        a,
-        a:hover,
-        a:focus,
-        a:active {
-            text-decoration: none;
-            outline: none;
-            color: inherit;
-        }
-
-        a:hover {
-            color: var(--main-color);
-        }
-
-
-        .btn {
-            height: 55px;
-            line-height: 55px;
-            padding: 0 36px;
-            border-radius: 0;
-            overflow: hidden;
-            position: relative;
-            border: 0;
-            font-size: 15px;
-            transition: all 0.5s ease;
-            font-weight: 500;
-            border-radius: 4px;
-            z-index: 0;
-        }
-
-        .btn:focus,
-        .btn:active {
-            outline: 0;
-            box-shadow: none;
-        }
-
-        .btn:after {
-            content: "";
-            background: #EEBD05;
-            position: absolute;
-            transition: all 0.3s ease-in;
-            z-index: -1;
-            height: 100%;
-            left: -35%;
-            top: 0;
-            transform: skew(30deg);
-            transition-duration: 0.6s;
-            transform-origin: top left;
-            width: 0;
-        }
-
-        .btn:hover:after {
-            height: 100%;
-            width: 135%;
-        }
-
-        .btn-radius {
-            border-radius: 30px;
-        }
-
-        .btn-base {
-            color: var(--heading-color);
-            background: var(--main-color);
-        }
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+
+class operator extends CI_Controller
+{
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('m_model');
+        $this->load->helper('my_helper');
+        $this->load->library('form_validation');
+        if ($this->session->userdata('logged_in') != true || $this->session->userdata('role') != 'operator') {
+            redirect(base_url());
+        }
+    }
+
+    public function index($offset = 0)
+    {
+        $limit = 6; // Number of records per page
+
+        $this->load->model('m_model');
+
+        // Load pagination library
+        $this->load->library('pagination');
+
+        // Configure pagination
+        $config['base_url'] = base_url('operator/index'); // Include the method name 'index'
+        $config['total_rows'] = $this->m_model->count_records('ruangan');
+        $config['per_page'] = $limit;
+
+        $this->pagination->initialize($config);
+
+        // Create pagination links
+        $data['pagination_links'] = $this->pagination->create_links();
+
+        $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
+        $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
+        $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
+        $data['jumlah_ruang'] = $this->m_model->get_data('ruangan')->num_rows();
+        $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
+        $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
+        $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
+
+        $this->load->view('operator/dashboard', $data);
+    }
+
+
+    public function edit_tambahan($id)
+    {
+        $data['tambahan'] = $this->m_model->get_by_id('tambahan', 'id', $id)->result();
+        $this->load->view('operator/tambahan/edit_tambahan', $data);
+    }
+    public function tambahan()
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $this->load->view('operator/tambahan/tambahan', $data);
+    }
+    public function tambah_item_tambahan()
+    {
+        $this->load->view('operator/tambahan/tambah_item_tambahan');
+    }
+    public function aksi_edit_tambahan()
+    {
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
+
+        $data = [
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi
+        ];
+        $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
+        redirect(base_url('operator/tambahan'));
+    }
+    public function aksi_tambahan()
+    {
+        $nama = $this->input->post('nama');
+        $harga = $this->input->post('harga');
+        $jenis = $this->input->post('jenis');
+        $deskripsi = $this->input->post('deskripsi');
+
+        $data = [
+            'nama' => $nama,
+            'harga' => $harga,
+            'jenis' => $jenis,
+            'deskripsi' => $deskripsi
+        ];
+        $this->m_model->tambah_data('tambahan', $data);
+        redirect(base_url('operator/tambahan'));
+    }
+    public function detail($id)
+    {
+        $data['ruang'] = $this->m_model->get_data_ruangan_by_id('ruangan', $id)->result();
+        $this->load->view('operator/ruang/detail', $data);
+    }
 
-        .btn-base:hover {
-            color: var(--heading-color);
-        }
-
-        .btn-border-white {
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            line-height: 52px;
-        }
-
-        .btn-border-white:hover,
-        .btn-border-white:focus {
-            color: #fff;
-            background: var(--main-color);
-            border: 2px solid var(--main-color);
-        }
-
-        .btn-border-black {
-            color: var(--heading-color);
-            border: 2px solid rgba(0, 33, 71, 0.2);
-            line-height: 52px;
-        }
-
-        .btn-border-black:hover,
-        .btn-border-black:focus {
-            color: var(--heading-color);
-            background: var(--main-color);
-            border: 2px solid var(--main-color);
-        }
-
-        .btn-black {
-            color: #fff;
-            background: var(--heading-color);
-        }
-
-        .btn-black:hover {
-            color: #fff;
-        }
-
-        .btn-counter {
-            display: inline-flex;
-            padding: 15px 30px;
-            border-radius: 4px;
-        }
-
-        .btn-counter .left-val {
-            margin-bottom: 0;
-        }
-
-        .btn-counter .right-val {
-            line-height: 1.2;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--heading-color);
-            margin-left: 12px;
-        }
-
-
-        .section-title {
-            margin-bottom: 45px;
-            position: relative;
-        }
-
-        .section-title .sub-title {
-            font-weight: 500;
-            position: relative;
-            display: inline-block;
-            margin-bottom: 0;
-        }
-
-        .section-title .sub-title.left-line:before {
-            content: "";
-            position: absolute;
-            left: -50px;
-            top: 9px;
-            height: 1px;
-            width: 40px;
-            background: var(--heading-color);
-        }
-
-        .section-title .sub-title.right-line:after {
-            content: "";
-            position: absolute;
-            right: -50px;
-            top: 9px;
-            height: 1px;
-            width: 40px;
-            background: var(--heading-color);
-        }
-
-        .section-title .sub-title.double-line:before {
-            content: "";
-            position: absolute;
-            left: -50px;
-            top: 10px;
-            height: 1px;
-            width: 40px;
-            background: var(--heading-color);
-        }
-
-        .section-title .sub-title.double-line:after {
-            content: "";
-            position: absolute;
-            right: -50px;
-            top: 10px;
-            height: 1px;
-            width: 40px;
-            background: var(--heading-color);
-        }
-
-        .section-title .sub-title.style-btn {
-            height: 36px;
-            line-height: 36px;
-            background: rgba(29, 194, 149, 0.1);
-            border-radius: 30px;
-            padding: 0 25px;
-            color: var(--main-color);
-            margin-bottom: 6px;
-        }
-
-        .section-title .title {
-            margin-bottom: 0;
-            margin-top: 3px;
-        }
-
-        .section-title .content {
-            margin-top: 17px;
-            margin-bottom: 0;
-        }
-
-        .section-title .single-list-wrap {
-            margin-top: 35px;
-        }
-
-        .section-title .btn {
-            margin-top: 40px;
-        }
-
-
-        .responsive-mobile-menu button:focus {
-            outline: none;
-            border: none;
-        }
-
-        .sopen {
-            display: block;
-        }
-
-        .toggle-btn {
-            left: auto;
-            right: -10px;
-            position: absolute;
-            top: 12px;
-            width: 40px;
-            height: 40px;
-            transition-duration: 0.5s;
-            border: 0;
-            background: transparent;
-        }
-
-        .toggle-btn .icon-left {
-            transition-duration: 0.5s;
-            position: absolute;
-            height: 2px;
-            width: 11px;
-            top: 18px;
-            background-color: #fff;
-            left: 7px;
-        }
-
-        .toggle-btn .icon-left:before {
-            transition-duration: 0.5s;
-            position: absolute;
-            width: 11px;
-            height: 2px;
-            background-color: #fff;
-            content: "";
-            top: -7px;
-            left: 0;
-        }
-
-        .toggle-btn .icon-left:after {
-            transition-duration: 0.5s;
-            position: absolute;
-            width: 11px;
-            height: 2px;
-            background-color: #fff;
-            content: "";
-            top: 7px;
-            left: 0;
-        }
-
-        .toggle-btn .icon-left:hover {
-            cursor: pointer;
-        }
-
-        .toggle-btn .icon-right {
-            transition-duration: 0.5s;
-            position: absolute;
-            height: 2px;
-            width: 11px;
-            top: 18px;
-            background-color: #fff;
-            left: 18px;
-        }
-
-        .toggle-btn .icon-right:before {
-            transition-duration: 0.5s;
-            position: absolute;
-            width: 11px;
-            height: 2px;
-            background-color: #fff;
-            content: "";
-            top: -7px;
-            left: 0;
-        }
-
-        .toggle-btn .icon-right:after {
-            transition-duration: 0.5s;
-            position: absolute;
-            width: 11px;
-            height: 2px;
-            background-color: #fff;
-            content: "";
-            top: 7px;
-            left: 0;
-        }
-
-        .toggle-btn .icon-right:hover {
-            cursor: pointer;
-        }
-
-        .toggle-btn.open .icon-left {
-            transition-duration: 0.5s;
-            background: transparent;
-        }
-
-        .toggle-btn.open .icon-left:before {
-            transform: rotateZ(45deg) scaleX(1.4) translate(2px, 1px);
-        }
-
-        .toggle-btn.open .icon-left:after {
-            transform: rotateZ(-45deg) scaleX(1.4) translate(2px, -1px);
-        }
-
-        .toggle-btn.open .icon-right {
-            transition-duration: 0.5s;
-            background: transparent;
-        }
-
-        .toggle-btn.open .icon-right:before {
-            transform: rotateZ(-45deg) scaleX(1.4) translate(-2px, 1px);
-        }
-
-        .toggle-btn.open .icon-right:after {
-            transform: rotateZ(45deg) scaleX(1.4) translate(-2px, -1px);
-        }
-
-        .toggle-btn:hover {
-            cursor: pointer;
-        }
-
-
-        @media only screen and (max-width: 767px) {
-            .logo-wrapper.mobile-logo {
-                display: block;
-                width: 100%;
-            }
-
-            .responsive-mobile-menu {
-                display: block;
-                width: 100%;
-                position: relative;
-            }
-
-            .responsive-mobile-menu .navbar-toggler {
-                position: absolute;
-                left: calc(100% - 130px);
-                top: 10px;
-            }
-
-            .table-responsive {
-                 : block !important;
-            }
-
-            .btn-custom-default,
-            .btn-custom-white {
-                font-size: 14PX;
-                line-height: 33px;
-                padding: 6px 20px;
-            }
-
-            .navbar-area .logo {
-                padding-top: 0px !important;
-            }
-        }
-
-
-
-
-        .dataTables_wrapper select,
-        .dataTables_wrapper .dataTables_filter input {
-            color: #4F709C;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            padding-top: .5rem;
-            padding-bottom: .5rem;
-            line-height: 1.25;
-            border-width: 2px;
-            border-radius: .25rem;
-            border-color: #F5F7F8;
-            background-color: #F5F7F8;
-            margin: 10px 0;
-        }
+    public function data_ruangan($offset = 0)
+    {
+        $limit = 6; // Number of records per page
 
-        .dataTables_wrapper .dataTables_filter input {
-            margin-left: 9px;
-        }
-
-        /Row Hover/
-        table.dataTable.hover tbody tr:hover,
-        table.dataTable.display tbody tr:hover {
-            background-color: #ebf4ff;
-        }
-
-        /Pagination Buttons/
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            font-weight: 400;
-            border-radius: .25rem;
-            border: 1px solid transparent;
-            height: 37px;
-            padding-top: 5px;
-        }
-
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            color: white !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 400;
-            border-radius: .25rem;
-            background: #4F709C !important;
-            border: 1px solid transparent;
-        }
-
-        /*Pagination Buttons - Hover */
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            color: white !important;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
-            font-weight: 400;
-            border-radius: .25rem;
-            background: #4F709C !important;
-            border: 1px solid transparent;
-        }
-
-        table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
-            margin-bottom: 0.75em;
-        }
-
-        table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
-        table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-            background-color: #4F709C !important;
-
-        }
+        $this->load->model('m_model');
 
-        /* code responsive table */
-        @media (max-width: 600px) {
-            table {
-                width: 4.5rem;
-            }
-        }
-
-        .inner-section {
-            padding: 4%;
-        }
-
-        table {
-            width: 12rem;
-        }
-
-        .container-table {
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-            padding: 20px 10px 10px 10px;
-        }
+        $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
 
-        .submit {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
-
-        /* Spesifikasi ditingkatkan untuk tombol "submit" */
-        .survey-form .submit {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .survey-form .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
-    </style>
-    <!-- script modal -->
-    <script>
-        function toggleModal() {
-            document.getElementById('modal').classList.toggle('hidden')
-        }
-    </script>
-</head>
-
-<body class="relative min-h-screen ">
-    <?php $this->load->view('sidebar'); ?>
-    <main class="contain-all max-h-screen overflow-y-auto">
-        <section id="widget" class="p-10 widget-section pd-top-120">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="section-title">
-                            <h2 class="title">Report Sewa</h2>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <div class="container-table row justify-content-center">
-
-            <div class="col-lg-12">
-                <div class="header-item">
-                    <div class="relative">
-
-                    <button onclick="exportReportSewa()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
-                <i class="fas fa-file-export"></i> Ekspor
-            </button>
-                        <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                        No
-                                    </th>
-                                    <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                        Nama
-                                    </th>
-
-                                    <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                        Ruangan
-                                    </th>
-                                    <th data-priority="9" scope="col" class="text-center px-3 py-3">
-                                        Kapasitas
-                                    </th>
-                                    <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                        Kode 
-                                    </th>
-                                    <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                        Tambahan
-                                    </th>
-                                    <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                        Total Booking
-                                    </th>
-                                   
-                                    <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                        Status
-                                    </th>
-
-                                    <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                        Aksi
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 0;
-                                foreach ($peminjaman as $row) :
-                                    $no++; ?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no ?>
-                                        </td>
-                                        <td data-cell="Nama " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
-                                        </td>
-                                        <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center w-36 px-3 py-4">
-                                            <?php echo $row->jumlah_orang ?>
-                                        </td>
-                                        <td data-cell="Kode " class="text-center px-3 py-4">
-                                            <?php echo $row->kode_booking ?>
-                                        </td>
-
-                                        <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">
-                                            <?php
-                                            // Memisahkan data tambahan menjadi array
-                                            $tambahanArray = explode(',', $row->tambahan_nama);
-
-                                            // Menampilkan setiap tambahan
-                                            foreach ($tambahanArray as $tambahan) {
-                                                echo $tambahan . '<br>';
-                                            }
-                                            ?>
-                                        </td>
-                                        <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
-                                            <?php
-                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
-
-                                            // Menampilkan durasi dalam format angka
-                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                            ?>
-                                        </td>
-                                        
-                                        <td data-cell="Status " class="text-center px-3 py-4 uppercase">
-                                            <?php echo $row->status ?>
-                                        </td>
-
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-
-                                            <a href="<?php echo base_url('operator/update_report_sewa/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
-                                                <span class=""><i class="fas fa-edit"></i></span>
-                                            </a>
-
-                                            <?php if ($row->status === 'booking') : ?>
-                                                <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                    <span class="">
-                                                        <i class="fas fa-print"></i>
-                                                    </span>
-                                                </button>
-                                            <?php endif; ?>
-                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
-
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                        </form>
-                        </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        </div>
-        </section>
-
-
-    
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function() {
-
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        function hapus(id) {
-            Swal.fire({
-                title: ' Apa Mau Menghapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menghapus',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
-                    });
+        // Load pagination library
+        $this->load->library('pagination');
+
+        // Configure pagination
+        $config['base_url'] = base_url('operator/data_ruangan');
+        $config['total_rows'] = $this->m_model->count_records('ruangan');
+        $config['per_page'] = $limit;
+
+        $this->pagination->initialize($config);
+
+        // Create pagination links
+        $data['pagination_links'] = $this->pagination->create_links();
+
+        $this->load->view('operator/ruang/Data_Ruangan', $data);
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['ruang'] = $this->m_model->search($keyword);
+        $this->load->view('operator/ruang/Data_Ruangan', $data);
+    }
+
+    public function tambah_ruang()
+    {
+        $this->load->view('operator/ruang/tambah_ruang');
+    }
+
+    public function aksi_tambah_ruangan()
+    {
+
+        $no_lantai = $this->input->post('no_lantai');
+        $no_ruang = $this->input->post('no_ruang');
+        $deskripsi = $this->input->post('deskripsi');
+        $image = $_FILES['foto']['name'];
+        $harga = $this->input->post('harga');
+
+        $errors = [];
+
+        // Validasi no_lantai
+        if (empty($no_lantai) || !preg_match('/^Lantai[0-9\s]+$/', $no_lantai)) {
+            $errors[] = 'Nomor Lantai harus diawali dengan kata "Lantai" dan diikuti oleh angka';
+        } elseif (stripos($no_lantai, 'Lantai') === false || !preg_match('/^Lantai[0-9\s]+$/i', $no_lantai)) {
+            $errors[] = 'Nomor lantai harus mengandung kata "Lantai" di awal dan diikuti oleh angka';
+        }
+
+        // Validasi no_ruang
+        if (empty($no_ruang) || !preg_match('/^Ruang[a-zA-Z0-9\s]*$/', $no_ruang)) {
+            $errors[] = 'Ruangan harus diawali dengan kata "Ruang" dan diikuti oleh angka atau huruf';
+        } elseif (stripos($no_ruang, 'Ruang') === false || !preg_match('/^Ruang[a-zA-Z0-9\s]+$/i', $no_ruang)) {
+            $errors[] = 'Ruangan harus mengandung kata "Ruang" di awal dan diikuti oleh angka atau huruf';
+        }
+
+        // Validasi harga
+        if (empty($harga) || !filter_var($harga, FILTER_VALIDATE_INT)) {
+            $errors[] = 'Harga harus diisi dengan angka (tanpa ".") dan tidak boleh kosong.';
+        } elseif ($harga < 0) {
+            $errors[] = 'Harga tidak boleh negatif.';
+        }
+
+        // Validasi deskripsi
+        if (strpos($deskripsi, '-') !== false) {
+            $errors[] = 'Deskripsi tidak boleh mengandung tanda "-".';
+        }
+
+        // Validasi foto
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $file_info = pathinfo($image);
+        $extension = isset($file_info['extension']) ? strtolower($file_info['extension']) : null;
+
+        if (empty($image) || !in_array($extension, $allowed_extensions)) {
+            $errors[] = 'Foto harus diunggah dengan format JPG, JPEG, PNG, atau GIF.';
+        }
+
+        if (count($errors) > 0) {
+            $response = [
+                'status' => 'error',
+                'message' => implode(' ', $errors),
+            ];
+        } else {
+            $image_temp = $_FILES['foto']['tmp_name'];
+            $kode = round(microtime(true) * 100);
+            $file_name = $kode . '_' . $image;
+            $upload_path = './image/ruangan/' . $file_name;
+
+            if (move_uploaded_file($image_temp, $upload_path)) {
+                $data = [
+                    'image' => $file_name,
+                    'no_lantai' => $no_lantai,
+                    'no_ruang' => $no_ruang,
+                    'deskripsi' => $deskripsi,
+                    'harga' => $harga,
+                ];
+
+                $inserted = $this->m_model->tambah_data('ruangan', $data);
+
+                if ($inserted) {
+                    $response = [
+                        'status' => 'success',
+                        'message' => 'Data berhasil ditambahkan.',
+                        'redirect' => base_url('operator/data_ruangan'),
+                    ];
+                } else {
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                    ];
+                    unlink($upload_path);
                 }
-            });
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
+                ];
+            }
         }
-        function exportReportSewa() {
-            Swal.fire({
-                title: 'Export Data Report Sewa?',
-                text: "Anda akan mengexport data report sewa",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Export'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    // Contoh:
-                    window.location.href = "<?php echo base_url('operator/export_report_sewa') ?>";
-                    
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data sewa berhasil diexport',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    });
-                }
-            });
-        }
-</script>
-</body>
 
-</html>
+        // Menggunakan echo json_encode untuk response AJAX
+        echo json_encode($response);
+    }
+
+    public function pdf()
+    {
+        $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
+        $this->load->view('operator/pdf', $data);
+    }
+
+    public function export_pdf($id)
+    {
+        $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
+
+        if ($this->uri->segment(3) == "pdf") {
+            $this->load->library('pdf');
+            $this->pdf->load_view('operator/export_pdf', $data);
+            $this->pdf->render();
+            $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
+        } else {
+            $this->load->view('operator/export_pdf', $data);
+        }
+    }
+    public function edit_ruangan($id)
+    {
+        // Ambil data ruangan dari database berdasarkan $id
+        $data['ruangan'] = $this->m_model->get_ruangan_by_id($id);
+        $this->load->view('operator/ruang/edit_ruangan', $data);
+    }
+
+    public function aksi_edit_ruangan($id)
+    {
+        $id = $id; // ID ruangan yang diberikan melalui parameter
+
+        // Ambil data yang di-post dari form
+        $no_lantai = $this->input->post('no_lantai');
+        $no_ruang = $this->input->post('no_ruang');
+        $deskripsi = $this->input->post('deskripsi');
+        $harga = $this->input->post('harga');
+        $image = $_FILES['foto']['name'];
+        $foto_temp = $_FILES['foto']['tmp_name'];
+
+        $response = [
+            'status' => 'error', // Default status error
+            'message' => 'Terjadi kesalahan saat mengubah ruangan.', // Default pesan error
+            'redirect' => '' // Redirect URL setelah berhasil atau gagal
+        ];
+
+        // Load the form validation library
+        $this->load->library('form_validation');
+
+        $this->load->library('form_validation');
+
+        // Set custom error messages for form validation
+        $this->form_validation->set_message('required', 'Kolom {field} wajib diisi.');
+        $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka.');
+        $this->form_validation->set_message('alpha_numeric', 'Kolom {field} hanya boleh berisi huruf dan angka.');
+        $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
+        $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka untuk harga.');
+        $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Lantai", angka, dan harus mengandung kata "Lantai".');
+        $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Ruang", angka, dan harus mengandung kata "Ruang".');
+
+        // Additional validation for 'harga' to ensure it's an integer
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric|callback_check_integer');
+        $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|regex_match[/^[0-9\s]*Lantai[0-9\s]*$/]');
+        $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|regex_match[/^[a-zA-Z0-9\s]*Ruang[a-zA-Z0-9\s]*$/]');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+
+        // Run validation
+        if ($this->form_validation->run() == false) {
+            // Validation failed
+            $response = [
+                'status' => 'error',
+                'message' => strip_tags(validation_errors()), // Strip HTML tags from error messages
+                'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect to the edit page
+            ];
+
+            // Send JSON response and exit
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            return;
+        }
+
+        // Cek apakah ID ruangan valid (contoh: Anda dapat menambahkan pengecekan di sini)
+        if ($id) {
+            // Dapatkan data ruangan dari database berdasarkan ID
+            $current_data = $this->m_model->get_ruangan_by_id($id);
+
+            if ($current_data) {
+                // Cek apakah ada perubahan data
+                $data = [];
+
+                // Set data ke dalam array tanpa memeriksa perubahan
+                $data['harga'] = $harga;
+                $data['no_lantai'] = $no_lantai;
+                $data['no_ruang'] = $no_ruang;
+                $data['deskripsi'] = $deskripsi;
+
+                // Periksa apakah setidaknya satu bidang data berbeda dengan data yang ada di database
+                if ($no_lantai !== $current_data->no_lantai || $no_ruang !== $current_data->no_ruang || $deskripsi !== $current_data->deskripsi || $harga !== $current_data->harga || !empty($image)) {
+                    // Ada perubahan data, lanjutkan proses penyimpanan
+                    if (!empty($image)) {
+                        // Validasi ekstensi file gambar
+                        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+                        $file_extension = pathinfo($image, PATHINFO_EXTENSION);
+
+                        if (!in_array(strtolower($file_extension), $allowed_extensions)) {
+                            // Ekstensi file tidak diizinkan
+                            $response = [
+                                'status' => 'error',
+                                'message' => 'Ekstensi file tidak diizinkan. Pilih file gambar dengan ekstensi: ' . implode(', ', $allowed_extensions),
+                                'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
+                            ];
+                            // Kirim respons JSON
+                            header('Content-Type: application/json');
+                            echo json_encode($response);
+                            return; // Stop execution
+                        }
+
+                        // Lakukan pengelolaan gambar seperti yang telah dijelaskan dalam pertanyaan sebelumnya
+                        $kode = round(microtime(true) * 100);
+                        $file_name = $kode . '_' . $image;
+                        $upload_path = './image/ruangan/' . $file_name;
+
+                        if (move_uploaded_file($foto_temp, $upload_path)) {
+                            // Hapus image lama jika ada
+                            $old_file = $this->m_model->get_image_by_id('ruangan', $id);
+                            if ($old_file && file_exists('./image/ruangan/' . $old_file)) {
+                                unlink('./image/ruangan/' . $old_file);
+                            }
+
+                            $data['image'] = $file_name;
+                        } else {
+                            // Gagal mengunggah gambar baru
+                            $response = [
+                                'status' => 'error',
+                                'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
+                                'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
+                            ];
+                        }
+                    }
+
+                    // Eksekusi dengan model edit_ruangan tanpa memeriksa perubahan
+                    $update_result = $this->m_model->edit_ruangan($id, $data);
+
+                    if ($update_result) {
+                        $response = [
+                            'status' => 'success',
+                            'message' => 'Berhasil Mengubah Ruangan',
+                            'redirect' => base_url('operator/data_ruangan'), // Redirect ke halaman daftar ruangan jika berhasil
+                        ];
+                    }
+                } else {
+                    // Tidak ada perubahan data
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Anda harus mengubah setidaknya satu data ruangan.',
+                        'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika tidak ada perubahan
+                    ];
+                }
+            }
+        }
+
+        // Kirim respons JSON
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+
+    // Callback function for checking deskripsi
+    public function check_deskripsi($str)
+    {
+        if (strpos($str, '-') !== false) {
+            $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function check_integer($str)
+    {
+        if (filter_var($str, FILTER_VALIDATE_INT) === false) {
+            $this->form_validation->set_message('check_integer', 'Kolom {field} harus berisi angka tanpa desimal.');
+            return false;
+        }
+        return true;
+    }
+
+    public function hapus_data_ruangan($id)
+    {
+        // Ambil data ruangan
+        $ruangan = $this->m_model->get_ruangan_by_id($id);
+
+        // Pastikan data ruangan ditemukan
+        if (!$ruangan) {
+            $this->session->set_flashdata('error', 'Data ruangan tidak ditemukan.');
+            redirect('operator/data_ruangan');
+        }
+
+        // Hapus gambar dari folder image/ruangan jika ada
+        $image_file = $ruangan->image;
+        if ($image_file) {
+            $image_path = 'image/ruangan/' . $image_file;
+            if (file_exists($image_path)) {
+                unlink($image_path);
+            }
+        }
+
+        // Hapus data dari tabel ruangan
+        $this->m_model->delete('ruangan', 'id', $id);
+
+        // Tampilkan pesan sukses dan alihkan ke halaman data ruangan
+        $this->session->set_flashdata('success', 'Data ruangan berhasil dihapus.');
+        redirect('operator/data_ruangan');
+    }
+
+    public function hapus_image($id)
+    {
+        // Ambil data ruangan dari database berdasarkan ID
+        $ruangan = $this->m_model->get_ruangan_by_id($id);
+
+        if ($ruangan) {
+            // Dapatkan nama file gambar
+            $image_file = $ruangan->image;
+
+            if ($image_file) {
+                // Hapus file gambar dari direktori
+                $image_path = './image/ruangan/' . $image_file;
+
+                if (file_exists($image_path) && unlink($image_path)) {
+                    // Update data ruangan di database untuk menghapus referensi gambar
+                    $data = ['image' => '']; // Atur kolom gambar menjadi kosong
+                    $this->m_model->edit_ruangan($id, $data);
+
+                    // Kirim respons JSON untuk memberi tahu hasil penghapusan gambar
+                    $response = [
+                        'status' => 'success',
+                        'message' => 'Gambar telah dihapus.',
+                        'redirect' => base_url('operator/data_ruangan') // Tambahkan URL tujuan
+                    ];
+                } else {
+                    // Jika gagal menghapus gambar
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Gambar tidak dapat dihapus. Silakan coba lagi.'
+                    ];
+                }
+            } else {
+                // Jika tidak ada gambar
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Gambar sudah dihapus.'
+                ];
+            }
+        } else {
+            // Jika data ruangan tidak ditemukan
+            $response = [
+                'status' => 'error',
+                'message' => 'Data ruangan tidak ditemukan.'
+            ];
+        }
+
+        // Kirim respons JSON ke browser
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
+
+    public function data_master_pelanggan()
+    {
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+        $this->load->view('operator/pelanggan/data_master_pelanggan', $data);
+    }
+
+    public function tambah_pelanggan()
+    {
+        // $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+        $this->load->view('operator/pelanggan/tambah_pelanggan');
+    }
+
+   
+
+
+    public function aksi_tambah_pelanggan()
+    {
+        $nama = $this->input->post('nama');
+        $phone = $this->input->post('phone');
+        $payment_method = $this->input->post('payment_method');
+
+        $errors = [];
+
+        // Validasi nama
+        if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
+            $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
+        }
+
+        // Validasi phone
+        if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
+            $errors[] = 'Isi nomor telepon hanya dengan angka';
+        }
+
+        // Validasi payment_method
+        if (empty($payment_method) || !preg_match('/^[a-zA-Z0-9\s]+$/', $payment_method)) {
+            $errors[] = 'Isi metode pembayaran dengan benar';
+        }
+
+        if (count($errors) > 0) {
+            $response = [
+                'status' => 'error',
+                'message' => implode(' ', $errors),
+            ];
+        } else {
+            $data = [
+                'nama' => $nama,
+                'phone' => $phone,
+                'payment_method' => $payment_method,
+            ];
+
+            $inserted = $this->m_model->tambah_data('pelanggan', $data);
+
+            if ($inserted) {
+                $response = [
+                    'status' => 'success',
+                    'message' => 'Data berhasil ditambahkan.',
+                    'redirect' => base_url('operator/data_master_pelanggan'),
+                ];
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                ];
+            }
+        }
+
+        // Menggunakan echo json_encode untuk response AJAX
+        echo json_encode($response);
+    }
+
+     // update data pelanggan
+     public function update_data($id)
+     {
+         $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
+         $this->load->view('operator/pelanggan/update_data', $data);
+     }
+
+
+    // aksi update data pelanggan
+    public function aksi_update_data()
+    {
+        $data = array(
+            'nama' => $this->input->post('nama'),
+            'phone' => $this->input->post('phone'),
+            'payment_method' => $this->input->post('payment_method'),
+        );
+        $eksekusi = $this->m_model->ubah_data('pelanggan', $data, array('id' => $this->input->post('id')));
+        if ($eksekusi) {
+            $this->session->set_flashdata('sukses', 'berhasil');
+            redirect(base_url('operator/data_master_pelanggan'));
+        } else {
+            $this->session->set_flashdata('error', 'gagal..');
+            redirect(base_url('operator/update_data/' . $this->input->post('id')));
+        }
+    }
+
+    // Hapus Pelanggan
+    public function hapus_data_pelanggan($id)
+    {
+        $this->m_model->delete('pelanggan', 'id', $id);
+        redirect(base_url('operator/data_master_pelanggan'));
+    }
+    // Hapus Pelanggan
+    public function hapus_tambahan($id)
+    {
+        $this->m_model->delete('tambahan', 'id', $id);
+        redirect(base_url('operator/tambahan'));
+    }
+
+    public function peminjaman_tempat()
+    {
+        $data['peminjaman'] = $this->m_model->get_peminjaman_by_status();
+        $this->load->view('operator/peminjaman/table_peminjaman_tempat', $data);
+    }
+
+    public function tambah_peminjaman_tempat()
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+        $this->load->view('operator/peminjaman/tambah_peminjaman_tempat', $data);
+    }
+    public function edit_peminjaman_tempat($id)
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
+    }
+
+    public function check_expired_bookings()
+    {
+        // Implementasi logika untuk memeriksa pemesanan yang berakhir dan mengubah statusnya
+
+        $bookings = $this->m_model->get_expired_bookings();
+
+        foreach ($bookings as $booking) {
+            $this->m_model->update_status($booking->id, 'selesai');
+        }
+    }
+
+    function generate_booking_code($length = 8)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $code = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $code;
+    }
+
+    public function aksi_peminjaman()
+    {
+        // Memperoleh data dari formulir
+        $nama = $this->input->post('nama');
+        $id_ruangan = $this->input->post('ruang');
+        $jumlah_orang = $this->input->post('kapasitas');
+        $start_time = $this->input->post('booking');
+        $end_time = $this->input->post('akhir_booking');
+        $id_tambahan = $this->input->post('tambahan');
+
+        // Mendapatkan ID pelanggan berdasarkan nama
+        $id_pelanggan = tampil_pelanggan_bynama($nama);
+
+        // Menghasilkan kode booking
+        $generate = $this->generate_booking_code();
+
+        // Memeriksa konflik waktu
+        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
+            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            return;
+        }
+
+        // Menghitung durasi dan harga ruangan
+        $tanggalBooking = new DateTime($start_time);
+        $tanggalBerakhir = new DateTime($end_time);
+        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+        $harga_ruangan = $harga_ruangan_default * $durasi->days;
+
+        // Menghitung harga snack
+        $harga = 0;
+        if (!empty($id_tambahan)) {
+            foreach ($id_tambahan as $id) {
+                $harga += tampil_harga_tambahan_byid($id);
+                // Jika jenis snack adalah makanan, kali dengan jumlah orang
+                $tambahan_info = tampil_info_tambahan_byid($id);
+                if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
+                    $harga *= $jumlah_orang;
+                }
+            }
+        }
+        // Menghitung total harga
+        $harga_keseluruhan = $harga + $harga_ruangan;
+
+        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+        $data_peminjaman = [
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'tanggal_booking' => $start_time,
+            'tanggal_berakhir' => $end_time,
+            'jumlah_orang' => $jumlah_orang,
+            'kode_booking' => $generate,
+            'total_harga' => $harga_keseluruhan,
+            'status' => 'proses',
+        ];
+
+        // Memasukkan data ke tabel peminjaman
+        $id_peminjaman = $this->m_model->tambah_data('peminjaman', $data_peminjaman);
+
+        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+        if (!empty($id_tambahan)) {
+            foreach ($id_tambahan as $id) {
+                $data_tambahan = [
+                    'id_pelanggan' => $id_pelanggan,
+                    'id_peminjaman' => $id_peminjaman,
+                    'id_tambahan' => $id,
+                ];
+
+                // Memasukkan data ke tabel peminjaman_tambahan
+                $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+
+                if (!$tambahan_success) {
+                    // Handle error jika tambahan tidak berhasil dimasukkan
+                    // Misalnya: Tampilkan pesan error atau lakukan rollback
+                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+                    return;
+                }
+            }
+
+            $this->check_expired_bookings();
+            // Operasi berhasil
+            // Redirect atau tampilkan pesan sukses
+            redirect(base_url('operator/peminjaman_tempat'));
+        }
+    }
+
+    public function hapus_peminjaman($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+        redirect(base_url('operator/peminjaman_tempat'));
+    }
+    public function aksi_edit_peminjaman()
+    {
+        $nama = $this->input->post('nama');
+        $id_ruangan = $this->input->post('ruang');
+        $jumlah_orang = $this->input->post('kapasitas');
+        $start_time = $this->input->post('booking');
+        $end_time = $this->input->post('akhir_booking');
+        $id_tambahan = $this->input->post('tambahan');
+
+        // Mendapatkan ID pelanggan berdasarkan nama
+        $id_pelanggan = tampil_pelanggan_bynama($nama);
+
+
+        // Menghitung durasi dan harga ruangan
+        $tanggalBooking = new DateTime($start_time);
+        $tanggalBerakhir = new DateTime($end_time);
+        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+        $harga_ruangan = $harga_ruangan_default * $durasi->days;
+
+        // Menghitung harga tambahan (snack)
+        $harga_tambahan = 0;
+        if (!empty($id_tambahan)) {
+            foreach ($id_tambahan as $id) {
+                $harga_tambahan += tampil_harga_tambahan_byid($id);
+
+                // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
+                $tambahan_info = tampil_info_tambahan_byid($id);
+                if ($tambahan_info && $tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
+                    $harga_tambahan *= $jumlah_orang;
+                }
+            }
+        }
+
+        // Menghitung total harga
+        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
+
+        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+        $data_peminjaman = [
+            'id_pelanggan' => $id_pelanggan,
+            'id_ruangan' => $id_ruangan,
+            'jumlah_orang' => $jumlah_orang,
+            'total_harga' => $harga_keseluruhan,
+        ];
+
+        // Memperbarui data di tabel peminjaman
+        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
+
+        // Menghapus data tambahan sebelum menambah yang baru
+        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
+
+        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+        if (!empty($id_tambahan)) {
+            foreach ($id_tambahan as $id) {
+                $data_tambahan = [
+                    'id_peminjaman' => $this->input->post('id'),
+                    'id_tambahan' => $id,
+                ];
+
+                // Memasukkan data ke tabel peminjaman_tambahan
+                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+            }
+        }
+
+        $this->check_expired_bookings();
+        // Redirect atau tampilkan pesan sukses
+        redirect(base_url('operator/peminjaman_tempat'));
+    }
+
+
+    public function report_sewa()
+    {
+        $data['peminjaman'] = $this->m_model->get_report_sewa_by_status('peminjaman');
+        $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
+    }
+
+    public function update_report_sewa($id)
+    {
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $this->load->view('operator/report_sewa/update_report_sewa', $data);
+    }
+
+
+
+    public function aksi_update_report_sewa()
+    {
+        $nama = $this->input->post('nama');
+        $id_ruangan = $this->input->post('ruang');
+        $jumlah_orang = $this->input->post('kapasitas');
+        $start_time = $this->input->post('booking');
+        $end_time = $this->input->post('akhir_booking');
+        $id_tambahan = $this->input->post('tambahan');
+
+        // Mendapatkan ID pelanggan berdasarkan nama
+
+
+        // Menghitung durasi dan harga ruangan
+        $tanggalBooking = new DateTime($start_time);
+        $tanggalBerakhir = new DateTime($end_time);
+        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+        $harga_ruangan = $harga_ruangan_default * $durasi->days;
+
+        // Menghitung harga tambahan (snack)
+        $harga_tambahan = 0;
+        if (!empty($id_tambahan)) {
+            foreach ($id_tambahan as $id) {
+                $harga_tambahan += tampil_harga_tambahan_byid($id);
+
+                // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
+                $tambahan_info = tampil_info_tambahan_byid($id);
+                if ($tambahan_info && $tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
+                    $harga_tambahan *= $jumlah_orang;
+                }
+            }
+        }
+
+        // Menghitung total harga
+        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
+
+        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+        $data_peminjaman = [
+            'id_pelanggan' => $nama,
+            'id_ruangan' => $id_ruangan,
+            'jumlah_orang' => $jumlah_orang,
+            'total_harga' => $harga_keseluruhan,
+        ];
+
+        // Memperbarui data di tabel peminjaman
+        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
+        if(!empty($id_tambahan)){
+
+            // Menghapus data tambahan sebelum menambah yang baru
+            $id = $this->m_model->get_tambahan_by_id_peminjaman($this->input->post('id'))->result();
+            foreach($id as $row ){
+                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+      }
+
+        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+        if (!empty($id_tambahan)) {
+            foreach ($id_tambahan as $id) {
+                $data_tambahan = [
+                    'id_pelanggan' => $nama,
+                    'id_peminjaman' => $this->input->post('id'),
+                    'id_tambahan' => $id,
+                ];
+
+                // Memasukkan data ke tabel peminjaman_tambahan
+                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+            }
+        }
+    }
+        $this->check_expired_bookings();
+        // Redirect atau tampilkan pesan sukses
+        redirect(base_url('operator/report_sewa'));
+    }
+
+    //EXPORT PELANGGAN
+    public function export_pelanggan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_data('pelanggan')->result();
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA', 'NO TELEPON', 'METODE PEMBAYARAN'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $id = '';
+            $nama = '';
+            $phone = '';
+            $payment_method = '';
+            foreach ($rowData as $cellName => $cellData) {
+                if ($cellName == 'id') {
+                    $id = $cellData;
+                } elseif ($cellName == 'nama') {
+                    $nama = $cellData;
+                } elseif ($cellName == 'phone') {
+                    $phone = $cellData;
+                } elseif ($cellName == 'payment_method') {
+                    $payment_method = $cellData;
+                }
+
+                // Anda juga dapat menambahkan logika lain jika perlu
+
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $phone);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $payment_method);
+            $no++;
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA_PELANGGAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+
+    public function export_report_sewa()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'TAMBAHAN', 'SNACK', 'TOTAL BOOKING', 'STATUS'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $nama = '';
+            $id_ruangan = '';
+            $jumlah_orang = '';
+            $kode_booking = '';
+            $id_tambahan = '';
+            $tanggal_booking = '';
+            $status = '';
+            foreach ($rowData as $cellName => $cellData) {
+                if ($cellName == 'id_pelanggan') {
+                    $nama = tampil_nama_penyewa_byid($cellData);
+                } elseif ($cellName == 'id_ruangan') {
+                    $id_ruangan = tampil_nama_ruangan_byid($cellData);
+                } elseif ($cellName == 'jumlah_orang') {
+                    $jumlah_orang = $cellData;
+                } elseif ($cellName == 'kode_booking') {
+                    $kode_booking = $cellData;
+                } elseif ($cellName == 'id_tambahan') {
+                    $id_tambahan = $cellData;
+                } elseif ($cellName == 'tanggal_booking') {
+                    $tanggal_booking = $cellData;
+                } elseif ($cellName == 'status') {
+                    $status = $cellData;
+                } elseif ($cellName == 'tanggal_berakhir') {
+                    $tanggal_berakhir = $cellData;
+                }
+
+                if (!empty($tanggal_booking) && !empty($tanggal_berakhir)) {
+                    $tanggalBooking = new DateTime($tanggal_booking);
+                    $tanggalBerakhir = new DateTime($tanggal_berakhir);
+                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                    $total_booking = $durasi->days . 'Hari';
+                }
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $id_tambahan);
+            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_booking);
+            $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
+
+            $no++;
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA_REPORT_SEWA.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+
+    public function expor_ruangan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_data('ruangan')->result();
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN', 'HARGA'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $id = '';
+            $no_ruang = '';
+            $no_lantai = '';
+            $deskripsi = '';
+            $harga = '';
+            foreach ($rowData as $cellName => $cellData) {
+                if ($cellName == 'id') {
+                    $id = $cellData;
+                } elseif ($cellName == 'no_ruang') {
+                    $no_ruang = $cellData;
+                } elseif ($cellName == 'no_lantai') {
+                    $no_lantai = $cellData;
+                } elseif ($cellName == 'deskripsi') {
+                    $deskripsi = $cellData;
+                } elseif ($cellName == 'harga') {
+                    $harga = $cellData;
+                }
+
+                // Anda juga dapat menambahkan logika lain jika perlu
+
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $no_ruang);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $no_lantai);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $harga);
+            $no++;
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA RUANGAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+
+    public function import_ruang()
+    {
+        if (isset($_FILES["file"]["name"])) {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                // untuk mencari tahu seberapa banyak data yg ada
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+
+                // $row = 2; artine data dimulai dari baris ke2
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $no_ruang = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $no_lantai = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $harga = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+
+                    // Validate that none of the imported values are empty
+                    if (empty($no_ruang) || empty($no_lantai) || empty($deskripsi) || empty($harga)) {
+                        // Handle the case where any of the required fields is empty
+                        // You may want to log an error, skip the row, or take other appropriate actions
+                        continue;
+                    }
+
+                    // Optionally, you may want to perform additional validation or processing on the data
+
+                    $data = array(
+                        'no_ruang' => $no_ruang,
+                        'no_lantai' => $no_lantai,
+                        'deskripsi' => $deskripsi,
+                        'harga' => $harga
+                    );
+
+                    // untuk menambahkan ke database
+                    $this->m_model->tambah_data('ruangan', $data);
+                }
+            }
+            redirect(base_url('operator/data_ruangan'));
+        } else {
+            echo 'Invalid file';
+        }
+    }
+    public function import_pelanggan()
+    {
+        if (isset($_FILES["file"]["name"])) {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                // untuk mencari tahu seberapa banyak data yg ada
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+
+                // $row = 2; artine data dimulai dari baris ke2
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $phone = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $payment_method = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+
+
+                    // Validate that none of the imported values are empty
+                    if (empty($nama) || empty($phone) || empty($payment_method)) {
+                        // Handle the case where any of the required fields is empty
+                        // You may want to log an error, skip the row, or take other appropriate actions
+                        continue;
+                    }
+
+                    // Optionally, you may want to perform additional validation or processing on the data
+
+                    $data = array(
+                        'nama' => $nama,
+                        'phone' => $phone,
+                        'payment_method' => $payment_method,
+                    );
+
+                    // untuk menambahkan ke database
+                    $this->m_model->tambah_data('pelanggan', $data);
+                }
+            }
+            redirect(base_url('operator/data_master_pelanggan'));
+        } else {
+            echo 'Invalid file';
+        }
+    }
+    public function export_tambahan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_data('tambahan')->result();
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'JENIS', 'DESKRIPSI'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $nama = '';
+            $harga = '';
+            $jenis = '';
+            $deskripsi = '';
+            foreach ($rowData as $cellName => $cellData) {
+                if ($cellName == 'nama') {
+                    $nama = $cellData;
+                } elseif ($cellName == 'harga') {
+                    $harga = $cellData;
+                } elseif ($cellName == 'jenis') {
+                    $jenis = $cellData;
+                } elseif ($cellName == 'deskripsi') {
+                    $deskripsi = $cellData;
+                }
+
+                // Anda juga dapat menambahkan logika lain jika perlu
+
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $harga);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jenis);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $deskripsi);
+            $no++;
+
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+    public function template_tambahan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'JENIS', 'DESKRIPSI'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE_DATA_TAMBAHAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+    public function template_pelanggan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'PEMBAYARAN',];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE_DATA_PELANGGAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+    public function import_tambahan()
+    {
+        require 'vendor/autoload.php';
+        if (isset($_FILES["file"]["name"])) {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            foreach ($object->getWorksheetIterator() as $worksheet) {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for ($row = 2; $row <= $highestRow; $row++) {
+                    $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $harga = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $jenis = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $deskripsi = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $data = [
+                        'nama' => $nama,
+                        'harga' => $harga,
+                        'jenis' => $jenis,
+                        'deskripsi' => $deskripsi
+                    ];
+                    $this->m_model->tambah_data('tambahan', $data);
+                }
+            }
+            redirect(base_url('operator/tambahan'));
+        } else {
+            echo 'Invalid File';
+        }
+    }
+
+
+
+    public function hapus_report_sewa($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+        redirect(base_url('operator/report_sewa'));
+    }
+}
