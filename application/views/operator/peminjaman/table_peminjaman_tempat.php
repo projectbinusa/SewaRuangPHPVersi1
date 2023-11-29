@@ -63,7 +63,7 @@
             }
         }
 
-
+       
         .btn {
             height: 50px;
             line-height: 50px;
@@ -241,7 +241,7 @@
             opacity: 1;
         }
 
-
+        
         .section-title {
             margin-bottom: 60px;
         }
@@ -520,7 +520,7 @@
             margin-left: 12px;
         }
 
-
+        
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -725,7 +725,7 @@
             cursor: pointer;
         }
 
-
+        
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -760,9 +760,9 @@
             }
         }
 
-
-
-
+       
+       
+       
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -781,14 +781,14 @@
         .dataTables_wrapper .dataTables_filter input {
             margin-left: 9px;
         }
-
-        /*Row Hover*/
+/* 
+        /Row Hover/ */
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /*Pagination Buttons*/
+        /* /Pagination Buttons/ */
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -797,7 +797,7 @@
             padding-top: 5px;
         }
 
-
+       
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -818,7 +818,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -840,57 +841,12 @@
         }
 
         table {
-            width: 12rem;
-        }
+                width: 12rem;
+            }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
-        }
-
-        .submit {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
-
-        /* Spesifikasi ditingkatkan untuk tombol "submit" */
-        .survey-form .submit {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .survey-form .submit:hover {
-            background-color: transparent;
-            color: #222;
         }
     </style>
     <!-- script modal -->
@@ -903,11 +859,7 @@
 
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
-
-    <!-- <main class="contain-all max-h-screen overflow-y-auto"> -->
-
     <main class="contain-all max-h-screen overflow-y-auto">
-
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -920,11 +872,11 @@
         </div>
         <div class="container-table row justify-content-center">
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-12">
                 <div class="header-item">
                     <div class="relative">
 
-                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                        <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
@@ -1063,125 +1015,103 @@
                         <label class="font-medium text-gray-800">File</label>
                         <input type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
 
-
-        <!-- modal -->
-        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div class="fixed inset-0 transition-opacity">
-                    <div class="absolute inset-0 bg-gray-900 opacity-75">
-                    </div>
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                    <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <label class="font-medium text-gray-800">File</label>
-                            <input type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-
-                        </div>
-                        <div class="bg-gray-200 px-4 py-3 text-right">
-                            <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                            <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                        </div>
-
                     </div>
                     <div class="bg-gray-200 px-4 py-3 text-right">
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                         <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script>
-            function printConfirmation(printUrl) {
-                Swal.fire({
-                    title: 'Konfirmasi Cetak',
-                    text: 'Anda yakin ingin mencetak?',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, Cetak!',
-                    cancelButtonText: 'Batal'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Mencetak Struk',
-                            text: 'Mohon tunggu...',
-                            icon: 'info',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
-                            // timerProgressBar: true,
-                            willOpen: () => {
-                                Swal.showLoading();
-                                // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
-                                // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
-                                // Jangan lupa untuk menutup SweetAlert ketika selesai
-                                // Misalnya: Swal.close();
-                            }
-                        }).then(() => {
-                            // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
-                            window.location.href = printUrl;
-                        });
-                    }
-                });
-            }
-        </script>
-
-        <script>
-            $(document).ready(function() {
-
-                var table = $('#example_data').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+        function printConfirmation(printUrl) {
+            Swal.fire({
+                title: 'Konfirmasi Cetak',
+                text: 'Anda yakin ingin mencetak?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Cetak!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Mencetak Struk',
+                        text: 'Mohon tunggu...',
+                        icon: 'info',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
+                        // timerProgressBar: true,
+                        willOpen: () => {
+                            Swal.showLoading();
+                            // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
+                            // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
+                            // Jangan lupa untuk menutup SweetAlert ketika selesai
+                            // Misalnya: Swal.close();
+                        }
+                    }).then(() => {
+                        // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
+                        window.location.href = printUrl;
+                    });
+                }
             });
+        }
+    </script>
 
-            function hapus(id) {
-                Swal.fire({
-                    title: 'Apakah Mau Dihapus?',
-                    text: "data ini tidak bisa dikembalikan lagi!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Ya, hapus!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Data Terhapus!!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        setTimeout(() => {
-                            window.location.href = "<?php echo base_url('operator/hapus_peminjaman/') ?>" + id;
-                        }, 1800);
-                    }
+    <script>
+        $(document).ready(function() {
+
+            var table = $('#example_data').DataTable({
+                    responsive: true
                 })
-            }
-        </script>
+                .columns.adjust()
+                .responsive.recalc();
+        });
 
-        <!-- script modal -->
-        <script>
-            function toggleModal() {
-                document.getElementById('modal').classList.toggle('hidden')
-            }
-        </script>
+        function hapus(id) {
+            Swal.fire({
+                title: 'Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Data Terhapus!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('operator/hapus_peminjaman/') ?>" + id;
+                    }, 1800);
+                }
+            })
+        }
+    </script>
+
+    <!-- script modal -->
+    <script>
+        function toggleModal() {
+            document.getElementById('modal').classList.toggle('hidden')
+        }
+    </script>
 
 </body>
 
