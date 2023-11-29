@@ -645,6 +645,7 @@ class operator extends CI_Controller
     {
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
         $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
     }
