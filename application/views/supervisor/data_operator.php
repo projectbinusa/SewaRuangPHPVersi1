@@ -1633,10 +1633,6 @@
             padding: 20px 10px 10px 10px;
         }
 
-        .btn-export-p {
-            margin-left: 5px;
-        }
-
         /* code responsive table */
         @media (max-width: 600px) {
 
@@ -1645,16 +1641,17 @@
                 overflow: scroll;
             }
 
-            .testt {
-                display: block;
-                padding: 0;
-            }
-
             .btn-style {
-                font-size: small;
-                width: 5.5rem;
+                font-size: 12px;
+                width: 6rem;
                 height: 2rem;
             }
+
+            .btn-export-import {
+                display: flex;
+            }
+
+           
         }
 
         table {
@@ -1665,15 +1662,13 @@
             padding: 4%;
         }
 
-
-        .testt {
-            display: flex;
-            gap: 5px;
-            float: right
+        .btn-style {
+            width: 6rem;
+            padding: 7px 6px;
         }
 
-        .btn-style {
-            width: 6.5rem;
+        .btn-export-import {
+            display: block;
         }
     </style>
 
@@ -1692,27 +1687,31 @@
             </div>
 
             <div class="container-table row justify-content-center">
-                <button onclick="toggleModal()"
-                    class="btn-style bg-yellow-500 hover:bg-yellow-700 md:ml-auto text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-file-import"></i>
-                    </span>
-                    Impor
-                </button>
-                <a href="javascript:void(0);" onclick="exportData()"
-                    class="btn-style bg-green-500 hover:bg-green-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
-                    <span class="pe-2">
-                        <i class="fas fa-file-export"></i>
-                    </span>
-                    Ekspor
-                </a>
-                <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>"
-                    class="btn-style btn-export-p py-2 px-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
-                    <span class="pe-2">
+                <div class="flex gap-2">
+               
+                    <button onclick="toggleModal()"
+                        class="btn-style bg-yellow-500  md:ml-auto hover:bg-yellow-700  text-white font-bold  rounded">
+                        <span class="">
+                            <i class="fas fa-file-import"></i>
+                        </span>
+                        Impor
+                    </button>
+                    <a href="javascript:void(0);" onclick="exportData()"
+                        class="btn-style pl-3 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
+                        <span class="">
+                            <i class="fas fa-file-export"></i>
+                        </span>
+                        Ekspor
+                    </a>
+
+                    <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>"
+                    class="btn-style pl-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
+                    <span class="">
                         <i class="fas fa-plus"></i>
                     </span>
                     Tambah
                 </a>
+                    </div>
 
                 <div class="col-lg-12">
                     <div class="header-item">
