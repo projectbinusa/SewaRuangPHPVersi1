@@ -749,7 +749,11 @@
             }
 
             .table-responsive {
+
                 display: block !important;
+
+                padding : block !important;
+
             }
 
             .btn-custom-default,
@@ -786,8 +790,12 @@
             margin-left: 9px;
         }
 
+
         /* 
         /Row Hover/ */
+
+        /* /Row Hover/ */
+
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;

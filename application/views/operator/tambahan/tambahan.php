@@ -860,7 +860,7 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 70rem;
+            height: 100%;
         }
 
         .btn-style {
@@ -876,11 +876,11 @@
     </script>
 </head>
 
-<body class="relative min-h-screen ">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
     <main class="contain-all max-h-screen overflow-y-auto">
-        <section id="widget" class="p-10 widget-section pd-top-120">
+        <!-- <section id="widget" class="p-10 widget-section pd-top-120"> -->
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
@@ -1071,7 +1071,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    <!-- </main> -->
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
