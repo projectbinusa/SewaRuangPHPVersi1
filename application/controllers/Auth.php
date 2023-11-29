@@ -200,7 +200,67 @@ public function aksi_forgot_pass()
             $mail->addReplyTo("$email");
             $mail->isHTML(true);
             $mail->Subject = 'Kode Verifikasi Password';
-            $mail->Body = "Berikut Kode Verifikasi anda $generate";
+
+            // Konten HTML email dengan gaya CSS yang lebih modern
+            $mail->Body = '
+                <html>
+                    <head>
+                        <style>
+                            /* CSS styling */
+                            body {
+                                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                                background-color: #f2f2f2;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            .container {
+                                width: 80%;
+                                margin: 0 auto;
+                                padding: 40px;
+                                background-color: #ffffff;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                                text-align: center;
+                                color: #333333;
+                            }
+                            h1 {
+                                color: #4f709c;
+                                margin-bottom: 20px;
+                            }
+                            .code {
+                                font-size: 28px;
+                                color: #fff;
+                                padding: 15px;
+                                background-color: #4f709c;
+                                border-radius: 4px;
+                                margin-bottom: 30px;
+                            }
+                            p {
+                                color: #666;
+                                font-size: 16px;
+                                line-height: 1.6;
+                                margin-bottom: 20px;
+                            }
+                            .icon {
+                                max-width: 50%;
+                                height: auto;
+                                margin: 0 auto 10px;
+                                display: block;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="container">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/nizar-40272.appspot.com/o/photo_2023-11-29_09-23-55.jpg?alt=media&token=d9a393df-822b-4589-822b-918f2e05d34a" 
+                            alt="Logo" class="icon">
+                            <h1>Kode Verifikasi Password</h1>
+                            <p>Silakan gunakan kode verifikasi berikut:</p>
+                            <div class="code">' . $generate . '</div>
+                            <p>Untuk keamanan akun Anda, jangan bagikan kode ini kepada siapapun.</p>
+                        </div>
+                    </body>
+                </html>
+            ';
 
             // Kirim email
             if ($mail->send()) {
