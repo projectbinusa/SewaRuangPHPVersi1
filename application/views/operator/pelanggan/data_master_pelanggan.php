@@ -858,7 +858,7 @@
     </script>
 </head>
 
-<body class="relative min-h-screen overflow-hidden">
+<body class="relative min-h-screen ">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <section id="widget" class="p-10 widget-section pd-top-120">
@@ -885,16 +885,26 @@
                                 Tambah
                             </a>
 
-                            <button onclick="ExportPelanggan()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
-                                <i class="fas fa-file-export"></i> Eskpor
+                            <!-- <button onclick="ExportPelanggan()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
+                                <i class="fas fa-file-export"></i> Ekspor
                             </button>
 
+                            <button onclick="toggleModal()" class="mr-2 ml-3 inline-block px-3 py-2 bg-yellow-500 hover:bg-yellow-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
+                              <i class="fas fa-file-import"></i> Impor
+                            </button> -->
 
-                            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
+
+                            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-green-500 hover:bg-green-700  text-white rounded mr-" onclick="ExportPelanggan()">
+                                <span class="pe-2">
+                                    <i class="fas fa-file-export"></i>
+                                </span>
+                                Ekspor
+                            </button>
+                            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded mr-" onclick="toggleModal()">
                                 <span class="pe-2">
                                     <i class="fas fa-file-import"></i>
                                 </span>
-                                Import
+                                Impor
                             </button>
 
 
@@ -984,10 +994,13 @@
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
                             onclick="toggleModal()"> Batal</button>
                         <button onclick="importpelanggan()" type="submit"
-                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                        <button type="button"
+                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                        <!-- <button type="button"
                             class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
-                            Download Template</button>
+                            Unduh Template</button> -->
+                        <button type="button" class=" md:ml-0 md:mr-2  py-2 px-2  bg-purple-500 hover:bg-purple-700  text-white rounded mr-2" onclick="template()">
+                                Unduh Templat
+                        </button> 
                     </div>
                     </form>
                 </div>
@@ -1154,6 +1167,32 @@
 
                 // Call the function when the page loads
                 window.onload = displaySweetAlert;
+            </script>
+            <script>
+                function template() {
+            Swal.fire({
+                title: 'Download Template Data Tambahan?',
+                text: "Anda akan mengdownload template data tambahan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Download'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil didownload',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
             </script>
 </body>
 
