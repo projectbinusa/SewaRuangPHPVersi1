@@ -5459,7 +5459,7 @@
                         </div>
                     </div>
         </section>
-        <section class="inner-section">
+        <!-- <section class="inner-section">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
@@ -5504,7 +5504,7 @@
                         </div>
                 <?php endif; ?>
 
-    </section>
+    </section> -->
 
         <!-- about area start -->
         <!-- <section  id="about" class="inner-section">
