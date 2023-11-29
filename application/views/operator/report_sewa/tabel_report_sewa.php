@@ -5,20 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -27,12 +25,18 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+
+
+
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
@@ -745,7 +749,7 @@
             }
 
             .table-responsive {
-                 : block !important;
+                display: block !important;
             }
 
             .btn-custom-default,
@@ -782,13 +786,14 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
+        /* 
+        /Row Hover/ */
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
+        /* /Pagination Buttons/ */
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -818,7 +823,8 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;
+            margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -832,6 +838,12 @@
         @media (max-width: 600px) {
             table {
                 width: 4.5rem;
+            }
+
+            .btn-style {
+                font-size: 12px;
+                width: 8rem;
+                height: 2rem;
             }
         }
 
@@ -848,52 +860,13 @@
             padding: 20px 10px 10px 10px;
         }
 
-        .submit {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .submit:hover {
-            background-color: transparent;
-            color: #222;
-        }
-
-        /* Spesifikasi ditingkatkan untuk tombol "submit" */
-        .survey-form .submit {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px auto 10px auto;
-            cursor: pointer;
-            transition: all .3s;
-        }
-
-        .survey-form .submit:hover {
-            background-color: transparent;
-            color: #222;
+        .btn-style {
+            width: 6rem;
+            padding: 7px 1px;
         }
     </style>
-    <!-- script modal -->
+
+
     <script>
         function toggleModal() {
             document.getElementById('modal').classList.toggle('hidden')
@@ -901,7 +874,7 @@
     </script>
 </head>
 
-<body class="relative min-h-screen ">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <section id="widget" class="p-10 widget-section pd-top-120">
@@ -915,7 +888,7 @@
                     </div>
                 </div>
             </div>
-        <div class="container-table row justify-content-center">
+            <div class="container-table row justify-content-center">
 
             <div class="col-lg-12">
                 <div class="header-item">
@@ -924,9 +897,15 @@
                     <button onclick="exportReportSewa()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50" onclick="showExportConfirmation()">
                 <i class="fas fa-file-export"></i> Ekspor
             </button>
-                        <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
+
+                               
+                       
+
+                            <table style="min-width: 12rem;" id="example_data"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
                                     <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                         No
                                     </th>
@@ -958,8 +937,8 @@
                                         Aksi
                                     </th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <?php $no = 0;
                                 foreach ($peminjaman as $row) :
                                     $no++; ?>
@@ -1042,75 +1021,75 @@
 
         </div>
         </section>
-
-
+      
     
     <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        $(document).ready(function() {
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function() {
 
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
+        var table = $('#example_data').DataTable({
+                responsive: true
+            })
+            .columns.adjust()
+            .responsive.recalc();
+    });
+
+    function hapus(id) {
+        Swal.fire({
+            title: ' Apa Mau Menghapus?',
+            text: "data ini tidak bisa dikembalikan lagi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil Menghapus',
+                    showConfirmButton: false,
+                    timer: 1500,
+                }).then(function() {
+                    window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
+                });
+            }
         });
-
-        function hapus(id) {
-            Swal.fire({
-                title: ' Apa Mau Menghapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menghapus',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_report_sewa/') ?>" + id;
-                    });
-                }
-            });
-        }
-        function exportReportSewa() {
-            Swal.fire({
-                title: 'Export Data Report Sewa?',
-                text: "Anda akan mengexport data report sewa",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Export'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    // Contoh:
-                    window.location.href = "<?php echo base_url('operator/export_report_sewa') ?>";
-                    
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data sewa berhasil diexport',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    });
-                }
-            });
-        }
+    }
+    function exportReportSewa() {
+        Swal.fire({
+            title: 'Export Data Report Sewa?',
+            text: "Anda akan mengexport data report sewa",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Export'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Lakukan proses ekspor data di sini
+                // Contoh:
+                window.location.href = "<?php echo base_url('operator/export_report_sewa') ?>";
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data sewa berhasil diexport',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true // Menampilkan progress bar
+                });
+            }
+        });
+    }
 </script>
 </body>
+
 
 </html>
