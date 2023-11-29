@@ -811,9 +811,13 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
+        if(!empty($id_tambahan)){
 
-        // Menghapus data tambahan sebelum menambah yang baru
-        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
+            // Menghapus data tambahan sebelum menambah yang baru
+            $delete_tambahan= $this->m_model->get_tambahan($this->input->post('id'))->result();
+        foreach($delete_tambahan as $row){
+            $this->m_model->delete('tambahan', 'id', $row->id);
+        }
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
@@ -827,7 +831,7 @@ class operator extends CI_Controller
                 $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
             }
         }
-
+    }
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
