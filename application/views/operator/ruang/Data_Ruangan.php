@@ -226,7 +226,7 @@
     function template() {
       Swal.fire({
         title: 'Download Template Data Operator?',
-        text: "Anda akan mengdownload template data operator",
+        text: "Anda akan mengdownload template data ruangan",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
