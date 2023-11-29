@@ -20,15 +20,17 @@ class operator extends CI_Controller
 
     public function index($offset = 0)
     {
+
         $limit = 6; // Number of records per page
 
         $this->load->model('m_model');
+
 
         // Load pagination library
         $this->load->library('pagination');
 
         // Configure pagination
-        $config['base_url'] = base_url('operator/index'); // Include the method name 'index'
+        $config['base_url'] = base_url('operator/index');
         $config['total_rows'] = $this->m_model->count_records('ruangan');
         $config['per_page'] = $limit;
 
@@ -38,16 +40,16 @@ class operator extends CI_Controller
         $data['pagination_links'] = $this->pagination->create_links();
 
         $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
+
         $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
         $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
         $data['jumlah_ruang'] = $this->m_model->get_data('ruangan')->num_rows();
         $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
         $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
         $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
-
+        // $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('operator/dashboard', $data);
     }
-
 
     public function edit_tambahan($id)
     {
@@ -127,8 +129,27 @@ class operator extends CI_Controller
 
     public function search()
     {
+        $this->load->library('pagination');
+
         $keyword = $this->input->post('keyword');
+
+        // Load the model to fetch search results
         $data['ruang'] = $this->m_model->search($keyword);
+
+        // Pagination configuration
+        $config = array(
+            'base_url' => base_url('operator/search'), // Adjust the URL as needed
+            'total_rows' => count($data['ruang']), // Total number of items (adjust as needed)
+            'per_page' => 10, // Number of items to display per page
+            'uri_segment' => 3, // URI segment containing the page number
+        );
+
+        $this->pagination->initialize($config);
+
+        // Create pagination links
+        $data['pagination_links'] = $this->pagination->create_links();
+
+        // Load the view with the search results and pagination links
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
 
@@ -160,6 +181,12 @@ class operator extends CI_Controller
             $errors[] = 'Ruangan harus diawali dengan kata "Ruang" dan diikuti oleh angka atau huruf';
         } elseif (stripos($no_ruang, 'Ruang') === false || !preg_match('/^Ruang[a-zA-Z0-9\s]+$/i', $no_ruang)) {
             $errors[] = 'Ruangan harus mengandung kata "Ruang" di awal dan diikuti oleh angka atau huruf';
+        }
+
+        // Validasi nama ruangan tidak boleh sama
+        $nama_ruang_exists = $this->m_model->cek_data_exists('ruangan', ['no_ruang' => $no_ruang]);
+        if ($nama_ruang_exists) {
+            $errors[] = 'Nama ruangan sudah ada. Harap pilih nama ruangan yang lainnya.';
         }
 
         // Validasi harga
@@ -812,20 +839,13 @@ class operator extends CI_Controller
         $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
     }
 
-    public function update_report_sewa()
+    public function update_report_sewa($id)
     {
-        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
-        $this->load->view('operator/report_sewa/update_report_sewa', $data);
+        $this->load->view('operator/pelanggan/update_report_sewa', $data);
     }
-
-
-
-    public function aksi_update_report_sewa()
+    public function aksi_update_report_sewa($id)
     {
-        $nama = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
         $start_time = $this->input->post('booking');
@@ -833,67 +853,30 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
 
         // Mendapatkan ID pelanggan berdasarkan nama
+        $id_pelanggan = tampil_pelanggan_bynama($nama);
 
-
-        // Menghitung durasi dan harga ruangan
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
-
-        // Menghitung harga tambahan (snack)
-        $harga_tambahan = 0;
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $harga_tambahan += tampil_harga_tambahan_byid($id);
-
-                // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                    $harga_tambahan *= $jumlah_orang;
-                }
-            }
+        // Memeriksa konflik waktu
+        if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
+            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            return;
         }
 
-        // Menghitung total harga
-        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
-
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
-        $data_peminjaman = [
-            'id_pelanggan' => $nama,
+        $harga_snack = $jumlah * $jumlah;
+        $harga_keseluruhan = $harga_snack + $harga_ruangan;
+        $data = [
+            'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
-            'jumlah_orang' => $jumlah_orang,
+
+            'tanggal_booking' => $start_time,
+            'tanggal_berakhir' => $end_time,
+            'jumlah_orang' => $jumlah,
+            'kode_booking' => $generate,
             'total_harga' => $harga_keseluruhan,
+            'status' => 'proses',
         ];
-
-        // Memperbarui data di tabel peminjaman
-        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if(!empty($id_tambahan)){
-
-            // Menghapus data tambahan sebelum menambah yang baru
-            $id = $this->m_model->get_tambahan_by_id_peminjaman($this->input->post('id'))->result();
-            foreach($id as $row ){
-                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
-      }
-
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $data_tambahan = [
-                    'id_pelanggan' => $nama,
-                    'id_peminjaman' => $this->input->post('id'),
-                    'id_tambahan' => $id,
-                ];
-
-                // Memasukkan data ke tabel peminjaman_tambahan
-                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
-            }
-        }
-    }
+        $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
-        // Redirect atau tampilkan pesan sukses
-        redirect(base_url('operator/report_sewa'));
+        redirect(base_url('operator/tabel_report_sewa'));
     }
 
     //EXPORT PELANGGAN
@@ -1444,13 +1427,5 @@ class operator extends CI_Controller
         } else {
             echo 'Invalid File';
         }
-    }
-
-
-
-    public function hapus_report_sewa($id)
-    {
-        $this->m_model->delete('peminjaman', 'id', $id);
-        redirect(base_url('operator/report_sewa'));
     }
 }

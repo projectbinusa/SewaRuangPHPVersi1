@@ -113,7 +113,7 @@
 
 <body class="relative min-h-screen overflow-hidden">
   <?php $this->load->view('sidebar'); ?>
-  <div class="overflow-y-scroll h-5/6">
+  <div class="overflow-y-scroll h-screen md:h-5/6">
     <main class="h-screen">
       <!-- Area konten utama -->
       <div class="flex-1 p-4 w-full">
@@ -232,6 +232,7 @@
         title: 'Ekspor Data Ruangan?',
         text: "Anda akan mengekspor data ruangan",
         icon: 'question',
+        timer: 20000,
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -257,6 +258,7 @@
         title: ' Apa Mau Menghapus?',
         text: "data ini tidak bisa dikembalikan lagi!",
         icon: 'warning',
+        timer: 20000,
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',

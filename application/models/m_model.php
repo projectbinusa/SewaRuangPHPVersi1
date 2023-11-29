@@ -31,6 +31,14 @@ class M_model extends CI_Model
         return $this->db->count_all($table);
     }
 
+    public function cek_data_exists($table, $where)
+    {
+        $this->db->where($where);
+        $query = $this->db->get($table);
+
+        return $query->num_rows() > 0;
+    }
+
     public function search($keyword)
     {
         $this->db->like('no_lantai', $keyword);
