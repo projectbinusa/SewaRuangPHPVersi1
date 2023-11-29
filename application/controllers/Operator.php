@@ -20,17 +20,15 @@ class operator extends CI_Controller
 
     public function index($offset = 0)
     {
-
         $limit = 6; // Number of records per page
 
         $this->load->model('m_model');
-
 
         // Load pagination library
         $this->load->library('pagination');
 
         // Configure pagination
-        $config['base_url'] = base_url('operator/dashboard');
+        $config['base_url'] = base_url('operator/index'); // Include the method name 'index'
         $config['total_rows'] = $this->m_model->count_records('ruangan');
         $config['per_page'] = $limit;
 
@@ -40,16 +38,16 @@ class operator extends CI_Controller
         $data['pagination_links'] = $this->pagination->create_links();
 
         $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
-
         $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
         $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
         $data['jumlah_ruang'] = $this->m_model->get_data('ruangan')->num_rows();
         $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
         $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
         $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
-        // $data['ruang'] = $this->m_model->get_data('ruangan')->result();
+
         $this->load->view('operator/dashboard', $data);
     }
+
 
     public function edit_tambahan($id)
     {
