@@ -1119,14 +1119,14 @@
         };
         function template() {
             Swal.fire({
-                title: 'Download Template Data Tambahan?',
-                text: "Anda akan mengdownload template data tambahan",
+                title: 'Unduh Templat Data Tambahan!',
+                text: "Anda akan mengunduh templat data tambahan",
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 cancelButtonText: 'Batal',
-                confirmButtonText: 'Download'
+                confirmButtonText: 'Unduh'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Lakukan proses ekspor data di sini
@@ -1134,7 +1134,7 @@
 
                     Swal.fire({
                         icon: 'success',
-                        title: 'Data berhasil didownload',
+                        title: 'Data berhasil di unduh',
                         showConfirmButton: false,
                         timer: 2500,
                     });

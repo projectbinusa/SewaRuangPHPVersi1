@@ -1004,7 +1004,7 @@
 
 
                                 <label class="font-medium text-gray-800">File</label>
-                                <input name="file" type="file"
+                                <input name="file" type="file" 
                                     class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
 
                         </div>
@@ -1193,14 +1193,14 @@
             <script>
                 function template() {
                     Swal.fire({
-                        title: 'Download Template Data Tambahan?',
-                        text: "Anda akan mengdownload template data tambahan",
+                        title: 'Unduh Templat Data Master Pelanggan?',
+                        text: "Anda akan mengunduh templat data master pelanggan",
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         cancelButtonText: 'Batal',
-                        confirmButtonText: 'Download'
+                        confirmButtonText: 'Unduh'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Lakukan proses ekspor data di sini
@@ -1208,7 +1208,7 @@
 
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Data berhasil didownload',
+                                title: 'Data berhasil di unduh',
                                 showConfirmButton: false,
                                 timer: 2500,
                             });

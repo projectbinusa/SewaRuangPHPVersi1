@@ -889,13 +889,21 @@ class operator extends CI_Controller
         $data['peminjaman'] = $this->m_model->get_report_sewa_by_status();
         $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
     }
+    public function hapus_report_sewa($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+        redirect(base_url('operator/report_sewa'));
+    }
 
     public function update_report_sewa($id)
     {
-        $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
-        $this->load->view('operator/pelanggan/update_report_sewa', $data);
+        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
+        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
+        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
+        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $this->load->view('operator/report_sewa/update_report_sewa', $data);
     }
-    public function aksi_update_report_sewa($id)
+    public function aksi_update_report_sewa()
     {
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
@@ -927,7 +935,7 @@ class operator extends CI_Controller
         ];
         $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
-        redirect(base_url('operator/tabel_report_sewa'));
+        redirect(base_url('operator/report_sewa'));
     }
 
     //EXPORT PELANGGAN
