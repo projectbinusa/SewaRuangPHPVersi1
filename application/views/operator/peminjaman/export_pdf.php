@@ -202,8 +202,8 @@
             <div class="payment-info">
                 <h4>PAYMENT INFO</h4>
                 <?php date_default_timezone_set('Asia/Jakarta'); ?>
-                <p class="baru">Tanggal :<span><?php echo date('F j,Y'); ?></span></p>
-                <p>Jam Pemesanan : <span><?php echo date('H:i'); ?></span></p>
+                <p class="baru">Tanggal :<span><?php echo date(' j F Y'); ?></span></p>
+                <p>Jam Pemesanan : <span><?php echo date('H:i:s'); ?></span></p>
                 <p>pembayaran : <span><?php echo tampil_pyment_penyewa_byid($row->id_pelanggan); ?></span></p>
             </div>
         <?php endforeach; ?>
