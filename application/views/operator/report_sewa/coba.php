@@ -20,17 +20,15 @@ class operator extends CI_Controller
 
     public function index($offset = 0)
     {
-
         $limit = 6; // Number of records per page
 
         $this->load->model('m_model');
-
 
         // Load pagination library
         $this->load->library('pagination');
 
         // Configure pagination
-        $config['base_url'] = base_url('operator/index');
+        $config['base_url'] = base_url('operator/index'); // Include the method name 'index'
         $config['total_rows'] = $this->m_model->count_records('ruangan');
         $config['per_page'] = $limit;
 
@@ -40,16 +38,16 @@ class operator extends CI_Controller
         $data['pagination_links'] = $this->pagination->create_links();
 
         $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
-
         $data['report_sewa'] = $this->m_model->get_report_sewa_by_status();
         $data['pelanggans'] = $this->m_model->get_data('pelanggan')->result();
         $data['jumlah_ruang'] = $this->m_model->get_data('ruangan')->num_rows();
         $data['jumlah_pelanggan'] = $this->m_model->get_data('pelanggan')->num_rows();
         $data['jumlah_tambahan'] = $this->m_model->get_data('tambahan')->num_rows();
         $data['jumlah_sewa'] = $this->m_model->get_data('tambahan')->num_rows();
-        // $data['ruang'] = $this->m_model->get_data('ruangan')->result();
+
         $this->load->view('operator/dashboard', $data);
     }
+
 
     public function edit_tambahan($id)
     {
@@ -129,73 +127,9 @@ class operator extends CI_Controller
 
     public function search()
     {
-        $this->load->library('pagination');
-
         $keyword = $this->input->post('keyword');
-
-        // Load the model to fetch search results
         $data['ruang'] = $this->m_model->search($keyword);
-
-        // Pagination configuration
-        $config = array(
-            'base_url' => base_url('operator/search'), // Adjust the URL as needed
-            'total_rows' => count($data['ruang']), // Total number of items (adjust as needed)
-            'per_page' => 10, // Number of items to display per page
-            'uri_segment' => 3, // URI segment containing the page number
-        );
-
-        $this->pagination->initialize($config);
-
-        // Create pagination links
-        $data['pagination_links'] = $this->pagination->create_links();
-
-        // Load the view with the search results and pagination links
         $this->load->view('operator/ruang/Data_Ruangan', $data);
-    }
-
-    public function template_data_ruangan()
-    {
-
-        // Load autoloader Composer
-        require 'vendor/autoload.php';
-
-        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
-
-        // Buat lembar kerja aktif
-        $sheet = $spreadsheet->getActiveSheet();
-        // Data yang akan diekspor (contoh data)
-
-        // Buat objek Spreadsheet
-        $headers = ['NO', 'LANTAI', 'RUANG', 'DESKRIPSI', 'HARGA'];
-        $rowIndex = 1;
-        foreach ($headers as $header) {
-            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
-            $rowIndex++;
-        }
-
-        // Auto size kolom berdasarkan konten
-        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
-            $sheet->getColumnDimension($col)->setAutoSize(true);
-        }
-
-        // Set style header
-        $headerStyle = [
-            'font' => ['bold' => true],
-            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-        ];
-        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-
-        // Konfigurasi output Excel
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'TEMPLATE DATA RUANGAN.xlsx'; // Nama file Excel yang akan dihasilkan
-
-        // Set header HTTP untuk mengunduh file Excel
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
-        header('Cache-Control: max-age=0');
-
-        // Outputkan file Excel ke browser
-        $writer->save('php://output');
     }
 
     public function tambah_ruang()
@@ -226,12 +160,6 @@ class operator extends CI_Controller
             $errors[] = 'Ruangan harus diawali dengan kata "Ruang" dan diikuti oleh angka atau huruf';
         } elseif (stripos($no_ruang, 'Ruang') === false || !preg_match('/^Ruang[a-zA-Z0-9\s]+$/i', $no_ruang)) {
             $errors[] = 'Ruangan harus mengandung kata "Ruang" di awal dan diikuti oleh angka atau huruf';
-        }
-
-        // Validasi nama ruangan tidak boleh sama
-        $nama_ruang_exists = $this->m_model->cek_data_exists('ruangan', ['no_ruang' => $no_ruang]);
-        if ($nama_ruang_exists) {
-            $errors[] = 'Nama ruangan sudah ada. Harap pilih nama ruangan yang lainnya.';
         }
 
         // Validasi harga
@@ -305,7 +233,7 @@ class operator extends CI_Controller
     public function pdf()
     {
         $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
-        $this->load->view('operator/peminjaman/pdf', $data);
+        $this->load->view('operator/pdf', $data);
     }
 
     public function export_pdf($id)
@@ -314,7 +242,7 @@ class operator extends CI_Controller
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
-            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
+            $this->pdf->load_view('operator/export_pdf', $data);
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
@@ -578,12 +506,7 @@ class operator extends CI_Controller
         $this->load->view('operator/pelanggan/tambah_pelanggan');
     }
 
-    // update data pelanggan
-    public function update_data($id)
-    {
-        $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
-        $this->load->view('operator/pelanggan/update_data', $data);
-    }
+   
 
 
     public function aksi_tambah_pelanggan()
@@ -641,6 +564,13 @@ class operator extends CI_Controller
         echo json_encode($response);
     }
 
+     // update data pelanggan
+     public function update_data($id)
+     {
+         $data['pelanggan'] = $this->m_model->get_by_id('pelanggan', 'id', $id)->result();
+         $this->load->view('operator/pelanggan/update_data', $data);
+     }
+
 
     // aksi update data pelanggan
     public function aksi_update_data()
@@ -652,7 +582,7 @@ class operator extends CI_Controller
         );
         $eksekusi = $this->m_model->ubah_data('pelanggan', $data, array('id' => $this->input->post('id')));
         if ($eksekusi) {
-            $this->session->set_flashdata('sukses', 'Berhasil');
+            $this->session->set_flashdata('sukses', 'berhasil');
             redirect(base_url('operator/data_master_pelanggan'));
         } else {
             $this->session->set_flashdata('error', 'gagal..');
@@ -690,7 +620,6 @@ class operator extends CI_Controller
     {
         $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
         $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
         $this->load->view('operator/peminjaman/edit_peminjaman_tempat', $data);
     }
@@ -721,13 +650,15 @@ class operator extends CI_Controller
     public function aksi_peminjaman()
     {
         // Memperoleh data dari formulir
-        $id_pelanggan = $this->input->post('nama');
+        $nama = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
         $start_time = $this->input->post('booking');
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
 
+        // Mendapatkan ID pelanggan berdasarkan nama
+        $id_pelanggan = tampil_pelanggan_bynama($nama);
 
         // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
@@ -795,25 +726,21 @@ class operator extends CI_Controller
                 }
             }
 
+            $this->check_expired_bookings();
+            // Operasi berhasil
+            // Redirect atau tampilkan pesan sukses
+            redirect(base_url('operator/peminjaman_tempat'));
         }
-        $this->check_expired_bookings();
-        // Operasi berhasil
-        // Redirect atau tampilkan pesan sukses
-        redirect(base_url('operator/peminjaman_tempat'));
     }
 
     public function hapus_peminjaman($id)
     {
         $this->m_model->delete('peminjaman', 'id', $id);
-        $tambahan = $this->m_model->get_tambahan($id)->result();
-            foreach($tambahan as $row){
-                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
-            }
         redirect(base_url('operator/peminjaman_tempat'));
     }
     public function aksi_edit_peminjaman()
     {
-        $id_pelanggan = $this->input->post('nama');
+        $nama = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
         $start_time = $this->input->post('booking');
@@ -821,6 +748,8 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
 
         // Mendapatkan ID pelanggan berdasarkan nama
+        $id_pelanggan = tampil_pelanggan_bynama($nama);
+
 
         // Menghitung durasi dan harga ruangan
         $tanggalBooking = new DateTime($start_time);
@@ -856,13 +785,9 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if(!empty($id_tambahan)){
 
-            // Menghapus data tambahan sebelum menambah yang baru
-            $tambahan = $this->m_model->get_tambahan($this->input->post('id'))->result();
-            foreach($tambahan as $row){
-                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
-            }
+        // Menghapus data tambahan sebelum menambah yang baru
+        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
@@ -877,7 +802,6 @@ class operator extends CI_Controller
             }
         }
 
-    }
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
@@ -886,13 +810,8 @@ class operator extends CI_Controller
 
     public function report_sewa()
     {
-        $data['peminjaman'] = $this->m_model->get_report_sewa_by_status();
+        $data['peminjaman'] = $this->m_model->get_report_sewa_by_status('peminjaman');
         $this->load->view('operator/report_sewa/tabel_report_sewa', $data); // Mengirimkan data ke tampilan
-    }
-    public function hapus_report_sewa($id)
-    {
-        $this->m_model->delete('peminjaman', 'id', $id);
-        redirect(base_url('operator/report_sewa'));
     }
 
     public function update_report_sewa($id)
@@ -903,6 +822,9 @@ class operator extends CI_Controller
         $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
         $this->load->view('operator/report_sewa/update_report_sewa', $data);
     }
+
+
+
     public function aksi_update_report_sewa()
     {
         $nama = $this->input->post('nama');
@@ -952,7 +874,7 @@ class operator extends CI_Controller
         if(!empty($id_tambahan)){
 
             // Menghapus data tambahan sebelum menambah yang baru
-            $id = $this->m_model->get_tambahan($this->input->post('id'))->result();
+            $id = $this->m_model->get_tambahan_by_id_peminjaman($this->input->post('id'))->result();
             foreach($id as $row ){
                 $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
       }
@@ -1256,13 +1178,13 @@ class operator extends CI_Controller
 
                 // $row = 2; artine data dimulai dari baris ke2
                 for ($row = 2; $row <= $highestRow; $row++) {
-                    $no_lantai = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $no_ruang = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $no_ruang = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $no_lantai = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
                     $harga = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
                     // Validate that none of the imported values are empty
-                    if (empty($no_lantai) || empty($no_ruang) || empty($deskripsi) || empty($harga)) {
+                    if (empty($no_ruang) || empty($no_lantai) || empty($deskripsi) || empty($harga)) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
@@ -1271,8 +1193,8 @@ class operator extends CI_Controller
                     // Optionally, you may want to perform additional validation or processing on the data
 
                     $data = array(
-                        'no_lantai' => $no_lantai,
                         'no_ruang' => $no_ruang,
+                        'no_lantai' => $no_lantai,
                         'deskripsi' => $deskripsi,
                         'harga' => $harga
                     );
@@ -1524,5 +1446,13 @@ class operator extends CI_Controller
         } else {
             echo 'Invalid File';
         }
+    }
+
+
+
+    public function hapus_report_sewa($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+        redirect(base_url('operator/report_sewa'));
     }
 }
