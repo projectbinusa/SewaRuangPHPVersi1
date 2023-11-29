@@ -652,7 +652,7 @@ class operator extends CI_Controller
         );
         $eksekusi = $this->m_model->ubah_data('pelanggan', $data, array('id' => $this->input->post('id')));
         if ($eksekusi) {
-            $this->session->set_flashdata('sukses', 'berhasil');
+            $this->session->set_flashdata('sukses', 'Berhasil');
             redirect(base_url('operator/data_master_pelanggan'));
         } else {
             $this->session->set_flashdata('error', 'gagal..');

@@ -1088,14 +1088,14 @@
             <script>
                 function ExportPelanggan() {
                     Swal.fire({
-                        title: 'Export Data Pelanggan?',
-                        text: "Anda akan mengexport data pelanggan",
+                        title: 'Ekspor Data Pelanggan?',
+                        text: "Anda akan mengekspor data pelanggan",
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         cancelButtonText: 'Batal',
-                        confirmButtonText: 'Export'
+                        confirmButtonText: 'Ekspor'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Lakukan proses ekspor data di sini
@@ -1103,7 +1103,7 @@
 
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Data berhasil diexport',
+                                title: 'Data berhasil diekspor',
                                 showConfirmButton: false,
                                 timer: 2500,
                             });
@@ -1114,7 +1114,7 @@
                 function importpelanggan() {
                     window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
                     Swal.fire({
-                        title: 'Import Data Pelanggan?',
+                        title: 'Impor Data Pelanggan?',
                         text: "Anda akan mengimpor data pelanggan",
                         icon: 'question',
                         showCancelButton: true,
