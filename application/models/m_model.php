@@ -143,7 +143,7 @@ class M_model extends CI_Model
     public function get_tambahan($id)
     {
         return $this->db->where('id_peminjaman', $id)
-            ->get('tambahan');
+            ->get('peminjaman_tambahan');
     }
 
     public function hapus_image($file_path)
