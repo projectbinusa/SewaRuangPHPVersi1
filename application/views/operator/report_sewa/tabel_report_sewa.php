@@ -1049,7 +1049,7 @@
 
     function hapus(id) {
         Swal.fire({
-            title: ' Apa Mau Menghapus?',
+            title: 'Apa Mau Menghapus?',
             text: "data ini tidak bisa dikembalikan lagi!",
             icon: 'warning',
             showCancelButton: true,
@@ -1072,14 +1072,14 @@
     }
     function exportReportSewa() {
         Swal.fire({
-            title: 'Export Data Report Sewa?',
-            text: "Anda akan mengexport data report sewa",
+            title: 'Ekspor Data Report Sewa?',
+            text: "Anda akan mengekspor data report sewa",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             cancelButtonText: 'Batal',
-            confirmButtonText: 'Export'
+            confirmButtonText: 'Ekspor'
         }).then((result) => {
             if (result.isConfirmed) {
                 // Lakukan proses ekspor data di sini
@@ -1088,7 +1088,7 @@
                 
                 Swal.fire({
                     icon: 'success',
-                    title: 'Data sewa berhasil diexport',
+                    title: 'Data sewa berhasil diekspor',
                     showConfirmButton: false,
                     timer: 1500,
                     timerProgressBar: true // Menampilkan progress bar

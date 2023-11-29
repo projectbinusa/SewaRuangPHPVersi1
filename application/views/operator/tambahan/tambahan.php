@@ -897,41 +897,6 @@
                     <div class="header-item">
                         <div class="relative">
 
-                            <!-- <a href="tambah_item_tambahan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
-                            <span class="pe-2">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                            Tambah
-                        </a> -->
-
-
-                            <!-- <a href="javascript:void(0);" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
-                            <i class="fas fa-file-export"></i> Ekspor
-                        </a> -->
-                            <!-- <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-green-500 hover:bg-green-700  text-white rounded mr-" onclick="eksporDanArahkan()">
-                                <span class="pe-2">
-                                    <i class="fas fa-file-export"></i>
-                                </span>
-                                Ekspor
-                            </button>
-                            <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded mr-" onclick="toggleModal()">
-                                <span class="pe-2">
-                                    <i class="fas fa-file-import"></i>
-                                </span>
-                                Impor
-                            </button> -->
-
-
-                            <!-- <button type="button" onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
-                            <i class="fas fa-file-export"></i> Ekspor
-                        </button>
-                        <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
-                            <span class="pe-2">
-                                <i class="fas fa-file-import"></i>
-                            </span>
-                            Impor
-                        </button> -->
-
                             <div class="flex md:gap-2">
 
                                 <button onclick="toggleModal()"
@@ -941,7 +906,7 @@
                                     </span>
                                     Impor
                                 </button>
-                                <a href="javascript:void(0);" onclick="eksporDanArahkan()"
+                                <a href="javascript:void(0);" onclick="exportData()"
                                     class="btn-style ml-2 pl-2 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
                                     <span class="">
                                         <i class="fas fa-file-export"></i>
