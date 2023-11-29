@@ -13,11 +13,13 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2.3.0/dist/heroicons.min.js" defer></script>
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -27,7 +29,9 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -782,14 +786,12 @@
             margin-left: 9px;
         }
 
-        /Row Hover/
-        table.dataTable.hover tbody tr:hover,
+        /Row Hover/ table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /Pagination Buttons/
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
+        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
@@ -828,12 +830,18 @@
             background-color: #4F709C !important;
 
         }
-        
+
 
         /* code responsive table */
         @media (max-width: 600px) {
             table {
                 width: 4.5rem;
+            }
+
+            .btn-style {
+                font-size: 12px;
+                width: 8rem;
+                height: 2rem;
             }
         }
 
@@ -854,6 +862,11 @@
             overflow-y: scroll;
             height: 70rem;
         }
+
+        .btn-style {
+            width: 6rem;
+            padding: 7px 1px;
+        }
     </style>
     <!-- script modal -->
     <script>
@@ -864,9 +877,9 @@
 </head>
 
 <body class="relative min-h-screen ">
-  <?php $this->load->view('sidebar'); ?>
-  
-  <main class="contain-all max-h-screen overflow-y-auto">
+    <?php $this->load->view('sidebar'); ?>
+
+    <main class="contain-all max-h-screen overflow-y-auto">
         <section id="widget" class="p-10 widget-section pd-top-120">
             <div class="container">
                 <div class="row justify-content-center">
@@ -878,24 +891,24 @@
                     </div>
                 </div>
             </div>
-        <div class="container-table row justify-content-center">
+            <div class="container-table row justify-content-center">
 
-            <div class="col-lg-12">
-                <div class="header-item">
-                    <div class="relative">
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
 
-                        <a href="tambah_item_tambahan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
+                            <!-- <a href="tambah_item_tambahan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right">
                             <span class="pe-2">
                                 <i class="fas fa-plus"></i>
                             </span>
                             Tambah
-                        </a>
+                        </a> -->
 
 
-                        <!-- <a href="javascript:void(0);" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
+                            <!-- <a href="javascript:void(0);" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
                             <i class="fas fa-file-export"></i> Ekspor
                         </a> -->
-                        <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-green-500 hover:bg-green-700  text-white rounded mr-" onclick="eksporDanArahkan()">
+                            <!-- <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-green-500 hover:bg-green-700  text-white rounded mr-" onclick="eksporDanArahkan()">
                                 <span class="pe-2">
                                     <i class="fas fa-file-export"></i>
                                 </span>
@@ -906,10 +919,10 @@
                                     <i class="fas fa-file-import"></i>
                                 </span>
                                 Impor
-                            </button>
-                        
+                            </button> -->
 
-                        <!-- <button type="button" onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
+
+                            <!-- <button type="button" onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2 rounded float-right z-50" onclick="eksporDanArahkan()">
                             <i class="fas fa-file-export"></i> Ekspor
                         </button>
                         <button class=" md:ml-0 md:mr-2 font-bold py-2 px-2 float-right bg-yellow-500 hover:bg-yellow-700  text-white rounded" onclick="toggleModal()">
@@ -919,152 +932,192 @@
                             Impor
                         </button> -->
 
-                        <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                        No
-                                    </th>
-                                    <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                        Nama Item
-                                    </th>
+                            <div class="flex md:gap-2">
 
-                                    <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                        Harga
-                                    </th>
-                                    <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                        Deskripsi
-                                    </th>
-                                    <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                        Jenis
-                                    </th>
+                                <button onclick="toggleModal()"
+                                    class="btn-style bg-yellow-500 md:ml-auto hover:bg-yellow-700 text-white font-bold  rounded">
+                                    <span class="">
+                                        <i class="fas fa-file-import"></i>
+                                    </span>
+                                    Impor
+                                </button>
+                                <a href="javascript:void(0);" onclick="eksporDanArahkan()"
+                                    class="btn-style ml-2 pl-2 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
+                                    <span class="">
+                                        <i class="fas fa-file-export"></i>
+                                    </span>
+                                    Ekspor
+                                </a>
 
-                                    <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                        Aksi
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no = 0;
-                                foreach ($tambahan as $row) : $no++ ?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no ?>
-                                        </td>
-                                        <td data-cell="Nama " class="text-center w-32 px-3 py-4">
-                                            <?php echo $row->nama ?>
-                                        </td>
-                                        <td data-cell="Harga " class="text-center w-32 px-3 py-4">
-                                            <?php echo $row->harga ?>
-                                        </td>
-                                        <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
-                                            <?php echo $row->deskripsi ?>
-                                        </td>
-                                        <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
-                                            <?php echo $row->jenis ?>
-                                        </td>
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                            <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                            </a>
-                                            <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
+                                <a href="tambah_item_tambahan"
+                                    class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
+                                    <span class="">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    Tambah
+                                </a>
+                            </div>
 
-                                            </button>
-                                        </td>
+                            <table id="example_data"
+                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                            Nama Item
+                                        </th>
+
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                            Harga
+                                        </th>
+                                        <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                            Deskripsi
+                                        </th>
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                            Jenis
+                                        </th>
+
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            Aksi
+                                        </th>
                                     </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach ($tambahan as $row):
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell="No " scope="row"
+                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama " class="text-center w-32 px-3 py-4">
+                                                <?php echo $row->nama ?>
+                                            </td>
+                                            <td data-cell="Harga " class="text-center w-32 px-3 py-4">
+                                                <?php echo $row->harga ?>
+                                            </td>
+                                            <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
+                                                <?php echo $row->deskripsi ?>
+                                            </td>
+                                            <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
+                                                <?php echo $row->jenis ?>
+                                            </td>
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>"
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+                                                <button onclick="hapus(<?php echo $row->id ?>)"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        </div>
-    </section>
-    <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-gray-900 opacity-75">
-                </div>
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <form action="<?php echo base_url('operator/import_tambahan') ?>" method="post" enctype="multipart/form-data">
-
-
-                            <label class="font-medium text-gray-800">File</label>
-                            <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-
+            </div>
+        </section>
+        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-900 opacity-75">
                     </div>
-                    <div class="bg-gray-200 px-4 py-3 text-right">
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                    <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                        role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <form action="<?php echo base_url('operator/import_tambahan') ?>" method="post"
+                                enctype="multipart/form-data">
 
-                        <button type="button" class="md:ml-0 md:mr-2 py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                        <button type="submit" class="md:ml-0 md:mr-2 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
-                        <!-- <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
+
+                                <label class="font-medium text-gray-800">File</label>
+                                <input name="file" type="file"
+                                    class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+
+                        </div>
+                        <div class="bg-gray-200 px-4 py-3 text-right">
+
+                            <button type="button"
+                                class="md:ml-0 md:mr-2 py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
+                                onclick="toggleModal()"> Batal</button>
+                            <button type="submit"
+                                class="md:ml-0 md:mr-2 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                            <!-- <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
                             Unduh Templat</button> -->
-                            <button type="button" class=" md:ml-0 md:mr-2  py-2 px-2  bg-purple-500 hover:bg-purple-700  text-white rounded mr-2" onclick="template()">
+                            <button type="button"
+                                class=" md:ml-0 md:mr-2  py-2 px-2  bg-purple-500 hover:bg-purple-700  text-white rounded mr-2"
+                                onclick="template()">
                                 Unduh Templat
-                            </button>  
+                            </button>
+                        </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
-  </main>
+    </main>
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script>
-          
-          function exportData() {
-                Swal.fire({
-                    title: 'yakin mengekspor data?',
-                    text: 'Data akan di ekspor.',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Tambahkan logika ekspor Anda di sini
-                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
-                        // atau mengirim permintaan ke server untuk mengekspor data
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
 
-                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
-                        setTimeout(function() {
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Data Anda telah diekspor.',
-                                icon: 'success',
-                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
-                                showConfirmButton: false,
-                            });
+        function exportData() {
+            Swal.fire({
+                title: 'yakin mengekspor data?',
+                text: 'Data akan di ekspor.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Tambahkan logika ekspor Anda di sini
+                    // Misalnya, Anda dapat memicu fungsionalitas ekspor
+                    // atau mengirim permintaan ke server untuk mengekspor data
 
-                            // Redirect setelah berhasil mengekspor
-                            setTimeout(function() {
-                                window.location.href = 'export_tambahan';
-                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
-                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
-                    }
-                });
-            };
-            function template() {
+                    // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
+                    setTimeout(function () {
+                        Swal.fire({
+                            title: 'Berhasil!',
+                            text: 'Data Anda telah diekspor.',
+                            icon: 'success',
+                            timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                            showConfirmButton: false,
+                        });
+
+                        // Redirect setelah berhasil mengekspor
+                        setTimeout(function () {
+                            window.location.href = 'export_tambahan';
+                        }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                    }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                }
+            });
+        };
+        function template() {
             Swal.fire({
                 title: 'Download Template Data Tambahan?',
                 text: "Anda akan mengdownload template data tambahan",
@@ -1078,7 +1131,7 @@
                 if (result.isConfirmed) {
                     // Lakukan proses ekspor data di sini
                     window.location.href = "<?php echo base_url('operator/template_tambahan') ?>";
-                    
+
                     Swal.fire({
                         icon: 'success',
                         title: 'Data berhasil didownload',
@@ -1088,41 +1141,41 @@
                 }
             });
         }
-        </script>
-         <script>
-                $(document).ready(function() {
+    </script>
+    <script>
+        $(document).ready(function () {
 
-                    var table = $('#example_data').DataTable({
-                            responsive: true
-                        })
-                        .columns.adjust()
-                        .responsive.recalc();
-                });
+            var table = $('#example_data').DataTable({
+                responsive: true
+            })
+                .columns.adjust()
+                .responsive.recalc();
+        });
 
-                function hapus(id) {
+        function hapus(id) {
+            Swal.fire({
+                title: ' Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
                     Swal.fire({
-                        title: ' Apakah Mau Dihapus?',
-                        text: "data ini tidak bisa dikembalikan lagi!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        cancelButtonText: 'Batal',
-                        confirmButtonText: 'Hapus'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Berhasil Menghapus',
-                                showConfirmButton: false,
-                                timer: 1500,
-                            }).then(function() {
-                                window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
-                            });
-                        }
+                        icon: 'success',
+                        title: 'Berhasil Menghapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function () {
+                        window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
                     });
                 }
-            </script>
+            });
+        }
+    </script>
 
 </body>
 
