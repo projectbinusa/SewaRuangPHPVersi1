@@ -721,15 +721,13 @@ class operator extends CI_Controller
     public function aksi_peminjaman()
     {
         // Memperoleh data dari formulir
-        $nama = $this->input->post('nama');
+        $id_pelanggan = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
         $start_time = $this->input->post('booking');
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
 
-        // Mendapatkan ID pelanggan berdasarkan nama
-        $id_pelanggan = tampil_pelanggan_bynama($nama);
 
         // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
@@ -797,11 +795,11 @@ class operator extends CI_Controller
                 }
             }
 
-            $this->check_expired_bookings();
-            // Operasi berhasil
-            // Redirect atau tampilkan pesan sukses
-            redirect(base_url('operator/peminjaman_tempat'));
         }
+        $this->check_expired_bookings();
+        // Operasi berhasil
+        // Redirect atau tampilkan pesan sukses
+        redirect(base_url('operator/peminjaman_tempat'));
     }
 
     public function hapus_peminjaman($id)
