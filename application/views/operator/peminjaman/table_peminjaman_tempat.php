@@ -63,7 +63,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -241,9 +241,9 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
-            margin-bottom: 60px;
+            margin-top: 40px;
         }
 
         .section-title h5 {
@@ -520,7 +520,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -725,7 +725,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -745,7 +745,7 @@
             }
 
             .table-responsive {
-                display: block !important;
+                padding-top: 0px !important;
             }
 
             .btn-custom-default,
@@ -760,9 +760,9 @@
             }
         }
 
-       
-       
-       
+
+
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -781,14 +781,14 @@
         .dataTables_wrapper .dataTables_filter input {
             margin-left: 9px;
         }
-/* 
-        /Row Hover/ */
+
+        /Row Hover/
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /* /Pagination Buttons/ */
+        /Pagination Buttons/
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
@@ -797,7 +797,7 @@
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -818,8 +818,7 @@
         }
 
         table.dataTable.no-footer {
-            border-bottom: 1px solid #e2e8f0;
-            margin-top: 0.75em;
+            border-bottom: 1px solid #e2e8f0;/ margin-top: 0.75em;
             margin-bottom: 0.75em;
         }
 
@@ -841,12 +840,57 @@
         }
 
         table {
-                width: 12rem;
-            }
+            width: 12rem;
+        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
+        }
+
+        .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
+
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submit {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #4F709C;
+            border: 3px solid #4F709C;
+            border-radius: 1rem;
+            width: 8rem;
+            height: 2.5rem;
+            padding: 8px 2rem;
+            margin: 40px auto 10px auto;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .survey-form .submit:hover {
+            background-color: transparent;
+            color: #222;
         }
     </style>
     <!-- script modal -->
@@ -857,9 +901,10 @@
     </script>
 </head>
 
-<body class="relative min-h-screen overflow-hidden">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
+    <section id="widget" class="p-10 widget-section pd-top-120">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -870,7 +915,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-table row justify-content-center">
+        <div class="container-table row justify-content-center py-5">
 
             <div class="col-lg-12 p-12">
                 <div class="header-item">
@@ -999,7 +1044,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 
