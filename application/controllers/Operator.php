@@ -153,6 +153,51 @@ class operator extends CI_Controller
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
 
+    public function template_data_ruangan()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'LANTAI', 'RUANG', 'DESKRIPSI', 'HARGA'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'TEMPLATE DATA RUANGAN.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
+
     public function tambah_ruang()
     {
         $this->load->view('operator/ruang/tambah_ruang');
@@ -260,7 +305,7 @@ class operator extends CI_Controller
     public function pdf()
     {
         $data['bukti_booking'] = $this->m_model->get_data('peminjaman')->result();
-        $this->load->view('operator/pdf', $data);
+        $this->load->view('operator/peminjaman/pdf', $data);
     }
 
     public function export_pdf($id)
@@ -269,7 +314,7 @@ class operator extends CI_Controller
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
-            $this->pdf->load_view('operator/export_pdf', $data);
+            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
@@ -811,13 +856,9 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if(!empty($id_tambahan)){
 
-            // Menghapus data tambahan sebelum menambah yang baru
-            $delete_tambahan= $this->m_model->get_tambahan($this->input->post('id'))->result();
-        foreach($delete_tambahan as $row){
-            $this->m_model->delete('tambahan', 'id', $row->id);
-        }
+        // Menghapus data tambahan sebelum menambah yang baru
+        $this->m_model->delete(array('peminjaman_tamnbahan', 'id_peminjaman' => $this->input->post('id')));
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
@@ -831,7 +872,7 @@ class operator extends CI_Controller
                 $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
             }
         }
-    }
+
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
@@ -846,13 +887,10 @@ class operator extends CI_Controller
 
     public function update_report_sewa($id)
     {
-        $data['tambahan'] = $this->m_model->get_data('tambahan')->result();
-        $data['ruangan'] = $this->m_model->get_data('ruangan')->result();
-        $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
-        $data['peminjaman'] = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
-        $this->load->view('operator/report_sewa/update_report_sewa', $data);
+        $data['peminjaman'] = $this->m_model->get_status_peminjaman('peminjaman', 'id')->result();
+        $this->load->view('operator/pelanggan/update_report_sewa', $data);
     }
-    public function aksi_update_report_sewa()
+    public function aksi_update_report_sewa($id)
     {
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
@@ -884,7 +922,7 @@ class operator extends CI_Controller
         ];
         $this->m_model->update('peminjaman', $data, array('id' => $this->input->post('id')));
         $this->check_expired_bookings();
-        redirect(base_url('operator/report_sewa'));
+        redirect(base_url('operator/tabel_report_sewa'));
     }
 
     //EXPORT PELANGGAN
@@ -1167,13 +1205,13 @@ class operator extends CI_Controller
 
                 // $row = 2; artine data dimulai dari baris ke2
                 for ($row = 2; $row <= $highestRow; $row++) {
-                    $no_ruang = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $no_lantai = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $no_lantai = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $no_ruang = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
                     $harga = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
                     // Validate that none of the imported values are empty
-                    if (empty($no_ruang) || empty($no_lantai) || empty($deskripsi) || empty($harga)) {
+                    if (empty($no_lantai) || empty($no_ruang) || empty($deskripsi) || empty($harga)) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
@@ -1182,8 +1220,8 @@ class operator extends CI_Controller
                     // Optionally, you may want to perform additional validation or processing on the data
 
                     $data = array(
-                        'no_ruang' => $no_ruang,
                         'no_lantai' => $no_lantai,
+                        'no_ruang' => $no_ruang,
                         'deskripsi' => $deskripsi,
                         'harga' => $harga
                     );

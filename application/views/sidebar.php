@@ -21,7 +21,7 @@
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: window.innerWidth >= 768 }" @resize.window="isOpen = window.innerWidth >= 768">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
         <div class="flex items-center">
-          <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2" style="width: 70%;">
+          <img src="<?php echo base_url('image/logo.png') ?>" class="mt-2 w-32 md:w-40">
         </div>
         <div class="flex md:hidden">
           <button type="button" @click="isOpen = !isOpen" class="text-gray-300 hover:text-gray-500 focus:outline-none focus:text-gray-500">

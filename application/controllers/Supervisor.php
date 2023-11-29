@@ -28,7 +28,7 @@ class Supervisor extends CI_Controller
     //function tampilan login
     public function index()
     {
-      
+
 
 
         $data['approves'] = $this->m_model->get_status_proses()->result();
@@ -64,7 +64,6 @@ class Supervisor extends CI_Controller
             ];
             $this->m_model->tambah_data('user', $data);
             redirect(base_url() . 'supervisor/data_operator');
-
         }
     }
 
@@ -243,7 +242,6 @@ class Supervisor extends CI_Controller
 
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-
     }
     public function template_data_operator()
     {
@@ -288,7 +286,6 @@ class Supervisor extends CI_Controller
 
         // Outputkan file Excel ke browser
         $writer->save('php://output');
-
     }
     public function import_data_operator()
     {
@@ -322,7 +319,4 @@ class Supervisor extends CI_Controller
             echo 'Invalid File';
         }
     }
-
-
-
 }

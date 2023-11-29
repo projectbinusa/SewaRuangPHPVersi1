@@ -73,41 +73,39 @@
     height: 100%;
   }
 
-  .custom-pagination {
+  .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    padding-top: 20px;
   }
 
-  .custom-pagination a {
+  .pagination a,
+  .pagination strong {
+    border: 1px solid silver;
+    background-color: #4F709C;
+    border-radius: 8px;
+    font-size: 15px;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 2px;
     text-decoration: none;
-    padding: 4px 10px;
-    margin: 0 4px;
-    border: 2px solid #4f709c;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    background-color: #4f709c;
-    display: inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
   }
 
-  .custom-pagination a:hover,
-  .custom-pagination .current {
-    background-color: #394c66;
-    color: #243142;
-    border-color: #000;
+  .pagination a:hover,
+  .pagination strong {
+    border: 1px solid #4F709C;
+    background-color: #4F709C;
+    color: black;
   }
 
-  .custom-pagination .current {
-    cursor: default;
-  }
-
-  .pagination {
-    text-align: center;
-    color: #3971bf;
+  /* Add media query for responsiveness */
+  @media screen and (max-width: 600px) {
+    .pagination {
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 70px;
+    }
   }
 </style>
 
@@ -185,10 +183,8 @@
           <?php $count++; ?>
         <?php endforeach; ?>
         </div>
-        <div class="custom-pagination">
-          <div class="pagination">
-            <?php echo $pagination_links; ?>
-          </div>
+        <div class="pagination">
+          <?php echo $pagination_links; ?>
         </div>
       <?php else : ?>
         <div class="col-lg-4 col-md-6 mx-auto">
@@ -210,7 +206,7 @@
               <div class="flex items-center mb-3">
                 <label class="font-medium text-gray-800">File</label>
               </div>
-              <input type="file" name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+              <input type="file" required name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
             </div>
             <div class="bg-gray-200 px-4 py-3 text-right">
               <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
@@ -227,6 +223,31 @@
   </div>
 
   <script>
+    function template() {
+      Swal.fire({
+        title: 'Download Template Data Operator?',
+        text: "Anda akan mengdownload template data operator",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Download'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Lakukan proses ekspor data di sini
+          window.location.href = "<?php echo base_url('operator/template_data_ruangan') ?>";
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Data berhasil didownload',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        }
+      });
+    }
+
     function Eksporruangan() {
       Swal.fire({
         title: 'Ekspor Data Ruangan?',
