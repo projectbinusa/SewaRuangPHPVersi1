@@ -876,8 +876,8 @@ class operator extends CI_Controller
                 $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
             }
         }
-    }
 
+    }
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
