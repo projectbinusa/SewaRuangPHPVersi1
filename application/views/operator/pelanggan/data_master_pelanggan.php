@@ -63,7 +63,7 @@
             }
         }
 
-       
+
         .btn {
             height: 50px;
             line-height: 50px;
@@ -241,7 +241,7 @@
             opacity: 1;
         }
 
-        
+
         .section-title {
             margin-bottom: 60px;
         }
@@ -520,7 +520,7 @@
             margin-left: 12px;
         }
 
-        
+
         .section-title {
             margin-bottom: 45px;
             position: relative;
@@ -725,7 +725,7 @@
             cursor: pointer;
         }
 
-        
+
         @media only screen and (max-width: 767px) {
             .logo-wrapper.mobile-logo {
                 display: block;
@@ -760,9 +760,9 @@
             }
         }
 
-       
-       
-       
+
+
+
         .dataTables_wrapper select,
         .dataTables_wrapper .dataTables_filter input {
             color: #4F709C;
@@ -781,7 +781,8 @@
         .dataTables_wrapper .dataTables_filter input {
             margin-left: 9px;
         }
-/* 
+
+        /* 
         /Row Hover/ */
         table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
@@ -797,7 +798,7 @@
             padding-top: 5px;
         }
 
-       
+
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
             color: white !important;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
@@ -841,15 +842,15 @@
         }
 
         table {
-                width: 12rem;
-            }
+            width: 12rem;
+        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
             padding: 20px 10px 10px 10px;
         }
     </style>
- 
+
 
     <script>
         function toggleModal() {
@@ -858,7 +859,7 @@
     </script>
 </head>
 
-<body class="relative min-h-screen ">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <section id="widget" class="p-10 widget-section pd-top-120">
@@ -906,13 +907,6 @@
                                 </span>
                                 Impor
                             </button>
-
-
-
-
-
-
-
                             <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -972,42 +966,37 @@
             </div>
         </section>
         <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 transition-opacity">
-                <div class="absolute inset-0 bg-gray-900 opacity-75">
-                </div>
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-                    role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <form action="<?php echo base_url('operator/import_pelanggan') ?>" method="post"
-                            enctype="multipart/form-data">
-
-
-                            <label class="font-medium text-gray-800">File</label>
-                            <input name="file" type="file"
-                                class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-
+            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-900 opacity-75">
                     </div>
-                    <div class="bg-gray-200 px-4 py-3 text-right">
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                    <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <form action="<?php echo base_url('operator/import_pelanggan') ?>" method="post" enctype="multipart/form-data">
 
-                        <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
-                            onclick="toggleModal()"> Batal</button>
-                        <button onclick="importpelanggan()" type="submit"
-                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
-                        <!-- <button type="button"
+
+                                <label class="font-medium text-gray-800">File</label>
+                                <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+
+                        </div>
+                        <div class="bg-gray-200 px-4 py-3 text-right">
+
+                            <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                            <button onclick="importpelanggan()" type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                            <!-- <button type="button"
                             class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
                             Unduh Template</button> -->
-                        <button type="button" class=" md:ml-0 md:mr-2  py-2 px-2  bg-purple-500 hover:bg-purple-700  text-white rounded mr-2" onclick="template()">
+                            <button type="button" class=" md:ml-0 md:mr-2  py-2 px-2  bg-purple-500 hover:bg-purple-700  text-white rounded mr-2" onclick="template()">
                                 Unduh Templat
-                        </button> 
+                            </button>
+                        </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
-        </div>
-        
-        
+
+
             <!-- jQuery -->
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -1065,56 +1054,57 @@
             <!-- SweetAlert -->
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
             <script>
-        function ExportPelanggan() {
-            Swal.fire({
-                title: 'Export Data Pelanggan?',
-                text: "Anda akan mengexport data pelanggan",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Export'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
-                    
+                function ExportPelanggan() {
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Data berhasil diexport',
-                        showConfirmButton: false,
-                        timer: 2500,
+                        title: 'Export Data Pelanggan?',
+                        text: "Anda akan mengexport data pelanggan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Export'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Lakukan proses ekspor data di sini
+                            window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil diexport',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
                     });
                 }
-            });
-        }
-        function importpelanggan() {
-    Swal.fire({
-        title: 'Import Data Pelanggan?',
-        text: "Anda akan mengimpor data pelanggan",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Batal',
-        confirmButtonText: 'Import'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Lakukan proses impor data pelanggan di sini
-            window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
-            
-            Swal.fire({
-                icon: 'success',
-                title: 'Data Pelanggan berhasil diimpor',
-                showConfirmButton: false, // Menghilangkan tombol "OK"
-                timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
-            });
-        }
-    });
-}
-</script>
-<script>
+
+                function importpelanggan() {
+                    Swal.fire({
+                        title: 'Import Data Pelanggan?',
+                        text: "Anda akan mengimpor data pelanggan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Import'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Lakukan proses impor data pelanggan di sini
+                            window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data Pelanggan berhasil diimpor',
+                                showConfirmButton: false, // Menghilangkan tombol "OK"
+                                timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
+                            });
+                        }
+                    });
+                }
+            </script>
+            <script>
                 function update(id) {
                     Swal.fire({
                         title: 'Ingin Mengubah Data Pelanggan',
@@ -1138,7 +1128,7 @@
                         }
                     });
                 }
-                
+
 
                 function displaySweetAlert() {
                     const message = "<?php echo $this->session->flashdata('sukses'); ?>";
@@ -1150,7 +1140,7 @@
                             text: message,
                             timer: 2500,
                             icon: 'success',
-                            showConfirmButton: false,                            
+                            showConfirmButton: false,
                             timerProgressBar: true
                         });
                     } else if (error) {
@@ -1159,7 +1149,7 @@
                             text: error,
                             timer: 2500,
                             icon: 'error',
-                            showConfirmButton: false,                            
+                            showConfirmButton: false,
                             timerProgressBar: true
                         });
                     }
@@ -1170,31 +1160,31 @@
             </script>
             <script>
                 function template() {
-            Swal.fire({
-                title: 'Download Template Data Tambahan?',
-                text: "Anda akan mengdownload template data tambahan",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Download'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
-                    
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Data berhasil didownload',
-                        showConfirmButton: false,
-                        timer: 2500,
+                        title: 'Download Template Data Tambahan?',
+                        text: "Anda akan mengdownload template data tambahan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Download'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Lakukan proses ekspor data di sini
+                            window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil didownload',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
                     });
                 }
-            });
-        }
             </script>
 </body>
 
-     
+
 </html>
