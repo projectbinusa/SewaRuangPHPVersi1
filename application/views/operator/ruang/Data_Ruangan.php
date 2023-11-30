@@ -76,17 +76,17 @@
   .pagination {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    margin: 15px;
   }
 
   .pagination a,
   .pagination strong {
-    border: 1px solid silver;
-    background-color: #4F709C;
-    border-radius: 8px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    border-radius: 5px;
     font-size: 15px;
-    color: white;
-    padding: 5px 10px;
+    color: #383f47;
+    padding: 8px 15px;
     margin-right: 2px;
     text-decoration: none;
   }
@@ -95,13 +95,13 @@
   .pagination strong {
     border: 1px solid #4F709C;
     background-color: #4F709C;
-    color: black;
+    color: #fff;
   }
 
   /* Add media query for responsiveness */
   @media screen and (max-width: 600px) {
     .pagination {
-      display: flex;
+      display: flex #383f47;
       justify-content: center;
       padding-top: 20px;
       padding-bottom: 70px;
