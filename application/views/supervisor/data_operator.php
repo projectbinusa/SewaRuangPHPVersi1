@@ -1852,8 +1852,8 @@
 
             function exportData() {
                 Swal.fire({
-                    title: 'yakin mengekspor data?',
-                    text: 'Data akan di ekspor.',
+                    title: 'Ekspor data supervisor operator?',
+                    text: 'Data anda akan diekspor ',
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',

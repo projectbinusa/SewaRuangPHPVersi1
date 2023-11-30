@@ -830,30 +830,28 @@ class operator extends CI_Controller
         $id_peminjaman = $this->uri->segment(3);
     
         // Dapatkan data peminjaman sebelum menghapus tambahan
-        $peminjaman_sebelum = $this->m_model->get_by_id('peminjaman','id',$id_peminjaman)->result();
+        $peminjaman_sebelum = $this->m_model->get_by_id('peminjaman','id',$id_peminjaman)->row();
         $harga_sebelum = $peminjaman_sebelum->total_harga;
     
         // Dapatkan data tambahan berdasarkan $id_peminjaman
         $tambahan = $this->m_model->get_tambahan($id_peminjaman)->result();
     
-        // Hapus data tambahan
-        $harga = 0;
+        // Hapus data tambahan dan hitung total harga tambahan
+        $harga_tambahan = 0;
         foreach ($tambahan as $row) {
-                $harga += tampil_harga_tambahan_byid($row->id_tambahan);
-                // Jika jenis snack adalah makanan, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($row_id_tambahan);
-                if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                    $harga *= tampil_jumlah_orang_byid($row->id_peminjaman);
-                }
+            $harga_tambahan += tampil_harga_tambahan_byid($row->id_tambahan);
+            // Hapus data tambahan dengan id tertentu
             $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
         }
-        // Hitung total harga keseluruhan setelah mereset ruangan
-        $harga_keseluruhan_reset = $harga_sebelum - $harga;
     
-        // Update total harga ruangan yang telah direset
+        // Update total harga ruangan setelah menghapus tambahan
+        $harga_keseluruhan_reset = $harga_sebelum - $harga_tambahan;
+    
         $data_peminjaman = [
             'total_harga' => $harga_keseluruhan_reset,
         ];
+    
+        // Update total harga ruangan yang telah direset
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id_peminjaman));
     
         // Redirect atau tampilkan pesan sukses

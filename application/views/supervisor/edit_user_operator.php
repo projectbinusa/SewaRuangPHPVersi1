@@ -171,7 +171,7 @@
         }
 
         .password-toggle {
-            margin-left: 45.5rem;
+            margin-left: 51rem;
             transform: translateY(2rem);
             cursor: pointer;
             color: #555;
@@ -185,7 +185,7 @@
         @media only screen and (max-width: 800px) {
 
             .password-toggle {
-                margin-left: 14.4rem;
+                margin-left: 22.4rem;
                 transform: translateY(2rem);
             }
 

@@ -268,7 +268,9 @@
                     </datalist>
                     <div class="flex justify-center justify-items-center items-center ">
                         <input type="submit" id="submit" class="submit" value="Submit">
-                        <button  type="button" onclick="" class="submit text-sm">Hapus Tambahan</button>
+                        <a href="hapus_tambahan_peminjaman">
+                        <button onclick="hapustambahan()" class="submit text-sm">Hapus Tambahan</button>
+                        </a>
                     </div>
                 </form>
             <?php endforeach ?>
@@ -276,7 +278,63 @@
     </main>
 
     <!-- script comboboxs -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
     <script>
+
+function hapustambahan(id) {
+                Swal.fire({
+                    title: ' Apakah Mau Dihapus?',
+                    text: "data ini tidak bisa dikembalikan lagi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Hapus'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil Menghapus',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        }).then(function() {
+                            window.location.href = "<?php echo base_url('operator/hapus_tambahan_peminjaman/') ?>" + id;
+                        });
+                    }
+                });
+            }
+
+            function displaySweetAlert() {
+                const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+                const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+                if (message) {
+                    Swal.fire({
+                        title: 'Berhasil Mengubah Data Peminjaman Tempat',
+                        text: message,
+                        timer: 2500,
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timerProgressBar: true
+                    });
+                } else if (error) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: error,
+                        timer: 2500,
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timerProgressBar: true
+                    });
+                }
+            }
+
+            window.onload = displaySweetAlert;
+
+
         const checkbox = document.getElementById('checkbox');
 
         input.onfocus = function() {
