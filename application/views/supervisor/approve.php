@@ -1637,7 +1637,7 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 cancelButtonText: 'Batal',
-                confirmButtonText: 'Ya, tolak tolak semua!'
+                confirmButtonText: 'Ya, tolak semua!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
