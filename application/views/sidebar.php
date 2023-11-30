@@ -31,7 +31,7 @@
           </button>
         </div>
       </div>
-      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" @click.away="isOpen = false" x-show="isOpen">
+      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
         <ul>
           <!-- Your existing sidebar content here -->
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 hover:text-black">
@@ -71,7 +71,8 @@
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
-            <a onclick="KeluarOPT()" class="flex items-center">
+            <hr>
+            <a onclick="KeluarOPT()" class="flex items-center pt-4">
               <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
               <span class="text-white font-semibold mx-2 mb-0">Keluar</span>
             </a>
