@@ -267,7 +267,8 @@
                     </datalist>
                     <div class="flex justify-center items-center space-x-4">
                         <input type="submit" id="submit" class="submit" value="Submit" onclick="sweetAlertSubmit()">
-                        <a href="#" onclick="hapustambahan(<?php echo $row->id; ?>)" class="submit text-sm">Hapus Tambahan</a>
+                        <a href="<?php echo base_url('operator/peminjaman_tempat') ?>" onclick="hapustambahan(<?php echo $row->id; ?>)" class="submit text-sm" id="hapusTambahan">Hapus Tambahan</a>
+
                     </div>
                 </form>
             <?php endforeach ?>
@@ -283,36 +284,19 @@
         // Fungsi SweetAlert untuk tombol Hapus Tambahan
         function hapustambahan(id) {
             Swal.fire({
-                title: ' Apakah Mau Dihapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
+                title: 'Anda yakin?',
+                text: "Anda akan menghapus data tambahan ini!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menghapus',
-                        showConfirmButton: false,
-                    }).then(function() {
-                        // Setelah menampilkan SweetAlert, lakukan aksi penghapusan id tambahan di sini
-                        // Contoh:
-                        console.log("Menghapus id tambahan:", id);
-                    });
+                    // Aksi penghapusan dilakukan di sini
+                    window.location.href = "<?php echo base_url('operator/hapus_tambahan_peminjaman/'); ?>" + id;
                 }
-            });
-        }
-
-        // Fungsi SweetAlert untuk tombol Submit
-        function sweetAlertSubmit() {
-            Swal.fire({
-                title: 'Pesan Submit',
-                text: 'Ini adalah SweetAlert dari tombol Submit',
-                icon: 'success',
-                showConfirmButton: false,
             });
         }
 

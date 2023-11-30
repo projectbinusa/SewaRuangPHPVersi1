@@ -1006,11 +1006,113 @@
             <!-- jQuery -->
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+
             <!--Datatables -->
             <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
             <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
             <script>
                 $(document).ready(function() {
+
+                var table = $('#example_data').DataTable({
+                        responsive: true
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
+
+            function hapus(id) {
+                Swal.fire({
+                    title: ' Apakah Mau Dihapus?',
+                    text: "data ini tidak bisa dikembalikan lagi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Hapus'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil Menghapus',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(function() {
+                            window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
+                        });
+                    }
+                });
+            }
+
+            var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 600) {
+                    // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
+                    var table = document.querySelector('table');
+                    if (table) {
+                        for (var style in tableInitialStyle) {
+                            table.style[style] = tableInitialStyle[style];
+                        }
+                    }
+                }
+            });
+
+            function adjustTableStyle() {
+                var table = document.querySelector('table');
+                if (table) {
+                    if (window.innerWidth <= 600) {
+                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                        for (var i = 0; i < table.style.length; i++) {
+                            var style = table.style[i];
+                            tableInitialStyle[style] = table.style[style];
+                        }
+                        // Menyesuaikan lebar tabel saat mode responsif
+                        table.style.width = '100%';
+                        // Tambahkan penyesuaian gaya lain jika diperlukan
+                    } else {
+                        // Kembalikan ke lebar normal jika layar > 600px
+                        table.style.width = '';
+                        // Kembalikan gaya lain ke nilai default jika diperlukan
+                    }
+                }
+            }
+
+            window.addEventListener('resize', adjustTableStyle);
+            adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+        </script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var table = $('#example').DataTable({
+                    responsive: true
+                }).columns.adjust().responsive.recalc();
+            });
+        </script>
+
+        <!-- SweetAlert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+        <script>
+            function ExportPelanggan() {
+                Swal.fire({
+                    title: 'Ekspor Data Pelanggan?',
+                    text: "Anda akan mengekspor data pelanggan",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ekspor'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Lakukan proses ekspor data di sini
+                        window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+
 
                     var table = $('#example_data').DataTable({
                             responsive: true
