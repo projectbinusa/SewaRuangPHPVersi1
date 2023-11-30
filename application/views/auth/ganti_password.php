@@ -153,6 +153,7 @@
         .password-toggle-baru {
             position: absolute;
             top: 50%;
+            color: #474E68;
             right: 10px;
             /* Menyesuaikan posisi ikon ke kanan */
             transform: translateY(-50%);
@@ -161,6 +162,7 @@
 
         .password-toggle-konfirmasi {
             position: absolute;
+            color: #474E68;
             top: 50%;
             right: 10px;
             /* Menyesuaikan posisi ikon ke kanan */

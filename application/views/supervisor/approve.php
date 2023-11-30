@@ -166,7 +166,7 @@
             margin-right: 7px;
         }
 
-   
+
 
         @keyframes backto-top-bounce {
             0% {
@@ -654,7 +654,7 @@
 
             100% {
                 opacity: 1;
-}
+            }
         }
 
         @-webkit-keyframes blink {
@@ -684,7 +684,7 @@
                 opacity: 1;
             }
         }
-  
+
         @media all and (max-width: 1199px) {
             .banner-area .bg-image {
                 opacity: 0.2;
@@ -1363,8 +1363,8 @@
         }
 
         table {
-                width: 22rem;
-            }
+            width: 22rem;
+        }
 
         .container-table {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
@@ -1374,11 +1374,12 @@
         .inner-section {
             padding: 4%;
         }
+
         .testt {
-                display: flex;
-                gap: 5px;
-                float: right
-            }
+            display: flex;
+            gap: 5px;
+            float: right
+        }
 
         /* code responsive table */
         @media (max-width: 600px) {
@@ -1386,13 +1387,12 @@
             table {
                 width: 4rem;
             }
+
             .testt {
                 display: block;
                 padding: 0;
             }
         }
-
-      
     </style>
 
 </head>
@@ -1412,16 +1412,16 @@
             </div>
 
             <div class="container-table row justify-content-center">
-            <div class="testt">
+                <div class="testt">
                     <button onclick="tolak_semua()"
                         class="btn-style bg-red-500 hover:bg-red-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
                         <span class="pe-2">
-                        <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
                         </span>
                         Tolak Semua
                     </button>
 
-                    <button   onclick="terima_semua()"
+                    <button onclick="terima_semua()"
                         class="btn-style  py-2 px-2 bg-green-500 hover:bg-green-700 font-bold text-white rounded">
                         <span class="pe-2">
                             <i class="fas fa-check"></i>
@@ -1438,7 +1438,7 @@
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
-                                    <th data-priority="1" scope="col" class="px-3 py-3">
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
                                         </th>
                                         <th data-priority="2" scope="col" class="px-3 py-3">
@@ -1462,69 +1462,69 @@
                                         </th>
                                         <th data-priority="9" scope="col" class="px-3 py-3">
                                             Total Booking
-                                        </th>  
+                                        </th>
                                         <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                             Aksi
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no=0; foreach($approve as $row): $no++?>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td data-cell=" " scope="row"
-                                            class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <?php echo $no?>
-                                        </td>
-                                        <td data-cell="Nama Penyewa " scope="row"
-                                            class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?>
-                                        </td>
-                                        <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan)?>
-                                        </td>
-                                        <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                            <?php echo $row->jumlah_orang?>
-                                        </td>
-                                        <td data-cell="Kode Booking " class="text-center px-3 py-4">
-                                        <?php echo $row->kode_booking?>
-                                        </td>
-                                        <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
-                                        <?php echo $row->tanggal_booking?>
-                                        </td>
-                                        <td data-cell=" " class="text-center px-3 py-4">
-                                        <?php echo $row->tanggal_berakhir?>
-                                        </td>
-                                        <td data-cell=" Waktu " class="text-center px-3 py-4">
-                                        <?php
-                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                    <?php $no = 0;
+                                    foreach ($approve as $row):
+                                        $no++ ?>
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td data-cell=" " scope="row"
+                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            </td>
+                                            <td data-cell="No Ruang " class="text-center px-3 py-4">
+                                                <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                            </td>
+                                            <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                <?php echo $row->jumlah_orang ?>
+                                            </td>
+                                            <td data-cell="Kode Booking " class="text-center px-3 py-4">
+                                                <?php echo $row->kode_booking ?>
+                                            </td>
+                                            <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
+                                                <?php echo $row->tanggal_booking ?>
+                                            </td>
+                                            <td data-cell=" " class="text-center px-3 py-4">
+                                                <?php echo $row->tanggal_berakhir ?>
+                                            </td>
+                                            <td data-cell=" Waktu " class="text-center px-3 py-4">
+                                                <?php
+                                                // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                            // Menampilkan durasi dalam format angka
-                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                        ?>
-                                        </td>
-                                        <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                // Menampilkan durasi dalam format angka
+                                                echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                ?>
+                                            </td>
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                            <button
-                                            onclick="terima(<?php echo $row->id ?>)"
-                                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
-                                                <span class="">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
+                                                <button onclick="terima(<?php echo $row->id ?>)"
+                                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-check"></i>
+                                                    </span>
 
-                                            </button>
-                                            <button onclick="tolak(<?php echo $row->id ?>)"
-                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                <span class="">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </span>
+                                                </button>
+                                                <button onclick="tolak(<?php echo $row->id ?>)"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
 
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach?>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -1545,6 +1545,30 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
+
+        // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
+        function checkResponsive() {
+            if (window.innerWidth > 600) {
+                location.reload(); // Reload halaman jika layar lebih besar dari 600px
+            }
+        }
+
+        // window.addEventListener('resize', checkResponsive);
+
+        function adjustTableStyle() {
+            var table = document.querySelector('table');
+            if (window.innerWidth <= 600) {
+                table.style.width = '100%'; // Menyesuaikan lebar tabel
+                // Tambahkan penyesuaian gaya lain jika diperlukan
+            } else {
+                table.style.width = '100%'; // Kembalikan ke lebar normal
+                // Kembalikan gaya lain ke nilai default jika diperlukan
+            }
+        }
+
+        window.addEventListener('resize', adjustTableStyle);
+        adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+
         $(document).ready(function () {
 
             var table = $('#example_data').DataTable({
