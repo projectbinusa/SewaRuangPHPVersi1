@@ -279,7 +279,7 @@
                             <?php endforeach ?>
                         </div>
                     </datalist>
-                    <input type="submit" id="submit" class="submit" value="Submit">
+                    <input onclick="update()" type="submit" id="submit" class="submit" value="Submit">
                 </form>
             <?php endforeach ?>
         </div>
@@ -412,7 +412,60 @@
             });
         });
     </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            responsive: true
+        }).columns.adjust().responsive.recalc();
+    });
+</script>
+<script>
+    function update() {
+        Swal.fire({
+            title: 'Ubah Data Pelanggan?',
+            text: "Anda akan mengubah data pelanggan",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Ubah'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Assuming you are submitting the form through AJAX
+                // If not, you might want to adjust the URL accordingly
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo base_url('operator/aksi_update_data') ?>",
+                    data: $('#survey-form').serialize(), // Serialize form data
+                    success: function (response) {
+                        // Handle the success response
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data berhasil diubah',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
+                    },
+                    error: function (error) {
+                        // Handle the error response
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Terjadi kesalahan saat mengubah data!',
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
+                
 </body>
 
 </html>
