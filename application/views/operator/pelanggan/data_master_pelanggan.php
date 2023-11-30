@@ -860,17 +860,6 @@
             width: 6rem;
             padding: 7px 1px;
         }
-
-        .custom-div {
-            max-height: 590px;
-        }
-
-        @media (max-width: 768px) {
-            .custom-div {
-                max-height: max-content;
-                margin-bottom: 50px;
-            }
-        }
     </style>
 
 
@@ -881,157 +870,148 @@
     </script>
 </head>
 
-<body class="relative min-h-screen overflow-hidden ">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
-        <div class="custom-div">
-            <section id="widget" class="p-10 widget-section pd-top-120">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 text-center">
-                            <div class="section-title">
-                                <h2 class="title">Data Master Pelanggan</h2>
+        <section id="widget" class="p-10 widget-section pd-top-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">Data Master Pelanggan</h2>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-table row justify-content-center">
-
-                    <div class="col-lg-12">
-                        <div class="header-item">
-                            <div class="relative">
-                                <div class="flex md:gap-2">
-
-                                    <button onclick="toggleModal()" class="btn-style bg-yellow-500 md:ml-auto hover:bg-yellow-700 text-white font-bold  rounded">
-                                        <span class="">
-                                            <i class="fas fa-file-import"></i>
-                                        </span>
-                                        Impor
-                                    </button>
-                                    <a href="javascript:void(0);" onclick="ExportPelanggan()" class="btn-style ml-2 pl-2 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
-                                        <span class="">
-                                            <i class="fas fa-file-export"></i>
-                                        </span>
-                                        Ekspor
-                                    </a>
-
-                                    <a href="tambah_pelanggan" class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
-                                        <span class="">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                                        Tambah
-                                    </a>
-                                </div>
-
-                                <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                                Nama
-                                            </th>
-
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                No Telepon
-                                            </th>
-                                            <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                                Metode Pembayaran
-                                            </th>
-
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 0;
-                                        foreach ($pelanggan as $row) :
-                                            $no++
-                                        ?>
-                                            <tr>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $row->nama ?>
-                                                </td>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $row->phone ?>
-                                                </td>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $row->payment_method ?>
-                                                </td>
-
-                                                <!-- Aksi -->
-                                                <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                                    <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                        <span class="">
-                                                            <i class="fas fa-edit"></i>
-                                                        </span>
-                                                    </a>
-                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                        <span class="">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </section>
-            <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-                <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <div class="fixed inset-0 transition-opacity">
-                        <div class="absolute inset-0 bg-gray-900 opacity-75">
-                        </div>
-                        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                        <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                <form action="<?php echo base_url('operator/import_pelanggan') ?>" method="post" enctype="multipart/form-data">
-
-
-                                    <label class="font-medium text-gray-800">File</label>
-                                    <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-
-                            </div>
-                            <div class="bg-gray-200 px-4 py-3 text-right">
-
-                                <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                                <button onclick="importpelanggan()" type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
-                                <!-- <button type="button"
-                            class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="">
-                            Unduh Template</button> -->
-                                <button type="button" class=" md:ml-0 md:mr-2  py-2 px-2  bg-purple-500 hover:bg-purple-700  text-white rounded mr-2" onclick="template()">
-                                    Unduh Templat
-                                </button>
-                            </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="container-table row justify-content-center">
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <div class="col-lg-12">
+                    <div class="header-item">
+                        <div class="relative">
+                            <div class="flex md:gap-2">
 
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script>
-            $(document).ready(function() {
+                                <button onclick="toggleModal()" class="btn-style bg-yellow-500 md:ml-auto hover:bg-yellow-700 text-white font-bold  rounded">
+                                    <span class="">
+                                        <i class="fas fa-file-import"></i>
+                                    </span>
+                                    Impor
+                                </button>
+                                <a href="javascript:void(0);" onclick="ExportPelanggan()" class="btn-style ml-2 pl-2 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
+                                    <span class="">
+                                        <i class="fas fa-file-export"></i>
+                                    </span>
+                                    Ekspor
+                                </a>
+
+                                <a href="tambah_pelanggan" class="btn-style ml-2 pl-1 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
+                                    <span class="">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    Tambah
+                                </a>
+                            </div>
+
+                            <table style="min-width: 12rem;" id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                            Nama
+                                        </th>
+
+                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                            No Telepon
+                                        </th>
+                                        <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                            Metode Pembayaran
+                                        </th>
+
+                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            Aksi
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 0;
+                                    foreach ($pelanggan as $row) :
+                                        $no++
+                                    ?>
+                                        <tr>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                <?php echo $no ?>
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                <?php echo $row->nama ?>
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                <?php echo $row->phone ?>
+                                            </td>
+                                            <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                <?php echo $row->payment_method ?>
+                                            </td>
+
+                                            <!-- Aksi -->
+                                            <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+        <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity">
+                    <div class="absolute inset-0 bg-gray-900 opacity-75">
+                    </div>
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                    <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <form id="importForm" action="<?= base_url('operator/import_pelanggan'); ?>" method="post" enctype="multipart/form-data">
+                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                <label class="font-medium text-gray-800">File</label>
+                                <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+                            </div>
+                            <div class="bg-gray-200 px-4 py-3 text-right">
+                                <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                                <button onclick="impor()" type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                                <!-- Remove or replace the following line if template() is not defined -->
+                                <button type="button" class="md:ml-0 md:mr-2 py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Templat</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- jQuery -->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+            <!--Datatables -->
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+            <script>
+                $(document).ready(function() {
 
                 var table = $('#example_data').DataTable({
                         responsive: true
@@ -1133,121 +1113,229 @@
                         // Lakukan proses ekspor data di sini
                         window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
 
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data berhasil diekspor',
-                            showConfirmButton: false,
-                            timer: 2500,
-                        });
-                    }
+
+                    var table = $('#example_data').DataTable({
+                            responsive: true
+                        })
+                        .columns.adjust()
+                        .responsive.recalc();
                 });
-            }
 
-            function importpelanggan() {
-                window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
-                Swal.fire({
-                    title: 'Impor Data Pelanggan?',
-                    text: "Anda akan mengimpor data pelanggan",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Impor'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Lakukan proses impor data pelanggan di sini
-
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data Pelanggan berhasil diimpor',
-                            showConfirmButton: false, // Menghilangkan tombol "OK"
-                            timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
-                        });
-                    }
-                });
-            }
-        </script>
-        <script>
-            function update(id) {
-                Swal.fire({
-                    title: 'Ingin Mengubah Data Pelanggan',
-                    text: "Data akan diubah",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Ya Ubah'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            icon: 'Waitt',
-                            title: 'Loading ... ',
-                            showConfirmButton: false,
-                            timer: 2500,
-                        }).then(function() {
-                            window.location.href = "" + id;
-                        });
-                    }
-                });
-            }
-
-
-            function displaySweetAlert() {
-                const message = "<?php echo $this->session->flashdata('sukses'); ?>";
-                const error = "<?php echo $this->session->flashdata('error'); ?>";
-
-                if (message) {
+                function hapus(id) {
                     Swal.fire({
-                        title: 'Berhasil Mengubah Data Pelanggan',
-                        text: message,
-                        timer: 2500,
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timerProgressBar: true
-                    });
-                } else if (error) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: error,
-                        timer: 2500,
-                        icon: 'error',
-                        showConfirmButton: false,
-                        timerProgressBar: true
+                        title: ' Apakah Mau Dihapus?',
+                        text: "data ini tidak bisa dikembalikan lagi!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Hapus'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil Menghapus',
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(function() {
+                                window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
+                            });
+                        }
                     });
                 }
-            }
+            </script>
+            <!-- jQuery -->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-            // Call the function when the page loads
-            window.onload = displaySweetAlert;
-        </script>
-        <script>
-            function template() {
-                Swal.fire({
-                    title: 'Unduh Templat Data Master Pelanggan?',
-                    text: "Anda akan mengunduh templat data master pelanggan",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Unduh'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Lakukan proses ekspor data di sini
-                        window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
+            <!--Datatables -->
+            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    var table = $('#example').DataTable({
+                        responsive: true
+                    }).columns.adjust().responsive.recalc();
+                });
+            </script>
 
+            <!-- SweetAlert -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+            <script>
+                function ExportPelanggan() {
+                    Swal.fire({
+                        title: 'Ekspor Data Pelanggan?',
+                        text: "Anda akan mengekspor data pelanggan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Ekspor'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Lakukan proses ekspor data di sini
+                            window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil diekspor',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
+                    });
+                }
+
+                function importpelanggan() {
+                    window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
+                    Swal.fire({
+                        title: 'Impor Data Pelanggan?',
+                        text: "Anda akan mengimpor data pelanggan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Impor'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Lakukan proses impor data pelanggan di sini
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data Pelanggan berhasil diimpor',
+                                showConfirmButton: false, // Menghilangkan tombol "OK"
+                                timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
+                            });
+                        }
+                    });
+                }
+            </script>
+            <script>
+                function update(id) {
+                    Swal.fire({
+                        title: 'Ingin Mengubah Data Pelanggan',
+                        text: "Data akan diubah",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Ya Ubah'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'Waitt',
+                                title: 'Loading ... ',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            }).then(function() {
+                                window.location.href = "" + id;
+                            });
+                        }
+                    });
+                }
+
+
+                function displaySweetAlert() {
+                    const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+                    const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+                    if (message) {
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Data berhasil di unduh',
-                            showConfirmButton: false,
+                            title: 'Berhasil Mengubah Data Pelanggan',
+                            text: message,
                             timer: 2500,
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timerProgressBar: true
+                        });
+                    } else if (error) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: error,
+                            timer: 2500,
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timerProgressBar: true
                         });
                     }
-                });
-            }
-        </script>
+                }
+
+                // Call the function when the page loads
+                window.onload = displaySweetAlert;
+            </script>
+            <script>
+                function template() {
+                    Swal.fire({
+                        title: 'Unduh Templat Data Master Pelanggan?',
+                        text: "Anda akan mengunduh templat data master pelanggan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Unduh'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Lakukan proses ekspor data di sini
+                            window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil di unduh',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
+                    });
+                }
+            </script>
+            <script>
+                function impor() {
+                    // Get the form by its ID
+                    var form = document.getElementById('importForm');
+
+                    // Check if the file input is empty
+                    var fileInput = form.querySelector('[name="file"]');
+                    if (!fileInput.files.length) {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Peringatan!',
+                            text: 'Pilih file untuk diimpor',
+                        });
+                        return;
+                    }
+
+                    // If the file input is not empty, proceed with the confirmation dialog
+                    Swal.fire({
+                        title: 'Impor  Data Master Pelanggan?',
+                        text: 'Anda akan mengimpor data pelanggan',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Batal',
+                        confirmButtonText: 'Impor'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Log the form action for debugging purposes
+                            console.log('Form action:', form.action);
+
+                            // Submit the form
+                            form.submit();
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil di impor',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
+                    });
+                }
+            </script>
 </body>
 
 
