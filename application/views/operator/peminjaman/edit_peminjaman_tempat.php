@@ -138,7 +138,7 @@
 
         /* Spesifikasi ditingkatkan untuk tombol "submit" */
         .survey-form .submit {
-            font-size: 14px; 
+            font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -148,7 +148,7 @@
             border-radius: 1rem;
             width: 14rem;
             height: 2.5rem;
-            padding: 8px 2rem;
+            padding: 1px 2rem;
             margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
@@ -185,7 +185,7 @@
             cursor: pointer;
         }
 
-        
+
         .header-text {
             font-weight: bold;
             font-size: 15px;
@@ -242,16 +242,15 @@
                     <input type="hidden" name="ruang" id="id" class="id" value="<?php echo $row->id_ruangan ?>">
                     <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking ?>">
                     <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir ?>">
-                    
+
                     <label for="nama" class="header-text" id="name-label">Nama </span></label>
-                    <select id="underline_select" name="nama" required
-                        class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option value="<?php echo $row->id_pelanggan?>"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?></option>
-                        <?php foreach($pelanggan as $row):?>
-                        <option value="<?php echo $row->id?>">
-                           <?php echo $row->nama?>
-                        </option>
-                        <?php endforeach?>
+                    <select id="underline_select" name="nama" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <option value="<?php echo $row->id_pelanggan ?>"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></option>
+                        <?php foreach ($pelanggan as $row) : ?>
+                            <option value="<?php echo $row->id ?>">
+                                <?php echo $row->nama ?>
+                            </option>
+                        <?php endforeach ?>
                     </select>
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
@@ -266,11 +265,9 @@
                             <?php endforeach ?>
                         </div>
                     </datalist>
-                    <div class="flex justify-center justify-items-center items-center ">
-                        <input type="submit" id="submit" class="submit" value="Submit">
-                        <a href="hapus_tambahan_peminjaman">
-                        <button onclick="hapustambahan()" class="submit text-sm">Hapus Tambahan</button>
-                        </a>
+                    <div class="flex justify-center items-center space-x-4">
+                        <input type="submit" id="submit" class="submit" value="Submit" onclick="sweetAlertSubmit()">
+                        <a href="#" onclick="hapustambahan(<?php echo $row->id; ?>)" class="submit text-sm">Hapus Tambahan</a>
                     </div>
                 </form>
             <?php endforeach ?>
@@ -281,58 +278,71 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-
-function hapustambahan(id) {
-                Swal.fire({
-                    title: ' Apakah Mau Dihapus?',
-                    text: "data ini tidak bisa dikembalikan lagi!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Batal',
-                    confirmButtonText: 'Hapus'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Berhasil Menghapus',
-                            showConfirmButton: false,
-                            timer: 2500,
-                        }).then(function() {
-                            window.location.href = "<?php echo base_url('operator/hapus_tambahan_peminjaman/') ?>" + id;
-                        });
-                    }
-                });
-            }
-
-            function displaySweetAlert() {
-                const message = "<?php echo $this->session->flashdata('sukses'); ?>";
-                const error = "<?php echo $this->session->flashdata('error'); ?>";
-
-                if (message) {
+        // Fungsi SweetAlert untuk tombol Hapus Tambahan
+        function hapustambahan(id) {
+            Swal.fire({
+                title: ' Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
                     Swal.fire({
-                        title: 'Berhasil Mengubah Data Peminjaman Tempat',
-                        text: message,
-                        timer: 2500,
                         icon: 'success',
+                        title: 'Berhasil Menghapus',
                         showConfirmButton: false,
-                        timerProgressBar: true
-                    });
-                } else if (error) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: error,
-                        timer: 2500,
-                        icon: 'error',
-                        showConfirmButton: false,
-                        timerProgressBar: true
+                    }).then(function() {
+                        // Setelah menampilkan SweetAlert, lakukan aksi penghapusan id tambahan di sini
+                        // Contoh:
+                        console.log("Menghapus id tambahan:", id);
                     });
                 }
-            }
+            });
+        }
 
-            window.onload = displaySweetAlert;
+        // Fungsi SweetAlert untuk tombol Submit
+        function sweetAlertSubmit() {
+            Swal.fire({
+                title: 'Pesan Submit',
+                text: 'Ini adalah SweetAlert dari tombol Submit',
+                icon: 'success',
+                showConfirmButton: false,
+            });
+        }
+
+
+        function displaySweetAlert() {
+            const message = "<?php echo $this->session->flashdata('sukses'); ?>";
+            const error = "<?php echo $this->session->flashdata('error'); ?>";
+
+            if (message) {
+                Swal.fire({
+                    title: 'Berhasil Mengubah Data Peminjaman Tempat',
+                    text: message,
+                    timer: 2500,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timerProgressBar: true
+                });
+            } else if (error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: error,
+                    timer: 2500,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timerProgressBar: true
+                });
+            }
+        }
+
+        window.onload = displaySweetAlert;
 
 
         const checkbox = document.getElementById('checkbox');
