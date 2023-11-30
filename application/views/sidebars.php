@@ -31,7 +31,7 @@
           </button>
         </div>
       </div>
-      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" @click.away="isOpen = false" x-show="isOpen">
+      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
         <ul>
           <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
@@ -41,7 +41,7 @@
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor/data_operator') ?>" class="flex items-center">
-              <i class="fa-solid fa-restroom text-white"></i>
+              <i class="fa-solid fa-users-gear text-white"></i>
               <span class="mx-2 text-white font-semibold">Data Operator</span>
             </a>
           </li>
@@ -52,7 +52,8 @@
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
-            <a onclick="KeluarOPT()" class="flex items-center">
+            <hr>
+            <a onclick="KeluarOPT()" class="flex items-center pt-4">
               <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
               <span class="text-white font-semibold mx-2 mb-0">Keluar</span>
             </a>
