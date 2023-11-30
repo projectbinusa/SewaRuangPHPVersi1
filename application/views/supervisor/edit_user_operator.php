@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <!-- cdn fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
@@ -176,7 +181,7 @@
             cursor: pointer;
             color: #555;
         }
-        
+
         .header-text {
             font-weight: bold;
             font-size: 15px;
@@ -226,29 +231,29 @@
                 <h1 id="title" class="main-heading">Form Edit Operator</h1>
             </header>
 
-            <?php foreach ($operator as $row): ?>
-                <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form"
-                    class="survey-form">
-                    <input value="<?php echo $row->id ?>" type="hidden" name="id" id="username" class="username"
-                        placeholder="Masukkan nama anda">
-                    <label for="username" class="header-text" id="name-label">Name</span></label>
-                    <input value="<?php echo $row->username ?>" type="text" name="username" id="username" class="username"
-                        placeholder="Masukkan nama anda" required>
+            <?php foreach ($operator as $row) : ?>
+                <form action="<?php echo base_url('supervisor/aksi_update_user_operator') ?>" method="post" id="survey-form" class="survey-form">
+                    <input value="<?php echo $row->id ?>" type="hidden" name="id" id="user_id" class="user_id" placeholder="Masukkan nama anda">
 
-                    <label for="email" class="header-text" id="email-label">Email</span></label>
-                    <input value="<?php echo $row->email ?>" type="email" name="email" id="email" class="email"
-                        placeholder="Masukkan email anda" required>
+                    <label for="username" class="header-text" id="name-label">Name</label>
+                    <input value="<?php echo $row->username ?>" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
-                    <label for="password" class="header-text" id="password-label">Password</span></label>
+                    <label for="email" class="header-text" id="email-label">Email</label>
+                    <input value="<?php echo $row->email ?>" type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
+
+                    <label for="password" class="header-text" id="password-label">Password</label>
                     <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
-                    <input type="password" name="password" id="password" class="password"
-                        placeholder="Masukkan password anda">
+                    <input type="password" name="password" id="password" class="password" placeholder="Masukkan password anda">
 
-                    <input type="submit" id="submit" class="submit" value="Submit">
+                    <input type="button" onclick="submitForm()" id="submit" class="submit" value="Submit">
                 </form>
-            <?php endforeach ?>
+            <?php endforeach; ?>
         </div>
     </main>
+
+    <!-- Include SweetAlert2 CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
         function togglePassword() {
@@ -267,6 +272,64 @@
                 passwordToggle.classList.remove('fa-eye');
 
             }
+        }
+
+        function submitForm() {
+            var base_url = '<?php echo base_url(); ?>';
+            var formData = $('#survey-form').serialize();
+
+            // Show a confirmation dialog
+            Swal.fire({
+                icon: 'question',
+                title: 'Are you sure?',
+                text: 'Do you really want to update operator data?',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel',
+            }).then(function(result) {
+                if (result.isConfirmed) {
+                    // If the user clicks 'Yes', proceed with the AJAX request
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + 'supervisor/aksi_update_user_operator',
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            console.log('Response from server:', response);
+
+                            if (response.success) {
+                                // Show a success SweetAlert before redirecting
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: response.message,
+                                    timer: 1500,
+                                    showConfirmButton: false,
+                                }).then(function() {
+                                    // Redirect the user immediately after a successful update
+                                    window.location.href = base_url + 'supervisor/data_operator';
+                                });
+                            } else {
+                                // Error case
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: response.message,
+                                });
+                            }
+                        },
+                        error: function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: 'An error occurred while processing your request. Please try again.',
+                            });
+                        },
+                    });
+                } else {
+                    console.log('User cancelled. No data will be saved.');
+                }
+            });
         }
     </script>
 

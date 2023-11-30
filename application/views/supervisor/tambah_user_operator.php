@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 
-    <!-- cdn fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
@@ -233,13 +236,12 @@
                 <h1 id="title" class="main-heading">Form Tambah Operator</h1>
             </header>
 
-            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <label for="username" class="header-text" id="name-label">Name</span></label>
-                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda"
-                    required>
+            <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form" class="survey-form">
+                <!-- Your form fields go here -->
+                <label for="username" class="header-text" id="name-label">Name</label>
+                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
-                <label for="email" class="header-text" id="email-label">Email</span></label>
+                <label for="email" class="header-text" id="email-label">Email</label>
                 <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
                 <div class="inputContainer">
@@ -247,8 +249,7 @@
                         <span>Password</span>
                     </label>
                     <div class="password-input-container">
-                        <input type="password" name="password" class="input" id="password"
-                            placeholder="Enter your Password">
+                        <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
                         <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>
                     </div>
                     <hr class="custom-hr">
@@ -256,15 +257,20 @@
 
                 <p class="subArteris">*Gunakan kombinasi minimal 8 karakter dengan huruf dan angka</p>
 
-                <input type="submit" id="submit" class="submit" value="Submit">
+                <input type="button" onclick="submitForm()" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
     <script>
+        var base_url = "<?php echo base_url(); ?>";
+
         function togglePassword() {
             var passwordInput = document.getElementById("password");
-            var passwordToggle = document.querySelector(".password-toggle-login");
+            var passwordToggle = document.querySelector(".password-toggle");
 
             if (passwordInput.type === "password") {
                 passwordInput.type = "text";
@@ -275,6 +281,64 @@
                 passwordToggle.classList.remove("fa-eye");
                 passwordToggle.classList.add("fa-eye-slash");
             }
+        }
+
+        function submitForm() {
+            // Use SweetAlert2 for confirmation
+            Swal.fire({
+                title: 'Simpan Data?',
+                text: 'Anda yakin ingin menyimpan data?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Simpan!',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // User clicked "Ya, Simpan!"
+                    // Use jQuery to serialize the form data
+                    var formData = $('#survey-form').serialize();
+
+                    // Send an AJAX request to your CodeIgniter controller
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + 'supervisor/aksi_tambah_user_operator',
+                        data: formData,
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response && response.success) {
+                                // Display success message using SweetAlert2
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil!',
+                                    text: response.message,
+                                    timer: 1500,
+                                    showConfirmButton: false,
+                                }).then((result) => {
+                                    // Redirect to 'supervisor/data_operator' after the alert is closed
+                                    if (result.isConfirmed || result.isDismissed) {
+                                        window.location.href = base_url + 'supervisor/data_operator';
+                                    }
+                                });
+                            } else {
+                                // Display error message using SweetAlert2
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: response && response.message ? response.message : 'Terjadi kesalahan yang tidak terduga.',
+                                });
+                            }
+                        },
+                        error: function() {
+                            // Handle AJAX error
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: 'Terjadi kesalahan saat memproses permintaan Anda. Silakan coba lagi.',
+                            });
+                        }
+                    });
+                }
+            });
         }
     </script>
 </body>
