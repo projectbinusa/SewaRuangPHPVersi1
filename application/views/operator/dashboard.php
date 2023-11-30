@@ -1799,13 +1799,13 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <?php if ($ruang) : ?>
-                        <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 pl-10 pr-10 pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
+                        <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
                             <?php $count = 0; ?>
                             <?php foreach ($ruang as $row) : ?>
                                 <?php if ($count < 6) : ?>
                                     <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
                                         <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
-                                            <div class="bg-white pt-5pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                            <div class="bg-white pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
                                                 <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                                                 <h2 class="text-2xl text-gray-800 font-semibold mb-3">
                                                     <?php echo $row->no_ruang; ?>

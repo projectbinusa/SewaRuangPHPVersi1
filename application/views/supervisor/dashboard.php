@@ -5575,17 +5575,17 @@
                                         <?php $no = 0;
                                         foreach ($operators as $row):
                                             $no++ ?>
-                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                    <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <?php echo $no ?>
-                                                    </td>
-                                                    <td data-cell="Email " class="text-center px-6 py-4">
-                                                        <?php echo $row->username ?>
-                                                    </td>
-                                                    <td data-cell="Email " class="text-center px-6 py-4">
-                                                        <?php echo $row->email ?>
-                                                    </td>
-                                                </tr>
+                                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                        <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            <?php echo $no ?>
+                                                        </td>
+                                                        <td data-cell="Email " class="text-center px-6 py-4">
+                                                            <?php echo $row->username ?>
+                                                        </td>
+                                                        <td data-cell="Email " class="text-center px-6 py-4">
+                                                            <?php echo $row->email ?>
+                                                        </td>
+                                                    </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
@@ -5648,39 +5648,39 @@
                                         <?php $no = 0;
                                         foreach ($approves as $row):
                                             $no++ ?>
-                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                    <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                        <?php echo $no ?>
-                                                    </td>
-                                                    <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
-                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                        <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            <?php echo $no ?>
+                                                        </td>
+                                                        <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
+                                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
-                                                    </td>
-                                                    <td data-cell="No Ruang " class="text-center px-3 py-3">
-                                                        <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                                    </td>
-                                                    <td data-cell="Kapasitas " class="text-center px-3 py-3">
-                                                        <?php echo $row->jumlah_orang ?>
-                                                    </td>
-                                                    <td data-cell="Kode Booking " class="text-center px-3 py-3">
-                                                        <?php echo $row->kode_booking ?>
-                                                    </td>
-                                                    <td data-cell="Tanggal  " class="text-center px-3 py-3">
-                                                        <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
-                                                    </td>
+                                                        </td>
+                                                        <td data-cell="No Ruang " class="text-center px-3 py-3">
+                                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                        </td>
+                                                        <td data-cell="Kapasitas " class="text-center px-3 py-3">
+                                                            <?php echo $row->jumlah_orang ?>
+                                                        </td>
+                                                        <td data-cell="Kode Booking " class="text-center px-3 py-3">
+                                                            <?php echo $row->kode_booking ?>
+                                                        </td>
+                                                        <td data-cell="Tanggal  " class="text-center px-3 py-3">
+                                                            <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
+                                                        </td>
 
-                                                    <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
-                                                        <?php
-                                                        // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                        <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
+                                                            <?php
+                                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                            $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                        // Menampilkan durasi dalam format angka
-                                                        echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                                        ?> </td>
+                                                            // Menampilkan durasi dalam format angka
+                                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                            ?> </td>
 
-                                                </tr>
+                                                    </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
@@ -5785,6 +5785,31 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
     <script>
+
+         // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
+         function checkResponsive() {
+                if (window.innerWidth > 600) {
+                    location.reload(); // Reload halaman jika layar lebih besar dari 600px
+                }
+            }
+
+            // window.addEventListener('resize', checkResponsive);
+
+            function adjustTableStyle() {
+                var table = document.querySelector('table');
+                if (window.innerWidth <= 600) {
+                    table.style.width = '100%'; // Menyesuaikan lebar tabel
+                    // Tambahkan penyesuaian gaya lain jika diperlukan
+                } else {
+                    table.style.width = '100%'; // Kembalikan ke lebar normal
+                    // Kembalikan gaya lain ke nilai default jika diperlukan
+                }
+            }
+
+            window.addEventListener('resize', adjustTableStyle);
+            adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+
+        
         $(document).ready(function() {
 
             var table = $('#example_data_operator').DataTable({
