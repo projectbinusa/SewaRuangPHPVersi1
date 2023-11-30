@@ -29,8 +29,6 @@ class Supervisor extends CI_Controller
     public function index()
     {
 
-
-
         $data['approves'] = $this->m_model->get_status_proses()->result();
         $data['operators'] = $this->m_model->get_data_operator()->result();
         $data['jumlah_operator'] = $this->m_model->get_data_operator()->num_rows();
@@ -53,17 +51,27 @@ class Supervisor extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
 
         if ($this->form_validation->run() === FALSE) {
-            redirect(base_url() . 'supervisor/tambah_user_operator');
+            $response = array('success' => false, 'message' => 'Silakan periksa input Anda.');
+            header('Content-Type: application/json');
+            echo json_encode($response);
         } else {
-
             $data = [
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
                 'role' => 'operator',
-                'password' => md5($this->input->post('password')),
+                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
             ];
-            $this->m_model->tambah_data('user', $data);
-            redirect(base_url() . 'supervisor/data_operator');
+
+            // Assuming m_model->tambah_data() returns a boolean indicating success
+            if ($this->m_model->tambah_data('user', $data)) {
+                $response = array('success' => true, 'message' => 'User berhasil ditambahkan.');
+                header('Content-Type: application/json');
+                echo json_encode($response);
+            } else {
+                $response = array('success' => false, 'message' => 'Gagal menambahkan pengguna. Silakan coba lagi.');
+                header('Content-Type: application/json');
+                echo json_encode($response);
+            }
         }
     }
 
@@ -134,27 +142,39 @@ class Supervisor extends CI_Controller
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required|regex_match[/^\S+@\S+\.\S+$/]');
 
-        // Pengecekan password baru dan validasi form
+        // Check for a new password and form validation
         if (!empty($password_baru)) {
             $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
 
             if ($this->form_validation->run() === TRUE) {
-                // Ganti password hanya jika password baru tidak kosong dan validasi berhasil
+                // Change password only if the new password is not empty and validation succeeds
                 $data['password'] = md5($password_baru);
             } else {
-                // Validasi form gagal
-                // Handle kesalahan, misalnya tampilkan pesan kesalahan
-                echo "<script>alert('Validasi form gagal. Silakan periksa input Anda.'); window.location.href = '" . base_url('supervisor/data_operator') . "';</script>";
+                // Form validation failed
+                // Display an error message using SweetAlert2
+                $response = array('success' => false, 'message' => 'Validasi form gagal. Silakan periksa input Anda.');
+                header('Content-Type: application/json');
+                echo json_encode($response);
                 return;
             }
         }
 
-        // Perbarui data di tabel user
-        $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
+        // Update data in the user table
+        $result = $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
 
-        // Redirect ke halaman data_operator setelah berhasil
-        redirect(base_url('supervisor/data_operator'));
+        if ($result) {
+            // Display a success message using SweetAlert2
+            $response = array('success' => true, 'message' => 'Data pengguna berhasil diperbarui.');
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        } else {
+            // Display an error message using SweetAlert2
+            $response = array('success' => false, 'message' => 'Gagal memperbarui data pengguna. Silakan coba lagi.');
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
     }
+
     public function edit_laporan_penyewa()
     {
         $this->load->view('supervisor/edit_laporan_penyewa');

@@ -1667,112 +1667,127 @@
         .btn-export-import {
             display: block;
         }
+
+        .bababa {
+            max-height: 590px;
+        }
+
+        @media (max-width: 768px) {
+            .bababa {
+                max-height: max-content;
+                margin-bottom: 50px;
+            }
+        }
     </style>
 
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" class="overflow-hidden">
     <?php $this->load->view('sidebars'); ?>
-    <section id="widget" class="table-section pd-top-47">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="section-title">
-                        <h2 class="title">Data Operator</h2>
+    <main class="contain-all max-h-screen overflow-y-auto">
+        <div class="bababa">
+            <section id="widget" class="table-section pd-top-47">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <div class="section-title">
+                                <h2 class="title">Data Operator</h2>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="container-table row justify-content-center">
-                <div class="flex gap-2">
+                    <div class="container-table row justify-content-center">
+                        <div class="flex gap-2">
 
-                    <button onclick="toggleModal()" class="btn-style bg-yellow-500  md:ml-auto hover:bg-yellow-700  text-white font-bold  rounded">
-                        <span class="">
-                            <i class="fas fa-file-import"></i>
-                        </span>
-                        Impor
-                    </button>
-                    <a href="javascript:void(0);" onclick="exportData()" class="btn-style pl-3 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
-                        <span class="">
-                            <i class="fas fa-file-export"></i>
-                        </span>
-                        Ekspor
-                    </a>
+                            <button onclick="toggleModal()" class="btn-style bg-yellow-500  md:ml-auto hover:bg-yellow-700  text-white font-bold  rounded">
+                                <span class="">
+                                    <i class="fas fa-file-import"></i>
+                                </span>
+                                Impor
+                            </button>
+                            <a href="javascript:void(0);" onclick="exportData()" class="btn-style pl-3 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
+                                <span class="">
+                                    <i class="fas fa-file-export"></i>
+                                </span>
+                                Ekspor
+                            </a>
 
-                    <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>" class="btn-style pl-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
-                        <span class="">
-                            <i class="fas fa-plus"></i>
-                        </span>
-                        Tambah
-                    </a>
-                </div>
+                            <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>" class="btn-style pl-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
+                                <span class="">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                                Tambah
+                            </a>
+                        </div>
 
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="relative">
+                        <div class="col-lg-12">
+                            <div class="header-item">
+                                <div class="relative">
 
-                            <table id="examples" class="text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <table id="examples" class="text-sm text-left text-gray-500 dark:text-gray-400">
 
-                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                            No
-                                        </th>
-                                        <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                            Nama
-                                        </th>
-                                        <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                            Email
-                                        </th>
-                                        <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                            Aksi
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 0;
-                                    foreach ($operator as $row) :
-                                        $no++ ?>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <tr>
+                                                <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                                    No
+                                                </th>
+                                                <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                    Nama
+                                                </th>
+                                                <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                                    Email
+                                                </th>
+                                                <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                    Aksi
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no = 0;
+                                            foreach ($operator as $row) :
+                                                $no++ ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
-                                            <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <?php echo $no ?>
-                                            </td>
-                                            <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 
-                                                <?php echo $row->username ?>
-                                            </td>
-                                            <td data-cell="Email " class="text-center px-3 py-3">
-                                                <?php echo $row->email ?>
-                                            </td>
+                                                        <?php echo $row->username ?>
+                                                    </td>
+                                                    <td data-cell="Email " class="text-center px-3 py-3">
+                                                        <?php echo $row->email ?>
+                                                    </td>
 
 
-                                            <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
+                                                    <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
 
-                                                <a href="<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                    <span class="">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                </a>
+                                                        <a href="<?php echo base_url('supervisor/edit_user_operator/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                            <span class="">
+                                                                <i class="fas fa-edit"></i>
+                                                            </span>
+                                                        </a>
 
-                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                    <span class="">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </span>
+                                                        <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                            <span class="">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </span>
 
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                            </table>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </main>
 
     <!-- modal -->
     <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
