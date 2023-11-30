@@ -1327,6 +1327,7 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
+    
     public function import_pelanggan()
     {
         if (isset($_FILES["file"]["name"])) {
