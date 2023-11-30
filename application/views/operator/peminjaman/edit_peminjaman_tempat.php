@@ -115,7 +115,7 @@
         }
 
         .submit {
-            font-size: 14px;
+            font-size: 8px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -126,7 +126,7 @@
             width: 8rem;
             height: 2.5rem;
             padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
         }
@@ -138,7 +138,7 @@
 
         /* Spesifikasi ditingkatkan untuk tombol "submit" */
         .survey-form .submit {
-            font-size: 14px;
+            font-size: 14px; 
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -146,10 +146,10 @@
             background-color: #4F709C;
             border: 3px solid #4F709C;
             border-radius: 1rem;
-            width: 8rem;
+            width: 14rem;
             height: 2.5rem;
             padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
         }
@@ -239,6 +239,7 @@
                 $id_ruangan = $row->id_ruangan; ?>
                 <form action="<?php echo base_url('operator/aksi_edit_peminjaman') ?>" method="post" id="survey-form" class="survey-form">
                     <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id ?>">
+                    <input type="hidden" name="ruang" id="id" class="id" value="<?php echo $row->id_ruangan ?>">
                     <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking ?>">
                     <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir ?>">
                     
@@ -252,20 +253,6 @@
                         </option>
                         <?php endforeach?>
                     </select>
-
-                    <label for="no_ruang" class="header-text" id="name-label"> Ruangan</span></label>
-                    <select id="underline_select" name="ruang" required
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                
-                        <option  value="<?php echo $id_ruangan?>"><?php echo tampil_nama_ruangan_byid($id_ruangan)?></option>
-                        <?php foreach ($ruangan as $row): ?>
-                        <option value="<?php echo $row->id?>">
-                            <?php echo $row->no_lantai ?> 
-                            <?php echo $row->no_ruang ?>
-                        </option>
-                    <?php endforeach ?>
-                  
-                </select>
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>
                     <input type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
@@ -279,7 +266,10 @@
                             <?php endforeach ?>
                         </div>
                     </datalist>
-                    <input type="submit" id="submit" class="submit" value="Submit">
+                    <div class="flex justify-center justify-items-center items-center ">
+                        <input type="submit" id="submit" class="submit" value="Submit">
+                        <button  type="button" onclick="" class="submit text-sm">Hapus Tambahan</button>
+                    </div>
                 </form>
             <?php endforeach ?>
         </div>
