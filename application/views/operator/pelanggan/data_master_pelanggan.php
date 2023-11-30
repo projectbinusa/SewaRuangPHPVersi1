@@ -1063,6 +1063,43 @@
                     }
                 });
             }
+
+            var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 600) {
+                    // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
+                    var table = document.querySelector('table');
+                    if (table) {
+                        for (var style in tableInitialStyle) {
+                            table.style[style] = tableInitialStyle[style];
+                        }
+                    }
+                }
+            });
+
+            function adjustTableStyle() {
+                var table = document.querySelector('table');
+                if (table) {
+                    if (window.innerWidth <= 600) {
+                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                        for (var i = 0; i < table.style.length; i++) {
+                            var style = table.style[i];
+                            tableInitialStyle[style] = table.style[style];
+                        }
+                        // Menyesuaikan lebar tabel saat mode responsif
+                        table.style.width = '100%';
+                        // Tambahkan penyesuaian gaya lain jika diperlukan
+                    } else {
+                        // Kembalikan ke lebar normal jika layar > 600px
+                        table.style.width = '';
+                        // Kembalikan gaya lain ke nilai default jika diperlukan
+                    }
+                }
+            }
+
+            window.addEventListener('resize', adjustTableStyle);
+            adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
         </script>
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
