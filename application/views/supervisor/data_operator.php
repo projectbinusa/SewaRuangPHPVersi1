@@ -1820,7 +1820,7 @@
                         <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
                             onclick="toggleModal()"> Batal</button>
                         <button onclick="importWithConfirmation()"
-                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                            class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
                         <button type="button"
                             class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2"
                             onclick="template()">
@@ -1866,13 +1866,13 @@
 
             function importWithConfirmation() {
                 Swal.fire({
-                    title: 'Konfirmasi Import',
-                    text: 'Anda yakin ingin melakukan import?',
+                    title: 'Konfirmasi Impor',
+                    text: 'Anda yakin ingin melakukan impor?',
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, Import!',
+                    confirmButtonText: 'Ya, Impor!',
                     cancelButtonText: 'Batal'
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -1891,7 +1891,7 @@
 
                             Swal.fire({
                                 title: 'Berhasil!',
-                                text: 'Data berhasil diimport.',
+                                text: 'Data berhasil diimpor.',
                                 icon: 'success',
                                 timer: 1500,
                                 timerProgressBar: true,
@@ -1943,14 +1943,14 @@
 
             function template() {
                 Swal.fire({
-                    title: 'Download Template Data Operator?',
-                    text: "Anda akan mengdownload template data operator",
+                    title: 'Unduh Templat Data Operator?',
+                    text: "Anda akan mengunduh templat data operator",
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Batal',
-                    confirmButtonText: 'Download'
+                    confirmButtonText: 'Unduh'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         // Lakukan proses ekspor data di sini
@@ -1958,7 +1958,7 @@
 
                         Swal.fire({
                             icon: 'success',
-                            title: 'Data berhasil didownload',
+                            title: 'Data berhasil diunduh',
                             showConfirmButton: false,
                             timer: 2500,
                         });

@@ -828,33 +828,49 @@ class operator extends CI_Controller
         }
         redirect(base_url('operator/peminjaman_tempat'));
     }
-    public function hapus_tambahan_peminjaman($id){
-        $peminjaman = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+    public function hapus_tambahan_peminjaman($id) {
+        // Ambil peminjaman dengan ID tertentu beserta data tambahannya
+        $peminjaman = $this->m_model->get_by_id('peminjaman', 'id', $id)->row();
         $total_harga = $peminjaman->total_harga;
+        
+        // Ambil semua data tambahan yang terkait dengan peminjaman tersebut
         $tambahan = $this->m_model->get_tambahan($id)->result();
         $harga = 0;
+        
         foreach ($tambahan as $row) {
             $harga_tambahan = tampil_harga_tambahan_byid($row->id);
-            // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
+            // Lakukan operasi berdasarkan jenis tambahan, misalnya kali dengan jumlah orang jika itu makanan atau minuman
             $tambahan_info = tampil_info_tambahan_byid($row->id);
             if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                $harga_tambahan *= $jumlah_orang;
+                $harga_tambahan *= $jumlah_orang; // Pastikan variabel $jumlah_orang sudah terdefinisi sebelumnya
             }
             $harga += $harga_tambahan;
         }
+        
         $harga_total = $total_harga - $harga;
-        $data_peminjaman = [
-            'total_harga' => $harga_total,
-        ];
-        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id));
-
+        
+        // Looping untuk menghapus entri tambahan berdasarkan 'id_peminjaman'
         foreach ($tambahan as $row) {
-            $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+            $this->m_model->delete('peminjaman_tambahan', 'id_peminjaman', $id);
         }
+        
+        // Hapus peminjaman jika harga total setelah penghapusan tambahan menjadi 0
+        if ($harga_total === 0) {
+            $this->m_model->delete('peminjaman', 'id', $id);
+        } else {
+            // Update total harga pada entri peminjaman
+            $data_peminjaman = [
+                'total_harga' => $harga_total,
+            ];
+            $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id));
+        }
+        
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
     }
+    
+    
     public function aksi_edit_peminjaman()
     {
         $id_pelanggan = $this->input->post('nama');
