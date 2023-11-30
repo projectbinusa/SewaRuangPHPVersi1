@@ -34,9 +34,9 @@
       <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
         <ul>
           <!-- Your existing sidebar content here -->
-          <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 hover:text-black">
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator') ?>" class="flex items-center">
-              <i class="fas fa-home mr-2 text-white "></i>
+              <i class="fas fa-home text-white "></i>
               <span class="mx-2 text-white font-semibold">Dashboard</span>
             </a>
           </li>
@@ -67,7 +67,7 @@
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/tambahan') ?>" class="flex items-center">
               <i class="fas fa-qrcode text-white"></i>
-              <span class="mx-2 text-white font-semibold">Menu Tambahan</span>
+              <span class="mx-2.5 text-white font-semibold">Menu Tambahan</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
