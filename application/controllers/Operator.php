@@ -837,8 +837,6 @@ class operator extends CI_Controller
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
 
-        // Mendapatkan ID pelanggan berdasarkan nama
-
         // Menghitung durasi dan harga ruangan
         $tanggalBooking = new DateTime($start_time);
         $tanggalBerakhir = new DateTime($end_time);
@@ -847,20 +845,20 @@ class operator extends CI_Controller
         $harga_ruangan = $harga_ruangan_default * $durasi->days;
 
         // Menghitung harga tambahan (snack)
-        // Menghitung harga snack
-        $harga = 0;
+        $harga_tambahan = 0;
         if (!empty($id_tambahan)) {
             foreach ($id_tambahan as $id) {
-                $harga_tambahan = tampil_harga_tambahan_byid($id);
-                // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
+                $harga_snack = tampil_harga_tambahan_byid($id);
+
+                // Jika jenis tambahan adalah makanan atau minuman, kali dengan jumlah orang
                 $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                    $harga_tambahan *= $jumlah_orang;
+                if ($tambahan_info && ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman')) {
+                    $harga_snack *= $jumlah_orang;
                 }
-                $harga += $harga_tambahan;
+
+                $harga_tambahan += $harga_snack;
             }
         }
-
 
         // Menghitung total harga
         $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
@@ -875,8 +873,8 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if (!empty($id_tambahan)) {
 
+        if (!empty($id_tambahan)) {
             // Menghapus data tambahan sebelum menambah yang baru
             $tambahan = $this->m_model->get_tambahan($this->input->post('id'))->result();
             foreach ($tambahan as $row) {
@@ -884,23 +882,21 @@ class operator extends CI_Controller
             }
 
             // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-            if (!empty($id_tambahan)) {
-                foreach ($id_tambahan as $id) {
-                    $data_tambahan = [
-                        'id_peminjaman' => $this->input->post('id'),
-                        'id_tambahan' => $id,
-                    ];
+            foreach ($id_tambahan as $id) {
+                $data_tambahan = [
+                    'id_peminjaman' => $this->input->post('id'),
+                    'id_tambahan' => $id,
+                ];
 
-                    // Memasukkan data ke tabel peminjaman_tambahan
-                    $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
-                }
+                // Memasukkan data ke tabel peminjaman_tambahan
+                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
             }
         }
+
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
     }
-
 
     public function report_sewa()
     {

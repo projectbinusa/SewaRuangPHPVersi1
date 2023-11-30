@@ -5,6 +5,12 @@ if (!function_exists('convRupiah')) {
         return 'Rp. ' . number_format((float)$value, 2, ',', '.');
     }
 }
+if (!function_exists('Rupiah')) {
+    function Rupiah($value)
+    {
+        return ' ' . number_format((float)$value, 2, ',', '.');
+    }
+}
 
 if (!function_exists('format_ruangan')) {
     function format_ruangan($nomor_ruangan)
