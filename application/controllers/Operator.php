@@ -34,6 +34,11 @@ class operator extends CI_Controller
         $config['total_rows'] = $this->m_model->count_records('ruangan');
         $config['per_page'] = $limit;
 
+        $config['full_tag_open'] = '<div class="pagination">';
+        $config['full_tag_close'] = '</div>';
+        $config['prev_link'] = 'Previous'; // Corrected spelling
+        $config['next_link'] = 'Next'; // Corrected spelling
+
         $this->pagination->initialize($config);
 
         // Create pagination links
@@ -105,27 +110,38 @@ class operator extends CI_Controller
 
     public function data_ruangan($offset = 0)
     {
-        $limit = 6; // Number of records per page
-
+        $limit = 6; // Jumlah record per halaman
         $this->load->model('m_model');
-
+    
+        // Ambil data ruangan dengan menggunakan limit dan offset
         $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
-
-        // Load pagination library
+    
+        // Muat pustaka pagination
         $this->load->library('pagination');
-
-        // Configure pagination
+    
+        // Konfigurasi paginasi
         $config['base_url'] = base_url('operator/data_ruangan');
         $config['total_rows'] = $this->m_model->count_records('ruangan');
-        $config['per_page'] = $limit;
-
+        $config['per_page'] = $limit; // Mengganti 'per_halaman' menjadi 'per_page'
+    
+        // Konfigurasi tautan "Sebelumnya" dan "Berikutnya"
+        $config['full_tag_open'] = '<div class="pagination">';
+        $config['full_tag_close'] = '</div>';
+        $config['prev_link'] = 'Previous'; // Corrected spelling
+        $config['next_link'] = 'Next'; // Corrected spelling
+    
+        // Atur agar offset dihitung menggunakan nomor halaman
+        $config['use_page_numbers'] = TRUE;
+    
         $this->pagination->initialize($config);
-
-        // Create pagination links
+    
+        // Buat tautan penomoran halaman
         $data['pagination_links'] = $this->pagination->create_links();
-
+    
+        // Muat view dengan data dan tautan paginasi
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
+    
 
     public function search()
     {
@@ -794,7 +810,6 @@ class operator extends CI_Controller
                     return;
                 }
             }
-
         }
         $this->check_expired_bookings();
         // Operasi berhasil
@@ -806,9 +821,9 @@ class operator extends CI_Controller
     {
         $this->m_model->delete('peminjaman', 'id', $id);
         $tambahan = $this->m_model->get_tambahan($id)->result();
-            foreach($tambahan as $row){
-                $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
-            }
+        foreach ($tambahan as $row) {
+            $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+        }
         redirect(base_url('operator/peminjaman_tempat'));
     }
     public function aksi_edit_peminjaman()
@@ -856,28 +871,27 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if(!empty($id_tambahan)){
+        if (!empty($id_tambahan)) {
 
             // Menghapus data tambahan sebelum menambah yang baru
             $tambahan = $this->m_model->get_tambahan($this->input->post('id'))->result();
-            foreach($tambahan as $row){
+            foreach ($tambahan as $row) {
                 $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
             }
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $data_tambahan = [
-                    'id_peminjaman' => $this->input->post('id'),
-                    'id_tambahan' => $id,
-                ];
+            // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+            if (!empty($id_tambahan)) {
+                foreach ($id_tambahan as $id) {
+                    $data_tambahan = [
+                        'id_peminjaman' => $this->input->post('id'),
+                        'id_tambahan' => $id,
+                    ];
 
-                // Memasukkan data ke tabel peminjaman_tambahan
-                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+                    // Memasukkan data ke tabel peminjaman_tambahan
+                    $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+                }
             }
         }
-
-    }
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
@@ -949,28 +963,28 @@ class operator extends CI_Controller
 
         // Memperbarui data di tabel peminjaman
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if(!empty($id_tambahan)){
+        if (!empty($id_tambahan)) {
 
             // Menghapus data tambahan sebelum menambah yang baru
             $id = $this->m_model->get_tambahan($this->input->post('id'))->result();
-            foreach($id as $row ){
+            foreach ($id as $row) {
                 $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
-      }
+            }
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $data_tambahan = [
-                    'id_pelanggan' => $nama,
-                    'id_peminjaman' => $this->input->post('id'),
-                    'id_tambahan' => $id,
-                ];
+            // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+            if (!empty($id_tambahan)) {
+                foreach ($id_tambahan as $id) {
+                    $data_tambahan = [
+                        'id_pelanggan' => $nama,
+                        'id_peminjaman' => $this->input->post('id'),
+                        'id_tambahan' => $id,
+                    ];
 
-                // Memasukkan data ke tabel peminjaman_tambahan
-                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+                    // Memasukkan data ke tabel peminjaman_tambahan
+                    $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+                }
             }
         }
-    }
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/report_sewa'));
