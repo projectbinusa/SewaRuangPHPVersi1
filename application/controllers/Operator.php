@@ -828,6 +828,33 @@ class operator extends CI_Controller
         }
         redirect(base_url('operator/peminjaman_tempat'));
     }
+    public function hapus_tambahan_peminjaman($id){
+        $peminjaman = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
+        $total_harga = $peminjaman->total_harga;
+        $tambahan = $this->m_model->get_tambahan($id)->result();
+        $harga = 0;
+        foreach ($tambahan as $row) {
+            $harga_tambahan = tampil_harga_tambahan_byid($row->id);
+            // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
+            $tambahan_info = tampil_info_tambahan_byid($row->id);
+            if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
+                $harga_tambahan *= $jumlah_orang;
+            }
+            $harga += $harga_tambahan;
+        }
+        $harga_total = $total_harga - $harga;
+        $data_peminjaman = [
+            'total_harga' => $harga_total,
+        ];
+        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id));
+
+        foreach ($tambahan as $row) {
+            $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+        }
+        $this->check_expired_bookings();
+        // Redirect atau tampilkan pesan sukses
+        redirect(base_url('operator/peminjaman_tempat'));
+    }
     public function aksi_edit_peminjaman()
     {
         $id_pelanggan = $this->input->post('nama');
@@ -838,15 +865,16 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
 
         // Menghitung durasi dan harga ruangan
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
+       
 
         // Menghitung harga tambahan (snack)
         $harga_tambahan = 0;
         if (!empty($id_tambahan)) {
+            $tanggalBooking = new DateTime($start_time);
+            $tanggalBerakhir = new DateTime($end_time);
+            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+            $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+            $harga_ruangan = $harga_ruangan_default * $durasi->days;
             foreach ($id_tambahan as $id) {
                 $harga_snack = tampil_harga_tambahan_byid($id);
 
@@ -855,20 +883,19 @@ class operator extends CI_Controller
                 if ($tambahan_info && ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman')) {
                     $harga_snack *= $jumlah_orang;
                 }
-
                 $harga_tambahan += $harga_snack;
+
+                $data_peminjaman = [
+                    'total_harga' => $harga_tambahan + $harga_ruangan,
+                ];
             }
         }
-
-        // Menghitung total harga
-        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
-            'total_harga' => $harga_keseluruhan,
         ];
 
         // Memperbarui data di tabel peminjaman
