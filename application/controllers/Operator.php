@@ -815,35 +815,31 @@ class operator extends CI_Controller
         $id_peminjaman = $this->uri->segment(3);
     
         // Dapatkan data peminjaman sebelum menghapus tambahan
-        $peminjaman_sebelum = $this->m_model->get_peminjaman_by_id($id_peminjaman);
-        $harga_ruangan_sebelum = $peminjaman_sebelum->total_harga;
+        $peminjaman_sebelum = $this->m_model->get_by_id('peminjaman','id',$id_peminjaman)->result();
+        $harga_sebelum = $peminjaman_sebelum->total_harga;
     
         // Dapatkan data tambahan berdasarkan $id_peminjaman
         $tambahan = $this->m_model->get_tambahan($id_peminjaman)->result();
     
         // Hapus data tambahan
+        $harga = 0;
         foreach ($tambahan as $row) {
+                $harga += tampil_harga_tambahan_byid($row->id_tambahan);
+                // Jika jenis snack adalah makanan, kali dengan jumlah orang
+                $tambahan_info = tampil_info_tambahan_byid($row_id_tambahan);
+                if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
+                    $harga *= tampil_jumlah_orang_byid($row->id_peminjaman);
+                }
             $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
         }
-    
-        // Dapatkan data peminjaman setelah menghapus tambahan
-        $peminjaman_setelah = $this->m_model->get_peminjaman_by_id($id_peminjaman);
-        $harga_ruangan_setelah = $peminjaman_setelah->total_harga;
-    
-        // Hitung ulang total harga ruangan berdasarkan waktu booking
-        $harga_ruangan_reset = hitung_ulang_harga_ruangan($peminjaman_setelah->id_ruangan, $peminjaman_setelah->start_time, $peminjaman_setelah->end_time);
-    
         // Hitung total harga keseluruhan setelah mereset ruangan
-        $harga_keseluruhan_reset = $harga_ruangan_reset + $harga_ruangan_setelah - $harga_ruangan_sebelum;
+        $harga_keseluruhan_reset = $harga_sebelum - $harga;
     
         // Update total harga ruangan yang telah direset
         $data_peminjaman = [
             'total_harga' => $harga_keseluruhan_reset,
         ];
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id_peminjaman));
-    
-        // Tambahkan logika lainnya sesuai kebutuhan
-        // ...
     
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));

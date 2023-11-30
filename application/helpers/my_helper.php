@@ -80,6 +80,16 @@ function tampil_jumlah_tambahan_byid($id)
         return $stmt;
     }
 }
+function tampil_jumlah_orang_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('peminjaman');
+    foreach ($result->result() as $c) {
+        $stmt = $c->jumlah_orang;
+        return $stmt;
+    }
+}
 function tampil_ruangan_byid($id)
 {
     $ci = &get_instance();
