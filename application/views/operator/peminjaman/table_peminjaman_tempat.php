@@ -1011,7 +1011,7 @@
                                                     ?>
                                                 </td>
                                                 <td data-cell="Total " class="text-center px-3 py-4">
-                                                    <?php echo $row->total_harga ?>
+                                                    <?php echo Rupiah($row->total_harga) ?>
                                                 </td>
                                                 <td data-cell="Status " class="text-center px-3 py-4 uppercase">
                                                     <?php echo $row->status ?>
