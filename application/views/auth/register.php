@@ -269,12 +269,12 @@
                         <div class="inputContainer">
                             <label class="label header-text" for="emailAddress"><img src="https://cdn2.iconfinder.com/data/icons/e-commerce-line-4-1/1024/user4-512.png" class="labelIcon"><span>Username
                                 </span></label>
-                            <input required type="text" name="username" class="input" id="username" placeholder="Enter your Username">
+                            <input autocomplete="off" required type="text" name="username" class="input" id="username" placeholder="Enter your Username">
                         </div>
                         <div class="inputContainer">
                             <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
-                            <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
+                            <input autocomplete="off" type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                          <div class="inputContainer">
                             <label class="label header-text" for="emailAddress">

@@ -143,7 +143,7 @@
             <form action="<?php echo base_url('auth/aksi_verifikasi')?>" method="post" id="survey-form"
                 class="survey-form">
                 <p>Silahkan masukkan code verifikasi anda untuk mengubah password </p>
-                <input type="txt" name="code" id="email" class="email" placeholder="Masukkan code verifikasi anda"
+                <input autocomplete="off" type="number" name="code" id="email" class="email" placeholder="Masukkan code verifikasi anda"
                     required>
 
 

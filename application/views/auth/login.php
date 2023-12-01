@@ -254,7 +254,7 @@
                         <div class="inputContainer">
                             <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
-                            <input type="email" name="email" class="input" id="emailAddress" placeholder="Enter your Email Address">
+                            <input type="email" name="email" autocomplete="off" class="input" id="emailAddress" placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
                             <label class="label header-text" for="emailAddress">

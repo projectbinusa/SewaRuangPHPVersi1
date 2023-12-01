@@ -148,7 +148,7 @@
                 class="survey-form">
                 <p>Silahkan masukkan email kamu untuk verifikasi code</p>
                 <label for="email" id="email-label">Email<span class="required"></span></label>
-                <input type="email" name="email" id="email" class="email" placeholder="Ketik email anda"
+                <input autocomplete="off" type="email" name="email" id="email" class="email" placeholder="Ketik email anda"
                     required>
 
 
