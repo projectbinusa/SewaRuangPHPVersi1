@@ -51,7 +51,7 @@ class Supervisor extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|regex_match[/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/]');
 
         if ($this->form_validation->run() === FALSE) {
-            $response = array('success' => false, 'message' => 'Silakan periksa input Anda.');
+            $response = array('success' => false, 'message' => 'Silakan periksa kembali data yang Anda inputkan.');
             header('Content-Type: application/json');
             echo json_encode($response);
         } else {
