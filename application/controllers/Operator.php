@@ -73,13 +73,11 @@ class operator extends CI_Controller
     public function aksi_edit_tambahan()
     {
         $nama = $this->input->post('nama');
-        $harga = $this->input->post('harga');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
-            'harga' => $harga,
             'jenis' => $jenis,
             'deskripsi' => $deskripsi
         ];
@@ -95,13 +93,11 @@ class operator extends CI_Controller
     public function aksi_tambahan()
     {
         $nama = $this->input->post('nama');
-        $harga = $this->input->post('harga');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
-            'harga' => $harga,
             'jenis' => $jenis,
             'deskripsi' => $deskripsi
         ];
@@ -188,7 +184,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'LANTAI', 'RUANG', 'DESKRIPSI', 'HARGA'];
+        $headers = ['NO', 'LANTAI', 'RUANG', 'DESKRIPSI', ];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -232,7 +228,6 @@ class operator extends CI_Controller
         $no_ruang = $this->input->post('no_ruang');
         $deskripsi = $this->input->post('deskripsi');
         $image = $_FILES['foto']['name'];
-        $harga = $this->input->post('harga');
 
         $errors = [];
 
@@ -254,13 +249,6 @@ class operator extends CI_Controller
         $nama_ruang_exists = $this->m_model->cek_data_exists('ruangan', ['no_ruang' => $no_ruang]);
         if ($nama_ruang_exists) {
             $errors[] = 'Nama ruangan sudah ada. Harap pilih nama ruangan yang lainnya.';
-        }
-
-        // Validasi harga
-        if (empty($harga) || !filter_var($harga, FILTER_VALIDATE_INT)) {
-            $errors[] = 'Harga harus diisi dengan angka (tanpa ".") dan tidak boleh kosong.';
-        } elseif ($harga < 0) {
-            $errors[] = 'Harga tidak boleh negatif.';
         }
 
         // Validasi deskripsi
@@ -294,7 +282,6 @@ class operator extends CI_Controller
                     'no_lantai' => $no_lantai,
                     'no_ruang' => $no_ruang,
                     'deskripsi' => $deskripsi,
-                    'harga' => $harga,
                 ];
 
                 $inserted = $this->m_model->tambah_data('ruangan', $data);
@@ -358,7 +345,6 @@ class operator extends CI_Controller
         $no_lantai = $this->input->post('no_lantai');
         $no_ruang = $this->input->post('no_ruang');
         $deskripsi = $this->input->post('deskripsi');
-        $harga = $this->input->post('harga');
         $image = $_FILES['foto']['name'];
         $foto_temp = $_FILES['foto']['tmp_name'];
 
@@ -378,16 +364,12 @@ class operator extends CI_Controller
         $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka.');
         $this->form_validation->set_message('alpha_numeric', 'Kolom {field} hanya boleh berisi huruf dan angka.');
         $this->form_validation->set_message('check_deskripsi', 'Kolom {field} tidak boleh mengandung tanda "-"');
-        $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka untuk harga.');
         $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Lantai", angka, dan harus mengandung kata "Lantai".');
         $this->form_validation->set_message('regex_match', 'Kolom {field} hanya boleh mengandung kata "Ruang", angka, dan harus mengandung kata "Ruang".');
 
-        // Additional validation for 'harga' to ensure it's an integer
-        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric|callback_check_integer');
         $this->form_validation->set_rules('no_lantai', 'Nomor Lantai', 'required|regex_match[/^[0-9\s]*Lantai[0-9\s]*$/]');
         $this->form_validation->set_rules('no_ruang', 'Nomor Ruang', 'required|regex_match[/^[a-zA-Z0-9\s]*Ruang[a-zA-Z0-9\s]*$/]');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|callback_check_deskripsi');
-        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
 
         // Run validation
         if ($this->form_validation->run() == false) {
@@ -414,13 +396,12 @@ class operator extends CI_Controller
                 $data = [];
 
                 // Set data ke dalam array tanpa memeriksa perubahan
-                $data['harga'] = $harga;
                 $data['no_lantai'] = $no_lantai;
                 $data['no_ruang'] = $no_ruang;
                 $data['deskripsi'] = $deskripsi;
 
                 // Periksa apakah setidaknya satu bidang data berbeda dengan data yang ada di database
-                if ($no_lantai !== $current_data->no_lantai || $no_ruang !== $current_data->no_ruang || $deskripsi !== $current_data->deskripsi || $harga !== $current_data->harga || !empty($image)) {
+                if ($no_lantai !== $current_data->no_lantai || $no_ruang !== $current_data->no_ruang || $deskripsi !== $current_data->deskripsi || !empty($image)) {
                     // Ada perubahan data, lanjutkan proses penyimpanan
                     if (!empty($image)) {
                         // Validasi ekstensi file gambar
@@ -596,7 +577,6 @@ class operator extends CI_Controller
 
     public function tambah_pelanggan()
     {
-        // $data['pelanggan'] = $this->m_model->get_data('pelanggan')->result();
         $this->load->view('operator/pelanggan/tambah_pelanggan');
     }
 
@@ -612,7 +592,7 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $phone = $this->input->post('phone');
-        $payment_method = $this->input->post('payment_method');
+        $email = $this->input->post('email');
 
         $errors = [];
 
@@ -626,9 +606,9 @@ class operator extends CI_Controller
             $errors[] = 'Isi nomor telepon hanya dengan angka';
         }
 
-        // Validasi payment_method
-        if (empty($payment_method) || !preg_match('/^[a-zA-Z0-9\s]+$/', $payment_method)) {
-            $errors[] = 'Isi metode pembayaran dengan benar';
+        // Validasi email
+        if (empty($email) || !preg_match('/^[/^\S+@\S+\.\S+$/]+$/', $email)) {
+            $errors[] = 'Isi email dengan benar';
         }
 
         if (count($errors) > 0) {
@@ -640,7 +620,7 @@ class operator extends CI_Controller
             $data = [
                 'nama' => $nama,
                 'phone' => $phone,
-                'payment_method' => $payment_method,
+                'email' => $email,
             ];
 
             $inserted = $this->m_model->tambah_data('pelanggan', $data);
@@ -670,7 +650,7 @@ class operator extends CI_Controller
         $data = array(
             'nama' => $this->input->post('nama'),
             'phone' => $this->input->post('phone'),
-            'payment_method' => $this->input->post('payment_method'),
+            'email' => $this->input->post('email'),
         );
         $eksekusi = $this->m_model->ubah_data('pelanggan', $data, array('id' => $this->input->post('id')));
         if ($eksekusi) {
@@ -760,30 +740,6 @@ class operator extends CI_Controller
             return;
         }
 
-        // Menghitung durasi dan harga ruangan
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
-
-        // Menghitung harga snack
-        $harga = 0;
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $harga_tambahan = tampil_harga_tambahan_byid($id);
-                // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                    $harga_tambahan *= $jumlah_orang;
-                }
-                $harga += $harga_tambahan;
-            }
-        }
-
-        // Menghitung total harga
-        $harga_keseluruhan = $harga + $harga_ruangan;
-
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
             'id_pelanggan' => $id_pelanggan,
@@ -792,7 +748,6 @@ class operator extends CI_Controller
             'tanggal_berakhir' => $end_time,
             'jumlah_orang' => $jumlah_orang,
             'kode_booking' => $generate,
-            'total_harga' => $harga_keseluruhan,
             'status' => 'proses',
         ];
 
@@ -803,7 +758,6 @@ class operator extends CI_Controller
         if (!empty($id_tambahan)) {
             foreach ($id_tambahan as $id) {
                 $data_tambahan = [
-                    'id_pelanggan' => $id_pelanggan,
                     'id_peminjaman' => $id_peminjaman,
                     'id_tambahan' => $id,
                 ];
@@ -827,24 +781,12 @@ class operator extends CI_Controller
 
     public function hapus_tambahan_peminjaman($id)
     {
-        // Ambil peminjaman dengan ID tertentu beserta data tambahannya
-        $peminjaman = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
-        $total_harga_peminjaman = $peminjaman->total_harga;
 
         // Ambil semua data tambahan yang terkait dengan peminjaman tersebut
         $tambahan = $this->m_model->get_tambahan($id)->result();
-        $harga = 0;
         $id_tambahan_to_delete = array(); // Menyimpan id_tambahan yang akan dihapus
 
         foreach ($tambahan as $row) {
-            // Ambil harga tambahan item
-            $harga_tambahan = tampil_harga_tambahan_byid($id);
-            // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
-            $tambahan_info = tampil_info_tambahan_byid($id);
-            if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                $harga_tambahan *= $jumlah_orang;
-            }
-            $harga += $harga_tambahan;
 
             // Simpan id_tambahan yang akan dihapus
             $id_tambahan_to_delete[] = $row->id;
@@ -853,12 +795,6 @@ class operator extends CI_Controller
         foreach ($id_tambahan_to_delete as $id_tambahan) {
             $this->m_model->delete('peminjaman_tambahan', 'id', $id_tambahan);
         }
-
-        // Update total harga pada entri peminjaman
-        $data_peminjaman = [
-            'total_harga' => 10000,
-        ];
-        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id));
 
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
@@ -874,31 +810,8 @@ class operator extends CI_Controller
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
 
-        // Menghitung durasi dan harga ruangan
-
-        // Menghitung harga tambahan (snack)
-        $harga_tambahan = 0;
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
-        foreach ($id_tambahan as $id) {
-            $harga_snack = tampil_harga_tambahan_byid($id);
-
-            // Jika jenis tambahan adalah makanan atau minuman, kali dengan jumlah orang
-            $tambahan_info = tampil_info_tambahan_byid($id);
-            if ($tambahan_info && ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman')) {
-                $harga_snack *= $jumlah_orang;
-            }
-            $harga_tambahan += $harga_snack;
-        }
-        $data_peminjaman = [
-            'total_harga' => $harga_tambahan + $harga_ruangan,
-        ];
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
-            'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
         ];
@@ -958,39 +871,13 @@ class operator extends CI_Controller
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
 
-        // Mendapatkan ID pelanggan berdasarkan nama
 
-
-        // Menghitung durasi dan harga ruangan
-        $tanggalBooking = new DateTime($start_time);
-        $tanggalBerakhir = new DateTime($end_time);
-        $durasi = $tanggalBooking->diff($tanggalBerakhir);
-        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-        $harga_ruangan = $harga_ruangan_default * $durasi->days;
-
-        // Menghitung harga tambahan (snack)
-        $harga_tambahan = 0;
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $harga_tambahan += tampil_harga_tambahan_byid($id);
-
-                // Jika jenis tambahan adalah makanan, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && $tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                    $harga_tambahan *= $jumlah_orang;
-                }
-            }
-        }
-
-        // Menghitung total harga
-        $harga_keseluruhan = $harga_tambahan + $harga_ruangan;
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
             'id_pelanggan' => $nama,
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
-            'total_harga' => $harga_keseluruhan,
         ];
 
         // Memperbarui data di tabel peminjaman
@@ -1007,7 +894,6 @@ class operator extends CI_Controller
             if (!empty($id_tambahan)) {
                 foreach ($id_tambahan as $id) {
                     $data_tambahan = [
-                        'id_pelanggan' => $nama,
                         'id_peminjaman' => $this->input->post('id'),
                         'id_tambahan' => $id,
                     ];
@@ -1037,7 +923,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('pelanggan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'NO TELEPON', 'METODE PEMBAYARAN'];
+        $headers = ['NO', 'NAMA', 'NO TELEPON', 'EMAIL'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1052,7 +938,7 @@ class operator extends CI_Controller
             $id = '';
             $nama = '';
             $phone = '';
-            $payment_method = '';
+            $email = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'id') {
                     $id = $cellData;
@@ -1060,8 +946,8 @@ class operator extends CI_Controller
                     $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
-                } elseif ($cellName == 'payment_method') {
-                    $payment_method = $cellData;
+                } elseif ($cellName == 'emai;') {
+                    $email = $cellData;
                 }
 
                 // Anda juga dapat menambahkan logika lain jika perlu
@@ -1075,7 +961,7 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $phone);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $payment_method);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $email);
             $no++;
             $rowIndex++;
         }
@@ -1219,7 +1105,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('ruangan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN', 'HARGA'];
+        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN', ];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1235,7 +1121,6 @@ class operator extends CI_Controller
             $no_ruang = '';
             $no_lantai = '';
             $deskripsi = '';
-            $harga = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'id') {
                     $id = $cellData;
@@ -1245,8 +1130,6 @@ class operator extends CI_Controller
                     $no_lantai = $cellData;
                 } elseif ($cellName == 'deskripsi') {
                     $deskripsi = $cellData;
-                } elseif ($cellName == 'harga') {
-                    $harga = $cellData;
                 }
 
                 // Anda juga dapat menambahkan logika lain jika perlu
@@ -1261,7 +1144,6 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $no_ruang);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $no_lantai);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
-            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $harga);
             $no++;
             $rowIndex++;
         }
@@ -1305,10 +1187,9 @@ class operator extends CI_Controller
                     $no_lantai = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $no_ruang = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $harga = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
                     // Validate that none of the imported values are empty
-                    if (empty($no_lantai) || empty($no_ruang) || empty($deskripsi) || empty($harga)) {
+                    if (empty($no_lantai) || empty($no_ruang) || empty($deskripsi) ) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
@@ -1319,8 +1200,7 @@ class operator extends CI_Controller
                     $data = array(
                         'no_lantai' => $no_lantai,
                         'no_ruang' => $no_ruang,
-                        'deskripsi' => $deskripsi,
-                        'harga' => $harga
+                        'deskripsi' => $deskripsi
                     );
 
                     // untuk menambahkan ke database
@@ -1347,11 +1227,11 @@ class operator extends CI_Controller
                 for ($row = 2; $row <= $highestRow; $row++) {
                     $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $phone = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $payment_method = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $email = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
 
 
                     // Validate that none of the imported values are empty
-                    if (empty($nama) || empty($phone) || empty($payment_method)) {
+                    if (empty($nama) || empty($phone) || empty($email)) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
@@ -1362,7 +1242,7 @@ class operator extends CI_Controller
                     $data = array(
                         'nama' => $nama,
                         'phone' => $phone,
-                        'payment_method' => $payment_method,
+                        'email' => $email,
                     );
 
                     // untuk menambahkan ke database
@@ -1388,7 +1268,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('tambahan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'JENIS', 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1401,14 +1281,11 @@ class operator extends CI_Controller
         foreach ($data as $rowData) {
             $columnIndex = 1;
             $nama = '';
-            $harga = '';
             $jenis = '';
             $deskripsi = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'nama') {
                     $nama = $cellData;
-                } elseif ($cellName == 'harga') {
-                    $harga = $cellData;
                 } elseif ($cellName == 'jenis') {
                     $jenis = $cellData;
                 } elseif ($cellName == 'deskripsi') {
@@ -1425,9 +1302,8 @@ class operator extends CI_Controller
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
             $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
-            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $harga);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jenis);
-            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $deskripsi);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $jenis);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
             $no++;
 
             $rowIndex++;
@@ -1469,7 +1345,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'HARGA', 'JENIS', 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1555,12 +1431,10 @@ class operator extends CI_Controller
                 $highestColumn = $worksheet->getHighestColumn();
                 for ($row = 2; $row <= $highestRow; $row++) {
                     $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $harga = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $jenis = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $deskripsi = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $jenis = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
                     $data = [
                         'nama' => $nama,
-                        'harga' => $harga,
                         'jenis' => $jenis,
                         'deskripsi' => $deskripsi
                     ];

@@ -116,26 +116,6 @@ function tampil_no_ruangan_byid($id)
         return $stmt;
     }
 }
-function tampil_harga_ruangan_byid($id)
-{
-    $ci = &get_instance();
-    $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('ruangan');
-    foreach ($result->result() as $c) {
-        $stmt = $c->harga;
-        return $stmt;
-    }
-}
-function tampil_harga_tambahan_byid($id)
-{
-    $ci = &get_instance();
-    $ci->load->database();
-    $result = $ci->db->where('id', $id)->get('tambahan');
-    foreach ($result->result() as $c) {
-        $stmt = $c->harga;
-        return $stmt;
-    }
-}
 function tampil_nama_tambahan_byid($id)
 {
     $ci = &get_instance();
