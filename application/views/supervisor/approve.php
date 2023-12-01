@@ -1410,7 +1410,7 @@
                     </div>
                 </div>
             </div>
-
+            <?php if ( !empty($approve) ) : ?>
             <div class="container-table row justify-content-center">
                 <div class="testt">
                     <button onclick="tolak_semua()"
@@ -1429,6 +1429,7 @@
                         Terima Semua
                     </button>
                 </div>
+                <?php endif; ?>
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="table-responsive relative">
