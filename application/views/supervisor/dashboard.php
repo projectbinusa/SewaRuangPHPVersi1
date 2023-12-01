@@ -5302,7 +5302,7 @@
                     }
 
                     img {
-                        //Google SEO - CLS optimize
+                        /* //Google SEO - CLS optimize */
                         aspect-ratio: 500 / 320;
 
                         width: 100%;
@@ -5407,12 +5407,20 @@
         .inner-section {
             padding: 4%;
         }
+
         .inner-section-lenght {
             padding: 2%;
         }
 
         h2 .title {
             font-size: 14px;
+        }
+
+        .section-title h2 {
+            margin-top: 20px;
+            /* You can adjust this value to change the top margin */
+            margin-bottom: 5px;
+            /* You can adjust this value to change the bottom margin */
         }
     </style>
 
@@ -5425,7 +5433,7 @@
     <?php $this->load->view('sidebars'); ?>
 
     <div class="max-h-screen overflow-y-auto">
-    <section class="inner-section-lenght">
+        <section class="inner-section-lenght">
             <div class="">
                 <div class="container two">
                     <div class="grid-cards">
@@ -5433,7 +5441,7 @@
                             <a href="<?php echo base_url("supervisor/data_operator") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
-                                    <?php echo $jumlah_operator ?>
+                                        <?php echo $jumlah_operator ?>
                                     </h2>
                                 </div>
                                 <p>Data Operator
@@ -5447,7 +5455,7 @@
                             <a href="<?php echo base_url("supervisor/approve") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
-                                    <?php echo $jumlah_approve ?>
+                                        <?php echo $jumlah_approve ?>
                                     </h2>
                                 </div>
                                 <p>Approve List
@@ -5469,12 +5477,12 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php if ($ruang): ?>
+                    <?php if ($ruang) : ?>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  hover:text-gray-900 transition duration-100 mx-auto"
                                 id="roomList">
                                 <?php $count = 0; ?>
-                                <?php foreach ($ruang as $row): ?>
-                                        <?php if ($count < 6): ?>
+                                <?php foreach ($ruang as $row) : ?>
+                                        <?php if ($count < 6) : ?>
                                                 <div
                                                     class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
                                                     <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
@@ -5493,12 +5501,12 @@
                                     <?php $count++; ?>
                             <?php endforeach; ?>
                         </div>
-                        <?php if ($count > 6): ?>
+                        <?php if ($count > 6) : ?>
                                 <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari
                                     <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.
                                 </p>
                         <?php endif; ?>
-                <?php else: ?>
+                <?php else : ?>
                         <div class="col-lg-4 col-md-6 mx-auto">
                             <p class="text-center text-gray-600">No data available </p>
                         </div>
@@ -5573,19 +5581,19 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($operators as $row):
+                                        foreach ($operators as $row) :
                                             $no++ ?>
-                                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                        <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                            <?php echo $no ?>
-                                                        </td>
-                                                        <td data-cell="Email " class="text-center px-6 py-4">
-                                                            <?php echo $row->username ?>
-                                                        </td>
-                                                        <td data-cell="Email " class="text-center px-6 py-4">
-                                                            <?php echo $row->email ?>
-                                                        </td>
-                                                    </tr>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Email " class="text-center px-6 py-4">
+                                                    <?php echo $row->username ?>
+                                                </td>
+                                                <td data-cell="Email " class="text-center px-6 py-4">
+                                                    <?php echo $row->email ?>
+                                                </td>
+                                            </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
@@ -5646,41 +5654,41 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($approves as $row):
+                                        foreach ($approves as $row) :
                                             $no++ ?>
-                                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                        <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                            <?php echo $no ?>
-                                                        </td>
-                                                        <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
-                                                            <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
+                                                    <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
-                                                        </td>
-                                                        <td data-cell="No Ruang " class="text-center px-3 py-3">
-                                                            <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
-                                                        </td>
-                                                        <td data-cell="Kapasitas " class="text-center px-3 py-3">
-                                                            <?php echo $row->jumlah_orang ?>
-                                                        </td>
-                                                        <td data-cell="Kode Booking " class="text-center px-3 py-3">
-                                                            <?php echo $row->kode_booking ?>
-                                                        </td>
-                                                        <td data-cell="Tanggal  " class="text-center px-3 py-3">
-                                                            <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
-                                                        </td>
+                                                </td>
+                                                <td data-cell="No Ruang " class="text-center px-3 py-3">
+                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                </td>
+                                                <td data-cell="Kapasitas " class="text-center px-3 py-3">
+                                                    <?php echo $row->jumlah_orang ?>
+                                                </td>
+                                                <td data-cell="Kode Booking " class="text-center px-3 py-3">
+                                                    <?php echo $row->kode_booking ?>
+                                                </td>
+                                                <td data-cell="Tanggal  " class="text-center px-3 py-3">
+                                                    <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
+                                                </td>
 
-                                                        <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
-                                                            <?php
-                                                            // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                            $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                            $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                            $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
+                                                    <?php
+                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                            // Menampilkan durasi dalam format angka
-                                                            echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                                            ?> </td>
+                                                    // Menampilkan durasi dalam format angka
+                                                    echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                    ?> </td>
 
-                                                    </tr>
+                                            </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
@@ -5700,7 +5708,7 @@
 
                 <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
 
-                   
+
                     <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
                         <div class="sm:flex">
                             <div class="sm:flex-1">
@@ -5773,31 +5781,52 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
     <script>
-
-         // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
-         function checkResponsive() {
-                if (window.innerWidth > 600) {
-                    location.reload(); // Reload halaman jika layar lebih besar dari 600px
-                }
+        // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
+        function checkResponsive() {
+            if (window.innerWidth > 600) {
+                location.reload(); // Reload halaman jika layar lebih besar dari 600px
             }
+        }
 
-            // window.addEventListener('resize', checkResponsive);
+        // window.addEventListener('resize', checkResponsive);
 
-            function adjustTableStyle() {
-                var table = document.querySelector('table');
-                if (window.innerWidth <= 600) {
-                    table.style.width = '100%'; // Menyesuaikan lebar tabel
-                    // Tambahkan penyesuaian gaya lain jika diperlukan
-                } else {
-                    table.style.width = '100%'; // Kembalikan ke lebar normal
-                    // Kembalikan gaya lain ke nilai default jika diperlukan
-                }
+        function adjustTableStyle(tableSelector) {
+            var tables = document.querySelectorAll(tableSelector);
+            if (tables) {
+                tables.forEach(function(table) {
+                    if (window.innerWidth <= 600) {
+                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                        for (var i = 0; i < table.style.length; i++) {
+                            var style = table.style[i];
+                            table.dataset.initialStyle = table.dataset.initialStyle || {};
+                            table.dataset.initialStyle[style] = table.style[style];
+                        }
+                        // Menyesuaikan lebar tabel saat mode responsif
+                        table.style.width = '100%';
+                        // Tambahkan penyesuaian gaya lain jika diperlukan
+                    } else {
+                        // Kembalikan ke lebar normal jika layar > 600px
+                        table.style.width = '';
+                        // Kembalikan gaya lain ke nilai default jika diperlukan
+                    }
+                });
             }
+        }
 
-            window.addEventListener('resize', adjustTableStyle);
-            adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+        window.addEventListener('resize', function() {
+            // Panggil fungsi untuk setiap tabel
+            adjustTableStyle('#example_data_operator');
+            adjustTableStyle('#example_approve');
+        });
 
-        
+        // Panggil fungsi saat halaman dimuat untuk mengatur gaya awa
+        adjustTableStyle('#example_data_operator');
+        adjustTableStyle('#example_approve');
+
+        window.addEventListener('resize', adjustTableStyle);
+        adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+
+
         $(document).ready(function() {
 
             var table = $('#example_data_operator').DataTable({
@@ -5840,47 +5869,7 @@
         }
 
         window.onload = displaySweetAlert;
-
-        var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 600) {
-                    // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
-                    var table = document.querySelector('table');
-                    if (table) {
-                        for (var style in tableInitialStyle) {
-                            table.style[style] = tableInitialStyle[style];
-                        }
-                    }
-                }
-            });
-
-            function adjustTableStyle() {
-                var table = document.querySelector('table');
-                if (table) {
-                    if (window.innerWidth <= 600) {
-                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
-                        for (var i = 0; i < table.style.length; i++) {
-                            var style = table.style[i];
-                            tableInitialStyle[style] = table.style[style];
-                        }
-                        // Menyesuaikan lebar tabel saat mode responsif
-                        table.style.width = '100%';
-                        // Tambahkan penyesuaian gaya lain jika diperlukan
-                    } else {
-                        // Kembalikan ke lebar normal jika layar > 600px
-                        table.style.width = '';
-                        // Kembalikan gaya lain ke nilai default jika diperlukan
-                    }
-                }
-            }
-
-            window.addEventListener('resize', adjustTableStyle);
-            adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
     </script>
-
-
-
 
 </body>
 
