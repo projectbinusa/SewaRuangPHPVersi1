@@ -828,16 +828,17 @@ class operator extends CI_Controller
         }
         redirect(base_url('operator/peminjaman_tempat'));
     }
-    public function hapus_tambahan_peminjaman($id) {
+    public function hapus_tambahan_peminjaman($id)
+    {
         // Ambil peminjaman dengan ID tertentu beserta data tambahannya
         $peminjaman = $this->m_model->get_by_id('peminjaman', 'id', $id)->row();
         $total_harga_peminjaman = $peminjaman->total_harga;
-        
+
         // Ambil semua data tambahan yang terkait dengan peminjaman tersebut
         $tambahan = $this->m_model->get_tambahan($id)->result();
         $harga_tambahan = 0;
         $id_tambahan_to_delete = array(); // Menyimpan id_tambahan yang akan dihapus
-        
+
         foreach ($tambahan as $row) {
             $harga_tambahan_item = tampil_harga_tambahan_byid($row->id);
             // Lakukan operasi berdasarkan jenis tambahan, misalnya kali dengan jumlah orang jika itu makanan atau minuman
@@ -849,28 +850,28 @@ class operator extends CI_Controller
             // Simpan id_tambahan yang akan dihapus
             $id_tambahan_to_delete[] = $row->id;
         }
-        
+
         $total_harga_peminjaman -= $harga_tambahan;
-        
+
         // Hapus entri tambahan berdasarkan id_tambahan
         foreach ($id_tambahan_to_delete as $id_tambahan) {
             $this->m_model->delete('peminjaman_tambahan', 'id', $id_tambahan);
         }
-        
+
         // Update total harga pada entri peminjaman
         $data_peminjaman = [
             'total_harga' => $total_harga_peminjaman,
         ];
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id));
-        
+
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
     }
-    
-    
-    
-    
+
+
+
+
     public function aksi_edit_peminjaman()
     {
         $id_pelanggan = $this->input->post('nama');
@@ -881,7 +882,6 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
 
         // Menghitung durasi dan harga ruangan
-       
 
         // Menghitung harga tambahan (snack)
         $harga_tambahan = 0;
@@ -891,6 +891,7 @@ class operator extends CI_Controller
             $durasi = $tanggalBooking->diff($tanggalBerakhir);
             $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
             $harga_ruangan = $harga_ruangan_default * $durasi->days;
+
             foreach ($id_tambahan as $id) {
                 $harga_snack = tampil_harga_tambahan_byid($id);
 
@@ -899,11 +900,8 @@ class operator extends CI_Controller
                 if ($tambahan_info && ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman')) {
                     $harga_snack *= $jumlah_orang;
                 }
-                $harga_tambahan += $harga_snack;
 
-                $data_peminjaman = [
-                    'total_harga' => $harga_tambahan + $harga_ruangan,
-                ];
+                $harga_tambahan += $harga_snack;
             }
         }
 
@@ -912,6 +910,7 @@ class operator extends CI_Controller
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
+            'total_harga' => $harga_tambahan + $harga_ruangan,
         ];
 
         // Memperbarui data di tabel peminjaman
@@ -1343,7 +1342,7 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
-    
+
     public function import_pelanggan()
     {
         if (isset($_FILES["file"]["name"])) {

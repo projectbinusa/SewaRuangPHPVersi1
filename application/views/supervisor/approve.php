@@ -1431,7 +1431,7 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="header-item">
-                        <div class="relative">
+                        <div class="table-responsive relative">
 
                             <table id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
