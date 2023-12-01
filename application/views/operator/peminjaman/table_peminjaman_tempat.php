@@ -69,6 +69,7 @@
             background-color: #f1f1f1;
             min-height: screen;
             position: relative;
+            overflow: hidden;
         }
 
         @media (min-width: 1200px) {
@@ -905,7 +906,7 @@
     </script>
 </head>
 
-<body class="relative min-h-screen overflow-hidden">
+<body>
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="pgayu">
@@ -924,7 +925,7 @@
                     <div class="col-lg-20 pb-2">
                         <div class="header-item">
                             <div class="relative">
-                                <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right mr-10">
+                                <a href="tambah_peminjaman_tempat" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded float-right ">
                                     <span class="pe-2">
                                         <i class="fas fa-plus"></i>
                                     </span>
