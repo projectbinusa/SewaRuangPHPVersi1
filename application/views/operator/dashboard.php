@@ -1754,7 +1754,7 @@
                                 </p>
                             </a>
                             <div class="card-footer">
-                                <a href="<?php echo base_url("operator/data_master_pelanggane") ?>">Klik disini</a>
+                                <a href="<?php echo base_url("operator/data_master_pelanggan") ?>">Klik disini</a>
                             </div>
                         </div>
 

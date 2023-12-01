@@ -237,7 +237,7 @@
             </header>
 
             <?php foreach ($tambahan as $row) : ?>
-                <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" class="survey-form" onsubmit="return confirmSubmission()">
+                <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form" class="survey-form" onsubmit="return confirmSubmission()">
                     <input type="hidden" name="id" value="<?php echo $row->id ?>" required>
                     <label for="nama" class="font-bold">Nama Item</label>
                     <input type="text" name="nama" value="<?php echo $row->nama ?>" class="nama" placeholder="Masukkan nama item" required>
@@ -256,62 +256,74 @@
                     <label for="deskripsi" class="font-bold">Deskripsi</label>
                     <textarea required name="deskripsi" placeholder=""><?php echo $row->deskripsi ?></textarea>
 
-                    <input type="submit" class="submit" value="Submit">
+                    <input type="submit" id="submit" class="submit" value="Submit">
                 </form>
-            <?php endforeach; ?>
+            <?php endforeach ?>
         </div>
     </main>
-
-    <!-- Include jQuery and SweetAlert CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="<?php echo base_url('path/to/your/js/script.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Your JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function confirmSubmission() {
+            // Mencegah pengiriman formulir secara default
             event.preventDefault();
 
-            Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin menyimpan perubahan?',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'POST',
-                        url: $('form').attr('action'),
-                        data: $('form').serialize(),
-                        dataType: 'json', // Mengharapkan respons JSON dari server
-                        success: function(response) {
-                            if (response.success) {
+            // Mendapatkan nilai input
+            var namaValue = $('input[name="nama"]').val();
+            var hargaValue = $('input[name="harga"]').val();
+            var jenisValue = $('select[name="jenis"]').val();
+            var deskripsiValue = $('textarea[name="deskripsi"]').val();
+
+            // Memeriksa apakah pengguna telah mengganti setidaknya satu data
+            if (namaValue == "<?php echo $row->nama ?>" &&
+                hargaValue == "<?php echo $row->harga ?>" &&
+                jenisValue == "<?php echo $row->jenis ?>" &&
+                deskripsiValue == "<?php echo $row->deskripsi ?>") {
+                Swal.fire({
+                    title: 'Peringatan!',
+                    text: 'Anda harus mengganti setidaknya satu data sebelum mengirim formulir.',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            } else {
+                // Jika setidaknya satu data telah diubah, tampilkan konfirmasi SweetAlert
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: 'Anda ingin mengirimkan formulir ini?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, kirim!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Mengirimkan formulir menggunakan AJAX jika pengguna menekan "Ya"
+                        $.ajax({
+                            type: 'POST',
+                            url: $('#survey-form').attr('action'),
+                            data: $('#survey-form').serialize(),
+                            success: function(response) {
+                                // Menangani respons dari server jika diperlukan
                                 Swal.fire({
-                                    title: 'Berhasil!',
-                                    text: 'Berhasil Mengubah item tambahan.',
+                                    title: 'Sukses!',
+                                    text: 'Informasi Anda berhasil diperbarui.',
                                     icon: 'success',
                                     showConfirmButton: false,
                                     timer: 2000
                                 }).then(() => {
+                                    // Setelah pemberitahuan sukses, mengalihkan ke halaman tertentu
                                     window.location.href = '<?php echo base_url('operator/tambahan') ?>';
                                 });
-                            } else {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Gagal memperbarui informasi.',
-                                    icon: 'error',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                });
+                            },
+                            error: function(error) {
+                                // Menangani kesalahan jika diperlukan
+                                Swal.fire('Error!', 'Gagal memperbarui informasi.', 'error');
                             }
-                        },
-                        error: function(error) {
-                            Swal.fire('Error!', 'Gagal memperbarui informasi.', 'error');
-                        }
-                    });
-                }
-            });
+                        });
+                    }
+                    // Jika pengguna mengeklik "Batal" atau menutup SweetAlert, tidak melakukan apa-apa
+                });
+            }
         }
 
         input.onfocus = function() {
