@@ -991,12 +991,14 @@
 
                                                 <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">
                                                     <?php
-                                                    // Memisahkan data tambahan menjadi array
-                                                    $tambahanArray = explode(',', $row->tambahan_nama);
-
-                                                    // Menampilkan setiap tambahan
-                                                    foreach ($tambahanArray as $tambahan) {
-                                                        echo $tambahan . '<br>';
+                                                    if ($row->tambahan_nama !== null) {
+                                                        // Memisahkan data tambahan menjadi array
+                                                        $tambahanArray = explode(',', $row->tambahan_nama);
+                                                    
+                                                        // Menampilkan setiap tambahan
+                                                        foreach ($tambahanArray as $tambahan) {
+                                                            echo $tambahan . '<br>';
+                                                        }
                                                     }
                                                     ?>
                                                 </td>

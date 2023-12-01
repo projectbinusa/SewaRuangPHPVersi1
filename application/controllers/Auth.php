@@ -208,7 +208,7 @@ public function aksi_forgot_pass()
                         <style>
                             /* CSS styling */
                             body {
-                                font-family: "Lucida Console", Courier, monospace;
+                                font-family: -apple-system, BlinkMacOS System Font, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans Extra", sans-serif;                                
                                 background-color: #f2f2f2;
                                 margin: 0;
                                 padding: 0;
@@ -226,7 +226,8 @@ public function aksi_forgot_pass()
                             h1 {
                                 color: #4f709c;
                                 margin-bottom: 20px;
-                            }
+                                font-weight: bold;
+                              }
                             .code {
                                 font-size: 28px;
                                 color: #fff;
@@ -247,6 +248,15 @@ public function aksi_forgot_pass()
                                 margin: 0 auto 10px;
                                 display: block;
                             }
+                            .container {
+                                border: 1px solid #ccc;
+                              }
+                          
+                              .code {
+                                background-color: #4f709c;
+                                color: #fff;
+                                border: 1px solid #ccc;
+                              }
                         </style>
                     </head>
                     <body>
