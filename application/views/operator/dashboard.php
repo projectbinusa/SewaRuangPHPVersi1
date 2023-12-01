@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     <!--Regular Datatables CSS-->
@@ -1747,8 +1744,7 @@
 
 
                         <div class="card">
-                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>"
-                                class="card-body text-center">
+                            <a href="<?php echo base_url("operator/data_master_pelanggan") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_pelanggan ?>
@@ -1802,20 +1798,15 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php if ($ruang): ?>
-                        <div id="roomList"
-                            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  pt-5 hover:text-gray-900 transition duration-100 mx-auto"
-                            id="roomList">
+                    <?php if ($ruang) : ?>
+                        <div id="roomList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  pt-5 hover:text-gray-900 transition duration-100 mx-auto" id="roomList">
                             <?php $count = 0; ?>
-                            <?php foreach ($ruang as $row): ?>
-                                <?php if ($count < 6): ?>
-                                    <div
-                                        class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
+                            <?php foreach ($ruang as $row) : ?>
+                                <?php if ($count < 6) : ?>
+                                    <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
                                         <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
                                             <div class="bg-white pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
-                                                    alt="Gambar Ruangan"
-                                                    class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                                                 <h2 class="text-2xl text-gray-800 font-semibold mb-3">
                                                     <?php echo $row->no_ruang; ?>
                                                 </h2>
@@ -1831,7 +1822,7 @@
                                 <?php echo $pagination_links; ?>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <div class="col-lg-4 col-md-6 mx-auto">
                             <p class="text-center text-gray-600">data Tidak Ditemukan</p>
                         </div>
@@ -1859,10 +1850,8 @@
                         <div class="header-item">
                             <div class="relative">
 
-                                <table id="example_master_ruang"
-                                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1878,11 +1867,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($ruang as $row):
+                                        foreach ($ruang as $row) :
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No  " scope="row"
-                                                    class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="No Ruang " class="text-center px-6 py-4">
@@ -1918,10 +1906,8 @@
                     <div class="col-lg-12">
                         <div class="header-item">
                             <div class="relative">
-                                <table id="example_master_pelanggan"
-                                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_master_pelanggan" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -1939,11 +1925,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($pelanggans as $row):
+                                        foreach ($pelanggans as $row) :
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row"
-                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama" class="text-center px-3 py-4">
@@ -1986,10 +1971,8 @@
                         <div class="header-item">
                             <div class="relative">
 
-                                <table id="example_report"
-                                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <table id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
                                                 No
@@ -2006,9 +1989,9 @@
                                             <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                                 Kode Booking
                                             </th>
-                                            <!-- <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                                 Tambahan
-                                            </th> -->
+                                            </th>
                                             <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                                 Total Booking
                                             </th>
@@ -2023,11 +2006,10 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($report_sewa as $row):
+                                        foreach ($report_sewa as $row) :
                                             $no++ ?>
                                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Nama Penyewa " scope="row"
-                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <?php echo $no ?>
                                                 </td>
                                                 <td data-cell="Nama" class="text-center px-3 py-4">
@@ -2042,7 +2024,7 @@
                                                 <td data-cell="Kode Booking" class="text-center px-3 py-4">
                                                     <?php echo $row->kode_booking ?>
                                                 </td>
-                                                <!-- <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                     <?php
                                                     // Memisahkan data tambahan menjadi array
                                                     $tambahanArray = explode(',', $row->tambahan_nama);
@@ -2052,7 +2034,7 @@
                                                         echo $tambahan . '<br>';
                                                     }
                                                     ?>
-                                                </td> -->
+                                                </td>
                                                 <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                     <?php
                                                     $tanggalBooking = new DateTime($row->tanggal_booking);
@@ -2091,10 +2073,23 @@
         </section>
 
         <!-- footer area start -->
-        <div class="footer-2 pb-16 bg-gray-800 inner-section md:pt-12">
+        <div class="footer-2 bg-gray-800 inner-section md:pt-12">
             <div class="container px-4 mx-auto">
 
                 <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+
+                    <!-- <div class="footer-info lg:w-1/3 md:px-4">
+        <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
+        <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
+        <div class="mt-4">
+          <button class="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
+            <span class="fab fa-facebook-f mr-2"></span> Follow
+          </button>
+          <button class="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
+            <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
+          </button>
+        </div>
+      </div> -->
 
                     <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
                         <div class="sm:flex">
@@ -2107,6 +2102,7 @@
                                     <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
                                 </div>
                             </div>
+
 
                         </div>
                     </div>
@@ -2121,13 +2117,14 @@
                                     <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
 
                     <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
                         <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
-                        <button
-                            class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
+                        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
                     </div>
 
                 </div>
@@ -2141,8 +2138,8 @@
                         <div class="md:flex-1 md:px-4 text-center md:text-left">
                             <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
                         </div>
-                        <div class="md:flex-1 md:px-4 text-center md:text-center">
-                            <a href="" class="py-2 text-center text-white inline-block hover:underline">© 2023 Sewaruang. All
+                        <div class="md:flex-1 md:px-4 text-center md:text-right">
+                            <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All
                                 rights reserved.</a>
                         </div>
                     </div>
@@ -2169,28 +2166,28 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_master_ruang').DataTable({
-                // responsive: true
-            })
+                    // responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_master_pelanggan').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_report').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
@@ -2210,7 +2207,43 @@
             }
         }
         window.onload = displaySweetAlert;
+
+        function adjustTableStyle(tableSelector) {
+            var tables = document.querySelectorAll(tableSelector);
+            if (tables) {
+                tables.forEach(function(table) {
+                    if (window.innerWidth <= 600) {
+                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                        for (var i = 0; i < table.style.length; i++) {
+                            var style = table.style[i];
+                            table.dataset.initialStyle = table.dataset.initialStyle || {};
+                            table.dataset.initialStyle[style] = table.style[style];
+                        }
+                        // Menyesuaikan lebar tabel saat mode responsif
+                        table.style.width = '100%';
+                        // Tambahkan penyesuaian gaya lain jika diperlukan
+                    } else {
+                        // Kembalikan ke lebar normal jika layar > 600px
+                        table.style.width = '';
+                        // Kembalikan gaya lain ke nilai default jika diperlukan
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            // Panggil fungsi untuk setiap tabel
+            adjustTableStyle('#example_master_ruang');
+            adjustTableStyle('#example_master_pelanggan');
+            adjustTableStyle('#example_report');
+        });
+
+        // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+        adjustTableStyle('#example_master_ruang');
+        adjustTableStyle('#example_master_pelanggan');
+        adjustTableStyle('#example_report');
     </script>
+
 </body>
 
 </html>

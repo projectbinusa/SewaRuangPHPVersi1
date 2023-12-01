@@ -599,7 +599,7 @@
                                 success: function(response) {
                                     if (response.status === 'success') {
                                         Swal.fire({
-                                            title: 'Sukses',
+                                            title: 'Berhasil',
                                             text: response.message,
                                             icon: 'success',
                                             showConfirmButton: false,
