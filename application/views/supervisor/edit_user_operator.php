@@ -176,7 +176,7 @@
         }
 
         .password-toggle {
-            margin-left: 51rem;
+            margin-left: 95%;
             transform: translateY(2rem);
             cursor: pointer;
             color: #555;
@@ -303,7 +303,7 @@
                                     icon: 'success',
                                     title: 'Success!',
                                     text: response.message,
-                                    timer: 1500,
+                                    timer: 2000,
                                     showConfirmButton: false,
                                 }).then(function() {
                                     // Redirect the user immediately after a successful update
@@ -315,6 +315,8 @@
                                     icon: 'error',
                                     title: 'Error!',
                                     text: response.message,
+                                    timer: 2000,
+                                    showConfirmButton: false,
                                 });
                             }
                         },
