@@ -223,7 +223,6 @@
                 font-size: 16px;
             }
         }
-
     </style>
 </head>
 
@@ -237,48 +236,97 @@
                 <h1 id="title" class="main-heading">Form Tambahan Peminjaman</h1>
             </header>
 
-            <?php foreach($tambahan as $row): ?>
-            <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form"
-                class="survey-form">
-                <input type="hidden" name="id" id="nama" value="<?php echo $row->id?>" class="nama" placeholder="Masukkan nama item" required>
-                <label for="nama" id="name-label" class="font-bold">Nama Item</label>
-                <input type="text" name="nama" id="nama" value="<?php echo $row->nama?>" class="nama" placeholder="Masukkan nama item" required>
+            <?php foreach ($tambahan as $row) : ?>
+                <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" class="survey-form" onsubmit="return confirmSubmission()">
+                    <input type="hidden" name="id" value="<?php echo $row->id ?>" required>
+                    <label for="nama" class="font-bold">Nama Item</label>
+                    <input type="text" name="nama" value="<?php echo $row->nama ?>" class="nama" placeholder="Masukkan nama item" required>
 
-                <label for="kapasitas" id="kapasitas-label" class="font-bold">Harga</label>
-                <input type="number" value="<?php echo $row->harga?>" name="harga" id="kapasitas" class="kapasitas" placeholder="Masukkan harga" required>
-                <label for="no_ruang" id="name-label" class="font-bold">Tambahan</label>
-                <select id="underline_select" name="jenis"
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option value="<?php echo $row->jenis?>"><?php echo $row->jenis?></option>
-                    <option value="Makanan">Makanan</option>
-                    <option value="Minuman">Minuman</option>
-                    <option value="Alat">Alat</option>
-                </select>
+                    <label for="harga" class="font-bold">Harga</label>
+                    <input type="number" value="<?php echo $row->harga ?>" name="harga" class="kapasitas" placeholder="Masukkan harga" required>
 
-                <label for="nama" id="name-label" class="font-bold">Deskripsi</label>
-                <textarea required class="nama" name="deskripsi" placeholder=""><?php echo $row->deskripsi?></textarea>
+                    <label for="jenis" class="font-bold">Tambahan</label>
+                    <select name="jenis" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <option value="<?php echo $row->jenis ?>"><?php echo $row->jenis ?></option>
+                        <option value="Makanan">Makanan</option>
+                        <option value="Minuman">Minuman</option>
+                        <option value="Alat">Alat</option>
+                    </select>
 
-                <input type="submit" id="submit" class="submit" value="Submit">
-            </form>
-            <?php endforeach?>
+                    <label for="deskripsi" class="font-bold">Deskripsi</label>
+                    <textarea required name="deskripsi" placeholder=""><?php echo $row->deskripsi ?></textarea>
+
+                    <input type="submit" class="submit" value="Submit">
+                </form>
+            <?php endforeach; ?>
         </div>
     </main>
 
-    <!-- script comboboxs no lantai -->
+    <!-- Include jQuery and SweetAlert CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Your JavaScript -->
     <script>
-        input.onfocus = function () {
+        function confirmSubmission() {
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menyimpan perubahan?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: $('form').attr('action'),
+                        data: $('form').serialize(),
+                        dataType: 'json', // Mengharapkan respons JSON dari server
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    title: 'Berhasil!',
+                                    text: 'Berhasil Mengubah item tambahan.',
+                                    icon: 'success',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                }).then(() => {
+                                    window.location.href = '<?php echo base_url('operator/tambahan') ?>';
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Gagal memperbarui informasi.',
+                                    icon: 'error',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+                            }
+                        },
+                        error: function(error) {
+                            Swal.fire('Error!', 'Gagal memperbarui informasi.', 'error');
+                        }
+                    });
+                }
+            });
+        }
+
+        input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -290,16 +338,14 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -315,6 +361,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -326,7 +373,7 @@
     <script>
         const checkbox = document.getElementById('checkbox');
 
-        checkbox.addEventListener('change', function () {
+        checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
                 // Checkbox is checked
                 console.log('Checkbox is checked. Selected value: ' + combo.value);
@@ -336,19 +383,19 @@
             }
         });
 
-        input1.onfocus = function () {
+        input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers1.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input1.value = option.value;
                 browsers1.style.display = 'none';
                 input1.style.borderRadius = "5px";
             }
         };
 
-        input1.oninput = function () {
+        input1.oninput = function() {
             currentFocus = -1;
             var text = input1.value.toUpperCase();
             for (let option of browsers1.options) {
@@ -360,16 +407,14 @@
             };
         }
         var currentFocus = -1;
-        input1.onkeydown = function (e) {
+        input1.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers1.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers1.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -385,6 +430,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -395,9 +441,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });

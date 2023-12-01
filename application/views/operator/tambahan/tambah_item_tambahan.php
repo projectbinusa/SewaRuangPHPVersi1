@@ -269,11 +269,11 @@
             event.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: 'Do you want to save this information?',
+                text: 'Apakah Anda yakin ingin menambah data?',
                 icon: 'question',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, save it!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // If user clicks "Yes, save it!", submit the form using AJAX
@@ -284,8 +284,8 @@
                         success: function(response) {
                             // Handle the server response if needed
                             Swal.fire({
-                                title: 'Saved!',
-                                text: 'Your information has been saved.',
+                                title: 'Berhasil',
+                                text: 'Data berhasil ditambahkan.',
                                 icon: 'success',
                                 showConfirmButton: false,
                                 timer: 2000
@@ -296,7 +296,7 @@
                         },
                         error: function(error) {
                             // Handle the error if needed
-                            Swal.fire('Error!', 'Failed to save information.', 'error');
+                            Swal.fire('Error!', 'Gagal menambahkan data. Silakan coba lagi.', 'error');
                         }
                     });
                 }
