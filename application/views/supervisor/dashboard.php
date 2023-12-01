@@ -5695,24 +5695,12 @@
 
 
         <!-- footer area start -->
-        <div class="footer-2 bg-gray-800 inner-section md:pt-12">
+        <div class="footer-2 pb-16 bg-gray-800 inner-section md:pt-12">
             <div class="container px-4 mx-auto">
 
                 <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
 
-                    <!-- <div class="footer-info lg:w-1/3 md:px-4">
-        <h4 class="text-white text-2xl mb-4">19K users are using FWR blocks and making their life easy.</h4>
-        <p class="text-gray-400">We have carefully crafted the blocks to suit to everyone's need.</p>
-        <div class="mt-4">
-          <button class="bg-facebook py-2 px-4 text-white rounded mt-2 transition-colors duration-300">
-            <span class="fab fa-facebook-f mr-2"></span> Follow
-          </button>
-          <button class="bg-twitter py-2 px-4 text-white rounded ml-2 mt-2 transition-colors duration-300">
-            <span class="fab fa-twitter mr-2"></span> Follow @freeweb19
-          </button>
-        </div>
-      </div> -->
-
+                   
                     <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
                         <div class="sm:flex">
                             <div class="sm:flex-1">

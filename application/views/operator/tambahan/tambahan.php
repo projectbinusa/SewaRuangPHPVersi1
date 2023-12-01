@@ -49,6 +49,7 @@
             background-color: #f1f1f1;
             min-height: screen;
             position: relative;
+            overflow: hidden;
         }
 
         @media (min-width: 1200px) {
@@ -883,7 +884,7 @@
     </script>
 </head>
 
-<body class="relative min-h-screen overflow-hidden">
+<body>
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="pgayu">
