@@ -1682,39 +1682,39 @@
         /* Style Pagination */
 
         .pagination {
-    display: flex;
-    justify-content: center;
-    margin: 15px;
-  }
+            display: flex;
+            justify-content: center;
+            margin: 15px;
+        }
 
-  .pagination a,
-  .pagination strong {
-    border: 1px solid #fff;
-    background-color: #fff;
-    border-radius: 5px;
-    font-size: 15px;
-    color: #383f47;
-    padding: 8px 15px;
-    margin-right: 2px;
-    text-decoration: none;
-  }
+        .pagination a,
+        .pagination strong {
+            border: 1px solid #fff;
+            background-color: #fff;
+            border-radius: 5px;
+            font-size: 15px;
+            color: #383f47;
+            padding: 8px 15px;
+            margin-right: 2px;
+            text-decoration: none;
+        }
 
-  .pagination a:hover,
-  .pagination strong {
-    border: 1px solid #4F709C;
-    background-color: #4F709C;
-    color: #fff;
-  }
+        .pagination a:hover,
+        .pagination strong {
+            border: 1px solid #4F709C;
+            background-color: #4F709C;
+            color: #fff;
+        }
 
-  /* Add media query for responsiveness */
-  @media screen and (max-width: 600px) {
-    .pagination {
-      display: flex #383f47;
-      justify-content: center;
-      padding-top: 20px;
-      padding-bottom: 70px;
-    }
-  }
+        /* Add media query for responsiveness */
+        @media screen and (max-width: 600px) {
+            .pagination {
+                display: flex #383f47;
+                justify-content: center;
+                padding-top: 20px;
+                padding-bottom: 70px;
+            }
+        }
     </style>
 
 </head>
@@ -2126,7 +2126,9 @@
                         <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
                         <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
                     </div>
+
                 </div>
+
             </div>
 
             <div class="">
@@ -2205,7 +2207,43 @@
             }
         }
         window.onload = displaySweetAlert;
+
+        function adjustTableStyle(tableSelector) {
+            var tables = document.querySelectorAll(tableSelector);
+            if (tables) {
+                tables.forEach(function(table) {
+                    if (window.innerWidth <= 600) {
+                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                        for (var i = 0; i < table.style.length; i++) {
+                            var style = table.style[i];
+                            table.dataset.initialStyle = table.dataset.initialStyle || {};
+                            table.dataset.initialStyle[style] = table.style[style];
+                        }
+                        // Menyesuaikan lebar tabel saat mode responsif
+                        table.style.width = '100%';
+                        // Tambahkan penyesuaian gaya lain jika diperlukan
+                    } else {
+                        // Kembalikan ke lebar normal jika layar > 600px
+                        table.style.width = '';
+                        // Kembalikan gaya lain ke nilai default jika diperlukan
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            // Panggil fungsi untuk setiap tabel
+            adjustTableStyle('#example_master_ruang');
+            adjustTableStyle('#example_master_pelanggan');
+            adjustTableStyle('#example_report');
+        });
+
+        // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+        adjustTableStyle('#example_master_ruang');
+        adjustTableStyle('#example_master_pelanggan');
+        adjustTableStyle('#example_report');
     </script>
+
 </body>
 
 </html>
