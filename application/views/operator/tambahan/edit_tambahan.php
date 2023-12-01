@@ -258,61 +258,13 @@
 
                     <input type="submit" class="submit" value="Submit">
                 </form>
-            <?php endforeach; ?>
+            <?php endforeach ?>
         </div>
     </main>
 
-    <!-- Include jQuery and SweetAlert CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Your JavaScript -->
     <script>
-        function confirmSubmission() {
-            event.preventDefault();
-
-            Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin menyimpan perubahan?',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'POST',
-                        url: $('form').attr('action'),
-                        data: $('form').serialize(),
-                        dataType: 'json', // Mengharapkan respons JSON dari server
-                        success: function(response) {
-                            if (response.success) {
-                                Swal.fire({
-                                    title: 'Berhasil!',
-                                    text: 'Berhasil Mengubah item tambahan.',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                }).then(() => {
-                                    window.location.href = '<?php echo base_url('operator/tambahan') ?>';
-                                });
-                            } else {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Gagal memperbarui informasi.',
-                                    icon: 'error',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                });
-                            }
-                        },
-                        error: function(error) {
-                            Swal.fire('Error!', 'Gagal memperbarui informasi.', 'error');
-                        }
-                    });
-                }
-            });
-        }
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         input.onfocus = function() {
             browsers.style.display = 'block';
