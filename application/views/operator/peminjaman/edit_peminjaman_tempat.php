@@ -267,8 +267,7 @@
                     </datalist>
                     <div class="flex justify-center items-center space-x-4">
                         <input type="submit" id="submit" class="submit" value="Submit" onclick="sweetAlertSubmit()">
-                        <a href="<?php echo base_url('operator/peminjaman_tempat') ?>" onclick="hapustambahan(<?php echo $row->id; ?>)" class="submit text-sm" id="hapusTambahan">Hapus Tambahan</a>
-
+                        <a href="<?php echo base_url('operator/hapus_tambahan_peminjaman/'). $row->id ?>" class="submit text-sm" id="hapusTambahan">Hapus Tambahan</a>
                     </div>
                 </form>
             <?php endforeach ?>
