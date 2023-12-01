@@ -223,7 +223,6 @@
                 font-size: 16px;
             }
         }
-
     </style>
 </head>
 
@@ -237,45 +236,75 @@
                 <h1 id="title" class="main-heading">Form Tambahan Peminjaman</h1>
             </header>
 
-            <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form"
-                class="survey-form">
+            <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form" class="survey-form" onsubmit="confirmSubmission(event)">
                 <label for="nama" id="name-label" class="font-bold">Nama Item</label>
                 <input type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama item" required>
 
                 <label for="kapasitas" id="kapasitas-label" class="font-bold">Harga</label>
                 <input type="number" name="harga" id="kapasitas" class="kapasitas" placeholder="Ketik harga" required>
+
                 <label for="jenis" id="name-label" class=" font-bold">Jenis</label>
-                <select id="underline_select" name="jenis"
-                required
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <select id="underline_select" name="jenis" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Jenisnya</option>
                     <option value="Makanan">Makanan</option>
                     <option value="Minuman">Minuman</option>
                     <option value="Alat">Alat</option>
                 </select>
-                <label for="nama" id="name-label" class="font-bold">Deskripsi</label>
-                <textarea type="text" name="deskripsi" id="nama" class="deskripsi" placeholder="Masukan Deskripsi" required>
-    </textarea>
+
+                <label for="deskripsi" id="name-label" class="font-bold">Deskripsi</label>
+                <textarea type="text" name="deskripsi" id="deskripsi" class="deskripsi" placeholder="Masukan Deskripsi" required></textarea>
+
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
 
-     <!-- script comboboxs no lantai -->
-     <script>
-        input.onfocus = function () {
-            browsers.style.display = 'block';
-            input.style.borderRadius = "5px 5px 0 0";
-        };
-        for (let option of browsers.options) {
-            option.onclick = function () {
-                input.value = option.value;
-                browsers.style.display = 'none';
-                input.style.borderRadius = "5px";
-            }
-        };
+    <!-- Add this to your HTML head -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        input.oninput = function () {
+    <!-- script comboboxs no lantai -->
+    <script>
+        function confirmSubmission(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to save this information?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, save it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If user clicks "Yes, save it!", submit the form using AJAX
+                    $.ajax({
+                        type: 'POST',
+                        url: $('#survey-form').attr('action'),
+                        data: $('#survey-form').serialize(),
+                        success: function(response) {
+                            // Handle the server response if needed
+                            Swal.fire({
+                                title: 'Saved!',
+                                text: 'Your information has been saved.',
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000
+                            }).then(() => {
+                                // After the success alert, redirect to a specific page
+                                window.location.href = '<?php echo base_url('operator/tambahan') ?>';
+                            });
+                        },
+                        error: function(error) {
+                            // Handle the error if needed
+                            Swal.fire('Error!', 'Failed to save information.', 'error');
+                        }
+                    });
+                }
+                // If user clicks "Cancel" or closes the SweetAlert, do nothing
+            });
+        }
+
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -287,16 +316,14 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -312,6 +339,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -323,7 +351,7 @@
     <script>
         const checkbox = document.getElementById('checkbox');
 
-        checkbox.addEventListener('change', function () {
+        checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
                 // Checkbox is checked
                 console.log('Checkbox is checked. Selected value: ' + combo.value);
@@ -333,19 +361,19 @@
             }
         });
 
-        input1.onfocus = function () {
+        input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers1.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input1.value = option.value;
                 browsers1.style.display = 'none';
                 input1.style.borderRadius = "5px";
             }
         };
 
-        input1.oninput = function () {
+        input1.oninput = function() {
             currentFocus = -1;
             var text = input1.value.toUpperCase();
             for (let option of browsers1.options) {
@@ -357,16 +385,14 @@
             };
         }
         var currentFocus = -1;
-        input1.onkeydown = function (e) {
+        input1.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers1.options);
-            }
-            else if (e.keyCode == 38) {
+            } else if (e.keyCode == 38) {
                 currentFocus--
                 addActive(browsers1.options);
-            }
-            else if (e.keyCode == 13) {
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1) {
                     /*and simulate a click on the "active" item:*/
@@ -382,6 +408,7 @@
             if (currentFocus < 0) currentFocus = (x.length - 1);
             x[currentFocus].classList.add("active");
         }
+
         function removeActive(x) {
             for (var i = 0; i < x.length; i++) {
                 x[i].classList.remove("active");
@@ -392,9 +419,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });
