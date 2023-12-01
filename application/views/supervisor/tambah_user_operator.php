@@ -287,10 +287,10 @@
             // Use SweetAlert2 for confirmation
             Swal.fire({
                 title: 'Simpan Data?',
-                text: 'Anda yakin ingin menyimpan data?',
+                text: 'Apakah Anda yakin ingin menambah data?',
                 icon: 'question',
                 showCancelButton: true,
-                confirmButtonText: 'Ya, Simpan!',
+                confirmButtonText: 'Ya',
                 cancelButtonText: 'Batal',
             }).then((result) => {
                 if (result.isConfirmed) {
