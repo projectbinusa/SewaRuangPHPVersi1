@@ -2126,9 +2126,7 @@
                         <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
                         <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="">
