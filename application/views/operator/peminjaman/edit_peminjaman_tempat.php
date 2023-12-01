@@ -279,7 +279,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
+    <script>    
         // Fungsi SweetAlert untuk tombol Hapus Tambahan
         function hapustambahan(id) {
             Swal.fire({
