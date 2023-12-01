@@ -796,33 +796,55 @@ class operator extends CI_Controller
             'status' => 'proses',
         ];
 
+        // ...
+
         // Memasukkan data ke tabel peminjaman
         $id_peminjaman = $this->m_model->tambah_data('peminjaman', $data_peminjaman);
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-        if (!empty($id_tambahan)) {
-            foreach ($id_tambahan as $id) {
-                $data_tambahan = [
-                    'id_pelanggan' => $id_pelanggan,
-                    'id_peminjaman' => $id_peminjaman,
-                    'id_tambahan' => $id,
-                ];
+        if ($id_peminjaman) {
+            // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
+            if (!empty($id_tambahan)) {
+                foreach ($id_tambahan as $id) {
+                    $data_tambahan = [
+                        'id_pelanggan' => $id_pelanggan,
+                        'id_peminjaman' => $id_peminjaman,
+                        'id_tambahan' => $id,
+                    ];
 
-                // Memasukkan data ke tabel peminjaman_tambahan
-                $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
+                    // Memasukkan data ke tabel peminjaman_tambahan
+                    $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
 
-                if (!$tambahan_success) {
-                    // Handle error jika tambahan tidak berhasil dimasukkan
-                    // Misalnya: Tampilkan pesan error atau lakukan rollback
-                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
-                    return;
+                    if (!$tambahan_success) {
+                        // Handle error jika tambahan tidak berhasil dimasukkan
+                        // Misalnya: Tampilkan pesan error atau lakukan rollback
+                        $response = [
+                            'success' => false,
+                            'message' => 'Failed to add additional data.'
+                        ];
+                        echo json_encode($response);
+                        return;
+                    }
                 }
             }
+
+            $this->check_expired_bookings();
+
+            // Operasi berhasil
+            $response = [
+                'success' => true,
+                'message' => 'Booking successfully saved.'
+            ];
+            echo json_encode($response);
+            return;
+        } else {
+            // Handle error if peminjaman data fails to insert
+            $response = [
+                'success' => false,
+                'message' => 'Failed to save booking. Please try again.'
+            ];
+            echo json_encode($response);
+            return;
         }
-        $this->check_expired_bookings();
-        // Operasi berhasil
-        // Redirect atau tampilkan pesan sukses
-        redirect(base_url('operator/peminjaman_tempat'));
     }
 
     public function hapus_tambahan_peminjaman($id)
