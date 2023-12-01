@@ -83,9 +83,15 @@ class operator extends CI_Controller
             'jenis' => $jenis,
             'deskripsi' => $deskripsi
         ];
-        $this->m_model->update('tambahan', $data, array('id' => $this->input->post('id')));
-        redirect(base_url('operator/tambahan'));
+
+        // Assuming $this->m_model->update returns true on success
+        $success = $this->m_model->update('tambahan', $data, array('id' => $this->input->post('id')));
+
+        // Send a JSON response
+        $response = ['success' => $success];
+        echo json_encode($response);
     }
+
     public function aksi_tambahan()
     {
         $nama = $this->input->post('nama');
@@ -819,26 +825,27 @@ class operator extends CI_Controller
         redirect(base_url('operator/peminjaman_tempat'));
     }
 
-    public function hapus_tambahan_peminjaman($id) {
+    public function hapus_tambahan_peminjaman($id)
+    {
         // Ambil peminjaman dengan ID tertentu beserta data tambahannya
         $peminjaman = $this->m_model->get_by_id('peminjaman', 'id', $id)->result();
         $total_harga_peminjaman = $peminjaman->total_harga;
-        
+
         // Ambil semua data tambahan yang terkait dengan peminjaman tersebut
         $tambahan = $this->m_model->get_tambahan($id)->result();
         $harga = 0;
         $id_tambahan_to_delete = array(); // Menyimpan id_tambahan yang akan dihapus
-        
+
         foreach ($tambahan as $row) {
             // Ambil harga tambahan item
             $harga_tambahan = tampil_harga_tambahan_byid($id);
-                // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
-                    $harga_tambahan *= $jumlah_orang;
-                }
-                $harga += $harga_tambahan;
-            
+            // Jika jenis snack adalah makanan atau minuman, kali dengan jumlah orang
+            $tambahan_info = tampil_info_tambahan_byid($id);
+            if ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman') {
+                $harga_tambahan *= $jumlah_orang;
+            }
+            $harga += $harga_tambahan;
+
             // Simpan id_tambahan yang akan dihapus
             $id_tambahan_to_delete[] = $row->id;
         }
@@ -846,18 +853,18 @@ class operator extends CI_Controller
         foreach ($id_tambahan_to_delete as $id_tambahan) {
             $this->m_model->delete('peminjaman_tambahan', 'id', $id_tambahan);
         }
-        
+
         // Update total harga pada entri peminjaman
         $data_peminjaman = [
             'total_harga' => 10000,
         ];
         $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $id));
-        
+
         $this->check_expired_bookings();
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
     }
-    
+
     public function aksi_edit_peminjaman()
     {
         $id_pelanggan = $this->input->post('nama');
@@ -871,24 +878,24 @@ class operator extends CI_Controller
 
         // Menghitung harga tambahan (snack)
         $harga_tambahan = 0;
-            $tanggalBooking = new DateTime($start_time);
-            $tanggalBerakhir = new DateTime($end_time);
-            $durasi = $tanggalBooking->diff($tanggalBerakhir);
-            $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
-            $harga_ruangan = $harga_ruangan_default * $durasi->days;
-            foreach ($id_tambahan as $id) {
-                $harga_snack = tampil_harga_tambahan_byid($id);
+        $tanggalBooking = new DateTime($start_time);
+        $tanggalBerakhir = new DateTime($end_time);
+        $durasi = $tanggalBooking->diff($tanggalBerakhir);
+        $harga_ruangan_default = tampil_harga_ruangan_byid($id_ruangan);
+        $harga_ruangan = $harga_ruangan_default * $durasi->days;
+        foreach ($id_tambahan as $id) {
+            $harga_snack = tampil_harga_tambahan_byid($id);
 
-                // Jika jenis tambahan adalah makanan atau minuman, kali dengan jumlah orang
-                $tambahan_info = tampil_info_tambahan_byid($id);
-                if ($tambahan_info && ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman')) {
-                    $harga_snack *= $jumlah_orang;
-                }
-                $harga_tambahan += $harga_snack;
+            // Jika jenis tambahan adalah makanan atau minuman, kali dengan jumlah orang
+            $tambahan_info = tampil_info_tambahan_byid($id);
+            if ($tambahan_info && ($tambahan_info === 'Makanan' || $tambahan_info === 'Minuman')) {
+                $harga_snack *= $jumlah_orang;
             }
-            $data_peminjaman = [
-                'total_harga' => $harga_tambahan + $harga_ruangan,
-            ];
+            $harga_tambahan += $harga_snack;
+        }
+        $data_peminjaman = [
+            'total_harga' => $harga_tambahan + $harga_ruangan,
+        ];
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
             'id_pelanggan' => $id_pelanggan,
@@ -1325,7 +1332,7 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
-    
+
     public function import_pelanggan()
     {
         if (isset($_FILES["file"]["name"])) {
