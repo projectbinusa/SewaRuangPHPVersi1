@@ -83,7 +83,7 @@ class operator extends CI_Controller
             'jenis' => $jenis,
             'deskripsi' => $deskripsi
         ];
-        $this->m_model->update('user', $data, array('id' => $this->input->post('id')));
+        $this->m_model->update('tambahan', $data, array('id' => $this->input->post('id')));
         redirect(base_url('operator/tambahan'));
     }
     public function aksi_tambahan()
