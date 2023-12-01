@@ -233,7 +233,16 @@
             font-weight: bold;
             font-size: 15px;
         }
-/* iki style */
+
+        .forgetPass {
+            font-size: 15px;
+            color: #4F709C;
+        }
+
+        .forgetPass a {
+            color: #4F709C;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -252,18 +261,24 @@
 
                     <form action="<?php echo base_url('auth/aksi_login') ?>" method="post">
                         <div class="inputContainer">
-                            <label class="label header-text" for="emailAddress"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
+                            <label class="label header-text" for="emailAddress"><img
+                                    src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
-                            <input type="email" name="email" autocomplete="off" class="input" id="emailAddress" placeholder="Enter your Email Address">
+                            <input type="email" name="email" autocomplete="off" class="input" id="emailAddress"
+                                placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
                             <label class="label header-text" for="emailAddress">
-                                <img src="https://i.imgur.com/g5SvdfG.png" class="labelIcon"><span>Password</span></label>
+                                <img src="https://i.imgur.com/g5SvdfG.png"
+                                    class="labelIcon"><span>Password</span></label>
                             <div class="password-input-container">
-                                <input type="password" name="password" class="input" id="password" placeholder="Enter your Password">
+                                <input type="password" name="password" class="input" id="password"
+                                    placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
                         </div>
+
+                        <p class="forgetPass">Lupa password? <a href="auth/forgot_password">Klik disini</a></p>
 
                         <button name="submit" type="submit" class="LoginButton">Login</button>
 
@@ -274,19 +289,19 @@
     </div>
 </body>
 <script>
-   <?php if ($this->session->flashdata('success_pass')) { ?>
-    Swal.fire({
-        icon: 'success',
-        title: 'Berhasil Mengganti Password!',
-        text: '<?php echo $this->session->flashdata('success'); ?>',
-        showConfirmButton: false,
-        timer: 2500
-    }).then(() => {
-        window.location.href = '<?php echo base_url(); ?>';
-    });
-<?php } ?>
+    <?php if ($this->session->flashdata('success_pass')) { ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil Mengganti Password!',
+            text: '<?php echo $this->session->flashdata('success'); ?>',
+            showConfirmButton: false,
+            timer: 2500
+        }).then(() => {
+            window.location.href = '<?php echo base_url(); ?>';
+        });
+    <?php } ?>
 
-    
+
     <?php if ($this->session->flashdata('error')): ?>
         // Tampilkan SweetAlert jika terdapat error dari session
         Swal.fire({
@@ -320,23 +335,23 @@
     <?php endif; ?>
 
     function displaySweetAlert() {
-            const success_logout = "<?php echo $this->session->flashdata('success_logout'); ?>";
+        const success_logout = "<?php echo $this->session->flashdata('success_logout'); ?>";
 
-            if (success_logout) {
-                Swal.fire({
-                    title: 'Berhasil Keluar',
-                    text: success_logout,
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 2500
-                });
-            }
+        if (success_logout) {
+            Swal.fire({
+                title: 'Berhasil Keluar',
+                text: success_logout,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2500
+            });
         }
+    }
 
-        // Memanggil fungsi saat halaman siap
-        window.onload = function() {
-            displaySweetAlert();
-        };
+    // Memanggil fungsi saat halaman siap
+    window.onload = function () {
+        displaySweetAlert();
+    };
 
 </script>
 <script type="text/javascript">
