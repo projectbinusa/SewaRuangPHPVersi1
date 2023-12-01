@@ -59,7 +59,7 @@ class Supervisor extends CI_Controller
                 'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
                 'role' => 'operator',
-                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
+                'password' => md5($this->input->post('password')),
             ];
 
             // Assuming m_model->tambah_data() returns a boolean indicating success

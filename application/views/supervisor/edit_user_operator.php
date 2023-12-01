@@ -236,10 +236,10 @@
                     <input value="<?php echo $row->id ?>" type="hidden" name="id" id="user_id" class="user_id" placeholder="Masukkan nama anda">
 
                     <label for="username" class="header-text" id="name-label">Name</label>
-                    <input value="<?php echo $row->username ?>" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
+                    <input autocomplete="off" value="<?php echo $row->username ?>" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
                     <label for="email" class="header-text" id="email-label">Email</label>
-                    <input value="<?php echo $row->email ?>" type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
+                    <input autocomplete="off" value="<?php echo $row->email ?>" type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
                     <label for="password" class="header-text" id="password-label">Password</label>
                     <i class="password-toggle fa fa-eye-slash" onclick="togglePassword()"></i>

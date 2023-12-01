@@ -299,7 +299,7 @@
                     </select>
 
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</label>
-                    <input type="number" name="kapasitas" class="kapasitas" id="kapasitas" class="kapasitas " placeholder="Ketik kapasitas ruangan" required>
+                    <input autocomplete="off" type="number" name="kapasitas" class="kapasitas" id="kapasitas" class="kapasitas " placeholder="Ketik kapasitas ruangan" required>
                 </div>
 
                 <label for="no_ruang" class="header-text" id="name-label">Ruangan</span></label>

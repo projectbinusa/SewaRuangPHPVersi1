@@ -241,17 +241,17 @@
                 <div class="flex flex-wrap">
                     <div class="w-full px-7">
                         <label for="nama" class="block">Nama</label>
-                        <input type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik nama lengkap anda" >
+                        <input autocomplete="off" type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik nama lengkap anda" >
                     </div>
 
                     <div class="w-full px-7">
                         <label for="phone" class="block">No Telepon</label>
-                        <input type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik no telepon anda" >
+                        <input autocomplete="off" type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik no telepon anda" >
                     </div>
 
                     <div class="w-full px-7">
-                        <label for="payment_method" class="block">Metode Pembayaran</label>
-                        <input type="text" name="payment_method" id="payment_method" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik pembayaran anda melalui" >
+                        <label for="eamil" class="block">Email</label>
+                        <input autocomplete="off" type="email" name="email" id="email" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik email anda" >
                     </div>
                 </div>
                 <div class="text-center mt-1">

@@ -136,6 +136,9 @@
                         <td>Name Customer : <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></span></td>
                     </tr>
                     <tr>
+                        <td>Email Customer : <span style="margin-left: 9px;"><?php echo tampil_email_penyewa_byid($row->id_pelanggan) ?></span></td>
+                    </tr>
+                    <tr>
                         <td>Nomor Telephone :<span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($row->id_pelanggan) ?></span></td>
                     </tr>
                     <tr>
@@ -148,8 +151,6 @@
                     <tr>
                         <th>Item</th>
                         <th>Jumlah Item</th>
-                        <th>Harga</th>
-                        <th>Total Harga</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -164,8 +165,7 @@
                                 $harga = tampil_harga_ruangan_byid($row->id_ruangan);
                                 echo $durasi->days . ' Hari';
                                 ?></td>
-                            <td class="merah"><?php echo convRupiah(tampil_harga_ruangan_byid($row->id_ruangan)); ?></td>
-                            <td class="merah"><?php echo convRupiah($harga * $hari); ?></td>
+
                         </tr>
                     <?php endif; ?>
                     <?php if (!empty($row->id_tambahan)) : ?>
@@ -181,30 +181,16 @@
                                         echo $row->jumlah_orang;
                                     }
                                     ?></td>
-                                <td class="merah"><?php echo convRupiah(tampil_harga_tambahan_byid($id_tambahan)); ?></td>
-                                <td class="merah"><?php
-                                    if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
-                                        echo convRupiah(tampil_harga_tambahan_byid($id_tambahan));
-                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
-                                        echo convRupiah(tampil_harga_tambahan_byid($id_tambahan) * $row->jumlah_orang);
-                                    }
-                                    ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </tbody>
             </table>
-            <div class="container">
-                <div class="total" style="margin-bottom: -50%;">
-                    <span style=" margin-bottom: 100%;">Total harga :</span><span id="displayTotal" data-amount="<?php echo convRupiah($row->total_harga) ?>"></span>
-                </div>
-            </div>
             <div class="payment-info">
-                <h4>PAYMENT INFO</h4>
+                <h4>BOOKING INFO</h4>
                 <?php date_default_timezone_set('Asia/Jakarta'); ?>
                 <p class="baru">Tanggal :<span><?php echo date(' j F Y'); ?></span></p>
                 <p>Jam Pemesanan : <span><?php echo date('H:i:s'); ?></span></p>
-                <p>pembayaran : <span><?php echo tampil_pyment_penyewa_byid($row->id_pelanggan); ?></span></p>
             </div>
         <?php endforeach; ?>
     <?php else: ?>

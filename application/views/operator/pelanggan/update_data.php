@@ -291,17 +291,17 @@
                     <input name="id" type="hidden" value="<?php echo $row->id ?>">
 
                     <label for="nama" class="block font-bold">Nama</label>
-                    <input type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->nama ?>" >
+                    <input autocomplete="off" type="text" name="nama" id="no_lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->nama ?>" >
 
 
 
                     <label for="phone" class="block font-bold">No Telepon</label>
-                    <input type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->phone ?>" >
+                    <input autocomplete="off" type="text" name="phone" id="no_ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->phone ?>" >
 
 
-                    <label for="payment_method" class="block font-bold">Metode Pembayaran</label>
-                    <input type="text" name="payment_method" id="deskripsi"
-                        class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->payment_method ?>" >
+                    <label for="email" class="block font-bold">Email</label>
+                    <input autocomplete="off" type="email" name="email" id="deskripsi"
+                        class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?php echo $row->email ?>" >
 
                     <div class="text-center mt-1">
                         <input type="submit" id="submit"

@@ -240,10 +240,7 @@
                 <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form" class="survey-form" onsubmit="return confirmSubmission()">
                     <input type="hidden" name="id" value="<?php echo $row->id ?>" required>
                     <label for="nama" class="font-bold">Nama Item</label>
-                    <input type="text" name="nama" value="<?php echo $row->nama ?>" class="nama" placeholder="Masukkan nama item" required>
-
-                    <label for="harga" class="font-bold">Harga</label>
-                    <input type="number" value="<?php echo $row->harga ?>" name="harga" class="kapasitas" placeholder="Masukkan harga" required>
+                    <input autocomplete="off" type="text" name="nama" value="<?php echo $row->nama ?>" class="nama" placeholder="Masukkan nama item" required>
 
                     <label for="jenis" class="font-bold">Tambahan</label>
                     <select name="jenis" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -254,7 +251,7 @@
                     </select>
 
                     <label for="deskripsi" class="font-bold">Deskripsi</label>
-                    <textarea required name="deskripsi" placeholder=""><?php echo $row->deskripsi ?></textarea>
+                    <textarea autocomplete="off" required name="deskripsi" placeholder=""><?php echo $row->deskripsi ?></textarea>
 
                     <input type="submit" id="submit" class="submit" value="Submit">
                 </form>

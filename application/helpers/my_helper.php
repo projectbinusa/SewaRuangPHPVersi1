@@ -36,6 +36,16 @@ function tampil_nama_penyewa_byid($id)
         return $stmt;
     }
 }
+function tampil_email_penyewa_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('pelanggan');
+    foreach ($result->result() as $c) {
+        $stmt = $c->email;
+        return $stmt;
+    }
+}
 function tampil_nomer_penyewa_byid($id)
 {
     $ci = &get_instance();

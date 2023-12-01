@@ -936,7 +936,7 @@
                                             No Telepon
                                         </th>
                                         <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                            Metode Pembayaran
+                                            Email
                                         </th>
 
                                         <th data-priority="3" scope="col" class="text-center px-3 py-3">
@@ -961,7 +961,7 @@
                                                 <?php echo $row->phone ?>
                                             </td>
                                             <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                <?php echo $row->payment_method ?>
+                                                <?php echo $row->email ?>
                                             </td>
 
                                             <!-- Aksi -->

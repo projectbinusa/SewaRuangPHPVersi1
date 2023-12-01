@@ -239,7 +239,6 @@
                 $id_ruangan = $row->id_ruangan; ?>
                 <form action="<?php echo base_url('operator/aksi_edit_peminjaman') ?>" method="post" id="survey-form" class="survey-form" onsubmit="return confirmSubmission()">
                     <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id ?>">
-                    <input type="hidden" name="ruang" id="id" class="id" value="<?php echo $row->id_ruangan ?>">
                     <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking ?>">
                     <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir ?>">
 
@@ -253,8 +252,19 @@
                         <?php endforeach ?>
                     </select>
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>
-                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
+                    <input autocomplete="off" type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
+                    <label for="no_ruang" class="header-text" id="name-label">Ruangan</span></label>
+                <select id="underline_select" name="ruang" required
+                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <option selected>Pilih Ruangan</option>
+                    <?php foreach ($ruangan as $row): ?>
+                        <option value="<?php echo $row->id?>">
+                            <?php echo $row->no_lantai ?>
+                            <?php echo $row->no_ruang ?>
+                        </option>
+                    <?php endforeach ?>
+                </select>
                     <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
                     <input class="snack" autocomplete="off" role="combobox" list="" id="input" placeholder="Pilih Paket">
                     <datalist id="browsers" role="listbox">

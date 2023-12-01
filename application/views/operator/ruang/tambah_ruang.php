@@ -201,25 +201,20 @@
                 <div class="flex flex-wrap">
                     <div class="w-full px-1">
                         <label for="no_lantai" class="block font-bold">Nomor Lantai</label>
-                        <input type="text" name="no_lantai" id="no_lantai" value="Lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input autocomplete="off" type="text" name="no_lantai" id="no_lantai" value="Lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
 
                     <div class="w-full px-1">
                         <label for="no_ruang" class="block font-bold">Ruangan</label>
-                        <input type="text" name="no_ruang" id="no_ruang" value="Ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
-                    </div>
-
-                    <div class="w-full px-1">
-                        <label for="harga" class="block font-bold">Harga</label>
-                        <input type="text" name="harga" id="harga" placeholder="harga satu hari" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input autocomplete="off" type="text" name="no_ruang" id="no_ruang" value="Ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
                     <div class="w-full px-1">
                         <label for="foto" class="block font-bold">Foto Ruangan</label>
-                        <input type="file" name="foto" id="foto" class="foto w-full  border-b-2 border-gray-300">
+                        <input autocomplete="off" type="file" name="foto" id="foto" class="foto w-full  border-b-2 border-gray-300">
                     </div>
                     <div class="w-full px-1">
                         <label for="deskripsi" class="block font-bold">Keterangan</label>
-                        <input type="text" name="deskripsi" id="deskripsi" placeholder="Deskripsi ruangan" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input autocomplete="off" type="text" name="deskripsi" id="deskripsi" placeholder="Deskripsi ruangan" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
 
                 </div>

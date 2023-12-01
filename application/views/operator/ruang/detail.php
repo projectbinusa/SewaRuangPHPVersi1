@@ -28,7 +28,6 @@
               <h5 class="mb-2 text-xl lg:text-2xl font-bold text-gray-900 text-center dark:text-white">
                 <?php echo $row->no_ruang; ?>
               </h5>
-              <p class="mb-3 font-normal text-lg text-center dark:text-gray-700"><?php echo convRupiah($row->harga); ?></p>
               <p class="mb-3 font-normal text-lg text-center dark:text-gray-700">
                 <?php echo $row->no_lantai; ?>
               </p>

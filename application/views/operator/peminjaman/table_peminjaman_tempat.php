@@ -956,9 +956,6 @@
                                             <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                                 Total Booking
                                             </th>
-                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                                Total
-                                            </th>
                                             <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                                 Status
                                             </th>
@@ -1012,9 +1009,6 @@
                                                     // Menampilkan durasi dalam format angka
                                                     echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
                                                     ?>
-                                                </td>
-                                                <td data-cell="Total " class="text-center px-3 py-4">
-                                                    <?php echo Rupiah($row->total_harga) ?>
                                                 </td>
                                                 <td data-cell="Status " class="text-center px-3 py-4 uppercase">
                                                     <?php echo $row->status ?>

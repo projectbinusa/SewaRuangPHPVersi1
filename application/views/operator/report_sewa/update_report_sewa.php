@@ -267,7 +267,7 @@
                   
                 </select>
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>
-                    <input type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
+                    <input autocomplete="off" type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
                     <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
                     <input class="snack" autocomplete="off" role="combobox" list="" id="input" placeholder="Pilih Paket">

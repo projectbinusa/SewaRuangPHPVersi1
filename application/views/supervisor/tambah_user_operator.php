@@ -239,10 +239,10 @@
             <form action="<?php echo base_url('supervisor/aksi_tambah_user_operator') ?>" method="post" id="survey-form" class="survey-form">
                 <!-- Your form fields go here -->
                 <label for="username" class="header-text" id="name-label">Name</label>
-                <input type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
+                <input autocomplete="off" type="text" name="username" id="username" class="username" placeholder="Masukkan nama anda" required>
 
                 <label for="email" class="header-text" id="email-label">Email</label>
-                <input type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
+                <input autocomplete="off" type="email" name="email" id="email" class="email" placeholder="Masukkan email anda" required>
 
                 <div class="inputContainer">
                     <label class="label header-text" for="password">

@@ -937,10 +937,6 @@
                                             <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                                 Nama Item
                                             </th>
-
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                Harga
-                                            </th>
                                             <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                                 Deskripsi
                                             </th>
@@ -963,9 +959,6 @@
                                                 </td>
                                                 <td data-cell="Nama " class="text-center w-32 px-3 py-4">
                                                     <?php echo $row->nama ?>
-                                                </td>
-                                                <td data-cell="Harga " class="text-center w-32 px-3 py-4">
-                                                    <?php echo $row->harga ?>
                                                 </td>
                                                 <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
                                                     <?php echo $row->deskripsi ?>
