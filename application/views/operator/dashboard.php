@@ -1918,9 +1918,7 @@
                                             <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                                 Telepon
                                             </th>
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                Payment Method
-                                            </th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1937,9 +1935,7 @@
                                                 <td data-cell="Telepon" class="text-center px-3 py-4">
                                                     <?php echo $row->phone ?>
                                                 </td>
-                                                <td data-cell="Payment Method " class="text-center px-3 py-4">
-                                                    <?php echo $row->payment_method ?>
-                                                </td>
+                                               
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
@@ -1989,15 +1985,11 @@
                                             <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                                 Kode Booking
                                             </th>
-                                            <!-- <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                                Tambahan
-                                            </th> -->
+                                           
                                             <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                                 Total Booking
                                             </th>
-                                            <!-- <th data-priority="8" scope="col" class="text-center px-3 py-3">
-                                                Total
-                                            </th> -->
+                                           
                                             <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                                 Status
                                             </th>
@@ -2024,28 +2016,7 @@
                                                 <td data-cell="Kode Booking" class="text-center px-3 py-4">
                                                     <?php echo $row->kode_booking ?>
                                                 </td>
-                                                <!-- <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                    <?php
-                                                    // Memisahkan data tambahan menjadi array
-                                                    $tambahanArray = explode(',', $row->tambahan_nama);
-
-                                                    // Menampilkan setiap tambahan
-                                                    foreach ($tambahanArray as $tambahan) {
-                                                        echo $tambahan . '<br>';
-                                                    }
-                                                    ?>
-                                                </td> -->
-                                                <td data-cell="Tambahan" class="text-center px-3 py-4">
-                                                    <?php
-                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                                    echo $durasi->days . ' Hari';
-                                                    ?>
-                                                </td>
-                                                <!-- <td data-cell="Total Booking" class="text-center px-3 py-4">
-                                                    <?php echo $row->total_harga ?>
-                                                </td> -->
+                                            
                                                 <td data-cell="Status" class="text-center px-3 py-4">
                                                     <!-- <?php echo $row->status ?> -->
 
@@ -2107,7 +2078,7 @@
         $(document).ready(function() {
 
             var table = $('#example_master_pelanggan').DataTable({
-                    responsive: true
+                    // responsive: true
                 })
                 .columns.adjust()
                 .responsive.recalc();
