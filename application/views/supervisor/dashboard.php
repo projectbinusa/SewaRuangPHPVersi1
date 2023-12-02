@@ -5702,72 +5702,17 @@
         </section>
 
 
-        <!-- footer area start -->
-        <div class="footer-2 pb-16 bg-gray-800 inner-section md:pt-12">
-            <div class="container px-4 mx-auto">
+       <!-- footer area start -->
+       <div class="footer-2 pb-16 bg-gray-800 inner-section md:pt-2">
 
-                <div class="md:flex md:flex-wrap md:-mx-4 py-6 md:pb-12">
+<div>
+  <div class="md:flex-1 md:px-4 text-center md:text-right">
+      <a href="" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+   </div>
+</div>
 
-
-                    <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
-                        <div class="sm:flex">
-                            <div class="sm:flex-1">
-                                <h6 class="text-base font-medium text-white uppercase mb-2">About</h6>
-                                <div>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Company</a>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Culture</a>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Team</a>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Careers</a>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div class="md:w-2/3 lg:w-1/3 md:px-4 xl:pl-16 mt-12 lg:mt-0">
-                        <div class="sm:flex">
-                            <div class="sm:flex-1">
-                                <h6 class="text-base font-medium text-white uppercase mb-2">What we offer</h6>
-                                <div>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Blocks</a>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Resources</a>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Tools</a>
-                                    <a href="#" class="text-gray-400 py-1 block hover:underline">Tutorials</a>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div class="md:w-1/3 md:px-4 md:text-center mt-12 lg:mt-0">
-                        <h5 class="text-lg text-white font-medium mb-4">Explore our site</h5>
-                        <button class="bg-indigo-600 text-white hover:bg-indigo-700 rounded py-2 px-6 md:px-12 transition-colors duration-300">Explore</button>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="">
-                <div class="container px-4 mx-auto">
-
-                    <div class="md:flex md:-mx-4 md:items-center">
-                        <!-- <div class="md:flex-1 md:px-4 text-center md:text-left">
-                            <p class="text-white">&copy; <strong>FWR</strong></p>
-                        </div> -->
-                        <div class="md:flex-1 md:px-4 text-center md:text-right">
-                            <a href="" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    <!-- footer area end -->
+</div>
+<!-- footer area end -->
 
     <!-- back-to-top end -->
     <a id="back-to-top"></a>
