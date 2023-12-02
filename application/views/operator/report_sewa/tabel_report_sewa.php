@@ -1133,7 +1133,10 @@
 
             window.addEventListener('resize', adjustTableStyle);
             adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+
+         
     </script>
+
 </body>
 
 

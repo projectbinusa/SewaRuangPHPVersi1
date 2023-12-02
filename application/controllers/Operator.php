@@ -589,59 +589,59 @@ class operator extends CI_Controller
 
 
     public function aksi_tambah_pelanggan()
-    {
-        $nama = $this->input->post('nama');
-        $phone = $this->input->post('phone');
-        $email = $this->input->post('email');
+{
+    $nama = $this->input->post('nama');
+    $phone = $this->input->post('phone');
+    $email = $this->input->post('email');
 
-        $errors = [];
+    $errors = [];
 
-        // Validasi nama
-        if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
-            $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
-        }
+    // Validasi nama
+    if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
+        $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
+    }
 
-        // Validasi phone
-        if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
-            $errors[] = 'Isi nomor telepon hanya dengan angka';
-        }
+    // Validasi phone
+    if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
+        $errors[] = 'Isi nomor telepon hanya dengan angka.';
+    }
 
-        // Validasi email
-        if (empty($email) || !preg_match('/^[/^\S+@\S+\.\S+$/]+$/', $email)) {
-            $errors[] = 'Isi email dengan benar';
-        }
+    // Validasi email
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Isi email dengan benar.';
+    }
 
-        if (count($errors) > 0) {
+    if (count($errors) > 0) {
+        $response = [
+            'status' => 'error',
+            'message' => implode(' ', $errors),
+        ];
+    } else {
+        $data = [
+            'nama' => $nama,
+            'phone' => $phone,
+            'email' => $email,
+        ];
+
+        $inserted = $this->m_model->tambah_data('pelanggan', $data);
+
+        if ($inserted) {
             $response = [
-                'status' => 'error',
-                'message' => implode(' ', $errors),
+                'status' => 'success',
+                'message' => 'Data berhasil ditambahkan.',
+                'redirect' => base_url('operator/data_master_pelanggan'),
             ];
         } else {
-            $data = [
-                'nama' => $nama,
-                'phone' => $phone,
-                'email' => $email,
+            $response = [
+                'status' => 'error',
+                'message' => 'Gagal menambahkan data. Silakan coba lagi.',
             ];
-
-            $inserted = $this->m_model->tambah_data('pelanggan', $data);
-
-            if ($inserted) {
-                $response = [
-                    'status' => 'success',
-                    'message' => 'Data berhasil ditambahkan.',
-                    'redirect' => base_url('operator/data_master_pelanggan'),
-                ];
-            } else {
-                $response = [
-                    'status' => 'error',
-                    'message' => 'Gagal menambahkan data. Silakan coba lagi.',
-                ];
-            }
         }
-
-        // Menggunakan echo json_encode untuk response AJAX
-        echo json_encode($response);
     }
+
+    // Menggunakan echo json_encode untuk response AJAX
+    echo json_encode($response);
+}
 
 
     // aksi update data pelanggan
@@ -1217,34 +1217,40 @@ class operator extends CI_Controller
     {
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
-            $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            
+            try {
+                $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+            } catch (Exception $e) {
+                echo 'Error loading file: ', $e->getMessage();
+                return;
+            }
+    
             foreach ($object->getWorksheetIterator() as $worksheet) {
                 // untuk mencari tahu seberapa banyak data yg ada
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
-
+    
                 // $row = 2; artine data dimulai dari baris ke2
                 for ($row = 2; $row <= $highestRow; $row++) {
                     $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $phone = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $email = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-
-
+    
                     // Validate that none of the imported values are empty
                     if (empty($nama) || empty($phone) || empty($email)) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
                     }
-
+    
                     // Optionally, you may want to perform additional validation or processing on the data
-
-                    $data = array(
+    
+                    $data = [
                         'nama' => $nama,
                         'phone' => $phone,
                         'email' => $email,
-                    );
-
+                    ];
+    
                     // untuk menambahkan ke database
                     $this->m_model->tambah_data('pelanggan', $data);
                 }
@@ -1254,6 +1260,7 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
+    
     public function export_tambahan()
     {
 

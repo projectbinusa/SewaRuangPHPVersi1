@@ -240,17 +240,17 @@
             <form action="<?php echo base_url('operator/aksi_tambah_ruangan') ?>" method="post" id="survey-form" class="survey-form ">
                 <div class="flex flex-wrap">
                     <div class="w-full px-7">
-                        <label for="nama" class="block">Nama</label>
+                        <label for="nama" class="block font-bold">Nama</label>
                         <input autocomplete="off" type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik nama lengkap anda" >
                     </div>
 
                     <div class="w-full px-7">
-                        <label for="phone" class="block">No Telepon</label>
+                        <label for="phone" class="block font-bold">No Telepon</label>
                         <input autocomplete="off" type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik no telepon anda" >
                     </div>
 
                     <div class="w-full px-7">
-                        <label for="eamil" class="block">Email</label>
+                        <label for="eamil" class="block font-bold">Email</label>
                         <input autocomplete="off" type="email" name="email" id="email" class="w-full min-h-8 p-4 border-b-2 border-gray-300" placeholder="Ketik email anda" >
                     </div>
                 </div>

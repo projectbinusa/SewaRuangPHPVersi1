@@ -1187,6 +1187,49 @@
                             }
                         });
                     }
+                    function impor() {
+                        // Get the form by its ID
+                        var form = document.getElementById('importForm');
+
+                        // Check if the file input is empty
+                        var fileInput = form.querySelector('[name="file"]');
+                        if (!fileInput.files.length) {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Peringatan!',
+                                text: 'Pilih file untuk diimpor',
+                            });
+                            return;
+                        }
+
+                        // If the file input is not empty, proceed with the confirmation dialog
+                        Swal.fire({
+                            title: 'Impor  Data Master Pelanggan?',
+                            text: 'Anda akan mengimpor data pelanggan',
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            cancelButtonText: 'Batal',
+                            confirmButtonText: 'Impor'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Log the form action for debugging purposes
+                                console.log('Form action:', form.action);
+
+                                // Submit the form
+                                form.submit();
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data berhasil di impor',
+                                    showConfirmButton: false,
+                                    timer: 2500,
+                                });
+                            }
+                        });
+                    }
+                }
             </script>
             <!-- jQuery -->
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -1254,6 +1297,7 @@
                         }
                     });
                 }
+            
             </script>
             <script>
                 function update(id) {
@@ -1279,7 +1323,7 @@
                         }
                     });
                 }
-
+            
 
                 function displaySweetAlert() {
                     const message = "<?php echo $this->session->flashdata('sukses'); ?>";
@@ -1305,7 +1349,7 @@
                         });
                     }
                 }
-
+            
                 // Call the function when the page loads
                 window.onload = displaySweetAlert;
             </script>
@@ -1334,6 +1378,7 @@
                         }
                     });
                 }
+            
             </script>
             <script>
                     function impor() {
@@ -1350,7 +1395,7 @@
                             });
                             return;
                         }
-
+                    
                         // If the file input is not empty, proceed with the confirmation dialog
                         Swal.fire({
                             title: 'Impor  Data Master Pelanggan?',
@@ -1378,6 +1423,8 @@
                             }
                         });
                     }
+                
+            
             </script>
 </body>
 
