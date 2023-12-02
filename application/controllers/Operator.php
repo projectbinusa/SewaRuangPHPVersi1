@@ -779,26 +779,37 @@ class operator extends CI_Controller
         redirect(base_url('operator/peminjaman_tempat'));
     }
 
+    public function hapus_peminjaman($id)
+    {
+        $this->m_model->delete('peminjaman', 'id', $id);
+        $tambahan = $this->m_model->get_tambahan($id)->result();
+        foreach ($tambahan as $row) {
+            $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
+        }
+        redirect(base_url('operator/peminjaman_tempat'));
+    }
+
     public function hapus_tambahan_peminjaman($id)
     {
+    // Hapus entri tambahan terlebih dahulu
+    $deleted_id_tambahan = $this->m_model->delete('peminjaman_tambahan', 'id_tambahan', $id);
+    if (!$deleted_id_tambahan) {
+        // Jika penghapusan entri tambahan gagal, lakukan sesuatu, seperti memberikan pesan error atau tindakan lainnya
+        // Contoh:
+        echo "Gagal menghapus entri tambahan.";
+        // Atau: return false; // Untuk memberikan sinyal kegagalan
+    }
 
-        // Ambil semua data tambahan yang terkait dengan peminjaman tersebut
-        $tambahan = $this->m_model->get_tambahan($id)->result();
-        $id_tambahan_to_delete = array(); // Menyimpan id_tambahan yang akan dihapus
-
-        foreach ($tambahan as $row) {
-
-            // Simpan id_tambahan yang akan dihapus
-            $id_tambahan_to_delete[] = $row->id;
-        }
-        // Hapus entri tambahan berdasarkan id_tambahan
-        foreach ($id_tambahan_to_delete as $id_tambahan) {
-            $this->m_model->delete('peminjaman_tambahan', 'id', $id_tambahan);
-        }
-
-        $this->check_expired_bookings();
-        // Redirect atau tampilkan pesan sukses
+    // Setelah menghapus entri tambahan, hapus entri peminjaman
+    $deleted_peminjaman = $this->m_model->delete('peminjaman_tambahan', 'id', $id);
+    if ($deleted_peminjaman) {
+        // Redirect atau tampilkan pesan sukses jika penghapusan berhasil
         redirect(base_url('operator/peminjaman_tempat'));
+    } else {
+        // Tampilkan pesan error jika penghapusan gagal
+        echo "Gagal menghapus peminjaman.";
+        // Atau: return false; // Untuk memberikan sinyal kegagalan
+    }
     }
 
     public function aksi_edit_peminjaman()
