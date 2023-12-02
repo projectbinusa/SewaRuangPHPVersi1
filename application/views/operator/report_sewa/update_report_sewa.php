@@ -295,6 +295,8 @@
                     icon: 'info',
                     title: 'Tidak Ada Perubahan',
                     text: 'Tidak ada data yang diubah. Silakan ubah setidaknya satu data.',
+                    showConfirmButton: false,
+                    timer: 2000,
                 });
                 return;
             }
@@ -322,7 +324,7 @@
                                 icon: 'success',
                                 title: 'Data berhasil diubah',
                                 showConfirmButton: false,
-                                timer: 2500,
+                                timer: 2000,
                             }).then(() => {
                                 window.location.href = "<?php echo base_url('operator/report_sewa') ?>";
                             });
