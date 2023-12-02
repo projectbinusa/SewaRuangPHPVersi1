@@ -265,7 +265,7 @@
         function confirmSubmission(event) {
             event.preventDefault();
             Swal.fire({
-                title: 'Are you sure?',
+                title: 'Konfirmasi?',
                 text: 'Apakah Anda yakin ingin menambah data?',
                 icon: 'question',
                 showCancelButton: true,
