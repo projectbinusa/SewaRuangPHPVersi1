@@ -37,8 +37,10 @@
 
         body {
             font-family: "DM Sans", sans-serif;
-            /* font-size: 17px; */
             background-color: #f1f1f1;
+            overflow: hidden;
+            position: relative;
+            min-height: screen;
         }
 
         .content-text {
@@ -1401,7 +1403,7 @@
 
     <?php $this->load->view('sidebars'); ?>
 
-    <section id="widget" class="inner-section pd-top-47">
+    <section id="widget" class="max-h-screen overflow-y-auto inner-section pd-top-47 pb-24">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">

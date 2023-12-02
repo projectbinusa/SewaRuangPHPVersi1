@@ -1989,9 +1989,9 @@
                                             <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                                 Kode Booking
                                             </th>
-                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                            <!-- <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                                 Tambahan
-                                            </th>
+                                            </th> -->
                                             <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                                 Total Booking
                                             </th>
@@ -2024,7 +2024,7 @@
                                                 <td data-cell="Kode Booking" class="text-center px-3 py-4">
                                                     <?php echo $row->kode_booking ?>
                                                 </td>
-                                                <td data-cell="Tambahan" class="text-center px-3 py-4">
+                                                <!-- <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                     <?php
                                                     // Memisahkan data tambahan menjadi array
                                                     $tambahanArray = explode(',', $row->tambahan_nama);
@@ -2034,7 +2034,7 @@
                                                         echo $tambahan . '<br>';
                                                     }
                                                     ?>
-                                                </td>
+                                                </td> -->
                                                 <td data-cell="Tambahan" class="text-center px-3 py-4">
                                                     <?php
                                                     $tanggalBooking = new DateTime($row->tanggal_booking);
@@ -2135,9 +2135,9 @@
                 <div class="container px-4 mx-auto">
 
                     <div class="md:flex md:-mx-4 md:items-center">
-                        <div class="md:flex-1 md:px-4 text-center md:text-left">
-                            <!-- <p class="text-white">&copy; <strong>FWR</strong></p> -->
-                        </div>
+                        <!-- <div class="md:flex-1 md:px-4 text-center md:text-left">
+                            <p class="text-white">&copy; <strong>FWR</strong></p>
+                        </div> -->
                         <div class="md:flex-1 md:px-4 text-center md:text-right">
                             <a href="#" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All
                                 rights reserved.</a>
