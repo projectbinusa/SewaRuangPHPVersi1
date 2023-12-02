@@ -184,7 +184,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'LANTAI', 'RUANG', 'DESKRIPSI', ];
+        $headers = ['NO', 'LANTAI', 'RUANG', 'DESKRIPSI',];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -589,59 +589,59 @@ class operator extends CI_Controller
 
 
     public function aksi_tambah_pelanggan()
-{
-    $nama = $this->input->post('nama');
-    $phone = $this->input->post('phone');
-    $email = $this->input->post('email');
+    {
+        $nama = $this->input->post('nama');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
 
-    $errors = [];
+        $errors = [];
 
-    // Validasi nama
-    if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
-        $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
-    }
+        // Validasi nama
+        if (empty($nama) || !preg_match('/^[a-zA-Z0-9\s]+$/', $nama)) {
+            $errors[] = 'Isi nama lengkap dengan huruf, angka, dan spasi saja.';
+        }
 
-    // Validasi phone
-    if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
-        $errors[] = 'Isi nomor telepon hanya dengan angka.';
-    }
+        // Validasi phone
+        if (empty($phone) || !preg_match('/^[0-9\s]+$/', $phone)) {
+            $errors[] = 'Isi nomor telepon hanya dengan angka.';
+        }
 
-    // Validasi email
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Isi email dengan benar.';
-    }
+        // Validasi email
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Isi email dengan benar.';
+        }
 
-    if (count($errors) > 0) {
-        $response = [
-            'status' => 'error',
-            'message' => implode(' ', $errors),
-        ];
-    } else {
-        $data = [
-            'nama' => $nama,
-            'phone' => $phone,
-            'email' => $email,
-        ];
-
-        $inserted = $this->m_model->tambah_data('pelanggan', $data);
-
-        if ($inserted) {
-            $response = [
-                'status' => 'success',
-                'message' => 'Data berhasil ditambahkan.',
-                'redirect' => base_url('operator/data_master_pelanggan'),
-            ];
-        } else {
+        if (count($errors) > 0) {
             $response = [
                 'status' => 'error',
-                'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                'message' => implode(' ', $errors),
             ];
-        }
-    }
+        } else {
+            $data = [
+                'nama' => $nama,
+                'phone' => $phone,
+                'email' => $email,
+            ];
 
-    // Menggunakan echo json_encode untuk response AJAX
-    echo json_encode($response);
-}
+            $inserted = $this->m_model->tambah_data('pelanggan', $data);
+
+            if ($inserted) {
+                $response = [
+                    'status' => 'success',
+                    'message' => 'Data berhasil ditambahkan.',
+                    'redirect' => base_url('operator/data_master_pelanggan'),
+                ];
+            } else {
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Gagal menambahkan data. Silakan coba lagi.',
+                ];
+            }
+        }
+
+        // Menggunakan echo json_encode untuk response AJAX
+        echo json_encode($response);
+    }
 
 
     // aksi update data pelanggan
@@ -867,11 +867,9 @@ class operator extends CI_Controller
         $nama = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
-        $start_time = $this->input->post('booking');
-        $end_time = $this->input->post('akhir_booking');
+        $waktu_mulai = $this->input->post('pemesanan');
+        $waktu_akhir = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
-
-
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
@@ -881,29 +879,29 @@ class operator extends CI_Controller
         ];
 
         // Memperbarui data di tabel peminjaman
-        $this->m_model->update('peminjaman', $data_peminjaman, array('id' => $this->input->post('id')));
-        if (!empty($id_tambahan)) {
+        $this->m_model->update('peminjaman', $data_peminjaman, ['id' => $this->input->post('id')]);
 
+        if (!empty($id_tambahan)) {
             // Menghapus data tambahan sebelum menambah yang baru
-            $id = $this->m_model->get_tambahan($this->input->post('id'))->result();
-            foreach ($id as $row) {
+            $id_tambahan_sebelumnya = $this->m_model->get_tambahan($this->input->post('id'))->result();
+            foreach ($id_tambahan_sebelumnya as $row) {
                 $this->m_model->delete('peminjaman_tambahan', 'id', $row->id);
             }
 
             // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
-            if (!empty($id_tambahan)) {
-                foreach ($id_tambahan as $id) {
-                    $data_tambahan = [
-                        'id_peminjaman' => $this->input->post('id'),
-                        'id_tambahan' => $id,
-                    ];
+            foreach ($id_tambahan as $id) {
+                $data_tambahan = [
+                    'id_peminjaman' => $this->input->post('id'),
+                    'id_tambahan' => $id,
+                ];
 
-                    // Memasukkan data ke tabel peminjaman_tambahan
-                    $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
-                }
+                // Memasukkan data ke tabel peminjaman_tambahan
+                $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
             }
         }
+
         $this->check_expired_bookings();
+
         // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/report_sewa'));
     }
@@ -1105,7 +1103,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('ruangan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN', ];
+        $headers = ['NO', 'RUANGAN', 'LANTAI', 'KETERANGAN',];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1189,7 +1187,7 @@ class operator extends CI_Controller
                     $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
 
                     // Validate that none of the imported values are empty
-                    if (empty($no_lantai) || empty($no_ruang) || empty($deskripsi) ) {
+                    if (empty($no_lantai) || empty($no_ruang) || empty($deskripsi)) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
@@ -1217,40 +1215,40 @@ class operator extends CI_Controller
     {
         if (isset($_FILES["file"]["name"])) {
             $path = $_FILES["file"]["tmp_name"];
-            
+
             try {
                 $object = PhpOffice\PhpSpreadsheet\IOFactory::load($path);
             } catch (Exception $e) {
                 echo 'Error loading file: ', $e->getMessage();
                 return;
             }
-    
+
             foreach ($object->getWorksheetIterator() as $worksheet) {
                 // untuk mencari tahu seberapa banyak data yg ada
                 $highestRow = $worksheet->getHighestRow();
                 $highestColumn = $worksheet->getHighestColumn();
-    
+
                 // $row = 2; artine data dimulai dari baris ke2
                 for ($row = 2; $row <= $highestRow; $row++) {
                     $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $phone = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                     $email = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-    
+
                     // Validate that none of the imported values are empty
                     if (empty($nama) || empty($phone) || empty($email)) {
                         // Handle the case where any of the required fields is empty
                         // You may want to log an error, skip the row, or take other appropriate actions
                         continue;
                     }
-    
+
                     // Optionally, you may want to perform additional validation or processing on the data
-    
+
                     $data = [
                         'nama' => $nama,
                         'phone' => $phone,
                         'email' => $email,
                     ];
-    
+
                     // untuk menambahkan ke database
                     $this->m_model->tambah_data('pelanggan', $data);
                 }
@@ -1260,7 +1258,7 @@ class operator extends CI_Controller
             echo 'Invalid file';
         }
     }
-    
+
     public function export_tambahan()
     {
 
