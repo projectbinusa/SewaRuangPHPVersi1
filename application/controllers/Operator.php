@@ -791,25 +791,25 @@ class operator extends CI_Controller
 
     public function hapus_tambahan_peminjaman($id)
     {
-    // Hapus entri tambahan terlebih dahulu
-    $deleted_id_tambahan = $this->m_model->delete('peminjaman_tambahan', 'id_tambahan', $id);
-    if (!$deleted_id_tambahan) {
-        // Jika penghapusan entri tambahan gagal, lakukan sesuatu, seperti memberikan pesan error atau tindakan lainnya
-        // Contoh:
-        echo "Gagal menghapus entri tambahan.";
-        // Atau: return false; // Untuk memberikan sinyal kegagalan
-    }
+        // Hapus entri tambahan terlebih dahulu
+        $deleted_id_tambahan = $this->m_model->delete('peminjaman_tambahan', 'id_tambahan', $id);
+        if (!$deleted_id_tambahan) {
+            // Jika penghapusan entri tambahan gagal, lakukan sesuatu, seperti memberikan pesan error atau tindakan lainnya
+            // Contoh:  
+            echo "Gagal menghapus entri tambahan.";
+            // Atau: return false; // Untuk memberikan sinyal kegagalan
+        }
 
-    // Setelah menghapus entri tambahan, hapus entri peminjaman
-    $deleted_peminjaman = $this->m_model->delete('peminjaman_tambahan', 'id', $id);
-    if ($deleted_peminjaman) {
-        // Redirect atau tampilkan pesan sukses jika penghapusan berhasil
-        redirect(base_url('operator/peminjaman_tempat'));
-    } else {
-        // Tampilkan pesan error jika penghapusan gagal
-        echo "Gagal menghapus peminjaman.";
-        // Atau: return false; // Untuk memberikan sinyal kegagalan
-    }
+        // Setelah menghapus entri tambahan, hapus entri peminjaman
+        $deleted_peminjaman = $this->m_model->delete('peminjaman_tambahan', 'id', $id);
+        if ($deleted_peminjaman) {
+            // Redirect atau tampilkan pesan sukses jika penghapusan berhasil
+            redirect(base_url('operator/peminjaman_tempat'));
+        } else {
+            // Tampilkan pesan error jika penghapusan gagal
+            echo "Gagal menghapus peminjaman.";
+            // Atau: return false; // Untuk memberikan sinyal kegagalan
+        }
     }
 
     public function aksi_edit_peminjaman()
