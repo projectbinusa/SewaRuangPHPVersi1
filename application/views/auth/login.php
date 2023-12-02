@@ -264,7 +264,7 @@
                             <label class="label header-text" for="emailAddress"><img
                                     src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>Email
                                 </span></label>
-                            <input type="email" name="email" autocomplete="off" class="input" id="emailAddress"
+                            <input required type="email" name="email" autocomplete="off" class="input" id="emailAddress"
                                 placeholder="Enter your Email Address">
                         </div>
                         <div class="inputContainer">
@@ -272,7 +272,7 @@
                                 <img src="https://i.imgur.com/g5SvdfG.png"
                                     class="labelIcon"><span>Password</span></label>
                             <div class="password-input-container">
-                                <input type="password" name="password" class="input" id="password"
+                                <input required type="password" name="password" class="input" id="password"
                                     placeholder="Enter your Password">
                                 <i class="password-toggle-login fa fa-eye-slash" onclick="togglePassword()"></i>
                             </div>
