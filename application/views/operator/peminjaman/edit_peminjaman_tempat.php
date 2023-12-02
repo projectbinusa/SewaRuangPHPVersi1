@@ -256,7 +256,7 @@
 
                     <label for="no_ruang" class="header-text" id="name-label">Ruangan</span></label>
                     <select id="underline_select" name="ruang" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option value="<?php echo $id_ruangan?>"><?php echo tampil_nama_ruangan_byid($id_ruangan)?></option>
+                        <option value="<?php echo $id_ruangan ?>"><?php echo tampil_nama_ruangan_byid($id_ruangan) ?></option>
                         <?php foreach ($ruangan as $row) : ?>
                             <option value="<?php echo $row->id ?>">
                                 <?php echo $row->no_lantai ?>
@@ -294,19 +294,39 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('hapusTambahan').addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                // Show SweetAlert2 confirmation dialog
+                Swal.fire({
+                    title: 'Hapus Tambahan',
+                    text: 'Apakah Anda yakin ingin menghapus tambahan?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If confirmed, redirect to the specified URL
+                        window.location.href = this.getAttribute('href');
+                    }
+                });
+            });
+        });
+
         function confirmSubmission() {
             // Mencegah pengiriman formulir secara default
             event.preventDefault();
 
             // Mendapatkan nilai input
             var namaValue = $('input[name="nama"]').val();
-            var hargaValue = $('input[name="harga"]').val();
             var jenisValue = $('select[name="jenis"]').val();
             var deskripsiValue = $('textarea[name="deskripsi"]').val();
 
             // Memeriksa apakah pengguna telah mengganti setidaknya satu data
             if (namaValue == "<?php echo $row->nama ?>" &&
-                hargaValue == "<?php echo $row->harga ?>" &&
                 jenisValue == "<?php echo $row->jenis ?>" &&
                 deskripsiValue == "<?php echo $row->deskripsi ?>") {
                 Swal.fire({
