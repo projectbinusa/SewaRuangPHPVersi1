@@ -185,7 +185,7 @@
             cursor: pointer;
         }
 
-        
+
         .header-text {
             font-weight: bold;
             font-size: 15px;
@@ -224,7 +224,7 @@
     </style>
 </head>
 
-<body class="relative min-h-screen">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
     <main class="contain-all max-h-screen overflow-y-auto">
@@ -233,60 +233,137 @@
                 <div class="green-bar"></div>
                 <h1 id="title" class="main-heading">Form Update Report Sewa</h1>
             </header>
+
             <?php foreach ($peminjaman as $row) : $booking = $row->tanggal_booking;
                 $berakhir = $row->tanggal_berakhir;
                 $jumlah =  $row->jumlah_orang;
                 $id_ruangan = $row->id_ruangan; ?>
                 <form action="<?php echo base_url('operator/aksi_update_report_sewa') ?>" method="post" id="survey-form" class="survey-form">
-                    <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id ?>">
-                    <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking ?>">
-                    <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir ?>">
-                    
-                    <label for="nama" class="header-text" id="name-label">Nama </span></label>
-                    <select id="underline_select" name="nama" required
-                        class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option value="<?php echo $row->id_pelanggan?>"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan)?></option>
-                        <?php foreach($pelanggan as $row):?>
-                        <option value="<?php echo $row->id?>">
-                           <?php echo $row->nama?>
-                        </option>
-                        <?php endforeach?>
+                    <input type="hidden" name="id" value="<?php echo $row->id ?>">
+                    <input type="hidden" name="booking" value="<?php echo $booking ?>">
+                    <input type="hidden" name="akhir_booking" value="<?php echo $berakhir ?>">
+
+                    <label for="nama" class="header-text" id="name-label">Nama</label>
+                    <select id="underline_select" name="nama" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <option value="<?php echo $row->id_pelanggan ?>"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></option>
+                        <?php foreach ($pelanggan as $pelanggan_row) : ?>
+                            <option value="<?php echo $pelanggan_row->id ?>"><?php echo $pelanggan_row->nama ?></option>
+                        <?php endforeach ?>
                     </select>
 
-                    <label for="no_ruang" class="header-text" id="name-label"> Ruangan</span></label>
-                    <select id="underline_select" name="ruang" required
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                
-                        <option  value="<?php echo tampil_nama_ruangan_byid($id_ruangan)?>"></option>
-                        <?php foreach ($ruangan as $row): ?>
-                        <option value="<?php echo $row->id?>">
-                            <?php echo $row->no_lantai ?> 
-                            <?php echo $row->no_ruang ?>
-                        </option>
-                    <?php endforeach ?>
-                  
-                </select>
-                    <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</span></label>
+                    <label for="ruang" class="header-text" id="name-label">Ruangan</label>
+                    <select id="ruang" name="ruang" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 penampilan-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                        <option value="">Pilih Ruangan</option>
+                        <?php foreach ($ruangan as $ruang_row) : ?>
+                            <option value="<?php echo $ruang_row->id ?>"><?php echo $ruang_row->no_lantai . ' ' . $ruang_row->no_ruang ?></option>
+                        <?php endforeach ?>
+                    </select>
+
+                    <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</label>
                     <input autocomplete="off" type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
-                    <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
-                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" placeholder="Pilih Paket">
+                    <label for="snack" class="header-text" id="snack-label">Tambahan</label>
+                    <input class="snack" autocomplete="off" role="combobox" list="browsers" id="input" placeholder="Pilih Paket">
                     <datalist id="browsers" id="checkbox" role="listbox">
                         <div class="">
                             <?php foreach ($tambahan as $row) : ?>
                                 <option style=""><?php echo $row->nama ?></option>
-                                <input style="width: 15px;  margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id ?>">
+                                <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id ?>">
                             <?php endforeach ?>
                         </div>
                     </datalist>
-                    <input onclick="update()" type="submit" id="submit" class="submit" value="Submit">
+                    <input onclick="update(event)" type="button" id="submit" class="submit" value="Submit">
                 </form>
             <?php endforeach ?>
         </div>
     </main>
 
-    <!-- script comboboxs -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
+        function update(event) {
+            event.preventDefault();
+
+            // Check if at least one field is changed
+            var formChanged = isFormChanged();
+
+            if (!formChanged) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Tidak Ada Perubahan',
+                    text: 'Tidak ada data yang diubah. Silakan ubah setidaknya satu data.',
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Ubah Data Pelanggan?',
+                text: 'Anda akan mengubah data pelanggan',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ubah'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var formData = new FormData($('#survey-form')[0]);
+                    $.ajax({
+                        type: 'POST',
+                        url: "<?php echo base_url('operator/aksi_update_report_sewa') ?>",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil diubah',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            }).then(() => {
+                                window.location.href = "<?php echo base_url('operator/report_sewa') ?>";
+                            });
+                        },
+                        error: function(error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ups...',
+                                text: 'Terjadi kesalahan saat mengubah data!',
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        // Function to check if any form field is changed
+        function isFormChanged() {
+            var formChanged = false;
+
+            // Check each form element
+            $('#survey-form :input').each(function() {
+                var currentValue = $(this).val();
+                var originalValue = $(this).attr('data-original');
+
+                if (currentValue !== originalValue) {
+                    formChanged = true;
+                    return false; // Break out of the loop
+                }
+            });
+
+            return formChanged;
+        }
+
+        // Store original values when the page loads
+        $(document).ready(function() {
+            $('#survey-form :input').each(function() {
+                $(this).attr('data-original', $(this).val());
+            });
+        });
+
         const checkbox = document.getElementById('checkbox');
 
         input.onfocus = function() {
@@ -342,10 +419,7 @@
                 x[i].classList.remove("active");
             }
         }
-    </script>
 
-    <!-- script comboboxs no ruang -->
-    <script>
         input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
@@ -399,11 +473,7 @@
                 x[i].classList.remove("active");
             }
         }
-    </script>
 
-
-    <!-- script disable -->
-    <script>
         $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
             $('#input').on('input', function() {
@@ -411,61 +481,13 @@
                 $('#no_ruang').prop('disabled', !$(this).val());
             });
         });
-    </script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<!--Datatables -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var table = $('#example').DataTable({
-            responsive: true
-        }).columns.adjust().responsive.recalc();
-    });
-</script>
-<script>
-    function update() {
-        Swal.fire({
-            title: 'Ubah Data Pelanggan?',
-            text: "Anda akan mengubah data pelanggan",
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'Batal',
-            confirmButtonText: 'Ubah'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Assuming you are submitting the form through AJAX
-                // If not, you might want to adjust the URL accordingly
-                $.ajax({
-                    type: 'POST',
-                    url: "<?php echo base_url('operator/aksi_update_data') ?>",
-                    data: $('#survey-form').serialize(), // Serialize form data
-                    success: function (response) {
-                        // Handle the success response
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data berhasil diubah',
-                            showConfirmButton: false,
-                            timer: 2500,
-                        });
-                    },
-                    error: function (error) {
-                        // Handle the error response
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Terjadi kesalahan saat mengubah data!',
-                        });
-                    }
-                });
-            }
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                responsive: true
+            }).columns.adjust().responsive.recalc();
         });
-    }
-</script>
-                
+    </script>
 </body>
 
 </html>
