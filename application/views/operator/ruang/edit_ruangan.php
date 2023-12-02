@@ -181,10 +181,10 @@
             transition: all .3s;
         }
 
-        .hapus_gambar:hover {
+        /* .hapus_gambar:hover {
             background-color: transparent;
             color: #222;
-        }
+        } */
 
         /* Spesifikasi ditingkatkan untuk tombol "hapus_gambar" */
         .survey-form .hapus_gambar {
@@ -350,7 +350,7 @@
             width: 8rem;
             height: 2.5rem;
             padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
         }
@@ -374,7 +374,7 @@
             width: 8rem;
             height: 2.5rem;
             padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
         }
@@ -397,7 +397,7 @@
             width: 15rem;
             height: 2.5rem;
             padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
         }
@@ -420,7 +420,7 @@
             width: 10rem;
             height: 2.5rem;
             padding: 8px 2rem;
-            margin: 40px auto 10px auto;
+            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
         }
@@ -496,7 +496,7 @@
                     <input type="hidden" name="id" id="room_id" value="<?php echo $ruangan->id; ?>">
 
                 </div>
-                <div class="text-center mt-1 flex">
+                <div class="flex justify-center items-center space-x-4">
                     <form action="<?php echo base_url('operator/hapus_image/' . $ruangan->id) ?>" method="post" id="edit-form" class="bg-white p-4 rounded-lg shadow-lg text-lg" enctype="multipart/form-data">
                     <input type="submit" id="submit" class="submit " value="Submit">
                         <input type="button" id="submitt" style="border-radius: 10px;" class="hapus_gambar" value="Hapus Foto" onclick="deleteImage('<?= $ruangan->id ?>')">
