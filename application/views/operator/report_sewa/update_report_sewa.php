@@ -253,7 +253,7 @@
 
                     <label for="ruang" class="header-text" id="name-label">Ruangan</label>
                     <select id="ruang" name="ruang" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 penampilan-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                        <option value="">Pilih Ruangan</option>
+                    <option value="<?php echo $id_ruangan ?>"><?php echo tampil_nama_ruangan_byid($id_ruangan) ?></option>
                         <?php foreach ($ruangan as $ruang_row) : ?>
                             <option value="<?php echo $ruang_row->id ?>"><?php echo $ruang_row->no_lantai . ' ' . $ruang_row->no_ruang ?></option>
                         <?php endforeach ?>
@@ -262,13 +262,13 @@
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</label>
                     <input autocomplete="off" type="number" name="kapasitas" id="kapasitas" class="kapasitas" value="<?php echo $jumlah ?>" required>
 
-                    <label for="snack" class="header-text" id="snack-label">Tambahan</label>
-                    <input class="snack" autocomplete="off" role="combobox" list="browsers" id="input" placeholder="Pilih Paket">
-                    <datalist id="browsers" id="checkbox" role="listbox">
+                    <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
+                    <input class="snack" autocomplete="off" role="combobox" list="" id="input" placeholder="Pilih Paket">
+                    <datalist id="browsers" role="listbox">
                         <div class="">
                             <?php foreach ($tambahan as $row) : ?>
                                 <option style=""><?php echo $row->nama ?></option>
-                                <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id ?>">
+                                <input style="width: 15px;  margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox_<?php echo $row->id ?>" name="tambahan[]" value="<?php echo $row->id ?>">
                             <?php endforeach ?>
                         </div>
                     </datalist>
