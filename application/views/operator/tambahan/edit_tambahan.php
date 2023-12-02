@@ -268,13 +268,11 @@
 
             // Mendapatkan nilai input
             var namaValue = $('input[name="nama"]').val();
-            var hargaValue = $('input[name="harga"]').val();
             var jenisValue = $('select[name="jenis"]').val();
             var deskripsiValue = $('textarea[name="deskripsi"]').val();
 
             // Memeriksa apakah pengguna telah mengganti setidaknya satu data
             if (namaValue == "<?php echo $row->nama ?>" &&
-                hargaValue == "<?php echo $row->harga ?>" &&
                 jenisValue == "<?php echo $row->jenis ?>" &&
                 deskripsiValue == "<?php echo $row->deskripsi ?>") {
                 Swal.fire({
