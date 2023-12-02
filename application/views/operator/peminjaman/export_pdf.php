@@ -162,7 +162,6 @@
                                 $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
                                 $durasi = $tanggalBooking->diff($tanggalBerakhir);
                                 $hari = $durasi->days;
-                                $harga = tampil_harga_ruangan_byid($row->id_ruangan);
                                 echo $durasi->days . ' Hari';
                                 ?></td>
 

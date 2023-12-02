@@ -281,8 +281,8 @@
             // Show a confirmation dialog
             Swal.fire({
                 icon: 'question',
-                title: 'Are you sure?',
-                text: 'Do you really want to update operator data?',
+                title: 'Konfirmasi?',
+                text: 'Apakah anda yakin ingin m?',
                 showCancelButton: true,
                 confirmButtonText: 'Yes',
                 cancelButtonText: 'Cancel',

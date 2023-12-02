@@ -1995,9 +1995,9 @@
                                             <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                                 Total Booking
                                             </th>
-                                            <th data-priority="8" scope="col" class="text-center px-3 py-3">
+                                            <!-- <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                                 Total
-                                            </th>
+                                            </th> -->
                                             <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                                 Status
                                             </th>
@@ -2043,11 +2043,9 @@
                                                     echo $durasi->days . ' Hari';
                                                     ?>
                                                 </td>
-                                                <td data-cell="Total Booking" class="text-center px-3 py-4">
+                                                <!-- <td data-cell="Total Booking" class="text-center px-3 py-4">
                                                     <?php echo $row->total_harga ?>
-
-
-                                                </td>
+                                                </td> -->
                                                 <td data-cell="Status" class="text-center px-3 py-4">
                                                     <!-- <?php echo $row->status ?> -->
 

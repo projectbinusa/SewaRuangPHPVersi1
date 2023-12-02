@@ -70,7 +70,7 @@
               <span class="mx-2.5 text-white font-semibold">Menu Tambahan</span>
             </a>
           </li>
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
+          <li class="px-1 py-1 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
             <hr>
             <a onclick="KeluarOPT()" class="flex items-center pt-4">
               <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
@@ -82,8 +82,8 @@
     </aside>
     <!-- Main Content -->
     <div class="w-full md:flex-1">
-      <nav style="background-color: #0C356A;" class="hidden md:flex justify-between items-center p-4 shadow-md h-16">
-        <ul class="px-1 py-2 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
+      <nav style="background-color: #0C356A;" class="hidden md:flex justify-between items-center p-2 shadow-md h-16">
+        <ul class="px-1 py-1 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
           <a onclick="KeluarOPT()" class="flex items-center">
             <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
             <span class="text-white font-semibold mx-2 mb-0">Keluar</span>

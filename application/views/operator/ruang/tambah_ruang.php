@@ -189,7 +189,6 @@
 
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
-
     <main class="contain-all max-h-screen overflow-y-auto">
         <div class="container">
             <header class="heading">
@@ -201,12 +200,12 @@
                 <div class="flex flex-wrap">
                     <div class="w-full px-1">
                         <label for="no_lantai" class="block font-bold">Nomor Lantai</label>
-                        <input autocomplete="off" type="text" name="no_lantai" id="no_lantai" value="Lantai" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input autocomplete="off" type="text" name="no_lantai" id="no_lantai" placeholder="Inputkan Lantai dulu" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
 
                     <div class="w-full px-1">
                         <label for="no_ruang" class="block font-bold">Ruangan</label>
-                        <input autocomplete="off" type="text" name="no_ruang" id="no_ruang" value="Ruang" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
+                        <input autocomplete="off" type="text" name="no_ruang" id="no_ruang" placeholder="Inputkan Ruang dulu" class="w-full min-h-8 p-4 border-b-2 border-gray-300">
                     </div>
                     <div class="w-full px-1">
                         <label for="foto" class="block font-bold">Foto Ruangan</label>
