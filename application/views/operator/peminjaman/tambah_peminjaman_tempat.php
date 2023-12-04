@@ -328,51 +328,16 @@
                 </datalist>
 
                 <div class="fields">
-                    <label for="total_booking" class="header-text" id="total_booking-label">Pemesanan Dari Tanggal</label>
-                    <span id="formatted_booking_date"></span>
-                    <input autocomplete="off" type="date" name="booking" id="total_booking" class="total_booking" placeholder="Ketik total hari pemesanan" required min="<?php echo date('Y-m-d'); ?>">
-
-                    <label for="total_booking" class="header-text" id="total_booking-label">Pemesanan Sampai Tanggal</label>
-                    <span id="formatted_akhir_booking_date"></span>
-                    <input autocomplete="off" type="date" name="akhir_booking" id="tanggalAngka" class="total_booking" placeholder="Ketik total hari pemesanan" required min="<?php echo date('Y-m-d'); ?>">
+                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Dari Tanggal</span></label>
+                    <input autocomplete="off" type="date" name="booking" id="total_booking" class="total_booking" placeholder="Ketik total hari booking" required>
+                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Sampai Tanggal</span></label>
+                    <input autocomplete="off" type="date" name="akhir_booking" id="tanggalAngka" class="total_booking" placeholder="Ketik total hari booking" required>
                 </div>
-
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var bookingInput = document.getElementById("total_booking");
-            var formattedBookingDate = document.getElementById("formatted_booking_date");
-            var akhirBookingInput = document.getElementById("tanggalAngka");
-            var formattedAkhirBookingDate = document.getElementById("formatted_akhir_booking_date");
-
-            function updateDateInputDisplay(inputElement, displayElement) {
-                var dateValue = new Date(inputElement.value);
-                if (!isNaN(dateValue.getTime())) {
-                    var options = {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    };
-                    var formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateValue);
-                    displayElement.textContent = formattedDate; // Update nilai elemen tampilan
-                }
-            }
-
-            bookingInput.addEventListener("input", function() {
-                updateDateInputDisplay(bookingInput, formattedBookingDate);
-            });
-
-            akhirBookingInput.addEventListener("input", function() {
-                updateDateInputDisplay(akhirBookingInput, formattedAkhirBookingDate);
-            });
-        });
-    </script>
 
     <script>
         input.onfocus = function() {
