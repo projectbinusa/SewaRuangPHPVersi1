@@ -1831,67 +1831,6 @@
             </div>
         </section>
 
-
-        <!-- Data Master Ruang -->
-        <section id="widget" class="inner-section">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="section-title">
-                            <h2 class="title">Data Ruang</h2>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row justify-content-center">
-
-                    <div class="col-lg-12">
-                        <div class="header-item">
-                            <div class="relative">
-
-                                <table id="example_master_ruang" class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                No Ruang
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                No Lantai
-                                            </th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($ruang as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="No Ruang " class="text-center px-6 py-4">
-                                                    <?php echo $row->no_ruang ?>
-                                                </td>
-                                                <td data-cell="No Lantai " class="text-center px-6 py-4">
-                                                    <?php echo $row->no_lantai ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
         <!-- Data Master Pelanggan -->
         <section id="widget" class="inner-section">
             <div class="container">
