@@ -142,7 +142,7 @@
           <div class="flex items-center justify-between w-full mb-4">
             <form id="searchForm" action="<?php echo base_url('operator/search'); ?>" method="post" class="flex items-center w-full">
               <button type="submit" class="mr-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded"><i class="fas fa-search text-lg mt-2"></i></button>
-              <input type="text" name="keyword" placeholder="Cari Ruangan..." class="border rounded py-2 px-4 w-full" />
+              <input type="text" name="keyword" placeholder="Cari Ruang..." class="border rounded py-2 px-4 w-full" />
             </form>
           </div>
         </div>
@@ -239,8 +239,8 @@
 
       // If the file input is not empty, proceed with the confirmation dialog
       Swal.fire({
-        title: 'Unduh Templat Data Master Pelanggan?',
-        text: 'Anda akan mengimpor data pelanggan',
+        title: 'Impor Data Ruang?',
+        text: 'Anda akan mengimpor data ruang',
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -268,14 +268,14 @@
 
     function template() {
       Swal.fire({
-        title: 'Download Template Data Operator?',
-        text: "Anda akan mengdownload template data ruangan",
+        title: 'Unduh Template Data Ruang?',
+        text: "Anda akan mengunduh template data ruang",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Batal',
-        confirmButtonText: 'Download'
+        confirmButtonText: 'Unduh'
       }).then((result) => {
         if (result.isConfirmed) {
           // Lakukan proses ekspor data di sini
@@ -283,7 +283,7 @@
 
           Swal.fire({
             icon: 'success',
-            title: 'Data berhasil didownload',
+            title: 'Data berhasil diunduh',
             showConfirmButton: false,
             timer: 2500,
           });
@@ -293,8 +293,8 @@
 
     function Eksporruangan() {
       Swal.fire({
-        title: 'Ekspor Data Ruangan?',
-        text: "Anda akan mengekspor data ruangan",
+        title: 'Ekspor Data Ruang?',
+        text: "Anda akan mengekspor data ruang",
         icon: 'question',
         timer: 20000,
         showCancelButton: true,
@@ -309,7 +309,7 @@
 
           Swal.fire({
             icon: 'success',
-            title: 'Data ruangan berhasil diekspor',
+            title: 'Data ruang berhasil diekspor',
             showConfirmButton: false,
             timer: 2500,
           });
@@ -319,7 +319,7 @@
 
     function hapus(id) {
       Swal.fire({
-        title: ' Apa Mau Menghapus?',
+        title: 'Apakah Mau Dihapus?',
         text: "data ini tidak bisa dikembalikan lagi!",
         icon: 'warning',
         timer: 20000,

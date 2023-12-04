@@ -302,8 +302,8 @@
             }
 
             Swal.fire({
-                title: 'Ubah Data Pelanggan?',
-                text: 'Anda akan mengubah data pelanggan',
+                title: 'Ubah Data Report Sewa?',
+                text: 'Anda akan mengubah data report sewa',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

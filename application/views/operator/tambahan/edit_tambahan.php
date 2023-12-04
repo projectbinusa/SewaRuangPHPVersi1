@@ -300,7 +300,7 @@
                             success: function(response) {
                                 // Menangani respons dari server jika diperlukan
                                 Swal.fire({
-                                    title: 'Sukses!',
+                                    title: 'Berhasil Mengganti!',
                                     text: 'Informasi Anda berhasil diperbarui.',
                                     icon: 'success',
                                     showConfirmButton: false,

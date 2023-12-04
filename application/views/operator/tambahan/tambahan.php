@@ -1026,7 +1026,7 @@
     <script>
         function exportData() {
             Swal.fire({
-                title: 'yakin mengekspor data?',
+                title: 'Ekspor Tambahan Peminjaman?',
                 text: 'Data akan di ekspor.',
                 icon: 'question',
                 showCancelButton: true,
@@ -1095,7 +1095,7 @@
 
         function hapus(id) {
             Swal.fire({
-                title: ' Apakah Mau Dihapus?',
+                title: 'Apakah Mau Dihapus?',
                 text: "data ini tidak bisa dikembalikan lagi!",
                 icon: 'warning',
                 showCancelButton: true,

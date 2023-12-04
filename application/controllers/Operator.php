@@ -302,7 +302,7 @@ class operator extends CI_Controller
             } else {
                 $response = [
                     'status' => 'error',
-                    'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
+                    'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
                 ];
             }
         }
@@ -438,7 +438,7 @@ class operator extends CI_Controller
                             // Gagal mengunggah gambar baru
                             $response = [
                                 'status' => 'error',
-                                'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
+                                'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
                                 'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
                             ];
                         }
@@ -955,7 +955,7 @@ class operator extends CI_Controller
                     $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
-                } elseif ($cellName == 'emai;') {
+                } elseif ($cellName == 'email') {
                     $email = $cellData;
                 }
 

@@ -883,7 +883,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
                         <div class="section-title">
-                            <h2 class="title">Data Master Pelanggan</h2>
+                            <h2 class="title">Data Pelanggan</h2>
 
                         </div>
                     </div>
@@ -1166,7 +1166,7 @@
 
                     function hapus(id) {
                         Swal.fire({
-                            title: ' Apakah Mau Dihapus?',
+                            title: 'Apakah Mau Dihapus?',
                             text: "data ini tidak bisa dikembalikan lagi!",
                             icon: 'warning',
                             showCancelButton: true,
@@ -1204,7 +1204,7 @@
 
                         // If the file input is not empty, proceed with the confirmation dialog
                         Swal.fire({
-                            title: 'Impor  Data Master Pelanggan?',
+                            title: 'Impor Data Pelanggan?',
                             text: 'Anda akan mengimpor data pelanggan',
                             icon: 'question',
                             showCancelButton: true,
@@ -1265,7 +1265,7 @@
 
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Data berhasil diekspor',
+                                title: 'Data pelanggan berhasil diekspor',
                                 showConfirmButton: false,
                                 timer: 2500,
                             });
@@ -1356,8 +1356,8 @@
             <script>
                 function template() {
                     Swal.fire({
-                        title: 'Unduh Templat Data Master Pelanggan?',
-                        text: "Anda akan mengunduh templat data master pelanggan",
+                        title: 'Unduh Templat Data Pelanggan?',
+                        text: "Anda akan mengunduh templat data pelanggan",
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -1398,7 +1398,7 @@
                     
                         // If the file input is not empty, proceed with the confirmation dialog
                         Swal.fire({
-                            title: 'Impor  Data Master Pelanggan?',
+                            title: 'Impor Data Pelanggan?',
                             text: 'Anda akan mengimpor data pelanggan',
                             icon: 'question',
                             showCancelButton: true,

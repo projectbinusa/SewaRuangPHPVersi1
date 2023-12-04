@@ -295,7 +295,7 @@
                                     if (response.status === 'success') {
                                         // Show success SweetAlert and then redirect
                                         Swal.fire({
-                                            title: 'Berhasil',
+                                            title: 'Berhasil Menambah Data Pelanggan',
                                             text: response.message,
                                             icon: 'success',
                                             showConfirmButton: false,
