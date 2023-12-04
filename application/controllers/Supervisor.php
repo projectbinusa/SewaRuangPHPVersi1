@@ -37,6 +37,12 @@ class Supervisor extends CI_Controller
         $this->load->view('supervisor/dashboard', $data);
     }
 
+    public function history()
+    {
+      
+        $this->load->view('supervisor/history');
+    }
+
     public function tambah_user_operator()
     {
         $this->load->view('supervisor/tambah_user_operator');
