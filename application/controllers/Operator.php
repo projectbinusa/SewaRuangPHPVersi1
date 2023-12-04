@@ -74,13 +74,11 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $jenis = $this->input->post('jenis');
-        $satuan = $this->input->post('satuan');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
-            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
 
@@ -96,13 +94,11 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $jenis = $this->input->post('jenis');
-        $satuan = $this->input->post('satuan');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
-            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
         $this->m_model->tambah_data('tambahan', $data);
@@ -726,21 +722,23 @@ class operator extends CI_Controller
 
     public function aksi_peminjaman()
     {
+        // Set default timezone ke Asia/Jakarta
+        date_default_timezone_set('Asia/Jakarta');
+
         // Memperoleh data dari formulir
         $id_pelanggan = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
-        $start_time = $this->input->post('booking');
-        $end_time = $this->input->post('akhir_booking');
+        $start_time = date('l, d F Y', strtotime($this->input->post('booking'))); // Format tanggal sesuai kebutuhan
+        $end_time = date('l, d F Y', strtotime($this->input->post('akhir_booking'))); // Format tanggal sesuai kebutuhan
         $id_tambahan = $this->input->post('tambahan');
 
-
-        // Menghasilkan kode booking
+        // Menghasilkan kode pemesanan
         $generate = $this->generate_booking_code();
 
         // Memeriksa konflik waktu
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
             return;
         }
 

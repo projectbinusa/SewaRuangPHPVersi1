@@ -160,14 +160,14 @@
                     <?php if (!empty($row->id_ruangan)) : ?>
                         <tr>
                             <td class="merah"><?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?></td>
-                            <td class="merah"> <?php
-                                                $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                                $hari = $durasi->days;
-                                                echo $durasi->days . ' Hari';
-                                                ?></td>
-
+                            <td class="merah">
+                                <?php $tanggalBooking = new DateTime($row->tanggal_booking);
+                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                $hari = $durasi->days;
+                                echo $durasi->days . ' Hari';
+                                ?>
+                            </td>
                         </tr>
                     <?php endif; ?>
                     <?php if (!empty($row->id_tambahan)) : ?>
@@ -176,13 +176,12 @@
                                 <td class="merah">
                                     <?php echo tampil_nama_tambahan_byid($id_tambahan) ?>
                                 </td>
-                                <td class="merah"><?php
-                                                    if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
-                                                        echo '1';
-                                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
-                                                        echo $row->jumlah_orang;
-                                                    }
-                                                    ?>
+                                <td class="merah">
+                                    <?php if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
+                                        echo '1';
+                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
+                                        echo $row->jumlah_orang;
+                                    } ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
