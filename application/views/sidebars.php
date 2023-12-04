@@ -16,7 +16,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-white min-h-screen font-base">
+<body class="bg-white min-h-screen font-base items-center">
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: window.innerWidth >= 768 }" @resize.window="isOpen = window.innerWidth >= 768">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
@@ -31,10 +31,10 @@
           </button>
         </div>
       </div>
-      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
+      <div class="px-2 py-6 items-center" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
         <ul>
           <!-- Your existing sidebar content here -->
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+          <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 sidebar-item" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
             <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white "></i>
               <span class="mx-2 text-white font-semibold">Dashboard</span>
@@ -82,8 +82,8 @@
               title: 'Login Berhasil',
               text: login_supervisor,
               icon: 'success',
-              showConfirmButton: false, // Untuk menghilangkan tombol OK
-              timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+              showConfirmButton: false,
+              timer: 2500
             });
           }
         }
@@ -101,59 +101,36 @@
             confirmButtonText: 'Keluar'
           }).then((result) => {
             if (result.isConfirmed) {
-              // Redirect to logout controller/action
-              window.location.href = 'http://localhost/exc_sewa_ruang/'; // Change this to your logout URL
+              window.location.href = 'http://localhost/exc_sewa_ruang/';
             }
           });
         }
 
-        // Gráfica de Usuarios
-        var usersChart = new Chart(document.getElementById('usersChart'), {
-          type: 'doughnut',
-          data: {
-            labels: ['Nuevos', 'Registrados'],
-            datasets: [{
-              data: [30, 65],
-              backgroundColor: ['#00F0FF', '#8B8B8D'],
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-              position: 'bottom' // Ubicar la leyenda debajo del círculo
-            }
-          }
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+          // Menutup sidebar ketika lebar layar kurang dari 768px
+          window.addEventListener('resize', () => {
+            const windowWidth = window.innerWidth;
+            const isMobile = windowWidth < 768;
 
-        // Gráfica de Comercios
-        var commercesChart = new Chart(document.getElementById('commercesChart'), {
-          type: 'doughnut',
-          data: {
-            labels: ['Nuevos', 'Registrados'],
-            datasets: [{
-              data: [60, 40],
-              backgroundColor: ['#FEC500', '#8B8B8D'],
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-              position: 'bottom' // Ubicar la leyenda debajo del círculo
+            if (isMobile) {
+              document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = false;
+            } else {
+              document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = true;
             }
-          }
-        });
-        // Menutup sidebar ketika lebar layar kurang dari 768px
-        window.addEventListener('resize', () => {
-          const windowWidth = window.innerWidth;
-          const isMobile = windowWidth < 768;
+          });
 
-          if (isMobile) {
-            document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = false;
-          } else {
-            document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = true;
-          }
+          // Mengaktifkan fungsi klik pada setiap item sidebar
+          const sidebarItems = document.querySelectorAll('.sidebar-item');
+          sidebarItems.forEach(item => {
+            item.addEventListener('click', () => {
+              // Menutup sidebar ketika item diklik (gunakan ini jika diinginkan)
+              // document.querySelector('[x-data="{ isOpen: true }"]').__x.$data.isOpen = false;
+
+              // Tandai item yang aktif
+              sidebarItems.forEach(i => i.classList.remove('active'));
+              item.classList.add('active');
+            });
+          });
         });
       </script>
 </body>

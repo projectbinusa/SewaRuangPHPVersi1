@@ -12,7 +12,8 @@
             size: A5;
         }
 
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
@@ -68,7 +69,8 @@
             border-collapse: collapse;
         }
 
-        .item-table td, .item-table th {
+        .item-table td,
+        .item-table th {
             padding: 15px;
             font-size: 80%;
         }
@@ -99,7 +101,8 @@
             margin-top: 5%;
         }
 
-        .payment-info h4, .payment-info p {
+        .payment-info h4,
+        .payment-info p {
             margin-left: 18px;
         }
 
@@ -158,12 +161,12 @@
                         <tr>
                             <td class="merah"><?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?></td>
                             <td class="merah"> <?php
-                                $tanggalBooking = new DateTime($row->tanggal_booking);
-                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
-                                $hari = $durasi->days;
-                                echo $durasi->days . ' Hari';
-                                ?></td>
+                                                $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                $hari = $durasi->days;
+                                                echo $durasi->days . ' Hari';
+                                                ?></td>
 
                         </tr>
                     <?php endif; ?>
@@ -174,12 +177,13 @@
                                     <?php echo tampil_nama_tambahan_byid($id_tambahan) ?>
                                 </td>
                                 <td class="merah"><?php
-                                    if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
-                                        echo '1';
-                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
-                                        echo $row->jumlah_orang;
-                                    }
-                                    ?></td>
+                                                    if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
+                                                        echo '1';
+                                                    } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
+                                                        echo $row->jumlah_orang;
+                                                    }
+                                                    ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -192,7 +196,7 @@
                 <p>Jam Pemesanan : <span><?php echo date('H:i:s'); ?></span></p>
             </div>
         <?php endforeach; ?>
-    <?php else: ?>
+    <?php else : ?>
         <p>Data peminjaman tidak ditemukan.</p>
     <?php endif; ?>
 </body>

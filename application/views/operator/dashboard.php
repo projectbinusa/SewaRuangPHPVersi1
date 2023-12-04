@@ -1719,7 +1719,7 @@
 
 </head>
 
-<body class="relative min-h-screen overflow-hidden" id="page-top" data-spy="" data-target=".navbar-fixed-top">
+<body class="relative min-h-screen overflow-hidden" id="page-top">
 
     <?php $this->load->view('sidebar'); ?>
 
@@ -1792,7 +1792,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Ruang</h2>
+                        <h2 class="title">Data Ruang</h2>
                     </div>
                 </div>
             </div>
@@ -1804,7 +1804,6 @@
                             <?php foreach ($ruang as $row) : ?>
                                 <?php if ($count < 6) : ?>
                                     <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                                        <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
                                             <div class="bg-white pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
                                                 <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                                                 <h2 class="text-2xl text-gray-800 font-semibold mb-3">
@@ -1857,7 +1856,6 @@
                                             <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                                 Telepon
                                             </th>
-                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1874,7 +1872,6 @@
                                                 <td data-cell="Telepon" class="text-center px-3 py-4">
                                                     <?php echo $row->phone ?>
                                                 </td>
-                                               
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
@@ -1883,8 +1880,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
 
@@ -1924,11 +1919,7 @@
                                             <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                                 Kode Booking
                                             </th>
-                                           
-                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                                Total Booking
-                                            </th>
-                                           
+
                                             <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                                 Status
                                             </th>
@@ -1955,9 +1946,8 @@
                                                 <td data-cell="Kode Booking" class="text-center px-3 py-4">
                                                     <?php echo $row->kode_booking ?>
                                                 </td>
-                                            
+
                                                 <td data-cell="Status" class="text-center px-3 py-4">
-                                                    <!-- <?php echo $row->status ?> -->
 
                                                     <?php if ($row->status == "di tolak") {
                                                         echo "DI TOLAK";
@@ -1984,104 +1974,104 @@
         <div class="footer-2 pb-16 bg-gray-800 inner-section md:pt-2">
 
             <div>
-              <div class="md:flex-1 md:px-4 text-center md:text-right">
-                  <a href="" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
-               </div>
+                <div class="md:flex-1 md:px-4 text-center md:text-right">
+                    <a href="" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
+                </div>
+            </div>
+
         </div>
+        <!-- footer area end -->
 
-    </div>
-    <!-- footer area end -->
-
-    <!-- back-to-top end -->
-    <a id="back-to-top"></a>
+        <!-- back-to-top end -->
+        <a id="back-to-top"></a>
 
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <script>
-        $(document).ready(function() {
+        <script>
+            $(document).ready(function() {
 
-            var table = $('#example_master_ruang').DataTable({
-                    // responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
+                var table = $('#example_master_ruang').DataTable({
+                        // responsive: true
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
 
-        $(document).ready(function() {
+            $(document).ready(function() {
 
-            var table = $('#example_master_pelanggan').DataTable({
-                    // responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-        $(document).ready(function() {
+                var table = $('#example_master_pelanggan').DataTable({
+                        // responsive: true
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
+            $(document).ready(function() {
 
-            var table = $('#example_report').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
+                var table = $('#example_report').DataTable({
+                        responsive: true
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
 
-        // Sweetalert Login
-        function displaySweetAlert() {
-            const login_operator = "<?php echo $this->session->flashdata('login_operator'); ?>";
+            // Sweetalert Login
+            function displaySweetAlert() {
+                const login_operator = "<?php echo $this->session->flashdata('login_operator'); ?>";
 
-            if (login_operator) {
-                Swal.fire({
-                    title: 'Login Berhasil',
-                    text: login_operator,
-                    icon: 'success',
-                    showConfirmButton: false, // Untuk menghilangkan tombol OK
-                    timer: 2500 // Tambahkan timer di sini (dalam milidetik)
-                });
+                if (login_operator) {
+                    Swal.fire({
+                        title: 'Login Berhasil',
+                        text: login_operator,
+                        icon: 'success',
+                        showConfirmButton: false, // Untuk menghilangkan tombol OK
+                        timer: 2500 // Tambahkan timer di sini (dalam milidetik)
+                    });
+                }
             }
-        }
-        window.onload = displaySweetAlert;
+            window.onload = displaySweetAlert;
 
-        function adjustTableStyle(tableSelector) {
-            var tables = document.querySelectorAll(tableSelector);
-            if (tables) {
-                tables.forEach(function(table) {
-                    if (window.innerWidth <= 600) {
-                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
-                        for (var i = 0; i < table.style.length; i++) {
-                            var style = table.style[i];
-                            table.dataset.initialStyle = table.dataset.initialStyle || {};
-                            table.dataset.initialStyle[style] = table.style[style];
+            function adjustTableStyle(tableSelector) {
+                var tables = document.querySelectorAll(tableSelector);
+                if (tables) {
+                    tables.forEach(function(table) {
+                        if (window.innerWidth <= 600) {
+                            // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                            for (var i = 0; i < table.style.length; i++) {
+                                var style = table.style[i];
+                                table.dataset.initialStyle = table.dataset.initialStyle || {};
+                                table.dataset.initialStyle[style] = table.style[style];
+                            }
+                            // Menyesuaikan lebar tabel saat mode responsif
+                            table.style.width = '100%';
+                            // Tambahkan penyesuaian gaya lain jika diperlukan
+                        } else {
+                            // Kembalikan ke lebar normal jika layar > 600px
+                            table.style.width = '';
+                            // Kembalikan gaya lain ke nilai default jika diperlukan
                         }
-                        // Menyesuaikan lebar tabel saat mode responsif
-                        table.style.width = '100%';
-                        // Tambahkan penyesuaian gaya lain jika diperlukan
-                    } else {
-                        // Kembalikan ke lebar normal jika layar > 600px
-                        table.style.width = '';
-                        // Kembalikan gaya lain ke nilai default jika diperlukan
-                    }
-                });
+                    });
+                }
             }
-        }
 
-        window.addEventListener('resize', function() {
-            // Panggil fungsi untuk setiap tabel
+            window.addEventListener('resize', function() {
+                // Panggil fungsi untuk setiap tabel
+                adjustTableStyle('#example_master_ruang');
+                adjustTableStyle('#example_master_pelanggan');
+                adjustTableStyle('#example_report');
+            });
+
+            // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
             adjustTableStyle('#example_master_ruang');
             adjustTableStyle('#example_master_pelanggan');
             adjustTableStyle('#example_report');
-        });
-
-        // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
-        adjustTableStyle('#example_master_ruang');
-        adjustTableStyle('#example_master_pelanggan');
-        adjustTableStyle('#example_report');
-    </script>
+        </script>
 
 </body>
 

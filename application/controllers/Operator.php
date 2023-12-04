@@ -74,11 +74,13 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $jenis = $this->input->post('jenis');
+        $satuan = $this->input->post('satuan');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
+            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
 
@@ -94,11 +96,13 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $jenis = $this->input->post('jenis');
+        $satuan = $this->input->post('satuan');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
+            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
         $this->m_model->tambah_data('tambahan', $data);
@@ -302,7 +306,7 @@ class operator extends CI_Controller
             } else {
                 $response = [
                     'status' => 'error',
-                    'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
+                    'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
                 ];
             }
         }
@@ -438,7 +442,7 @@ class operator extends CI_Controller
                             // Gagal mengunggah gambar baru
                             $response = [
                                 'status' => 'error',
-                                'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
+                                'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
                                 'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
                             ];
                         }
@@ -955,7 +959,7 @@ class operator extends CI_Controller
                     $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
-                } elseif ($cellName == 'email') {
+                } elseif ($cellName == 'emai;') {
                     $email = $cellData;
                 }
 
@@ -1013,7 +1017,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'TAMBAHAN', 'SNACK', 'TOTAL BOOKING', 'STATUS'];
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'TAMBAHAN', 'TOTAL BOOKING', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1069,8 +1073,8 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
             $sheet->setCellValueByColumnAndRow(6, $rowIndex, $id_tambahan);
-            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_booking);
-            $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
+            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $status);
 
             $no++;
             $rowIndex++;

@@ -16,9 +16,21 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+  :root {
+    --main-color: #4F709C;
+    --main-color-opacity: 126, 86, 255;
+    --main-gradient: linear-gradient(to right, #2878EB, #F129C9);
+    --heading-color: #002147;
+  }
+
   body {
-    max-width: 100%;
-    margin: 0 auto;
+    font-family: "DM Sans", sans-serif;
+    background-color: #f1f1f1;
+    min-height: screen;
+    position: relative;
+    overflow: hidden;
   }
 
   .flex-1 {
@@ -197,10 +209,10 @@
               </div>
               <input type="file" required name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
             </div>
-            <div class="bg-gray-200 px-4 py-3 text-right">
-              <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2" onclick="impor()">Impor</button>
-              <button type="button" class="py-2 px-4 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">Unduh Templat</button>
+            <div class="bg-gray-200 px-4 py-3 md:text-right">
+              <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+              <button type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2" onclick="impor()">Impor</button>
+              <button type="button" class="py-2 px-2 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">Unduh Templat</button>
             </div>
           </form>
         </div>
