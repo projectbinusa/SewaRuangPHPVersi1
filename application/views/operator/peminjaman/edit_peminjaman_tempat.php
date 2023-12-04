@@ -114,8 +114,8 @@
             border-bottom: 1px solid #bcb9b9;
         }
 
-        .submit {
-            font-size: 8px;
+        /* .submit {
+            font-size: 4px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -125,11 +125,9 @@
             border-radius: 1rem;
             width: 8rem;
             height: 2.5rem;
-            padding: 8px 2rem;
-            margin: 40px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
-        }
+        } */
 
         .submit:hover {
             background-color: transparent;
@@ -137,6 +135,7 @@
         }
 
         /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        /* .survey-form .submit { */
         .survey-form .submit {
             font-size: 14px;
             font-weight: 600;
@@ -148,10 +147,14 @@
             border-radius: 1rem;
             width: 14rem;
             height: 2.5rem;
-            padding: 1px 2rem;
-            margin: 40px 10px 10px 10px;
+            padding: 0;
+            /* Atur ulang padding agar fleksibel */
+            margin: 20px 10px 10px 10px;
             cursor: pointer;
             transition: all .3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .survey-form .submit:hover {
@@ -276,7 +279,7 @@
                     </datalist>
                     <div class="flex justify-center items-center space-x-4">
                         <input type="submit" id="submit" class="submit" value="Submit">
-                        <a href="<?php echo base_url('operator/hapus_tambahan_peminjaman/') . $row->id ?>" class="submit text-sm" id="hapusTambahan">Hapus Tambahan</a>
+                        <a href="<?php echo base_url('operator/hapus_tambahan_peminjaman/') . $row->id ?>" class="submit text-sm mt-96" id="hapusTambahan">Hapus Tambahan</a>
                     </div>
                 </form>
             <?php endforeach ?>

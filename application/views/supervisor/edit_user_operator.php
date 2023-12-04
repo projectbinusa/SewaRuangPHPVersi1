@@ -190,7 +190,7 @@
         @media only screen and (max-width: 800px) {
 
             .password-toggle {
-                margin-left: 22.4rem;
+                margin-left: 91%;
                 transform: translateY(2rem);
             }
 
