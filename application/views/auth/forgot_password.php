@@ -160,18 +160,39 @@
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script>
-    <?php if ($this->session->flashdata('error')): ?>
+<?php if ($this->session->flashdata('error')): ?>
+    <script>
         Swal.fire({
             icon: 'error',
             title: 'Pesan Gagal Terkirim!',
             text: '<?php echo $this->session->flashdata('error'); ?>',
-            timer: 2500, // Waktu tampilan SweetAlert dalam milidetik (dalam contoh ini, 2500ms atau 2,5 detik)
-            showConfirmButton: false // Menghilangkan tombol "OK"
+            timer: 2500,
+            showConfirmButton: false,
+            customClass: {
+                title: 'swal-title-large',
+                text: 'swal-text-large',
+                popup: 'swal-popup-large'
+            }
         }).then(() => {
             window.location.href = '<?php echo base_url('auth/forgot_password'); ?>';
         });
-    <?php endif; ?>
-</script>
+    </script>
+
+    <style>
+        /* Tambahkan style untuk memperbesar SweetAlert */
+        .swal-title-large {
+            font-size: 24px !important;
+        }
+
+        .swal-text-large {
+            font-size: 18px !important;
+        }
+
+        .swal-popup-large {
+            width: 300px !important;
+            height: 250px !important;
+        }
+    </style>
+<?php endif; ?>
 
 </html>

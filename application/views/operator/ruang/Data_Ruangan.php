@@ -280,8 +280,8 @@
 
     function template() {
       Swal.fire({
-        title: 'Unduh Template Data Ruang?',
-        text: "Anda akan mengunduh template data ruang",
+        title: 'Unduh Templat Data Ruang?',
+        text: "Anda akan mengunduh templat data ruang",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
