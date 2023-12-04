@@ -87,6 +87,11 @@ class Supervisor extends CI_Controller
         ];
         $approve = $this->m_model->get_status_proses()->result();
         foreach ($approve as $row) {
+            $data_approve = [
+                'status' => 'di setujui',
+                'id_peminjaman' => $row->id
+            ];
+            $this->m_model->tambah_data('history_approve' ,$data);
             $this->m_model->update('peminjaman', $data, array('id' => $row->id));
         }
         redirect(base_url('supervisor/approve'));
@@ -98,6 +103,11 @@ class Supervisor extends CI_Controller
         ];
         $approve = $this->m_model->get_status_proses()->result();
         foreach ($approve as $row) {
+            $data_approve = [
+                'status' => 'di tolak',
+                'id_peminjaman' => $row->id
+            ];
+            $this->m_model->tambah_data('history_approve' ,$data);
             $this->m_model->update('peminjaman', $data, array('id' => $row->id));
         }
         redirect(base_url('supervisor/approve'));
@@ -107,6 +117,11 @@ class Supervisor extends CI_Controller
         $data = [
             'status' => 'booking',
         ];
+        $data_approve = [
+            'status' => 'di setujui',
+            'id_peminjaman' => $id
+        ];
+        $this->m_model->tambah_data('history_approve' ,$data);
         $this->m_model->update('peminjaman', $data, array('id' => $id));
         redirect(base_url('supervisor/approve'));
     }
@@ -115,6 +130,11 @@ class Supervisor extends CI_Controller
         $data = [
             'status' => 'di tolak',
         ];
+        $data_approve = [
+            'status' => 'di tolak',
+            'id_peminjaman' => $id
+        ];
+        $this->m_model->tambah_data('history_approve' ,$data);
         $this->m_model->update('peminjaman', $data, array('id' => $id));
         redirect(base_url('supervisor/approve'));
     }

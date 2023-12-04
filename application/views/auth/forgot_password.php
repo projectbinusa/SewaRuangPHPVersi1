@@ -141,7 +141,7 @@
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
-                <h1 id="title" class="main-heading">Forgot Password</h1>
+                <h1 id="title" class="main-heading">Konfirmasi Password</h1>
             </header>
 
             <form action="<?php echo base_url('auth/aksi_forgot_pass') ?>" method="post" id="survey-form"
