@@ -35,6 +35,7 @@
     <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 
+    
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -784,15 +785,12 @@
             margin-left: 9px;
         }
 
-        /* 
-        /Row Hover/ */
-        table.dataTable.hover tbody tr:hover,
+        /Row Hover/ table.dataTable.hover tbody tr:hover,
         table.dataTable.display tbody tr:hover {
             background-color: #ebf4ff;
         }
 
-        /* /Pagination Buttons/ */
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
+        /Pagination Buttons/ .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-weight: 400;
             border-radius: .25rem;
             border: 1px solid transparent;
@@ -832,6 +830,7 @@
 
         }
 
+
         /* code responsive table */
         @media (max-width: 600px) {
             table {
@@ -843,9 +842,6 @@
                 width: 8rem;
                 height: 2rem;
             }
-            .inner-section {
-            padding: 4%;
-        }
         }
 
         .inner-section {
@@ -861,9 +857,25 @@
             padding: 20px 10px 10px 10px;
         }
 
+        .contain-all {
+            overflow-y: scroll;
+            /* height: 50%; */
+        }
+
         .btn-style {
             width: 6rem;
             padding: 7px 1px;
+        }
+
+        .pgayu {
+            max-height: 590px;
+        }
+
+        @media (max-width: 768px) {
+            .pgayu {
+                max-height: max-content;
+                margin-bottom: 50px;
+            }
         }
     </style>
 
@@ -878,17 +890,18 @@
 <body>
     <?php $this->load->view('sidebar'); ?>
     <main class="contain-all max-h-screen overflow-y-auto">
-        <section id="widget" class="p-10 pb-24 inner-section pd-top-120">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <div class="section-title">
-                            <h2 class="title">Data Pelanggan</h2>
+        <div class="pgayu">
+            <section id="widget" class="p-10 widget-section pd-top-120">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <div class="section-title">
+                                <h2 class="title">Data Pelanggan</h2>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <div class="container-table row justify-content-center">
 
                 <div class="col-lg-12">
@@ -920,8 +933,7 @@
                                 </a>
                             </div>
 
-                            <table style="min-width: 12rem;" id="example_data"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -1011,7 +1023,7 @@
                                     class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2"
                                     onclick="toggleModal()"> Batal</button>
                                 <button onclick="impor()" type="button"
-                                    class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                                    class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                                 <!-- Remove or replace the following line if template() is not defined -->
                                 <button type="button"
                                     class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2"
