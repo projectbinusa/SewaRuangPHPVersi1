@@ -1015,7 +1015,7 @@
                                 <!-- Remove or replace the following line if template() is not defined -->
                                 <button type="button"
                                     class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2"
-                                    onclick="template()">Unduh Templat</button>
+                                    onclick="template()">Unduh Template</button>
                             </div>
                         </form>
                     </div>
@@ -1356,8 +1356,8 @@
             <script>
                 function template() {
                     Swal.fire({
-                        title: 'Unduh Templat Data Pelanggan?',
-                        text: "Anda akan mengunduh templat data pelanggan",
+                        title: 'Unduh Template Data Pelanggan?',
+                        text: "Anda akan mengunduh template data pelanggan",
                         icon: 'question',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
