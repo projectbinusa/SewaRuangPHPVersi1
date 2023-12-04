@@ -1919,11 +1919,10 @@
                                             <th data-priority="5" scope="col" class="text-center px-3 py-3">
                                                 Kode Booking
                                             </th>
-
+                                            
                                             <th data-priority="9" scope="col" class="text-center px-3 py-3">
                                                 Status
                                             </th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1948,6 +1947,7 @@
                                                 </td>
 
                                                 <td data-cell="Status" class="text-center px-3 py-4">
+                                                    <!-- <?php echo $row->status ?> -->
 
                                                     <?php if ($row->status == "di tolak") {
                                                         echo "DI TOLAK";
