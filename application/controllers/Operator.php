@@ -722,23 +722,21 @@ class operator extends CI_Controller
 
     public function aksi_peminjaman()
     {
-        // Set default timezone ke Asia/Jakarta
-        date_default_timezone_set('Asia/Jakarta');
-
         // Memperoleh data dari formulir
         $id_pelanggan = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
-        $start_time = date('l, d F Y', strtotime($this->input->post('booking'))); // Format tanggal sesuai kebutuhan
-        $end_time = date('l, d F Y', strtotime($this->input->post('akhir_booking'))); // Format tanggal sesuai kebutuhan
+        $start_time = $this->input->post('booking');
+        $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
 
-        // Menghasilkan kode pemesanan
+
+        // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
 
         // Memeriksa konflik waktu
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
             return;
         }
 
