@@ -74,11 +74,13 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $jenis = $this->input->post('jenis');
+        $satuan = $this->input->post('satuan');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
+            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
 
@@ -94,11 +96,13 @@ class operator extends CI_Controller
     {
         $nama = $this->input->post('nama');
         $jenis = $this->input->post('jenis');
+        $satuan = $this->input->post('satuan');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
+            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
         $this->m_model->tambah_data('tambahan', $data);

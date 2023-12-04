@@ -931,20 +931,23 @@
                                 <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                     <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
                                                 No
                                             </th>
-                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
                                                 Nama Item
                                             </th>
-                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                                 Deskripsi
                                             </th>
-                                            <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
                                                 Jenis
                                             </th>
+                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                                Satuan
+                                            </th>
 
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
                                                 Aksi
                                             </th>
                                         </tr>
@@ -965,6 +968,9 @@
                                                 </td>
                                                 <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
                                                     <?php echo $row->jenis ?>
+                                                </td>
+                                                <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
+                                                <?php echo $row->satuan ?>
                                                 </td>
                                                 <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
                                                     <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
