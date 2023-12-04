@@ -33,25 +33,26 @@
       </div>
       <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
         <ul>
-          <li class="px-2 py-3 rounded transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
+          <!-- Your existing sidebar content here -->
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('supervisor') ?>" class="flex items-center">
               <i class="fas fa-home mr-2 text-white "></i>
               <span class="mx-2 text-white font-semibold">Dashboard</span>
             </a>
           </li>
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('supervisor/data_operator') ?>" class="flex items-center">
               <i class="fa-solid fa-users-gear text-white"></i>
               <span class="mx-2 text-white font-semibold">Data Operator</span>
             </a>
           </li>
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500" @click="isOpen = !isOpen" :class="{ 'active': isOpen }">
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('supervisor/approve') ?>" class="flex items-center">
               <i class="fas fa-users text-white"></i>
               <span class="mx-2 text-white font-semibold">Approve</span>
             </a>
           </li>
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
+          <li class="px-1 py-1 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
             <hr>
             <a onclick="KeluarOPT()" class="flex items-center pt-4">
               <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
@@ -71,6 +72,7 @@
           </a>
         </ul>
       </nav>
+
       <script>
         function displaySweetAlert() {
           const login_supervisor = "<?php echo $this->session->flashdata('login_supervisor'); ?>";
