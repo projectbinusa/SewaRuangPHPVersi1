@@ -1002,11 +1002,11 @@
                                 <label class="font-medium text-gray-800">File</label>
                                 <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
                             </div>
-                            <div class="bg-gray-200 px-4 py-3 text-right">
-                                <button type="button" class="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                                <button onclick="impor()" type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                            <div class="bg-gray-200 px-4 py-3 md:text-right">
+                                <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                                <button onclick="impor()" type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
                                 <!-- Remove or replace the following line if template() is not defined -->
-                                <button type="button" class="md:ml-0 md:mr-2 py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Templat</button>
+                                <button type="button" class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Templat</button>
                             </div>
                         </form>
                     </div>
