@@ -237,6 +237,7 @@
         .forgetPass {
             font-size: 15px;
             color: #4F709C;
+            font-weight: bold;
         }
 
         .forgetPass a {
