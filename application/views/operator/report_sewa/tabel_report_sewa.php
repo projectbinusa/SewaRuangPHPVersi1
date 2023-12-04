@@ -968,13 +968,15 @@
                                                 </td>
 
                                                 <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">
-                                                    <?php
-                                                    // Memisahkan data tambahan menjadi array
-                                                    $tambahanArray = explode(',', $row->tambahan_nama);
-
-                                                    // Menampilkan setiap tambahan
-                                                    foreach ($tambahanArray as $tambahan) {
-                                                        echo $tambahan . '<br>';
+                                                <?php
+                                                    if ($row->tambahan_nama !== null) {
+                                                        // Memisahkan data tambahan menjadi array
+                                                        $tambahanArray = explode(',', $row->tambahan_nama);
+                                                    
+                                                        // Menampilkan setiap tambahan
+                                                        foreach ($tambahanArray as $tambahan) {
+                                                            echo $tambahan . '<br>';
+                                                        }
                                                     }
                                                     ?>
                                                 </td>
@@ -1048,7 +1050,7 @@
 
         function hapus(id) {
             Swal.fire({
-                title: 'Apa Mau Menghapus?',
+                title: 'Apakah Mau Dihapus?',
                 text: "data ini tidak bisa dikembalikan lagi!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -1088,7 +1090,7 @@
 
                     Swal.fire({
                         icon: 'success',
-                        title: 'Data sewa berhasil diekspor',
+                        title: 'Data report sewa berhasil diekspor',
                         showConfirmButton: false,
                         timer: 1500,
                         timerProgressBar: true // Menampilkan progress bar

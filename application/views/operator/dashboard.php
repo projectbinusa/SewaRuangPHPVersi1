@@ -1735,7 +1735,7 @@
                                         <?php echo $jumlah_ruang ?>
                                     </h2>
                                 </div>
-                                <p>Master Ruang</p>
+                                <p>Data Ruang</p>
                             </a>
                             <div class="card-footer">
                                 <a href="<?php echo base_url("operator/data_ruangan") ?>">Klik disini</a>
@@ -1750,7 +1750,7 @@
                                         <?php echo $jumlah_pelanggan ?>
                                     </h2>
                                 </div>
-                                <p>Master Pelanggan
+                                <p>Data Pelanggan
                                 </p>
                             </a>
                             <div class="card-footer">
@@ -1792,7 +1792,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">Ruangan</h2>
+                        <h2 class="title">Ruang</h2>
                     </div>
                 </div>
             </div>
@@ -1838,7 +1838,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
                         <div class="section-title">
-                            <h2 class="title">Data Master Ruangan</h2>
+                            <h2 class="title">Data Ruang</h2>
 
                         </div>
                     </div>
@@ -1898,7 +1898,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 text-center">
                         <div class="section-title">
-                            <h2 class="title">Data Master Pelanggan</h2>
+                            <h2 class="title">Data Pelanggan</h2>
                         </div>
                     </div>
                 </div>

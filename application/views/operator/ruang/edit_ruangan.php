@@ -529,7 +529,7 @@
                         success: function(response) {
                             if (response.status === 'success') {
                                 Swal.fire({
-                                    title: 'Sukses',
+                                    title: 'Berhasil Menghapus',
                                     text: response.message,
                                     icon: 'success',
                                     showConfirmButton: false,
@@ -594,7 +594,7 @@
                                 success: function(response) {
                                     if (response.status === 'success') {
                                         Swal.fire({
-                                            title: 'Berhasil',
+                                            title: 'Berhasil Mengubah Ruang',
                                             text: response.message,
                                             icon: 'success',
                                             showConfirmButton: false,

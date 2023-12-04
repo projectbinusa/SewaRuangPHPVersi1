@@ -1595,7 +1595,7 @@
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Berhasill!!',
+                        title: 'Berhasil Diterima!',
                         showConfirmButton: false,
                         timer: 1500
                     })
