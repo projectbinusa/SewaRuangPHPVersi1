@@ -16,9 +16,21 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+  :root {
+    --main-color: #4F709C;
+    --main-color-opacity: 126, 86, 255;
+    --main-gradient: linear-gradient(to right, #2878EB, #F129C9);
+    --heading-color: #002147;
+  }
+
   body {
-    max-width: 100%;
-    margin: 0 auto;
+    font-family: "DM Sans", sans-serif;
+    background-color: #f1f1f1;
+    min-height: screen;
+    position: relative;
+    overflow: hidden;
   }
 
   .flex-1 {

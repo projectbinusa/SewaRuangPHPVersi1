@@ -16,7 +16,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-white min-h-screen font-base">
+<body class="bg-white min-h-screen font-base items-center">
   <div id="app" class="flex flex-col md:flex-row w-full">
     <aside style="background-color: #0C356A;" class="w-full md:w-64 md:min-h-screen bg-blue-900 text-white" x-data="{ isOpen: window.innerWidth >= 768 }" @resize.window="isOpen = window.innerWidth >= 768">
       <div style="background-color: #0C356A;" class="flex items-center justify-between bg-gray-900 p-4 h-16">
@@ -31,13 +31,13 @@
           </button>
         </div>
       </div>
-      <div class="px-2 py-6" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
+      <div class="px-2 py-6 items-center" :class="{ 'hidden': !isOpen, 'block': isOpen }" x-show="isOpen">
         <ul>
           <!-- Your existing sidebar content here -->
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator') ?>" class="flex items-center">
               <i class="fas fa-home text-white "></i>
-              <span class="mx-2 text-white font-semibold">Dashboard</span>
+              <span class="mx-2 text-white font-semibold m-0">Dashboard</span>
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
@@ -82,7 +82,7 @@
     </aside>
     <!-- Main Content -->
     <div class="w-full md:flex-1">
-      <nav style="background-color: #0C356A;" class="hidden md:flex justify-between items-center p-2 shadow-md h-16">
+      <nav style="background-color: #0C356A;" class="hidden md:flex justify-between items-center p-0 shadow-md h-16">
         <ul class="px-1 py-1 rounded mt-0 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 text-center ml-auto">
           <a onclick="KeluarOPT()" class="flex items-center">
             <i class="fa-solid fa-right-from-bracket text-white mt-0"></i>
