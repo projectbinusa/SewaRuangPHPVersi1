@@ -285,14 +285,12 @@
                 <h1 id="title" class="main-heading">Form Tambah Peminjaman</h1>
             </header>
 
-            <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form"
-                class="survey-form ">
+            <form action="<?php echo base_url('operator/aksi_peminjaman') ?>" method="post" id="survey-form" class="survey-form ">
                 <div class="">
                     <label for="nama" class="header-text" id="name-label">Nama </span></label>
-                    <select id="underline_select" name="nama" required
-                        class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <select id="underline_select" name="nama" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option selected>Pilih Nama Penyewa</option>
-                        <?php foreach ($pelanggan as $row): ?>
+                        <?php foreach ($pelanggan as $row) : ?>
                             <option value="<?php echo $row->id ?>">
                                 <?php echo $row->nama ?>
                             </option>
@@ -300,15 +298,13 @@
                     </select>
 
                     <label for="kapasitas" class="header-text" id="kapasitas-label">Jumlah Orang</label>
-                    <input autocomplete="off" type="number" name="kapasitas" class="kapasitas" id="kapasitas"
-                        class="kapasitas " placeholder="Ketik kapasitas ruangan" required>
+                    <input autocomplete="off" type="number" name="kapasitas" class="kapasitas" id="kapasitas" class="kapasitas " placeholder="Ketik kapasitas ruangan" required>
                 </div>
 
                 <label for="no_ruang" class="header-text" id="name-label">Ruangan</span></label>
-                <select id="underline_select" name="ruang" required
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <select id="underline_select" name="ruang" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Ruangan</option>
-                    <?php foreach ($ruangan as $row): ?>
+                    <?php foreach ($ruangan as $row) : ?>
                         <option value="<?php echo $row->id ?>">
                             <?php echo $row->no_lantai ?>
                             <?php echo $row->no_ruang ?>
@@ -318,32 +314,29 @@
 
 
                 <label for="snack" class="header-text" id="snack-label">Tambahan</span></label>
-                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack"
-                    placeholder="Pilih Paket">
+                <input class="snack" autocomplete="off" role="combobox" list="" id="input" name="snack" placeholder="Pilih Paket">
 
                 <datalist id="browsers" id="checkbox" role="listbox">
                     <div class="">
-                        <?php foreach ($tambahan as $row): ?>
+                        <?php foreach ($tambahan as $row) : ?>
                             <option>
                                 <?php echo $row->nama ?>
                             </option>
-                            <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox"
-                                name="tambahan[]" value="<?php echo $row->id ?>">
+                            <input style="width: 15px; margin-left: 15rem; margin-top: -30px;" type="checkbox" id="checkbox" name="tambahan[]" value="<?php echo $row->id ?>">
                         <?php endforeach ?>
                     </div>
                 </datalist>
 
                 <div class="fields">
-                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Dari
-                        Tanggal</span></label>
-                    <input type="date" name="booking" id="total_booking" class="total_booking"
-                        placeholder="Ketik total hari booking" required>
-                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Sampai
-                        Tanggal</span></label>
-                    <input type="date" name="akhir_booking" id="tanggalAngka" class="total_booking"
-                        placeholder="Ketik total hari booking" required>
+                    <label for="total_booking" class="header-text" id="total_booking-label">Pemesanan Dari Tanggal</label>
+                    <span id="formatted_booking_date"></span>
+                    <input autocomplete="off" type="date" name="booking" id="total_booking" class="total_booking" placeholder="Ketik total hari pemesanan" required min="<?php echo date('Y-m-d'); ?>">
 
+                    <label for="total_booking" class="header-text" id="total_booking-label">Pemesanan Sampai Tanggal</label>
+                    <span id="formatted_akhir_booking_date"></span>
+                    <input autocomplete="off" type="date" name="akhir_booking" id="tanggalAngka" class="total_booking" placeholder="Ketik total hari pemesanan" required min="<?php echo date('Y-m-d'); ?>">
                 </div>
+
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -351,19 +344,50 @@
     </main>
 
     <script>
-        input.onfocus = function () {
+        document.addEventListener("DOMContentLoaded", function() {
+            var bookingInput = document.getElementById("total_booking");
+            var formattedBookingDate = document.getElementById("formatted_booking_date");
+            var akhirBookingInput = document.getElementById("tanggalAngka");
+            var formattedAkhirBookingDate = document.getElementById("formatted_akhir_booking_date");
+
+            function updateDateInputDisplay(inputElement, displayElement) {
+                var dateValue = new Date(inputElement.value);
+                if (!isNaN(dateValue.getTime())) {
+                    var options = {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    var formattedDate = new Intl.DateTimeFormat('id-ID', options).format(dateValue);
+                    displayElement.textContent = formattedDate; // Update nilai elemen tampilan
+                }
+            }
+
+            bookingInput.addEventListener("input", function() {
+                updateDateInputDisplay(bookingInput, formattedBookingDate);
+            });
+
+            akhirBookingInput.addEventListener("input", function() {
+                updateDateInputDisplay(akhirBookingInput, formattedAkhirBookingDate);
+            });
+        });
+    </script>
+
+    <script>
+        input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -375,7 +399,7 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
@@ -410,7 +434,7 @@
     <script>
         const checkbox = document.getElementById('checkbox');
 
-        checkbox.addEventListener('change', function () {
+        checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
                 // Checkbox is checked
                 console.log('Checkbox is checked. Selected value: ' + combo.value);
@@ -420,19 +444,19 @@
             }
         });
 
-        input1.onfocus = function () {
+        input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers1.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input1.value = option.value;
                 browsers1.style.display = 'none';
                 input1.style.borderRadius = "5px";
             }
         };
 
-        input1.oninput = function () {
+        input1.oninput = function() {
             currentFocus = -1;
             var text = input1.value.toUpperCase();
             for (let option of browsers1.options) {
@@ -444,7 +468,7 @@
             };
         }
         var currentFocus = -1;
-        input1.onkeydown = function (e) {
+        input1.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers1.options);
@@ -478,9 +502,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });

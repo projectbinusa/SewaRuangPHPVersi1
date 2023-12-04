@@ -991,7 +991,7 @@
                                                     if ($row->tambahan_nama !== null) {
                                                         // Memisahkan data tambahan menjadi array
                                                         $tambahanArray = explode(',', $row->tambahan_nama);
-                                                    
+
                                                         // Menampilkan setiap tambahan
                                                         foreach ($tambahanArray as $tambahan) {
                                                             echo $tambahan . '<br>';
@@ -1042,8 +1042,7 @@
                         </div>
                     </div>
                 </div>
-        </div>
-        </section>
+            </section>
         </div>
     </main>
 
