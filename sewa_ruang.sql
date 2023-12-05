@@ -16,6 +16,19 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`sewa_ruang` /*!40100 DEFAULT CHARACTER 
 
 USE `sewa_ruang`;
 
+/*Table structure for table `history_approve` */
+
+DROP TABLE IF EXISTS `history_approve`;
+
+CREATE TABLE `history_approve` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_peminjaman` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `history_approve` */
+
 /*Table structure for table `pelanggan` */
 
 DROP TABLE IF EXISTS `pelanggan`;
@@ -43,6 +56,7 @@ CREATE TABLE `peminjaman` (
   `status` varchar(255) DEFAULT NULL,
   `jumlah_orang` int(11) DEFAULT NULL,
   `kode_booking` varchar(255) DEFAULT NULL,
+  `keperluan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
