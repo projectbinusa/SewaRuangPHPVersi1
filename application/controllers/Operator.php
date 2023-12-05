@@ -306,7 +306,7 @@ class operator extends CI_Controller
             } else {
                 $response = [
                     'status' => 'error',
-                    'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
+                    'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
                 ];
             }
         }
@@ -416,7 +416,7 @@ class operator extends CI_Controller
                             // Ekstensi file tidak diizinkan
                             $response = [
                                 'status' => 'error',
-                                'message' => 'Ekstensi file tidak diizinkan. Pilih file gambar dengan ekstensi: ' . implode(', ', $allowed_extensions),
+                                'message' => 'Ekstensi file tidak diizinkan. Pilih file foto dengan ekstensi: ' . implode(', ', $allowed_extensions),
                                 'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
                             ];
                             // Kirim respons JSON
@@ -442,7 +442,7 @@ class operator extends CI_Controller
                             // Gagal mengunggah gambar baru
                             $response = [
                                 'status' => 'error',
-                                'message' => 'Gagal mengunggah gambar. Silakan coba lagi.',
+                                'message' => 'Gagal mengunggah foto. Silakan coba lagi.',
                                 'redirect' => base_url('operator/ruang/ruang/edit_ruangan/' . $id), // Redirect ke halaman edit jika gagal
                             ];
                         }
@@ -543,21 +543,21 @@ class operator extends CI_Controller
                     // Kirim respons JSON untuk memberi tahu hasil penghapusan gambar
                     $response = [
                         'status' => 'success',
-                        'message' => 'Gambar telah dihapus.',
+                        'message' => 'Foto telah dihapus.',
                         'redirect' => base_url('operator/data_ruangan') // Tambahkan URL tujuan
                     ];
                 } else {
                     // Jika gagal menghapus gambar
                     $response = [
                         'status' => 'error',
-                        'message' => 'Gambar tidak dapat dihapus. Silakan coba lagi.'
+                        'message' => 'Foto tidak dapat dihapus. Silakan coba lagi.'
                     ];
                 }
             } else {
                 // Jika tidak ada gambar
                 $response = [
                     'status' => 'error',
-                    'message' => 'Gambar sudah dihapus.'
+                    'message' => 'Foto sudah dihapus.'
                 ];
             }
         } else {

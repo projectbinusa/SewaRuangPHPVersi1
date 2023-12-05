@@ -511,7 +511,7 @@
             // Konfirmasi terlebih dahulu menggunakan SweetAlert2
             Swal.fire({
                 title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin menghapus gambar ini?',
+                text: 'Apakah Anda yakin ingin menghapus foto ini?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
