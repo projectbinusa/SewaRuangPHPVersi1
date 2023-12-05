@@ -5665,7 +5665,7 @@
 
                                                 </td>
                                                 <td data-cell="No Ruang " class="text-center px-3 py-3">
-                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                    <?php echo tampil_ruang_byid($row->id_ruangan) ?>
                                                 </td>
                                                 <td data-cell="Kapasitas " class="text-center px-3 py-3">
                                                     <?php echo $row->jumlah_orang ?>

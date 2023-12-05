@@ -977,7 +977,7 @@
                                                     <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
                                                 </td>
                                                 <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                    <?php echo tampil_ruang_byid($row->id_ruangan) ?>
                                                 </td>
                                                 <td data-cell="Kapasitas " class="text-center w-36 px-3 py-4">
                                                     <?php echo $row->jumlah_orang ?>

@@ -253,7 +253,7 @@
 
                     <label for="ruang" class="header-text" id="name-label">Ruangan</label>
                     <select id="ruang" name="ruang" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 penampilan-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                    <option value="<?php echo $id_ruangan ?>"><?php echo tampil_nama_ruangan_byid($id_ruangan) ?></option>
+                    <option value="<?php echo $id_ruangan ?>"><?php echo tampil_ruang_byid($id_ruangan) ?></option>
                         <?php foreach ($ruangan as $ruang_row) : ?>
                             <option value="<?php echo $ruang_row->id ?>"><?php echo $ruang_row->no_lantai . ' ' . $ruang_row->no_ruang ?></option>
                         <?php endforeach ?>
