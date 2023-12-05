@@ -42,6 +42,10 @@ class Supervisor extends CI_Controller
         $data['history'] = $this->m_model->get_data('history_approve')->result();
         $this->load->view('supervisor/history', $data);
     }
+    public function edit_history()
+    {
+        $this->load->view('supervisor/edit_history');
+    }
 
     public function tambah_user_operator()
     {
