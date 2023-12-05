@@ -81,13 +81,8 @@ class operator extends CI_Controller
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
-<<<<<<< Updated upstream
             'satuan' => $satuan,
             'deskripsi' => $deskripsi
-=======
-            'deskripsi' => $deskripsi,
-            'satuan' => $satuan,
->>>>>>> Stashed changes
         ];
 
         // Assuming $this->m_model->update returns true on success
