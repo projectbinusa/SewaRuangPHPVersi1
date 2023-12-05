@@ -230,17 +230,14 @@
                 <h1 id="title" class="main-heading">Form Tambahan Peminjaman</h1>
             </header>
 
-            <?php foreach ($tambahan as $row): ?>
-                <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form"
-                    class="survey-form" onsubmit="return confirmSubmission()">
+            <?php foreach ($tambahan as $row) : ?>
+                <form action="<?php echo base_url('operator/aksi_edit_tambahan') ?>" method="post" id="survey-form" class="survey-form" onsubmit="return confirmSubmission(event)">
                     <input type="hidden" name="id" value="<?php echo $row->id ?>" required>
                     <label for="nama" class="font-bold">Nama Item</label>
-                    <input autocomplete="off" type="text" name="nama" value="<?php echo $row->nama ?>" class="nama"
-                        placeholder="Masukkan nama item" required>
+                    <input autocomplete="off" type="text" name="nama" value="<?php echo $row->nama ?>" class="nama" placeholder="Masukkan nama item" required>
 
                     <label for="jenis" class="font-bold">Tambahan</label>
-                    <select name="jenis"
-                        class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                    <select name="jenis" class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                         <option value="<?php echo $row->jenis ?>">
                             <?php echo $row->jenis ?>
                         </option>
@@ -250,12 +247,10 @@
                     </select>
 
                     <label for="satuan" id="name-label" class="font-bold">Satuan</label>
-                    <input value="<?php echo $row->satuan ?>" autocomplete="off" type="text" name="satuan" id="satuan" class="satuan"
-                        placeholder="Masukkan satuan item" required>
+                    <input value="<?php echo $row->satuan ?>" autocomplete="off" type="text" name="satuan" id="satuan" class="satuan" placeholder="Masukkan satuan item" required>
 
                     <label for="deskripsi" class="font-bold">Deskripsi</label>
-                    <textarea autocomplete="off" class="deskripsi" required name="deskripsi"
-                        placeholder=""><?php echo $row->deskripsi ?></textarea>
+                    <textarea autocomplete="off" class="deskripsi" required name="deskripsi" placeholder=""><?php echo $row->deskripsi ?></textarea>
 
                     <input type="submit" id="submit" class="submit" value="Submit">
                 </form>
@@ -266,17 +261,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        function confirmSubmission() {
+        function confirmSubmission(event) {
             // Mencegah pengiriman formulir secara default
             event.preventDefault();
 
             // Mendapatkan nilai input
             var namaValue = $('input[name="nama"]').val();
             var jenisValue = $('select[name="jenis"]').val();
+            var satuanValue = $('input[name="satuan"]').val(); // Fix variable name
             var deskripsiValue = $('textarea[name="deskripsi"]').val();
+
 
             // Memeriksa apakah pengguna telah mengganti setidaknya satu data
             if (namaValue == "<?php echo $row->nama ?>" &&
+                satuanValue == "<?php echo $row->satuan ?>" &&
                 jenisValue == "<?php echo $row->jenis ?>" &&
                 deskripsiValue == "<?php echo $row->deskripsi ?>") {
                 Swal.fire({
@@ -301,7 +299,7 @@
                             type: 'POST',
                             url: $('#survey-form').attr('action'),
                             data: $('#survey-form').serialize(),
-                            success: function (response) {
+                            success: function(response) {
                                 // Menangani respons dari server jika diperlukan
                                 Swal.fire({
                                     title: 'Berhasil Mengganti!',
@@ -314,7 +312,7 @@
                                     window.location.href = '<?php echo base_url('operator/tambahan') ?>';
                                 });
                             },
-                            error: function (error) {
+                            error: function(error) {
                                 // Menangani kesalahan jika diperlukan
                                 Swal.fire('Error!', 'Gagal memperbarui informasi.', 'error');
                             }
@@ -325,19 +323,19 @@
             }
         }
 
-        input.onfocus = function () {
+        input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input.value = option.value;
                 browsers.style.display = 'none';
                 input.style.borderRadius = "5px";
             }
         };
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -349,7 +347,7 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
@@ -384,7 +382,7 @@
     <script>
         const checkbox = document.getElementById('checkbox');
 
-        checkbox.addEventListener('change', function () {
+        checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
                 // Checkbox is checked
                 console.log('Checkbox is checked. Selected value: ' + combo.value);
@@ -394,19 +392,19 @@
             }
         });
 
-        input1.onfocus = function () {
+        input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers1.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input1.value = option.value;
                 browsers1.style.display = 'none';
                 input1.style.borderRadius = "5px";
             }
         };
 
-        input1.oninput = function () {
+        input1.oninput = function() {
             currentFocus = -1;
             var text = input1.value.toUpperCase();
             for (let option of browsers1.options) {
@@ -418,7 +416,7 @@
             };
         }
         var currentFocus = -1;
-        input1.onkeydown = function (e) {
+        input1.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers1.options);
@@ -452,9 +450,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });

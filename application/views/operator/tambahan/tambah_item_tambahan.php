@@ -231,11 +231,9 @@
                 <h1 id="title" class="main-heading">Form Tambahan Peminjaman</h1>
             </header>
 
-            <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form"
-                class="survey-form" onsubmit="confirmSubmission(event)">
+            <form action="<?php echo base_url('operator/aksi_tambahan') ?>" method="post" id="survey-form" class="survey-form" onsubmit="confirmSubmission(event)">
                 <label for="nama" id="name-label" class="font-bold">Nama Item</label>
-                <input autocomplete="off" type="text" name="nama" id="nama" class="nama"
-                    placeholder="Masukkan nama item" required>
+                <input autocomplete="off" type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama item" required>
 
                 <label for="jenis" id="name-label" class=" font-bold">Jenis</label>
                 <select id="underline_select" name="jenis" required
@@ -247,12 +245,10 @@
                 </select>
 
                 <label for="satuan" id="name-label" class="font-bold">Satuan</label>
-                <input autocomplete="off" type="text" name="satuan" id="satuan" class="satuan"
-                    placeholder="Masukkan satuan item" required>
+                <input autocomplete="off" type="text" name="satuan" id="satuan" class="satuan" placeholder="Masukkan satuan item" required>
 
                 <label for="deskripsi" id="name-label" class="font-bold">Deskripsi</label>
-                <textarea autocomplete="off" type="text" name="deskripsi" id="deskripsi" class="deskripsi"
-                    placeholder="Masukan Deskripsi" required></textarea>
+                <textarea autocomplete="off" type="text" name="deskripsi" id="deskripsi" class="deskripsi" placeholder="Masukan Deskripsi" required></textarea>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>

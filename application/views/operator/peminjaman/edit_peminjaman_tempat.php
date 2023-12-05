@@ -242,8 +242,8 @@
                 $id_ruangan = $row->id_ruangan; ?>
                 <form action="<?php echo base_url('operator/aksi_edit_peminjaman') ?>" method="post" id="survey-form" class="survey-form" onsubmit="return confirmSubmission()">
                     <input type="hidden" name="id" id="id" class="id" value="<?php echo $row->id ?>">
-                    <input type="hidden" name="booking" id="id" class="id" value="<?php echo $booking ?>">
-                    <input type="hidden" name="akhir_booking" id="id" class="id" value="<?php echo $berakhir ?>">
+                    <input type="hidden" name="booking" id="booking" class="booking" value="<?php echo $booking ?>">
+                    <input type="hidden" name="akhir_booking" id="akhir_booking" class="akhir_booking" value="<?php echo $berakhir ?>">
 
                     <label for="nama" class="header-text" id="name-label">Nama </span></label>
                     <select id="underline_select" name="nama" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -277,8 +277,14 @@
                             <?php endforeach ?>
                         </div>
                     </datalist>
+
+                    <label for="keterangan" class="header-text" id="keterangan-label">Keterangan</label>
+                    <?php foreach ($peminjaman as $row) : ?>
+                        <input type="text" name="keterangan" id="keterangan" class="keterangan" placeholder="Masukkan keterangan" value="<?php echo $row->keterangan ?>" required>
+                    <?php endforeach ?>
+
                     <div class="flex justify-center items-center space-x-4">
-                        <input type="submit" id="submit" class="submit" value="Submit">
+                        <button type="button" id="submitBtn" class="submit">Submit</button>
                         <a href="<?php echo base_url('operator/hapus_tambahan_peminjaman/') . $row->id ?>" class="submit text-sm mt-96" id="hapusTambahan">Hapus Tambahan</a>
                     </div>
                 </form>
@@ -290,13 +296,38 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Add SweetAlert2 library -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="<?php echo base_url('path/to/your/js/script.js') ?>"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('submitBtn').addEventListener('click', function() {
+                // Tampilkan SweetAlert konfirmasi
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin mengirim formulir?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, kirim!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: 'Data berhasil disimpan!',
+                            showConfirmButton: false,
+                            timer: 2000,
+                        }).then(() => {
+                            document.getElementById('survey-form').submit();
+                        });
+                    }
+                });
+            });
+        });
+        
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('hapusTambahan').addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent the default link behavior
@@ -318,65 +349,6 @@
                 });
             });
         });
-
-        function confirmSubmission() {
-            // Mencegah pengiriman formulir secara default
-            event.preventDefault();
-
-            // Mendapatkan nilai input
-            var namaValue = $('input[name="nama"]').val();
-            var jenisValue = $('select[name="jenis"]').val();
-            var deskripsiValue = $('textarea[name="deskripsi"]').val();
-
-            // Memeriksa apakah pengguna telah mengganti setidaknya satu data
-            if (namaValue == "<?php echo $row->nama ?>" &&
-                jenisValue == "<?php echo $row->jenis ?>" &&
-                deskripsiValue == "<?php echo $row->deskripsi ?>") {
-                Swal.fire({
-                    title: 'Peringatan!',
-                    text: 'Anda harus mengganti setidaknya satu data sebelum mengirim formulir.',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                });
-            } else {
-                // Jika setidaknya satu data telah diubah, tampilkan konfirmasi SweetAlert
-                Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: 'Anda ingin mengirimkan formulir ini?',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonText: 'Ya, kirim!',
-                    cancelButtonText: 'Batal'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Mengirimkan formulir menggunakan AJAX jika pengguna menekan "Ya"
-                        $.ajax({
-                            type: 'POST',
-                            url: $('#survey-form').attr('action'),
-                            data: $('#survey-form').serialize(),
-                            success: function(response) {
-                                // Menangani respons dari server jika diperlukan
-                                Swal.fire({
-                                    title: 'Berhasil Mengubah Peminjaman Tempat!',
-                                    text: 'Informasi Anda berhasil diperbarui.',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                }).then(() => {
-                                    // Setelah pemberitahuan sukses, mengalihkan ke halaman tertentu
-                                    window.location.href = '<?php echo base_url('operator/peminjaman_tempat') ?>';
-                                });
-                            },
-                            error: function(error) {
-                                // Menangani kesalahan jika diperlukan
-                                Swal.fire('Error!', 'Gagal memperbarui informasi.', 'error');
-                            }
-                        });
-                    }
-                    // Jika pengguna mengeklik "Batal" atau menutup SweetAlert, tidak melakukan apa-apa
-                });
-            }
-        }
 
         // Fungsi SweetAlert untuk tombol Hapus Tambahan
         function hapustambahan(id) {
