@@ -1036,7 +1036,7 @@ class operator extends CI_Controller
                 if ($cellName == 'id_pelanggan') {
                     $nama = tampil_nama_penyewa_byid($cellData);
                 } elseif ($cellName == 'id_ruangan') {
-                    $id_ruangan = tampil_nama_ruangan_byid($cellData);
+                    $id_ruangan = tampil_ruang_byid($cellData);
                 } elseif ($cellName == 'jumlah_orang') {
                     $jumlah_orang = $cellData;
                 } elseif ($cellName == 'kode_booking') {

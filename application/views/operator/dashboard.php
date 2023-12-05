@@ -1856,6 +1856,9 @@
                                             <th data-priority="3" scope="col" class="text-center px-3 py-3">
                                                 Telepon
                                             </th>
+                                            <th data-priority="" scope="col" class="text-center px-3 py-3">
+                                                Email
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1871,6 +1874,9 @@
                                                 </td>
                                                 <td data-cell="Telepon" class="text-center px-3 py-4">
                                                     <?php echo $row->phone ?>
+                                                </td>
+                                                <td data-cell="Email" class="text-center px-3 py-4">
+                                                    <?php echo $row->email ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>
@@ -1937,7 +1943,7 @@
                                                     <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
                                                 </td>
                                                 <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                                    <?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?>
+                                                    <?php echo tampil_ruang_byid($row->id_ruangan) ?>
                                                 </td>
                                                 <td data-cell="Kapasitas " class="text-center px-3 py-4">
                                                     <?php echo $row->jumlah_orang ?>
