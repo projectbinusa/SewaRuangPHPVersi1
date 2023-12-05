@@ -1408,17 +1408,24 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="section-title">
-                        <h2 class="title">History Peminjaman</h2>
+                        <h2 class="title">History Approve</h2>
                     </div>
                 </div>
             </div>
-           
+
+            <div class="container-table row justify-content-center">
+                <div class="tess">
+                    <button
+                        class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
+                        <i class="fas fa-file-export"></i> Ekspor
+                    </button>
+                </div>
+
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="table-responsive relative">
 
-                            <table id="examples_data"
-                                class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <table id="examples_data" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
@@ -1445,54 +1452,72 @@
                                             Sampai Tanggal
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
-                                           Status
+                                            Status
                                         </th>
                                         <th data-priority="3" scope="col" class="px-3 py-3">
                                             Aksi
                                         </th>
-                                       
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no= 0; foreach($history as $row): $no++?>
+                                    <?php $no = 0;
+                                    foreach ($history as $row):
+                                        $no++ ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell=" " scope="row"
+                                            <td data-cell="No" scope="row"
                                                 class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <?php echo $no?>
+                                                <?php echo $no ?>
                                             </td>
                                             <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
-                                               <?php echo tampil_nama_penyewa_byid(tampil_id_penyewa_byid($row->id_peminjaman))?>
+                                                <?php echo tampil_nama_penyewa_byid(tampil_id_penyewa_byid($row->id_peminjaman)) ?>
                                             </td>
                                             <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                              <?php echo tampil_ruang_byid(tampil_id_ruang_byid($row->id_peminjaman))?>
+                                                <?php echo tampil_ruang_byid(tampil_id_ruang_byid($row->id_peminjaman)) ?>
                                             </td>
                                             <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                              <?php echo tampil_jumlah_orang_byid($row->id_peminjaman)?>
+                                                <?php echo tampil_jumlah_orang_byid($row->id_peminjaman) ?>
                                             </td>
                                             <td data-cell="Kode Booking " class="text-center px-3 py-4">
-                                             <?php echo tampil_code_penyewa_byid($row->id_peminjaman)?>
+                                                <?php echo tampil_code_penyewa_byid($row->id_peminjaman) ?>
                                             </td>
                                             <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
-                                               <?php echo tampil_tanggal_booking_byid($row->id_peminjaman)?>
+                                                <?php echo tampil_tanggal_booking_byid($row->id_peminjaman) ?>
                                             </td>
                                             <td data-cell="Sampai Tanggal" class="text-center px-3 py-4">
-                                            <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman)?>
+                                                <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman) ?>
                                             </td>
-                                            <td data-cell=" Waktu " class="text-center px-3 py-4">
-                                               <?php echo $row->status?>
+                                            <td data-cell=" Status " class="text-center px-3 py-4">
+                                                <?php echo $row->status ?>
                                             </td>
-                                            <td data-cell="Status" class="text-center px-3 py-4">
-                                                Ditolak
+                                            <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
+
+                                                <a href="<?php echo base_url('supervisor/edit_history/')  ?>"
+                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+
+                                                <button onclick=""
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                    <span class="">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </span>
+
+                                                </button>
                                             </td>
-                                          
+
                                         </tr>
-                                        <?php endforeach?>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
+        </div>
 
 
         </div>
@@ -1539,7 +1564,7 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
-       
+
     </script>
 
 </body>

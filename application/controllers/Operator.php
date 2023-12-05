@@ -73,12 +73,14 @@ class operator extends CI_Controller
     public function aksi_edit_tambahan()
     {
         $nama = $this->input->post('nama');
+        $satuan = $this->input->post('satuan');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
+            'satuan' => $satuan,
             'deskripsi' => $deskripsi
         ];
 
@@ -93,11 +95,13 @@ class operator extends CI_Controller
     public function aksi_tambahan()
     {
         $nama = $this->input->post('nama');
+        $satuan = $this->input->post('satuan');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
 
         $data = [
             'nama' => $nama,
+            'satuan' => $satuan,
             'jenis' => $jenis,
             'deskripsi' => $deskripsi
         ];

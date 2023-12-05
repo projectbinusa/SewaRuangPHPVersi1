@@ -98,7 +98,8 @@ CREATE TABLE `tambahan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) DEFAULT NULL,
   `deskripsi` varchar(255) DEFAULT NULL,
-  `jenis` varchar(11) DEFAULT NULL,
+  `satuan` varchar(255) DEFAULT NULL,
+  `jenis` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
