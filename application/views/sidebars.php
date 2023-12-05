@@ -52,7 +52,7 @@
               <span class="mx-2 text-white font-semibold">Approve</span>
             </a>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-            <a href="<?php echo base_url('supervisor/approve') ?>" class="flex items-center">
+            <a href="<?php echo base_url('supervisor/history') ?>" class="flex items-center">
               <i class="fa-solid fa-clock-rotate-left text-white"></i>
                <span class="mx-2 text-white font-semibold">History</span>
             </a>

@@ -39,7 +39,7 @@ class Supervisor extends CI_Controller
 
     public function history()
     {
-      
+
         $this->load->view('supervisor/history');
     }
 
@@ -97,7 +97,7 @@ class Supervisor extends CI_Controller
                 'status' => 'di setujui',
                 'id_peminjaman' => $row->id
             ];
-            $this->m_model->tambah_data('history_approve' ,$data);
+            $this->m_model->tambah_data('history_approve', $data);
             $this->m_model->update('peminjaman', $data, array('id' => $row->id));
         }
         redirect(base_url('supervisor/approve'));
@@ -113,7 +113,7 @@ class Supervisor extends CI_Controller
                 'status' => 'di tolak',
                 'id_peminjaman' => $row->id
             ];
-            $this->m_model->tambah_data('history_approve' ,$data);
+            $this->m_model->tambah_data('history_approve', $data);
             $this->m_model->update('peminjaman', $data, array('id' => $row->id));
         }
         redirect(base_url('supervisor/approve'));
@@ -127,7 +127,7 @@ class Supervisor extends CI_Controller
             'status' => 'di setujui',
             'id_peminjaman' => $id
         ];
-        $this->m_model->tambah_data('history_approve' ,$data);
+        $this->m_model->tambah_data('history_approve', $data);
         $this->m_model->update('peminjaman', $data, array('id' => $id));
         redirect(base_url('supervisor/approve'));
     }
@@ -140,7 +140,7 @@ class Supervisor extends CI_Controller
             'status' => 'di tolak',
             'id_peminjaman' => $id
         ];
-        $this->m_model->tambah_data('history_approve' ,$data);
+        $this->m_model->tambah_data('history_approve', $data);
         $this->m_model->update('peminjaman', $data, array('id' => $id));
         redirect(base_url('supervisor/approve'));
     }
