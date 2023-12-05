@@ -1557,7 +1557,7 @@
                     }
 
                     img {
-                        //Google SEO - CLS optimize 
+                        //Google SEO - CLS optimize
                         aspect-ratio: 500 / 320;
 
                         width: 100%;
@@ -1646,7 +1646,7 @@
                     }
                 }
             }
-        
+        }
 
         @keyframes fadeInLeft {
             0% {
@@ -1719,7 +1719,7 @@
 
 </head>
 
-<body class="relative min-h-screen overflow-hidden" id="page-top">
+<body class="relative min-h-screen overflow-hidden justify-center" id="page-top">
 
     <?php $this->load->view('sidebar'); ?>
 

@@ -126,7 +126,7 @@
         }
 
         #email-label {
-        font-weight: bold;
+            font-weight: bold;
         }
 
         a:link,
@@ -144,12 +144,10 @@
                 <h1 id="title" class="main-heading">Konfirmasi Password</h1>
             </header>
 
-            <form action="<?php echo base_url('auth/aksi_forgot_pass') ?>" method="post" id="survey-form"
-                class="survey-form">
+            <form action="<?php echo base_url('auth/aksi_forgot_pass') ?>" method="post" id="survey-form" class="survey-form">
                 <p>Silahkan masukkan email kamu untuk verifikasi code</p>
                 <label for="email" id="email-label">Email<span class="required"></span></label>
-                <input autocomplete="off" type="email" name="email" id="email" class="email" placeholder="Ketik email anda"
-                    required>
+                <input autocomplete="off" type="email" name="email" id="email" class="email" placeholder="Ketik email anda" required>
 
 
                 <input type="submit" id="submit" class="submit" value="Submit">
@@ -160,8 +158,8 @@
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<?php if ($this->session->flashdata('error')): ?>
-    <script>
+<?php if ($this->session->flashdata('error')) : ?>
+    <script class="sweet">
         Swal.fire({
             icon: 'error',
             title: 'Pesan Gagal Terkirim!',
@@ -171,7 +169,8 @@
             customClass: {
                 title: 'swal-title-large',
                 text: 'swal-text-large',
-                popup: 'swal-popup-large'
+                popup: 'swal-popup-large',
+                icon: 'swal-icon-large' // Add a custom class for the icon
             }
         }).then(() => {
             window.location.href = '<?php echo base_url('auth/forgot_password'); ?>';
@@ -180,17 +179,28 @@
 
     <style>
         /* Tambahkan style untuk memperbesar SweetAlert */
+        .sweet {
+            margin-bottom: 30px;
+            top: 100%;
+            /* Adjust the percentage as needed */
+        }
+
         .swal-title-large {
-            font-size: 24px !important;
+            font-size: 25px !important;
         }
 
         .swal-text-large {
-            font-size: 18px !important;
+            font-size: 45px !important;
         }
 
         .swal-popup-large {
-            width: 300px !important;
+            width: 350px !important;
             height: 250px !important;
+        }
+
+        .swal-icon-large {
+            font-size: 13px !important;
+            /* Adjust the icon size as needed */
         }
     </style>
 <?php endif; ?>
