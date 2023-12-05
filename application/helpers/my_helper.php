@@ -36,6 +36,16 @@ function tampil_nama_penyewa_byid($id)
         return $stmt;
     }
 }
+function tampil_id_penyewa_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('peminjaman');
+    foreach ($result->result() as $c) {
+        $stmt = $c->id_pelanggan;
+        return $stmt;
+    }
+}
 function tampil_email_penyewa_byid($id)
 {
     $ci = &get_instance();
@@ -76,7 +86,27 @@ function tampil_code_penyewa_byid($id)
         return $stmt;
     }
 }
-function tampil_nama_ruangan_byid($id)
+function tampil_tanggal_booking_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('peminjaman');
+    foreach ($result->result() as $c) {
+        $stmt = $c->tanggal_booking;
+        return $stmt;
+    }
+}
+function tampil_tanggal_berakhir_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('peminjaman');
+    foreach ($result->result() as $c) {
+        $stmt = $c->tanggal_berakhir;
+        return $stmt;
+    }
+}
+function tampil_ruang_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
@@ -164,6 +194,16 @@ function tampil_id_byemail($email)
     $result = $ci->db->where('email', $email)->get('user');
     foreach ($result->result() as $c) {
         $stmt = $c->id;
+        return $stmt;
+    }
+}
+function tampil_id_ruang_byid($email)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $email)->get('peminjaman');
+    foreach ($result->result() as $c) {
+        $stmt = $c->id_ruangan;
         return $stmt;
     }
 }

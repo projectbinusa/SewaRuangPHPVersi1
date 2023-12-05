@@ -1445,47 +1445,48 @@
                                             Sampai Tanggal
                                         </th>
                                         <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Total Booking
+                                           Status
                                         </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
-                                            Status
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Aksi
                                         </th>
                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <?php $no= 0; foreach($history as $row): $no++?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td data-cell=" " scope="row"
                                                 class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                1
+                                                <?php echo $no?>
                                             </td>
                                             <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
-                                               Melyana hasya D
+                                               <?php echo tampil_nama_penyewa_byid(tampil_id_penyewa_byid($row->id_peminjaman))?>
                                             </td>
                                             <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                               L 002 R 001
+                                              <?php echo tampil_ruang_byid(tampil_id_ruang_byid($row->id_peminjaman))?>
                                             </td>
                                             <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                               9 orang
+                                              <?php echo tampil_jumlah_orang_byid($row->id_peminjaman)?>
                                             </td>
                                             <td data-cell="Kode Booking " class="text-center px-3 py-4">
-                                               HJWI64gf
+                                             <?php echo tampil_code_penyewa_byid($row->id_peminjaman)?>
                                             </td>
                                             <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
-                                               12/05/2023
+                                               <?php echo tampil_tanggal_booking_byid($row->id_peminjaman)?>
                                             </td>
                                             <td data-cell="Sampai Tanggal" class="text-center px-3 py-4">
-                                            16/05/2023
+                                            <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman)?>
                                             </td>
                                             <td data-cell=" Waktu " class="text-center px-3 py-4">
-                                               4 hari
+                                               <?php echo $row->status?>
                                             </td>
                                             <td data-cell="Status" class="text-center px-3 py-4">
                                                 Ditolak
                                             </td>
                                           
                                         </tr>
+                                        <?php endforeach?>
                                 </tbody>
                             </table>
                         </div>

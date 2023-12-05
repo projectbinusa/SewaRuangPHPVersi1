@@ -86,6 +86,11 @@ class Supervisor extends CI_Controller
         $data['approve'] = $this->m_model->get_status_proses()->result();
         $this->load->view('supervisor/approve', $data);
     }
+    public function history_approve()
+    {
+        $data['history'] = $this->m_model->get_data('history_approve')->result();
+        $this->load->view('supervisor/history', $data);
+    }
     public function aksi_approve_di_terima_semua()
     {
         $data = [
