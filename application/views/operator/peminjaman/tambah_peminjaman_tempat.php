@@ -106,7 +106,8 @@
         .jam_penggunaan,
         .no_ruang,
         .total_booking,
-        .kapasitas {
+        .kapasitas,
+        .keterangan {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
@@ -334,10 +335,80 @@
                     <input autocomplete="off" type="date" name="akhir_booking" id="tanggalAngka" class="total_booking" placeholder="Ketik total hari booking" required>
                 </div>
 
+                <label for="keterangan" class="header-text" id="keterangan-label">Keterangan</span></label>
+                <textarea required name="keterangan" id="keterangan" class="keterangan" class="keterangan " placeholder="Tambahkan keterangan"></textarea>
+
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
         </div>
     </main>
+
+    // JavaScript with jQuery
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#survey-form').submit(function(e) {
+                e.preventDefault();
+
+                if (!validateForm()) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: 'Silakan isi semua kolom yang diperlukan.',
+                    });
+                    return;
+                }
+
+                Swal.fire({
+                    icon: 'question',
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin menyimpan data?',
+                    showCancelButton: true,
+                    confirmButtonText: 'Simpan',
+                    cancelButtonText: 'Batal',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: $(this).attr('action'),
+                            type: $(this).attr('method'),
+                            data: $(this).serialize(),
+                            success: function(response) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Sukses!',
+                                    text: 'Formulir Anda berhasil dikirimkan.',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                }).then(function() {
+                                    window.location.href = '<?php echo base_url("operator/peminjaman_tempat"); ?>';
+                                });
+                            },
+                            error: function(error) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: 'Terjadi kesalahan saat mengirimkan formulir.',
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            function validateForm() {
+                var isValid = true;
+
+                if ($('#nama').val() === '' || $('#kapasitas').val() === '' || $('#ruang').val() === '' || $('#input').val() === '' || $('#total_booking').val() === '') {
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+        });
+    </script>
+
 
     <script>
         input.onfocus = function() {

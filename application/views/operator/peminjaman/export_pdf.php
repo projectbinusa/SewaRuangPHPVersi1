@@ -22,10 +22,12 @@
         }
 
         .header {
-            text-align: center;
+            /* text-align: center; */
             background: #0C356A;
             color: whitesmoke;
-            padding: 40px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            padding-left: 30px;
             font-size: medium;
         }
 
@@ -92,28 +94,6 @@
             margin-right: 30px;
         }
 
-        .payment-info {
-            font-weight: bold;
-            color: #0C356A;
-            border-left: 20px solid #0C356A;
-            margin-right: 50%;
-            height: 140px;
-            margin-top: 5%;
-        }
-
-        .payment-info h4,
-        .payment-info p {
-            margin-left: 18px;
-        }
-
-        .container {
-            display: flex;
-            float: right;
-            color: #1F4172;
-            font-weight: bold;
-            font-size: 13px;
-        }
-
         .merah {
             text-align: center;
         }
@@ -124,7 +104,15 @@
     <?php if ($peminjaman) : ?>
         <?php foreach ($peminjaman as $row) : ?>
             <div class="header">
-                <h2>RuangSewa.com</h2>
+                <?php
+                $image_path = FCPATH . 'image/logo.png'; // Sesuaikan dengan lokasi gambar
+                $image_data = file_get_contents($image_path);
+                $image_base64 = base64_encode($image_data);
+                ?>
+
+                <!-- Tambahkan baris untuk tanda tangan menggunakan base64 -->
+                <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image" style="width: 150px;">
+                <!-- <h2>RuangSewa.com</h2> -->
             </div>
             <div class="invoice-yu">
                 <h1 class="invoice">
@@ -147,6 +135,9 @@
                     <tr>
                         <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
                     </tr>
+                    <tr>
+                        <td>Keterangan :<span style="margin-left: 8px;"><?php echo $row->keterangan ?></span></td>
+                    </tr>
                 </table>
             </div>
             <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
@@ -159,7 +150,7 @@
                 <tbody>
                     <?php if (!empty($row->id_ruangan)) : ?>
                         <tr>
-                            <td class="merah"><?php echo tampil_nama_ruangan_byid($row->id_ruangan) ?></td>
+                            <td class="merah"><?php echo tampil_ruang_byid($row->id_ruangan) ?></td>
                             <td class="merah">
                                 <?php $tanggalBooking = new DateTime($row->tanggal_booking);
                                 $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
@@ -180,7 +171,7 @@
                                     <?php if (tampil_info_tambahan_byid($id_tambahan) == 'Alat') {
                                         echo '1';
                                     } else if (tampil_info_tambahan_byid($id_tambahan) == 'Makanan' || tampil_info_tambahan_byid($id_tambahan) == 'Minuman') {
-                                        echo $row->jumlah_orang;
+                                        echo tampil_nama_satuan_tambahan_byid($id_tambahan);
                                     } ?>
                                 </td>
                             </tr>
@@ -188,12 +179,65 @@
                     <?php endif; ?>
                 </tbody>
             </table>
+
             <div class="payment-info">
-                <h4>BOOKING INFO</h4>
-                <?php date_default_timezone_set('Asia/Jakarta'); ?>
-                <p class="baru">Tanggal :<span><?php echo date(' j F Y'); ?></span></p>
-                <p>Jam Pemesanan : <span><?php echo date('H:i:s'); ?></span></p>
+                <div class="booking-info">
+                    <h4>BOOKING INFO </h4>
+                    <?php date_default_timezone_set('Asia/Jakarta'); ?>
+                    <p class="baru">Tanggal :<span><?php echo date(' j F Y'); ?></span></p>
+                    <p>Jam Pemesanan : <?php echo date('H:i:s'); ?></p>
+                </div>
+
+                <div class="signature-section">
+                    <!-- Tambahkan baris untuk tanda tangan menggunakan base64 -->
+                    <?php
+                    $image_path = FCPATH . 'image/icon.png'; // Sesuaikan dengan lokasi gambar
+                    $image_data = file_get_contents($image_path);
+                    $image_base64 = base64_encode($image_data);
+                    ?>
+                    <p>Tanda tangan :</p>
+                    <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image">
+                    <p>nama penyewa: </p>
+                </div>
             </div>
+
+            <style>
+                .payment-info {
+                    font-weight: bold;
+                    color: #0C356A;
+                    border-left: 20px solid #0C356A;
+                    display: flex;
+                    /* Use flexbox to arrange items horizontally */
+                    align-items: flex-start;
+                    /* Align items to the top */
+                    /* margin-top: 5%; */
+                    padding-left: 10px;
+                    /* Add padding for better spacing */
+                }
+
+                .payment-info::after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+
+                .booking-info {
+                    float: left;
+                }
+
+                .signature-section {
+                    float: left;
+                    margin-left: 200px;
+                    /* Atur margin kiri sesuai kebutuhan */
+                }
+
+                .signature-image {
+                    /* margin-top: 5px; */
+                    width: 100px;
+                    max-width: 100%;
+                }
+            </style>
+
         <?php endforeach; ?>
     <?php else : ?>
         <p>Data peminjaman tidak ditemukan.</p>

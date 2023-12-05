@@ -76,12 +76,18 @@ class operator extends CI_Controller
         $satuan = $this->input->post('satuan');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
+        $satuan = $this->input->post('satuan');
 
         $data = [
             'nama' => $nama,
             'jenis' => $jenis,
+<<<<<<< Updated upstream
             'satuan' => $satuan,
             'deskripsi' => $deskripsi
+=======
+            'deskripsi' => $deskripsi,
+            'satuan' => $satuan,
+>>>>>>> Stashed changes
         ];
 
         // Assuming $this->m_model->update returns true on success
@@ -98,12 +104,14 @@ class operator extends CI_Controller
         $satuan = $this->input->post('satuan');
         $jenis = $this->input->post('jenis');
         $deskripsi = $this->input->post('deskripsi');
+        $satuan = $this->input->post('satuan');
 
         $data = [
             'nama' => $nama,
             'satuan' => $satuan,
             'jenis' => $jenis,
-            'deskripsi' => $deskripsi
+            'deskripsi' => $deskripsi,
+            'satuan' => $satuan
         ];
         $this->m_model->tambah_data('tambahan', $data);
         redirect(base_url('operator/tambahan'));
@@ -321,19 +329,37 @@ class operator extends CI_Controller
         $this->load->view('operator/peminjaman/pdf', $data);
     }
 
+    // public function export_pdf($id)
+    // {
+    //     $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
+
+    //     if ($this->uri->segment(3) == "pdf") {
+    //         $this->load->library('pdf');
+    //         $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
+    //         $this->pdf->render();
+    //         $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
+    //     } else {
+    //         $this->load->view('operator/export_pdf', $data);
+    //     }
+    // }
     public function export_pdf($id)
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
+
+            // Muat view dengan base_url() untuk path gambar
+            $data['base_url'] = base_url();
             $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
+
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
             $this->load->view('operator/export_pdf', $data);
         }
     }
+
     public function edit_ruangan($id)
     {
         // Ambil data ruangan dari database berdasarkan $id
@@ -733,9 +759,11 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
-
+        $keterangan = $this->input->post('keterangan');
 
         // Menghasilkan kode booking
+        $generate = $this->generate_booking_code();
+
         $generate = $this->generate_booking_code();
 
         // Memeriksa konflik waktu
@@ -753,6 +781,7 @@ class operator extends CI_Controller
             'jumlah_orang' => $jumlah_orang,
             'kode_booking' => $generate,
             'status' => 'proses',
+            'keterangan' => $keterangan,
         ];
 
         // Memasukkan data ke tabel peminjaman
@@ -777,6 +806,7 @@ class operator extends CI_Controller
                 }
             }
         }
+
         $this->check_expired_bookings();
         // Operasi berhasil
         // Redirect atau tampilkan pesan sukses
@@ -824,11 +854,13 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
+        $keterangan = $this->input->post('keterangan');
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
+            'keterangan' => $keterangan,
         ];
 
         // Memperbarui data di tabel peminjaman
