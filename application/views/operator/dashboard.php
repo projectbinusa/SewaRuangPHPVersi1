@@ -1844,7 +1844,7 @@
                     <div class="col-lg-12">
                         <div class="header-item">
                             <div class="relative">
-                                <table id="example_master_pelanggan" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <table id="example_pelanggan" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                     <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
@@ -2010,10 +2010,11 @@
                     .responsive.recalc();
             });
 
+           
             $(document).ready(function() {
 
-                var table = $('#example_master_pelanggan').DataTable({
-                        // responsive: true
+                var table = $('#example_pelanggan').DataTable({
+                        responsive: true
                     })
                     .columns.adjust()
                     .responsive.recalc();
@@ -2069,13 +2070,13 @@
             window.addEventListener('resize', function() {
                 // Panggil fungsi untuk setiap tabel
                 adjustTableStyle('#example_master_ruang');
-                adjustTableStyle('#example_master_pelanggan');
+                adjustTableStyle('#example_pelanggan');
                 adjustTableStyle('#example_report');
             });
 
             // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
             adjustTableStyle('#example_master_ruang');
-            adjustTableStyle('#example_master_pelanggan');
+            adjustTableStyle('#example_pelanggan');
             adjustTableStyle('#example_report');
         </script>
 
