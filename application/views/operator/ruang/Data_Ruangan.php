@@ -211,8 +211,8 @@
             </div>
             <div class="bg-gray-200 px-4 py-3 md:text-right">
               <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-              <button type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2" onclick="impor()">Impor</button>
-              <button type="button" class="py-2 px-2 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">Unduh Templat</button>
+              <button type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2" onclick="impor()">Import</button>
+              <button type="button" class="py-2 px-2 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">Unduh Template</button>
             </div>
           </form>
         </div>

@@ -1557,7 +1557,7 @@
                     }
 
                     img {
-                        //Google SEO - CLS optimize
+                        //Google SEO - CLS optimize 
                         aspect-ratio: 500 / 320;
 
                         width: 100%;
@@ -1646,7 +1646,7 @@
                     }
                 }
             }
-        }
+        
 
         @keyframes fadeInLeft {
             0% {
