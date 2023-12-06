@@ -136,7 +136,7 @@
                         <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
                     </tr>
                     <tr>
-                        <td>Keterangan :<span style="margin-left: 8px;"><?php echo $row->keterangan ?></span></td>
+                        <td>Keterangan :<span style="margin-left: 8px;"><?php echo $row->status ?></span></td>
                     </tr>
                 </table>
             </div>
