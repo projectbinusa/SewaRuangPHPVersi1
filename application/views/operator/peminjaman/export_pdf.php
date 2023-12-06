@@ -136,7 +136,7 @@
                         <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
                     </tr>
                     <tr>
-                        <td>Keterangan :<span style="margin-left: 8px;"><?php echo $row->keterangan ?></span></td>
+                        <td>keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
                     </tr>
                 </table>
             </div>
@@ -197,11 +197,36 @@
                     ?>
                     <p>Tanda tangan :</p>
                     <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image">
-                    <p>nama penyewa: </p>
+                    <div class="history-approve-section">
+                        <?php foreach ($peminjaman as $p) : ?>
+                            <?php $history_approve_data = $this->m_model->get_history_approve_by_id_peminjaman($p->id)->result(); ?>
+                            <?php foreach ($history_approve_data as $history) : ?>
+                                <?php
+                                // Assuming there's a users table with a column username
+                                $user_info = $this->m_model->get_user_by_id($history->id_user);
+                                $username = ($user_info) ? $user_info->username : 'Unknown';
+                                ?>
+                                <?= $username ?>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
+
                 </div>
             </div>
 
             <style>
+                .history-approve-section {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    /* Optional: Set a specific height if needed */
+                }
+
+                .supervisor-section {
+                    margin-left: 15%;
+                }
+
                 .payment-info {
                     font-weight: bold;
                     color: #0C356A;

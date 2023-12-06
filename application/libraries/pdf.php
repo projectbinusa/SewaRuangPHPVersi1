@@ -28,9 +28,16 @@ class Pdf extends Dompdf
         $html = $this->ci()->load->view($view, $data, TRUE);
         $this->load_html($html);
 
-        // You can set additional options for Dompdf if needed
-        foreach ($options as $key => $value) {
-            $this->set_option($key, $value);
+        // Check if $options is an array before iterating over it
+        if (is_array($options)) {
+            // You can set additional options for Dompdf if needed
+            foreach ($options as $key => $value) {
+                $this->set_option($key, $value);
+            }
+        } else {
+            // Handle the case when $options is not an array
+            // You might want to log an error or take appropriate action
+            error_log('Invalid $options type in Pdf::load_view');
         }
     }
 }
