@@ -6,6 +6,24 @@ class M_model extends CI_Model
         return $this->db->get($table);
     }
 
+    public function get_users_by_role($role)
+    {
+        $this->db->where('role', $role);
+        return $this->db->get('user')->result();
+    }
+
+    public function get_history_approve_by_id_peminjaman($id_peminjaman)
+    {
+        $this->db->where('id_peminjaman', (int)$id_peminjaman); // Ensure it's cast to int
+        return $this->db->get('history_approve');
+    }
+
+    public function get_user_by_id($user_id)
+    {
+        $this->db->where('id', (int)$user_id); // Adjust column names based on your database
+        return $this->db->get('user')->row();
+    }
+
     public function get_peminjaman_by_id($id)
     {
         // Assuming you have a table named 'peminjaman' and a column 'id'

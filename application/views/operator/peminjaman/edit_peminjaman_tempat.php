@@ -278,9 +278,9 @@
                         </div>
                     </datalist>
 
-                    <label for="keterangan" class="header-text" id="keterangan-label">Keterangan</label>
+                    <label for="keperluan" class="header-text" id="keperluan-label">Keperluan</label>
                     <?php foreach ($peminjaman as $row) : ?>
-                        <input type="text" name="keterangan" id="keterangan" class="keterangan" placeholder="Masukkan keterangan" value="<?php echo $row->keterangan ?>" required>
+                        <input type="text" name="keperluan" id="keperluan" class="keperluan" placeholder="Masukkan Keperluan" value="<?php echo $row->keperluan ?>" required>
                     <?php endforeach ?>
 
                     <div class="flex justify-center items-center space-x-4">

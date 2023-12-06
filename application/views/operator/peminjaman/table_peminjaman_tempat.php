@@ -1021,9 +1021,9 @@
                                                     </a>
 
                                                     <?php if ($row->status === 'booking') : ?>
-                                                        <button onclick="printConfirmation('<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                        <button onclick="printConfirmation('<?php echo base_url('operator/dowload_export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                             <span class="">
-                                                                <i class="fas fa-print"></i>
+                                                                <i class="fas fa-download"></i>
                                                             </span>
                                                         </button>
                                                     <?php endif; ?>
@@ -1094,22 +1094,23 @@
                         icon: 'info',
                         allowOutsideClick: false,
                         showConfirmButton: false,
-                        timer: 1500, // Atur waktu (dalam milidetik) sesuai kebutuhan Anda
-                        // timerProgressBar: true,
-                        willOpen: () => {
-                            Swal.showLoading();
-                            // Tambahkan penanganan acara yang diperlukan di sini (jika diperlukan)
-                            // Contoh: memulai permintaan AJAX untuk menyiapkan pencetakan
-                            // Jangan lupa untuk menutup SweetAlert ketika selesai
-                            // Misalnya: Swal.close();
-                        }
+                        timer: 1500,
                     }).then(() => {
-                        // Setelah menyiapkan, arahkan pengguna ke halaman pencetakan
                         window.location.href = printUrl;
+                        Swal.fire({
+                            title: 'Cetak Selesai',
+                            text: 'Struk telah berhasil dicetak.',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            window.location.href = "<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>";
+                        });
                     });
                 }
             });
-        };
+        }
 
         $(document).ready(function() {
 

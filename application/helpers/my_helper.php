@@ -26,6 +26,17 @@ if (!function_exists('format_lantai')) {
     }
 }
 
+function tampil_nama_user_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('user');
+    foreach ($result->result() as $c) {
+        $stmt = $c->username;
+        return $stmt;
+    }
+}
+
 function tampil_nama_penyewa_byid($id)
 {
     $ci = &get_instance();
@@ -152,7 +163,7 @@ function tampil_ruangan_byid($id)
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('ruangan');
     foreach ($result->result() as $c) {
-        $stmt ='R. ' . $c->no_ruang;
+        $stmt = 'R. ' . $c->no_ruang;
         return $stmt;
     }
 }
