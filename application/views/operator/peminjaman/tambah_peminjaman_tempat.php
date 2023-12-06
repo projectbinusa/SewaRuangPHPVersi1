@@ -107,7 +107,7 @@
         .no_ruang,
         .total_booking,
         .kapasitas,
-        .keterangan {
+        .keperluan {
             min-height: 2rem;
             padding: 1rem 0;
             border: none;
@@ -335,8 +335,8 @@
                     <input autocomplete="off" type="date" name="akhir_booking" id="tanggalAngka" class="total_booking" placeholder="Ketik total hari booking" required>
                 </div>
 
-                <label for="keterangan" class="header-text" id="keterangan-label">Keterangan</span></label>
-                <textarea required name="keterangan" id="keterangan" class="keterangan" class="keterangan " placeholder="Tambahkan keterangan"></textarea>
+                <label for="keperluan" class="header-text" id="keperluan-label">Keperluan</span></label>
+                <textarea required name="keperluan" id="keperluan" class="keperluan w-full" placeholder="Tambahkan Keperluan"></textarea>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
