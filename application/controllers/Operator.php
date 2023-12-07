@@ -999,7 +999,7 @@ class operator extends CI_Controller
                     $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
-                } elseif ($cellName == 'emai;') {
+                } elseif ($cellName == 'email;') {
                     $email = $cellData;
                 }
 
@@ -1057,7 +1057,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'TAMBAHAN', 'TOTAL BOOKING', 'STATUS'];
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE','KEPERLUAN' , 'TAMBAHAN', 'TOTAL BOOKING', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1076,6 +1076,7 @@ class operator extends CI_Controller
             $id_tambahan = '';
             $tanggal_booking = '';
             $status = '';
+            $keperluan = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'id_pelanggan') {
                     $nama = tampil_nama_penyewa_byid($cellData);
@@ -1093,6 +1094,8 @@ class operator extends CI_Controller
                     $status = $cellData;
                 } elseif ($cellName == 'tanggal_berakhir') {
                     $tanggal_berakhir = $cellData;
+                } elseif ($cellName == 'keperluan') {
+                    $keperluan = $cellData;
                 }
 
                 if (!empty($tanggal_booking) && !empty($tanggal_berakhir)) {
@@ -1112,9 +1115,10 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $id_ruangan);
             $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
             $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode_booking);
-            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $id_tambahan);
-            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $total_booking);
-            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $status);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $keperluan);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $id_tambahan);
+            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $total_booking);
+            $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
 
             $no++;
             $rowIndex++;
@@ -1405,7 +1409,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'SATUAN' ,'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1492,10 +1496,12 @@ class operator extends CI_Controller
                 for ($row = 2; $row <= $highestRow; $row++) {
                     $nama = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                     $jenis = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $deskripsi = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $satuan = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $deskripsi = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
                     $data = [
                         'nama' => $nama,
                         'jenis' => $jenis,
+                        'satuan' => $satuan,
                         'deskripsi' => $deskripsi
                     ];
                     $this->m_model->tambah_data('tambahan', $data);

@@ -1012,9 +1012,9 @@
                             </div>
                             <div class="bg-gray-200 px-4 py-3 md:text-right">
                                 <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                                <button onclick="impor()" type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                                <button onclick="impor()" type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
                                 <!-- Remove or replace the following line if template() is not defined -->
-                                <button type="button" class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Templat</button>
+                                <button type="button" class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Template</button>
                             </div>
                         </form>
                     </div>

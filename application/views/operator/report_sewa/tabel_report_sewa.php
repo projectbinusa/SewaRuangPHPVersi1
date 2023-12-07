@@ -932,6 +932,9 @@
                                             <th data-priority="6" scope="col" class="text-center px-3 py-3">
                                                 Kode
                                             </th>
+                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
+                                                Keperluan
+                                            </th>
                                             <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                                 Tambahan
                                             </th>
@@ -965,6 +968,9 @@
                                                 </td>
                                                 <td data-cell="Kode " class="text-center px-3 py-4">
                                                     <?php echo $row->kode_booking ?>
+                                                </td>
+                                                <td data-cell="Keperluan " class="text-center px-3 py-4">
+                                                    <?php echo $row->keperluan ?>
                                                 </td>
 
                                                 <td data-cell="Tambahan " class="text-center w-32 px-3 py-4">

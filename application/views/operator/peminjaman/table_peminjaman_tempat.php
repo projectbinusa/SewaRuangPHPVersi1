@@ -951,7 +951,7 @@
                                                 Kode Booking
                                             </th>
                                             <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                                keperluan
+                                                Keperluan
                                             </th>
                                             <th data-priority="8" scope="col" class="text-center px-3 py-3">
                                                 Tambahan
