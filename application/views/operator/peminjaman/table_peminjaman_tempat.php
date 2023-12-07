@@ -1014,7 +1014,7 @@
                                                     // Menampilkan durasi dalam format angka
                                                     if ($durasi->days >= 1) {
                                                         echo $durasi->days . ' Hari <br>';
-                                                        
+
                                                         echo $durasi->h . ' Jam';
                                                     } else {
                                                         // Jika durasi kurang dari satu hari, tampilkan dalam format jam
@@ -1043,7 +1043,7 @@
                                                         <span class="">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </span>
-<!-- baru -->
+                                                        <!-- baru -->
                                                     </button>
                                                 </td>
                                             </tr>
@@ -1088,6 +1088,15 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
+        $(document).ready(function() {
+
+            var table = $('#example_data').DataTable({
+                    responsive: true
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+
         function printConfirmation(printUrl) {
             Swal.fire({
                 title: 'Konfirmasi Cetak',
@@ -1123,15 +1132,6 @@
                 }
             });
         }
-
-        $(document).ready(function() {
-
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
 
         function hapus(id) {
             Swal.fire({
