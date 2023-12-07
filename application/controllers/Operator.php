@@ -326,29 +326,30 @@ class operator extends CI_Controller
 
     public function export_pdf($id)
     {
-        $id_user = $this->session->userdata('id_user');
+        $username = $this->session->userdata('username');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id_user)->result();
+        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($username);
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
-
-            // Muat view dengan base_url() untuk path gambar
             $data['base_url'] = base_url();
             $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
-
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            $this->load->view('operator/export_pdf', $data);
+            if (!empty($data['history_approve'])) { // Check for not empty instead of false
+                $this->load->view('operator/export_pdf', $data);
+            } else {
+                echo "No history data available.";
+            }
         }
     }
 
     public function dowload_export_pdf($id)
     {
-       $id_user = $this->session->userdata('id_user');
+        $id_user = $this->session->userdata('id_user');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id_user)->result();
+        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id_user);
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -1451,7 +1452,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'EMAIL',];
+        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'PEMBAYARAN',];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
