@@ -310,6 +310,103 @@ class Supervisor extends CI_Controller
         // Outputkan file Excel ke browser
         $writer->save('php://output');
     }
+
+    public function hapus_data_history_approve($id)
+    {
+        $this->m_model->delete('history_approve', 'id', $id);
+        redirect(base_url('supervisor/history'));
+    }
+    public function export_history_approve()
+    {
+
+        // Load autoloader Composer
+        require 'vendor/autoload.php';
+
+        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+        // Data yang akan diekspor (contoh data)
+        $data = $this->m_model->get_data('history_approve')->result();
+
+        // Buat objek Spreadsheet
+        $headers = ['NO', 'NAMA PENYEWA', 'RUANGAN', 'JUMLAH ORANG', 'KODE BOOKING' , "TANGGAL BOOKING" , 'TANGGAL BERAKHIR', 'KEPERLUAN', 'STATUS'];
+        $rowIndex = 1;
+        foreach ($headers as $header) {
+            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+            $rowIndex++;
+        }
+
+        // Isi data dari database
+        $rowIndex = 2;
+        $no = 1;
+        foreach ($data as $rowData) {
+            $columnIndex = 1;
+            $nama = '';
+            $ruangan = '';
+            $jumlah_orang = '';
+            $kode = '';
+            $tanggal_booking = '';
+            $tanggal_berakhir = '';
+            $keperluan = '';
+            $status = '';
+            foreach ($rowData as $cellName => $cellData) {
+                if ($cellName == 'status') {
+                    $status = $cellData;
+                } elseif ($cellName == 'id_peminjaman') {
+                    $nama = tampil_nama_penyewa_byid(tampil_id_penyewa_byid($cellData));
+                   $ruangan= tampil_ruang_byid(tampil_id_ruang_byid($cellData));
+                   $jumlah_orang = tampil_jumlah_orang_byid($cellData);
+                   $kode = tampil_code_penyewa_byid($cellData);
+                   $tanggal_booking =  tampil_tanggal_booking_byid($cellData);
+                   $keperluan = tampil_keperluan_peminjaman_byid($cellData);
+                }
+
+                // Anda juga dapat menambahkan logika lain jika perlu
+
+                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+                $columnIndex++;
+            }
+
+            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+        $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+        $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+        $sheet->setCellValueByColumnAndRow(3, $rowIndex, $ruangan);
+        $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
+        $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode);
+        $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
+        $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_berakhir);
+        $sheet->setCellValueByColumnAndRow(8, $rowIndex, $keperluan);
+        $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
+            $no++;
+
+            $rowIndex++;
+        }
+        // Auto size kolom berdasarkan konten
+        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        // Set style header
+        $headerStyle = [
+            'font' => ['bold' => true],
+            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+        ];
+        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+        // Konfigurasi output Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'DATA_HISTORY_APPROVE.xlsx'; // Nama file Excel yang akan dihasilkan
+
+        // Set header HTTP untuk mengunduh file Excel
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        // Outputkan file Excel ke browser
+        $writer->save('php://output');
+    }
     public function template_data_operator()
     {
 

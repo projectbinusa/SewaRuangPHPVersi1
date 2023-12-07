@@ -1423,8 +1423,7 @@
 
             <div class="container-table row justify-content-center">
                 <div class="tess">
-                    <button  onclick="exportData()"
-                        class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
+                    <button onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
                         <i class="fas fa-file-export"></i> Ekspor
                     </button>
                 </div>
@@ -1510,11 +1509,11 @@
                                                     </span>
                                                 </a>
 
-                                                <button onclick="" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
-
                                                 </button>
                                             </td>
                                         </tr>
@@ -1568,40 +1567,66 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
+
         function exportData() {
-                Swal.fire({
-                    title: 'Ekspor data  history approve?',
-                    text: 'Data anda akan diekspor ',
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Tambahkan logika ekspor Anda di sini
-                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
-                        // atau mengirim permintaan ke server untuk mengekspor data
+            Swal.fire({
+                title: 'Ekspor data  history approve?',
+                text: 'Data anda akan diekspor ',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Tambahkan logika ekspor Anda di sini
+                    // Misalnya, Anda dapat memicu fungsionalitas ekspor
+                    // atau mengirim permintaan ke server untuk mengekspor data
 
-                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
-                        setTimeout(function () {
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Data Anda telah diekspor.',
-                                icon: 'success',
-                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
-                                showConfirmButton: false,
-                            });
+                    // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
+                    setTimeout(function() {
+                        Swal.fire({
+                            title: 'Berhasil!',
+                            text: 'Data Anda telah diekspor.',
+                            icon: 'success',
+                            timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                            showConfirmButton: false,
+                        });
 
-                            // Redirect setelah berhasil mengekspor
-                            setTimeout(function () {
-                                window.location.href = 'export_history_approve';
-                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
-                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
-                    }
-                });
-            }
+                        // Redirect setelah berhasil mengekspor
+                        setTimeout(function() {
+                            window.location.href = 'export_history_approve';
+                        }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                    }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                }
+            });
+        }
 
+        function hapus(id) {
+            Swal.fire({
+                title: 'Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menghapus',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            window.location.href = "<?php echo base_url('supervisor/hapus_data_history_approve/') ?>" + id;
+                        }
+                    });
+                }
+            });
+        }
     </script>
 </body>
 
