@@ -324,22 +324,12 @@ class operator extends CI_Controller
         $this->load->view('operator/peminjaman/pdf', $data);
     }
 
-    // public function export_pdf($id)
-    // {
-    //     $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-
-    //     if ($this->uri->segment(3) == "pdf") {
-    //         $this->load->library('pdf');
-    //         $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
-    //         $this->pdf->render();
-    //         $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
-    //     } else {
-    //         $this->load->view('operator/export_pdf', $data);
-    //     }
-    // }
     public function export_pdf($id)
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
+
+        // Fetch supervisor users
+        // $data['supervisor_users'] = $this->m_model->get_users_by_role('supervisor');
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -350,6 +340,29 @@ class operator extends CI_Controller
 
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
+        } else {
+            $this->load->view('operator/export_pdf', $data);
+        }
+    }
+
+    public function dowload_export_pdf($id)
+    {
+        $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
+
+        // Fetch supervisor users
+        // $data['supervisor_users'] = $this->m_model->get_users_by_role('supervisor');
+
+        if ($this->uri->segment(3) == "pdf") {
+            $this->load->library('pdf');
+
+            // Muat view dengan base_url() untuk path gambar
+            $data['base_url'] = base_url();
+            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
+
+            $this->pdf->render();
+
+            // Set the "Attachment" parameter to true to force download
+            $this->pdf->stream("bukti_booking.pdf", array("Attachment" => true));
         } else {
             $this->load->view('operator/export_pdf', $data);
         }
@@ -754,7 +767,7 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
-        $keterangan = $this->input->post('keterangan');
+        $keperluan = $this->input->post('keperluan');
 
         // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
@@ -776,7 +789,7 @@ class operator extends CI_Controller
             'jumlah_orang' => $jumlah_orang,
             'kode_booking' => $generate,
             'status' => 'proses',
-            'keterangan' => $keterangan,
+            'keperluan' => $keperluan,
         ];
 
         // Memasukkan data ke tabel peminjaman
@@ -849,13 +862,13 @@ class operator extends CI_Controller
         $start_time = $this->input->post('booking');
         $end_time = $this->input->post('akhir_booking');
         $id_tambahan = $this->input->post('tambahan');
-        $keterangan = $this->input->post('keterangan');
+        $keperluan = $this->input->post('keperluan');
 
         // Menyiapkan data untuk dimasukkan ke tabel peminjaman
         $data_peminjaman = [
             'id_ruangan' => $id_ruangan,
             'jumlah_orang' => $jumlah_orang,
-            'keterangan' => $keterangan,
+            'keperluan' => $keperluan,
         ];
 
         // Memperbarui data di tabel peminjaman

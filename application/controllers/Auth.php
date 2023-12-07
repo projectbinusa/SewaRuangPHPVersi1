@@ -260,15 +260,18 @@ public function aksi_forgot_pass()
                         </style>
                     </head>
                     <body>
-                        <div class="container">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/nizar-40272.appspot.com/o/photo_2023-11-29_09-23-55.jpg?alt=media&token=d9a393df-822b-4589-822b-918f2e05d34a" 
-                            alt="Logo" class="icon">
-                            <h1>Kode Verifikasi Password</h1>
-                            <p>Silakan gunakan kode verifikasi berikut:</p>
-                            <div class="code">' . $generate . '</div>
-                            <p>Untuk keamanan akun Anda, jangan bagikan kode ini kepada siapapun.</p>
-                        </div>
-                    </body>
+    <div class="container">
+        <a href="localhost/exc_sewa_ruang/auth/verifikasi_kode">
+            <img src="https://firebasestorage.googleapis.com/v0/b/nizar-40272.appspot.com/o/photo_2023-11-29_09-23-55.jpg?alt=media&token=d9a393df-822b-4589-822b-918f2e05d34a" 
+            alt="Logo" class="icon">
+        </a>
+        <h1>Kode Verifikasi Password</h1>
+        <p>Silakan gunakan kode verifikasi berikut:</p>
+        <div class="code">' . $generate . '</div>
+        <p>Untuk keamanan akun Anda, jangan bagikan kode ini kepada siapapun.</p>
+    </div>
+</body>
+
                 </html>
             ';
 
