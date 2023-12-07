@@ -1415,7 +1415,7 @@
 
             <div class="container-table row justify-content-center">
                 <div class="tess">
-                    <button
+                    <button  onclick="exportData()"
                         class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
                         <i class="fas fa-file-export"></i> Ekspor
                     </button>
@@ -1441,6 +1441,9 @@
                                         </th>
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Jumlah Orang
+                                        </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Keperluan
                                         </th>
                                         <th data-priority="5" scope="col" class="px-3 py-3">
                                             Kode Booking
@@ -1477,6 +1480,9 @@
                                             </td>
                                             <td data-cell="Kapasitas " class="text-center px-3 py-4">
                                                 <?php echo tampil_jumlah_orang_byid($row->id_peminjaman) ?>
+                                            </td>
+                                            <td data-cell="Keperluan " class="text-center px-3 py-4">
+                                                <?php echo tampil_keperluan_peminjaman_byid($row->id_peminjaman) ?>
                                             </td>
                                             <td data-cell="Kode Booking " class="text-center px-3 py-4">
                                                 <?php echo tampil_code_penyewa_byid($row->id_peminjaman) ?>
@@ -1564,6 +1570,39 @@
                 .columns.adjust()
                 .responsive.recalc();
         });
+        function exportData() {
+                Swal.fire({
+                    title: 'Ekspor data  history approve?',
+                    text: 'Data anda akan diekspor ',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Tambahkan logika ekspor Anda di sini
+                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
+                        // atau mengirim permintaan ke server untuk mengekspor data
+
+                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
+                        setTimeout(function () {
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: 'Data Anda telah diekspor.',
+                                icon: 'success',
+                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                                showConfirmButton: false,
+                            });
+
+                            // Redirect setelah berhasil mengekspor
+                            setTimeout(function () {
+                                window.location.href = 'export_history_approve';
+                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                    }
+                });
+            }
 
     </script>
 

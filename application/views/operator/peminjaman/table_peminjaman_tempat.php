@@ -1007,7 +1007,14 @@
                                                     $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
                                                     // Menampilkan durasi dalam format angka
-                                                    echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                    if ($durasi->days >= 1) {
+                                                        echo $durasi->days . ' Hari <br>';
+                                                        
+                                                        echo $durasi->h . ' Jam';
+                                                    } else {
+                                                        // Jika durasi kurang dari satu hari, tampilkan dalam format jam
+                                                        echo $durasi->h . ' Jam';
+                                                    }
                                                     ?>
                                                 </td>
                                                 <td data-cell="Status " class="text-center px-3 py-4 uppercase">

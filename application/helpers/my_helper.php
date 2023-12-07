@@ -77,13 +77,13 @@ function tampil_nomer_penyewa_byid($id)
         return $stmt;
     }
 }
-function tampil_keterangan_peminjaman_byid($id)
+function tampil_keperluan_peminjaman_byid($id)
 {
     $ci = &get_instance();
     $ci->load->database();
     $result = $ci->db->where('id', $id)->get('peminjaman');
     foreach ($result->result() as $c) {
-        $stmt = $c->keterangan;
+        $stmt = $c->keperluan;
         return $stmt;
     }
 }

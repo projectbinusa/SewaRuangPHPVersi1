@@ -156,7 +156,14 @@
                                 $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
                                 $durasi = $tanggalBooking->diff($tanggalBerakhir);
                                 $hari = $durasi->days;
-                                echo $durasi->days . ' Hari';
+                                if ($durasi->days >= 1) {
+                                    echo $durasi->days . ' Hari <br>';
+                                    
+                                    echo $durasi->h . ' Jam';
+                                } else {
+                                    // Jika durasi kurang dari satu hari, tampilkan dalam format jam
+                                    echo $durasi->h . ' Jam';
+                                }
                                 ?>
                             </td>
                         </tr>

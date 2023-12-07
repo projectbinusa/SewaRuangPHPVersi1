@@ -1909,7 +1909,7 @@
 
             function exportData() {
                 Swal.fire({
-                    title: 'Ekspor data supervisor operator?',
+                    title: 'Ekspor data  operator?',
                     text: 'Data anda akan diekspor ',
                     icon: 'question',
                     showCancelButton: true,
