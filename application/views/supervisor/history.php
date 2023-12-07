@@ -1383,6 +1383,11 @@
             float: right
         }
 
+        .btn-style {
+            width: 6rem;
+            padding: 7px 6px;
+        }
+
         /* code responsive table */
         @media (max-width: 600px) {
 
@@ -1393,6 +1398,12 @@
             .testt {
                 display: block;
                 padding: 0;
+            }
+
+            .btn-style {
+                font-size: 12px;
+                width: 6rem;
+                height: 2rem;
             }
         }
     </style>

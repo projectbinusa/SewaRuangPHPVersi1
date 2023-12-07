@@ -5465,6 +5465,20 @@
                                 <a href="<?php echo base_url("supervisor/approve") ?>">Klik disini</a>
                             </div>
                         </div>
+                        <div class="card">
+                            <a href="<?php echo base_url("supervisor/history_approve") ?>" class="card-body text-center">
+                                <div class="section-title mb-0">
+                                    <h2 class="title mt-4">
+                                        <?php echo $jumlah_history_approve ?>
+                                    </h2>
+                                </div>
+                                <p>History Approve
+                                </p>
+                            </a>
+                            <div class="card-footer">
+                                <a href="<?php echo base_url("supervisor/history") ?>">Klik disini</a>
+                            </div>
+                        </div>
                     </div>
         </section>
         <!-- <section class="inner-section">
@@ -5477,17 +5491,17 @@
             </div>
             <div class="container">
                 <div class="row justify-content-center">
-                    <?php if ($ruang) : ?>
+                    <?php if($ruang): ?>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10  hover:text-gray-900 transition duration-100 mx-auto"
                                 id="roomList">
                                 <?php $count = 0; ?>
-                                <?php foreach ($ruang as $row) : ?>
-                                        <?php if ($count < 6) : ?>
+                                <?php foreach($ruang as $row): ?>
+                                        <?php if($count < 6): ?>
                                                 <div
                                                     class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                                                    <a href="<?php echo base_url('operator/detail/' . $row->id); ?>">
+                                                    <a href="<?php echo base_url('operator/detail/'.$row->id); ?>">
                                                         <div class="bg-white pt-0 pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                                            <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>"
+                                                            <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/'.$row->image)) ? base_url('./image/ruangan/'.$row->image) : base_url('./image/foto.png'); ?>"
                                                                 alt="Gambar Ruangan"
                                                                 class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                                                             <h2 class="text-2xl text-gray-800 font-semibold mb-3">
@@ -5501,12 +5515,12 @@
                                     <?php $count++; ?>
                             <?php endforeach; ?>
                         </div>
-                        <?php if ($count > 6) : ?>
+                        <?php if($count > 6): ?>
                                 <p class="text-center text-gray-600 mt-4">Menampilkan 6 dari
                                     <?php echo $count; ?> card. Gunakan fitur pencarian untuk hasil lebih lanjut.
                                 </p>
                         <?php endif; ?>
-                <?php else : ?>
+                <?php else: ?>
                         <div class="col-lg-4 col-md-6 mx-auto">
                             <p class="text-center text-gray-600">No data available </p>
                         </div>
@@ -5581,19 +5595,19 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($operators as $row) :
+                                        foreach($operators as $row):
                                             $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Email " class="text-center px-6 py-4">
-                                                    <?php echo $row->username ?>
-                                                </td>
-                                                <td data-cell="Email " class="text-center px-6 py-4">
-                                                    <?php echo $row->email ?>
-                                                </td>
-                                            </tr>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="Username  " scope="row" class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Email " class="text-center px-6 py-4">
+                                                        <?php echo $row->username ?>
+                                                    </td>
+                                                    <td data-cell="Email " class="text-center px-6 py-4">
+                                                        <?php echo $row->email ?>
+                                                    </td>
+                                                </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
@@ -5654,44 +5668,140 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($approves as $row) :
+                                        foreach($approves as $row):
                                             $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
-                                                    <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="No " scope="row" class="text-center px-3 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Nama Penyewa " class="text-center px-3 py-3">
+                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
 
-                                                </td>
-                                                <td data-cell="No Ruang " class="text-center px-3 py-3">
-                                                    <?php echo tampil_ruang_byid($row->id_ruangan) ?>
-                                                </td>
-                                                <td data-cell="Kapasitas " class="text-center px-3 py-3">
-                                                    <?php echo $row->jumlah_orang ?>
-                                                </td>
-                                                <td data-cell="Kode Booking " class="text-center px-3 py-3">
-                                                    <?php echo $row->kode_booking ?>
-                                                </td>
-                                                <td data-cell="Tanggal  " class="text-center px-3 py-3">
-                                                    <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
-                                                </td>
+                                                    </td>
+                                                    <td data-cell="No Ruang " class="text-center px-3 py-3">
+                                                        <?php echo tampil_ruang_byid($row->id_ruangan) ?>
+                                                    </td>
+                                                    <td data-cell="Kapasitas " class="text-center px-3 py-3">
+                                                        <?php echo $row->jumlah_orang ?>
+                                                    </td>
+                                                    <td data-cell="Kode Booking " class="text-center px-3 py-3">
+                                                        <?php echo $row->kode_booking ?>
+                                                    </td>
+                                                    <td data-cell="Tanggal  " class="text-center px-3 py-3">
+                                                        <?php echo $row->tanggal_booking ?> - <?php echo $row->tanggal_berakhir ?>
+                                                    </td>
 
-                                                <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
-                                                    <?php
-                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+                                                    <td data-cell="Tanggal Berakhir " class="text-center px-3 py-3">
+                                                        <?php
+                                                        // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                    // Menampilkan durasi dalam format angka
-                                                    echo $durasi->days . ' Hari'; // Menampilkan jumlah hari sebagai contoh
-                                                    ?> </td>
+                                                        // Menampilkan durasi dalam format angka
+                                                        echo $durasi->days.' Hari'; // Menampilkan jumlah hari sebagai contoh
+                                                        ?> </td>
 
-                                            </tr>
+                                                </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- History Approve -->
+        <section id="widget" class="inner-section pb-24 pd-bottom-130">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <h2 class="title">History Approve</h2>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-12">
+                        <div class="header-item">
+                            <div class="relative">
+
+                            <table id="history_approve" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th data-priority="1" scope="col" class="px-3 py-3">
+                                            No
+                                        </th>
+                                        <th data-priority="2" scope="col" class="px-3 py-3">
+                                            Nama Penyewa
+                                        </th>
+
+                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                            Ruangan
+                                        </th>
+                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                            Jumlah Orang
+                                        </th>
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                            Kode Booking
+                                        </th>
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                            Booking Tanggal
+                                        </th>
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
+                                            Sampai Tanggal
+                                        </th>
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                            Status
+                                        </th>
+                                      
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 0;
+                                    foreach($history as $row):
+                                        $no++ ?>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="No" scope="row"
+                                                    class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
+                                                    <?php echo tampil_nama_penyewa_byid(tampil_id_penyewa_byid($row->id_peminjaman)) ?>
+                                                </td>
+                                                <td data-cell="No Ruang " class="text-center px-3 py-4">
+                                                    <?php echo tampil_ruang_byid(tampil_id_ruang_byid($row->id_peminjaman)) ?>
+                                                </td>
+                                                <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                    <?php echo tampil_jumlah_orang_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Kode Booking " class="text-center px-3 py-4">
+                                                    <?php echo tampil_code_penyewa_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
+                                                    <?php echo tampil_tanggal_booking_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Sampai Tanggal" class="text-center px-3 py-4">
+                                                    <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell=" Status " class="text-center px-3 py-4">
+                                                    <?php echo $row->status ?>
+                                                </td>
+                                              
+
+                                            </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
                             </div>
                         </div>
                     </div>
@@ -5762,11 +5872,13 @@
             // Panggil fungsi untuk setiap tabel
             adjustTableStyle('#example_data_operator');
             adjustTableStyle('#example_approve');
+            adjustTableStyle('#history_approve');
         });
 
         // Panggil fungsi saat halaman dimuat untuk mengatur gaya awa
         adjustTableStyle('#example_data_operator');
         adjustTableStyle('#example_approve');
+        adjustTableStyle('#history_approve');
 
         window.addEventListener('resize', adjustTableStyle);
         adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
@@ -5793,6 +5905,14 @@
         $(document).ready(function() {
 
             var table = $('#example_approve').DataTable({
+                    responsive: true
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+        $(document).ready(function() {
+
+            var table = $('#history_approve').DataTable({
                     responsive: true
                 })
                 .columns.adjust()
