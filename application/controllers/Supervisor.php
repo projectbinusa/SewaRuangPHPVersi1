@@ -25,18 +25,18 @@ class Supervisor extends CI_Controller
         }
     }
 
-    //function tampilan login
+    //function tampilan dashboard
     public function index()
     {
-
         $data['approves'] = $this->m_model->get_status_proses()->result();
         $data['operators'] = $this->m_model->get_data_operator()->result();
+        $data['history'] = $this->m_model->get_data('history_approve')->result();
         $data['jumlah_operator'] = $this->m_model->get_data_operator()->num_rows();
         $data['jumlah_approve'] = $this->m_model->get_status_proses()->num_rows();
+        $data['jumlah_history_approve'] = $this->m_model->get_data('history_approve')->num_rows();
         $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('supervisor/dashboard', $data);
     }
-
     public function history()
     {
         $data['history'] = $this->m_model->get_data('history_approve')->result();

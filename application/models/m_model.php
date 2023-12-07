@@ -233,6 +233,7 @@ class M_model extends CI_Model
         return $this->db->where('status', 'proses')
             ->get('peminjaman');
     }
+   
     public function get_id_peminjaman($id)
     {
         return $this->db->where('id_peminjaman', $id)
