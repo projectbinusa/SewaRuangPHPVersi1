@@ -1375,6 +1375,7 @@
 
         .inner-section {
             padding: 4%;
+            height: 585px;
         }
 
         .testt {
@@ -1394,6 +1395,11 @@
                 display: block;
                 padding: 0;
             }
+
+            .inner-section {
+            padding: 4%;
+            height: 880px;
+        }
         }
     </style>
 

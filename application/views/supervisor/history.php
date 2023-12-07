@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 
@@ -16,9 +15,7 @@
     <!--Replace with your tailwind.css once created-->
 
     <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -1437,8 +1434,7 @@
                         <div class="table-responsive relative">
 
                             <table id="examples_data" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
@@ -1476,11 +1472,10 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 0;
-                                    foreach ($history as $row):
+                                    foreach ($history as $row) :
                                         $no++ ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="No" scope="row"
-                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell="No" scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
                                             <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
@@ -1509,22 +1504,19 @@
                                             </td>
                                             <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
 
-                                                <a href="<?php echo base_url('supervisor/edit_history/')  ?>"
-                                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                <a href="<?php echo base_url('supervisor/edit_history/')  ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
                                                 </a>
 
-                                                <button onclick=""
-                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                <button onclick="" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
 
                                                 </button>
                                             </td>
-
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -1533,10 +1525,6 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-
         </div>
     </section>
 
@@ -1549,7 +1537,6 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-
         // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
         function checkResponsive() {
             if (window.innerWidth > 600) {
@@ -1573,11 +1560,11 @@
         window.addEventListener('resize', adjustTableStyle);
         adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#examples_data').DataTable({
-                responsive: true
-            })
+                    responsive: true
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
@@ -1616,7 +1603,6 @@
             }
 
     </script>
-
 </body>
 
 </html>

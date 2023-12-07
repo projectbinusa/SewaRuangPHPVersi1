@@ -326,6 +326,10 @@ class operator extends CI_Controller
 
     public function export_pdf($id)
     {
+        $data['username'] = $this->session->userdata('username');
+
+        // Use user data as needed in your PDF export logic
+
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
 
         // Fetch supervisor users
@@ -348,9 +352,6 @@ class operator extends CI_Controller
     public function dowload_export_pdf($id)
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-
-        // Fetch supervisor users
-        // $data['supervisor_users'] = $this->m_model->get_users_by_role('supervisor');
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
