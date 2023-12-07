@@ -326,10 +326,9 @@ class operator extends CI_Controller
 
     public function export_pdf($id)
     {
+        $id_user = $this->session->userdata('id_user');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-
-        // Fetch supervisor users
-        // $data['supervisor_users'] = $this->m_model->get_users_by_role('supervisor');
+        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id_user)->result();
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -347,10 +346,9 @@ class operator extends CI_Controller
 
     public function dowload_export_pdf($id)
     {
+       $id_user = $this->session->userdata('id_user');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-
-        // Fetch supervisor users
-        // $data['supervisor_users'] = $this->m_model->get_users_by_role('supervisor');
+        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id_user)->result();
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -1057,7 +1055,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_status_peminjaman('peminjaman')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE','KEPERLUAN' , 'TAMBAHAN', 'TOTAL BOOKING', 'STATUS'];
+        $headers = ['NO', 'NAMA', 'RUANGAN', 'KAPASITAS', 'KODE', 'KEPERLUAN', 'TAMBAHAN', 'TOTAL BOOKING', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1409,7 +1407,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'SATUAN' ,'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'SATUAN', 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);

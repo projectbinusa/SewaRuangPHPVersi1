@@ -97,6 +97,45 @@
         .merah {
             text-align: center;
         }
+
+        .supervisor-section {
+            margin-left: 15%;
+        }
+
+        .payment-info {
+            font-weight: bold;
+            color: #0C356A;
+            border-left: 20px solid #0C356A;
+            display: flex;
+            /* Use flexbox to arrange items horizontally */
+            align-items: flex-start;
+            /* Align items to the top */
+            /* margin-top: 5%; */
+            padding-left: 10px;
+            /* Add padding for better spacing */
+        }
+
+        .payment-info::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .booking-info {
+            float: left;
+        }
+
+        .signature-section {
+            float: left;
+            margin-left: 200px;
+            /* Atur margin kiri sesuai kebutuhan */
+        }
+
+        .signature-image {
+            /* margin-top: 5px; */
+            width: 100px;
+            max-width: 100%;
+        }
     </style>
 </head>
 
@@ -156,14 +195,7 @@
                                 $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
                                 $durasi = $tanggalBooking->diff($tanggalBerakhir);
                                 $hari = $durasi->days;
-                                if ($durasi->days >= 1) {
-                                    echo $durasi->days . ' Hari <br>';
-                                    
-                                    echo $durasi->h . ' Jam';
-                                } else {
-                                    // Jika durasi kurang dari satu hari, tampilkan dalam format jam
-                                    echo $durasi->h . ' Jam';
-                                }
+                                echo $durasi->days . ' Hari';
                                 ?>
                             </td>
                         </tr>
@@ -196,84 +228,37 @@
                 </div>
 
                 <div class="signature-section">
-                    <!-- Tambahkan baris untuk tanda tangan menggunakan base64 -->
-                    <?php
-                    $image_path = FCPATH . 'image/icon.png'; // Sesuaikan dengan lokasi gambar
-                    $image_data = file_get_contents($image_path);
-                    $image_base64 = base64_encode($image_data);
-                    ?>
                     <p>Tanda tangan :</p>
-                    <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image">
-                    <div class="history-approve-section">
-                        <?php foreach ($peminjaman as $p) : ?>
-                            <?php $history_approve_data = $this->m_model->get_history_approve_by_id_peminjaman($p->id)->result(); ?>
-                            <?php foreach ($history_approve_data as $history) : ?>
-                                <?php
-                                // Assuming there's a users table with a column username
-                                $user_info = $this->m_model->get_user_by_id($history->id_user);
-                                $username = ($user_info) ? $user_info->username : 'Unknown';
-                                ?>
-                                <?= $username ?>
-                            <?php endforeach; ?>
-                        <?php endforeach; ?>
-                    </div>
-
+                    <img src="data:image/png;base64,<?= generate_signature_image(); ?>" alt="Signature Image" class="signature-image">
+                    <?php display_approval_history($history_approve); ?>
                 </div>
             </div>
-
-            <style>
-                .history-approve-section {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                    /* Optional: Set a specific height if needed */
-                }
-
-                .supervisor-section {
-                    margin-left: 15%;
-                }
-
-                .payment-info {
-                    font-weight: bold;
-                    color: #0C356A;
-                    border-left: 20px solid #0C356A;
-                    display: flex;
-                    /* Use flexbox to arrange items horizontally */
-                    align-items: flex-start;
-                    /* Align items to the top */
-                    /* margin-top: 5%; */
-                    padding-left: 10px;
-                    /* Add padding for better spacing */
-                }
-
-                .payment-info::after {
-                    content: "";
-                    display: table;
-                    clear: both;
-                }
-
-                .booking-info {
-                    float: left;
-                }
-
-                .signature-section {
-                    float: left;
-                    margin-left: 200px;
-                    /* Atur margin kiri sesuai kebutuhan */
-                }
-
-                .signature-image {
-                    /* margin-top: 5px; */
-                    width: 100px;
-                    max-width: 100%;
-                }
-            </style>
-
         <?php endforeach; ?>
     <?php else : ?>
         <p>Data peminjaman tidak ditemukan.</p>
     <?php endif; ?>
+
+    <?php
+    function generate_signature_image()
+    {
+        $image_path = FCPATH . 'image/icon.png';
+        $image_data = file_get_contents($image_path);
+        $image_base64 = base64_encode($image_data);
+
+        return $image_base64;
+    }
+
+    function display_approval_history($history_approve)
+    {
+        if (is_array($history_approve) && !empty($history_approve)) {
+            foreach ($history_approve as $baba) {
+                echo '<p>' . tampil_username_byid($baba->id_user) . '</p>';
+            }
+        } else {
+            echo '<p>No approval history available.</p>';
+        }
+    }
+    ?>
 </body>
 
 </html>

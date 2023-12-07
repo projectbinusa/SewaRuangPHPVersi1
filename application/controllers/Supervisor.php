@@ -25,18 +25,18 @@ class Supervisor extends CI_Controller
         }
     }
 
-    //function tampilan login
+    //function tampilan dashboard
     public function index()
     {
-
         $data['approves'] = $this->m_model->get_status_proses()->result();
         $data['operators'] = $this->m_model->get_data_operator()->result();
+        $data['history'] = $this->m_model->get_data('history_approve')->result();
         $data['jumlah_operator'] = $this->m_model->get_data_operator()->num_rows();
         $data['jumlah_approve'] = $this->m_model->get_status_proses()->num_rows();
+        $data['jumlah_history_approve'] = $this->m_model->get_data('history_approve')->num_rows();
         $data['ruang'] = $this->m_model->get_data('ruangan')->result();
         $this->load->view('supervisor/dashboard', $data);
     }
-
     public function history()
     {
         $data['history'] = $this->m_model->get_data('history_approve')->result();
@@ -90,64 +90,77 @@ class Supervisor extends CI_Controller
         $data['approve'] = $this->m_model->get_status_proses()->result();
         $this->load->view('supervisor/approve', $data);
     }
+
     public function aksi_approve_di_terima_semua()
     {
-        $data = [
-            'status' => 'booking',
-        ];
         $approve = $this->m_model->get_status_proses()->result();
+        $username = $this->session->userdata('username');
+
         foreach ($approve as $row) {
+            $id_user = $this->m_model->get_user_id_by_username($username);
+
             $data_approve = [
                 'status' => 'di setujui',
-                'id_peminjaman' => $row->id
+                'id_peminjaman' => $row->id,
+                'id_user' => $id_user,
             ];
-            $this->m_model->tambah_data('history_approve', $data_approve);
-            $this->m_model->update('peminjaman', $data, array('id' => $row->id));
+            $this->m_model->tambah_data_history_approve($data_approve);
+            $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $row->id]);
         }
+
         redirect(base_url('supervisor/approve'));
     }
+
     public function aksi_approve_di_tolak_semua()
     {
-        $data = [
-            'status' => 'di tolak',
-        ];
         $approve = $this->m_model->get_status_proses()->result();
+        $username = $this->session->userdata('username');
+
         foreach ($approve as $row) {
+            $id_user = $this->m_model->get_user_id_by_username($username);
+
             $data_approve = [
                 'status' => 'di tolak',
-                'id_peminjaman' => $row->id
+                'id_peminjaman' => $row->id,
+                'id_user' => $id_user,
             ];
-            $this->m_model->tambah_data('history_approve', $data_approve);
-            $this->m_model->update('peminjaman', $data, array('id' => $row->id));
+
+            $this->m_model->tambah_data_history_approve($data_approve);
+            $this->m_model->update('peminjaman', ['status' => 'di tolak'], ['id' => $row->id]);
         }
+
         redirect(base_url('supervisor/approve'));
     }
+
     public function aksi_approve_di_terima($id)
     {
-        $data = [
-            'status' => 'booking',
-        ];
+        $username = $this->session->userdata('username');
+        $id_user = $this->m_model->get_user_id_by_username($username);
+
         $data_approve = [
             'status' => 'di setujui',
-            'id_peminjaman' => $id
+            'id_peminjaman' => $id,
+            'id_user' => $id_user
         ];
-        $this->m_model->tambah_data('history_approve', $data_approve);
-        $this->m_model->update('peminjaman', $data, array('id' => $id));
+        $this->m_model->tambah_data_history_approve($data_approve);
+        $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $id]);
         redirect(base_url('supervisor/approve'));
     }
+
     public function aksi_approve_di_tolak($id)
     {
-        $data = [
-            'status' => 'di tolak',
-        ];
+        $id_user = $this->session->userdata('id_user');
+
         $data_approve = [
             'status' => 'di tolak',
-            'id_peminjaman' => $id
+            'id_peminjaman' => $id,
+            'id_user' => $id_user
         ];
         $this->m_model->tambah_data('history_approve', $data_approve);
-        $this->m_model->update('peminjaman', $data, array('id' => $id));
+        $this->m_model->update('peminjaman', ['status' => 'di tolak'], ['id' => $id]);
         redirect(base_url('supervisor/approve'));
     }
+
     public function data_operator()
     {
         $data['operator'] = $this->m_model->get_data_operator()->result();
@@ -292,6 +305,12 @@ class Supervisor extends CI_Controller
 
         // Outputkan file Excel ke browser
         $writer->save('php://output');
+    }
+
+    public function hapus_data_history_approve($id)
+    {
+        $this->m_model->delete('history_approve', 'id', $id);
+        redirect(base_url('supervisor/history'));
     }
     public function export_history_approve()
     {
