@@ -1510,13 +1510,12 @@
                                                 </a>
 
                                                 <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
-
                                                 </button>
                                             </td>
-
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -1525,10 +1524,6 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-
         </div>
     </section>
 
@@ -1633,7 +1628,6 @@
             });
         }
     </script>
-
 </body>
 
 </html>
