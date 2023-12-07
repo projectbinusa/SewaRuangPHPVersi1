@@ -293,6 +293,12 @@ class Supervisor extends CI_Controller
         // Outputkan file Excel ke browser
         $writer->save('php://output');
     }
+
+    public function hapus_data_history_approve($id)
+    {
+        $this->m_model->delete('history_approve', 'id', $id);
+        redirect(base_url('supervisor/history'));
+    }
     public function export_history_approve()
     {
 
