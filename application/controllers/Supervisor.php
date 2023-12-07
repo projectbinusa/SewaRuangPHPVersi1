@@ -90,64 +90,81 @@ class Supervisor extends CI_Controller
         $data['approve'] = $this->m_model->get_status_proses()->result();
         $this->load->view('supervisor/approve', $data);
     }
+
     public function aksi_approve_di_terima_semua()
     {
-        $data = [
-            'status' => 'booking',
-        ];
         $approve = $this->m_model->get_status_proses()->result();
+        $username = $this->session->userdata('username');
+
         foreach ($approve as $row) {
+            $id_user = $this->m_model->get_user_id_by_username($username);
+
             $data_approve = [
                 'status' => 'di setujui',
-                'id_peminjaman' => $row->id
+                'id_peminjaman' => $row->id,
+                'id_user' => $id_user,
             ];
-            $this->m_model->tambah_data('history_approve', $data);
-            $this->m_model->update('peminjaman', $data, array('id' => $row->id));
+
+            $this->m_model->tambah_data_history_approve($data_approve);
+            $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $row->id]);
         }
+
         redirect(base_url('supervisor/approve'));
     }
+
     public function aksi_approve_di_tolak_semua()
     {
-        $data = [
-            'status' => 'di tolak',
-        ];
         $approve = $this->m_model->get_status_proses()->result();
+        $username = $this->session->userdata('username');
+
         foreach ($approve as $row) {
+            $id_user = $this->m_model->get_user_id_by_username($username);
+
             $data_approve = [
                 'status' => 'di tolak',
-                'id_peminjaman' => $row->id
+                'id_peminjaman' => $row->id,
+                'id_user' => $id_user,
             ];
-            $this->m_model->tambah_data('history_approve', $data);
-            $this->m_model->update('peminjaman', $data, array('id' => $row->id));
+
+            $this->m_model->tambah_data_history_approve($data_approve);
+            $this->m_model->update('peminjaman', ['status' => 'di tolak'], ['id' => $row->id]);
         }
+
         redirect(base_url('supervisor/approve'));
     }
+
     public function aksi_approve_di_terima($id)
     {
-        $data = [
-            'status' => 'booking',
-        ];
+        $username = $this->session->userdata('username');
+        $id_user = $this->m_model->get_user_id_by_username($username);
+
         $data_approve = [
             'status' => 'di setujui',
-            'id_peminjaman' => $id
+            'id_peminjaman' => $id,
+            'id_user' => $id_user
         ];
-        $this->m_model->tambah_data('history_approve', $data);
-        $this->m_model->update('peminjaman', $data, array('id' => $id));
+
+        $this->m_model->tambah_data_history_approve($data_approve);
+        $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $id]);
+
         redirect(base_url('supervisor/approve'));
     }
+
     public function aksi_approve_di_tolak($id)
     {
-        $data = [
-            'status' => 'di tolak',
-        ];
+        $id_user = $this->session->userdata('id_user');
+
         $data_approve = [
             'status' => 'di tolak',
-            'id_peminjaman' => $id
+            'id_peminjaman' => $id,
+            'id_user' => $id_user
         ];
-        $this->m_model->tambah_data('history_approve', $data);
-        $this->m_model->update('peminjaman', $data, array('id' => $id));
+        $this->m_model->tambah_data('history_approve', $data_approve);
+        $this->m_model->update('peminjaman', ['status' => 'di tolak'], ['id' => $id]);
+
         redirect(base_url('supervisor/approve'));
     }
+
     public function data_operator()
     {
         $data['operator'] = $this->m_model->get_data_operator()->result();
@@ -284,97 +301,6 @@ class Supervisor extends CI_Controller
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
         $filename = 'DATA_OPERATOR.xlsx'; // Nama file Excel yang akan dihasilkan
-
-        // Set header HTTP untuk mengunduh file Excel
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="' . $filename . '"');
-        header('Cache-Control: max-age=0');
-
-        // Outputkan file Excel ke browser
-        $writer->save('php://output');
-    }
-    public function export_history_approve()
-    {
-
-        // Load autoloader Composer
-        require 'vendor/autoload.php';
-
-        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
-
-        // Buat lembar kerja aktif
-        $sheet = $spreadsheet->getActiveSheet();
-        // Data yang akan diekspor (contoh data)
-        $data = $this->m_model->get_data('history_approve')->result();
-
-        // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA PENYEWA', 'RUANGAN', 'JUMLAH ORANG', 'KODE BOOKING' , "TANGGAL BOOKING" , 'TANGGAL BERAKHIR', 'KEPERLUAN', 'STATUS'];
-        $rowIndex = 1;
-        foreach ($headers as $header) {
-            $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
-            $rowIndex++;
-        }
-
-        // Isi data dari database
-        $rowIndex = 2;
-        $no = 1;
-        foreach ($data as $rowData) {
-            $columnIndex = 1;
-            $nama = '';
-            $ruangan = '';
-            $jumlah_orang = '';
-            $kode = '';
-            $tanggal_booking = '';
-            $tanggal_berakhir = '';
-            $keperluan = '';
-            $status = '';
-            foreach ($rowData as $cellName => $cellData) {
-                if ($cellName == 'status') {
-                    $status = $cellData;
-                } elseif ($cellName == 'id_peminjaman') {
-                    $nama = tampil_nama_penyewa_byid(tampil_id_penyewa_byid($cellData));
-                   $ruangan= tampil_ruang_byid(tampil_id_ruang_byid($cellData));
-                   $jumlah_orang = tampil_jumlah_orang_byid($cellData);
-                   $kode = tampil_code_penyewa_byid($cellData);
-                   $tanggal_booking =  tampil_tanggal_booking_byid($cellData);
-                   $keperluan = tampil_keperluan_peminjaman_byid($cellData);
-                }
-
-                // Anda juga dapat menambahkan logika lain jika perlu
-
-                // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
-                $columnIndex++;
-            }
-
-            // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
-            // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-        $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-        $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
-        $sheet->setCellValueByColumnAndRow(3, $rowIndex, $ruangan);
-        $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
-        $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode);
-        $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
-        $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_berakhir);
-        $sheet->setCellValueByColumnAndRow(8, $rowIndex, $keperluan);
-        $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
-            $no++;
-
-            $rowIndex++;
-        }
-        // Auto size kolom berdasarkan konten
-        foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
-            $sheet->getColumnDimension($col)->setAutoSize(true);
-        }
-
-        // Set style header
-        $headerStyle = [
-            'font' => ['bold' => true],
-            'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
-        ];
-        $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
-
-        // Konfigurasi output Excel
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'DATA_HISTORY_APPROVE.xlsx'; // Nama file Excel yang akan dihasilkan
 
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

@@ -82,12 +82,34 @@ class M_model extends CI_Model
         $this->db->insert($table, $data);
         return $this->db->insert_id($table);
     }
+
+    public function tambah_data_history_approve($data)
+    {
+        $this->db->insert('history_approve', $data);
+        return $this->db->insert_id('history_approve');
+    }
+
     public function update($table, $data, $where)
     {
-        $data = $this->db->update($table, $data, $where);
+        $this->db->update($table, $data, $where);
         return $this->db->affected_rows();
     }
 
+    public function get_user_id_by_username($username)
+    {
+        // Fungsi ini mengembalikan ID pengguna berdasarkan username
+        $this->db->select('id');
+        $this->db->from('user');
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $result = $query->row();
+            return $result->id;
+        }
+
+        return null;
+    }
 
     public function get_by_id($tabel, $id_column, $id)
     {
@@ -233,7 +255,7 @@ class M_model extends CI_Model
         return $this->db->where('status', 'proses')
             ->get('peminjaman');
     }
-   
+
     public function get_id_peminjaman($id)
     {
         return $this->db->where('id_peminjaman', $id)
