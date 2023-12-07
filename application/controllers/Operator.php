@@ -1451,7 +1451,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'PEMBAYARAN',];
+        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'EMAIL',];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
