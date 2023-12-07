@@ -1516,7 +1516,6 @@
 
                                                 </button>
                                             </td>
-
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
@@ -1525,10 +1524,6 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-
         </div>
     </section>
 
@@ -1633,7 +1628,6 @@
             });
         }
     </script>
-
 </body>
 
 </html>
