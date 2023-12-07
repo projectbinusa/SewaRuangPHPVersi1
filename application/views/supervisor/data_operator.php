@@ -1824,7 +1824,7 @@
                         <button type="button"
                             class="py-2 px-2 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2"
                             onclick="template()">
-                            Unduh Templat</button>
+                            Unduh Template</button>
                     </div>
                     </form>
                 </div>

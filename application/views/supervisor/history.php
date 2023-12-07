@@ -1493,7 +1493,7 @@
                                             <td data-cell="Sampai Tanggal" class="text-center px-3 py-4">
                                                 <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman) ?>
                                             </td>
-                                            <td data-cell=" Status " class="text-center px-3 py-4">
+                                            <td data-cell=" Status " class="text-center px-3 py-4 text-uppercase">
                                                 <?php echo $row->status ?>
                                             </td>
                                             <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">

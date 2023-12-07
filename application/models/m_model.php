@@ -209,15 +209,16 @@ class M_model extends CI_Model
     }
 
     public function get_expired_bookings()
-    {
-        // Ambil semua pemesanan yang masih dalam status "booking" dan telah berakhir
-        $current_time = date('Y-m-d H:i:s');
-        $this->db->where('status', 'booking');
-        $this->db->where('tanggal_berakhir <', $current_time);
-        $query = $this->db->get('peminjaman');
+{
+    // Ambil semua pemesanan yang masih dalam status "booking" dan telah berakhir
+    $current_datetime = date('Y-m-d H:i:s');
 
-        return $query->result();
-    }
+    $this->db->where('status', 'booking');
+    $this->db->where('tanggal_berakhir <', $current_datetime);
+    $query = $this->db->get('peminjaman');
+
+    return $query->result();
+}
     public function get_status_peminjaman()
     {
         return $this->db->where_in('status', ['proses', 'selesai', 'di tolak'])
