@@ -217,7 +217,19 @@ function tampil_pelanggan_bynama($nama)
         return $stmt;
     }
 }
-
+function tampil_username_byid($id)
+{
+    $ci = &get_instance();
+    $ci->load->database();
+    $result = $ci->db->where('id', $id)->get('user');
+    
+    if ($result->num_rows() > 0) {
+        $row = $result->row();
+        return $row->username;
+    } else {
+        return "User not found";
+    }
+}
 function tampil_id_byemail($email)
 {
     $ci = &get_instance();
