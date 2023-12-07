@@ -359,6 +359,7 @@ class Supervisor extends CI_Controller
                    $jumlah_orang = tampil_jumlah_orang_byid($cellData);
                    $kode = tampil_code_penyewa_byid($cellData);
                    $tanggal_booking =  tampil_tanggal_booking_byid($cellData);
+                   $tanggal_berakhir = tampil_tanggal_berakhir_byid($cellData);
                    $keperluan = tampil_keperluan_peminjaman_byid($cellData);
                 }
 
