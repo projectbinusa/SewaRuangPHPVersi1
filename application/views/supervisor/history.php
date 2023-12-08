@@ -1448,22 +1448,22 @@
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Jumlah Orang
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Keperluan
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
                                             Kode Booking
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
                                             Booking Tanggal
                                         </th>
-                                        <th data-priority="7" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
                                             Sampai Tanggal
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="10" scope="col" class="px-3 py-3">
                                             Aksi
                                         </th>
 
