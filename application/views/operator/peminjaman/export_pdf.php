@@ -236,9 +236,7 @@
                     ?>
                     <p>Tanda tangan :</p>
                     <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image">
-                    <?php foreach ($history_approve as $baru) : ?>
-                        <p><?php echo tampil_nama_user_byid($baru->id_user); ?></p>
-                    <?php endforeach; ?>
+                    <p><?php echo tampil_nama_user_byid($row->id_user); ?></p>
                 </div>
             </div>
         <?php endforeach; ?>

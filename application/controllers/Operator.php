@@ -326,9 +326,7 @@ class operator extends CI_Controller
 
     public function export_pdf($id)
     {
-        $id = $this->session->userdata('id');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id);
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -347,9 +345,7 @@ class operator extends CI_Controller
 
     public function dowload_export_pdf($id)
     {
-        $id_user = $this->session->userdata('id_user');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id_user);
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
