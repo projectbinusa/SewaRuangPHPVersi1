@@ -343,7 +343,7 @@ class operator extends CI_Controller
         }
     }
 
-    public function dowload_export_pdf($id)
+    public function download_export_pdf($id)
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
 
