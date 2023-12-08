@@ -1307,7 +1307,7 @@
             border-color: #F5F7F8;
             background-color: #F5F7F8;
             margin: 10px 0;
-                   }
+        }
 
         .dataTables_wrapper .dataTables_filter input {
             margin-left: 9px;
@@ -1326,7 +1326,7 @@
             border: 1px solid transparent;
             height: 37px;
             padding-top: 5px;
-                    }
+        }
 
         /*Pagination Buttons - Current selected */
         .dataTables_wrapper .dataTables_paginate .paginate_button.current {
@@ -1402,7 +1402,6 @@
                 width: 6rem;
                 height: 2rem;
             }
-            
         }
     </style>
 
@@ -1424,10 +1423,6 @@
 
             <div class="container-table row justify-content-center">
                 <div class="tess">
-                  
-                    <button onclick="" class="mr-2 ml-3 inline-block px-3 py-2 bg-red-500 hover:bg-red-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
-                    <i class="fas fa-trash-alt"></i> Hapus Semua
-                    </button>
                     <button onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
                         <i class="fas fa-file-export"></i> Ekspor
                     </button>
@@ -1437,8 +1432,8 @@
                     <div class="header-item">
                         <div class="table-responsive relative">
 
-                            <table id="examples_data" class="md:w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table id="examples_data" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
@@ -1453,22 +1448,22 @@
                                         <th data-priority="4" scope="col" class="px-3 py-3">
                                             Jumlah Orang
                                         </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
+                                        <th data-priority="5" scope="col" class="px-3 py-3">
                                             Keperluan
                                         </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
+                                        <th data-priority="6" scope="col" class="px-3 py-3">
                                             Kode Booking
                                         </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
+                                        <th data-priority="7" scope="col" class="px-3 py-3">
                                             Booking Tanggal
                                         </th>
-                                        <th data-priority="7" scope="col" class="px-3 py-3">
+                                        <th data-priority="8" scope="col" class="px-3 py-3">
                                             Sampai Tanggal
                                         </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
+                                        <th data-priority="9" scope="col" class="px-3 py-3">
                                             Status
                                         </th>
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
+                                        <th data-priority="10" scope="col" class="px-3 py-3">
                                             Aksi
                                         </th>
 
@@ -1507,6 +1502,13 @@
                                                 <?php echo $row->status ?>
                                             </td>
                                             <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
+
+                                                <a href="<?php echo base_url('supervisor/edit_history/')  ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                    <span class="">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                </a>
+
                                                 <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
@@ -1559,7 +1561,7 @@
         $(document).ready(function() {
 
             var table = $('#examples_data').DataTable({
-                    // responsive: true
+                    responsive: true
                 })
                 .columns.adjust()
                 .responsive.recalc();
