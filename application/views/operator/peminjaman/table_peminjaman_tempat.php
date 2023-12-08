@@ -1032,6 +1032,41 @@
                                                             // Jika durasi kurang dari satu hari, tampilkan dalam format jam
                                                             echo $durasi->h . ' Jam';
                                                         }
+
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
+                                                    <?php
+                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
+
+                                                    // Menampilkan durasi dalam format angka
+                                                    if ($durasi->days >= 1) {
+                                                        echo $durasi->days . ' Hari <br>';
+
+                                                        echo $durasi->h . ' Jam';
+                                                    } else {
+                                                        // Jika durasi kurang dari satu hari, tampilkan dalam format jam
+                                                        echo $durasi->h . ' Jam';
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td data-cell="Status " class="text-center px-3 py-4 uppercase">
+                                                    <?php echo $row->status ?>
+                                                </td>
+
+                                                <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+
+                                                    <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
+                                                        <span class=""><i class="fas fa-edit"></i></span>
+                                                    </a>
+
+                                                    <?php if ($row->status === 'booking') : ?>
+                                                        <button onclick="printConfirmation('<?php echo base_url('operator/dowload_export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+
                                                         ?>
                                                     </td>
                                                     <td data-cell="Status " class="text-center px-3 py-4 uppercase">
@@ -1052,17 +1087,25 @@
                                                             </button>
                                                         <?php endif; ?>
                                                         <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+
                                                             <span class="">
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </span>
                                                             <!-- baru -->
                                                         </button>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+
+                                                    <?php endif; ?>
+                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                        <span class="">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </span>
+                                                        <!-- baru -->
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -1101,6 +1144,15 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
+        $(document).ready(function() {
+
+            var table = $('#example_data').DataTable({
+                    responsive: true
+                })
+                .columns.adjust()
+                .responsive.recalc();
+        });
+
         function printConfirmation(printUrl) {
             Swal.fire({
                 title: 'Konfirmasi Cetak',
@@ -1136,15 +1188,6 @@
                 }
             });
         }
-
-        $(document).ready(function() {
-
-            var table = $('#example_data').DataTable({
-                    responsive: false
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
 
         function hapus(id) {
             Swal.fire({

@@ -114,28 +114,12 @@
             border-bottom: 1px solid #bcb9b9;
         }
 
-        /* .submit {
-            font-size: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #f4f4f4;
-            background-color: #4F709C;
-            border: 3px solid #4F709C;
-            border-radius: 1rem;
-            width: 8rem;
-            height: 2.5rem;
-            cursor: pointer;
-            transition: all .3s;
-        } */
-
         .submit:hover {
             background-color: transparent;
             color: #222;
         }
 
         /* Spesifikasi ditingkatkan untuk tombol "submit" */
-        /* .survey-form .submit { */
         .survey-form .submit {
             font-size: 14px;
             font-weight: 600;
@@ -156,8 +140,34 @@
             justify-content: center;
             align-items: center;
         }
+        .submit:hover {
+            background-color: transparent;
+            color: #222;
+        }
 
-        .survey-form .submit:hover {
+        /* Spesifikasi ditingkatkan untuk tombol "submit" */
+        .survey-form .submitu {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f4f4f4;
+            background-color: #B31312;
+            border: 3px solid #B31312;
+            border-radius: 1rem;
+            width: 14rem;
+            height: 2.5rem;
+            padding: 0;
+            /* Atur ulang padding agar fleksibel */
+            margin: 20px 10px 10px 10px;
+            cursor: pointer;
+            transition: all .3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .survey-form .submitu:hover {
             background-color: transparent;
             color: #222;
         }
@@ -285,7 +295,7 @@
 
                     <div class="flex justify-center items-center space-x-4">
                         <button type="button" id="submitBtn" class="submit">Submit</button>
-                        <a href="<?php echo base_url('operator/hapus_tambahan_peminjaman/') . $row->id ?>" class="submit text-sm mt-96" id="hapusTambahan">Hapus Tambahan</a>
+                        <a href="<?php echo base_url('operator/hapus_tambahan_peminjaman/') . $row->id ?>" class="submitu text-sm mt-96" id="hapusTambahan">Hapus Tambahan</a>
                     </div>
                 </form>
             <?php endforeach ?>

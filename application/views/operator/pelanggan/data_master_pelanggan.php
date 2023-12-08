@@ -939,73 +939,69 @@
                                     </a>
                                 </div>
 
-                                <div class="table-wrapper">
-                                    <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+                                <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                No
+                                            </th>
+                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                                Nama
+                                            </th>
+
+                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                                No Telepon
+                                            </th>
+                                            <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                                Email
+                                            </th>
+
+                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                Aksi
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 0;
+                                        foreach ($pelanggan as $row) :
+                                            $no++
+                                        ?>
                                             <tr>
-                                                <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                    No
-                                                </th>
-                                                <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                                    Nama
-                                                </th>
+                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                    <?php echo $row->nama ?>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                    <?php echo $row->phone ?>
+                                                </td>
+                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                    <?php echo $row->email ?>
+                                                </td>
 
-                                                <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                    No Telepon
-                                                </th>
-                                                <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                                    Email
-                                                </th>
-
-                                                <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                    Aksi
-                                                </th>
+                                                <!-- Aksi -->
+                                                <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                    <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                        <span class="">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                    </a>
+                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                        <span class="">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </span>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 0;
-                                            foreach ($pelanggan as $row) :
-                                                $no++
-                                            ?>
-                                                <tr>
-                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                        <?php echo $no ?>
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                        <?php echo $row->nama ?>
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                        <?php echo $row->phone ?>
-                                                    </td>
-                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                        <?php echo $row->email ?>
-                                                    </td>
-
-                                                    <!-- Aksi -->
-                                                    <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                                        <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                            <span class="">
-                                                                <i class="fas fa-edit"></i>
-                                                            </span>
-                                                        </a>
-                                                        <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                            <span class="">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </section>
             <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
@@ -1030,11 +1026,8 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- jQuery -->
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-
                 <!--Datatables -->
                 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
                 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -1062,15 +1055,7 @@
                     window.addEventListener('resize', adjustTableStyle);
                     adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
 
-                    $(document).ready(function() {
-
-                        var table = $('#example_data').DataTable({
-                                responsive: false
-                            })
-                            .columns.adjust()
-                            .responsive.recalc();
-                    });
-
+                    $(document).ready(function() {                        
                     function hapus(id) {
                         Swal.fire({
                             title: ' Apakah Mau Dihapus?',
@@ -1247,7 +1232,7 @@
                 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
                 <script>
                     $(document).ready(function() {
-                        var table = $('#example').DataTable({
+                        var table = $('#example_data').DataTable({
                             responsive: true
                         }).columns.adjust().responsive.recalc();
                     });
