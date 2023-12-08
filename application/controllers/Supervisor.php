@@ -96,7 +96,7 @@ class Supervisor extends CI_Controller
             $id_user = $this->m_model->get_user_id_by_username($username);
 
             $data_approve = [
-                'status' => 'di tolak',
+                'status' => 'di setujui',
                 'id_peminjaman' => $row->id,
             ];
             $this->m_model->tambah_data_history_approve($data_approve);
@@ -129,7 +129,7 @@ class Supervisor extends CI_Controller
 
             $rejecteddata = [
                 'id_user' => $id_user,
-                'status' => 'booking',
+                'status' => 'di tolak',
             ];
 
             // Assuming that the update function can handle the update operation
@@ -145,17 +145,19 @@ class Supervisor extends CI_Controller
         $id_user = $this->m_model->get_user_id_by_username($username);
 
         $data_approve = [
-            'status' => 'di tolak',
+            'status' => 'di setujui',
             'id_peminjaman' => $id,
         ];
         $this->m_model->tambah_data_history_approve($data_approve);
 
         $approvedata = [
             'id_user' => $id_user,
+            'status' => 'booking',
         ];
-        $this->m_model->update($approvedata);
 
-        $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $id]);
+        // Assuming that the update function can handle the update operation
+        $this->m_model->update('peminjaman', $approvedata, ['id' => $id]);
+
         redirect(base_url('supervisor/approve'));
     }
 
