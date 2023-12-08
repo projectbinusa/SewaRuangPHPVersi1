@@ -314,11 +314,11 @@ class M_model extends CI_Model
         return $this->db->get();
     }
 
-    public function get_history_approve_by_id_user($username)
+    public function get_history_approve_by_id_user()
     {
-        $this->db->select('user.*,user.username');
-        $this->db->from('user');
-        $this->db->join('history_approve', 'user.username = user.username', 'left');
+        $this->db->select('history_approve.*, user.username');
+        $this->db->from('history_approve');
+        $this->db->join('user', 'history_approve.id_user = user.id', 'left');
         $query = $this->db->get();
         return $query->result();
     }

@@ -326,9 +326,9 @@ class operator extends CI_Controller
 
     public function export_pdf($id)
     {
-        $username = $this->session->userdata('username');
+        $id = $this->session->userdata('id');
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
-        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($username);
+        $data['history_approve'] = $this->m_model->get_history_approve_by_id_user($id);
 
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
@@ -1331,7 +1331,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('tambahan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'JENIS','SATUAN' , 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -1345,6 +1345,7 @@ class operator extends CI_Controller
             $columnIndex = 1;
             $nama = '';
             $jenis = '';
+            $satuan = '';
             $deskripsi = '';
             foreach ($rowData as $cellName => $cellData) {
                 if ($cellName == 'nama') {
@@ -1353,6 +1354,8 @@ class operator extends CI_Controller
                     $jenis = $cellData;
                 } elseif ($cellName == 'deskripsi') {
                     $deskripsi = $cellData;
+                } elseif ($cellName == 'satuan') {
+                    $satuan = $cellData;
                 }
 
                 // Anda juga dapat menambahkan logika lain jika perlu
@@ -1366,7 +1369,8 @@ class operator extends CI_Controller
             $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
             $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
             $sheet->setCellValueByColumnAndRow(3, $rowIndex, $jenis);
-            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $deskripsi);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $satuan);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $deskripsi);
             $no++;
 
             $rowIndex++;
@@ -1452,7 +1456,7 @@ class operator extends CI_Controller
         // Data yang akan diekspor (contoh data)
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'PEMBAYARAN',];
+        $headers = ['NO', 'NAMA ', 'NO TELEPON', 'EMAIL',];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
