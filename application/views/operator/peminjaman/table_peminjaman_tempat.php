@@ -1032,26 +1032,6 @@
                                                             // Jika durasi kurang dari satu hari, tampilkan dalam format jam
                                                             echo $durasi->h . ' Jam';
                                                         }
-
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
-                                                    <?php
-                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
-
-                                                    // Menampilkan durasi dalam format angka
-                                                    if ($durasi->days >= 1) {
-                                                        echo $durasi->days . ' Hari <br>';
-
-                                                        echo $durasi->h . ' Jam';
-                                                    } else {
-                                                        // Jika durasi kurang dari satu hari, tampilkan dalam format jam
-                                                        echo $durasi->h . ' Jam';
-                                                    }
                                                     ?>
                                                 </td>
                                                 <td data-cell="Status " class="text-center px-3 py-4 uppercase">
