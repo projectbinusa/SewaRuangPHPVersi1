@@ -228,37 +228,21 @@
                 </div>
 
                 <div class="signature-section">
+                    <!-- Tambahkan baris untuk tanda tangan menggunakan base64 -->
+                    <?php
+                    $image_path = FCPATH . 'image/icon.png'; // Sesuaikan dengan lokasi gambar
+                    $image_data = file_get_contents($image_path);
+                    $image_base64 = base64_encode($image_data);
+                    ?>
                     <p>Tanda tangan :</p>
-                    <img src="data:image/png;base64,<?= generate_signature_image(); ?>" alt="Signature Image" class="signature-image">
-                    <?php display_approval_history($history_approve); ?>
+                    <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image">
+                    <p><?php echo tampil_nama_user_byid($row->id_user); ?></p>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php else : ?>
         <p>Data peminjaman tidak ditemukan.</p>
     <?php endif; ?>
-
-    <?php
-    function generate_signature_image()
-    {
-        $image_path = FCPATH . 'image/icon.png';
-        $image_data = file_get_contents($image_path);
-        $image_base64 = base64_encode($image_data);
-
-        return $image_base64;
-    }
-
-    function display_approval_history($history_approve)
-    {
-        if (is_array($history_approve) && !empty($history_approve)) {
-            foreach ($history_approve as $baba) {
-                echo '<p>' . tampil_username_byid($baba->id_user) . '</p>';
-            }
-        } else {
-            echo '<p>No approval history available.</p>';
-        }
-    }
-    ?>
 </body>
 
 </html>

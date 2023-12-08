@@ -88,10 +88,13 @@ class M_model extends CI_Model
         $this->db->insert('history_approve', $data);
         return $this->db->insert_id('history_approve');
     }
+    // Other functions in your model...
 
     public function update($table, $data, $where)
     {
-        $this->db->update($table, $data, $where);
+        $this->db->where($where);
+        $this->db->update($table, $data);
+
         return $this->db->affected_rows();
     }
 
@@ -231,16 +234,16 @@ class M_model extends CI_Model
     }
 
     public function get_expired_bookings()
-{
-    // Ambil semua pemesanan yang masih dalam status "booking" dan telah berakhir
-    $current_datetime = date('Y-m-d H:i:s');
+    {
+        // Ambil semua pemesanan yang masih dalam status "booking" dan telah berakhir
+        $current_datetime = date('Y-m-d H:i:s');
 
-    $this->db->where('status', 'booking');
-    $this->db->where('tanggal_berakhir <', $current_datetime);
-    $query = $this->db->get('peminjaman');
+        $this->db->where('status', 'booking');
+        $this->db->where('tanggal_berakhir <', $current_datetime);
+        $query = $this->db->get('peminjaman');
 
-    return $query->result();
-}
+        return $query->result();
+    }
     public function get_status_peminjaman()
     {
         return $this->db->where_in('status', ['proses', 'selesai', 'di tolak'])
@@ -310,16 +313,6 @@ class M_model extends CI_Model
         $this->db->join('tambahan t', 'pt.id_tambahan = t.id', 'left');
         $this->db->where('p.id', $id);
         $this->db->group_by('p.id');
-
-        return $this->db->get();
-    }
-
-    public function get_history_approve_by_id_user($id_user)
-    {
-        $this->db->select('history_approve.*, user.username');
-        $this->db->from('history_approve');
-        $this->db->join('user', 'history_approve.id_user = user.id');
-        $this->db->where('history_approve.id_user', $id_user);
 
         return $this->db->get();
     }

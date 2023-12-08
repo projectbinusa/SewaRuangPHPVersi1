@@ -51,6 +51,7 @@ CREATE TABLE `peminjaman` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelanggan` int(11) DEFAULT NULL,
   `id_ruangan` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `tanggal_booking` date DEFAULT NULL,
   `tanggal_berakhir` date DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
@@ -121,8 +122,8 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`id`,`email`,`username`,`password`,`role`) values 
-(8,'supervisor@gmail.com','Supervisor','0192023a7bbd73250516f069df18b500','supervisor'),
-(9,'operator@gmail.com','Operator','0192023a7bbd73250516f069df18b500','operator');
+(1,'supervisor@gmail.com','Supervisor','0192023a7bbd73250516f069df18b500','supervisor'),
+(2,'operator@gmail.com','Operator','0192023a7bbd73250516f069df18b500','operator');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
