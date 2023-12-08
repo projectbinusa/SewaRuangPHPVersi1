@@ -875,6 +875,17 @@
                 margin-bottom: 50px;
             }
         }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
 
@@ -927,6 +938,7 @@
                                         Tambah
                                     </a>
                                 </div>
+
 
                                 <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                     <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -990,9 +1002,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </section>
             <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
@@ -1017,11 +1026,8 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- jQuery -->
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-
                 <!--Datatables -->
                 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
                 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -1049,15 +1055,7 @@
                     window.addEventListener('resize', adjustTableStyle);
                     adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
 
-                    $(document).ready(function() {
-
-                        var table = $('#example_data').DataTable({
-                                responsive: true
-                            })
-                            .columns.adjust()
-                            .responsive.recalc();
-                    });
-
+                    $(document).ready(function() {                        
                     function hapus(id) {
                         Swal.fire({
                             title: ' Apakah Mau Dihapus?',
@@ -1234,7 +1232,7 @@
                 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
                 <script>
                     $(document).ready(function() {
-                        var table = $('#example').DataTable({
+                        var table = $('#example_data').DataTable({
                             responsive: true
                         }).columns.adjust().responsive.recalc();
                     });
