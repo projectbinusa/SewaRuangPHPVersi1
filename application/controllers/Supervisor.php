@@ -312,6 +312,15 @@ class Supervisor extends CI_Controller
         $this->m_model->delete('history_approve', 'id', $id);
         redirect(base_url('supervisor/history'));
     }
+    public function hapus_data_history_approve_semua()
+    {
+        $data = $this->m_model->get_data('history_approve')->result();
+        foreach ($data as $row) {
+            $this->m_model->delete('history_approve', 'id', $row->id);
+        }
+
+        redirect(base_url('supervisor/approve'));
+    }
     public function export_history_approve()
     {
 

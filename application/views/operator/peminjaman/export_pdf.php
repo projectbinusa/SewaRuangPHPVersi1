@@ -175,7 +175,7 @@
                         <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
                     </tr>
                     <tr>
-                        <td>keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
+                        <td>Keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
                     </tr>
                 </table>
             </div>
