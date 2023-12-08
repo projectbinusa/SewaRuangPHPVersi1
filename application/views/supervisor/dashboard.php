@@ -5466,7 +5466,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <a href="<?php echo base_url("supervisor/history_approve") ?>" class="card-body text-center">
+                            <a href="<?php echo base_url("supervisor/history") ?>" class="card-body text-center">
                                 <div class="section-title mb-0">
                                     <h2 class="title mt-4">
                                         <?php echo $jumlah_history_approve ?>
