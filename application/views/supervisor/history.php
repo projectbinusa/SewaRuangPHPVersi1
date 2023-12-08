@@ -1403,6 +1403,17 @@
                 height: 2rem;
             }
         }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
 </head>
@@ -1424,9 +1435,9 @@
             <div class="container-table row justify-content-center">
                 <div class="tess">
                     <button onclick="" class="mr-2 ml-3 inline-block px-3 py-2 bg-red-500 hover:bg-red-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
-                    <i class="fas fa-trash-alt"></i> Hapus Semua
+                        <i class="fas fa-trash-alt"></i> Hapus Semua
                     </button>
-               
+
                     <button onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
                         <i class="fas fa-file-export"></i> Ekspor
                     </button>
@@ -1435,88 +1446,89 @@
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="table-responsive relative">
+                            <div class="table-wrapper">
+                                <table id="examples_data" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                        <tr>
+                                            <th data-priority="1" scope="col" class="px-3 py-3">
+                                                No
+                                            </th>
+                                            <th data-priority="2" scope="col" class="px-3 py-3">
+                                                Nama Penyewa
+                                            </th>
 
-                            <table id="examples_data" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th data-priority="1" scope="col" class="px-3 py-3">
-                                            No
-                                        </th>
-                                        <th data-priority="2" scope="col" class="px-3 py-3">
-                                            Nama Penyewa
-                                        </th>
+                                            <th data-priority="3" scope="col" class="px-3 py-3">
+                                                Ruangan
+                                            </th>
+                                            <th data-priority="4" scope="col" class="px-3 py-3">
+                                                Jumlah Orang
+                                            </th>
+                                            <th data-priority="5" scope="col" class="px-3 py-3">
+                                                Keperluan
+                                            </th>
+                                            <th data-priority="6" scope="col" class="px-3 py-3">
+                                                Kode Booking
+                                            </th>
+                                            <th data-priority="7" scope="col" class="px-3 py-3">
+                                                Booking Tanggal
+                                            </th>
+                                            <th data-priority="8" scope="col" class="px-3 py-3">
+                                                Sampai Tanggal
+                                            </th>
+                                            <th data-priority="9" scope="col" class="px-3 py-3">
+                                                Status
+                                            </th>
+                                            <th data-priority="10" scope="col" class="px-3 py-3">
+                                                Aksi
+                                            </th>
 
-                                        <th data-priority="3" scope="col" class="px-3 py-3">
-                                            Ruangan
-                                        </th>
-                                        <th data-priority="4" scope="col" class="px-3 py-3">
-                                            Jumlah Orang
-                                        </th>
-                                        <th data-priority="5" scope="col" class="px-3 py-3">
-                                            Keperluan
-                                        </th>
-                                        <th data-priority="6" scope="col" class="px-3 py-3">
-                                            Kode Booking
-                                        </th>
-                                        <th data-priority="7" scope="col" class="px-3 py-3">
-                                            Booking Tanggal
-                                        </th>
-                                        <th data-priority="8" scope="col" class="px-3 py-3">
-                                            Sampai Tanggal
-                                        </th>
-                                        <th data-priority="9" scope="col" class="px-3 py-3">
-                                            Status
-                                        </th>
-                                        <th data-priority="10" scope="col" class="px-3 py-3">
-                                            Aksi
-                                        </th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 0;
-                                    foreach ($history as $row) :
-                                        $no++ ?>
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell="No" scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <?php echo $no ?>
-                                            </td>
-                                            <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
-                                                <?php echo tampil_nama_penyewa_byid(tampil_id_penyewa_byid($row->id_peminjaman)) ?>
-                                            </td>
-                                            <td data-cell="No Ruang " class="text-center px-3 py-4">
-                                                <?php echo tampil_ruang_byid(tampil_id_ruang_byid($row->id_peminjaman)) ?>
-                                            </td>
-                                            <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                                <?php echo tampil_jumlah_orang_byid($row->id_peminjaman) ?>
-                                            </td>
-                                            <td data-cell="Keperluan " class="text-center px-3 py-4">
-                                                <?php echo tampil_keperluan_peminjaman_byid($row->id_peminjaman) ?>
-                                            </td>
-                                            <td data-cell="Kode Booking " class="text-center px-3 py-4">
-                                                <?php echo tampil_code_penyewa_byid($row->id_peminjaman) ?>
-                                            </td>
-                                            <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
-                                                <?php echo tampil_tanggal_booking_byid($row->id_peminjaman) ?>
-                                            </td>
-                                            <td data-cell="Sampai Tanggal" class="text-center px-3 py-4">
-                                                <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman) ?>
-                                            </td>
-                                            <td data-cell=" Status " class="text-center px-3 py-4 text-uppercase">
-                                                <?php echo $row->status ?>
-                                            </td>
-                                            <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
-
-                                                <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                    <span class="">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </span>
-                                                </button>
-                                            </td>
                                         </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 0;
+                                        foreach ($history as $row) :
+                                            $no++ ?>
+                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                <td data-cell="No" scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <?php echo $no ?>
+                                                </td>
+                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
+                                                    <?php echo tampil_nama_penyewa_byid(tampil_id_penyewa_byid($row->id_peminjaman)) ?>
+                                                </td>
+                                                <td data-cell="No Ruang " class="text-center px-3 py-4">
+                                                    <?php echo tampil_ruang_byid(tampil_id_ruang_byid($row->id_peminjaman)) ?>
+                                                </td>
+                                                <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                    <?php echo tampil_jumlah_orang_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Keperluan " class="text-center px-3 py-4">
+                                                    <?php echo tampil_keperluan_peminjaman_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Kode Booking " class="text-center px-3 py-4">
+                                                    <?php echo tampil_code_penyewa_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Tanggal Booking " class="text-center px-3 py-4">
+                                                    <?php echo tampil_tanggal_booking_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell="Sampai Tanggal" class="text-center px-3 py-4">
+                                                    <?php echo tampil_tanggal_berakhir_byid($row->id_peminjaman) ?>
+                                                </td>
+                                                <td data-cell=" Status " class="text-center px-3 py-4 text-uppercase">
+                                                    <?php echo $row->status ?>
+                                                </td>
+                                                <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
+
+                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                        <span class="">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1559,7 +1571,7 @@
         $(document).ready(function() {
 
             var table = $('#examples_data').DataTable({
-                    responsive: true
+                    responsive: false
                 })
                 .columns.adjust()
                 .responsive.recalc();
