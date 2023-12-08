@@ -1423,6 +1423,10 @@
 
             <div class="container-table row justify-content-center">
                 <div class="tess">
+                    <button onclick="" class="mr-2 ml-3 inline-block px-3 py-2 bg-red-500 hover:bg-red-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
+                    <i class="fas fa-trash-alt"></i> Hapus Semua
+                    </button>
+               
                     <button onclick="exportData()" class="mr-2 ml-3 inline-block px-3 py-2 bg-green-500 hover:bg-green-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
                         <i class="fas fa-file-export"></i> Ekspor
                     </button>
@@ -1502,12 +1506,6 @@
                                                 <?php echo $row->status ?>
                                             </td>
                                             <td data-cell="Aksi" class="px-3 py-3 flex justify-content-center">
-
-                                                <a href="<?php echo base_url('supervisor/edit_history/')  ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                    <span class="">
-                                                        <i class="fas fa-edit"></i>
-                                                    </span>
-                                                </a>
 
                                                 <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
