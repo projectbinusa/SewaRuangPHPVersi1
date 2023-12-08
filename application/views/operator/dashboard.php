@@ -1671,6 +1671,8 @@
         @media (max-width: 600px) {
             table {
                 width: 4.5rem;
+                width: 100%;
+                overflow-x: auto;
             }
 
             .inner-section {
@@ -1714,6 +1716,17 @@
                 padding-top: 20px;
                 padding-bottom: 70px;
             }
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            display: none;
         }
     </style>
 
@@ -1804,12 +1817,12 @@
                             <?php foreach ($ruang as $row) : ?>
                                 <?php if ($count < 6) : ?>
                                     <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
-                                            <div class="bg-white pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                                <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
-                                                <h2 class="text-2xl text-gray-800 font-semibold mb-3">
-                                                    <?php echo $row->no_ruang; ?>
-                                                </h2>
-                                            </div>
+                                        <div class="bg-white pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
+                                            <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                            <h2 class="text-2xl text-gray-800 font-semibold mb-3">
+                                                <?php echo $row->no_ruang; ?>
+                                            </h2>
+                                        </div>
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -1844,44 +1857,46 @@
                     <div class="col-lg-12">
                         <div class="header-item">
                             <div class="relative">
-                                <table id="example_pelanggan" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                Nama
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Telepon
-                                            </th>
-                                            <th data-priority="" scope="col" class="text-center px-3 py-3">
-                                                Email
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($pelanggans as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama" class="text-center px-3 py-4">
-                                                    <?php echo $row->nama ?>
-                                                </td>
-                                                <td data-cell="Telepon" class="text-center px-3 py-4">
-                                                    <?php echo $row->phone ?>
-                                                </td>
-                                                <td data-cell="Email" class="text-center px-3 py-4">
-                                                    <?php echo $row->email ?>
-                                                </td>
+                                <div class="table-wrapper">
+                                    <table id="example_pelanggan" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                                    No
+                                                </th>
+                                                <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                    Nama
+                                                </th>
+                                                <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                    Telepon
+                                                </th>
+                                                <th data-priority="" scope="col" class="text-center px-3 py-3">
+                                                    Email
+                                                </th>
                                             </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no = 0;
+                                            foreach ($pelanggans as $row) :
+                                                $no++ ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Nama" class="text-center px-3 py-4">
+                                                        <?php echo $row->nama ?>
+                                                    </td>
+                                                    <td data-cell="Telepon" class="text-center px-3 py-4">
+                                                        <?php echo $row->phone ?>
+                                                    </td>
+                                                    <td data-cell="Email" class="text-center px-3 py-4">
+                                                        <?php echo $row->email ?>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1906,67 +1921,68 @@
                     <div class="col-lg-12">
                         <div class="header-item">
                             <div class="relative">
+                                <div class="table-wrapper">
+                                    <table id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
+                                                    No
+                                                </th>
+                                                <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                    Nama
+                                                </th>
+                                                <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                    Ruangan
+                                                </th>
+                                                <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                                    Kapasitas
+                                                </th>
+                                                <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                                    Kode Booking
+                                                </th>
 
-                                <table id="example_report" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center w-14 px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                Nama
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Ruangan
-                                            </th>
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                Kapasitas
-                                            </th>
-                                            <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                                Kode Booking
-                                            </th>
-                                            
-                                            <th data-priority="9" scope="col" class="text-center px-3 py-3">
-                                                Status
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($report_sewa as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama" class="text-center px-3 py-4">
-                                                    <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
-                                                </td>
-                                                <td data-cell="Ruangan " class="text-center px-3 py-4">
-                                                    <?php echo tampil_ruang_byid($row->id_ruangan) ?>
-                                                </td>
-                                                <td data-cell="Kapasitas " class="text-center px-3 py-4">
-                                                    <?php echo $row->jumlah_orang ?>
-                                                </td>
-                                                <td data-cell="Kode Booking" class="text-center px-3 py-4">
-                                                    <?php echo $row->kode_booking ?>
-                                                </td>
-
-                                                <td data-cell="Status" class="text-center px-3 py-4">
-                                                    <!-- <?php echo $row->status ?> -->
-
-                                                    <?php if ($row->status == "di tolak") {
-                                                        echo "DI TOLAK";
-                                                    } else {
-                                                        echo "SELESAI";
-                                                    } ?>
-                                                </td>
-
-
+                                                <th data-priority="9" scope="col" class="text-center px-3 py-3">
+                                                    Status
+                                                </th>
                                             </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no = 0;
+                                            foreach ($report_sewa as $row) :
+                                                $no++ ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Nama" class="text-center px-3 py-4">
+                                                        <?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?>
+                                                    </td>
+                                                    <td data-cell="Ruangan " class="text-center px-3 py-4">
+                                                        <?php echo tampil_ruang_byid($row->id_ruangan) ?>
+                                                    </td>
+                                                    <td data-cell="Kapasitas " class="text-center px-3 py-4">
+                                                        <?php echo $row->jumlah_orang ?>
+                                                    </td>
+                                                    <td data-cell="Kode Booking" class="text-center px-3 py-4">
+                                                        <?php echo $row->kode_booking ?>
+                                                    </td>
+
+                                                    <td data-cell="Status" class="text-center px-3 py-4">
+                                                        <!-- <?php echo $row->status ?> -->
+
+                                                        <?php if ($row->status == "di tolak") {
+                                                            echo "DI TOLAK";
+                                                        } else {
+                                                            echo "SELESAI";
+                                                        } ?>
+                                                    </td>
+
+
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2010,11 +2026,11 @@
                     .responsive.recalc();
             });
 
-           
+
             $(document).ready(function() {
 
                 var table = $('#example_pelanggan').DataTable({
-                        responsive: true
+                        responsive: false
                     })
                     .columns.adjust()
                     .responsive.recalc();
@@ -2022,7 +2038,7 @@
             $(document).ready(function() {
 
                 var table = $('#example_report').DataTable({
-                        responsive: true
+                        responsive: false
                     })
                     .columns.adjust()
                     .responsive.recalc();

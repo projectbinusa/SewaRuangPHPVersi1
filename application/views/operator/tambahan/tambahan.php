@@ -877,6 +877,17 @@
                 margin-bottom: 50px;
             }
         }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            display: none;
+        }
     </style>
     <!-- script modal -->
     <script>
@@ -930,67 +941,69 @@
                                     </a>
                                 </div>
 
-                                <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                Nama Item
-                                            </th>
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Deskripsi
-                                            </th>
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                Jenis
-                                            </th>
-                                            <th data-priority="6" scope="col" class="text-center px-3 py-3">
-                                                Satuan
-                                            </th>
+                                <div class="table-wrapper">
+                                    <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                                    No
+                                                </th>
+                                                <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                    Nama Item
+                                                </th>
+                                                <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                    Deskripsi
+                                                </th>
+                                                <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                                    Jenis
+                                                </th>
+                                                <th data-priority="6" scope="col" class="text-center px-3 py-3">
+                                                    Satuan
+                                                </th>
 
-                                            <th data-priority="7" scope="col" class="text-center px-3 py-3">
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $no = 0;
-                                        foreach ($tambahan as $row) :
-                                            $no++ ?>
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td data-cell="Nama " class="text-center w-32 px-3 py-4">
-                                                    <?php echo $row->nama ?>
-                                                </td>
-                                                <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
-                                                    <?php echo $row->deskripsi ?>
-                                                </td>
-                                                <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
-                                                    <?php echo $row->jenis ?>
-                                                </td>
-                                                <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
-                                                <?php echo $row->satuan ?>
-                                                </td>
-                                                <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                                    <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                        <span class="">
-                                                            <i class="fas fa-edit"></i>
-                                                        </span>
-                                                    </a>
-                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                        <span class="">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </span>
-
-                                                    </button>
-                                                </td>
+                                                <th data-priority="7" scope="col" class="text-center px-3 py-3">
+                                                    Aksi
+                                                </th>
                                             </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php $no = 0;
+                                            foreach ($tambahan as $row) :
+                                                $no++ ?>
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <td data-cell="No " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td data-cell="Nama " class="text-center w-32 px-3 py-4">
+                                                        <?php echo $row->nama ?>
+                                                    </td>
+                                                    <td data-cell="Deskripsi " class="text-center w-36 px-3 py-4">
+                                                        <?php echo $row->deskripsi ?>
+                                                    </td>
+                                                    <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
+                                                        <?php echo $row->jenis ?>
+                                                    </td>
+                                                    <td data-cell="Jenis " class="text-center w-36 px-3 py-4">
+                                                        <?php echo $row->satuan ?>
+                                                    </td>
+                                                    <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                        <a href="<?php echo base_url('operator/edit_tambahan/') . $row->id ?>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                            <span class="">
+                                                                <i class="fas fa-edit"></i>
+                                                            </span>
+                                                        </a>
+                                                        <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                            <span class="">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </span>
+
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -999,213 +1012,213 @@
         </div>
     </main>
     <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
-            <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div class="fixed inset-0 transition-opacity">
-                    <div class="absolute inset-0 bg-gray-900 opacity-75">
-                    </div>
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-                    <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                        <form id="importForm" action="<?= base_url('operator/import_tambahan'); ?>" method="post" enctype="multipart/form-data">
-                            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                <label class="font-medium text-gray-800">File</label>
-                                <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-                            </div>
-                            <div class="bg-gray-200 px-4 py-3 md:text-right">
-                                <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                                <button onclick="impor()" type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                                <!-- Remove or replace the following line if template() is not defined -->
-                                <button type="button" class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Template</button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-900 opacity-75">
+                </div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <form id="importForm" action="<?= base_url('operator/import_tambahan'); ?>" method="post" enctype="multipart/form-data">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <label class="font-medium text-gray-800">File</label>
+                            <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+                        </div>
+                        <div class="bg-gray-200 px-4 py-3 md:text-right">
+                            <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                            <button onclick="impor()" type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
+                            <!-- Remove or replace the following line if template() is not defined -->
+                            <button type="button" class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Template</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-    <!-- </main> -->
+        </div>
+        <!-- </main> -->
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script>
-        function exportData() {
-            Swal.fire({
-                title: 'Ekspor Tambahan Peminjaman?',
-                text: 'Data akan di ekspor.',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Tambahkan logika ekspor Anda di sini
-                    // Misalnya, Anda dapat memicu fungsionalitas ekspor
-                    // atau mengirim permintaan ke server untuk mengekspor data
+        <!--Datatables -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script>
+            function exportData() {
+                Swal.fire({
+                    title: 'Ekspor Tambahan Peminjaman?',
+                    text: 'Data akan di ekspor.',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Tambahkan logika ekspor Anda di sini
+                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
+                        // atau mengirim permintaan ke server untuk mengekspor data
 
-                    // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
-                    setTimeout(function() {
-                        Swal.fire({
-                            title: 'Berhasil!',
-                            text: 'Data Anda telah diekspor.',
-                            icon: 'success',
-                            timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
-                            showConfirmButton: false,
-                        });
-
-                        // Redirect setelah berhasil mengekspor
+                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
                         setTimeout(function() {
-                            window.location.href = 'export_tambahan';
-                        }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
-                    }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: 'Data Anda telah diekspor.',
+                                icon: 'success',
+                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                                showConfirmButton: false,
+                            });
+
+                            // Redirect setelah berhasil mengekspor
+                            setTimeout(function() {
+                                window.location.href = 'export_tambahan';
+                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                    }
+                });
+            };
+
+            function template() {
+                Swal.fire({
+                    title: 'Unduh Templat Data Tambahan!',
+                    text: "Anda akan mengunduh templat data tambahan",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Unduh'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Lakukan proses ekspor data di sini
+                        window.location.href = "<?php echo base_url('operator/template_tambahan') ?>";
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data berhasil di unduh',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
+                    }
+                });
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
+
+                var table = $('#example_data').DataTable({
+                        responsive: false
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
+
+            function hapus(id) {
+                Swal.fire({
+                    title: 'Apakah Mau Dihapus?',
+                    text: "data ini tidak bisa dikembalikan lagi!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Hapus'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil Menghapus',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(function() {
+                            window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
+                        });
+                    }
+                });
+            }
+
+            var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 600) {
+                    // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
+                    var table = document.querySelector('table');
+                    if (table) {
+                        for (var style in tableInitialStyle) {
+                            table.style[style] = tableInitialStyle[style];
+                        }
+                    }
                 }
             });
-        };
 
-        function template() {
-            Swal.fire({
-                title: 'Unduh Templat Data Tambahan!',
-                text: "Anda akan mengunduh templat data tambahan",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Unduh'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    window.location.href = "<?php echo base_url('operator/template_tambahan') ?>";
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data berhasil di unduh',
-                        showConfirmButton: false,
-                        timer: 2500,
-                    });
-                }
-            });
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            var table = $('#example_data').DataTable({
-                    responsive: true
-                })
-                .columns.adjust()
-                .responsive.recalc();
-        });
-
-        function hapus(id) {
-            Swal.fire({
-                title: 'Apakah Mau Dihapus?',
-                text: "data ini tidak bisa dikembalikan lagi!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Batal',
-                confirmButtonText: 'Hapus'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menghapus',
-                        showConfirmButton: false,
-                        timer: 1500,
-                    }).then(function() {
-                        window.location.href = "<?php echo base_url('operator/hapus_tambahan/') ?>" + id;
-                    });
-                }
-            });
-        }
-
-        var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
-
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 600) {
-                // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
+            function adjustTableStyle() {
                 var table = document.querySelector('table');
                 if (table) {
-                    for (var style in tableInitialStyle) {
-                        table.style[style] = tableInitialStyle[style];
-                    }
-                }
-            }
-        });
-
-        function adjustTableStyle() {
-            var table = document.querySelector('table');
-            if (table) {
-                if (window.innerWidth <= 600) {
-                    // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
-                    for (var i = 0; i < table.style.length; i++) {
-                        var style = table.style[i];
-                        tableInitialStyle[style] = table.style[style];
-                    }
-                    // Menyesuaikan lebar tabel saat mode responsif
-                    table.style.width = '100%';
-                    // Tambahkan penyesuaian gaya lain jika diperlukan
-                } else {
-                    // Kembalikan ke lebar normal jika layar > 600px
-                    table.style.width = '';
-                    // Kembalikan gaya lain ke nilai default jika diperlukan
-                }
-            }
-        }
-
-        window.addEventListener('resize', adjustTableStyle);
-        adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
-    </script>
-   <script>
-                function impor() {
-                    // Get the form by its ID
-                    var form = document.getElementById('importForm');
-
-                    // Check if the file input is empty
-                    var fileInput = form.querySelector('[name="file"]');
-                    if (!fileInput.files.length) {
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Peringatan!',
-                            text: 'Pilih file untuk diimpor',
-                        });
-                        return;
-                    }
-
-                    // If the file input is not empty, proceed with the confirmation dialog
-                    Swal.fire({
-                        title: 'Import Data Tambahan Peminjaman?',
-                        text: 'Anda akan mengimpor data tambahan',
-                        icon: 'question',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        cancelButtonText: 'Batal',
-                        confirmButtonText: 'Impor'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            // Log the form action for debugging purposes
-                            console.log('Form action:', form.action);
-
-                            // Submit the form
-                            form.submit();
-
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Data berhasil di impor',
-                                showConfirmButton: false,
-                                timer: 2500,
-                            });
+                    if (window.innerWidth <= 600) {
+                        // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                        for (var i = 0; i < table.style.length; i++) {
+                            var style = table.style[i];
+                            tableInitialStyle[style] = table.style[style];
                         }
-                    });
+                        // Menyesuaikan lebar tabel saat mode responsif
+                        table.style.width = '100%';
+                        // Tambahkan penyesuaian gaya lain jika diperlukan
+                    } else {
+                        // Kembalikan ke lebar normal jika layar > 600px
+                        table.style.width = '';
+                        // Kembalikan gaya lain ke nilai default jika diperlukan
+                    }
                 }
-            </script>
+            }
+
+            window.addEventListener('resize', adjustTableStyle);
+            adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+        </script>
+        <script>
+            function impor() {
+                // Get the form by its ID
+                var form = document.getElementById('importForm');
+
+                // Check if the file input is empty
+                var fileInput = form.querySelector('[name="file"]');
+                if (!fileInput.files.length) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Peringatan!',
+                        text: 'Pilih file untuk diimpor',
+                    });
+                    return;
+                }
+
+                // If the file input is not empty, proceed with the confirmation dialog
+                Swal.fire({
+                    title: 'Import Data Tambahan Peminjaman?',
+                    text: 'Anda akan mengimpor data tambahan',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Impor'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Log the form action for debugging purposes
+                        console.log('Form action:', form.action);
+
+                        // Submit the form
+                        form.submit();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data berhasil di impor',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
+                    }
+                });
+            }
+        </script>
 
 </body>
 
