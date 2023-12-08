@@ -1331,7 +1331,7 @@ class operator extends CI_Controller
         $data = $this->m_model->get_data('tambahan')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA ITEM', 'JENIS','SATUAN' , 'DESKRIPSI'];
+        $headers = ['NO', 'NAMA ITEM', 'JENIS', 'SATUAN', 'DESKRIPSI'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);

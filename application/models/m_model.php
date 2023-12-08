@@ -88,10 +88,13 @@ class M_model extends CI_Model
         $this->db->insert('history_approve', $data);
         return $this->db->insert_id('history_approve');
     }
+    // Other functions in your model...
 
     public function update($table, $data, $where)
     {
-        $this->db->update($table, $data, $where);
+        $this->db->where($where);
+        $this->db->update($table, $data);
+
         return $this->db->affected_rows();
     }
 
@@ -314,10 +317,10 @@ class M_model extends CI_Model
         return $this->db->get();
     }
 
-    public function get_history_approve_by_id_user()
+    public function get_history_approve_by_id_user($id)
     {
         $this->db->select('history_approve.*, user.username');
-        $this->db->from('history_approve');
+        $this->db->from('history_approve', $id);
         $this->db->join('user', 'history_approve.id_user = user.id', 'left');
         $query = $this->db->get();
         return $query->result();

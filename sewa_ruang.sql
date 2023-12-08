@@ -51,6 +51,7 @@ CREATE TABLE `peminjaman` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelanggan` int(11) DEFAULT NULL,
   `id_ruangan` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `tanggal_booking` date DEFAULT NULL,
   `tanggal_berakhir` date DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,

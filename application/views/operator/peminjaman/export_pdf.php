@@ -236,17 +236,11 @@
                     ?>
                     <p>Tanda tangan :</p>
                     <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image">
-
-                    <?php if (!empty($history_approve)) : ?>
-                        <?php foreach ($history_approve as $history) : ?>
-                            <p><?php echo $history->username ?></p>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <p>No history data available.</p>
-                    <?php endif; ?>
+                    <?php foreach ($history_approve as $baru) : ?>
+                        <p><?php echo tampil_nama_user_byid($baru->id_user); ?></p>
+                    <?php endforeach; ?>
                 </div>
             </div>
-
         <?php endforeach; ?>
     <?php else : ?>
         <p>Data peminjaman tidak ditemukan.</p>

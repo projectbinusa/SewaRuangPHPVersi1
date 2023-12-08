@@ -100,12 +100,18 @@ class Supervisor extends CI_Controller
             $id_user = $this->m_model->get_user_id_by_username($username);
 
             $data_approve = [
-                'status' => 'di setujui',
+                'status' => 'di tolak',
                 'id_peminjaman' => $row->id,
-                'id_user' => $id_user,
             ];
             $this->m_model->tambah_data_history_approve($data_approve);
-            $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $row->id]);
+
+            $approvedata = [
+                'id_user' => $id_user,
+                'status' => 'booking',
+            ];
+
+            // Assuming that the update function can handle the update operation
+            $this->m_model->update('peminjaman', $approvedata, ['id' => $row->id]);
         }
 
         redirect(base_url('supervisor/approve'));
@@ -122,11 +128,16 @@ class Supervisor extends CI_Controller
             $data_approve = [
                 'status' => 'di tolak',
                 'id_peminjaman' => $row->id,
+            ];
+            $this->m_model->tambah_data_history_approve($data_approve);
+
+            $rejecteddata = [
                 'id_user' => $id_user,
+                'status' => 'booking',
             ];
 
-            $this->m_model->tambah_data_history_approve($data_approve);
-            $this->m_model->update('peminjaman', ['status' => 'di tolak'], ['id' => $row->id]);
+            // Assuming that the update function can handle the update operation
+            $this->m_model->update('peminjaman', $rejecteddata, ['id' => $row->id]);
         }
 
         redirect(base_url('supervisor/approve'));
@@ -138,11 +149,16 @@ class Supervisor extends CI_Controller
         $id_user = $this->m_model->get_user_id_by_username($username);
 
         $data_approve = [
-            'status' => 'di setujui',
+            'status' => 'di tolak',
             'id_peminjaman' => $id,
-            'id_user' => $id_user
         ];
         $this->m_model->tambah_data_history_approve($data_approve);
+
+        $approvedata = [
+            'id_user' => $id_user,
+        ];
+        $this->m_model->update($approvedata);
+
         $this->m_model->update('peminjaman', ['status' => 'booking'], ['id' => $id]);
         redirect(base_url('supervisor/approve'));
     }
@@ -326,7 +342,7 @@ class Supervisor extends CI_Controller
         $data = $this->m_model->get_data('history_approve')->result();
 
         // Buat objek Spreadsheet
-        $headers = ['NO', 'NAMA PENYEWA', 'RUANGAN', 'JUMLAH ORANG', 'KODE BOOKING' , "TANGGAL BOOKING" , 'TANGGAL BERAKHIR', 'KEPERLUAN', 'STATUS'];
+        $headers = ['NO', 'NAMA PENYEWA', 'RUANGAN', 'JUMLAH ORANG', 'KODE BOOKING', "TANGGAL BOOKING", 'TANGGAL BERAKHIR', 'KEPERLUAN', 'STATUS'];
         $rowIndex = 1;
         foreach ($headers as $header) {
             $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
@@ -351,12 +367,12 @@ class Supervisor extends CI_Controller
                     $status = $cellData;
                 } elseif ($cellName == 'id_peminjaman') {
                     $nama = tampil_nama_penyewa_byid(tampil_id_penyewa_byid($cellData));
-                   $ruangan= tampil_ruang_byid(tampil_id_ruang_byid($cellData));
-                   $jumlah_orang = tampil_jumlah_orang_byid($cellData);
-                   $kode = tampil_code_penyewa_byid($cellData);
-                   $tanggal_booking =  tampil_tanggal_booking_byid($cellData);
-                   $tanggal_berakhir =  tampil_tanggal_berakhir_byid($cellData);
-                   $keperluan = tampil_keperluan_peminjaman_byid($cellData);
+                    $ruangan = tampil_ruang_byid(tampil_id_ruang_byid($cellData));
+                    $jumlah_orang = tampil_jumlah_orang_byid($cellData);
+                    $kode = tampil_code_penyewa_byid($cellData);
+                    $tanggal_booking =  tampil_tanggal_booking_byid($cellData);
+                    $tanggal_berakhir =  tampil_tanggal_berakhir_byid($cellData);
+                    $keperluan = tampil_keperluan_peminjaman_byid($cellData);
                 }
 
                 // Anda juga dapat menambahkan logika lain jika perlu
@@ -367,15 +383,15 @@ class Supervisor extends CI_Controller
 
             // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
             // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
-        $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
-        $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
-        $sheet->setCellValueByColumnAndRow(3, $rowIndex, $ruangan);
-        $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
-        $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode);
-        $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
-        $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_berakhir);
-        $sheet->setCellValueByColumnAndRow(8, $rowIndex, $keperluan);
-        $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
+            $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+            $sheet->setCellValueByColumnAndRow(2, $rowIndex, $nama);
+            $sheet->setCellValueByColumnAndRow(3, $rowIndex, $ruangan);
+            $sheet->setCellValueByColumnAndRow(4, $rowIndex, $jumlah_orang);
+            $sheet->setCellValueByColumnAndRow(5, $rowIndex, $kode);
+            $sheet->setCellValueByColumnAndRow(6, $rowIndex, $tanggal_booking);
+            $sheet->setCellValueByColumnAndRow(7, $rowIndex, $tanggal_berakhir);
+            $sheet->setCellValueByColumnAndRow(8, $rowIndex, $keperluan);
+            $sheet->setCellValueByColumnAndRow(9, $rowIndex, $status);
             $no++;
 
             $rowIndex++;
