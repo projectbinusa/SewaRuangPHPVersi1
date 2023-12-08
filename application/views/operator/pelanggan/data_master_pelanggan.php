@@ -939,66 +939,67 @@
                                     </a>
                                 </div>
 
-
-                                <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                    <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th data-priority="2" scope="col" class="text-center px-3 py-3">
-                                                No
-                                            </th>
-                                            <th data-priority="1" scope="col" class="text-center px-3 py-3">
-                                                Nama
-                                            </th>
-
-                                            <th data-priority="4" scope="col" class="text-center px-3 py-3">
-                                                No Telepon
-                                            </th>
-                                            <th data-priority="5" scope="col" class="text-center px-3 py-3">
-                                                Email
-                                            </th>
-
-                                            <th data-priority="3" scope="col" class="text-center px-3 py-3">
-                                                Aksi
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 0;
-                                        foreach ($pelanggan as $row) :
-                                            $no++
-                                        ?>
+                                <div class="table-wrapper">
+                                    <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                        <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                             <tr>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $no ?>
-                                                </td>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $row->nama ?>
-                                                </td>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $row->phone ?>
-                                                </td>
-                                                <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
-                                                    <?php echo $row->email ?>
-                                                </td>
+                                                <th data-priority="2" scope="col" class="text-center px-3 py-3">
+                                                    No
+                                                </th>
+                                                <th data-priority="1" scope="col" class="text-center px-3 py-3">
+                                                    Nama
+                                                </th>
 
-                                                <!-- Aksi -->
-                                                <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-                                                    <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
-                                                        <span class="">
-                                                            <i class="fas fa-edit"></i>
-                                                        </span>
-                                                    </a>
-                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                        <span class="">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </span>
-                                                    </button>
-                                                </td>
+                                                <th data-priority="4" scope="col" class="text-center px-3 py-3">
+                                                    No Telepon
+                                                </th>
+                                                <th data-priority="5" scope="col" class="text-center px-3 py-3">
+                                                    Email
+                                                </th>
+
+                                                <th data-priority="3" scope="col" class="text-center px-3 py-3">
+                                                    Aksi
+                                                </th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 0;
+                                            foreach ($pelanggan as $row) :
+                                                $no++
+                                            ?>
+                                                <tr>
+                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                        <?php echo $no ?>
+                                                    </td>
+                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                        <?php echo $row->nama ?>
+                                                    </td>
+                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                        <?php echo $row->phone ?>
+                                                    </td>
+                                                    <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
+                                                        <?php echo $row->email ?>
+                                                    </td>
+
+                                                    <!-- Aksi -->
+                                                    <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                        <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
+                                                            <span class="">
+                                                                <i class="fas fa-edit"></i>
+                                                            </span>
+                                                        </a>
+                                                        <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                            <span class="">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1055,67 +1056,67 @@
                     window.addEventListener('resize', adjustTableStyle);
                     adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
 
-                    $(document).ready(function() {                        
-                    function hapus(id) {
-                        Swal.fire({
-                            title: ' Apakah Mau Dihapus?',
-                            text: "data ini tidak bisa dikembalikan lagi!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Hapus'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Berhasil Menghapus',
-                                    showConfirmButton: false,
-                                    timer: 1500,
-                                }).then(function() {
-                                    window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
+                    $(document).ready(function() {
+                                function hapus(id) {
+                                    Swal.fire({
+                                        title: ' Apakah Mau Dihapus?',
+                                        text: "data ini tidak bisa dikembalikan lagi!",
+                                        icon: 'warning',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#3085d6',
+                                        cancelButtonColor: '#d33',
+                                        cancelButtonText: 'Batal',
+                                        confirmButtonText: 'Hapus'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Berhasil Menghapus',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                            }).then(function() {
+                                                window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
+                                            });
+                                        }
+                                    });
+                                }
+
+                                var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
+
+                                window.addEventListener('resize', function() {
+                                    if (window.innerWidth > 600) {
+                                        // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
+                                        var table = document.querySelector('table');
+                                        if (table) {
+                                            for (var style in tableInitialStyle) {
+                                                table.style[style] = tableInitialStyle[style];
+                                            }
+                                        }
+                                    }
                                 });
-                            }
-                        });
-                    }
 
-                    var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
-
-                    window.addEventListener('resize', function() {
-                        if (window.innerWidth > 600) {
-                            // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
-                            var table = document.querySelector('table');
-                            if (table) {
-                                for (var style in tableInitialStyle) {
-                                    table.style[style] = tableInitialStyle[style];
+                                function adjustTableStyle() {
+                                    var table = document.querySelector('table');
+                                    if (table) {
+                                        if (window.innerWidth <= 600) {
+                                            // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
+                                            for (var i = 0; i < table.style.length; i++) {
+                                                var style = table.style[i];
+                                                tableInitialStyle[style] = table.style[style];
+                                            }
+                                            // Menyesuaikan lebar tabel saat mode responsif
+                                            table.style.width = '100%';
+                                            // Tambahkan penyesuaian gaya lain jika diperlukan
+                                        } else {
+                                            // Kembalikan ke lebar normal jika layar > 600px
+                                            table.style.width = '';
+                                            // Kembalikan gaya lain ke nilai default jika diperlukan
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    });
 
-                    function adjustTableStyle() {
-                        var table = document.querySelector('table');
-                        if (table) {
-                            if (window.innerWidth <= 600) {
-                                // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
-                                for (var i = 0; i < table.style.length; i++) {
-                                    var style = table.style[i];
-                                    tableInitialStyle[style] = table.style[style];
-                                }
-                                // Menyesuaikan lebar tabel saat mode responsif
-                                table.style.width = '100%';
-                                // Tambahkan penyesuaian gaya lain jika diperlukan
-                            } else {
-                                // Kembalikan ke lebar normal jika layar > 600px
-                                table.style.width = '';
-                                // Kembalikan gaya lain ke nilai default jika diperlukan
-                            }
-                        }
-                    }
-
-                    window.addEventListener('resize', adjustTableStyle);
-                    adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+                                window.addEventListener('resize', adjustTableStyle);
+                                adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
                 </script>
                 <!-- jQuery -->
                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -1233,7 +1234,7 @@
                 <script>
                     $(document).ready(function() {
                         var table = $('#example_data').DataTable({
-                            responsive: true
+                            responsive: false
                         }).columns.adjust().responsive.recalc();
                     });
                 </script>

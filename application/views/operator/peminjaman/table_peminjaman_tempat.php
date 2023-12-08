@@ -1100,7 +1100,7 @@
         $(document).ready(function() {
 
             var table = $('#example_data').DataTable({
-                    responsive: true
+                    responsive: false
                 })
                 .columns.adjust()
                 .responsive.recalc();
