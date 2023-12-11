@@ -990,7 +990,7 @@ class operator extends CI_Controller
                     $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
-                } elseif ($cellName == 'email;') {
+                } elseif ($cellName == 'email') {
                     $email = $cellData;
                 }
 
