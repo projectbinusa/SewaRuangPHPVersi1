@@ -888,7 +888,7 @@
         }
 
         .pgayu {
-            max-height: 590px;
+            max-height: 585px;
         }
 
         @media (max-width: 768px) {
@@ -1016,73 +1016,53 @@
                                                         }
                                                         ?>
                                                     </td>
-                                                    
-                                                <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
-                                                    <?php
-                                                    // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
-                                                    $tanggalBooking = new DateTime($row->tanggal_booking);
-                                                    $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
-                                                    $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                    // Menampilkan durasi dalam format angka
-                                                    if ($durasi->days >= 1) {
-                                                        echo $durasi->days . ' Hari <br>';
+                                                    <td data-cell="Total Booking " class="w-32 px-3 py-4 text-center">
+                                                        <?php
+                                                        // Menghitung selisih antara tanggal_booking dan tanggal_berakhir
+                                                        $tanggalBooking = new DateTime($row->tanggal_booking);
+                                                        $tanggalBerakhir = new DateTime($row->tanggal_berakhir);
+                                                        $durasi = $tanggalBooking->diff($tanggalBerakhir);
 
-                                                        echo $durasi->h . ' Jam';
-                                                    } else {
-                                                        // Jika durasi kurang dari satu hari, tampilkan dalam format jam
-                                                        echo $durasi->h . ' Jam';
-                                                    }
-                                                    ?>
-                                                </td>
-                                                <td data-cell="Status " class="text-center px-3 py-4 uppercase">
-                                                    <?php echo $row->status ?>
-                                                </td>
-<!-- 
-                                                <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
+                                                        // Menampilkan durasi dalam format angka
+                                                        if ($durasi->days >= 1) {
+                                                            echo $durasi->days . ' Hari <br>';
 
-                                                    <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
-                                                        <span class=""><i class="fas fa-edit"></i></span>
-                                                    </a>
-
-                                                    <?php if ($row->status === 'booking') : ?>
-                                                        <button onclick="printConfirmation('<?php echo base_url('operator/dowload_export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-
+                                                            echo $durasi->h . ' Jam';
+                                                        } else {
+                                                            // Jika durasi kurang dari satu hari, tampilkan dalam format jam
+                                                            echo $durasi->h . ' Jam';
+                                                        }
                                                         ?>
-                                                    </td> -->
-                                                    <!-- <td data-cell="Status " class="text-center px-3 py-4 uppercase">
+                                                    </td>
+                                                    <td data-cell="Status " class="text-center px-3 py-4 uppercase">
                                                         <?php echo $row->status ?>
-                                                    </td> -->
-
+                                                    </td>
                                                     <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
-
                                                         <a href="<?php echo base_url('operator/edit_peminjaman_tempat/') . $row->id ?>" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-3 rounded">
                                                             <span class=""><i class="fas fa-edit"></i></span>
                                                         </a>
-
                                                         <?php if ($row->status === 'booking') : ?>
-                                                            <button onclick="printConfirmation('<?php echo base_url('operator/dowload_export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
+                                                            <button onclick="printConfirmation('<?php echo base_url('operator/download_export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
                                                                 <span class="">
                                                                     <i class="fas fa-download"></i>
                                                                 </span>
                                                             </button>
                                                         <?php endif; ?>
-
-                                                    <?php endif; ?>
-                                                    <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
-                                                        <span class="">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
+                                                        <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+                                                            <span class="">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
         </div>
     </main>
@@ -1120,7 +1100,7 @@
         $(document).ready(function() {
 
             var table = $('#example_data').DataTable({
-                    responsive: true
+                    responsive: false
                 })
                 .columns.adjust()
                 .responsive.recalc();
@@ -1146,7 +1126,12 @@
                         showConfirmButton: false,
                         timer: 1500,
                     }).then(() => {
+                        // Extract ID from the printUrl
+                        const id = printUrl.split('/').pop();
+
+                        // Use the correct URL for printing
                         window.location.href = printUrl;
+
                         Swal.fire({
                             title: 'Cetak Selesai',
                             text: 'Struk telah berhasil dicetak.',
@@ -1155,12 +1140,14 @@
                             showConfirmButton: false,
                             timer: 1500,
                         }).then(() => {
-                            window.location.href = "<?php echo base_url('operator/export_pdf/pdf/') . $row->id ?>";
+                            // Redirect to the correct URL after printing
+                            window.location.href = "<?php echo base_url('operator/export_pdf/pdf/') ?>" + id;
                         });
                     });
                 }
             });
         }
+
 
         function hapus(id) {
             Swal.fire({

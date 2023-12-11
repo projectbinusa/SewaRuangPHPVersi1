@@ -31,8 +31,14 @@
             font-size: medium;
         }
 
+        .invoice-yu {
+            margin-left: 5%;
+            margin-top: 20px;
+        }
+
         .invoice {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0;
@@ -47,12 +53,14 @@
         .name-customer {
             color: #1F4172;
             font-size: 90%;
+            margin-top: 5px;
             margin-left: 50%;
         }
 
-        .invoice-yu {
+        git  {
+            margin: 0;
             margin-left: 5%;
-            margin-top: 20px;
+            font-size: 100%;
         }
 
         .invoice-details table {
@@ -158,7 +166,7 @@
                     CUSTOMER
                     <span class="name-customer">INVOICE</span>
                 </h1>
-                <p style="margin-left: 76%;"><?php echo date('F j, Y'); ?></p>
+                <h5 style="margin-left: 76%;"><?php echo date('F j, Y'); ?></h5>
             </div>
             <div class="invoice-details">
                 <table>
@@ -175,7 +183,7 @@
                         <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
                     </tr>
                     <tr>
-                        <td>keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
+                        <td>Keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
                     </tr>
                 </table>
             </div>
@@ -222,9 +230,16 @@
             <div class="payment-info">
                 <div class="booking-info">
                     <h4>BOOKING INFO </h4>
-                    <?php date_default_timezone_set('Asia/Jakarta'); ?>
-                    <p class="baru">Tanggal :<span><?php echo date(' j F Y'); ?></span></p>
-                    <p>Jam Pemesanan : <?php echo date('H:i:s'); ?></p>
+                    <?php
+                    date_default_timezone_set('Asia/Jakarta');
+                    $namaBulan = [
+                        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                    ];
+                    $bulan = date('n') - 1;
+                    echo '<p class="baru">Tanggal :<span>' . date('j ') . $namaBulan[$bulan] . date(' Y') . '</span></p>';
+                    ?>
+                    <p>Jam Pemesanan : <?php echo date('H:i'); ?></p>
                 </div>
 
                 <div class="signature-section">

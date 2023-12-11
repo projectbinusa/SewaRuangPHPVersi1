@@ -1401,6 +1401,17 @@
             height: 880px;
         }
         }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 
 </head>
@@ -1441,7 +1452,7 @@
                 <div class="col-lg-12">
                     <div class="header-item">
                         <div class="table-responsive relative">
-
+<div class="table-wrapper">
                             <table id="example_data"
                                 class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
@@ -1536,6 +1547,7 @@
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1581,7 +1593,7 @@
         $(document).ready(function () {
 
             var table = $('#example_data').DataTable({
-                responsive: true
+                responsive: false
             })
                 .columns.adjust()
                 .responsive.recalc();

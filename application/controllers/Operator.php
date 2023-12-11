@@ -343,7 +343,7 @@ class operator extends CI_Controller
         }
     }
 
-    public function dowload_export_pdf($id)
+    public function download_export_pdf($id)
     {
         $data['peminjaman'] = $this->m_model->get_peminjaman_pdf_by_id($this->uri->segment(4))->result();
 
@@ -767,15 +767,14 @@ class operator extends CI_Controller
         // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
 
-        $generate = $this->generate_booking_code();
-
         // Memeriksa konflik waktu
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
             return;
         }
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman
+        $id_user = $this->session->userdata('id_user');
+
         $data_peminjaman = [
             'id_pelanggan' => $id_pelanggan,
             'id_ruangan' => $id_ruangan,
@@ -785,6 +784,7 @@ class operator extends CI_Controller
             'kode_booking' => $generate,
             'status' => 'proses',
             'keperluan' => $keperluan,
+            'id_user' => $id_user,
         ];
 
         // Memasukkan data ke tabel peminjaman
@@ -802,8 +802,6 @@ class operator extends CI_Controller
                 $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
 
                 if (!$tambahan_success) {
-                    // Handle error jika tambahan tidak berhasil dimasukkan
-                    // Misalnya: Tampilkan pesan error atau lakukan rollback
                     echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
                     return;
                 }
@@ -811,8 +809,6 @@ class operator extends CI_Controller
         }
 
         $this->check_expired_bookings();
-        // Operasi berhasil
-        // Redirect atau tampilkan pesan sukses
         redirect(base_url('operator/peminjaman_tempat'));
     }
 
