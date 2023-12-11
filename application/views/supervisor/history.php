@@ -1434,7 +1434,7 @@
 
             <div class="container-table row justify-content-center">
                 <div class="tess">
-                    <button onclick="" class="mr-2 ml-3 inline-block px-3 py-2 bg-red-500 hover:bg-red-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
+                    <button onclick="hapus_semua()" class="mr-2 ml-3 inline-block px-3 py-2 bg-red-500 hover:bg-red-800 text-white font-semibold text-base md:ml-0 md:mr-2  rounded float-right  z-50">
                         <i class="fas fa-trash-alt"></i> Hapus Semua
                     </button>
 
@@ -1635,6 +1635,32 @@
                     });
                 }
             });
+        }
+
+        function hapus_semua() {
+            Swal.fire({
+                title: 'Apakah Mau Di Hapus Semua?',
+                text: "data ini tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya, hapus semua!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Berhasill!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.href = "<?php echo base_url('supervisor/hapus_data_history_approve_semua/') ?>";
+                    }, 1800);
+                }
+            })
         }
     </script>
 </body>
