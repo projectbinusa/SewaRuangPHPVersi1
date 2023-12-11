@@ -227,7 +227,7 @@
     </style>
 </head>
 
-<body class="relative min-h-screen">
+<body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
     <main class="contain-all max-h-screen overflow-y-auto">
