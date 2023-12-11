@@ -888,7 +888,7 @@
         }
 
         .pgayu {
-            max-height: 590px;
+            max-height: 585px;
         }
 
         @media (max-width: 768px) {

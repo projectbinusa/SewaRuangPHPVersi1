@@ -329,12 +329,12 @@
                 </datalist>
 
                 <div class="fields">
-    <label for="total_booking" class="header-text" id="total_booking-label">Booking Dari Tanggal dan Jam</label>
-    <input autocomplete="off" type="datetime-local" name="booking" id="total_booking" class="total_booking" required>
+                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Dari Tanggal dan Jam</label>
+                    <input autocomplete="off" type="datetime-local" name="booking" id="total_booking" class="total_booking" required>
 
-    <label for="total_booking" class="header-text" id="total_booking-label">Booking Sampai Tanggal dan Jam</label>
-    <input autocomplete="off" type="datetime-local" name="akhir_booking" id="tanggalAngka" class="total_booking" required>
-</div>
+                    <label for="total_booking" class="header-text" id="total_booking-label">Booking Sampai Tanggal dan Jam</label>
+                    <input autocomplete="off" type="datetime-local" name="akhir_booking" id="tanggalAngka" class="total_booking" required>
+                </div>
 
                 <label for="keperluan" class="header-text" id="keperluan-label">Keperluan</span></label>
                 <textarea required name="keperluan" id="keperluan" class="keperluan w-full" placeholder="Tambahkan Keperluan"></textarea>
