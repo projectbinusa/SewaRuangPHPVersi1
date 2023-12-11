@@ -57,7 +57,7 @@
             margin-left: 50%;
         }
 
-        h5 {
+        git  {
             margin: 0;
             margin-left: 5%;
             font-size: 100%;
