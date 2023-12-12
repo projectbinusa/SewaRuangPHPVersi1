@@ -53,6 +53,12 @@
             </a>
           </li>
           <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
+            <a href="<?php echo base_url('operator/tambahan') ?>" class="flex items-center">
+              <i class="fas fa-qrcode text-white"></i>
+              <span class="mx-2.5 text-white font-semibold">Menu Tambahan</span>
+            </a>
+          </li>
+          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
             <a href="<?php echo base_url('operator/peminjaman_tempat') ?>" class="flex items-center">
               <i class="fa-solid fa-map-location-dot text-white"></i>
               <span class="mx-2 text-white font-semibold">Peminjaman Tempat</span>
@@ -64,12 +70,7 @@
               <span class="mx-2 text-white font-semibold">Report Sewa</span>
             </a>
           </li>
-          <li class="px-2 py-3 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500">
-            <a href="<?php echo base_url('operator/tambahan') ?>" class="flex items-center">
-              <i class="fas fa-qrcode text-white"></i>
-              <span class="mx-2.5 text-white font-semibold">Menu Tambahan</span>
-            </a>
-          </li>
+
           <li class="px-1 py-1 rounded mt-2 transition duration-200 hover:bg-gradient-to-r hover:from-gray-300 hover:to-blue-500 md:hidden">
             <hr>
             <a onclick="KeluarOPT()" class="flex items-center pt-4">

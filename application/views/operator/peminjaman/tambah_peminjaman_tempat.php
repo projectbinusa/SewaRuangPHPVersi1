@@ -344,7 +344,6 @@
         </div>
     </main>
 
-    // JavaScript with jQuery
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -408,10 +407,7 @@
                 return isValid;
             }
         });
-    </script>
-
-
-    <script>
+        
         input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";

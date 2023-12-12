@@ -1044,9 +1044,7 @@
                                                         </a>
                                                         <?php if ($row->status === 'booking') : ?>
                                                             <button onclick="printConfirmation('<?php echo base_url('operator/download_export_pdf/pdf/') . $row->id ?>')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 ml-3 rounded">
-                                                                <span class="">
-                                                                    <i class="fas fa-download"></i>
-                                                                </span>
+                                                                <span class=""><i class="fas fa-download"></i></span>
                                                             </button>
                                                         <?php endif; ?>
                                                         <button onclick="hapus(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
@@ -1147,7 +1145,6 @@
                 }
             });
         }
-
 
         function hapus(id) {
             Swal.fire({

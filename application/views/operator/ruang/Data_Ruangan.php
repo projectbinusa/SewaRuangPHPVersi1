@@ -187,7 +187,7 @@
         </div>
       <?php else : ?>
         <div class="col-lg-4 col-md-6 mx-auto">
-          <p class="text-center text-gray-600">data Tidak Ditemukan</p>
+          <p class="text-center text-gray-600">No data available in Card</p>
         </div>
       <?php endif; ?>
       </div>
