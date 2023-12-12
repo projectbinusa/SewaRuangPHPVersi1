@@ -335,7 +335,7 @@ class operator extends CI_Controller
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            if (!empty($data['history_approve'])) { // Check for not empty instead of false
+            if (!empty($data['history_approve'])) {
                 $this->load->view('operator/export_pdf', $data);
             } else {
                 echo "No history data available.";
@@ -350,13 +350,11 @@ class operator extends CI_Controller
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
 
-            // Muat view dengan base_url() untuk path gambar
             $data['base_url'] = base_url();
             $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
 
             $this->pdf->render();
 
-            // Set the "Attachment" parameter to true to force download
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => true));
         } else {
             $this->load->view('operator/export_pdf', $data);
@@ -755,7 +753,6 @@ class operator extends CI_Controller
 
     public function aksi_peminjaman()
     {
-        // Memperoleh data dari formulir
         $id_pelanggan = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
@@ -764,10 +761,8 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
         $keperluan = $this->input->post('keperluan');
 
-        // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
 
-        // Memeriksa konflik waktu
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
             echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
             return;
@@ -787,18 +782,14 @@ class operator extends CI_Controller
             'id_user' => $id_user,
         ];
 
-        // Memasukkan data ke tabel peminjaman
         $id_peminjaman = $this->m_model->tambah_data('peminjaman', $data_peminjaman);
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
             foreach ($id_tambahan as $id) {
                 $data_tambahan = [
                     'id_peminjaman' => $id_peminjaman,
                     'id_tambahan' => $id,
                 ];
-
-                // Memasukkan data ke tabel peminjaman_tambahan
                 $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
 
                 if (!$tambahan_success) {
