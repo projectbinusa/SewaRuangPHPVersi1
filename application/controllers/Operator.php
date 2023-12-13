@@ -764,7 +764,11 @@ class operator extends CI_Controller
         $generate = $this->generate_booking_code();
 
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            $response = [
+                'status' => 'error',
+                'message' => 'Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.'
+            ];
+            $this->output->set_content_type('application/json')->set_output(json_encode($response));
             return;
         }
 
@@ -793,14 +797,23 @@ class operator extends CI_Controller
                 $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
 
                 if (!$tambahan_success) {
-                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Gagal menambahkan data tambahan.'
+                    ];
+                    $this->output->set_content_type('application/json')->set_output(json_encode($response));
                     return;
                 }
             }
         }
 
         $this->check_expired_bookings();
-        redirect(base_url('operator/peminjaman_tempat'));
+
+        $response = [
+            'status' => 'success',
+            'message' => 'Formulir Anda berhasil dikirimkan.'
+        ];
+        $this->output->set_content_type('application/json')->set_output(json_encode($response));
     }
 
     public function hapus_peminjaman($id)
