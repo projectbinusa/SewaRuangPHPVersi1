@@ -20,12 +20,12 @@
             box-sizing: border-box;
         }
 
-        body {
+        /* body {
             font-family: "DM Sans", sans-serif;
             background-color: #E4F1FF;
             color: #222;
             padding: 0 0px;
-        }
+        } */
 
         .container {
             min-width: 20rem;
@@ -187,7 +187,7 @@
 
         .contain-all {
             overflow-y: scroll;
-            height: 50rem;
+            height: 580px;
         }
 
         .header-text {
@@ -279,7 +279,7 @@
 <body class="relative min-h-screen overflow-hidden">
     <?php $this->load->view('sidebar'); ?>
 
-    <main class="contain-all h-screen overflow-y-auto">
+    <main class="contain-all overflow-y-auto">
         <div class="container">
             <header class="heading">
                 <div class="green-bar"></div>
@@ -337,7 +337,7 @@
                 </div>
 
                 <label for="keperluan" class="header-text" id="keperluan-label">Keperluan</span></label>
-                <textarea required name="keperluan" id="keperluan" class="keperluan w-full" placeholder="Tambahkan Keperluan"></textarea>
+                <textarea autocomplete="off" required name="keperluan" id="keperluan" class="keperluan w-full" placeholder="Tambahkan Keperluan"></textarea>
 
                 <input type="submit" id="submit" class="submit" value="Submit">
             </form>
@@ -374,22 +374,35 @@
                             url: $(this).attr('action'),
                             type: $(this).attr('method'),
                             data: $(this).serialize(),
+                            dataType: 'json', // Menentukan tipe data yang diharapkan dari respons
                             success: function(response) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Sukses!',
-                                    text: 'Formulir Anda berhasil dikirimkan.',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                }).then(function() {
-                                    window.location.href = '<?php echo base_url("operator/peminjaman_tempat"); ?>';
-                                });
+                                if (response.status === 'success') {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Sukses!',
+                                        text: response.message,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    }).then(function() {
+                                        window.location.href = '<?php echo base_url("operator/peminjaman_tempat"); ?>';
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error!',
+                                        text: response.message,
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    });
+                                }
                             },
                             error: function(error) {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Error!',
                                     text: 'Terjadi kesalahan saat mengirimkan formulir.',
+                                    showConfirmButton: false,
+                                    timer: 2000
                                 });
                             }
                         });
@@ -407,7 +420,8 @@
                 return isValid;
             }
         });
-        
+
+
         input.onfocus = function() {
             browsers.style.display = 'block';
             input.style.borderRadius = "5px 5px 0 0";
