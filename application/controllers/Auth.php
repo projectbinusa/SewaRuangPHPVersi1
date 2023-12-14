@@ -208,11 +208,24 @@ public function aksi_forgot_pass()
                         <style>
                             /* CSS styling */
                             body {
-                                font-family: -apple-system, BlinkMacOS System Font, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans Extra", sans-serif;                                
-                                background-color: #f2f2f2;
                                 margin: 0;
                                 padding: 0;
+                                font-family: Arial, sans-serif;
+                                background-color: #f2f2f2;
+                                opacity: 0; /* Awalnya atur opasitas ke 0 */
+                                animation: fadeIn 1s ease-in-out forwards; /* Animasi untuk fade-in */
                             }
+                    
+                            /* Animasi Fade-in */
+                            @keyframes fadeIn {
+                                from {
+                                    opacity: 0;
+                                }
+                                to {
+                                    opacity: 1;
+                                }
+                            }
+                    
                             .container {
                                 width: 80%;
                                 margin: 0 auto;
@@ -233,12 +246,12 @@ public function aksi_forgot_pass()
                                 color: #fff;
                                 padding: 15px;
                                 background-color: #4f709c;
-                                border-radius: 4px;
+                                border-radius: 8px;
                                 margin-bottom: 30px;
                             }
                             p {
                                 color: #666;
-                                font-size: 16px;
+                                font-size: 16px; font-family: Arial, sans-serif;
                                 line-height: 1.6;
                                 margin-bottom: 20px;
                             }

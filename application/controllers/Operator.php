@@ -335,7 +335,7 @@ class operator extends CI_Controller
             $this->pdf->render();
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => false));
         } else {
-            if (!empty($data['history_approve'])) { // Check for not empty instead of false
+            if (!empty($data['history_approve'])) {
                 $this->load->view('operator/export_pdf', $data);
             } else {
                 echo "No history data available.";
@@ -350,13 +350,11 @@ class operator extends CI_Controller
         if ($this->uri->segment(3) == "pdf") {
             $this->load->library('pdf');
 
-            // Muat view dengan base_url() untuk path gambar
             $data['base_url'] = base_url();
             $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
 
             $this->pdf->render();
 
-            // Set the "Attachment" parameter to true to force download
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => true));
         } else {
             $this->load->view('operator/export_pdf', $data);
@@ -755,7 +753,6 @@ class operator extends CI_Controller
 
     public function aksi_peminjaman()
     {
-        // Memperoleh data dari formulir
         $id_pelanggan = $this->input->post('nama');
         $id_ruangan = $this->input->post('ruang');
         $jumlah_orang = $this->input->post('kapasitas');
@@ -764,12 +761,14 @@ class operator extends CI_Controller
         $id_tambahan = $this->input->post('tambahan');
         $keperluan = $this->input->post('keperluan');
 
-        // Menghasilkan kode booking
         $generate = $this->generate_booking_code();
 
-        // Memeriksa konflik waktu
         if ($this->m_model->is_time_conflict($id_ruangan, $start_time, $end_time)) {
-            echo "<script>alert('Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.');  window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+            $response = [
+                'status' => 'error',
+                'message' => 'Waktu pemesanan bertabrakan. Silakan pilih waktu yang lain.'
+            ];
+            $this->output->set_content_type('application/json')->set_output(json_encode($response));
             return;
         }
 
@@ -787,29 +786,34 @@ class operator extends CI_Controller
             'id_user' => $id_user,
         ];
 
-        // Memasukkan data ke tabel peminjaman
         $id_peminjaman = $this->m_model->tambah_data('peminjaman', $data_peminjaman);
 
-        // Menyiapkan data untuk dimasukkan ke tabel peminjaman_tambahan
         if (!empty($id_tambahan)) {
             foreach ($id_tambahan as $id) {
                 $data_tambahan = [
                     'id_peminjaman' => $id_peminjaman,
                     'id_tambahan' => $id,
                 ];
-
-                // Memasukkan data ke tabel peminjaman_tambahan
                 $tambahan_success = $this->m_model->tambah_data('peminjaman_tambahan', $data_tambahan);
 
                 if (!$tambahan_success) {
-                    echo "<script>alert('Gagal menambahkan data tambahan.'); window.location.href = '" . base_url('operator/tambah_peminjaman_tempat') . "';</script>";
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Gagal menambahkan data tambahan.'
+                    ];
+                    $this->output->set_content_type('application/json')->set_output(json_encode($response));
                     return;
                 }
             }
         }
 
         $this->check_expired_bookings();
-        redirect(base_url('operator/peminjaman_tempat'));
+
+        $response = [
+            'status' => 'success',
+            'message' => 'Formulir Anda berhasil dikirimkan.'
+        ];
+        $this->output->set_content_type('application/json')->set_output(json_encode($response));
     }
 
     public function hapus_peminjaman($id)
@@ -824,27 +828,14 @@ class operator extends CI_Controller
 
     public function hapus_tambahan_peminjaman($id)
     {
-        // Hapus entri tambahan terlebih dahulu
-        $deleted_id_tambahan = $this->m_model->delete('peminjaman_tambahan', 'id_tambahan', $id);
-        if (!$deleted_id_tambahan) {
-            // Jika penghapusan entri tambahan gagal, lakukan sesuatu, seperti memberikan pesan error atau tindakan lainnya
-            // Contoh:  
-            echo "Gagal menghapus entri tambahan.";
-            // Atau: return false; // Untuk memberikan sinyal kegagalan
-        }
+        $deleted_tambahan = $this->m_model->delete('peminjaman_tambahan', 'id_peminjaman', $id);
 
-        // Setelah menghapus entri tambahan, hapus entri peminjaman
-        $deleted_peminjaman = $this->m_model->delete('peminjaman_tambahan', 'id', $id);
-        if ($deleted_peminjaman) {
-            // Redirect atau tampilkan pesan sukses jika penghapusan berhasil
+        if ($deleted_tambahan) {
             redirect(base_url('operator/peminjaman_tempat'));
         } else {
-            // Tampilkan pesan error jika penghapusan gagal
-            echo "Gagal menghapus peminjaman.";
-            // Atau: return false; // Untuk memberikan sinyal kegagalan
+            echo "Gagal menghapus entri tambahan.";
         }
     }
-
     public function aksi_edit_peminjaman()
     {
         $id_pelanggan = $this->input->post('nama');
@@ -990,7 +981,7 @@ class operator extends CI_Controller
                     $nama = $cellData;
                 } elseif ($cellName == 'phone') {
                     $phone = $cellData;
-                } elseif ($cellName == 'email;') {
+                } elseif ($cellName == 'email') {
                     $email = $cellData;
                 }
 

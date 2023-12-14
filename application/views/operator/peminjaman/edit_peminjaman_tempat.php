@@ -140,6 +140,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .submit:hover {
             background-color: transparent;
             color: #222;
@@ -337,12 +338,10 @@
                 });
             });
         });
-        
+
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('hapusTambahan').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default link behavior
-
-                // Show SweetAlert2 confirmation dialog
+                event.preventDefault();
                 Swal.fire({
                     title: 'Hapus Tambahan',
                     text: 'Apakah Anda yakin ingin menghapus tambahan?',
@@ -353,32 +352,11 @@
                     confirmButtonText: 'Ya, Hapus!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // If confirmed, redirect to the specified URL
                         window.location.href = this.getAttribute('href');
                     }
                 });
             });
         });
-
-        // Fungsi SweetAlert untuk tombol Hapus Tambahan
-        function hapustambahan(id) {
-            Swal.fire({
-                title: 'Anda yakin?',
-                text: "Anda akan menghapus data tambahan ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Aksi penghapusan dilakukan di sini
-                    window.location.href = "<?php echo base_url('operator/hapus_tambahan_peminjaman/'); ?>" + id;
-                }
-            });
-        }
-
 
         function displaySweetAlert() {
             const message = "<?php echo $this->session->flashdata('sukses'); ?>";
