@@ -71,6 +71,13 @@ class M_model extends CI_Model
         return $this->db->get_where($table, $data);
     }
 
+    public function delete_tambahan($table, $column, $value)
+    {
+        $this->db->where($column, $value);
+        $this->db->delete($table);
+        return $this->db->affected_rows() > 0;
+    }
+
     public function delete($table, $field, $id)
     {
         $data = $this->db->delete($table, array($field => $id));
