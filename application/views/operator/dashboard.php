@@ -222,13 +222,19 @@
             margin-bottom: 60px;
         }
 
-        .section-title h5 {
+        /* .section-title h5 {
             font-weight: 600;
             color: var(--main-color);
             margin-bottom: 6px;
-        }
+        } */
 
         .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .section-title h5 {
             font-size: 42px;
             font-weight: 700;
             color: var(--heading-color);
@@ -248,7 +254,7 @@
             animation: blink 0.7s infinite;
         }
 
-        @-webkit-keyframes blink {
+        /* @-webkit-keyframes blink {
             0% {
                 opacity: 1;
             }
@@ -274,7 +280,7 @@
             100% {
                 opacity: 1;
             }
-        }
+        } */
 
         @media all and (max-width: 1199px) {
             .banner-area .bg-image {
@@ -1802,8 +1808,8 @@
                     </div>
         </section>
         <section class="inner-section">
-            <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full">
-                <div class="col-lg-3 text-center">
+            <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full h-20">
+                <div class="text-center">
                     <div class="section-title">
                         <h2 class="title">Data Ruang</h2>
                     </div>
@@ -1846,10 +1852,10 @@
         <!-- Data Master Pelanggan -->
         <section id="widget" class="inner-section">
             <div class="container">
-                <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full">
-                    <div class="col-lg-3 text-center">
+                <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full h-20">
+                    <div class="text-center">
                         <div class="section-title">
-                            <h2 class="title">Data Pelanggan</h2>
+                            <h5 class="title">Data Pelanggan</h5>
                         </div>
                     </div>
                 </div>
@@ -1907,10 +1913,10 @@
         <!-- Report Sewa -->
         <section id="widget" class="inner-section">
             <div class="container">
-                <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full">
-                    <div class="col-lg-3 text-center">
+                <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full h-20">
+                    <div class="text-center">
                         <div class="section-title">
-                            <h2 class="title">Report Sewa</h2>
+                            <h5 class="title">Report Sewa</h5>
                         </div>
                     </div>
                 </div>
@@ -1991,22 +1997,15 @@
             </div>
         </section>
 
-        <!-- footer area start -->
         <div class="footer-2 pb-16 bg-gray-800 inner-section md:pt-2">
-
             <div>
                 <div class="md:flex-1 md:px-4 text-center md:text-right">
                     <a href="" class="py-2 px-4 text-white inline-block hover:underline">© 2023 Sewaruang. All rights reserved.</a>
                 </div>
             </div>
-
         </div>
-        <!-- footer area end -->
 
-        <!-- back-to-top end -->
         <a id="back-to-top"></a>
-
-
         <!-- jQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
