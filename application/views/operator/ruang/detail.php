@@ -18,8 +18,8 @@
         <?php foreach ($ruang as $row) : ?>
           <div class="mx-auto flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 w-full">
             <div class="w-full">
-              <?php if (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) : ?>
-                <img class="object-cover w-full h-48 md:h-64 lg:h-72 xl:h-80" src="<?php echo base_url('./image/ruangan/' . $row->image); ?>" alt="Room Image">
+              <?php if (!empty($row->image) && file_exists('./image/' . $row->image)) : ?>
+                <img class="object-cover w-full h-48 md:h-64 lg:h-72 xl:h-80" src="<?php echo base_url('./image/' . $row->image); ?>" alt="Room Image">
               <?php else : ?>
                 <img class="object-cover w-full h-48 md:h-64 lg:h-72 xl:h-80" src="<?php echo base_url('./image/foto.png'); ?>" alt="User Image">
               <?php endif; ?>

@@ -281,7 +281,7 @@ class operator extends CI_Controller
             $image_temp = $_FILES['foto']['tmp_name'];
             $kode = round(microtime(true) * 100);
             $file_name = $kode . '_' . $image;
-            $upload_path = './image/ruangan/' . $file_name;
+            $upload_path = './image/' . $file_name;
 
             if (move_uploaded_file($image_temp, $upload_path)) {
                 $data = [
@@ -455,13 +455,13 @@ class operator extends CI_Controller
                         // Lakukan pengelolaan gambar seperti yang telah dijelaskan dalam pertanyaan sebelumnya
                         $kode = round(microtime(true) * 100);
                         $file_name = $kode . '_' . $image;
-                        $upload_path = './image/ruangan/' . $file_name;
+                        $upload_path = './image/' . $file_name;
 
                         if (move_uploaded_file($foto_temp, $upload_path)) {
                             // Hapus image lama jika ada
                             $old_file = $this->m_model->get_image_by_id('ruangan', $id);
-                            if ($old_file && file_exists('./image/ruangan/' . $old_file)) {
-                                unlink('./image/ruangan/' . $old_file);
+                            if ($old_file && file_exists('./image/' . $old_file)) {
+                                unlink('./image/' . $old_file);
                             }
 
                             $data['image'] = $file_name;
@@ -535,7 +535,7 @@ class operator extends CI_Controller
         // Hapus gambar dari folder image/ruangan jika ada
         $image_file = $ruangan->image;
         if ($image_file) {
-            $image_path = 'image/ruangan/' . $image_file;
+            $image_path = 'image/' . $image_file;
             if (file_exists($image_path)) {
                 unlink($image_path);
             }
@@ -560,7 +560,7 @@ class operator extends CI_Controller
 
             if ($image_file) {
                 // Hapus file gambar dari direktori
-                $image_path = './image/ruangan/' . $image_file;
+                $image_path = './image/' . $image_file;
 
                 if (file_exists($image_path) && unlink($image_path)) {
                     // Update data ruangan di database untuk menghapus referensi gambar
