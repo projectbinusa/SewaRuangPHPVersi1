@@ -22,6 +22,7 @@
         }
 
         .header {
+            /* text-align: center; */
             background: #0C356A;
             color: whitesmoke;
             padding-top: 40px;
@@ -37,7 +38,7 @@
 
         .invoice {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0;
@@ -51,8 +52,9 @@
 
         .name-customer {
             color: #1F4172;
+            /* font-size: 90%; */
             margin-top: 5px;
-            margin-left: 49%;
+            margin-left: 50%;
         }
 
         git {
@@ -63,7 +65,7 @@
 
         .invoice-details table {
             margin-top: 0;
-            /* margin-left: 5%; */
+            margin-left: 5%;
             font-size: 90%;
         }
 
@@ -150,38 +152,35 @@
                 $image_data = file_get_contents($image_path);
                 $image_base64 = base64_encode($image_data);
                 ?>
-                <a href="<?php echo base_url('operator/peminjaman_tempat') ?>">
-                    <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image" style="width: 150px;">
-                </a>
+
+                <img src="data:image/png;base64,<?= $image_base64 ?>" alt="Signature Image" class="signature-image" style="width: 150px;">
             </div>
             <div class="invoice-yu">
-                <h1 class="invoice"> CUSTOMER
-
+                <h1 class="invoice">
+                    CUSTOMER
                     <span class="name-customer">INVOICE</span>
-                    <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p>
-
-                    <div class="invoice-details">
-                        <table>
-                            <tr>
-                                <td>Name Customer : <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Email Customer : <span style="margin-left: 9px;"><?php echo tampil_email_penyewa_byid($row->id_pelanggan) ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Nomor Telephone :<span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($row->id_pelanggan) ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
-                            </tr>
-                        </table>
-                    </div>
                 </h1>
+                <h5 style="margin-left: 76%;"><?php echo date('F j, Y'); ?></h5>
             </div>
-
+            <div class="invoice-details">
+                <table>
+                    <tr>
+                        <td>Name Customer : <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></span></td>
+                    </tr>
+                    <tr>
+                        <td>Email Customer : <span style="margin-left: 9px;"><?php echo tampil_email_penyewa_byid($row->id_pelanggan) ?></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telephone :<span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($row->id_pelanggan) ?></span></td>
+                    </tr>
+                    <tr>
+                        <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
+                    </tr>
+                    <tr>
+                        <td>Keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
+                    </tr>
+                </table>
+            </div>
             <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
                 <thead>
                     <tr>
