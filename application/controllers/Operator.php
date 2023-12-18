@@ -351,13 +351,13 @@ class operator extends CI_Controller
             $this->load->library('pdf');
 
             $data['base_url'] = base_url();
-            $this->pdf->load_view('operator/peminjaman/export_pdf', $data);
+            $this->pdf->load_view('operator/peminjaman/download_export_pdf', $data);
 
             $this->pdf->render();
 
             $this->pdf->stream("bukti_booking.pdf", array("Attachment" => true));
         } else {
-            $this->load->view('operator/export_pdf', $data);
+            $this->load->view('operator/download_export_pdf', $data);
         }
     }
 
@@ -836,6 +836,7 @@ class operator extends CI_Controller
             echo "Gagal menghapus entri tambahan.";
         }
     }
+
     public function aksi_edit_peminjaman()
     {
         $id_pelanggan = $this->input->post('nama');
