@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
-    <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -267,6 +265,7 @@
             height: 42px;
             margin: 8px 0;
         }
+
         .header-text {
             font-weight: bold;
             font-size: 15px;
@@ -286,114 +285,109 @@
             <?php foreach ($pelanggan as $row) : ?>
 
                 <form action="<?= base_url('operator/aksi_update_data') ?>" method="post" id="survey-form" class="survey-form">
-    <div>
-        <input name="id" type="hidden" value="<?= $row->id ?>">
+                    <div>
+                        <input name="id" type="hidden" value="<?= $row->id ?>">
 
-        <label for="nama" class="block font-bold">Nama</label>
-        <input autocomplete="off" type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?= $row->nama ?>">
+                        <label for="nama" class="block font-bold">Nama</label>
+                        <input autocomplete="off" type="text" name="nama" id="nama" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?= $row->nama ?>">
 
-        <label for="phone" class="block font-bold">No Telepon</label>
-        <input autocomplete="off" type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?= $row->phone ?>">
+                        <label for="phone" class="block font-bold">No Telepon</label>
+                        <input autocomplete="off" type="text" name="phone" id="phone" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?= $row->phone ?>">
 
-        <label for="email" class="block font-bold">Email</label>
-        <input autocomplete="off" type="email" name="email" id="email" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?= $row->email ?>">
+                        <label for="email" class="block font-bold">Email</label>
+                        <input autocomplete="off" type="email" name="email" id="email" class="w-full min-h-8 p-4 border-b-2 border-gray-300" required value="<?= $row->email ?>">
 
-        <div class="text-center mt-1">
-            <input onclick="update(event)" type="button" id="submit" class="submit" value="Submit">
-        </div>
-    </div>
-</form>
+                        <div class="text-center mt-1">
+                            <input onclick="update(event)" type="button" id="submit" class="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
 
             <?php endforeach; ?>
         </div>
     </main>
 
-    
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    // Store the original values of the form fields
-    var originalFormValues = {
-        nama: '<?= $row->nama ?>',
-        phone: '<?= $row->phone ?>',
-        email: '<?= $row->email ?>'
-    };
-
-    function isFormChanged() {
-        // Compare current values with original values
-        var currentValues = {
-            nama: $('#nama').val(),
-            phone: $('#phone').val(),
-            email: $('#email').val()
+    <script>
+        // Store the original values of the form fields
+        var originalFormValues = {
+            nama: '<?= $row->nama ?>',
+            phone: '<?= $row->phone ?>',
+            email: '<?= $row->email ?>'
         };
 
-        // Check if any field has been changed
-        return (
-            currentValues.nama !== originalFormValues.nama ||
-            currentValues.phone !== originalFormValues.phone ||
-            currentValues.email !== originalFormValues.email
-        );
-    }
+        function isFormChanged() {
+            // Compare current values with original values
+            var currentValues = {
+                nama: $('#nama').val(),
+                phone: $('#phone').val(),
+                email: $('#email').val()
+            };
 
-    function update(event) {
-        event.preventDefault();
-
-        // Check if at least one field is changed
-        var formChanged = isFormChanged();
-
-        if (!formChanged) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Tidak Ada Perubahan',
-                text: 'Tidak ada data yang diubah. Silakan ubah setidaknya satu data.',
-                showConfirmButton: false,
-                timer: 2000,
-            });
-            return;
+            // Check if any field has been changed
+            return (
+                currentValues.nama !== originalFormValues.nama ||
+                currentValues.phone !== originalFormValues.phone ||
+                currentValues.email !== originalFormValues.email
+            );
         }
 
-        Swal.fire({
-            title: 'Ubah Data Pelanggan?',
-            text: 'Anda akan mengubah data pelanggan',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'Batal',
-            confirmButtonText: 'Ubah'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var formData = new FormData($('#survey-form')[0]);
-                $.ajax({
-                    type: 'POST',
-                    url: "<?= base_url('operator/aksi_update_data') ?>",
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data berhasil diubah',
-                            showConfirmButton: false,
-                            timer: 2000,
-                        }).then(() => {
-                            window.location.href = "<?= base_url('operator/data_master_pelanggan') ?>";
-                        });
-                    },
-                    error: function(error) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Ups...',
-                            text: 'Terjadi kesalahan saat mengubah data!',
-                        });
-                    }
+        function update(event) {
+            event.preventDefault();
+
+            // Check if at least one field is changed
+            var formChanged = isFormChanged();
+
+            if (!formChanged) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Tidak Ada Perubahan',
+                    text: 'Tidak ada data yang diubah. Silakan ubah setidaknya satu data.',
+                    showConfirmButton: false,
+                    timer: 2000,
                 });
+                return;
             }
-        });
-    }
-</script>
+
+            Swal.fire({
+                title: 'Ubah Data Pelanggan?',
+                text: 'Anda akan mengubah data pelanggan',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ubah'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var formData = new FormData($('#survey-form')[0]);
+                    $.ajax({
+                        type: 'POST',
+                        url: "<?= base_url('operator/aksi_update_data') ?>",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data berhasil diubah',
+                                showConfirmButton: false,
+                                timer: 2000,
+                            }).then(() => {
+                                window.location.href = "<?= base_url('operator/data_master_pelanggan') ?>";
+                            });
+                        },
+                        error: function(error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ups...',
+                                text: 'Terjadi kesalahan saat mengubah data!',
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
-
-
-

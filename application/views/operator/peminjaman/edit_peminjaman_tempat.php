@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
-    <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
+    <script src="<?php echo base_url('path/to/your/js/script.js') ?>"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -303,13 +303,6 @@
         </div>
     </main>
 
-    <!-- script comboboxs -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12.11.5/dist/sweetalert2.min.css">
-    <!-- Add SweetAlert2 library -->
-    <script src="<?php echo base_url('path/to/your/js/script.js') ?>"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('submitBtn').addEventListener('click', function() {
@@ -441,10 +434,7 @@
                 x[i].classList.remove("active");
             }
         }
-    </script>
 
-    <!-- script comboboxs no ruang -->
-    <script>
         input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
@@ -498,11 +488,7 @@
                 x[i].classList.remove("active");
             }
         }
-    </script>
 
-
-    <!-- script disable -->
-    <script>
         $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
             $('#input').on('input', function() {
@@ -511,7 +497,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>

@@ -35,6 +35,11 @@
             margin-top: 10px;
         }
 
+        .customer-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
         .invoice {
             display: flex;
             flex-direction: row;
@@ -43,6 +48,10 @@
             margin-bottom: 0;
             font-weight: bold;
             color: #1F4172;
+        }
+
+        .invoice-date {
+            margin-left: 75%;
         }
 
         .invoice h1 {
@@ -155,33 +164,36 @@
                 </a>
             </div>
             <div class="invoice-yu">
-                <h1 class="invoice"> CUSTOMER
+                <div class="customer-details">
+                    <h1 class="invoice"> CUSTOMER
+                        <span class="name-customer">INVOICE</span>
+                        <p class="invoice-date"><?php echo date('F j, Y'); ?></p>
+                    </h1>
 
-                    <span class="name-customer">INVOICE</span>
-                    <p style="margin-left: 75%;"><?php echo date('F j, Y'); ?></p>
-
-                    <div class="invoice-details">
-                        <table>
-                            <tr>
-                                <td>Name Customer : <span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Email Customer : <span style="margin-left: 9px;"><?php echo tampil_email_penyewa_byid($row->id_pelanggan) ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Nomor Telephone :<span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($row->id_pelanggan) ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Kode pemesanan :<span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Keperluan :<span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
-                            </tr>
-                        </table>
-                    </div>
-                </h1>
+                    <table class="customer-info">
+                        <tr>
+                            <td>Name Customer :</td>
+                            <td><span style="margin-left: 9px;"><?php echo tampil_nama_penyewa_byid($row->id_pelanggan) ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>Email Customer :</td>
+                            <td><span style="margin-left: 9px;"><?php echo tampil_email_penyewa_byid($row->id_pelanggan) ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>Nomor Telephone :</td>
+                            <td><span style="margin-left: 8px;"><?php echo tampil_nomer_penyewa_byid($row->id_pelanggan) ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>Kode pemesanan :</td>
+                            <td><span style="margin-left: 8px;"><?php echo $row->kode_booking ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>Keperluan :</td>
+                            <td><span style="margin-left: 8px;"><?php echo $row->keperluan ?></span></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-
             <table rules="rows" class="item-table hover:table-fixed" id="itemTable">
                 <thead>
                     <tr>

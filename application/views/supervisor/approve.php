@@ -6,24 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-
-
     <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel=" stylesheet">
-    <!--Replace with your tailwind.css once created-->
-
-    <!-- fontawesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!--Regular Datatables CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
@@ -1397,9 +1389,9 @@
             }
 
             .inner-section {
-            padding: 4%;
-            height: 880px;
-        }
+                padding: 4%;
+                height: 880px;
+            }
         }
 
         .table-wrapper {
@@ -1429,34 +1421,31 @@
                     </div>
                 </div>
             </div>
-            <?php if ( !empty($approve) ) : ?>
-            <div class="container-table row justify-content-center">
-                <div class="testt">
-                    <button onclick="tolak_semua()"
-                        class="btn-style bg-red-500 hover:bg-red-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
-                        <span class="pe-2">
-                            <i class="fas fa-trash-alt"></i>
-                        </span>
-                        Tolak Semua
-                    </button>
+            <?php if (!empty($approve)) : ?>
+                <div class="container-table row justify-content-center">
+                    <div class="testt">
+                        <button onclick="tolak_semua()" class="btn-style bg-red-500 hover:bg-red-700 md:ml-3 md:mr-2 text-white font-bold py-2 px-2 rounded">
+                            <span class="pe-2">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                            Tolak Semua
+                        </button>
 
-                    <button onclick="terima_semua()"
-                        class="btn-style  py-2 px-2 bg-green-500 hover:bg-green-700 font-bold text-white rounded">
-                        <span class="pe-2">
-                            <i class="fas fa-check"></i>
-                        </span>
-                        Terima Semua
-                    </button>
+                        <button onclick="terima_semua()" class="btn-style  py-2 px-2 bg-green-500 hover:bg-green-700 font-bold text-white rounded">
+                            <span class="pe-2">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            Terima Semua
+                        </button>
+                    </div>
                 </div>
-                <?php endif; ?>
-                <div class="col-lg-12">
-                    <div class="header-item">
-                        <div class="table-responsive relative">
-<div class="table-wrapper">
-                            <table id="example_data"
-                                class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <?php endif; ?>
+            <div class="col-lg-12">
+                <div class="header-item">
+                    <div class="table-responsive relative">
+                        <div class="table-wrapper">
+                            <table id="example_data" class="bak w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th data-priority="1" scope="col" class="px-3 py-3">
                                             No
@@ -1490,11 +1479,10 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 0;
-                                    foreach ($approve as $row):
+                                    foreach ($approve as $row) :
                                         $no++ ?>
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td data-cell=" " scope="row"
-                                                class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <td data-cell=" " scope="row" class="text-center px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <?php echo $no ?>
                                             </td>
                                             <td data-cell="Nama Penyewa " scope="row" class="text-center px-3 py-4">
@@ -1528,15 +1516,44 @@
                                             </td>
                                             <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
 
-                                                <button onclick="terima(<?php echo $row->id ?>)"
-                                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
+                                                <!-- Tombol di HTML -->
+                                                <button onclick="terima(<?php echo $row->id ?>)" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded">
                                                     <span class="">
                                                         <i class="fas fa-check"></i>
                                                     </span>
-
                                                 </button>
-                                                <button onclick="tolak(<?php echo $row->id ?>)"
-                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
+
+                                                <!-- Input file di HTML -->
+                                                <input type="file" id="fileInput">
+
+                                                <script>
+                                                    function terima(id) {
+                                                        // Mendapatkan referensi ke elemen input file
+                                                        var fileInput = document.getElementById('fileInput');
+
+                                                        // Membuat objek FormData untuk mengirim file
+                                                        var formData = new FormData();
+                                                        formData.append('file', fileInput.files[0]); // Sesuaikan dengan elemen input file Anda
+
+                                                        // Kirim data ke server menggunakan AJAX atau cara yang sesuai dengan kebutuhan Anda
+                                                        // Misalnya, menggunakan Fetch API
+                                                        fetch('url_pengisian_file.php?id=' + id, {
+                                                                method: 'POST',
+                                                                body: formData
+                                                            })
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                // Lakukan sesuatu setelah pengisian file berhasil
+                                                                console.log(data);
+                                                            })
+                                                            .catch(error => {
+                                                                // Tangani kesalahan jika terjadi
+                                                                console.error('Error:', error);
+                                                            });
+                                                    }
+                                                </script>
+
+                                                <button onclick="tolak(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </span>
@@ -1547,30 +1564,20 @@
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!--Datatables -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
-
         // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
         function checkResponsive() {
             if (window.innerWidth > 600) {
-                location.reload(); // Reload halaman jika layar lebih besar dari 600px
+                location.reload();
             }
         }
 
@@ -1579,25 +1586,26 @@
         function adjustTableStyle() {
             var table = document.querySelector('table');
             if (window.innerWidth <= 600) {
-                table.style.width = '100%'; // Menyesuaikan lebar tabel
+                table.style.width = '100%';
                 // Tambahkan penyesuaian gaya lain jika diperlukan
             } else {
-                table.style.width = '100%'; // Kembalikan ke lebar normal
+                table.style.width = '100%';
                 // Kembalikan gaya lain ke nilai default jika diperlukan
             }
         }
 
         window.addEventListener('resize', adjustTableStyle);
-        adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
+        adjustTableStyle();
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var table = $('#example_data').DataTable({
-                responsive: false
-            })
+                    responsive: false
+                })
                 .columns.adjust()
                 .responsive.recalc();
         });
+
         function terima(id) {
             Swal.fire({
                 title: 'Apakah Mau Di Terima?',
@@ -1623,6 +1631,7 @@
                 }
             })
         }
+
         function terima_semua() {
             Swal.fire({
                 title: 'Apakah Mau Di Terima Semua?',
@@ -1648,6 +1657,7 @@
                 }
             })
         }
+
         function tolak(id) {
             Swal.fire({
                 title: 'Apakah Mau Di Tolak?',
@@ -1673,6 +1683,7 @@
                 }
             })
         }
+
         function tolak_semua() {
             Swal.fire({
                 title: 'Apakah Mau Di Tolak Semua?',

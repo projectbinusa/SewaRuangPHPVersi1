@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
-    <!-- cdn fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
 
@@ -19,13 +16,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* body {
-            font-family: "DM Sans", sans-serif;
-            background-color: #E4F1FF;
-            color: #222;
-            padding: 0 0px;
-        } */
 
         .container {
             min-width: 20rem;
@@ -344,8 +334,6 @@
         </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
@@ -475,10 +463,7 @@
                 x[i].classList.remove("active");
             }
         }
-    </script>
-
-    <!-- script comboboxs no ruang -->
-    <script>
+  
         const checkbox = document.getElementById('checkbox');
 
         checkbox.addEventListener('change', function() {
@@ -544,11 +529,7 @@
                 x[i].classList.remove("active");
             }
         }
-    </script>
-
-    <!-- script disable -->
-
-    <script>
+        
         $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
             $('#input').on('input', function() {
