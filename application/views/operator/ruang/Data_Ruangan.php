@@ -154,7 +154,7 @@
           <div class="flex items-center justify-between w-full mb-4">
             <form id="searchForm" action="<?php echo base_url('operator/search'); ?>" method="post" class="flex items-center w-full">
               <button type="submit" class="mr-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded"><i class="fas fa-search text-lg mt-2"></i></button>
-              <input autocomplete="off" type="text" name="keyword" placeholder="Cari Ruang..." class="border rounded py-2 px-4 w-full" />
+              <input autocomplete="off" type="text" name="keyword" placeholder="Cari Ruangan..." class="border rounded py-2 px-4 w-full" />
             </form>
           </div>
         </div>

@@ -5,19 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sewa Ruang</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-    <!--Regular Datatables CSS-->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
-    <!--Responsive Extension Datatables CSS-->
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
-
-
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
@@ -1806,6 +1802,8 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
         </section>
         <section class="inner-section">
             <div class="row justify-content-center shadow-lg mb-5 bg-body-tertiary rounded w-full h-20">
@@ -1824,7 +1822,7 @@
                                 <?php if ($count < 6) : ?>
                                     <div class="col-lg-4 col-md-6 max-w-md container bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 mx-auto">
                                         <div class="bg-white pb-10 pl-5 pr-5 mb-1 rounded-lg shadow-xl text-center my-5">
-                                            <img src="<?php echo (!empty($row->image) && file_exists('./image/ruangan/' . $row->image)) ? base_url('./image/ruangan/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
+                                            <img src="<?php echo (!empty($row->image) && file_exists('./image/' . $row->image)) ? base_url('./image/' . $row->image) : base_url('./image/foto.png'); ?>" alt="Gambar Ruangan" class="block mx-auto mb-5 w-96 h-48 shadow-md rounded transition duration-100 cursor-pointer">
                                             <h2 class="text-2xl text-gray-800 font-semibold mb-3">
                                                 <?php echo $row->no_ruang; ?>
                                             </h2>
@@ -1981,8 +1979,6 @@
                                                             echo "SELESAI";
                                                         } ?>
                                                     </td>
-
-
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>
@@ -2006,14 +2002,6 @@
         </div>
 
         <a id="back-to-top"></a>
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
         <script>
             $(document).ready(function() {
 
@@ -2093,7 +2081,7 @@
             adjustTableStyle('#example_pelanggan');
             adjustTableStyle('#example_report');
         </script>
-
+    </div>
 </body>
 
 </html>

@@ -236,8 +236,7 @@
                 <input autocomplete="off" type="text" name="nama" id="nama" class="nama" placeholder="Masukkan nama item" required>
 
                 <label for="jenis" id="name-label" class=" font-bold">Jenis</label>
-                <select id="underline_select" name="jenis" required
-                    class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <select id="underline_select" name="jenis" required class="snack block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                     <option selected>Pilih Jenisnya</option>
                     <option value="Makanan">Makanan</option>
                     <option value="Minuman">Minuman</option>
@@ -277,7 +276,7 @@
                         type: 'POST',
                         url: $('#survey-form').attr('action'),
                         data: $('#survey-form').serialize(),
-                        success: function (response) {
+                        success: function(response) {
                             // Handle the server response if needed
                             Swal.fire({
                                 title: 'Berhasil',
@@ -290,7 +289,7 @@
                                 window.location.href = '<?php echo base_url('operator/tambahan') ?>';
                             });
                         },
-                        error: function (error) {
+                        error: function(error) {
                             // Handle the error if needed
                             Swal.fire('Error!', 'Gagal menambahkan data. Silakan coba lagi.', 'error');
                         }
@@ -300,7 +299,7 @@
             });
         }
 
-        input.oninput = function () {
+        input.oninput = function() {
             currentFocus = -1;
             var text = input.value.toUpperCase();
             for (let option of browsers.options) {
@@ -312,7 +311,7 @@
             };
         }
         var currentFocus = -1;
-        input.onkeydown = function (e) {
+        input.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers.options);
@@ -347,7 +346,7 @@
     <script>
         const checkbox = document.getElementById('checkbox');
 
-        checkbox.addEventListener('change', function () {
+        checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
                 // Checkbox is checked
                 console.log('Checkbox is checked. Selected value: ' + combo.value);
@@ -357,19 +356,19 @@
             }
         });
 
-        input1.onfocus = function () {
+        input1.onfocus = function() {
             browsers1.style.display = 'block';
             input1.style.borderRadius = "5px 5px 0 0";
         };
         for (let option of browsers1.options) {
-            option.onclick = function () {
+            option.onclick = function() {
                 input1.value = option.value;
                 browsers1.style.display = 'none';
                 input1.style.borderRadius = "5px";
             }
         };
 
-        input1.oninput = function () {
+        input1.oninput = function() {
             currentFocus = -1;
             var text = input1.value.toUpperCase();
             for (let option of browsers1.options) {
@@ -381,7 +380,7 @@
             };
         }
         var currentFocus = -1;
-        input1.onkeydown = function (e) {
+        input1.onkeydown = function(e) {
             if (e.keyCode == 40) {
                 currentFocus++
                 addActive(browsers1.options);
@@ -415,9 +414,9 @@
     <!-- script disable -->
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Menangkap perubahan pada input di atasnya
-            $('#input').on('input', function () {
+            $('#input').on('input', function() {
                 // Mengaktifkan atau menonaktifkan input berdasarkan kondisi
                 $('#no_ruang').prop('disabled', !$(this).val());
             });

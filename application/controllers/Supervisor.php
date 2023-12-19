@@ -163,15 +163,23 @@ class Supervisor extends CI_Controller
 
     public function aksi_approve_di_tolak($id)
     {
-        $id_user = $this->session->userdata('id_user');
+        $username = $this->session->userdata('username');
+        $id_user = $this->m_model->get_user_id_by_username($username);
 
         $data_approve = [
             'status' => 'di tolak',
             'id_peminjaman' => $id,
-            'id_user' => $id_user
         ];
-        $this->m_model->tambah_data('history_approve', $data_approve);
-        $this->m_model->update('peminjaman', ['status' => 'di tolak'], ['id' => $id]);
+        $this->m_model->tambah_data_history_approve($data_approve);
+
+        $approvedata = [
+            'id_user' => $id_user,
+            'status' => 'di tolak',
+        ];
+
+        // Assuming that the update function can handle the update operation
+        $this->m_model->update('peminjaman', $approvedata, ['id' => $id]);
+
         redirect(base_url('supervisor/approve'));
     }
 

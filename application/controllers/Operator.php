@@ -119,35 +119,24 @@ class operator extends CI_Controller
 
     public function data_ruangan($offset = 0)
     {
-        $limit = 6; // Jumlah record per halaman
-        $this->load->model('m_model');
+        $limit = 6;
 
-        // Ambil data ruangan dengan menggunakan limit dan offset
         $data['ruang'] = $this->m_model->get_data_pagination('ruangan', $limit, $offset);
-
-        // Muat pustaka pagination
         $this->load->library('pagination');
 
         // Konfigurasi paginasi
         $config['base_url'] = base_url('operator/data_ruangan');
         $config['total_rows'] = $this->m_model->count_records('ruangan');
-        $config['per_page'] = $limit; // Mengganti 'per_halaman' menjadi 'per_page'
+        $config['per_page'] = $limit;
 
-        // Konfigurasi tautan "Sebelumnya" dan "Berikutnya"
         $config['full_tag_open'] = '<div class="pagination">';
         $config['full_tag_close'] = '</div>';
-        $config['prev_link'] = 'Previous'; // Corrected spelling
-        $config['next_link'] = 'Next'; // Corrected spelling
-
-        // Atur agar offset dihitung menggunakan nomor halaman
+        $config['prev_link'] = 'Previous';
+        $config['next_link'] = 'Next';
         $config['use_page_numbers'] = TRUE;
 
         $this->pagination->initialize($config);
-
-        // Buat tautan penomoran halaman
         $data['pagination_links'] = $this->pagination->create_links();
-
-        // Muat view dengan data dan tautan paginasi
         $this->load->view('operator/ruang/Data_Ruangan', $data);
     }
 
@@ -163,10 +152,10 @@ class operator extends CI_Controller
 
         // Pagination configuration
         $config = array(
-            'base_url' => base_url('operator/search'), // Adjust the URL as needed
-            'total_rows' => count($data['ruang']), // Total number of items (adjust as needed)
-            'per_page' => 10, // Number of items to display per page
-            'uri_segment' => 3, // URI segment containing the page number
+            'base_url' => base_url('operator/search'),
+            'total_rows' => count($data['ruang']),
+            'per_page' => 10,
+            'uri_segment' => 3,
         );
 
         $this->pagination->initialize($config);
