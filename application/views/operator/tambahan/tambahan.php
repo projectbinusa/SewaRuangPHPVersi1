@@ -18,7 +18,11 @@
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
@@ -1018,51 +1022,53 @@
                 </div>
             </div>
         </div>
-        <!-- </main> -->
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script>
             function exportData() {
+                fetch("<?php echo base_url('operator/check_export_data_tambahan'); ?>")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.hasData) {
+                            showExportConfirmation();
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Tidak Ada Data',
+                                text: 'Tidak ada data tambahan yang dapat diekspor.',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking export data:', error);
+                    });
+            }
+
+            function showExportConfirmation() {
                 Swal.fire({
                     title: 'Ekspor Tambahan Peminjaman?',
-                    text: 'Data akan di ekspor.',
+                    text: 'Anda akan mengekspor data tambahan.',
                     icon: 'question',
+                    timer: 20000,
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya'
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ekspor'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Tambahkan logika ekspor Anda di sini
-                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
-                        // atau mengirim permintaan ke server untuk mengekspor data
-
-                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
-                        setTimeout(function() {
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Data Anda telah diekspor.',
-                                icon: 'success',
-                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
-                                showConfirmButton: false,
-                            });
-
-                            // Redirect setelah berhasil mengekspor
-                            setTimeout(function() {
-                                window.location.href = 'export_tambahan';
-                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
-                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                        window.location.href = "<?php echo base_url('operator/export_tambahan') ?>";
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data ruang berhasil diekspor',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
                     }
                 });
-            };
+            }
+
 
             function template() {
                 Swal.fire({
@@ -1088,8 +1094,7 @@
                     }
                 });
             }
-        </script>
-        <script>
+
             $(document).ready(function() {
 
                 var table = $('#example_data').DataTable({

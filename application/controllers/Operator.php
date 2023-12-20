@@ -1015,6 +1015,14 @@ class operator extends CI_Controller
         $writer->save('php://output');
     }
 
+    public function check_export_pelanggan()
+    {
+        $hasData = $this->m_model->check_export_pelanggan();
+
+        // Return the result as JSON
+        $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
+    }
+
     public function export_report_sewa()
     {
 
@@ -1120,6 +1128,13 @@ class operator extends CI_Controller
         $writer->save('php://output');
     }
 
+    public function check_export_data_report_sewa()
+    {
+        $hasData = $this->m_model->check_export_report_sewa();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
+    }
+
     public function expor_ruangan()
     {
 
@@ -1201,6 +1216,13 @@ class operator extends CI_Controller
         $writer->save('php://output');
     }
 
+    public function check_export_data_ruangan()
+    {
+        $hasData = $this->m_model->check_export_data_ruangan();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
+    }
+   
     public function import_ruang()
     {
         if (isset($_FILES["file"]["name"])) {
@@ -1371,6 +1393,13 @@ class operator extends CI_Controller
 
         // Outputkan file Excel ke browser
         $writer->save('php://output');
+    }
+
+    public function check_export_data_tambahan()
+    {
+        $hasData = $this->m_model->check_export_data_tambahan();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
     }
     public function template_tambahan()
     {

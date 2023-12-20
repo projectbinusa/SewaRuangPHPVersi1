@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
@@ -950,11 +955,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            $no = 0;
-                                            foreach ($pelanggan as $row) :
-                                                $no++
-                                            ?>
+                                            <?php $no = 0;
+                                            foreach ($pelanggan as $row) : $no++ ?>
                                                 <tr>
                                                     <td class="whitespace-nowrap px-4 py-2 text-center text-gray-700">
                                                         <?php echo $no ?>
@@ -969,7 +971,6 @@
                                                         <?php echo $row->email ?>
                                                     </td>
 
-                                                    <!-- Aksi -->
                                                     <td data-cell="Aksi" class="justify-content-center px-3 py-4 flex">
                                                         <a href="<?php echo base_url('operator/update_data/') . $row->id ?>" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded">
                                                             <span class="">
@@ -1007,402 +1008,156 @@
                                 <div class="bg-gray-200 px-4 py-3 md:text-right">
                                     <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
                                     <button onclick="impor()" type="button" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Import</button>
-                                    <!-- Remove or replace the following line if template() is not defined -->
                                     <button type="button" class="py-2 px-2 bg-purple-500 hover:bg-purple-700 text-white rounded mr-2" onclick="template()">Unduh Template</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- jQuery -->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                <!--Datatables -->
-                <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-                <script>
-                    // Fungsi untuk memicu reload saat layar responsif dinonaktifkan
-                    function checkResponsive() {
-                        if (window.innerWidth > 600) {
-                            location.reload(); // Reload halaman jika layar lebih besar dari 600px
-                        }
+            </div>
+        </div>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#example_data').DataTable({
+                responsive: false
+            }).columns.adjust().responsive.recalc();
+        });
+
+        function checkResponsive() {
+            if (window.innerWidth > 600) {
+                location.reload();
+            }
+        }
+
+        function adjustTableStyle() {
+            var table = document.querySelector('table');
+            if (table) {
+                if (window.innerWidth <= 600) {
+                    for (var i = 0; i < table.style.length; i++) {
+                        var style = table.style[i];
+                        tableInitialStyle[style] = table.style[style];
                     }
+                    table.style.width = '100%';
+                } else {
+                    table.style.width = '';
+                }
+            }
+        }
 
-                    // window.addEventListener('resize', checkResponsive);
+        window.addEventListener('resize', adjustTableStyle);
+        adjustTableStyle();
 
-                    function adjustTableStyle() {
-                        var table = document.querySelector('table');
-                        if (window.innerWidth <= 600) {
-                            table.style.width = '100%'; // Menyesuaikan lebar tabel
-                            // Tambahkan penyesuaian gaya lain jika diperlukan
-                        } else {
-                            table.style.width = '100%'; // Kembalikan ke lebar normal
-                            // Kembalikan gaya lain ke nilai default jika diperlukan
-                        }
-                    }
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                responsive: true
+            }).columns.adjust().responsive.recalc();
+        });
 
-                    window.addEventListener('resize', adjustTableStyle);
-                    adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
-
-                    $(document).ready(function() {
-                                function hapus(id) {
-                                    Swal.fire({
-                                        title: ' Apakah Mau Dihapus?',
-                                        text: "data ini tidak bisa dikembalikan lagi!",
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        cancelButtonText: 'Batal',
-                                        confirmButtonText: 'Hapus'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: 'Berhasil Menghapus',
-                                                showConfirmButton: false,
-                                                timer: 1500,
-                                            }).then(function() {
-                                                window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
-                                            });
-                                        }
-                                    });
-                                }
-
-                                var tableInitialStyle = {}; // Menyimpan gaya awal tabel sebelum diubah
-
-                                window.addEventListener('resize', function() {
-                                    if (window.innerWidth > 600) {
-                                        // Mengembalikan tabel ke ukuran semula ketika layar lebih dari 600px
-                                        var table = document.querySelector('table');
-                                        if (table) {
-                                            for (var style in tableInitialStyle) {
-                                                table.style[style] = tableInitialStyle[style];
-                                            }
-                                        }
-                                    }
-                                });
-
-                                function adjustTableStyle() {
-                                    var table = document.querySelector('table');
-                                    if (table) {
-                                        if (window.innerWidth <= 600) {
-                                            // Menyimpan gaya awal tabel sebelum diubah jika lebar layar <= 600px
-                                            for (var i = 0; i < table.style.length; i++) {
-                                                var style = table.style[i];
-                                                tableInitialStyle[style] = table.style[style];
-                                            }
-                                            // Menyesuaikan lebar tabel saat mode responsif
-                                            table.style.width = '100%';
-                                            // Tambahkan penyesuaian gaya lain jika diperlukan
-                                        } else {
-                                            // Kembalikan ke lebar normal jika layar > 600px
-                                            table.style.width = '';
-                                            // Kembalikan gaya lain ke nilai default jika diperlukan
-                                        }
-                                    }
-                                }
-
-                                window.addEventListener('resize', adjustTableStyle);
-                                adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
-                </script>
-                <!-- jQuery -->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-                <!--Datatables -->
-                <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-                <script>
-                    $(document).ready(function() {
-                        var table = $('#example').DataTable({
-                            responsive: true
-                        }).columns.adjust().responsive.recalc();
+        function hapus(id) {
+            Swal.fire({
+                title: ' Apakah Mau Dihapus?',
+                text: "data ini tidak bisa dikembalikan lagi!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menghapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
                     });
-                </script>
+                }
+            });
+        }
 
-                <!-- SweetAlert -->
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-                <script>
-                    function ExportPelanggan() {
+        function ExportPelanggan() {
+            fetch("<?php echo base_url('operator/check_export_pelanggan'); ?>")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.hasData) {
+                        showExportPelangganConfirmation();
+                    } else {
                         Swal.fire({
-                            title: 'Ekspor Data Pelanggan?',
-                            text: "Anda akan mengekspor data pelanggan",
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Ekspor'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Lakukan proses ekspor data di sini
-                                window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
-                            }
-                            var table = $('#example_data').DataTable({
-                                    responsive: true
-                                })
-                                .columns.adjust()
-                                .responsive.recalc();
+                            icon: 'warning',
+                            title: 'Tidak Ada Data',
+                            text: 'Tidak ada data pelanggan yang dapat diekspor.',
+                            showConfirmButton: false,
+                            timer: 1500,
                         });
-
-                        function hapus(id) {
-                            Swal.fire({
-                                title: 'Apakah Mau Dihapus?',
-                                text: "data ini tidak bisa dikembalikan lagi!",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                cancelButtonText: 'Batal',
-                                confirmButtonText: 'Hapus'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Berhasil Menghapus',
-                                        showConfirmButton: false,
-                                        timer: 1500,
-                                    }).then(function() {
-                                        window.location.href = "<?php echo base_url('operator/hapus_data_pelanggan/') ?>" + id;
-                                    });
-                                }
-                            });
-                        }
-
-                        function impor() {
-                            // Get the form by its ID
-                            var form = document.getElementById('importForm');
-
-                            // Check if the file input is empty
-                            var fileInput = form.querySelector('[name="file"]');
-                            if (!fileInput.files.length) {
-                                Swal.fire({
-                                    icon: 'warning',
-                                    title: 'Peringatan!',
-                                    text: 'Pilih file untuk diimpor',
-                                });
-                                return;
-                            }
-
-                            // If the file input is not empty, proceed with the confirmation dialog
-                            Swal.fire({
-                                title: 'Impor Data Pelanggan?',
-                                text: 'Anda akan mengimpor data pelanggan',
-                                icon: 'question',
-                                showCancelButton: true,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                cancelButtonText: 'Batal',
-                                confirmButtonText: 'Impor'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    // Log the form action for debugging purposes
-                                    console.log('Form action:', form.action);
-
-                                    // Submit the form
-                                    form.submit();
-
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Data berhasil di impor',
-                                        showConfirmButton: false,
-                                        timer: 2500,
-                                    });
-                                }
-                            });
-                        }
                     }
-                </script>
-                <!-- jQuery -->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                })
+                .catch(error => {
+                    console.error('Error checking export pelanggan data:', error);
+                });
+        }
 
-                <!--Datatables -->
-                <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-                <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-                <script>
-                    $(document).ready(function() {
-                        var table = $('#example_data').DataTable({
-                            responsive: false
-                        }).columns.adjust().responsive.recalc();
+        function showExportPelangganConfirmation() {
+            Swal.fire({
+                title: 'Ekspor Data Pelanggan?',
+                text: 'Anda akan mengekspor data pelanggan',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ekspor'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data pelanggan berhasil diekspor',
+                        showConfirmButton: false,
+                        timer: 2500,
                     });
-                </script>
+                }
+            });
+        }
 
-                <!-- SweetAlert -->
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-                <script>
-                    function ExportPelanggan() {
-                        Swal.fire({
-                            title: 'Ekspor Data Pelanggan?',
-                            text: "Anda akan mengekspor data pelanggan",
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Ekspor'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Lakukan proses ekspor data di sini
-                                window.location.href = "<?php echo base_url('operator/export_pelanggan') ?>";
+        function impor() {
+            var form = document.getElementById('importForm');
+            var fileInput = form.querySelector('[name="file"]');
+            if (!fileInput.files.length) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Peringatan!',
+                    text: 'Pilih file untuk diimpor',
+                });
+                return;
+            }
 
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Data pelanggan berhasil diekspor',
-                                    showConfirmButton: false,
-                                    timer: 2500,
-                                });
-                            }
-                        });
-                    }
-
-                    function importpelanggan() {
-                        window.location.href = "<?php echo base_url('operator/import_pelanggan') ?>";
-                        Swal.fire({
-                            title: 'Impor Data Pelanggan?',
-                            text: "Anda akan mengimpor data pelanggan",
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Impor'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Lakukan proses impor data pelanggan di sini
-
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Data Pelanggan berhasil diimpor',
-                                    showConfirmButton: false, // Menghilangkan tombol "OK"
-                                    timer: 2500 // Waktu tampilan SweetAlert dalam milidetik (2500ms atau 2.5 detik)
-                                });
-                            }
-                        });
-                    }
-                </script>
-                <script>
-                    function update(id) {
-                        Swal.fire({
-                            title: 'Ingin Mengubah Data Pelanggan',
-                            text: "Data akan diubah",
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Ya Ubah'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                Swal.fire({
-                                    icon: 'Waitt',
-                                    title: 'Loading ... ',
-                                    showConfirmButton: false,
-                                    timer: 2500,
-                                }).then(function() {
-                                    window.location.href = "" + id;
-                                });
-                            }
-                        });
-                    }
-
-
-                    function displaySweetAlert() {
-                        const message = "<?php echo $this->session->flashdata('sukses'); ?>";
-                        const error = "<?php echo $this->session->flashdata('error'); ?>";
-
-                        if (message) {
-                            Swal.fire({
-                                title: 'Berhasil Mengubah Data Pelanggan',
-                                text: message,
-                                timer: 2500,
-                                icon: 'success',
-                                showConfirmButton: false,
-                                timerProgressBar: true
-                            });
-                        } else if (error) {
-                            Swal.fire({
-                                title: 'Error!',
-                                text: error,
-                                timer: 2500,
-                                icon: 'error',
-                                showConfirmButton: false,
-                                timerProgressBar: true
-                            });
-                        }
-                    }
-
-                    // Call the function when the page loads
-                    window.onload = displaySweetAlert;
-                </script>
-                <script>
-                    function template() {
-                        Swal.fire({
-                            title: 'Unduh Template Data Pelanggan?',
-                            text: "Anda akan mengunduh template data pelanggan",
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Unduh'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Lakukan proses ekspor data di sini
-                                window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
-
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Data berhasil di unduh',
-                                    showConfirmButton: false,
-                                    timer: 2500,
-                                });
-                            }
-                        });
-                    }
-                </script>
-                <script>
-                    function impor() {
-                        // Get the form by its ID
-                        var form = document.getElementById('importForm');
-
-                        // Check if the file input is empty
-                        var fileInput = form.querySelector('[name="file"]');
-                        if (!fileInput.files.length) {
-                            Swal.fire({
-                                icon: 'warning',
-                                title: 'Peringatan!',
-                                text: 'Pilih file untuk diimpor',
-                            });
-                            return;
-                        }
-
-                        // If the file input is not empty, proceed with the confirmation dialog
-                        Swal.fire({
-                            title: 'Impor Data Pelanggan?',
-                            text: 'Anda akan mengimpor data pelanggan',
-                            icon: 'question',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: 'Batal',
-                            confirmButtonText: 'Impor'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                // Log the form action for debugging purposes
-                                console.log('Form action:', form.action);
-
-                                // Submit the form
-                                form.submit();
-
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Data berhasil di impor',
-                                    showConfirmButton: false,
-                                    timer: 2500,
-                                });
-                            }
-                        });
-                    }
-                </script>
+            Swal.fire({
+                title: 'Impor Data Pelanggan?',
+                text: 'Anda akan mengimpor data pelanggan',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Impor'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log('Form action:', form.action);
+                    form.submit();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil di impor',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 
 

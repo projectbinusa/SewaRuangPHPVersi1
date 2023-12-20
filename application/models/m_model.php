@@ -66,6 +66,34 @@ class M_model extends CI_Model
         return $query->result();
     }
 
+    public function check_export_data_ruangan()
+    {
+        $result = $this->db->count_all('ruangan');
+
+        return $result > 0;
+    }
+
+    public function check_export_pelanggan()
+    {
+        $result = $this->db->count_all('pelanggan');
+
+        return $result > 0;
+    }
+
+    public function check_export_data_tambahan()
+    {
+        $result = $this->db->count_all('tambahan');
+
+        return $result > 0;
+    }
+
+    public function check_export_report_sewa()
+    {
+        $result = $this->db->where_in('status', ['proses', 'selesai', 'di tolak'])
+            ->count_all_results('peminjaman');
+        return $result > 0;
+    }    
+
     function getwhere($table, $data)
     {
         return $this->db->get_where($table, $data);
