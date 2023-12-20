@@ -304,9 +304,30 @@
     }
 
     function Eksporruangan() {
+      fetch("<?php echo base_url('operator/check_export_data_ruangan'); ?>")
+        .then(response => response.json())
+        .then(data => {
+          if (data.hasData) {
+            showExportConfirmation();
+          } else {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Tidak Ada Data',
+              text: 'Tidak ada data ruangan yang dapat diekspor.',
+              showConfirmButton: false,
+              timer: 2500,
+            });
+          }
+        })
+        .catch(error => {
+          console.error('Error checking export data:', error);
+        });
+    }
+
+    function showExportConfirmation() {
       Swal.fire({
         title: 'Ekspor Data Ruang?',
-        text: "Anda akan mengekspor data ruang",
+        text: 'Anda akan mengekspor data ruang',
         icon: 'question',
         timer: 20000,
         showCancelButton: true,
@@ -316,9 +337,7 @@
         confirmButtonText: 'Ekspor'
       }).then((result) => {
         if (result.isConfirmed) {
-          // Lakukan proses ekspor data di sini
           window.location.href = "<?php echo base_url('operator/expor_ruangan') ?>";
-
           Swal.fire({
             icon: 'success',
             title: 'Data ruang berhasil diekspor',

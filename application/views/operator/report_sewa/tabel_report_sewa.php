@@ -1076,10 +1076,32 @@
         }
 
         function exportReportSewa() {
+            fetch("<?php echo base_url('operator/check_export_data_report_sewa'); ?>")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.hasData) {
+                        showExportConfirmation();
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Tidak Ada Data',
+                            text: 'Tidak ada data report sewa yang dapat diekspor.',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking export data:', error);
+                });
+        }
+
+        function showExportConfirmation() {
             Swal.fire({
                 title: 'Ekspor Data Report Sewa?',
                 text: "Anda akan mengekspor data report sewa",
                 icon: 'question',
+                timer: 20000,
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -1087,17 +1109,7 @@
                 confirmButtonText: 'Ekspor'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Lakukan proses ekspor data di sini
-                    // Contoh:
                     window.location.href = "<?php echo base_url('operator/export_report_sewa') ?>";
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Data report sewa berhasil diekspor',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true // Menampilkan progress bar
-                    });
                 }
             });
         }
