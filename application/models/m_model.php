@@ -73,6 +73,22 @@ class M_model extends CI_Model
         return $result > 0;
     }
 
+    public function check_export_data_history_approve()
+    {
+        $result = $this->db->count_all('history_approve');
+
+        return $result > 0;
+    }
+
+    public function check_export_data_operator()
+    {
+        $query = $this->db->where('role', 'operator')->get('user');
+        $result = $query->num_rows();
+
+        return $result > 0;
+    }
+
+
     public function check_export_pelanggan()
     {
         $result = $this->db->count_all('pelanggan');
@@ -92,7 +108,7 @@ class M_model extends CI_Model
         $result = $this->db->where_in('status', ['proses', 'selesai', 'di tolak'])
             ->count_all_results('peminjaman');
         return $result > 0;
-    }    
+    }
 
     function getwhere($table, $data)
     {
@@ -104,6 +120,20 @@ class M_model extends CI_Model
         $this->db->where($column, $value);
         $this->db->delete($table);
         return $this->db->affected_rows() > 0;
+    }
+
+    public function check_data_exists($table)
+    {
+        // return $this->db->count_all($table) > 0;
+        $result = $this->db->count_all('history_approve');
+
+        return $result > 0;
+    }
+
+    public function delete_history($table, $field, $id)
+    {
+        $this->db->where($field, $id);
+        $this->db->delete($table);
     }
 
     public function delete($table, $field, $id)
@@ -209,7 +239,6 @@ class M_model extends CI_Model
         $data = $this->db->update($tabel, $data, $where);
         return $this->db->affected_rows();
     }
-
 
 
     public function get_data_operator()

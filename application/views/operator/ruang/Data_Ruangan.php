@@ -245,6 +245,8 @@
           icon: 'warning',
           title: 'Peringatan!',
           text: 'Pilih file untuk diimpor',
+          showConfirmButton: false,
+            timer: 3000,
         });
         return;
       }
@@ -276,7 +278,6 @@
         }
       });
     }
-
 
     function template() {
       Swal.fire({

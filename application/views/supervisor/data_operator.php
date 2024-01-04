@@ -1717,12 +1717,12 @@
                                 </span>
                                 Impor
                             </button>
-                            <a href="javascript:void(0);" onclick="exportData()" class="btn-style pl-3 bg-green-500 hover:bg-green-700 text-white font-bold  rounded">
+                            <button onclick="exportData()" class="btn-style pl-3 bg-green-500 hover:bg-green-700 text-white font-bold  rounded" onclick="showExportConfirmation()">
                                 <span class="">
                                     <i class="fas fa-file-export"></i>
                                 </span>
                                 Ekspor
-                            </a>
+                            </button>
 
                             <a href="<?php echo base_url('supervisor/tambah_user_operator') ?>" class="btn-style pl-2 bg-blue-500 hover:bg-blue-700 font-bold text-white rounded">
                                 <span class="">
@@ -1810,17 +1810,17 @@
                 </div>
                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
                 <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <form action="<?php echo base_url('supervisor/import_data_operator') ?>" method="post" enctype="multipart/form-data">
+                    <form id="importForm" action="<?php echo base_url('supervisor/import_data_operator') ?>" method="post" enctype="multipart/form-data">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                             <label class="font-medium text-gray-800">Berkas</label>
-                            <input name="file" type="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
-                    </div>
-                    <div class="bg-gray-200 px-4 py-3 md:text-right">
-                        <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
-                        <button onclick="importWithConfirmation()" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
-                        <button type="button" class="py-2 px-2 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
-                            Unduh Template</button>
-                    </div>
+                            <input type="file" required name="file" id="file" class="w-full outline-none rounded bg-gray-100 p-2 mt-2 mb-3" />
+                        </div>
+                        <div class="bg-gray-200 px-4 py-3 md:text-right">
+                            <button type="button" class="py-2 px-2 bg-red-500 text-white rounded hover:bg-red-700 mr-2" onclick="toggleModal()"> Batal</button>
+                            <button type="button" onclick="importWithConfirmation()" class="py-2 px-2 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Impor</button>
+                            <button type="button" class="py-2 px-2 bg-purple-500 text-white rounded hover:bg-purple-700 mr-2" onclick="template()">
+                                Unduh Template</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1831,6 +1831,8 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <link rel="stylesheet" href="path/to/sweetalert2.min.css">
+        <script src="path/to/sweetalert2.all.min.js"></script>
         <!--Datatables -->
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -1841,7 +1843,6 @@
                     location.reload(); // Reload halaman jika layar lebih besar dari 600px
                 }
             }
-
             // window.addEventListener('resize', checkResponsive);
 
             function adjustTableStyle() {
@@ -1859,78 +1860,128 @@
             adjustTableStyle(); // Panggil fungsi saat halaman dimuat untuk mengatur gaya awal
 
             function importWithConfirmation() {
+                // Get the form by its ID
+                var form = document.getElementById('importForm');
+
+                // Check if the file input is empty
+                var fileInput = form.querySelector('#file');
+                if (!fileInput.files.length) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Peringatan!',
+                        text: 'Pilih file untuk diimpor',
+                        showConfirmButton: false,
+                        timer: 3000,
+                    });
+                    return;
+                }
+
+                // If the file input is not empty, proceed with the confirmation dialog
                 Swal.fire({
-                    title: 'Konfirmasi Impor',
-                    text: 'Anda yakin ingin melakukan impor?',
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin mengimpor data?',
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, Impor!',
-                    cancelButtonText: 'Batal'
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Impor'
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        // Log the form action for debugging purposes
+                        console.log('Form action:', form.action);
+
+                        // Submit the form
+                        form.submit();
+
                         Swal.fire({
-                            title: 'Loading...',
-                            allowOutsideClick: false,
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: 'Data berhasil diimpor.',
                             showConfirmButton: false,
-                            willOpen: () => {
-                                Swal.showLoading();
-                            }
+                            timer: 2500,
                         });
-
-                        // Simulate import process (replace this with your actual import logic)
-                        setTimeout(() => {
-                            Swal.close(); // Tutup SweetAlert loading
-
+                    }
+                });
+            }
+            function impor() {
+                // Show SweetAlert2 confirmation dialog
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin mengimpor data?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Check if the file input is empty
+                        var fileInput = document.querySelector('input[name="file"]');
+                        if (!fileInput.files.length) {
+                            // Show SweetAlert2 error message if no file is selected
                             Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Data berhasil diimpor.',
-                                icon: 'success',
-                                timer: 1500,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    // Get the form action URL
-                                    const formActionUrl = document.getElementById('importForm').action;
-                                    // Redirect to the form action URL
-                                    window.location.href = formActionUrl;
-                                }
+                                icon: 'error',
+                                title: 'Gagal!',
+                                text: 'Anda harus memilih file untuk diimpor.',
                             });
-                        }, 1000); // Simulated loading time (replace with actual import time)
+                            return; // Stop the function if no file is selected
+                        }
+
+                        // If a file is selected, proceed with form submission
+                        var form = document.querySelector('form');
+                        form.submit();
+
+                        // Show SweetAlert2 success message after form submission
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: 'Data berhasil diimpor.',
+                        });
                     }
                 });
             }
 
             function exportData() {
+                fetch("<?php echo base_url('supervisor/check_export_data_operator'); ?>")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.hasData) {
+                            showExportConfirmation();
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Tidak Ada Data',
+                                text: 'Tidak ada data operator yang dapat diekspor.',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking export data:', error);
+                    });
+            }
+
+            function showExportConfirmation() {
                 Swal.fire({
-                    title: 'Ekspor data  operator?',
-                    text: 'Data anda akan diekspor ',
+                    title: 'Ekspor Data Operator?',
+                    text: 'Anda akan mengekspor data operator',
                     icon: 'question',
+                    timer: 20000,
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya'
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ekspor'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Tambahkan logika ekspor Anda di sini
-                        // Misalnya, Anda dapat memicu fungsionalitas ekspor
-                        // atau mengirim permintaan ke server untuk mengekspor data
-
-                        // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
-                        setTimeout(function() {
-                            Swal.fire({
-                                title: 'Berhasil!',
-                                text: 'Data Anda telah diekspor.',
-                                icon: 'success',
-                                timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
-                                showConfirmButton: false,
-                            });
-
-                            // Redirect setelah berhasil mengekspor
-                            setTimeout(function() {
-                                window.location.href = 'export_data_operator';
-                            }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
-                        }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+                        window.location.href = "<?php echo base_url('supervisor/export_data_operator') ?>";
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data operator berhasil diekspor',
+                            showConfirmButton: false,
+                            timer: 2500,
+                        });
                     }
                 });
             }

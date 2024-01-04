@@ -254,13 +254,95 @@ class Supervisor extends CI_Controller
         redirect(base_url('supervisor/data_operator'));
     }
 
+    // public function export_data_operator()
+    // {
+
+    //     // Load autoloader Composer
+    //     require 'vendor/autoload.php';
+
+    //     $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+
+    //     // Buat lembar kerja aktif
+    //     $sheet = $spreadsheet->getActiveSheet();
+    //     // Data yang akan diekspor (contoh data)
+    //     $data = $this->m_model->get_data_operator()->result();
+
+    //     // Buat objek Spreadsheet
+    //     $headers = ['NO', 'USERNAME', 'EMAIL'];
+    //     $rowIndex = 1;
+    //     foreach ($headers as $header) {
+    //         $sheet->setCellValueByColumnAndRow($rowIndex, 1, $header);
+    //         $rowIndex++;
+    //     }
+
+    //     // Isi data dari database
+    //     $rowIndex = 2;
+    //     $no = 1;
+    //     foreach ($data as $rowData) {
+    //         $columnIndex = 1;
+    //         $username = '';
+    //         $email = '';
+    //         foreach ($rowData as $cellName => $cellData) {
+    //             if ($cellName == 'username') {
+    //                 $username = $cellData;
+    //             } elseif ($cellName == 'email') {
+    //                 $email = $cellData;
+    //             }
+
+    //             // Anda juga dapat menambahkan logika lain jika perlu
+
+    //             // Contoh: $sheet->setCellValueByColumnAndRow($columnIndex, $rowIndex, $cellData);
+    //             $columnIndex++;
+    //         }
+
+    //         // Setelah loop, Anda memiliki data yang diperlukan dari setiap kolom
+    //         // Anda dapat mengisinya ke dalam lembar kerja Excel di sini
+    //         $sheet->setCellValueByColumnAndRow(1, $rowIndex, $no);
+    //         $sheet->setCellValueByColumnAndRow(2, $rowIndex, $username);
+    //         $sheet->setCellValueByColumnAndRow(3, $rowIndex, $email);
+    //         $no++;
+
+    //         $rowIndex++;
+    //     }
+    //     // Auto size kolom berdasarkan konten
+    //     foreach (range('A', $sheet->getHighestDataColumn()) as $col) {
+    //         $sheet->getColumnDimension($col)->setAutoSize(true);
+    //     }
+
+    //     // Set style header
+    //     $headerStyle = [
+    //         'font' => ['bold' => true],
+    //         'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+    //     ];
+    //     $sheet->getStyle('A1:' . $sheet->getHighestDataColumn() . '1')->applyFromArray($headerStyle);
+
+    //     // Konfigurasi output Excel
+    //     $writer = new Xlsx($spreadsheet);
+    //     $filename = 'DATA_OPERATOR.xlsx'; // Nama file Excel yang akan dihasilkan
+
+    //     // Set header HTTP untuk mengunduh file Excel
+    //     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    //     header('Content-Disposition: attachment;filename="' . $filename . '"');
+    //     header('Cache-Control: max-age=0');
+
+    //     // Outputkan file Excel ke browser
+    //     $writer->save('php://output');
+    // }
+
+    // public function check_export_data_operator()
+    // {
+    //     $hasData = $this->m_model->check_export_data_operator();
+
+    //     $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
+    // }
+
     public function export_data_operator()
     {
 
         // Load autoloader Composer
         require 'vendor/autoload.php';
 
-        $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $spreadsheet = new Spreadsheet();
 
         // Buat lembar kerja aktif
         $sheet = $spreadsheet->getActiveSheet();
@@ -318,7 +400,7 @@ class Supervisor extends CI_Controller
 
         // Konfigurasi output Excel
         $writer = new Xlsx($spreadsheet);
-        $filename = 'DATA_OPERATOR.xlsx'; // Nama file Excel yang akan dihasilkan
+        $filename = 'DATA OPERATOR.xlsx'; // Nama file Excel yang akan dihasilkan
 
         // Set header HTTP untuk mengunduh file Excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -327,6 +409,13 @@ class Supervisor extends CI_Controller
 
         // Outputkan file Excel ke browser
         $writer->save('php://output');
+    }
+
+    public function check_export_data_operator()
+    {
+        $hasData = $this->m_model->check_export_data_operator();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
     }
 
     public function hapus_data_history_approve($id)
@@ -434,6 +523,13 @@ class Supervisor extends CI_Controller
 
         // Outputkan file Excel ke browser
         $writer->save('php://output');
+    }
+
+    public function check_export_data_history_approve()
+    {
+        $hasData = $this->m_model->check_export_data_history_approve();
+
+        $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
     }
     public function template_data_operator()
     {

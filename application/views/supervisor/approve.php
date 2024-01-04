@@ -1523,36 +1523,6 @@
                                                     </span>
                                                 </button>
 
-                                                <!-- Input file di HTML -->
-                                                <input type="file" id="fileInput">
-
-                                                <script>
-                                                    function terima(id) {
-                                                        // Mendapatkan referensi ke elemen input file
-                                                        var fileInput = document.getElementById('fileInput');
-
-                                                        // Membuat objek FormData untuk mengirim file
-                                                        var formData = new FormData();
-                                                        formData.append('file', fileInput.files[0]); // Sesuaikan dengan elemen input file Anda
-
-                                                        // Kirim data ke server menggunakan AJAX atau cara yang sesuai dengan kebutuhan Anda
-                                                        // Misalnya, menggunakan Fetch API
-                                                        fetch('url_pengisian_file.php?id=' + id, {
-                                                                method: 'POST',
-                                                                body: formData
-                                                            })
-                                                            .then(response => response.json())
-                                                            .then(data => {
-                                                                // Lakukan sesuatu setelah pengisian file berhasil
-                                                                console.log(data);
-                                                            })
-                                                            .catch(error => {
-                                                                // Tangani kesalahan jika terjadi
-                                                                console.error('Error:', error);
-                                                            });
-                                                    }
-                                                </script>
-
                                                 <button onclick="tolak(<?php echo $row->id ?>)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 rounded ml-3">
                                                     <span class="">
                                                         <i class="fas fa-trash-alt"></i>

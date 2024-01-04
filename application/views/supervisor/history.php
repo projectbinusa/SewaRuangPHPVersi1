@@ -1578,38 +1578,83 @@
         });
 
         function exportData() {
-            Swal.fire({
-                title: 'Ekspor data  history approve?',
-                text: 'Data anda akan diekspor ',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Tambahkan logika ekspor Anda di sini
-                    // Misalnya, Anda dapat memicu fungsionalitas ekspor
-                    // atau mengirim permintaan ke server untuk mengekspor data
+                fetch("<?php echo base_url('supervisor/check_export_data_history_approve'); ?>")
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.hasData) {
+                            showExportConfirmation();
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Tidak Ada Data',
+                                text: 'Tidak ada data history approve yang dapat diekspor.',
+                                showConfirmButton: false,
+                                timer: 2500,
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking export data:', error);
+                    });
+            }
 
-                    // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
-                    setTimeout(function() {
+            function showExportConfirmation() {
+                Swal.fire({
+                    title: 'Ekspor Data Histor Approve?',
+                    text: 'Anda akan mengekspor data history approve',
+                    icon: 'question',
+                    timer: 20000,
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ekspor'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "<?php echo base_url('supervisor/export_history_approve') ?>";
                         Swal.fire({
-                            title: 'Berhasil!',
-                            text: 'Data Anda telah diekspor.',
                             icon: 'success',
-                            timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+                            title: 'Data history approve berhasil diekspor',
                             showConfirmButton: false,
+                            timer: 2500,
                         });
+                    }
+                });
+            }
 
-                        // Redirect setelah berhasil mengekspor
-                        setTimeout(function() {
-                            window.location.href = 'export_history_approve';
-                        }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
-                    }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
-                }
-            });
-        }
+        // function exportData() {
+        //     Swal.fire({
+        //         title: 'Ekspor data  history approve?',
+        //         text: 'Data anda akan diekspor ',
+        //         icon: 'question',
+        //         showCancelButton: true,
+        //         confirmButtonColor: '#3085d6',
+        //         cancelButtonColor: '#d33',
+        //         confirmButtonText: 'Ya'
+        //     }).then((result) => {
+        //         if (result.isConfirmed) {
+        //             // Tambahkan logika ekspor Anda di sini
+        //             // Misalnya, Anda dapat memicu fungsionalitas ekspor
+        //             // atau mengirim permintaan ke server untuk mengekspor data
+
+        //             // Simulasikan pengiriman permintaan ekspor (gantilah dengan logika sesuai kebutuhan)
+        //             setTimeout(function() {
+        //                 Swal.fire({
+        //                     title: 'Berhasil!',
+        //                     text: 'Data Anda telah diekspor.',
+        //                     icon: 'success',
+        //                     timer: 1500, // Durasi pesan berhasil ditampilkan (dalam milidetik)
+        //                     showConfirmButton: false,
+        //                 });
+
+        //                 // Redirect setelah berhasil mengekspor
+        //                 setTimeout(function() {
+        //                     window.location.href = 'export_history_approve';
+        //                 }, 500); // Penundaan 0.5 detik sebelum redirect (sesuaikan dengan kebutuhan Anda)
+        //             }, 100); // Contoh penundaan 0.1 detik sebelum menampilkan pesan
+        //         }
+        //     });
+        // }
 
         function hapus(id) {
             Swal.fire({

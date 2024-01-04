@@ -1019,6 +1019,31 @@
     </main>
 
     <script>
+        function template() {
+            Swal.fire({
+                title: 'Unduh Templat Data Pelanggan?',
+                text: "Anda akan mengunduh templat data pelanggan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Unduh'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Lakukan proses ekspor data di sini
+                    window.location.href = "<?php echo base_url('operator/template_pelanggan') ?>";
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data berhasil diunduh',
+                        showConfirmButton: false,
+                        timer: 2500,
+                    });
+                }
+            });
+        }
+
         $(document).ready(function() {
             var table = $('#example_data').DataTable({
                 responsive: false
@@ -1131,6 +1156,8 @@
                     icon: 'warning',
                     title: 'Peringatan!',
                     text: 'Pilih file untuk diimpor',
+                    showConfirmButton: false,
+                    timer: 3000,
                 });
                 return;
             }
