@@ -377,8 +377,6 @@ class operator extends CI_Controller
         // Load the form validation library
         $this->load->library('form_validation');
 
-        $this->load->library('form_validation');
-
         // Set custom error messages for form validation
         $this->form_validation->set_message('required', 'Kolom {field} wajib diisi.');
         $this->form_validation->set_message('numeric', 'Kolom {field} harus berisi angka.');
@@ -1222,7 +1220,7 @@ class operator extends CI_Controller
 
         $this->output->set_content_type('application/json')->set_output(json_encode(['hasData' => $hasData]));
     }
-   
+
     public function import_ruang()
     {
         if (isset($_FILES["file"]["name"])) {
