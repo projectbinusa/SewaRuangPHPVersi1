@@ -106,7 +106,7 @@
             confirmButtonText: 'Keluar'
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location.href = 'http://localhost/exc_sewa_ruang/';
+              window.location.href = 'http://localhost/SewaRuangPHPVersi1/';
             }
           });
         }

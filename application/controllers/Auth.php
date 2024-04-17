@@ -275,7 +275,7 @@ class Auth extends CI_Controller
                     </head>
                     <body>
     <div class="container">
-        <a href="localhost/exc_sewa_ruang/auth/verifikasi_kode">
+        <a href="localhost/SewaRuangPHPVersi1/auth/verifikasi_kode">
             <img src="https://firebasestorage.googleapis.com/v0/b/nizar-40272.appspot.com/o/photo_2023-11-29_09-23-55.jpg?alt=media&token=d9a393df-822b-4589-822b-918f2e05d34a" 
             alt="Logo" class="icon">
         </a>
